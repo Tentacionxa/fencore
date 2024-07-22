@@ -44463,7 +44463,7 @@
 	<item id="25757" article="a" name="diamond arrow">
 		<attribute key="primarytype" value="ammunition"/>
 		<attribute key="ammotype" value="arrow"/>
-		<attribute key="attack" value="194"/>
+		<attribute key="attack" value="494"/>
 		<attribute key="decayTo" value="0"/>
 		<attribute key="duration" value="3600"/>
 		<attribute key="maxhitchance" value="100"/>
@@ -44474,7 +44474,7 @@
 		<attribute key="maxhitchance" value="100"/>
 		<attribute key="duration" value="3600"/>
 		<attribute key="decayTo" value="0"/>
-		<attribute key="attack" value="194"/>
+		<attribute key="attack" value="494"/>
 		<attribute key="weight" value="80"/>
 	</item>
 	<item id="25758" article="a" name="spectral bolt">

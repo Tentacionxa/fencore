@@ -565,6 +565,9 @@
 	<npc centerx="32384" centery="31781" centerz="6" radius="1">
 		<npc name="Emma" x="0" y="0" z="6" spawntime="60" />
 	</npc>
+	<npc centerx="31540" centery="31784" centerz="6" radius="1">
+		<npc name="Bonty" x="0" y="0" z="6" spawntime="60" />
+	</npc>
 	<npc centerx="32329" centery="31784" centerz="6" radius="1">
 		<npc name="Andalf" x="0" y="0" z="6" spawntime="60" />
 	</npc>
@@ -1552,6 +1555,9 @@
 	</npc>
 	<npc centerx="31464" centery="31781" centerz="7" radius="1">
 		<npc name="Gandalf" x="0" y="0" z="7" spawntime="60" />
+	</npc>
+	<npc centerx="31471" centery="31781" centerz="7" radius="1">
+		<npc name="Mundan" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="31478" centery="31781" centerz="7" radius="1">
 		<npc name="Carl" x="0" y="0" z="7" spawntime="60" />
@@ -3267,11 +3273,4 @@
 	<npc centerx="33587" centery="32966" centerz="15" radius="1">
 		<npc name="Gnomish Operative (Raiders)" x="0" y="0" z="15" spawntime="60" />
 	</npc>
-<npc centerx="31471" centery="31781" centerz="7" radius="1">
-<npc name="Mundan" x="0" y="0" z="7" spawntime="60"/>
-</npc>
-
-<npc centerx="31540" centery="31784" centerz="6" radius="1">
-<npc name="Bonty" x="0" y="0" z="7" spawntime="60"/>
-</npc>
 </npcs>

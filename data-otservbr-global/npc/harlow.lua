@@ -50,11 +50,7 @@ npcType.onCloseChannel = function(npc, creature)
 	npcHandler:onCloseChannel(npc, creature)
 end
 
-local BloodBrothers = 0
-local function creatureSayCallback(npc, creature, type, message)
-	local player = Player(creature)
-	local playerId = player:getId()
-end
+
 --Travel
 local travelNode = keywordHandler:addKeyword({ "vengoth" }, StdModule.say, { npcHandler = npcHandler, text = "So you are saying you're looking for someone to take you to Vengoth?" }, function(player)
 	return player:getStorageValue(BloodBrothers.VengothAccess) == 0
@@ -64,7 +60,7 @@ local travelNodeYes = travelNode:addChildKeyword({ "yes" }, StdModule.say, { npc
 travelNodeYes:addChildKeyword({ "yes" }, StdModule.travel, { npcHandler = npcHandler, text = "Okay. Enjoy.", premium = false, cost = 100, destination = Position(32858, 31549, 7) })
 travelNodeYes:addChildKeyword({ "no" }, StdModule.say, { npcHandler = npcHandler, reset = true, text = "Oh well." })
 travelNode = keywordHandler:addKeyword({ "transportation" }, StdModule.say, { npcHandler = npcHandler, text = "Want me to bring you to Vengoth again for 100 gold?" }, function(player)
-	return player:getStorageValue(BloodBrothers.VengothAccess) == 1
+	return player:getStorageValue(BloodBrothers.VengothAccess) == 0
 end)
 travelNode:addChildKeyword({ "yes" }, StdModule.travel, { npcHandler = npcHandler, text = "Okay. Enjoy.", premium = false, cost = 100, destination = Position(32858, 31549, 7) })
 travelNode:addChildKeyword({ "no" }, StdModule.say, { npcHandler = npcHandler, reset = true, text = "Oh well." })

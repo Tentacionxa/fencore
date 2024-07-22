@@ -5,8 +5,8 @@ combat:setParameter(COMBAT_PARAM_DISTANCEEFFECT, CONST_ANI_ICE)
 combat:setArea(createCombatArea(AREA_CIRCLE3X3))
 
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 8) + 7
-	local max = (level / 5) + (maglevel * 10) + 17
+	local min = (level / 5) + (maglevel * 7) + 7
+	local max = (level / 5) + (maglevel * 14) + 17
 	return -min, -max
 end
 

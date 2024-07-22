@@ -49,7 +49,7 @@ local portalId, t = 1949,
         }
     },
 
-    ["Labyrinth Guard"] = {
+    ["labyrinth guard"] = {
         message = "Killing Labyrinth Guard created a teleport to the reward room! Quickly, go through the teleport! The teleport will dissapear in 60 minutes, hurry up!",
         config = {
             createPos = {x = 31762, y = 31727, z = 7},

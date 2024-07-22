@@ -1280,9 +1280,6 @@
 	<npc centerx="33453" centery="31330" centerz="7" radius="1">
 		<npc name="Rock Steady" x="0" y="0" z="7" spawntime="60" />
 	</npc>
-	<npc centerx="32836" centery="31364" centerz="7" radius="1">
-		<npc name="Harlow" x="0" y="0" z="7" spawntime="60" />
-	</npc>
 	<npc centerx="33038" centery="31367" centerz="7" radius="1">
 		<npc name="Messenger Of Heaven" x="0" y="0" z="7" spawntime="60" />
 	</npc>
@@ -1348,9 +1345,6 @@
 	</npc>
 	<npc centerx="33913" centery="31530" centerz="7" radius="1">
 		<npc name="Narsai" x="0" y="0" z="7" spawntime="60" />
-	</npc>
-	<npc centerx="32856" centery="31549" centerz="7" radius="1">
-		<npc name="Harlow (Vengoth)" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="32045" centery="31580" centerz="7" radius="1">
 		<npc name="Svenson" x="0" y="0" z="7" spawntime="60" />
@@ -1922,14 +1916,16 @@
 	<npc centerx="32050" centery="32206" centerz="7" radius="1">
 		<npc name="Billy" x="0" y="0" z="7" spawntime="60" />
 	</npc>
+	<npc centerx="32360" centery="32206" centerz="7" radius="1" />
 	<npc centerx="32354" centery="32208" centerz="7" radius="1">
 		<npc name="zack" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="32379" centery="32208" centerz="7" radius="3">
 		<npc name="Walter Jaeger" x="0" y="0" z="7" spawntime="60" />
 	</npc>
-	<npc centerx="32358" centery="32209" centerz="7" radius="1">
-		<npc name="Frodo" x="0" y="0" z="7" spawntime="60" />
+	<npc centerx="32359" centery="32209" centerz="7" radius="1">
+		<npc name="Frodo" x="-1" y="0" z="7" spawntime="60" />
+		<npc name="Mundan" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="32645" centery="32213" centerz="7" radius="2">
 		<npc name="H.L." x="0" y="-1" z="7" spawntime="60" />

@@ -7,7 +7,7 @@ function zamuloshTeleport.onStepIn(creature, item, position, fromPosition)
 	end
 
 	if item.actionid == 34313 then
-		if player:getStorageValue(Storage.FerumbrasAscension.ZamuloshTeleports) >= 9 then
+		if player:getStorageValue(Storage.FerumbrasAscension.ZamuloshTeleports) >= 0 then
 			player:teleportTo(Position(33618, 32620, 10))
 			player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "What was wrong is not necessarily right now. Nevertheless you nade it further.")
@@ -21,7 +21,7 @@ function zamuloshTeleport.onStepIn(creature, item, position, fromPosition)
 			return true
 		end
 	elseif item.actionid == 34314 then
-		if player:getStorageValue(Storage.FerumbrasAscension.ZamuloshTeleports) >= 4 and Game.getStorageValue(GlobalStorage.FerumbrasAscendant.Habitats.AllHabitats) >= 8 then
+		if player:getStorageValue(Storage.FerumbrasAscension.ZamuloshTeleports) >= 0 and Game.getStorageValue(GlobalStorage.FerumbrasAscendant.Habitats.AllHabitats) >= 0 then
 			player:teleportTo(Position(33618, 32620, 10))
 			player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "What was wrong is not necessarily right now. Nevertheless you nade it further.")

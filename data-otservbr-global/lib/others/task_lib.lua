@@ -417,6 +417,13 @@ rewards = {
 
 {name = "Dawnfire Asura", color = 40, total = 1000, type = "repeatable", storage = 190046, storagecount = 190047, 
 rewards = { 
+	{3043, 40},
+{"exp", 2000000},
+	},
+},
+{name = "Midnight Asura", color = 40, total = 1000, type = "repeatable", storage = 197432, storagecount = 197433, 
+rewards = { 
+	{3043, 40},
 {"exp", 2000000},
 	},
 },

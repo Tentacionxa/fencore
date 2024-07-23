@@ -7,7 +7,7 @@ local config = {
     pointItemId = 24390, -- no momento é Crystal Coin
     pointsPerHour = 25,
     timeSeconds = 3600, -- 1 hour
-    checkDuplicateIps = false,
+    checkDuplicateIps = true,
     showLog = false -- Mostrar mensagem no console?
 }
 

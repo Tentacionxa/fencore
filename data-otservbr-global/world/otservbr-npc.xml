@@ -1924,8 +1924,10 @@
 		<npc name="Walter Jaeger" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="32359" centery="32209" centerz="7" radius="1">
-		<npc name="Frodo" x="-1" y="0" z="7" spawntime="60" />
-		<npc name="Mundan" x="0" y="0" z="7" spawntime="60" />
+	<npc name="Mundan" x="0" y="0" z="7" spawntime="60" />
+	</npc>
+	<npc centerx="32359" centery="32206" centerz="7" radius="1">
+	<npc name="Frodo" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="32645" centery="32213" centerz="7" radius="2">
 		<npc name="H.L." x="0" y="-1" z="7" spawntime="60" />

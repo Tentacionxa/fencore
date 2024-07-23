@@ -1916,7 +1916,9 @@
 	<npc centerx="32050" centery="32206" centerz="7" radius="1">
 		<npc name="Billy" x="0" y="0" z="7" spawntime="60" />
 	</npc>
-	<npc centerx="32360" centery="32206" centerz="7" radius="1" />
+	<npc centerx="32360" centery="32206" centerz="7" radius="1">
+		<npc name="Frodo" x="0" y="0" z="7" spawntime="60" />
+	</npc>
 	<npc centerx="32354" centery="32208" centerz="7" radius="1">
 		<npc name="zack" x="0" y="0" z="7" spawntime="60" />
 	</npc>
@@ -1924,10 +1926,7 @@
 		<npc name="Walter Jaeger" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="32359" centery="32209" centerz="7" radius="1">
-	<npc name="Mundan" x="0" y="0" z="7" spawntime="60" />
-	</npc>
-	<npc centerx="32359" centery="32206" centerz="7" radius="1">
-	<npc name="Frodo" x="0" y="0" z="7" spawntime="60" />
+		<npc name="Mundan" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="32645" centery="32213" centerz="7" radius="2">
 		<npc name="H.L." x="0" y="-1" z="7" spawntime="60" />
@@ -2231,6 +2230,9 @@
 	</npc>
 	<npc centerx="32976" centery="32715" centerz="7" radius="1">
 		<npc name="Tarun" x="0" y="0" z="7" spawntime="60" />
+	</npc>
+	<npc centerx="32987" centery="32729" centerz="7" radius="1">
+		<npc name="Lorek" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="32670" centery="32730" centerz="7" radius="1">
 		<npc name="Angus" x="0" y="0" z="7" spawntime="60" />

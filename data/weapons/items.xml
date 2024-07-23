@@ -30202,8 +30202,8 @@
 		<attribute key="weaponType" value="ammunition"/>
 		<attribute key="ammotype" value="arrow"/>
 		<attribute key="shootType" value="crystallinearrow"/>
-		<attribute key="maxhitchance" value="95"/>
-		<attribute key="attack" value="65"/>
+		<attribute key="maxhitchance" value="50"/>
+		<attribute key="attack" value="40"/>
 		<attribute key="weight" value="75"/>
 	</item>
 	<item id="15794" article="a" name="fresh mushroom beer">

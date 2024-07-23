@@ -80,11 +80,11 @@ monster.loot = {
 	{ name = "midnight tunic", chance = 200 },
 	{ name = "midnight sarong", chance = 200 },
 	{ name = "naga sword", chance = 200 },
-	{ name = "naga axe", chance = 200 },
-	{ name = "naga club", chance = 200 },
-	{ name = "naga wand", chance = 200 },
-	{ name = "naga rod", chance = 200 },
-	{ name = "naga crossbow", chance = 200 },
+	{ name = "naga axe", chance = 3500 },
+	{ name = "naga club", chance = 3500 },
+	{ name = "naga wand", chance = 3500 },
+	{ name = "naga rod", chance = 3500 },
+	{ name = "naga crossbow", chance = 3500 },
 }
 
 monster.attacks = {

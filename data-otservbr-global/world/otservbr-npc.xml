@@ -854,9 +854,7 @@
 	<npc centerx="32371" centery="32235" centerz="6" radius="1">
 		<npc name="Snowball Event" x="0" y="0" z="6" spawntime="60" />
 	</npc>
-	<npc centerx="32343" centery="32245" centerz="6" radius="1">
-		<npc name="Galuna" x="0" y="0" z="6" spawntime="60" />
-	</npc>
+	<npc centerx="32343" centery="32238" centerz="6" radius="1" />
 	<npc centerx="32289" centery="32252" centerz="6" radius="1">
 		<npc name="Robin" x="0" y="0" z="6" spawntime="60" />
 	</npc>
@@ -1967,9 +1965,6 @@
 	<npc centerx="33492" centery="32227" centerz="7" radius="1">
 		<npc name="Taegen" x="0" y="0" z="7" spawntime="60" />
 	</npc>
-	<npc centerx="32342" centery="32229" centerz="7" radius="1">
-		<npc name="Naji" x="0" y="0" z="7" spawntime="60" />
-	</npc>
 	<npc centerx="32389" centery="32229" centerz="7" radius="1">
 		<npc name="Donald Mcronald" x="0" y="0" z="7" spawntime="60" />
 	</npc>
@@ -1993,6 +1988,9 @@
 	</npc>
 	<npc centerx="32368" centery="32240" centerz="7" radius="1">
 		<npc name="Quentin" x="0" y="0" z="7" spawntime="60" />
+	</npc>
+	<npc centerx="32350" centery="32241" centerz="7" radius="1">
+		<npc name="Forg" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="33450" centery="32246" centerz="7" radius="1">
 		<npc name="Gerimor" x="0" y="0" z="7" spawntime="60" />

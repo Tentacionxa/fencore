@@ -139,6 +139,7 @@ npcConfig.shop = {
 	{ itemName = "ultimate healing rune", clientId = 3160, buy = 175 },
 	{ itemName = "ultimate health potion", clientId = 7643, buy = 379 },
 	{ itemName = "ultimate mana potion", clientId = 23373, buy = 438 },
+	{ itemName = "ultimate spirit potion", clientId = 23374, buy = 438 },
 	{ itemName = "supreme health potion", clientId = 23375, buy = 625 },
 	{ itemName = "magic shield potion", clientId = 35563, buy = 1000 },
 	{ itemName = "vial", clientId = 2874, sell = 5 },

@@ -15,7 +15,7 @@ rewards = {
 
 {name = "Dragon", color = 40, total = 1000, type = "daily", storage = 190002, storagecount = 190003, 
 rewards = {
-{3043, 100},
+{3043, 20},
 {5908, 1},
 {"exp", 1500000},
 	},
@@ -78,7 +78,7 @@ rewards = {
 },
 {name = "Ghastly Dragon", color = 40, total = 2000, type = "repeatable", storage = 190545, storagecount = 190546, 
 rewards = { 
-{3043, 50},
+{3043, 70},
 {22516, 5},
 	},
 },

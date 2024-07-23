@@ -62,8 +62,8 @@ end
 addTravelKeyword("kazordoon", 100, Position(32660, 31957, 15))
 addTravelKeyword("robsons isle", 80, Position(32527, 32036, 14))
 addTravelKeyword("mines", 90, Position(32555, 32069, 10))
-
-keywordHandler:addKeyword({ "passage" }, StdModule.say, { npcHandler = npcHandler, text = "Where do you want me to take you? To {Kazordoon} or to {Robsons Isle}? Occasionally we can even reach the {mines} if they are cleared." })
+addTravelKeyword("farmine", 210, Position(33024, 31553, 10))
+keywordHandler:addKeyword({ "passage" }, StdModule.say, { npcHandler = npcHandler, text = "Where do you want me to take you? To {Kazordoon}, {Farmine} or to {Robsons Isle}? Occasionally we can even reach the {mines} if they are cleared." })
 
 npcHandler:setMessage(MESSAGE_GREET, "Welcome, |PLAYERNAME|! You are lucky that the service is running right now. Save your coal for the days to come though!")
 npcHandler:setMessage(MESSAGE_FAREWELL, "See you next time!")

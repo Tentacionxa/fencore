@@ -1,7 +1,7 @@
 -- Configuration for items that have temporary effects when equipped
 local config = {
     [18935] = {
-        slot = "ammo",
+        slot = "ring",
         equipEffect = 23,
         deEquipEffect = 24,
     },

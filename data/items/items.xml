@@ -60744,7 +60744,7 @@
 		<attribute key="ammotype" value="bolt"/>
 		<attribute key="shootType" value="spectralbolt"/>
 		<attribute key="maxhitchance" value="100"/>
-		<attribute key="attack" value="78"/>
+		<attribute key="attack" value="148"/>
 		<attribute key="weight" value="90"/>
 	</item>
 	<item id="35909" name="chaos critical dice">

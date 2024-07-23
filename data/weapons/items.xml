@@ -60731,7 +60731,7 @@
 		<attribute key="ammotype" value="arrow"/>
 		<attribute key="shootType" value="diamondarrow"/>
 		<attribute key="maxhitchance" value="100"/>
-		<attribute key="attack" value="37"/>
+		<attribute key="attack" value="250"/>
 		<attribute key="weight" value="80"/>
 	</item>
 	<item id="35902" article="a" name="spectral bolt">

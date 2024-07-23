@@ -13,10 +13,13 @@ zombieArena = {
        
         -- Time between starts
         -- This gets called recursively until event is started
-        minutesBetweenStart = 2, 
+        minutesBetweenStart = 5, 
 
         -- How many seconds between each zombie spawned
         secondsBetweenZombies = 4,
+
+        --seconds between each alert of the waiting room
+        secondsForWarningWaitingRoom = 30
     },
     storages  = {
         eventOpened    = 670000,
@@ -76,6 +79,28 @@ zombieArena = {
 
 zombieArena.__index = zombieArena
 
+local function broadcastWaitingRoom()
+    local eventStarting = getGlobalStorageValue(zombieArena.storages.eventOpened) ~= -1 and getGlobalStorageValue(zombieArena.storages.eventStarted) == -1
+
+    if eventStarting then
+        local players = zombieArena:checkWaitingRoom()
+    
+        local message
+        if #players > 1 then
+            message = "There are " .. #players .. " players waiting in the waiting room for the Zombie event."
+        elseif #players == 1 then
+            message = "There is 1 player waiting in the waiting room for the zombie event."
+        else
+            message = "There isn't anyone in the waiting room for the zombie event yet."
+        end
+    
+        Game.broadcastMessage(message, MESSAGE_STATUS_WARNING)
+    
+        addEvent(broadcastWaitingRoom, zombieArena.config.secondsForWarningWaitingRoom * 1000)
+    end
+
+end
+
 
 function zombieArena:autoStart()
     local function start()
@@ -126,6 +151,8 @@ function zombieArena:openEvent()
         --zombieArena:debug("Event has already started.")
         return false
     end
+
+    addEvent(broadcastWaitingRoom, zombieArena.config.secondsForWarningWaitingRoom * 1000)
 
     -- Open event
     Game.broadcastMessage(zombieArena.messages.eventOpened, MESSAGE_STATUS_WARNING)
@@ -232,10 +259,10 @@ end
 -- If there's more players than the required minimum, 
 -- teleport all players from waiting room to the arena.
 function zombieArena:teleportPlayers()
-    players = zombieArena:checkWaitingRoom()
+    local players = zombieArena:checkWaitingRoom()
     if players ~= nil then
        
-        -- Not enough players
+        -- Not enough players 
         if #players < zombieArena.config.minPlayers then
             return false
         end
@@ -340,7 +367,7 @@ end
 
 function zombieArena:onKill(killer)
 
-    players = zombieArena:checkArena()
+    local players = zombieArena:checkArena()
 
     -- Subtract one from monstersLeft
     Game.setStorageValue(zombieArena.storages.monstersLeft, zombieArena:getMonstersLeft() - 1)

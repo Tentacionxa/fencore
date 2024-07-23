@@ -71,6 +71,20 @@ npcConfig.shop = {
 	{ itemName = "quiver", clientId = 35562, buy = 400 },
 	{ itemName = "red quiver", clientId = 35849, buy = 400 },
 	{ itemName = "spear", clientId = 3277, buy = 10 },
+	{ itemName = "envenomed arrow", clientId = 16143, buy = 12 },
+	{ itemName = "earth arrow", clientId = 774, buy = 5 },
+	{ itemName = "crystalline arrow", clientId = 15793, buy = 20 },
+	{ itemName = "blue quiver", clientId = 35848, buy = 400 },
+	{ itemName = "onyx arrow", clientId = 7365, buy = 7 },
+	{ itemName = "prismatic bolt", clientId = 16141, buy = 20 },
+	{ itemName = "shiver arrow", clientId = 762, buy = 5 },
+	{ itemName = "tarsal arrow", clientId = 14251, buy = 6 },
+	{ itemName = "vortex bolt", clientId = 14252, buy = 6 },
+	{ itemName = "diamond arrow", clientId = 35901, buy = 45 },
+	{ itemName = "onyx arrow", clientId = 7365, buy = 7 },
+	{ itemName = "vortex bolt", clientId = 14252, buy = 6 },
+	{ itemName = "drill bolt", clientId = 16142, buy = 12 },
+	{ itemName = "spectral bolt", clientId = 35902, buy = 70 },
 }
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

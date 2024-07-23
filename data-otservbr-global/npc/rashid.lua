@@ -8,7 +8,12 @@ npcConfig.description = internalNpcName
 npcConfig.health = 100
 npcConfig.maxHealth = npcConfig.health
 npcConfig.walkInterval = 2000
-npcConfig.walkRadius = 2
+npcConfig.walkRadius = 3
+
+npcConfig.health = 100
+npcConfig.maxHealth = npcConfig.health
+npcConfig.walkInterval = 2000
+npcConfig.walkRadius = 3
 
 npcConfig.outfit = {
 	lookType = 146,
@@ -20,7 +25,7 @@ npcConfig.outfit = {
 }
 
 npcConfig.flags = {
-	floorchange = false,
+	floorchange = false
 }
 
 local keywordHandler = KeywordHandler:new()
@@ -50,9 +55,51 @@ npcType.onCloseChannel = function(npc, creature)
 	npcHandler:onCloseChannel(npc, creature)
 end
 
+local function creatureSayCallback(npc, creature, type, message)
+	local player = Player(creature)
+	local playerId = player:getId()
+
+	if not npcHandler:checkInteraction(npc, creature) then
+		return false
+	end
+	return true
+end
+
+
+keywordHandler:addKeyword({ "offers" }, StdModule.say, { npcHandler = npcHandler, text = "Of course, old friend. You can also browse only armor, legs, shields, helmets, boots, weapons, enchanted weapons, jewelry or miscellaneous stuff." })
+keywordHandler:addKeyword({ "ab'dendriel" }, StdModule.say, { npcHandler = npcHandler, text = "Elves... I don't really trust them. All this talk about nature and flowers and treehugging... I'm sure there's some wicked scheme behind all this." })
+keywordHandler:addKeyword({ "desert" }, StdModule.say, { npcHandler = npcHandler, text = "My beloved hometown! Ah, the sweet scent of the desert sands, the perfect shape of the pyramids... stunningly beautiful." })
+keywordHandler:addKeyword({ "carlin" }, StdModule.say, { npcHandler = npcHandler, text = "I have to go to Carlin once in a while, since the queen wishes to see my exclusive wares in regular intervals." })
+keywordHandler:addKeyword({ "cormaya" }, StdModule.say, { npcHandler = npcHandler, text = "Cormaya? Not a good place to make business, it's way too far and small." })
+keywordHandler:addKeyword({ "darashia" }, StdModule.say, { npcHandler = npcHandler, text = "It's not the real thing, but almost as good. The merchants there claim ridiculous prices, which is fine for my own business." })
+keywordHandler:addKeyword({ "edron" }, StdModule.say, { npcHandler = npcHandler, text = "Ah yes, Edron! Such a lovely and quiet island! I usually make some nice business there." })
+keywordHandler:addKeyword({ "fibula" }, StdModule.say, { npcHandler = npcHandler, text = "Too few customers there, it's not worth the trip." })
+keywordHandler:addKeyword({ "greenshore" }, StdModule.say, { npcHandler = npcHandler, text = "Um... I don't think so." })
+keywordHandler:addKeyword({ "kazordoon" }, StdModule.say, { npcHandler = npcHandler, text = "I don't like being underground much. I also tend to get lost in these labyrinthine dwarven tunnels, so I rather avoid them." })
+keywordHandler:addKeyword({ "liberty bay" }, StdModule.say, { npcHandler = npcHandler, text = "When you avoid the slums, it's a really pretty city. Almost as pretty as the governor's daughter." })
+keywordHandler:addKeyword({ "northport" }, StdModule.say, { npcHandler = npcHandler, text = "Um... I don't think so." })
+keywordHandler:addKeyword({ "port hope" }, StdModule.say, { npcHandler = npcHandler, text = "I like the settlement itself, but I don't set my foot into the jungle. Have you seen the size of these centipedes??" })
+keywordHandler:addKeyword({ "senja" }, StdModule.say, { npcHandler = npcHandler, text = "Um... I don't think so." })
+keywordHandler:addKeyword({ "svargrond" }, StdModule.say, { npcHandler = npcHandler, text = "I wish it was a little bit warmer there, but with a good mug of barbarian mead in your tummy everything gets a lot cosier." })
+keywordHandler:addKeyword({ "thais" }, StdModule.say, { npcHandler = npcHandler, text = "I feel uncomfortable and rather unsafe in Thais, so I don't really travel there." })
+keywordHandler:addKeyword({ "vega" }, StdModule.say, { npcHandler = npcHandler, text = "Um... I don't think so." })
+keywordHandler:addKeyword({ "venore" }, StdModule.say, { npcHandler = npcHandler, text = "Although it's the flourishing trade centre of Tibia, I don't like going there. Too much competition for my taste." })
+keywordHandler:addKeyword({ "time" }, StdModule.say, { npcHandler = npcHandler, text = "It's almost time to journey on." })
+keywordHandler:addKeyword({ "king" }, StdModule.say, { npcHandler = npcHandler, text = "Kings, queens, emperors and kaliphs... everyone claims to be different and unique, but actually it's the same thing everywhere." })
+
+npcHandler:setMessage(MESSAGE_GREET, "Ah, a customer!")
+npcHandler:setMessage(MESSAGE_FAREWELL, "Good bye, |PLAYERNAME|.")
+npcHandler:setMessage(MESSAGE_WALKAWAY, "Come back soon!")
+npcHandler:setMessage(MESSAGE_SENDTRADE, "Take all the time you need to decide what you want!")
+
+
+
+npcHandler:setCallback(CALLBACK_ON_TRADE_REQUEST, onTradeRequest)
+npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
 npcConfig.shop = {
+	{ itemName = "flask of rust remover", clientId = 9016, buy = 50 },
 	{ itemName = "abyss hammer", clientId = 7414, sell = 20000 },
 	{ itemName = "albino plate", clientId = 19358, sell = 1500 },
 	{ itemName = "amber staff", clientId = 7426, sell = 8000 },
@@ -211,6 +258,7 @@ npcConfig.shop = {
 	{ itemName = "witch hat", clientId = 9653, sell = 5000 },
 	{ itemName = "wyvern fang", clientId = 7408, sell = 1500 },
 }
+
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)
 	npc:sellItem(player, itemId, amount, subType, 0, ignore, inBackpacks)
@@ -220,6 +268,7 @@ npcType.onSellItem = function(npc, player, itemId, subtype, amount, ignore, name
 	player:sendTextMessage(MESSAGE_INFO_DESCR, string.format("Sold %ix %s for %i gold.", amount, name, totalCost))
 end
 -- On check npc shop message (look item)
-npcType.onCheckItem = function(npc, player, clientId, subType) end
+npcType.onCheckItem = function(npc, player, clientId, subType)
+end
 
 npcType:register(npcConfig)

@@ -1974,9 +1974,6 @@
 	<npc centerx="32401" centery="32232" centerz="7" radius="1">
 		<npc name="Pig" x="0" y="0" z="7" spawntime="60" />
 	</npc>
-	<npc centerx="32342" centery="32235" centerz="7" radius="1">
-		<npc name="Elane" x="0" y="0" z="7" spawntime="60" />
-	</npc>
 	<npc centerx="33485" centery="32236" centerz="7" radius="1">
 		<npc name="Maelyrra" x="0" y="0" z="7" spawntime="60" />
 	</npc>
@@ -1989,7 +1986,7 @@
 	<npc centerx="32368" centery="32240" centerz="7" radius="1">
 		<npc name="Quentin" x="0" y="0" z="7" spawntime="60" />
 	</npc>
-	<npc centerx="32350" centery="32241" centerz="7" radius="1">
+	<npc centerx="32347" centery="32241" centerz="7" radius="1">
 		<npc name="Forg" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="33450" centery="32246" centerz="7" radius="1">

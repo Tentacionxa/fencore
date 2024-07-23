@@ -1,3 +1,5 @@
+local BONUS_STORAGE_KEY = 65785
+
 -- Configuration for items that have temporary effects when equipped
 local config = {
     [18935] = {

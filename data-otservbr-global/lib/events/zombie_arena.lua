@@ -352,7 +352,7 @@ end
 
 -- Summon x monsters provided in config
 function zombieArena:summonMonsters()
-    for i = 1, zombieArena.config.monsters do
+    for i = 1, zombieArena.config.monsters + 5 do
             zombieArena:createMonster(i)
     end
     local message = string.format("%d monsters will be summoned.", zombieArena.config.monsters)

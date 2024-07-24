@@ -48217,7 +48217,7 @@
 		</attribute>
 	</item>
 	<item id="28559" article="a" name="ferumbras exercise dummy">
-		<attribute key="primarytype" value="furniture"/>
+		<attribute key="primarytype" value="tools (objects)"/>
 		<attribute key="description" value="You can train your skills by using training weapons with this expert exercise dummy"/>
 		<attribute key="wrapableto" value="23398"/>
 		<attribute key="rotateto" value="28560"/>

@@ -65062,7 +65062,7 @@
 	<item id="38642" article="a" name="best sword">
 		<attribute key="primarytype" value="sword weapons"/>
 		<attribute key="weaponType" value="sword"/>
-		<attribute key="attack" value="55"/>
+		<attribute key="attack" value="45"/>
 		<attribute key="extradef" value="5"/>
 		<attribute key="defense" value="31"/>
 		<attribute key="weight" value="11000"/>
@@ -65071,7 +65071,7 @@
 		<attribute key="life leech" value="5"/>
 		<attribute key="mana leech" value="5"/>
 		<attribute key="critical hit" value="5"/>
-		<attribute key="skillboost sword" value="5"/>
+		<attribute key="skillboost sword" value="1"/>
 		</attribute>
 	</item>
 	<item id="38644" name="dawnfire flowers"/>

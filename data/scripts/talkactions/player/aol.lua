@@ -1,7 +1,7 @@
 local aol = TalkAction("!aol")
 
 function aol.onSay(player, words, param)
-	local totalCost = 50000 + (configManager.getNumber(configKeys.BUY_AOL_COMMAND_FEE) or 0)
+	local totalCost = 500000 + (configManager.getNumber(configKeys.BUY_AOL_COMMAND_FEE) or 0)
 	if player:removeMoneyBank(totalCost) then
 		player:getPosition():sendMagicEffect(CONST_ME_MAGIC_BLUE)
 		player:addItem(3057, 1)

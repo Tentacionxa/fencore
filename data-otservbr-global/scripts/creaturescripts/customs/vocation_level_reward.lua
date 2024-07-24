@@ -48,7 +48,7 @@ local table = {
      [40] = {items = {{itemid = 3043, count = 10}}, storage = 40302, msg = "You won 10 crystal coins for reaching level 40!"},
      [60] = {items = {{itemid = 3043, count = 15}}, storage = 40303, msg = "You won 15 crystal coins for reaching level 60!"},
      [80] = {items = {{itemid = 3043, count = 15}}, storage = 40304, msg = "You won 15 crystal coins for reaching level 80!"},
-     [100] = {items = {{itemid = 3043, count = 15}}, storage = 40305, msg = "You won 20 crystal coins for reaching level 100!"},
+     [100] = {items = {{itemid = 3043, count = 15}}, storage = 40305, msg = "You won 15 crystal coins for reaching level 100!"},
      [120] = {items = {{itemid = 3043, count = 20}}, storage = 40306, msg = "You won 20 crystal coins for reaching level 120!"},
      [140] = {items = {{itemid = 3043, count = 20}}, storage = 40307, msg = "You won 20 crystal coins for reaching level 140!"},
      [160] = {items = {{itemid = 3043, count = 20}}, storage = 40308, msg = "You won 20 crystal coins for reaching level 160!"},

@@ -99,7 +99,7 @@ local stoneKeyword = keywordHandler:addKeyword({'precision'}, StdModule.say, {np
 local stoneKeyword = keywordHandler:addKeyword({'slash'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for skill sword imbuement for 825000 gold?'})
 	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Here you are. Take care.', reset = true},
 		function(player) return player:getMoney() + player:getBankBalance() >= 825000 end,
-		function(player) if player:removeMoneyBank(825000) then player:addItem(9691, 25) player:addItem(9640, 20) player:addItem(9654, 5)  end end
+		function(player) if player:removeMoneyBank(825000) then player:addItem(9691, 25) player:addItem(21202, 20) player:addItem(9654, 5)  end end
 	)
 		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
 	

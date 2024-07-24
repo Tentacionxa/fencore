@@ -42,7 +42,7 @@ function onlinePointsEvent.onThink(interval)
                 player:setStorageValue(storage, 0)
                 local item = player:addItem(pointItemId, pointsPerHour)
                 if item then
-                    player:sendTextMessage(MESSAGE_LOOT, string.format("Voc\234 recebeu %d {%d|%s} por estar online por uma hora.", pointsPerHour, pointItemId, item:getName()))
+                    player:sendTextMessage(MESSAGE_LOOT, string.format("You received %d {%d|%s} for being online an hour.", pointsPerHour, pointItemId, item:getName()))
                     if showLog then
                         local playerName = player:getName()
                         Spdlog.info("Player Rewarded: " .. playerName .. " [Success]")

@@ -244,7 +244,18 @@ taskConfiguration = {
 	{"exp", 1000000},
 		},
 	},
-	
+	{name = "Falcon Knight", color = 40, total = 1000, type = "repeatable", storage = 197320, storagecount = 197321, 
+	rewards = { 
+		{3043, 50},
+	{"exp", 1000000},
+		},
+	},
+	{name = "Falcon Paladin", color = 40, total = 1000, type = "repeatable", storage = 197320, storagecount = 197321, 
+	rewards = { 
+		{3043, 50},
+	{"exp", 1000000},
+		},
+	},
 	{name = "Guzzlemaw", color = 40, total = 1000, type = "once", storage = 190611, storagecount = 190612, 
 	rewards = { 
 	{20270, 1},

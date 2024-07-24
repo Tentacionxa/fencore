@@ -92,11 +92,10 @@ end
 
 local killMonsterCreatePortal = CreatureEvent("killMonsterCreatePortal")
 
-function killMonsterCreatePortal.onKill(creature, target)
+function killMonsterCreatePortal.onDeath(creature, corpse, killer, mostDamageKiller, lastHitUnjustified, mostDamageUnjustified)
     if not target:isMonster() or target:getMaster() then
         return true
     end
-    
     local player = Player(creature:getGuid())
     local k = t[target:getName():lower()]
     if not k then

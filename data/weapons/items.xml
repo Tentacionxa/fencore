@@ -6186,9 +6186,12 @@
 		<attribute key="weight" value="500"/>
 	</item>
 	<item id="3057" article="an" name="amulet of loss">
-		<attribute key="charges" value="1"/>
-		<attribute key="weight" value="420"/>
-	</item>
+        <attribute key="charges" value="1"/>
+        <attribute key="weight" value="420"/>
+        <attribute key="script" value="moveevent">
+            <attribute key="slot" value="necklace"/>
+        </attribute>
+    </item>
 	<item id="3058" article="a" name="strange symbol">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="200"/>

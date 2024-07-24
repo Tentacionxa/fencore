@@ -128,7 +128,7 @@ function killMonsterCreatePortal.onDeath(creature, target)
     return true
 end
 
-killMonsterCreatePortal:type("death")
+killMonsterCreatePortal:type("kill")
 killMonsterCreatePortal:register()
 
 ---------------------------------------------------------------------------------------
@@ -142,4 +142,4 @@ function monsterDeathLogin.onLogin(player)
 end
 
 monsterDeathLogin:type("login")
-monsterKillLogin:register()
+monsterDeathLogin:register()

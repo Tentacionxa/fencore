@@ -128,18 +128,18 @@ function killMonsterCreatePortal.onDeath(creature, target)
     return true
 end
 
-killMonsterCreatePortal:type("kill")
+killMonsterCreatePortal:type("death")
 killMonsterCreatePortal:register()
 
 ---------------------------------------------------------------------------------------
 -- Register script onLogin
 ---------------------------------------------------------------------------------------
-local monsterKillLogin = CreatureEvent("monsterKillLogin")
+local monsterDeathLogin = CreatureEvent("monsterDeathLogin")
 
-function monsterKillLogin.onLogin(player)
+function monsterDeathLogin.onLogin(player)
     player:registerEvent("killMonsterCreatePortal")
     return true
 end
 
-monsterKillLogin:type("login")
+monsterDeathLogin:type("login")
 monsterKillLogin:register()

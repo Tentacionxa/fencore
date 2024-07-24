@@ -33,3 +33,4 @@ function taskCreatureStartup.onStartup()
 	end
 end
 taskCreatureStartup:register()
+taskCreature:register()

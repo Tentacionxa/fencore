@@ -83,7 +83,7 @@ monster.loot = {
 	{ name = "blank rune", chance = 8125, maxCount = 3 },
 	{ name = "health potion", chance = 2900 },
 	{ name = "mana potion", chance = 2980 },
-	{ name = "reins", chance = 500 },
+	{ name = "reins", chance = 200 },
 }
 
 monster.attacks = {

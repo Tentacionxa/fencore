@@ -92,7 +92,7 @@ end
 
 local killMonsterCreatePortal = CreatureEvent("killMonsterCreatePortal")
 
-function killMonsterCreatePortal.onKill(killer)
+function killMonsterCreatePortal.onKill(creature, target)
     if not target:isMonster() or target:getMaster() then
         return true
     end

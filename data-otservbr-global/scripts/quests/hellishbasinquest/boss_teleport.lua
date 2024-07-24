@@ -92,7 +92,7 @@ end
 
 local killMonsterCreatePortal = CreatureEvent("killMonsterCreatePortal")
 
-function killMonsterCreatePortal.onDeath(creature, target)
+function killMonsterCreatePortal.onKill(killer)
     if not target:isMonster() or target:getMaster() then
         return true
     end
@@ -134,12 +134,12 @@ killMonsterCreatePortal:register()
 ---------------------------------------------------------------------------------------
 -- Register script onLogin
 ---------------------------------------------------------------------------------------
-local monsterDeathLogin = CreatureEvent("monsterDeathLogin")
+local monsterKillLogin = CreatureEvent("monsterKillLogin")
 
-function monsterDeathLogin.onLogin(player)
+function monsterKillLogin.onLogin(player)
     player:registerEvent("killMonsterCreatePortal")
     return true
 end
 
-monsterDeathLogin:type("login")
-monsterDeathLogin:register()
+monsterKillLogin:type("login")
+monsterKillLogin:register()

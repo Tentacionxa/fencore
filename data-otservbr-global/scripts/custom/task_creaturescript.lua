@@ -27,7 +27,8 @@ function taskCreatureStartup.onStartup()
 		local mType = MonsterType(bossName.name)
 		if not mType then
 			logger.error("[TaskCreatureStartup] boss with name {} is not a valid MonsterType", bossName.name)
-
+		else
+			mType:registerEvent("TaskCreature")
 		end
 	end
 end

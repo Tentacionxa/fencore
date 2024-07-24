@@ -854,7 +854,6 @@
 	<npc centerx="32371" centery="32235" centerz="6" radius="1">
 		<npc name="Snowball Event" x="0" y="0" z="6" spawntime="60" />
 	</npc>
-	<npc centerx="32343" centery="32238" centerz="6" radius="1" />
 	<npc centerx="32289" centery="32252" centerz="6" radius="1">
 		<npc name="Robin" x="0" y="0" z="6" spawntime="60" />
 	</npc>

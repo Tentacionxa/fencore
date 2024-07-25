@@ -391,3 +391,4 @@ vcpkg_installed
 cmake-build-debug*
 data-otservbr-global/world/otservbr.otbm
 data-otservbr-global/world/otservbr-npc.xml
+data-otservbr-global/scripts/custom/task_lib.lua

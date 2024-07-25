@@ -9027,8 +9027,8 @@
 		<attribute key="weaponType" value="ammunition"/>
 		<attribute key="ammotype" value="arrow"/>
 		<attribute key="shootType" value="arrow"/>
-		<attribute key="maxhitchance" value="91"/>
-		<attribute key="attack" value="25"/>
+		<attribute key="maxhitchance" value="100"/>
+		<attribute key="attack" value="50"/>
 		<attribute key="weight" value="70"/>
 	</item>
 	<item id="3448" article="a" name="poison arrow">

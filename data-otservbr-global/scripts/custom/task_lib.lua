@@ -691,6 +691,54 @@ rewards = {
 	{"exp", 10000000},
 		},
 	},
+	{name = "Grimeleech", color = 40, total = 1000, type = "repeatable", storage = 155210, storagecount = 155211, 
+	rewards = { 
+		{"3043", 30},
+	{"exp", 1000000},
+		},
+	},
+	{name = "Vaxclaw", color = 40, total = 1000, type = "repeatable", storage = 155212, storagecount = 155213, 
+	rewards = { 
+		{"3043", 30},
+	{"exp", 1000000},
+		},
+	},
+	{name = "Fury", color = 40, total = 1000, type = "repeatable", storage = 155214, storagecount = 155215, 
+	rewards = { 
+		{"3043", 30},
+	{"exp", 1000000},
+		},
+	},
+	{name = "Hellflayer", color = 40, total = 1000, type = "repeatable", storage = 155216, storagecount = 155217, 
+	rewards = { 
+		{"3043", 30},
+	{"exp", 1000000},
+		},
+	},
+	{name = "Destroyer", color = 40, total = 1000, type = "repeatable", storage = 155218, storagecount = 155219, 
+	rewards = { 
+		{"3043", 30},
+	{"exp", 1000000},
+		},
+	},
+	{name = "Midnight Asura", color = 40, total = 1000, type = "repeatable", storage = 155220, storagecount = 155221, 
+	rewards = { 
+		{"3043", 30},
+	{"exp", 1000000},
+		},
+	},
+	{name = "True Dawnfire Asura", color = 40, total = 1000, type = "repeatable", storage = 155222, storagecount = 155223, 
+	rewards = { 
+		{"3043", 30},
+	{"exp", 1000000},
+		},
+	},
+	{name = "True Frost Flower Asura", color = 40, total = 1000, type = "repeatable", storage = 155224, storagecount = 155225, 
+	rewards = { 
+		{"3043", 30},
+	{"exp", 1000000},
+		},
+	},
 }
 
 squareWaitTime = 5000

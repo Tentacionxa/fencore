@@ -1,6 +1,6 @@
 local inServiceYalaharReward = Action()
 function inServiceYalaharReward.onUse(player, item, fromPosition, target, toPosition, isHotkey)
-	if item.uid == 25010 then
+	if item.uid == 62341 then
 		if player:getStorageValue(25555) <= 0 then
 			player:setStorageValue(25555, 1)
 			player:addItem(31631, 1)
@@ -30,5 +30,5 @@ function inServiceYalaharReward.onUse(player, item, fromPosition, target, toPosi
 	return true
 end
 
-inServiceYalaharReward:uid(25010, 25011, 25012)
+inServiceYalaharReward:uid(62341, 25011, 25012)
 inServiceYalaharReward:register()

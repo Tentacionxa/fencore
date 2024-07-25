@@ -1,4 +1,4 @@
-local internalNpcName = "Onkan"
+local internalNpcName = "Brodmir"
 local npcType = Game.createNpcType(internalNpcName)
 local npcConfig = {}
 
@@ -11,11 +11,11 @@ npcConfig.walkInterval = 2000
 npcConfig.walkRadius = 2
 
 npcConfig.outfit = {
-	lookType = 130,
-	lookHead = 15,
-	lookBody = 86,
-	lookLegs = 87,
-	lookFeet = 95,
+	lookType = 133,
+	lookHead = 95,
+	lookBody = 75,
+	lookLegs = 112,
+	lookFeet = 58,
 	lookAddons = 3,
 }
 
@@ -94,25 +94,23 @@ npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
 npcConfig.shop = {
-	{ itemName = "collar of blue plasma", clientId = 23542, buy = 6500 },
-    { itemName = "ring of blue plasma", clientId = 23530, buy = 6500 },
-    { itemName = "collar of green plasma", clientId = 23543, buy = 6500 },
-    { itemName = "ring of green plasma", clientId = 23532, buy = 6500 },
-    { itemName = "collar of red plasma", clientId = 23544, buy = 6500 },
-    { itemName = "ring of red plasma", clientId = 23533, buy = 6500 },
-    { itemName = "prismatic ring", clientId = 16114, buy = 6500 },
-    { itemName = "prismatic necklace", clientId = 16113, buy = 6500 },
-    { itemName = "enchanted pendulet", clientId = 30344, buy = 100000 },
-    { itemName = "enchanted sleep shawl", clientId = 30342, buy = 2000000 },
-    { itemName = "enchanted turtle amulet", clientId = 39233, buy = 3000000 },
-    { itemName = "gill necklace", clientId = 16108, buy = 2500 },
-	{ itemName = "sacred tree amulet", clientId = 9302, buy = 3500 },
-	{ itemName = "glacier amulet", clientId = 815, buy = 1700 },
-	{ itemName = "terra amulet", clientId = 814, buy = 1700 },
-	{ itemName = "magma amulet", clientId = 817, buy = 1700 },
-	{ itemName = "starlight vial", clientId = 25976, buy = 3400 },
-	{ itemName = "sun catcher", clientId = 25977, buy = 410000 },
-	{ itemName = "moon mirror", clientId = 25977, buy = 450000 },
+	{ itemName = "energy amplification", clientId = 36739, buy = 8400 },
+    { itemName = "earth resilience", clientId = 36731, buy = 8300 },
+    { itemName = "earth amplification", clientId = 36738, buy = 8600 },
+    { itemName = "death resilience", clientId = 36734, buy = 8250 },
+    { itemName = "wealth duplex", clientId = 36727, buy = 95500 },
+    { itemName = "stamina extension", clientId = 36725, buy = 4500000 },
+    { itemName = "strike enhancement", clientId = 36724, buy = 8750 },
+    { itemName = "physical resilience", clientId = 36735, buy = 9000 },
+    { itemName = "physical amplification", clientId = 36742, buy = 9400 },
+    { itemName = "ice resilience", clientId = 36730, buy = 9250 },
+    { itemName = "ice amplification", clientId = 36737, buy = 9350 },
+    { itemName = "holy resilience", clientId = 36733, buy = 8750 },
+	{ itemName = "holy amplification", clientId = 36740, buy = 8100 },
+	{ itemName = "fire resilience", clientId = 36729, buy = 8250 },
+	{ itemName = "fire amplification", clientId = 36736, buy = 8350 },
+	{ itemName = "energy resilience", clientId = 36732, buy = 8150 },
+	{ itemName = "death amplification", clientId = 36741, buy = 7600 },
 	
 }
 -- On buy npc shop message

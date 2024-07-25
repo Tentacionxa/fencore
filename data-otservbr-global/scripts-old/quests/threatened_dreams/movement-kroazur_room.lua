@@ -33,7 +33,7 @@ function kroazurRoom.onStepIn(creature, item, position, fromPosition)
 		return true
 	end
 
-	if player:getStorageValue(room.access) < 1 then
+	if player:getStorageValue(room.access) > 1 then
 		position:sendMagicEffect(CONST_ME_TELEPORT)
 		player:teleportTo(fromPosition, true)
 		player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)

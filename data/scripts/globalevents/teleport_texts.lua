@@ -34,6 +34,22 @@ local effects = {
 {position = Position(32361, 32219, 7), text = 'Hunt', effect = CONST_ME_GROUNDSHAKER},
 {position = Position(32362, 32219, 7), text = 'Bosses', effect = CONST_ME_GROUNDSHAKER},
 
+{position = Position(32477, 32407, 7), text = 'The Unwelcome', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32472, 32409, 7), text = 'Mazoran', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32472, 32415, 7), text = 'Razzagorn', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32477, 32417, 7), text = 'Vok The Freakish', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32485, 32407, 7), text = 'Drume & Timira The Many-Headed', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32488, 32411, 7), text = 'Scarlett Etzel', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32485, 32424, 7), text = 'Unaz The Mean', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32494, 32424, 7), text = 'Faceless Bane', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32485, 32443, 7), text = 'Urmahlullu The Weakened', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32497, 32441, 7), text = 'Ravenous Hunger', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32508, 32440, 7), text = 'Duke Krule', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32517, 32437, 7), text = 'Ratmiral Blackwhiskers', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32518, 32431, 7), text = 'Tentuglys Head', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32530, 32436, 7), text = 'Grand Master Oberon', effect = CONST_ME_GROUNDSHAKER},
+
+
 	{position = Position(32580, 32391, 5), text = 'Thais', effect = CONST_ME_GROUNDSHAKER},  
 	{position = Position(32583, 32391, 5), text = 'Venore', effect = CONST_ME_GROUNDSHAKER},  
 	{position = Position(32577, 32391, 5), text = 'Kazordoon', effect = CONST_ME_GROUNDSHAKER},  

@@ -5,7 +5,7 @@ taskOptions = {
         {x = 32341, y = 32229, z = 7},
         {x = 31469, y = 31764, z = 7},
     },
-	selectLanguage = 1 -- options: 1 = pt_br or 2 = english
+	selectLanguage = 1, -- options: 1 = pt_br or 2 = english
 	uniqueTask = false, -- do one task at a time
 	uniqueTaskStorage = 65002
 }
@@ -468,22 +468,22 @@ rewards = {
 	{3043, 20},
 		},
 	},
-	{name = "Ogre Sage", color = 40, total = 1000, type = "repeatable", storage = 190570, storagecount = 190571, 
+	{name = "Ogre Sage", color = 70, total = 1000, type = "repeatable", storage = 190570, storagecount = 190571, 
 	rewards = { 
 	{"exp", 300000},
 		},
 	},
-	{name = "Ogre Ruffian", color = 40, total = 1000, type = "repeatable", storage = 190572, storagecount = 190573, 
+	{name = "Ogre Ruffian", color = 70, total = 1000, type = "repeatable", storage = 190572, storagecount = 190573, 
 	rewards = { 
 	{"exp", 300000},
 		},
 	},
-	{name = "Ogre Rowdy", color = 40, total = 1000, type = "repeatable", storage = 190575, storagecount = 190576, 
+	{name = "Ogre Rowdy", color = 70, total = 1000, type = "repeatable", storage = 190575, storagecount = 190576, 
 	rewards = { 
 	{"exp", 300000},
 		},
 	},
-	{name = "Ogre Shaman", color = 40, total = 1000, type = "repeatable", storage = 190589, storagecount = 190590, 
+	{name = "Ogre Shaman", color = 70, total = 1000, type = "repeatable", storage = 190589, storagecount = 190590, 
 	rewards = { 
 	{"exp", 300000},
 		},
@@ -513,22 +513,22 @@ rewards = {
 	{"exp", 300000},
 		},
 	},
-	{name = "Pirat Bombardier", color = 40, total = 1000, type = "repeatable", storage = 190532, storagecount = 190533, 
+	{name = "Pirat Bombardier", color = 10, total = 1000, type = "repeatable", storage = 190532, storagecount = 190533, 
 	rewards = { 
 	{"exp", 300000},
 		},
 	},
-	{name = "Pirat Mate", color = 40, total = 1000, type = "repeatable", storage = 190534, storagecount = 190535, 
+	{name = "Pirat Mate", color = 10, total = 1000, type = "repeatable", storage = 190534, storagecount = 190535, 
 	rewards = { 
 	{"exp", 300000},
 		},
 	},
-	{name = "Pirat Cutthroat", color = 40, total = 1000, type = "repeatable", storage = 190536, storagecount = 190537, 
+	{name = "Pirat Cutthroat", color = 10, total = 1000, type = "repeatable", storage = 190536, storagecount = 190537, 
 	rewards = { 
 	{"exp", 300000},
 		},
 	},
-	{name = "Pirat Scoundrel", color = 40, total = 1000, type = "repeatable", storage = 190538, storagecount = 190539, 
+	{name = "Pirat Scoundrel", color = 10, total = 1000, type = "repeatable", storage = 190538, storagecount = 190539, 
 	rewards = { 
 	{"exp", 300000},
 		},
@@ -593,19 +593,19 @@ rewards = {
 		},
 	},
 	
-	{name = "Dawnfire Asura", color = 40, total = 1000, type = "repeatable", storage = 190046, storagecount = 190047, 
+	{name = "Dawnfire Asura", color = 60, total = 1000, type = "repeatable", storage = 190046, storagecount = 190047, 
 	rewards = { 
 		{3043, 40},
 	{"exp", 2000000},
 		},
 	},
-	{name = "Midnight Asura", color = 40, total = 1000, type = "repeatable", storage = 197432, storagecount = 197433, 
+	{name = "True Midnight Asura", color = 60, total = 1000, type = "repeatable", storage = 197432, storagecount = 197433, 
 	rewards = { 
 		{3043, 40},
 	{"exp", 2000000},
 		},
 	},
-	{name = "Frost Flower Asura", color = 40, total = 1000, type = "repeatable", storage = 190070, storagecount = 190071, 
+	{name = "Frost Flower Asura", color = 60, total = 1000, type = "repeatable", storage = 190070, storagecount = 190071, 
 	rewards = { 
 	{"exp", 2000000},
 		},
@@ -625,12 +625,12 @@ rewards = {
 	{"exp", 2000000},
 		},
 	},
-	{name = "Crazed Winter Vanguard", color = 40, total = 1000, type = "repeatable", storage = 190080, storagecount = 190081, 
+	{name = "Crazed Winter Vanguard", color = 20, total = 1000, type = "repeatable", storage = 190080, storagecount = 190081, 
 	rewards = { 
 	{"exp", 2000000},
 		},
 	},
-	{name = "Crazed Winter Rearguard", color = 40, total = 1000, type = "repeatable", storage = 190082, storagecount = 190083, 
+	{name = "Crazed Winter Rearguard", color = 20, total = 1000, type = "repeatable", storage = 190082, storagecount = 190083, 
 	rewards = { 
 	{"exp", 2000000},
 		},
@@ -665,17 +665,17 @@ rewards = {
 	{"exp", 2000000},
 		},
 	},
-	{name = "Dark Carnisylvan", color = 40, total = 1000, type = "repeatable", storage = 190646, storagecount = 190647, 
+	{name = "Dark Carnisylvan", color = 30, total = 1000, type = "repeatable", storage = 190646, storagecount = 190647, 
 	rewards = { 
 	{"exp", 2000000},
 		},
 	},
-	{name = "Poisonous Carnisylvan", color = 40, total = 1000, type = "repeatable", storage = 190648, storagecount = 190649, 
+	{name = "Poisonous Carnisylvan", color = 30, total = 1000, type = "repeatable", storage = 190648, storagecount = 190649, 
 	rewards = { 
 	{"exp", 2000000},
 		},
 	},
-	{name = "Hulking Carnisylvan", color = 40, total = 1000, type = "repeatable", storage = 190650, storagecount = 190651, 
+	{name = "Hulking Carnisylvan", color = 30, total = 1000, type = "repeatable", storage = 190650, storagecount = 190651, 
 	rewards = { 
 	{"exp", 2000000},
 		},
@@ -686,12 +686,12 @@ rewards = {
 		},
 	},
 	
-	{name = "Dark Carnisylvan", color = 40, total = 1000, type = "once", storage = 190062, storagecount = 190063, 
+	{name = "Dark Carnisylvan", color = 30, total = 1000, type = "once", storage = 190062, storagecount = 190063, 
 	rewards = { 
 	{"exp", 10000000},
 		},
 	},
-	{name = "Grimeleech", color = 40, total = 1000, type = "repeatable", storage = 155210, storagecount = 155211, 
+{name = "Grimeleech", color = 40, total = 1000, type = "repeatable", storage = 155210, storagecount = 155211, 
 	rewards = { 
 		{"3043", 30},
 	{"exp", 1000000},
@@ -721,21 +721,51 @@ rewards = {
 	{"exp", 1000000},
 		},
 	},
-	{name = "Midnight Asura", color = 40, total = 1000, type = "repeatable", storage = 155220, storagecount = 155221, 
+	{name = "Midnight Asura", color = 60, total = 1000, type = "repeatable", storage = 155220, storagecount = 155221, 
 	rewards = { 
 		{"3043", 30},
 	{"exp", 1000000},
 		},
 	},
-	{name = "True Dawnfire Asura", color = 40, total = 1000, type = "repeatable", storage = 155222, storagecount = 155223, 
+	{name = "True Dawnfire Asura", color = 60, total = 1000, type = "repeatable", storage = 155222, storagecount = 155223, 
 	rewards = { 
 		{"3043", 30},
 	{"exp", 1000000},
 		},
 	},
-	{name = "True Frost Flower Asura", color = 40, total = 1000, type = "repeatable", storage = 155224, storagecount = 155225, 
+	{name = "True Frost Flower Asura", color = 60, total = 1000, type = "repeatable", storage = 155224, storagecount = 155225, 
 	rewards = { 
 		{"3043", 30},
+	{"exp", 1000000},
+		},
+	},
+	{name = "Cobra Scout", color = 50, total = 1000, type = "repeatable", storage = 155235, storagecount = 155236, 
+	rewards = { 
+		{"3043", 30},
+	{"exp", 1000000},
+		},
+	},
+	{name = "Cobra Vizier", color = 50, total = 1000, type = "repeatable", storage = 155237, storagecount = 155238, 
+	rewards = { 
+		{"3043", 30},
+	{"exp", 1000000},
+		},
+	},
+	{name = "Cobra Assassin", color = 50, total = 1000, type = "repeatable", storage = 155239, storagecount = 155240, 
+	rewards = { 
+		{"3043", 30},
+	{"exp", 1000000},
+		},
+	},
+	{name = "Crazed Summer Rearguard", color = 80, total = 1000, type = "repeatable", storage = 155242, storagecount = 155243, 
+	rewards = { 
+		{"3043", 35},
+	{"exp", 1000000},
+		},
+	},
+	{name = "Crazed Summer Vanguard", color = 80, total = 1000, type = "repeatable", storage = 155244, storagecount = 155245, 
+	rewards = { 
+		{"3043", 50},
 	{"exp", 1000000},
 		},
 	},

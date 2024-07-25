@@ -317,7 +317,6 @@ function sendTaskModalWindow(player)
 		window:addButton(task_pt_br.exitButton)
 		window:addButton(task_pt_br.confirmButton, confirmCallback)
 		window:addButton(task_pt_br.cancelButton, cancelCallback)
-		window:addButton(task_pt_br.exitButton)
 	else
 		window:addButton("Exit")
 		window:addButton("Choose", confirmCallback)

@@ -106,11 +106,13 @@ npcConfig.shop = {
     { itemName = "enchanted sleep shawl", clientId = 30342, buy = 2000000 },
     { itemName = "enchanted turtle amulet", clientId = 39233, buy = 3000000 },
     { itemName = "gill necklace", clientId = 16108, buy = 2500 },
-	{ itemName = "sacred tree amulet", clientId = 9305, buy = 1200 },
+	{ itemName = "sacred tree amulet", clientId = 9302, buy = 1200 },
 	{ itemName = "glacier amulet", clientId = 815, buy = 500 },
 	{ itemName = "terra amulet", clientId = 814, buy = 500 },
 	{ itemName = "magma amulet", clientId = 817, buy = 500 },
-	{ itemName = "sun catcher", clientId = 25977, buy = 500000 },
+	{ itemName = "starlight vial", clientId = 25976, buy = 3400 },
+	{ itemName = "sun catcher", clientId = 25977, buy = 410000 },
+	{ itemName = "moon mirror", clientId = 25977, buy = 450000 },
 	
 }
 -- On buy npc shop message

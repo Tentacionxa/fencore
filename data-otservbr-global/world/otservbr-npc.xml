@@ -1979,6 +1979,9 @@
 	<npc centerx="33485" centery="32236" centerz="7" radius="1">
 		<npc name="Maelyrra" x="0" y="0" z="7" spawntime="60" />
 	</npc>
+	<npc centerx="32350" centery="32237" centerz="7" radius="1">
+		<npc name="Jefrey" x="0" y="0" z="7" spawntime="60" />
+	</npc>
 	<npc centerx="32391" centery="32237" centerz="7" radius="1">
 		<npc name="Sherry Mcronald" x="0" y="0" z="7" spawntime="60" />
 	</npc>
@@ -1987,9 +1990,6 @@
 	</npc>
 	<npc centerx="32368" centery="32240" centerz="7" radius="1">
 		<npc name="Quentin" x="0" y="0" z="7" spawntime="60" />
-	</npc>
-	<npc centerx="32350" centery="32237" centerz="7" radius="1">
-		<npc name="Jefrey" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="32345" centery="32242" centerz="7" radius="1">
 		<npc name="Onkan" x="-1" y="1" z="7" spawntime="60" />

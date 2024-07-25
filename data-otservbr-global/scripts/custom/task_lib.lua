@@ -6,7 +6,7 @@ taskOptions = {
         {x = 31469, y = 31764, z = 7},
     },
 	selectLanguage = 1 -- options: 1 = pt_br or 2 = english
-	uniqueTask = true, -- do one task at a time
+	uniqueTask = false, -- do one task at a time
 	uniqueTaskStorage = 65002
 }
 

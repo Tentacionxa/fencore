@@ -389,3 +389,5 @@ vcpkg_installed
 
 # CLION
 cmake-build-debug*
+data-otservbr-global/world/otservbr.otbm
+data-otservbr-global/world/otservbr-npc.xml

@@ -94,23 +94,23 @@ npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
 npcConfig.shop = {
-	{ itemName = "energy amplification", clientId = 36739, buy = 8400 },
-    { itemName = "earth resilience", clientId = 36731, buy = 8300 },
-    { itemName = "earth amplification", clientId = 36738, buy = 8600 },
+	{ itemName = "energy amplification", clientId = 36739, buy = 145400 },
+    { itemName = "earth resilience", clientId = 36731, buy = 350300 },
+    { itemName = "earth amplification", clientId = 36738, buy = 142600 },
     { itemName = "death resilience", clientId = 36734, buy = 8250 },
-    { itemName = "wealth duplex", clientId = 36727, buy = 95500 },
+    { itemName = "wealth duplex", clientId = 36727, buy = 2005500 },
     { itemName = "stamina extension", clientId = 36725, buy = 4500000 },
-    { itemName = "strike enhancement", clientId = 36724, buy = 8750 },
-    { itemName = "physical resilience", clientId = 36735, buy = 9000 },
-    { itemName = "physical amplification", clientId = 36742, buy = 9400 },
-    { itemName = "ice resilience", clientId = 36730, buy = 9250 },
-    { itemName = "ice amplification", clientId = 36737, buy = 9350 },
-    { itemName = "holy resilience", clientId = 36733, buy = 8750 },
-	{ itemName = "holy amplification", clientId = 36740, buy = 8100 },
-	{ itemName = "fire resilience", clientId = 36729, buy = 8250 },
-	{ itemName = "fire amplification", clientId = 36736, buy = 8350 },
-	{ itemName = "energy resilience", clientId = 36732, buy = 8150 },
-	{ itemName = "death amplification", clientId = 36741, buy = 7600 },
+    { itemName = "strike enhancement", clientId = 36724, buy = 350750 },
+    { itemName = "physical resilience", clientId = 36735, buy = 35000 },
+    { itemName = "physical amplification", clientId = 36742, buy = 450400 },
+    { itemName = "ice resilience", clientId = 36730, buy = 156250 },
+    { itemName = "ice amplification", clientId = 36737, buy = 354350 },
+    { itemName = "holy resilience", clientId = 36733, buy = 432750 },
+	{ itemName = "holy amplification", clientId = 36740, buy = 233100 },
+	{ itemName = "fire resilience", clientId = 36729, buy = 254250 },
+	{ itemName = "fire amplification", clientId = 36736, buy = 345350 },
+	{ itemName = "energy resilience", clientId = 36732, buy = 254150 },
+	{ itemName = "death amplification", clientId = 36741, buy = 151600 },
 	
 }
 -- On buy npc shop message

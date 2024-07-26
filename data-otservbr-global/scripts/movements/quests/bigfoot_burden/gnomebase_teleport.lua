@@ -43,7 +43,7 @@ function gnomebaseTeleport.onStepIn(creature, item, position, fromPosition)
 		if teleports[c].teleportsPosition then
 			for d = 1, #teleports[c].teleportsPosition do
 				if player:getPosition() == Position(teleports[c].teleportsPosition[d]) then
-					if player:getStorageValue(Storage.BigfootBurden.QuestLine) < 1 then
+					if player:getStorageValue(Storage.BigfootBurden.QuestLine) > 1 then
 						fromPosition:sendMagicEffect(CONST_ME_POFF)
 						player:teleportTo(fromPosition)
 						player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You have no idea on how to use this device. Xelvar in Kazordoon might tell you more about it.")
@@ -76,7 +76,7 @@ function gnomebaseTeleport.onStepIn(creature, item, position, fromPosition)
 				end
 			end
 		elseif player:getPosition() == Position(teleports[c].teleportPosition) then
-			if player:getStorageValue(Storage.BigfootBurden.QuestLine) < 1 then
+			if player:getStorageValue(Storage.BigfootBurden.QuestLine) > 1 then
 				fromPosition:sendMagicEffect(CONST_ME_POFF)
 				player:teleportTo(fromPosition)
 				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You have no idea on how to use this device. Xelvar in Kazordoon might tell you more about it.")

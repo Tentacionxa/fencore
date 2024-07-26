@@ -115,7 +115,7 @@ npcConfig.shop = {
 	{ itemName = "dwarven ring", clientId = 3097, buy = 400 },
 	{ itemName = "starlight vial", clientId = 25976, buy = 3400 },
 	{ itemName = "sun catcher", clientId = 25977, buy = 410000 },
-	{ itemName = "moon mirror", clientId = 25977, buy = 450000 },
+	{ itemName = "moon mirror", clientId = 25975, buy = 450000 },
 	
 }
 -- On buy npc shop message

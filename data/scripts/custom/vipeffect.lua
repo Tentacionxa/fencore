@@ -13,6 +13,10 @@ function globalevent.onThink(interval)
             player:say("VIP", TALKTYPE_MONSTER_SAY)
             position:sendMagicEffect(vipEffect)
         end
+    elseif player:getGroup() == 2 then
+        player:say("Tutor", TALKTYPE_MONSTER_SAY)
+        position:sendMagicEffect(staffEffect)
+    end
     end
     return true
 end

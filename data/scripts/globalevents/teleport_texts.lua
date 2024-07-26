@@ -48,6 +48,15 @@ local effects = {
 {position = Position(32517, 32437, 7), text = 'Ratmiral Blackwhiskers', effect = CONST_ME_GROUNDSHAKER},
 {position = Position(32518, 32431, 7), text = 'Tentuglys Head', effect = CONST_ME_GROUNDSHAKER},
 {position = Position(32530, 32436, 7), text = 'Grand Master Oberon', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32450, 32432, 7), text = 'The Count Of The Core', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32439, 32431, 7), text = 'The Fear Feaster', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32416, 32431, 7), text = 'Bloodback', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32405, 32431, 7), text = 'Darkfang', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32392, 32438, 7), text = 'Sharpclaw', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32378, 32445, 7), text = 'Black Vixen', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32462, 32445, 7), text = 'The Duke Of The Depths', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32473, 32447, 7), text = 'The Baron From Below', effect = CONST_ME_GROUNDSHAKER},
+
 
 
 	{position = Position(32580, 32391, 5), text = 'Thais', effect = CONST_ME_GROUNDSHAKER},  

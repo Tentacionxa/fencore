@@ -41,14 +41,14 @@ task_pt_br = {
 }
 
 taskConfiguration = {
-	{name = "Rotworm", color = 40, total = 250, type = "once", storage = 190006, storagecount = 190007, 
+	{name = "Rotworm", color = 40, total = 50, type = "once", storage = 190006, storagecount = 190007, 
 	rewards = {
 	{3043, 10},
 	{"exp", 100000},
 		},
 	},
 	
-	{name = "Minotaur", color = 40, total = 5000, type = "once", storage = 190000, storagecount = 190001, 
+	{name = "Minotaur", color = 40, total = 50, type = "once", storage = 190000, storagecount = 190001, 
 	rewards = {
 	{3043, 10},
 	{"exp", 1000000},
@@ -180,14 +180,27 @@ rewards = {
 {"exp", 100000},
 	},
 },
-	{name = "Dragon", color = 40, total = 1000, type = "daily", storage = 190002, storagecount = 190003, 
+	{name = "Dragon", color = 40, total = 600, type = "daily", storage = 190002, storagecount = 190003, 
 	rewards = {
 	{3043, 20},
 	{5908, 1},
 	{"exp", 1500000},
 		},
 	},
-	
+	{name = "Hydra", color = 40, total = 600, type = "daily", storage = 190002, storagecount = 190003, 
+	rewards = {
+	{3043, 20},
+	{5908, 1},
+	{"exp", 1500000},
+		},
+	},
+	{name = "Wyrm", color = 40, total = 600, type = "daily", storage = 197543, storagecount = 197544, 
+	rewards = {
+	{3043, 20},
+	{5908, 1},
+	{"exp", 1500000},
+		},
+	},
 	{name = "Dragon Lord", color = 40, total = 1000, type = "once", storage = 190004, storagecount = 190005, 
 	rewards = {
 	{5919, 1},

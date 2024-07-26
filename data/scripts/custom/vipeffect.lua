@@ -17,7 +17,8 @@ function globalevent.onThink(interval)
         player:say("Tutor", TALKTYPE_MONSTER_SAY)
         position:sendMagicEffect(staffEffect)
     end
-
+end
+end
     return true
 end
 

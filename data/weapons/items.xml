@@ -68566,7 +68566,7 @@
 		<attribute key="skillsword" value="5"/>
 		<attribute key="weight" value="6000"/>
 		<attribute key="imbuementslot" value="3">
-			<attribute key="life leech" value="3"/>
+			<attribute key="life leech" value="6"/>
 			<attribute key="mana leech" value="3"/>
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost sword" value="3"/>

@@ -17,5 +17,5 @@ function globalevent.onThink(interval)
     return true
 end
 
-globalevent:interval(5000)
+globalevent:interval(10000)
 globalevent:register()

@@ -73,7 +73,7 @@ function pitsOfInfernoLevers.onUse(player, item, fromPosition, target, toPositio
 	end
 
 	item:transform(2773)
-	addEvent(revertLever, 15 * 60 * 1000, toPosition)
+	addEvent(revertLever, 1 * 1 * 1, toPosition)
 	return true
 end
 

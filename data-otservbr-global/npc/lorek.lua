@@ -59,11 +59,13 @@ end
 
 addTravelKeyword("west", "the west end of Port Hope", 7, Position(32558, 32780, 7))
 addTravelKeyword("mountain", "mountain pass", 7, Position(32987, 32729, 7))
+addTravelKeyword("darama", "darama", 7,Position(32987, 32729, 7))
+addTravelKeyword("chor", "chor", 7,Position(32968, 32799, 7))
+addTravelKeyword("banuta", "banuta", 7,Position(32826, 32631, 7))
 addTravelKeyword("centre", "the centre of Port Hope", 7, Position(32628, 32771, 7))
-addTravelKeyword("darama", 30, Position(32987, 32729, 7))
-addTravelKeyword("center", "the centre of Port Hope", 0, Position(32628, 32771, 7))
-addTravelKeyword("chor", 30, Position(32968, 32799, 7))
-addTravelKeyword("banuta", 30, Position(32826, 32631, 7))
+
+
+
 
 
 -- Basic

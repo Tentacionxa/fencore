@@ -21,6 +21,8 @@ function manageCapacityBonus(player, item, apply)
     local currentCapacity = player:getCapacity()
     local bonusCapacity = math.floor(currentCapacity * 0.30)  -- Calculate 10% of current capacity
 
+    player:say("apply: " .. (apply and "true" or "false") .. " currentBonus: " .. (currentBonus) .. "currentCapacity: " .. currentCapacity .. "bonusCapacity: " .. bonusCapacity)
+
     if apply and currentBonus == 0 then
         player:setCapacity(currentCapacity + bonusCapacity)
         player:setStorageValue(BONUS_STORAGE_KEY, bonusCapacity)  -- Mark the bonus as applied

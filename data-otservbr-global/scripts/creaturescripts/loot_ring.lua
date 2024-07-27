@@ -17,6 +17,7 @@ function manageCapacityBonus(player, item, apply)
     if not itemConfig then return end
 
     local currentBonus = player:getStorageValue(BONUS_STORAGE_KEY)
+    if currentBonus == -1 then currentBonus = 0 end
     local currentCapacity = player:getCapacity()
     local bonusCapacity = math.floor(currentCapacity * 0.30)  -- Calculate 10% of current capacity
 

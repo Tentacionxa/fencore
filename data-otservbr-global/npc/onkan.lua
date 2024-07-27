@@ -94,14 +94,14 @@ npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
 npcConfig.shop = {
-	{ itemName = "collar of blue plasma", clientId = 23542, buy = 6500 },
-    { itemName = "ring of blue plasma", clientId = 23530, buy = 6500 },
-    { itemName = "collar of green plasma", clientId = 23543, buy = 6500 },
-    { itemName = "ring of green plasma", clientId = 23532, buy = 6500 },
-    { itemName = "collar of red plasma", clientId = 23544, buy = 6500 },
-    { itemName = "ring of red plasma", clientId = 23533, buy = 6500 },
-    { itemName = "prismatic ring", clientId = 16114, buy = 6500 },
-    { itemName = "prismatic necklace", clientId = 16113, buy = 6500 },
+	{ itemName = "collar of blue plasma", clientId = 23542, buy = 8500 },
+    { itemName = "ring of blue plasma", clientId = 23530, buy = 8500 },
+    { itemName = "collar of green plasma", clientId = 23543, buy = 8500 },
+    { itemName = "ring of green plasma", clientId = 23532, buy = 8500 },
+    { itemName = "collar of red plasma", clientId = 23544, buy = 8500 },
+    { itemName = "ring of red plasma", clientId = 23533, buy = 8500 },
+    { itemName = "prismatic ring", clientId = 16114, buy = 8500 },
+    { itemName = "prismatic necklace", clientId = 16113, buy = 8500 },
     { itemName = "enchanted pendulet", clientId = 30344, buy = 100000 },
     { itemName = "enchanted sleep shawl", clientId = 30342, buy = 2000000 },
     { itemName = "enchanted turtle amulet", clientId = 39233, buy = 3000000 },

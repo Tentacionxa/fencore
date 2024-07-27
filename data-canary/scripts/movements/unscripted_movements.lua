@@ -17356,6 +17356,16 @@ local items = {
 		itemid = 3088,
 		type = "equip",
 		slot = "ring",
+		vocation = {
+			{ "Knight", true },
+			{ "Paladin", true, true },
+			{ "Druid", true}
+			{ "Sorcerer", true}
+{"Elder Druid"}
+{"Master Sorcerer"}
+			{ "Elite Knight" },
+			{ "Royal Paladin" },
+		},
 	},
 	{
 		-- energy ring

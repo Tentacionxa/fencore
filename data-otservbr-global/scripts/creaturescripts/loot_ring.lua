@@ -15,11 +15,15 @@ function manageCapacityBonus(player, item, apply)
     local itemId = item:getId()
     local itemConfig = config[itemId]
     if not itemConfig then return end
+    
+    player:say("Handling the equip event for ring... apply: " .. (apply and "true" or "false"))
 
     local currentBonus = player:getStorageValue(BONUS_STORAGE_KEY)
     if currentBonus == -1 then currentBonus = 0 end
     local currentCapacity = player:getCapacity()
     local bonusCapacity = math.floor(currentCapacity * 0.30)  -- Calculate 10% of current capacity
+    
+    player:say("apply: " .. (apply and "true" or "false") .. " currentBonus: " .. (currentBonus) .. "currentCapacity: " .. currentCapacity .. "bonusCapacity: " .. bonusCapacity)
 
     if apply and currentBonus == 0 then
         player:setCapacity(currentCapacity + bonusCapacity)

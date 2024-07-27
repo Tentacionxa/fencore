@@ -28,7 +28,7 @@ maintainModeMessage = "Server Start 19/07/2024"
 worldType = "pvp-enforced"
 hotkeyAimbotEnabled = true
 protectionLevel = 100
-pzLocked = 60 * 1000
+pzLocked = 25 * 1000
 removeChargesFromRunes = true
 removeChargesFromPotions = true
 removeWeaponAmmunition = true
@@ -131,7 +131,7 @@ forgeCostOneSliver = 2
 forgeSliverAmount = 1
 forgeCoreCost = 2
 forgeMaxDust = 225
-forgeFusionDustCost = 50
+forgeFusionDustCost = 25
 forgeConvergenceFusionDustCost = 2
 forgeTransferDustCost = 2
 forgeConvergenceTransferCost = 2
@@ -478,7 +478,7 @@ rateMagic = 6
 rateSpawn = 2
 
 -- Killing in the name of Quest
-rateKillingInTheNameOfPoints = 1
+rateKillingInTheNameOfPoints = 2
 
 -- Today regeneration condition over an loop every 1 second,
 -- So values which should regenerated less then 1 second or won't will work

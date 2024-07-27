@@ -90,20 +90,20 @@ local function removePortal(position)
     end
 end
 
-local killMonsterCreatePortal = CreatureEvent("killMonsterCreatePortal")
 
-function killMonsterCreatePortal.onKill(creature, target)
-    if not target:isMonster() or target:getMaster() then
+local killMonsterCreatePortal = CreatureEvent("killMonsterCreatePortal")
+function killMonsterCreatePortal.onDeath(creature, corpse, killer, mostDamageKiller, lastHitUnjustified, mostDamageUnjustified)
+    if not creature:isMonster() or creature:getMaster() then
         return true
     end
     
     local player = Player(creature:getGuid())
-    local k = t[target:getName():lower()]
+    local k = t[creature:getName():lower()]
     if not k then
         return true
     end
     
-    local pos, cPos = target:getPosition()
+    local pos, cPos = creature:getPosition()
     if type(k.config.createPos) == 'table' then
         if next(k.config.createPos) == nil then
             cPos = pos
@@ -127,9 +127,19 @@ function killMonsterCreatePortal.onKill(creature, target)
     addEvent(removePortal, pt * 60 * 1000, cPos)
     return true
 end
-
 killMonsterCreatePortal:type("kill")
 killMonsterCreatePortal:register()
+
+local callback = EventCallback()
+function callback.monsterOnSpawn(monster, position)
+    local k = t[monster:getName():lower()]
+    if not k then
+        return true
+    end
+
+    monster:registerEvent("killMonsterCreatePortal")
+end
+callback:register()
 
 ---------------------------------------------------------------------------------------
 -- Register script onLogin

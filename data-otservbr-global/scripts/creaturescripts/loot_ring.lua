@@ -11,6 +11,7 @@ local config = {
 
 -- Function to manage capacity bonus
 function manageCapacityBonus(player, item, apply)
+    player:say("First line of loot ring script handling")
     if not item then return end  -- Ensure item is valid, adjust logic as needed for logout and death
     local itemId = item:getId()
     local itemConfig = config[itemId]

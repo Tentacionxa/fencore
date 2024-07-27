@@ -58,63 +58,12 @@ local function creatureSayCallback(npc, creature, type, message)
 		return false
 	end
 
-	if MsgContains(message, "brooch") then
-		if player:getStorageValue(Storage.WhiteRavenMonastery.Passage) == 1 then
-			npcHandler:say("You have recovered my brooch! I shall forever be in your debt, my friend!", npc, creature)
-			return true
-		end
-
-		npcHandler:say("What? You want me to examine a brooch?", npc, creature)
-		npcHandler:setTopic(playerId, 1)
-	elseif MsgContains(message, "yes") then
-		if npcHandler:getTopic(playerId) == 1 then
-			if player:getItemCount(3205) == 0 then
-				npcHandler:say("What are you talking about? I am too poor to be interested in jewelry.", npc, creature)
-				npcHandler:setTopic(playerId, 0)
-				return true
-			end
-
-			npcHandler:say(
-				"Can it be? I recognise my family's arms! You have found a treasure indeed! \z
-					I am poor and all I can offer you is my friendship, but ... please ... give that brooch to me?",
-				npc,
-				creature
-			)
-			npcHandler:setTopic(playerId, 2)
-		elseif npcHandler:getTopic(playerId) == 2 then
-			npcHandler:setTopic(playerId, 0)
-			if not player:removeItem(3205, 1) then
-				npcHandler:say("I should have known better than to ask for an act of kindness in this cruel, selfish, world!", npc, creature)
-				return true
-			end
-
-			npcHandler:say(
-				"Thank you! I shall consider you my friend from now on! \z
-					Just let me know if you {need} something!",
-				npc,
-				creature
-			)
-			player:setStorageValue(Storage.WhiteRavenMonastery.QuestLog, 1) -- Quest log
-			player:setStorageValue(Storage.WhiteRavenMonastery.Passage, 1)
-		end
-	elseif MsgContains(message, "no") then
-		if npcHandler:getTopic(playerId) == 1 then
-			npcHandler:say("Then stop being a fool. I am poor and I have to work the whole day through!", npc, creature)
-		elseif npcHandler:getTopic(playerId) == 2 then
-			npcHandler:say("I should have known better than to ask for an act of kindness in this cruel, selfish, world!", npc, creature)
-		end
-		npcHandler:setTopic(playerId, 0)
-	end
-	return true
-end
-
 keywordHandler:addKeyword({ "passage" }, StdModule.say, {
 	npcHandler = npcHandler,
 	text = "I have only sailed to the isle of the kings once or twice. \z
 				I dare not anger the monks by bringing travelers there without their permission.",
-}, function(player)
-	return player:getStorageValue(Storage.WhiteRavenMonastery.Passage) ~= 1
-end)
+},
+)
 
 local travelNode = keywordHandler:addKeyword({ "passage" }, StdModule.say, {
 	npcHandler = npcHandler,

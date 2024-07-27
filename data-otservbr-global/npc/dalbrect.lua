@@ -58,13 +58,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		return false
 	end
 
-keywordHandler:addKeyword({ "passage" }, StdModule.say, {
-	npcHandler = npcHandler,
-	text = "I have only sailed to the isle of the kings once or twice. \z
-				I dare not anger the monks by bringing travelers there without their permission.",
-},
-)
-
 local travelNode = keywordHandler:addKeyword({ "passage" }, StdModule.say, {
 	npcHandler = npcHandler,
 	text = "Do you seek a passage to the isle of the kings for 10 gold coins?",

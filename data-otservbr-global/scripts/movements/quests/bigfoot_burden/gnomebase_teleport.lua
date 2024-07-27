@@ -50,7 +50,7 @@ function gnomebaseTeleport.onStepIn(creature, item, position, fromPosition)
 						return false
 					end
 
-					if player:getPosition() ~= Position(32988, 31862, 9) and player:getStorageValue(Storage.BigfootBurden.QuestLine) < teleports[c].storageValue then
+					if player:getPosition() ~= Position(32988, 31862, 9) and player:getStorageValue(Storage.BigfootBurden.QuestLine) > teleports[c].storageValue then
 						position:sendMagicEffect(CONST_ME_TELEPORT)
 						player:teleportTo(fromPosition)
 						player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Your rank among the Gnomes is too low.")

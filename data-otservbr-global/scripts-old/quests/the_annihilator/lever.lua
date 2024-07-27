@@ -2,7 +2,7 @@ local setting = {
 	-- At what level can do the quest?
 	requiredLevel = 100,
 	-- Can it be done daily? true = yes, false = no
-	daily = true,
+	daily = false,
 	-- Do not change from here down
 	centerDemonRoomPosition = { x = 33221, y = 31659, z = 13 },
 	demonsPositions = {

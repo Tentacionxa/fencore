@@ -67126,7 +67126,6 @@
 	<item id="39702" article="a" name="lit rainbow torch">
 		<attribute key="primarytype" value="light sources"/>
 		<attribute key="duration" value="300"/>
-		<attribute key="decayTo" value="2926"/>
 		<attribute key="weight" value="400"/>
 	</item>
 	<item id="39703" article="a" name="burnt down rainbow torch">

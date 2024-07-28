@@ -202,7 +202,7 @@ loyaltyBonusPercentageMultiplier = 1.0
 -- NOTE: Damage multipliers for each vocation are adjusted in data/XML/vocations.xml
 pvpRateDamageTakenPerLevel = 1 -- recommended to start with 0.1
 pvpRateDamageReductionPerLevel = 0 -- recommended to start with 0.1
-pvpMaxLevelDifference = 200
+pvpMaxLevelDifference = 400
 
 -- Wheel of destiny system
 -- NOTE: set wheelSystemEnabled = false to disable the wheel of destiny

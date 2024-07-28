@@ -95,9 +95,9 @@ npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
 npcConfig.shop = {
 	{ itemName = "collar of blue plasma", clientId = 23542, buy = 8500 },
-    { itemName = "ring of blue plasma", clientId = 23530, buy = 8500 },
+    { itemName = "ring of blue plasma", clientId = 23529, buy = 8500 },
     { itemName = "collar of green plasma", clientId = 23543, buy = 8500 },
-    { itemName = "ring of green plasma", clientId = 23532, buy = 8500 },
+    { itemName = "ring of green plasma", clientId = 23531, buy = 8500 },
     { itemName = "collar of red plasma", clientId = 23544, buy = 8500 },
     { itemName = "ring of red plasma", clientId = 23533, buy = 8500 },
     { itemName = "prismatic ring", clientId = 16114, buy = 8500 },

@@ -11,6 +11,8 @@ local config = {
 
 -- Function to manage capacity bonus
 function manageCapacityBonus(player, item, apply)
+    logger.debug("\n\n\nLOOT RING: registering moveent to the ring")
+    
     player:say("First line of loot ring script handling")
     if not item then return end  -- Ensure item is valid, adjust logic as needed for logout and death
     local itemId = item:getId()
@@ -60,6 +62,7 @@ for itemId, itemConfig in pairs(config) do
         return true
     end
     moveeventDeEquip:register()
+    logger.debug("\n\n\nLOOT RING: registering moveent to the ring")
 end
 
 -- Login, Logout, and Death handlers
@@ -98,3 +101,5 @@ deathEvent.onDeath = function(player)
     return true
 end
 deathEvent:register()
+
+logger.debug("\n\n\nLOOT RING: registering the loot ")

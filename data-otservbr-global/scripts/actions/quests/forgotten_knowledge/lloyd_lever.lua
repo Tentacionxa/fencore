@@ -21,7 +21,7 @@ local config = {
 		from = Position(32785, 32813, 14),
 		to = Position(32812, 32838, 14),
 	},
-	exit = Position(32815, 32873, 13),
+	exit = Position(32761, 32866, 14),
 }
 
 local lever = BossLever(config)

@@ -83,7 +83,7 @@ function ferumbrasAscendantLever.onUse(player, item, fromPosition, target, toPos
 					playerTile:getPosition():sendMagicEffect(CONST_ME_POFF)
 					playerTile:teleportTo(config.newPos)
 					playerTile:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-					playerTile:setBossCooldown("Ferumbras Mortal Shell", os.time() + 280 * 60 * 3600) -- 14 days
+					playerTile:setBossCooldown("Ferumbras Mortal Shell", os.time() + 24 * 60 * 60) -- 14 days
 					player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You have 30 minutes to kill and loot this boss. Otherwise you will lose that chance and will be kicked out.")
 					addEvent(clearFerumbrasRoom, 60 * config.time * 1000, player:getId(), config.centerRoom, config.range, config.range, config.exitPosition)
 

@@ -551,7 +551,7 @@ discordSendFooter = true
 -- NOTE: GainToken function, please configure script: data-otservbr-global/scripts/globalevents/vip/online_tokens.lua
 vipSystemEnabled = true
 vipBonusExp = 15
-vipBonusLoot = 10
+vipBonusLoot = 15
 vipBonusSkill = 10
 vipAutoLootVipOnly = false
 vipStayOnline = true

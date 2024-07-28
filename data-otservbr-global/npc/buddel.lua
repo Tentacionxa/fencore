@@ -94,8 +94,6 @@ end, function(player)
 	return player:getItemCount(3097) > 0
 end, function(player)
 	return player:removeItem(3097, 1)
-end, function(player)
-	return player:getStorageValue(Storage.TheIceIslands.Questline) < 30
 end)
 addTravelKeyword("tyrsung", "*HICKS* Big, big island east of here. Venorian hunters settled there ..... I could bring you north of their camp.", Position(32333, 31227, 7), function()
 	return randomDestination[math.random(#randomDestination)]
@@ -107,6 +105,15 @@ end, function(player)
 	return player:removeItem(3097, 1)
 end)
 addTravelKeyword("camp", "Both of you look like you could defend yourself! If you want to go there, ask me for a passage.", Position(32021, 31294, 7), function()
+	return randomDestination[math.random(#randomDestination)]
+end, function()
+	return math.random(5) > 1
+end, function(player)
+	return player:getItemCount(3097) > 0
+end, function(player)
+	return player:removeItem(3097, 1)
+end)
+addTravelKeyword("svargrond", "If you want to go there, ask me for a passage.", Position(32255, 31197, 7), function()
 	return randomDestination[math.random(#randomDestination)]
 end, function()
 	return math.random(5) > 1

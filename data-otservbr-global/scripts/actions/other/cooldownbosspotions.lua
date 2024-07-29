@@ -2,7 +2,7 @@ local bosses = {'Faceless Bane', 'Tentugly\'s Head', 'The Duke Of The Depths', '
 
 local bosspotion = Action()
 function bosspotion.onUse(player, item, fromPosition, target, toPosition, isHotkey)
-	for _, name in bosses do
+	for _, name in pairs(bosses) do
 		player:setBossCooldown(name, 0)
 		player:sendTextMessage(19, "You can fight all the bosses again!")
         

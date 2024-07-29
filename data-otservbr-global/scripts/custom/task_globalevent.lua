@@ -20,7 +20,7 @@ function taskEvents.onLogin(player)
 	}
 
 	for i = 1, #events do
-		player:registerEvent(events[i])
+		player:registerEvent("TaskCreature")
 	end
 	return true
 end

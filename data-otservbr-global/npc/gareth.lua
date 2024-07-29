@@ -129,8 +129,8 @@ local function creatureSayCallback(npc, creature, type, message)
 		npcHandler:say({ "You didn't investigate the pictures yet. Do your job and then come back." }, npc, creature)
 	end
 
-	if MsgContains(message, "extension") and player:getStorageValue(Storage.TheSecretLibrary.LiquidDeath) == 11 then
-		if player:getStorageValue(Storage.TheSecretLibrary.LiquidDeath) == 11 then
+	if MsgContains(message, "extension") and player:getStorageValue(Storage.TheSecretLibrary.LiquidDeath) == 0 then
+		if player:getStorageValue(Storage.TheSecretLibrary.LiquidDeath) == 0 then
 			npcHandler:say({ "It is planned to extend the MOTA. But this will take time, because our workers have faced a little problem." }, npc, creature)
 			npcHandler:setTopic(playerId, 11)
 		end

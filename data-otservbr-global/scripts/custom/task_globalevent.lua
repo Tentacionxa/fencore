@@ -12,7 +12,7 @@ end
 
 taskLog:register()
 
-local taskEvents = CreatureEvent("TaskEvents")
+local taskEvents = CreatureEvent("TaskCreature")
 function taskEvents.onLogin(player)
 	local events = {
       -- Custom Events
@@ -20,7 +20,7 @@ function taskEvents.onLogin(player)
 	}
 
 	for i = 1, #events do
-		player:registerEvent("TaskCreature")
+		player:registerEvent(events[i])
 	end
 	return true
 end

@@ -1,3 +1,4 @@
+
 ---------------------------------------------------------------------------------------
 -- This script creates a portal when monster dies
 ---------------------------------------------------------------------------------------
@@ -97,12 +98,11 @@ function killMonsterCreatePortal.onDeath(creature, corpse, killer, mostDamageKil
         return true
     end
     
-    local player = Player(creature:getGuid())
     local k = t[creature:getName():lower()]
     if not k then
         return true
     end
-    
+
     local pos, cPos = creature:getPosition()
     if type(k.config.createPos) == 'table' then
         if next(k.config.createPos) == nil then
@@ -111,7 +111,7 @@ function killMonsterCreatePortal.onDeath(creature, corpse, killer, mostDamageKil
             cPos = k.config.createPos
         end
     end
-
+    
     if Tile(cPos):getItemById(portalId) then
         return true
     end
@@ -127,7 +127,6 @@ function killMonsterCreatePortal.onDeath(creature, corpse, killer, mostDamageKil
     addEvent(removePortal, pt * 60 * 1000, cPos)
     return true
 end
-killMonsterCreatePortal:type("kill")
 killMonsterCreatePortal:register()
 
 local callback = EventCallback()
@@ -136,22 +135,6 @@ function callback.monsterOnSpawn(monster, position)
     if not k then
         return true
     end
-
-    logger.debug("\n\n\n\n\n\n\n\n\n\n\n\n\n\nREGISTERING ONDEATH EVENTO TO MONSTER...")
-
     monster:registerEvent("killMonsterCreatePortal")
 end
 callback:register()
-
----------------------------------------------------------------------------------------
--- Register script onLogin
----------------------------------------------------------------------------------------
-local monsterKillLogin = CreatureEvent("monsterKillLogin")
-
-function monsterKillLogin.onLogin(player)
-    player:registerEvent("killMonsterCreatePortal")
-    return true
-end
-
-monsterKillLogin:type("login")
-monsterKillLogin:register()

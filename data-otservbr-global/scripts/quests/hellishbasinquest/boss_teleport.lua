@@ -40,7 +40,7 @@ local portalId, t = 1949,
             portalTime = 30, --minutes
         }
     },
-["lurok"] = {
+    ["lurok"] = {
         message = "Killing Lurok created a teleport to his castle! Quickly, go to the treasure room! The teleport will dissapear in 30 minutes",
         config = {
             createPos = {x = 31526, y = 32225, z = 7},
@@ -136,6 +136,8 @@ function callback.monsterOnSpawn(monster, position)
     if not k then
         return true
     end
+
+    logger.debug("\n\n\n\n\n\n\n\n\n\n\n\n\n\nREGISTERING ONDEATH EVENTO TO MONSTER...")
 
     monster:registerEvent("killMonsterCreatePortal")
 end

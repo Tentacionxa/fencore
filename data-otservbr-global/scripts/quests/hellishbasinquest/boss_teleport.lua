@@ -135,6 +135,7 @@ function callback.monsterOnSpawn(monster, position)
     if not k then
         return true
     end
+
     monster:registerEvent("killMonsterCreatePortal")
 end
 callback:register()

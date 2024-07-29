@@ -331,7 +331,7 @@ bool CreatureEvent::executeAdvance(std::shared_ptr<Player> player, skills_t skil
  */
 void CreatureEvent::executeOnKill(std::shared_ptr<Creature> creature, std::shared_ptr<Creature> target, bool lastHit) const {
 	// onKill(creature, target, lastHit)
-	g_logger().info("[CreatureEvent::executeOnKill - Creature {} target {} event {}] "
+	g_logger().trace("[CreatureEvent::executeOnKill - Creature {} target {} event {}] "
 					"Deprecated use of onKill event. Use registered onDeath events instead for better performance.",
 					creature->getName(), target->getName(), getName());
 	if (!getScriptInterface()->reserveScriptEnv()) {

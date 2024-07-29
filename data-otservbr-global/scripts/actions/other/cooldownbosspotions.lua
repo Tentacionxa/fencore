@@ -11,5 +11,5 @@ function bosspotion.onUse(player, item, fromPosition, target, toPosition, isHotk
 	return true
 end
 
-bagyouCovet:id(bosspotion)
-bagyouCovet:register()
+bosspotion:id(bosspotion)
+bosspotion:register()

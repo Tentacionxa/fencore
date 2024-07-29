@@ -11,22 +11,19 @@ local config = {
 
 -- Function to manage capacity bonus
 function manageCapacityBonus(player, item, apply)
-    logger.debug("\n\n\nLOOT RING: registering moveent to the ring")
-    
-    player:say("First line of loot ring script handling")
     if not item then return end  -- Ensure item is valid, adjust logic as needed for logout and death
     local itemId = item:getId()
     local itemConfig = config[itemId]
     if not itemConfig then return end
     
-    player:say("Handling the equip event for ring... apply: " .. (apply and "true" or "false"))
+
 
     local currentBonus = player:getStorageValue(BONUS_STORAGE_KEY)
     if currentBonus == -1 then currentBonus = 0 end
     local currentCapacity = player:getCapacity()
     local bonusCapacity = math.floor(currentCapacity * 0.30)  -- Calculate 10% of current capacity
     
-    player:say("apply: " .. (apply and "true" or "false") .. " currentBonus: " .. (currentBonus) .. "currentCapacity: " .. currentCapacity .. "bonusCapacity: " .. bonusCapacity)
+   
 
     if apply and currentBonus == 0 then
         player:setCapacity(currentCapacity + bonusCapacity)
@@ -51,7 +48,7 @@ for itemId, itemConfig in pairs(config) do
         return true
     end
     moveeventEquip:register()
-
+    logger.debug("\n\n\nEquipped the magical loot ring.")
     local moveeventDeEquip = MoveEvent()
     moveeventDeEquip:type("deEquip")
     moveeventDeEquip:id(itemId)  -- Assigning the item ID
@@ -62,7 +59,7 @@ for itemId, itemConfig in pairs(config) do
         return true
     end
     moveeventDeEquip:register()
-    logger.debug("\n\n\nLOOT RING: registering moveent to the ring")
+    logger.debug("\n\n\nDeequipped the magical loot ring.")
 end
 
 -- Login, Logout, and Death handlers
@@ -102,4 +99,3 @@ deathEvent.onDeath = function(player)
 end
 deathEvent:register()
 
-logger.debug("\n\n\nLOOT RING: registering the loot ")

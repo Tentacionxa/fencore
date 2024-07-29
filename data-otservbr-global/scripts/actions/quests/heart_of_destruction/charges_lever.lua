@@ -240,6 +240,7 @@ function heartDestructionCharges.onUse(player, item, fromPosition, itemEx, toPos
 					spawningCharge = false
 
 					Game.createMonster("Charger", { x = 32151, y = 31356, z = 14 }, false, true)
+					Game.createMonster("Anomaly", { x = 32152, y = 31356, z = 14 }, false, true)
 					Game.createMonster("Charger", { x = 32154, y = 31353, z = 14 }, false, true)
 					Game.createMonster("Charger", { x = 32153, y = 31361, z = 14 }, false, true)
 					Game.createMonster("Charger", { x = 32158, y = 31362, z = 14 }, false, true)

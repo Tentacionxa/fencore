@@ -13,6 +13,7 @@ else
     Player:setBossCooldown("Tentugly's Head", 0)
 player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You removed cooldown on all bosses")
 end
+end
 return true
 end
 

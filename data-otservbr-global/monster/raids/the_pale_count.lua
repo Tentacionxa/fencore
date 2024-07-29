@@ -84,7 +84,6 @@ monster.loot = {
 	{ id = 8192, chance = 100000 }, -- vampire lord token
 	{ id = 18927, chance = 100000 }, -- vampire's cape chain
 	{ id = 18936, chance = 5000 }, -- vampire count's medal
-	{ id = 18935, chance = 5000 }, -- vampire's signet ring
 	{ id = 11449, chance = 50000 }, -- blood preservation
 	{ id = 9685, chance = 50000 }, -- vampire teeth
 	{ id = 19083, chance = 5000 }, -- silver raid token

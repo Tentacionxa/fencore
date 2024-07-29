@@ -34871,8 +34871,8 @@
 		<attribute key="description" value="A scroll of parchment, inscribed with an arcane incantation rite"/>
 		<attribute key="weight" value="10"/>
 	</item>
-	<item id="18935" article="a" name="vampire's signet ring">
-		<attribute key="description" value="A ring with a massive, faintly glowing seal, containing the blood of a vampire"/>
+	<item id="18935" article="a" name="loot ring">
+		<attribute key="description" value="A ring with a massive, faintly glowing seal that increases your capacity by 65%."/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="18936" article="the" name="Vampire Count's medal">

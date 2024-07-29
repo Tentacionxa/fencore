@@ -6,6 +6,7 @@ function bosspotion.onUse(player, item, fromPosition, target, toPosition, isHotk
 		player:setBossCooldown(name, 0)
 		player:sendTextMessage(19, "You can fight all the bosses again!")
 		item:remove()
+	end
 end
 bosspotion:id(19371)
 bosspotion:register()

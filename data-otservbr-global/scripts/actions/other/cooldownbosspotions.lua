@@ -7,6 +7,7 @@ function bosspotion.onUse(player, item, fromPosition, target, toPosition, isHotk
 	if not bosspotion then
 		return false
 	end
+end
 else
 	Player:setBossCooldown("Faceless Bane", 0)
     Player:setBossCooldown("Tentugly's Head", 0)

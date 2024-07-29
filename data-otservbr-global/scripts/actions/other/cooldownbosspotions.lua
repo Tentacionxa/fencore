@@ -11,5 +11,5 @@ function bosspotion.onUse(player, item, fromPosition, target, toPosition, isHotk
 	return true
 end
 
-bosspotion:id(19731)
+bosspotion:id(19371)
 bosspotion:register()

@@ -4,6 +4,7 @@ function bosspotion.onUse(player, item, fromPosition, target, toPosition, isHotk
 		player:setBossCooldown("Faceless Bane", 0)
     player:setBossCooldown("Tentugly's Head", 0)
 		player:sendTextMessage(19, "You can fight the bosses again!")
+        player:removeItem(19371, 1)
 	else
 		player:sendTextMessage(19, "You access to the bosses has already been released!")
 	end

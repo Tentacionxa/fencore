@@ -43,7 +43,7 @@ for itemId, itemConfig in pairs(config) do
     moveeventEquip:id(itemId)  -- Assigning the item ID
     moveeventEquip.onEquip = function(player, item, slot, isCheck)
         if not isCheck then
-            manageCapacityBonus(player, item, true)
+            player:setCapacity(currentCapacity + bonusCapacity)
         end
         return true
     end

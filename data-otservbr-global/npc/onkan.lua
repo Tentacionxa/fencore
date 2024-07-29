@@ -118,6 +118,7 @@ npcConfig.shop = {
 	{ itemName = "moon mirror", clientId = 25975, buy = 450000 },
 	{ itemName = "shockwave amulet", clientId = 9304, buy = 4000 },
 	{ itemName = "might ring", clientId = 3048, buy = 5000 },
+	{ itemName = "orc's boss reminder", clientId = 19155, buy = 500000 },
 }
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

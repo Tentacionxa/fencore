@@ -34,7 +34,8 @@ dofile(DATA_DIRECTORY .. "/lib/others/task_lib.lua")
 -- Task Custom
 dofile(DATA_DIRECTORY.. '/scripts/custom/load.lua')
 
-
+-- Boss eye
+dofile(DATA_DIRECTORY.. '/lib/custom/boss_eye.lua')
 
 
 

@@ -35596,8 +35596,8 @@
 		<attribute key="description" value="Souvenir from Thais Museum"/>
 		<attribute key="weight" value="1200"/>
 	</item>
-	<item id="19155" article="an" name="orc's jaw shredder">
-		<attribute key="description" value="Souvenir from Thais Museum"/>
+	<item id="19155" article="an" name="orc's boss reminder">
+		<attribute key="description" value="Orc's use it to check when their bosses will spawn"/>
 		<attribute key="weight" value="2500"/>
 	</item>
 	<item id="19156" article="a" name="frozen heart">

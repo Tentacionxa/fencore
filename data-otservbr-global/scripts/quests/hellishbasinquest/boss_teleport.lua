@@ -94,8 +94,6 @@ end
 
 local killMonsterCreatePortal = CreatureEvent("killMonsterCreatePortal")
 function killMonsterCreatePortal.onDeath(creature, corpse, killer, mostDamageKiller, lastHitUnjustified, mostDamageUnjustified)
-    logger.warn("Executing ondeath script for monster: {}", creature:getName())
-
     if not creature:isMonster() or creature:getMaster() then
         return true
     end

@@ -35868,6 +35868,7 @@
 	</item>
 	<item id="19370" name="RESERVED SPRITE"/>
 	<item id="19371" article="a" name="glass of goo">
+			<attribute key="description" value="Use it to remove all the cooldown effect on every boss"/>
 		<attribute key="weight" value="170"/>
 	</item>
 	<item id="19372" article="a" name="goo shell">

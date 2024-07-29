@@ -253,7 +253,16 @@ GameStore.Categories = {
 				type = GameStore.OfferTypes.OFFER_TYPE_CHARGES,
 					state = GameStore.States.STATE_NEW,
 			},
-		
+			{
+				icons = { "" },
+				name = "Glass Of Goo",
+				price = 600,
+				itemtype = 19371,
+				count = 1,
+				description = "<i>Remove all the cooldown for every boss</i>",
+				type = GameStore.OfferTypes.OFFER_TYPE_CHARGES,
+					state = GameStore.States.STATE_NEW,
+			},
 		},
 			},
 				{

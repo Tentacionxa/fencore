@@ -5,13 +5,12 @@ function bosspotion.onUse(player, item, fromPosition, target, toPosition, isHotk
 	for _, name in pairs(bosses) do
 		player:setBossCooldown(name, 0)
 		player:sendTextMessage(19, "You can fight all the bosses again!")
-        
 	else
 		player:sendTextMessage(19, "You can still fight bosses. Fight them and then use the potion!")
 	end
     item:remove()
 	return true
 end
-
+end
 bosspotion:id(19371)
 bosspotion:register()

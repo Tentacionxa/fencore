@@ -19,7 +19,7 @@ function manageCapacityBonus(player, item, apply)
 
 
     local currentBonus = player:getStorageValue(BONUS_STORAGE_KEY)
-    if currentBonus == 0 then currentBonus = 0 end
+    if currentBonus == -1 then currentBonus = 0 end
     local currentCapacity = player:getCapacity()
     local bonusCapacity = math.floor(currentCapacity * 0.65)  -- Calculate 10% of current capacity
     
@@ -43,7 +43,7 @@ for itemId, itemConfig in pairs(config) do
     moveeventEquip:id(itemId)  -- Assigning the item ID
     moveeventEquip.onEquip = function(player, item, slot, isCheck)
         if not isCheck then
-            player:setCapacity(currentCapacity + bonusCapacity)
+            manageCapacityBonus(player, item, true)
         end
         return true
     end

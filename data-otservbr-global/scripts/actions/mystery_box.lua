@@ -1,6 +1,6 @@
 local storeBox = Action()
 
-local REWARD = {3043, 22516, 22721, 23453, 23452, 23544, 23531, 23533, 23530}
+local REWARD = {3043, 22516, 22721, 23544, 23531, 23533, 23530}
 local JEWEL = {30061, 30059, 30060, 32623, 32626, 14758}
 function storeBox.onUse(cid, item, fromPosition, itemEx, toPosition)
       local randomChance = math.random(1, #REWARD)

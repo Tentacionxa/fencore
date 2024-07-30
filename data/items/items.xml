@@ -35869,7 +35869,7 @@
 		<attribute key="weight" value="150"/>
 	</item>
 	<item id="19370" name="RESERVED SPRITE"/>
-	<item id="19371" article="a" name="glass of goo">
+	<item id="19371" article="a" name="monster">
 		<attribute key="weight" value="170"/>
 	</item>
 	<item id="19372" article="a" name="goo shell">
@@ -42628,7 +42628,7 @@
 	</item>
 	<item id="23721" article="a" name="gold pouch">
 		<attribute key="description" value="A infinity bag where you can hold your gold."/>
-		<attribute key="containersize" value="20"/>
+		<attribute key="containersize" value="5000"/>
 		<attribute key="moveable" value="1"/>
 	</item>
 	<item id="23722" article="a" name="gold converter">

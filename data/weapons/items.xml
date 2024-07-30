@@ -38555,8 +38555,11 @@
 	</item>
 	<item id="21444" name="RESERVED SPRITE"/>
 	<item id="21445" article="a" name="war backpack">
-       <attribute key="primarytype" value="containers"/>
-                <attribute key="containersize" value="100"/>
+   	<attribute key="primarytype" value="containers"/>
+		<attribute key="containersize" value="20"/>
+		<attribute key="weight" value="1800"/>
+		<attribute key="imbuementslot" value="1">
+			<attribute key="increase capacity" value="3"/>
 
 </item>
 	<item id="21446" article="a" name="dead woodling">

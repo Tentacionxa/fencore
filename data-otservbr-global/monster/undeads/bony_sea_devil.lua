@@ -96,7 +96,7 @@ monster.loot = {
 	{ name = "goblet of gloom", chance = 880 },
 	{ name = "glacier kilt", chance = 880 },
 	{ name = "glacial rod", chance = 1210 },
-	{ id = 34109, chance = 1500 }, -- bag you desire
+	{ id = 34109, chance = 300 }, -- bag you desire
 }
 
 monster.attacks = {

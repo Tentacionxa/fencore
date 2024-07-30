@@ -20,7 +20,7 @@ function GhazbaranRespawn.onTime(interval)
     if day then
         local item = Game.createItem(config.teleportId, 1, day[1])
         if item then
-            if not item:isTeleport() then
+            if item:isTeleport() then
                 item:remove()
                 return false
             end

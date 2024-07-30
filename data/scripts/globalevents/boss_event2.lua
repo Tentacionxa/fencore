@@ -30,6 +30,12 @@ function MorgarothRespawn.onTime(interval)
             Game.createMonster(config.bossName, config.bossPosition, false, true)
             Game.broadcastMessage(config.bossName .. ' A teleport has appeared in Thais center. Morgaroth is waiting for his revenge', MESSAGE_GAME_HIGHLIGHT)
         end, 5000)
+        addEvent(
+            function()
+                item:remove()
+            end,
+            30 * 60 * 1000 -- 30 minutes
+        )
     end
     return true
 end

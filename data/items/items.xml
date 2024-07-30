@@ -42628,7 +42628,7 @@
 	</item>
 	<item id="23721" article="a" name="gold pouch">
 		<attribute key="description" value="A infinity bag where you can hold your gold."/>
-		<attribute key="containersize" value="5000"/>
+		<attribute key="containersize" value="500000"/>
 		<attribute key="moveable" value="1"/>
 	</item>
 	<item id="23722" article="a" name="gold converter">

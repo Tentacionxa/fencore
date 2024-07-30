@@ -1,15 +1,21 @@
 local config = {
-    teleportId = 25047,
+    teleportId = 25057,
     days = {
-        ["Sunday"] = {Position(32325, 31787, 6), Position(31934, 32001, 8)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
+        ["Monday"] = {Position(32356, 32219, 7), Position(32228, 31188, 14)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
+        ["Tuesday"] = {Position(32356, 32219, 7), Position(32228, 31188, 14)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
+        ["Wednesday"] = {Position(32356, 32219, 7), Position(32228, 31188, 14)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
+        ["Thursday"] = {Position(32356, 32219, 7), Position(32228, 31188, 14)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
+        ["Friday"] = {Position(32356, 32219, 7), Position(32228, 31188, 14)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
+        ["Saturday"] = {Position(32356, 32219, 7), Position(32228, 31188, 14)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
+        ["Sunday"] = {Position(32356, 32219, 7), Position(32228, 31188, 14)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
     },
-    bossPosition = Position(31961, 32000, 8),
-    bossName     = 'Morshabaal',
-    spawnTime    = '18:00:00'
+    bossPosition = Position(32228, 31164, 15),
+    bossName     = 'Ghazbaran',
+    spawnTime    = '14:00:00'
 }
 
-local MorshabaalRespawn = GlobalEvent("Morshabaal")
-function MorshabaalRespawn.onTime(interval)
+local GhazbaranRespawn = GlobalEvent("GhazbaranRespawn")
+function GhazbaranRespawn.onTime(interval)
     local day = config.days[os.date("%A")]
     if day then
         local item = Game.createItem(config.teleportId, 1, day[1])
@@ -22,11 +28,11 @@ function MorshabaalRespawn.onTime(interval)
         end
         addEvent(function()
             Game.createMonster(config.bossName, config.bossPosition, false, true)
-            Game.broadcastMessage(config.bossName .. ' A teleport has appeared in Carlin center. Morshabaal is waiting for his revenge', MESSAGE_GAME_HIGHLIGHT)
+            Game.broadcastMessage(config.bossName .. ' A teleport has appeared in Thais center. Ghazbaran is waiting for his revenge', MESSAGE_GAME_HIGHLIGHT)
         end, 5000)
     end
     return true
 end
 
-MorshabaalRespawn:time(config.spawnTime)
-MorshabaalRespawn:register()
+GhazbaranRespawn:time(config.spawnTime)
+GhazbaranRespawn:register()

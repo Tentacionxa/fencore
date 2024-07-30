@@ -1,15 +1,21 @@
 local config = {
-    teleportId = 25047,
+    teleportId = 25055,
     days = {
-        ["Saturday"] = {Position(32372, 32219, 6), Position(32174, 32481, 8)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
+        ["Monday"] = {Position(32356, 32219, 7), Position(32062, 32598, 13)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
+        ["Tuesday"] = {Position(32356, 32219, 7), Position(32062, 32598, 13)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
+        ["Wednesday"] = {Position(32356, 32219, 7), Position(32062, 32598, 13)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
+        ["Thursday"] = {Position(32356, 32219, 7), Position(32062, 32598, 13)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
+        ["Friday"] = {Position(32356, 32219, 7), Position(32062, 32598, 13)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
+        ["Saturday"] = {Position(32356, 32219, 7), Position(32062, 32598, 13)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
+        ["Sunday"] = {Position(32356, 32219, 7), Position(32062, 32598, 13)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
     },
-    bossPosition = Position(32202, 32480, 8),
+    bossPosition = Position(32061, 32610, 14),
     bossName     = 'Morgaroth',
-    spawnTime    = '18:00:00'
+    spawnTime    = '12:00:00'
 }
 
-local MorshabaalRespawn = GlobalEvent("Morgaroth")
-function MorshabaalRespawn.onTime(interval)
+local MorgarothRespawn = GlobalEvent("MorgarothRespawn")
+function MorgarothRespawn.onTime(interval)
     local day = config.days[os.date("%A")]
     if day then
         local item = Game.createItem(config.teleportId, 1, day[1])
@@ -28,5 +34,5 @@ function MorshabaalRespawn.onTime(interval)
     return true
 end
 
-MorshabaalRespawn:time(config.spawnTime)
-MorshabaalRespawn:register()
+MorgarothRespawn:time(config.spawnTime)
+MorgarothRespawn:register()

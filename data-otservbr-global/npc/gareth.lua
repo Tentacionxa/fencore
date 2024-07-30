@@ -99,7 +99,7 @@ local function creatureSayCallback(npc, creature, type, message)
 		end
 
 		-- Reportando sobre o document
-	elseif MsgContains(message, "mission") and player:getStorageValue(Storage.CultsOfTibia.MotA.Mission) == 3 then
+	elseif MsgContains(message, "mission") and player:getStorageValue(Storage.CultsOfTibia.MotA.Mission) == 0 then
 		npcHandler:say({ "They want us to buy the picture back. Unfortunately this artefact is so important that I don't see an alternative. Please got to Iwar in Kazordoon and pay the money." }, npc, creature)
 		player:setStorageValue(Storage.CultsOfTibia.MotA.Mission, 4)
 		npcHandler:setTopic(playerId, 1)
@@ -157,7 +157,7 @@ local function creatureSayCallback(npc, creature, type, message)
 		npcHandler:setTopic(playerId, 14)
 	end
 
-	if MsgContains(message, "extension") and player:getStorageValue(Storage.TheSecretLibrary.Mota) == 11 then
+	if MsgContains(message, "extension") and player:getStorageValue(Storage.TheSecretLibrary.Mota) == 0 then
 		npcHandler:say(
 			{ "You have found an inscription I would like to translate for you. The tibianus cipher was used: ...", "Those who are accorded the honour to visit this exclusive place will smash their blindness and face the truth. ...", "Astonishingly, Dedoras from Cormaya has recently asked me for these kinds of inscriptions. For sure he is able to bring light into the darkness. You should visit him. " },
 			npc,

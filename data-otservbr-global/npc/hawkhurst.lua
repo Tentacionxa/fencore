@@ -26,7 +26,7 @@ npcConfig.flags = {
 npcConfig.voices = {
 	interval = 15000,
 	chance = 50,
-	{ text = "Passages to Ingol. Only here!" },
+	{ text = "Passages to Ingol and Cormaya. Only here!" },
 }
 
 local keywordHandler = KeywordHandler:new()
@@ -59,7 +59,7 @@ end
 -- Travel
 local function addTravelKeyword(keyword, cost, destination, action, condition)
 	if condition then
-		keywordHandler:addKeyword({ keyword }, StdModule.say, { npcHandler = npcHandler, text = "I'm sorry but I don't sail there." }, condition)
+		keywordHandler:addKeyword({ keyword }, StdModule.say, { npcHandler = npcHandler, text = "I'm sorry but I don't go there." }, condition)
 	end
 
 	local travelKeyword = keywordHandler:addKeyword({ keyword }, StdModule.say, { npcHandler = npcHandler, text = "Do you seek a passage to " .. keyword:titleCase() .. " for |TRAVELCOST|?", cost = cost, discount = "postman" })
@@ -68,8 +68,8 @@ local function addTravelKeyword(keyword, cost, destination, action, condition)
 end
 
 
-addTravelKeyword("ingol", 120, Position(33816, 32576, 7))
-addTravelKeyword("cormaya", 150, Position(33344, 31980, 7))
+addTravelKeyword("ingol", 120, Position(33820, 32573, 7))
+addTravelKeyword("cormaya", 150, Position(33344, 31979, 7))
 
 
 -- Kick
@@ -78,7 +78,7 @@ addTravelKeyword("cormaya", 150, Position(33344, 31980, 7))
 -- Basic
 
 
-npcHandler:setMessage(MESSAGE_GREET, "Welcome , |PLAYERNAME|. Where can I {sail} you today?")
+npcHandler:setMessage(MESSAGE_GREET, "Welcome , |PLAYERNAME|. I can take you to {Ingol} or {Cormaya}...")
 npcHandler:setMessage(MESSAGE_FAREWELL, "Good bye. Recommend me if you were satisfied with my service")
 npcHandler:setMessage(MESSAGE_WALKAWAY, "Good bye then.")
 

@@ -6519,7 +6519,7 @@ GameStore.Categories = {
 				itemtype = 28559,
 				count = 1,
 				description = "<i>Train your skills more effectively at home than in public on this expert exercise dummy!</i>\n\n{house}\n{box}\n{storeinbox}\n{usablebyall}\n{info} can only be used by one character at a time\n{useicon} use one of the exercise weapons on this dummy\n{backtoinbox}",
-				type = GameStore.OfferTypes.OFFER_TYPE_CHARGES,
+				type = GameStore.OfferTypes.OFFER_TYPE_HOUSE,
 			},
 			{
 				icons = { "Gilded_Imbuing_Shrine.png" },

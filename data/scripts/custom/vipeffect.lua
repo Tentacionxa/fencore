@@ -6,7 +6,13 @@ local vipEffect = 50
 function globalevent.onThink(interval)
     for _, player in ipairs(Game.getPlayers()) do
         local position = player:getPosition()
-        if player:getGroup():getAccess() and not player:isInGhostMode() then
+        if player:getGroup():getId() == 2 or player:getGroup():getId() == 3 then
+            player:say("TUTOR", TALKTYPE_MONSTER_SAY)
+            position:sendMagicEffect(staffEffect)
+        elseif player:getGroup():getId() == 4 or player:getGroup():getId() == 5 or player:getGroup():getId() == 6 then
+            player:say("STAFF", TALKTYPE_MONSTER_SAY)
+            position:sendMagicEffect(staffEffect)
+        elseif player:getGroup():getAccess() and not player:isInGhostMode() then
             player:say("STAFF", TALKTYPE_MONSTER_SAY)
             position:sendMagicEffect(staffEffect)
         elseif player:isVip() then

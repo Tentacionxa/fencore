@@ -6,7 +6,7 @@ local config = {
 }
 
 local rewards = {
-    { id = 3043, name = "Crystal Coins", count = 50, text = "10" },
+    { id = 3043, name = "Crystal Coins", count = 50, text = "50" },
 }
  
 local dailyRewardChest = Action()

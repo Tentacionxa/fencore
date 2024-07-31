@@ -48247,7 +48247,7 @@
 		<attribute key="wrapableto" value="23398"/>
 		<attribute key="rotateto" value="28562"/>
 		<attribute key="type" value="dummy">
-			<attribute key="rate" value="110"/>
+			<attribute key="rate" value="125"/>
 		</attribute>
 	</item>
 	<item id="28562" article="a" name="demon exercise dummy">
@@ -48256,7 +48256,7 @@
 		<attribute key="wrapableto" value="23398"/>
 		<attribute key="rotateto" value="28561"/>
 		<attribute key="type" value="dummy">
-			<attribute key="rate" value="110"/>
+			<attribute key="rate" value="125"/>
 		</attribute>
 	</item>
 	<item id="28563" article="a" name="monk exercise dummy">
@@ -48265,7 +48265,7 @@
 		<attribute key="wrapableto" value="23398"/>
 		<attribute key="rotateto" value="28564"/>
 		<attribute key="type" value="dummy">
-			<attribute key="rate" value="110"/>
+			<attribute key="rate" value="125"/>
 		</attribute>
 	</item>
 	<item id="28564" article="a" name="monk exercise dummy">
@@ -48274,7 +48274,7 @@
 		<attribute key="wrapableto" value="23398"/>
 		<attribute key="rotateto" value="28563"/>
 		<attribute key="type" value="dummy">
-			<attribute key="rate" value="110"/>
+			<attribute key="rate" value="125"/>
 		</attribute>
 	</item>
 	<item id="28565" article="an" name="exercise dummy">

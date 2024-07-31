@@ -6509,16 +6509,16 @@ GameStore.Categories = {
 				price = 900,
 				itemtype = 28561,
 				count = 1,
-				description = "<i>Train your skills more effectively at home than in public on this expert exercise dummy!</i>\n\n{house}\n{box}\n{storeinbox}\n{usablebyall}\n{info} can only be used by one character at a time\n{useicon} use one of the exercise weapons on this dummy\n{backtoinbox}",
+				description = "<i>Train your skills more effectively at home than in public on this expert exercise dummy! It provides 25% more skill.</i>\n\n{house}\n{box}\n{storeinbox}\n{usablebyall}\n{info} can only be used by one character at a time\n{useicon} use one of the exercise weapons on this dummy\n{backtoinbox}",
 				type = GameStore.OfferTypes.OFFER_TYPE_HOUSE,
 			},
 			{
 				icons = { "Ferumbras_Exercise_Dummy.png" },
 				name = "Ferumbras Exercise Dummy",
-				price = 900,
+				price = 300,
 				itemtype = 28559,
 				count = 1,
-				description = "<i>Train your skills more effectively at home than in public on this expert exercise dummy!</i>\n\n{house}\n{box}\n{storeinbox}\n{usablebyall}\n{info} can only be used by one character at a time\n{useicon} use one of the exercise weapons on this dummy\n{backtoinbox}",
+				description = "<i>Train your skills more effectively at home than in public on this expert exercise dummy! It provides 10 % more skill.</i>\n\n{house}\n{box}\n{storeinbox}\n{usablebyall}\n{info} can only be used by one character at a time\n{useicon} use one of the exercise weapons on this dummy\n{backtoinbox}",
 				type = GameStore.OfferTypes.OFFER_TYPE_HOUSE,
 			},
 			{
@@ -6554,7 +6554,7 @@ GameStore.Categories = {
 				price = 900,
 				itemtype = 28563,
 				count = 1,
-				description = "<i>Train your skills more effectively at home than in public on this expert exercise dummy!</i>\n\n{house}\n{box}\n{storeinbox}\n{usablebyall}\n{info} can only be used by one character at a time\n{useicon} use one of the exercise weapons on this dummy\n{backtoinbox}",
+				description = "<i>Train your skills more effectively at home than in public on this expert exercise dummy! It provides 25% more skill.</i>\n\n{house}\n{box}\n{storeinbox}\n{usablebyall}\n{info} can only be used by one character at a time\n{useicon} use one of the exercise weapons on this dummy\n{backtoinbox}",
 				type = GameStore.OfferTypes.OFFER_TYPE_HOUSE,
 			},
 			{

@@ -1383,7 +1383,100 @@ npcConfig.shop = {
 	{ itemName = "yirkas' egg", clientId = 34102, sell = 280 },
 	{ itemName = "young lich worm", clientId = 31590, sell = 25000 },
 	{ itemName = "zaogun flag", clientId = 10413, sell = 600 },
-	{ itemName = "zaogun shoulderplates", clientId = 10414, sell = 150 },	
+	{ itemName = "zaogun shoulderplates", clientId = 10414, sell = 150 },
+	
+	--Naga Sets
+	{ itemName = "naga sword", clientId = 39155, sell = 1000000 },
+	{ itemName = "naga axe", clientId = 39156, sell = 1000000 },
+	{ itemName = "naga crossbow", clientId = 39159, sell = 1000000 },
+	{ itemName = "naga rod", clientId = 39163, sell = 1000000 },
+	{ itemName = "naga wand", clientId = 39162, sell = 1000000 },
+	{ itemName = "naga club", clientId = 39157, sell = 1000000 },
+	{ itemName = "midnight sarong", clientId = 39167, sell = 1200000 },
+	{ itemName = "midnight tunic", clientId = 39165, sell = 1500000 },
+	{ itemName = "frostflower boots", clientId = 39158, sell = 1400000 },
+	{ itemName = "feverbloom boots", clientId = 39161, sell = 1500000 },
+	{ itemName = "dawnfire sherwani", clientId = 39164, sell = 1600000 },
+	{ itemName = "dawnfire pantaloons", clientId = 39166, sell = 1700000 },
+
+	--deepling set
+	{ itemName = "deepling axe", clientId = 13991, sell = 200000 },
+	{ itemName = "deepling staff", clientId = 13987, sell = 4000 },
+	{ itemName = "deepling squelcher", clientId = 14250, sell = 7000 },
+
+	--eldritch set
+	{ itemName = "eldritch claymore", clientId = 36657, sell = 600000 },
+	{ itemName = "eldritch greataxe", clientId = 36661, sell = 600000 },
+	{ itemName = "eldritch shield", clientId = 36661, sell = 800000 },
+	{ itemName = "eldritch warmace", clientId = 36659, sell = 600000 },
+	{ itemName = "gilded eldritch claymore", clientId = 36658, sell = 1600000 },
+	{ itemName = "gilded eldritch greataxe", clientId = 36662, sell = 1600000 },
+	{ itemName = "gilded eldritch warmace", clientId = 36660, sell = 1600000 },
+	{ itemName = "eldritch bow", clientId = 36664, sell = 1800000 },
+	{ itemName = "eldritch breeches", clientId = 36667, sell = 1600000 },
+	{ itemName = "eldritch cowl", clientId = 36670, sell = 1300000 },
+	{ itemName = "eldritch folio", clientId = 36672, sell = 1200000 },
+	{ itemName = "eldritch wand", clientId = 36668, sell = 1100000 },
+	{ itemName = "gilded eldritch wand", clientId = 36669, sell = 1400000 },
+	{ itemName = "eldritch hood", clientId = 36671, sell = 1200000 },
+	{ itemName = "eldritch rod", clientId = 36674, sell = 1000000 },
+	{ itemName = "eldritch tome", clientId = 36673, sell = 1000000 },
+	{ itemName = "gilded eldritch rod", clientId = 36675, sell = 1300000 },
+	{ itemName = "eldritch cuirass", clientId = 36663, sell = 1200000 },
+
+	--falcon
+	{ itemName = "falcon battleaxe", clientId = 28724, sell = 900000 },
+	{ itemName = "falcon bow", clientId = 28718, sell = 800000 },
+	{ itemName = "falcon circlet", clientId = 28714, sell = 600000 },
+	{ itemName = "falcon coif", clientId = 28715, sell = 500000 },
+	{ itemName = "falcon escutcheon", clientId = 28722, sell = 700000 },
+	{ itemName = "falcon greaves", clientId = 28720, sell = 1000000 },
+	{ itemName = "falcon longsword", clientId = 28723, sell = 900000 },
+	{ itemName = "falcon mace", clientId = 28725, sell = 800000 },
+	{ itemName = "falcon plate", clientId = 28719, sell = 900000 },
+	{ itemName = "falcon rod", clientId = 28716, sell = 1000000 },
+	{ itemName = "falcon shield", clientId = 28721, sell = 1000000 },
+	{ itemName = "falcon wand", clientId = 28717, sell = 900000 },
+
+	--jungle set
+	{ itemName = "jungle flail", clientId = 35514, sell = 400000 },
+	{ itemName = "throwing axe", clientId = 35515, sell = 300000 },
+	{ itemName = "jungle bow", clientId = 35518, sell = 300000 },
+	{ itemName = "jungle wand", clientId = 35522, sell = 300000 },
+	{ itemName = "bast legs", clientId = 35517, sell = 300000 },
+	{ itemName = "exotic legs", clientId = 35516, sell = 400000 },
+	{ itemName = "make-do boots", clientId = 35520, sell = 400000 },
+		{ itemName = "makeshift boots", clientId = 35519, sell = 400000 },
+		{ itemName = "exotic amulet", clientId = 35523, sell = 100000 },
+
+	--lionset
+	{ itemName = "lion axe", clientId = 34253, sell = 400000 },
+	{ itemName = "lion hammer", clientId = 34254, sell = 500000 },
+	{ itemName = "lion longbow", clientId = 34150, sell = 500000 },
+	{ itemName = "lion longsword", clientId = 34155, sell = 400000 },
+	{ itemName = "lion plate", clientId = 34157, sell = 500000 },
+	{ itemName = "lion rod", clientId = 34151, sell = 500000 },
+	{ itemName = "lion shield", clientId = 34154, sell = 600000 },
+	{ itemName = "lion spangehelm", clientId = 34156, sell = 1000000 },
+	{ itemName = "lion spelbook", clientId = 34153, sell = 1000000 },
+	{ itemName = "lion wand", clientId = 34152, sell = 600000 },
+
+	--ornate set
+	{ itemName = "ornate chestplate", clientId = 13993, sell = 1200000 },
+	{ itemName = "ornate shield", clientId = 14000, sell = 1000000 },
+	{ itemName = "ornate legs", clientId = 13999, sell = 900000 },
+	{ itemName = "ornate crossbow", clientId = 14247, sell = 1000000 },
+	{ itemName = "ornate mace", clientId = 14001, sell = 1000000 },
+
+	--cobra set
+	{ itemName = "cobra axe", clientId = 30396, sell = 700000 },
+	{ itemName = "cobra boots", clientId = 30394, sell = 600000 },
+	{ itemName = "cobra club", clientId = 30395, sell = 600000 },
+	{ itemName = "cobra crossbow", clientId = 30393, sell = 500000 },
+	{ itemName = "cobra hood", clientId = 30397, sell = 500000 },
+	{ itemName = "cobra rod", clientId = 30400, sell = 400000 },
+	{ itemName = "cobra wand", clientId = 30399, sell = 400000 },
+	{ itemName = "cobra sword", clientId = 30398, sell = 400000 },
 }
 
 -- On buy npc shop message

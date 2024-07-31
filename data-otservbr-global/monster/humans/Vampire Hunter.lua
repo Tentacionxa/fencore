@@ -28,7 +28,6 @@ monster.Bestiary = {
 
 
 monster.events = {
-	"VampireDeath",
 }
 
 

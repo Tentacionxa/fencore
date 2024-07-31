@@ -23,6 +23,8 @@ local config = {
         { name = "Thais", teleport = Position(32369 , 32241 , 7) },
         { name = "Venore", teleport = Position(32957 , 32076 , 7) },
         { name = "Yalahar", teleport = Position(32787 , 31276 , 7) },
+        { name = "Ottawa", teleport = Position(31016, 31686, 6) },
+        { name = "Vip Island", teleport = Position(32566, 32401, 5) },
 	}
 }
 

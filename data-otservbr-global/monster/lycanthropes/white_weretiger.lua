@@ -89,9 +89,9 @@ monster.loot = {
 
 monster.attacks = {
 	{ name = "melee", interval = 2000, chance = 100, minDamage = -100, maxDamage = -585 },
-	{ name = "white weretiger ice ring", interval = 3700, chance = 20, minDamage = -300, maxDamage = -425 },
+	{ name = "white weretiger ice ring", interval = 3700, chance = 20, minDamage = -500, maxDamage = -425 },
 	{ name = "energy ring", interval = 4300, chance = 40, minDamage = -300, maxDamage = -425 },
-	{ name = "combat", interval = 2300, chance = 15, type = COMBAT_ICEDAMAGE, minDamage = -200, maxDamage = -375, radius = 2, effect = CONST_ME_ICEAREA, target = false },
+	{ name = "combat", interval = 2300, chance = 15, type = COMBAT_ICEDAMAGE, minDamage = -200, maxDamage = -475, radius = 2, effect = CONST_ME_ICEAREA, target = false },
 }
 
 monster.defenses = {

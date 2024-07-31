@@ -38560,7 +38560,6 @@
 		<attribute key="weight" value="1800"/>
 		<attribute key="imbuementslot" value="1">
 			<attribute key="increase capacity" value="3"/>
-
 </item>
 	<item id="21446" article="a" name="dead woodling">
 		<attribute key="fluidsource" value="blood"/>

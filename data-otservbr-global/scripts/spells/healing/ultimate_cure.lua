@@ -13,6 +13,9 @@ function spell.onCastSpell(creature, variant)
     if creature:getCondition(CONDITION_POISON) then
         creature:removeCondition(CONDITION_POISON)
     end
+    if creature:getCondition(CONDITION_BLEEDING) then
+        creature:removeCondition(CONDITION_BLEEDING)
+    end
     return true
 end
 

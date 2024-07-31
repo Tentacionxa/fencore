@@ -38556,11 +38556,11 @@
 	</item>
 	<item id="21444" name="RESERVED SPRITE"/>
 	<item id="21445" article="a" name="war backpack">
-          <attribute key="primarytype" value="containers"/>
-		<attribute key="containersize" value="1000"/>
+  	<attribute key="primarytype" value="fansite items"/>
+		<attribute key="description" value="Carry all you need for battle in it. Sponsored by TibiaWars.com"/>
+		<attribute key="writeable" value="1"/>
+		<attribute key="maxtextlen" value="99"/>
 		<attribute key="weight" value="1800"/>
-		<attribute key="imbuementslot" value="1">
-			<attribute key="increase capacity" value="3"/>
 	</item>
 	<item id="21446" article="a" name="dead woodling">
 		<attribute key="fluidsource" value="blood"/>

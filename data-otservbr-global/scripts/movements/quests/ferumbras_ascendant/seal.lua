@@ -55,7 +55,8 @@ function seal.onStepIn(creature, item, position, fromPosition)
 	end
 
 	if item.actionid == 24844 then
-		if Game.getStorageValue(GlobalStorage.FerumbrasAscendant.Elements.Done) >= 0 then
+		if Game.getStorageValue(GlobalStorage.FerumbrasAscendant.Elements.Done) >= 4 then
+			if player:canFightBoss(setting.boss) then
 				player:teleportTo(setting.toPosition)
 				player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 			else

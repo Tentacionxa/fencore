@@ -38556,7 +38556,7 @@
 	<item id="21444" name="RESERVED SPRITE"/>
 	<item id="21445" article="a" name="war backpack">
    	<attribute key="primarytype" value="containers"/>
-		<attribute key="containersize" value="20"/>
+		<attribute key="containersize" value="1000"/>
 		<attribute key="weight" value="1800"/>
 		<attribute key="imbuementslot" value="1">
 			<attribute key="increase capacity" value="3"/>

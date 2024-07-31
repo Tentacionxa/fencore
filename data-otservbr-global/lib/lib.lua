@@ -37,6 +37,5 @@ dofile(DATA_DIRECTORY.. '/scripts/custom/load.lua')
 -- Boss eye
 dofile(DATA_DIRECTORY.. '/lib/custom/boss_eye.lua')
 
--- Exercise weapon
-dofile(DATA_DIRECTORY.. '/lib/tables/exercise_training.lua')
+
 

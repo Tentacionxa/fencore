@@ -1,5 +1,5 @@
 local deathEvent = CreatureEvent("SvargrondArenaBossDeath")
-function deathEvent.onDeath(creature, corpse, lastHitKiller, mostDamageKiller)
+function deathEvent.onDeath(creature, _corpse, _lastHitKiller, mostDamageKiller)
 	local player = Player(mostDamageKiller)
 	if not player then
 		return true
@@ -15,15 +15,18 @@ function deathEvent.onDeath(creature, corpse, lastHitKiller, mostDamageKiller)
 		return
 	end
 
-if not table.contains(ARENA[arena].creatures, creature:getName():lower()) then
--- Remove pillar and create teleport
+	if not table.contains(ARENA[arena].creatures, creature:getName():lower()) then
+		return
+	end
+
+	-- Remove pillar and create teleport
 	local pillarTile = Tile(PITS[pit].pillar)
 	if pillarTile then
-		local pillarItem = pillarTile:getItemById(1841)
+		local pillarItem = pillarTile:getItemById(SvargrondArena.itemPillar)
 		if pillarItem then
 			pillarItem:remove()
 
-			local teleportItem = Game.createItem(5022, 1, PITS[pit].tp)
+			local teleportItem = Game.createItem(SvargrondArena.itemTeleport, 1, PITS[pit].tp)
 			if teleportItem then
 				teleportItem:setActionId(25200)
 			end
@@ -34,8 +37,8 @@ if not table.contains(ARENA[arena].creatures, creature:getName():lower()) then
 	player:setStorageValue(Storage.SvargrondArena.PitDoor, pit + 1)
 	player:say("Victory! Head through the new teleporter into the next room.", TALKTYPE_MONSTER_SAY)
 	return true
-	end
 end
+
 deathEvent:register()
 
 local serverstartup = GlobalEvent("SvargrondArenaBossDeathStartup")

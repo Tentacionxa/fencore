@@ -1,5 +1,5 @@
 local deathEvent = CreatureEvent("SvargrondArenaBossDeath")
-function deathEvent.onDeath(creature, _corpse, _lastHitKiller, mostDamageKiller)
+function deathEvent.onDeath(creature, corpse, lastHitKiller, mostDamageKiller)
 	local player = Player(mostDamageKiller)
 	if not player then
 		return true
@@ -22,11 +22,11 @@ function deathEvent.onDeath(creature, _corpse, _lastHitKiller, mostDamageKiller)
 	-- Remove pillar and create teleport
 	local pillarTile = Tile(PITS[pit].pillar)
 	if pillarTile then
-		local pillarItem = pillarTile:getItemById(SvargrondArena.itemPillar)
+		local pillarItem = pillarTile:getItemById(1841)
 		if pillarItem then
 			pillarItem:remove()
 
-			local teleportItem = Game.createItem(SvargrondArena.itemTeleport, 1, PITS[pit].tp)
+			local teleportItem = Game.createItem(5022, 1, PITS[pit].tp)
 			if teleportItem then
 				teleportItem:setActionId(25200)
 			end

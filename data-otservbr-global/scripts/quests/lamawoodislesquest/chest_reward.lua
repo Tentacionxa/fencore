@@ -43,8 +43,8 @@ function inServiceYalaharReward.onUse(player, item, fromPosition, target, toPosi
     elseif item.uid == 51055 then
         if player:getStorageValue(93351) <= 0 then
 			player:setStorageValue(93351, 1)
-			player:addItem(21445, 1)
-			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You have found a war backpack.")
+			player:addItem(24393, 1)
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You have found a pillow backpack.")
 		else
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "The chest is empty.")
 		end

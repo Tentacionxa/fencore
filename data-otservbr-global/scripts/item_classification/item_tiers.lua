@@ -3,6 +3,15 @@ local itemTierClassifications = {
 	[1] = {
 		-- Update tier 0
 		[1] = { price = 25000, core = 1 },
+		[2] = { price = 500000, core = 1 },
+		[3] = { price = 4000000, core = 2 },
+		[4] = { price = 6500000, core = 5 },
+		[5] = { price = 10000000, core = 10 },
+		[6] = { price = 25000000, core = 15 },
+		[7] = { price = 75000000, core = 25 },
+		[8] = { price = 250000000, core = 35 },
+		[9] = { price = 800000000, core = 50 },
+		[10] = { price = 1500000000, core = 65 },
 	},
 	-- Upgrade classification 2
 	[2] = {
@@ -24,6 +33,13 @@ local itemTierClassifications = {
 		[1] = { price = 400000, core = 1 },
 		[2] = { price = 1000000, core = 1 },
 		[3] = { price = 2000000, core = 2 },
+		[4] = { price = 6500000, core = 5 },
+		[5] = { price = 10000000, core = 10 },
+		[6] = { price = 25000000, core = 15 },
+		[7] = { price = 75000000, core = 25 },
+		[8] = { price = 250000000, core = 35 },
+		[9] = { price = 800000000, core = 50 },
+		[10] = { price = 1500000000, core = 65 },
 	},
 	-- Upgrade classification 4
 	[4] = {

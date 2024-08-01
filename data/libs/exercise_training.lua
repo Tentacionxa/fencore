@@ -88,9 +88,21 @@ function ExerciseEvent(playerId, tilePosition, weaponId, dummyId)
 	local weaponCharges = weapon:getAttribute(ITEM_ATTRIBUTE_CHARGES)
 	if not weaponCharges or weaponCharges <= 0 then
 		weapon:remove(1) -- ??
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Your training weapon has disappeared.")
-		LeaveTraining(playerId)
-		return false
+		weapon = player:getItemById(weaponId, true)
+		if not weapon:isItem() or not weapon:hasAttribute(ITEM_ATTRIBUTE_CHARGES) then
+			player:sendTextMessage(MESSAGE_FAILURE, "The selected item is not a training weapon, the training has stopped.")
+			LeaveTraining(playerId)
+			return false
+		end
+
+		weaponCharges = weapon:getAttribute(ITEM_ATTRIBUTE_CHARGES)
+		if not weaponCharges or weaponCharges <= 0 then
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Your training weapon has disappeared.")
+			LeaveTraining(playerId)
+			return false
+		else
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Your training weapon has disappeared. Using the next one.")
+		end
 	end
 
 	local isMagic = ExerciseWeaponsTable[weaponId].skill == SKILL_MAGLEVEL

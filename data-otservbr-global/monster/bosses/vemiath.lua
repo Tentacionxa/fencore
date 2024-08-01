@@ -68,6 +68,15 @@ monster.voices = {
 	{ text = "WILL ... PUNISH ... YOU!", yell = false },
 	{ text = "RAAAR!", yell = false },
 }
+
+monster.summons = {
+
+	maxSummons = 2,
+	summons = {
+		{ name = "Elder Bloodjaw", chance = 100, interval = 1000, count = 2 },
+	},
+}
+
 monster.loot = {
 	{ id = 3025, chance = 3500 }, -- ancient amulet
 	{ id = 3116, chance = 9000 }, -- big bone

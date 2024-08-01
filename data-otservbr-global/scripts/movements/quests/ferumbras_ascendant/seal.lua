@@ -55,6 +55,21 @@ function seal.onStepIn(creature, item, position, fromPosition)
 	end
 
 	if item.actionid == 24844 then
+		if Game.getStorageValue(GlobalStorage.FerumbrasAscendant.Elements.Done) >= 0 then
+			player:teleportTo(setting.toPosition)
+			player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+		else
+			player:teleportTo(Position(33675, 32690, 13))
+			player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+			player:say("You have to wait to challenge this enemy again!", TALKTYPE_MONSTER_SAY)
+			return true
+		end
+		local pos = position
+		pos.y = pos.y + 2
+		player:teleportTo(pos)
+		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You not proven your worth. There is no escape for you here.")
+		item:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+		return true
 		if Game.getStorageValue(GlobalStorage.FerumbrasAscendant.Elements.Done) >= 4 then
 			if player:canFightBoss(setting.boss) then
 				player:teleportTo(setting.toPosition)

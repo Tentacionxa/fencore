@@ -19,7 +19,7 @@ SvargrondArena = {
 	itemTimer = 21464,
 	itemPillar = 1841,
 	itemTeleport = 5022,
-	itemsNotErasable = { 21464, 1841, 2181, 2182, 2183 },
+	itemsNotErasable = { 21464, 2181, 2182, 2183 },
 }
 
 -- Script automatically derives other pit positions from this one

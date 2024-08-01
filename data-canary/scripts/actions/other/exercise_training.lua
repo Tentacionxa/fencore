@@ -47,8 +47,17 @@ function exerciseTraining.onUse(player, item, fromPosition, target, toPosition, 
 		if not _G.OnExerciseTraining[playerId].event then
 			_G.OnExerciseTraining[playerId].event = addEvent(ExerciseEvent, 0, playerId, targetPos, item.itemid, targetId)
 			_G.OnExerciseTraining[playerId].dummyPos = targetPos
+			
 			player:setTraining(true)
 			player:setStorageValue(Storage.IsTraining, os.time() + 30)
+
+			local modal = ModalWindow {
+				title = "Training mode!",
+				message = "Your next weapon will be used automaticaly! Don't forget to leave the training weapons in your backpack."
+			}
+		
+			modal:addButton('Confirm')
+			modal:sendToPlayer(player)
 		end
 		return true
 	end

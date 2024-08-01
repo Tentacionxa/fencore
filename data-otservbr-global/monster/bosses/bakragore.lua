@@ -1,10 +1,10 @@
-local mType = Game.createMonsterType("Vemiath")
+local mType = Game.createMonsterType("Bakragore")
 local monster = {}
 
-monster.description = "Vemiath"
-monster.experience = 3250000
+monster.description = "Bakragore"
+monster.experience = 15000000
 monster.outfit = {
-	lookType = 1668,
+	lookType = 1671,
 	lookHead = 0,
 	lookBody = 0,
 	lookLegs = 0,
@@ -14,12 +14,12 @@ monster.outfit = {
 }
 
 monster.bosstiary = {
-	bossRaceId = 2365,
+	bossRaceId = 2367,
 	bossRace = RARITY_ARCHFOE,
 }
 
-monster.health = 350000
-monster.maxHealth = 350000
+monster.health = 660000
+monster.maxHealth = 660000
 monster.race = "undead"
 monster.corpse = 6068
 monster.speed = 115
@@ -65,44 +65,28 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "WILL ... PUNISH ... YOU!", yell = false },
-	{ text = "RAAAR!", yell = false },
+	{ text = "Blood ... will ... be ... mine!!", yell = false },
+	{ text = "Revenge! ... Rise! ... Revive!", yell = false },
+    { text = "World ... to ... devour!", yell = false },
 }
 
 monster.summons = {
-	maxSummons = 2,
-	summons = {
-		{ name = "Elder Bloodjaw", chance = 1000, interval = 1000, count = 2 },
-	},
 }
 
 monster.loot = {
-	{ id = 3025, chance = 3500 }, -- ancient amulet
-	{ id = 3116, chance = 9000 }, -- big bone
-	{ id = 3043, chance = 5000, maxCount = 125 }, -- crystal coins
-    { id = 23375, chance = 7000, maxCount = 179 }, -- supreme health potion
-    { id = 7440, chance = 6000, maxCount = 44 }, -- mastermind potion
-    { id = 36706, chance = 5000, maxCount = 5 }, -- red gem
-    { id = 9058, chance = 7000, maxCount = 3 }, -- gold ingot
     { id = 32622, chance = 7500, maxCount = 1 }, -- giant amethyst
-    { id = 30053, chance = 6000, maxCount = 1 }, -- dragon figurine
     { id = 23373, chance = 7000, maxCount = 211 }, -- ultimate mana potion
     { id = 7443, chance = 6000, maxCount = 42 }, -- bulsseye potion
-    { id = 3041, chance = 6000, maxCount = 5 }, -- blue gem
     { id = 3037, chance = 5000, maxCount = 5 }, -- yellow gem
-    { id = 30060, chance = 4500, maxCount = 1 }, -- giant emerald
-    { id = 7440, chance = 5500, maxCount = 44 }, -- mastermind potion
-    { id = 33778, chance = 8000, maxCount = 1 }, -- raw watermelon
-    { id = 43961, chance = 7000, maxCount = 1 }, -- darklight figurine
-    { id = 23374, chance = 7000, maxCount = 35 }, -- ultimate spirit potion
-    { id = 7439, chance = 7000, maxCount = 45 }, -- berserk potion
-    { id = 3038, chance = 7000, maxCount = 5 }, -- green gem
+    { id = 43950, chance = 6500, maxCount = 1 }, -- advanced promotion scroll
+    { id = 43947, chance = 7500, maxCount = 1 }, -- basic promotion scroll
+    { id = 43963, chance = 8000, maxCount = 1 }, -- figurine of bakragore
+    { id = 43962, chance = 7000, maxCount = 1 }, -- putrefactive figurine
+    { id = 43948, chance = 7000, maxCount = 1 }, -- revised promotion scroll
+    { id = 43946, chance = 7000, maxCount = 1 }, -- abridged promotion scroll
+    { id = 43968, chance = 7000, maxCount = 5 }, -- bakragores amalgamation
     { id = 3036, chance = 2500, maxCount = 5 }, -- violet gem
-    { id = 32623, chance = 4500, maxCount = 1 }, -- giant topaz
-    { id = 43967, chance = 6500, maxCount = 1 }, -- vemiath infused basalt
-    { id = 43503, chance = 6500, maxCount = 1 }, -- essence of vemiath
-    { id = 43898, chance = 300, maxCount = 1 }, -- bag you covet
-    { id = 44048, chance = 1500, maxCount = 1 }, -- spiritual horsehoe
+    { id = 43898, chance = 900, maxCount = 1 }, -- bag you covet
 }
 
 monster.attacks = {

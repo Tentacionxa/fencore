@@ -58,6 +58,14 @@ local portalId, t = 1949,
             portalTime = 60, --minutes
         }
     },
+    ["hellgorak"] = {
+        message = "You now have 10 minutes to exit this room through the teleporter. It will bring you to the next room.",
+        config = {
+            createPos = {x = 33104, y = 31717, z = 11},
+            toPos = {x = 33110, y = 31682, z = 12},
+            portalTime = 30, --minutes
+        }
+    },
 }
 ---------------------------------------------------------------------------------------
 -- Config end

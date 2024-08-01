@@ -1,4 +1,5 @@
 -- MELE
+ExerciseWeaponsTable = {
 [28540] = { skill = SKILL_SWORD },
 [28552] = { skill = SKILL_SWORD },
 [35279] = { skill = SKILL_SWORD },

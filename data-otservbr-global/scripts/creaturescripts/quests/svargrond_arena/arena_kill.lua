@@ -16,10 +16,7 @@ function deathEvent.onDeath(creature, corpse, lastHitKiller, mostDamageKiller)
 	end
 
 	if not table.contains(ARENA[arena].creatures, creature:getName():lower()) then
-		return
-	end
-
-	-- Remove pillar and create teleport
+-- Remove pillar and create teleport
 	local pillarTile = Tile(PITS[pit].pillar)
 	if pillarTile then
 		local pillarItem = pillarTile:getItemById(1841)

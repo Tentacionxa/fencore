@@ -69,7 +69,7 @@ maxPacketsPerSecond = 25
 maxItem = 6000
 maxContainer = 100
 maxPlayersOnlinePerAccount = 2
-maxPlayersOutsidePZPerAccount = 1
+maxPlayersOutsidePZPerAccount = 2
 
 -- Packet Compression
 -- Minimize network bandwith and reduce ping
@@ -260,7 +260,7 @@ autoLoot = true
 autoBank = true
 toggleGoldPouchAllowAnything = true
 toggleGoldPouchQuickLootOnly = true
-toggleServerIsRetroPVP = true
+toggleServerIsRetroPVP = false
 toggleTravelsFree = false
 buyAolCommandFee = 0
 buyBlessCommandFee = 0

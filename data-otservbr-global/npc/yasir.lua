@@ -646,6 +646,17 @@ npcConfig.shop = {
 	{ itemName = "young lich worm", clientId = 31590, sell = 25000 },
 	{ itemName = "zaogun flag", clientId = 10413, sell = 600 },
 	{ itemName = "zaogun shoulderplates", clientId = 10414, sell = 150 },
+	{ itemName = "darklight figurine", clientId = 43961, sell = 3400000 },
+{ itemName = "bakragore's amalgamation", clientId = 43968, sell = 2000000 },
+{ itemName = "figurine of Bakragore", clientId = 43963, sell = 5400000 },
+{ itemName = "putrefactive figurine", clientId = 43962, sell = 3200000 },
+{ itemName = "fiery tear", clientId = 39040, sell = 3200000 },
+{ itemName = "dragon figurine", clientId = 30053, sell = 3200000 },
+{ itemName = "Vemiath's infused basalt", clientId = 43967, sell = 1000000 },
+{ itemName = "unicorn figurine", clientId = 30054, sell = 50000 },
+{ itemName = "Ichgahal's fungal infestation", clientId = 43964, sell = 900000 },
+{ itemName = "amber with a dragonfly", clientId = 32625, sell = 56000 },
+{ itemName = "amber with a bug", clientId = 32624, sell = 41000 },
 }
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

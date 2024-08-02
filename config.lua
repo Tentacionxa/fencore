@@ -175,7 +175,7 @@ boostedBossLootBonus = 250
 boostedBossKillBonus = 5
 
 -- Hazard system
-toogleHazardSystem = false
+toogleHazardSystem = true
 hazardCriticalInterval = 2000
 hazardCriticalChance = 750
 hazardCriticalMultiplier = 25
@@ -423,7 +423,7 @@ showScriptsLogInConsole = false
 -- time to suppress negative conditions after being affected by them (ms)
 minDelayBetweenConditions = 0
 -- configure maximum value of critical imbuement
-criticalChance = 10
+criticalChance = 20
 inventoryGlowOnFiveBless = false
 adventurersBlessingLevel = 50
 skulledDeathLoseStoreItem = false

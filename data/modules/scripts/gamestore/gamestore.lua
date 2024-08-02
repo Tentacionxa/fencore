@@ -251,18 +251,16 @@ GameStore.Categories = {
 				count = 1,
 				description = "<i>Let the powers of ancient gods recharge Your stamina</i>",
 				type = GameStore.OfferTypes.OFFER_TYPE_CHARGES,
-
 			},
 			{
 				icons = { "" },
 				name = "Glass Of Goo",
-				price = 600,
+				price = 400,
 				itemtype = 19371,
-				count = 10,
+				count = 1,
 				description = "<i>Remove all the cooldown for every boss</i>",
-				type = GameStore.OfferTypes.OFFER_TYPE_STACKABLE,
+				type = GameStore.OfferTypes.OFFER_TYPE_CHARGES,
 					state = GameStore.States.STATE_NEW,
-					movable = true,
 			},
 		{
 			icons = { "" },

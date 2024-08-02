@@ -101,7 +101,7 @@ monster.loot = {
     { id = 32623, chance = 4500, maxCount = 1 }, -- giant topaz
     { id = 43967, chance = 6500, maxCount = 1 }, -- vemiath infused basalt
     { id = 43503, chance = 6500, maxCount = 1 }, -- essence of vemiath
-    { id = 43898, chance = 300, maxCount = 1 }, -- bag you covet
+    { id = 43860, chance = 300, maxCount = 1 }, -- bag you covet
     { id = 44048, chance = 1500, maxCount = 1 }, -- spiritual horsehoe
 }
 

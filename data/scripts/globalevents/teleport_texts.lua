@@ -39,6 +39,11 @@ local effects = {
 
 {position = Position(32373, 32232, 7), text = 'Low Level Reward', effect = CONST_ME_GROUNDSHAKER},
 
+{position = Position(32574, 32400, 5), text = 'Cobra Bastion', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32557, 32400, 5), text = 'Bursted Spectre Cathedral', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32571, 32400, 5), text = 'Soul War', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32560, 32400, 5), text = 'Asura Palace', effect = CONST_ME_GROUNDSHAKER},
+
 
 	{position = Position(32580, 32391, 5), text = 'Thais', effect = CONST_ME_GROUNDSHAKER},  
 	{position = Position(32583, 32391, 5), text = 'Venore', effect = CONST_ME_GROUNDSHAKER},  

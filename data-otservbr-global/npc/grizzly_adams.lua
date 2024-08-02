@@ -89,6 +89,7 @@ npcConfig.shop = {
 	{ clientId = 34219, sell = 12000, itemName = "werehyaena trophy" },
 	{ clientId = 43915, sell = 15000, itemName = "weretiger trophy" },
 	{ clientId = 43917, sell = 14000, itemName = "werepanther trophy" },
+	{ clientId = 43916, sell = 15000, itemName = "werecrocodile trophy" },
 	-- Buy offers
 	{ clientId = 9601, buy = 1000, itemName = "demon backpack"},
 }

@@ -135,6 +135,8 @@ npcConfig.shop = {
 	{ itemName = "tower shield", clientId = 3428, sell = 8000 },
 	{ itemName = "vampire shield", clientId = 3434, sell = 15000 },
 	{ itemName = "warrior helmet", clientId = 3369, sell = 5000 },
+	{ itemName = "serpent sword", clientId = 3297, sell = 600 },
+	{ itemName = "fur armor", clientId = 22085, sell = 5000 },
 	
 	--Haroun--
 	{ itemName = "axe ring", clientId = 3092, sell = 100 },
@@ -333,7 +335,7 @@ npcConfig.shop = {
 		{ itemName = "amber", clientId = 32626, sell = 20000 },
 	{ itemName = "amber with a bug", clientId = 32624, sell = 41000 },
 	{ itemName = "amber with a dragonfly", clientId = 32625, sell = 56000 },
-	{ itemName = "ancient coin", clientId = 24390, sell = 350 },
+	{ itemName = "event coin", clientId = 24390, sell = 350 },
 	{ itemName = "bar of gold", clientId = 14112, sell = 10000 },
 	{ itemName = "black pearl", clientId = 3027, sell = 280 },
 	{ itemName = "soul orb", clientId = 5944, sell = 25 },

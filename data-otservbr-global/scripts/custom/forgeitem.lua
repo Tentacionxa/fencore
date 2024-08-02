@@ -245,18 +245,24 @@ __SystemFunctions = {
         local forgeChest = Game.createItem(37561, 1)
         if success then
             itemChoosed:setTier(itemChoosed:getTier() + 1)
+            itemChoosed:moveTo(forgeChest)
+            player:addItemEx(forgeChest)
             player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'Your forge was successful. Your item was upgraded.')
             player:getPosition():sendMagicEffect(182)
         elseif itemChoosed:getTier() >= 1 then
             itemChoosed:setTier(itemChoosed:getTier() - 1)
+            itemChoosed:moveTo(forgeChest)
+            player:addItemEx(forgeChest)
             player:sendTextMessage(MESSAGE_GAME_HIGHLIGHT, 'Your forge failed and your item was downgraded.')
             player:getPosition():sendMagicEffect(10)
         else
+            itemChoosed:moveTo(forgeChest)
+            player:addItemEx(forgeChest)
             player:sendTextMessage(MESSAGE_GAME_HIGHLIGHT, 'Your forge failed.')
             player:getPosition():sendMagicEffect(3)
         end
 
-        token:remove(1)
+ token:remove(1)
         
     end,
 }

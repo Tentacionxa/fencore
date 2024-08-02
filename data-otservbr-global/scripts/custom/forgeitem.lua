@@ -55,14 +55,14 @@ Karin.Forge = {
 
 
 __SystemFunctions = {
-    getTierCostByTier = function (self, classification, tier)
+    getTierCostByTier = function (self, tier)
         local configTier = self.Config.Tier[tier + 1]
 
         if not configTier then
             return
         end
 
-        return configTier[classification]
+        return configTier[tier]
     end,
     forge = function (self, player, target, token)
         local cost = self:getTierCostByTier(target:getTier())

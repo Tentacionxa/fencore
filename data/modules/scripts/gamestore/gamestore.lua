@@ -270,8 +270,8 @@ GameStore.Categories = {
 			itemtype = 943,
 			count = 100,
 			description = "<i>Using this item on any equipment can increase its Tier up to Tier 20 (for class 4-6), up to Tier 10 (for class 1-2), up to Tier 15 (for class 3)</i>",
-			type = GameStore.OfferTypes.OFFER_TYPE_CHARGES,
-				state = GameStore.States.STATE_NEW,
+			type = GameStore.OfferTypes.OFFER_TYPE_STACKABLE,
+			movable = true,
 		},
 	},
 		

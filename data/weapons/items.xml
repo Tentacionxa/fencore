@@ -68866,7 +68866,7 @@
 			<attribute key="skillboost magic level" value="3"/>
 		</attribute>
 	</item>
-	<item id="43883" article="a" name="best wandirod">
+	<item id="43883" article="a" name="grand sanguine coil">
 		<attribute key="primarytype" value="rods"/>
 		<attribute key="weaponType" value="wand"/>
 		<attribute key="shootType" value="energy"/>

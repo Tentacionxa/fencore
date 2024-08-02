@@ -58,12 +58,44 @@ local portalId, t = 1949,
             portalTime = 60, --minutes
         }
     },
+    ["Ushuriel"] = {
+        message = "You now have 10 minutes to exit this room through the teleporter. It will bring you to the next room.",
+        config = {
+            createPos = {x = 33175, y = 31728, z = 11},
+            toPos = {x = 33069, y = 31782, z = 13},
+            portalTime = 10, --minutes
+        }
+    },
+    ["Zugurosh"] = {
+        message = "You now have 10 minutes to exit this room through the teleporter. It will bring you to the next room.",
+        config = {
+            createPos = {x = 33143, y = 31692, z = 11},
+            toPos = {x = 33372, y = 31613, z = 14},
+            portalTime = 10, --minutes
+        }
+    },
+    ["Golgordan"] = {
+        message = "You now have 10 minutes to exit this room through the teleporter. It will bring you to the next room.",
+        config = {
+            createPos = {x = 33232, y = 31722, z = 11},
+            toPos = {x = 33038, y = 31753, z = 15},
+            portalTime = 10, --minutes
+        }
+    },
+    ["Annihilon"] = {
+        message = "You now have 10 minutes to exit this room through the teleporter. It will bring you to the next room.",
+        config = {
+            createPos = {x = 33197, y = 31687, z = 11},
+            toPos = {x = 33199, y = 31686, z = 12},
+            portalTime = 10, --minutes
+        }
+    },
     ["hellgorak"] = {
         message = "You now have 10 minutes to exit this room through the teleporter. It will bring you to the next room.",
         config = {
             createPos = {x = 33104, y = 31717, z = 11},
             toPos = {x = 33110, y = 31682, z = 12},
-            portalTime = 30, --minutes
+            portalTime = 10, --minutes
         }
     },
 }

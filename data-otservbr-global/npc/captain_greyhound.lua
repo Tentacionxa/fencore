@@ -73,9 +73,7 @@ addTravelKeyword("damona reef", 380, Position(31858, 31967, 6))
 addTravelKeyword("hellish basin", 580, Position(31424, 31740, 6))
 addTravelKeyword("lionfield fort", 380, Position(31766, 32078, 6))
 addTravelKeyword("lamawood isles", 180, Position(31935, 31868, 7))
-addTravelKeyword("yalaharx", 185, Position(32816, 31272, 6), function(player)
-	return player:getStorageValue(Storage.SearoutesAroundYalahar.Carlin) ~= 1 and player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) < 5
-end)
+addTravelKeyword("yalahar", 185, Position(32816, 31272, 6))
 
 -- Kick
 keywordHandler:addKeyword({ "kick" }, StdModule.kick, { npcHandler = npcHandler, destination = { Position(32384, 31815, 6), Position(32387, 31815, 6), Position(32390, 31815, 6) } })

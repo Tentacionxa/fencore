@@ -72,7 +72,7 @@ addTravelKeyword("carlin", 110, Position(32387, 31820, 6), function(player)
 		player:setStorageValue(Storage.Postman.Mission01, 2)
 	end
 end)
-addTravelKeyword("yalahar", 200, Position(32804, 31269, 6))
+addTravelKeyword("yalahar", 200, Position(32817, 31271, 6))
 addTravelKeyword("thais", 200, Position(32311, 32211, 6))
 addTravelKeyword("ab'dendriel", 130, Position(32734, 31668, 6))
 addTravelKeyword("edron", 160, Position(33175, 31764, 6))
@@ -89,10 +89,6 @@ addTravelKeyword("liberty bay", 180, Position(32285, 32892, 6))
 addTravelKeyword("fearsome desert", 380, Position(31482, 31925, 6))
 addTravelKeyword("ottawa", 280, Position(31015, 31687, 6))
 addTravelKeyword("dunly refuge", 580, Position(30722, 32115, 6))
-
-addTravelKeyword("yalaharx", 200, Position(32816, 31272, 6), nil, function(player)
-	return player:getStorageValue(Storage.SearoutesAroundYalahar.Thais) ~= 1 and player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) < 5
-end)
 addTravelKeyword("oramond", 150, Position(33479, 31985, 7))
 addTravelKeyword("krailos", 230, Position(33492, 31712, 6))
 

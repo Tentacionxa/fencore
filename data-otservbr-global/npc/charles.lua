@@ -69,9 +69,7 @@ end
 
 addTravelKeyword("edron", 150, Position(33173, 31764, 6))
 addTravelKeyword("venore", 160, Position(32954, 32022, 6))
-addTravelKeyword("yalahar", 260, Position(32816, 31272, 6), function(player)
-	return player:getStorageValue(Storage.SearoutesAroundYalahar.PortHope) ~= 1 and player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) < 5
-end)
+addTravelKeyword("yalahar", 260, Position(32816, 31272, 6))
 addTravelKeyword("ankrahmun", 110, Position(33092, 32883, 6))
 addTravelKeyword("darashia", 180, Position(33289, 32480, 6))
 addTravelKeyword("thais", 160, Position(32310, 32210, 6))
@@ -87,9 +85,7 @@ addTravelKeyword("fearsome desert", 380, Position(31482, 31925, 6))
 addTravelKeyword("ottawa", 280, Position(31015, 31687, 6))
 addTravelKeyword("dunly refuge", 580, Position(30722, 32115, 6))
 addTravelKeyword("lamawood isles", 180, Position(31935, 31868, 7))
-addTravelKeyword("shortcut", 100, Position(32029, 32466, 7), function(player)
-	return player:getStorageValue(Storage.TheSecretLibrary.PinkTel) == 2 and player:getStorageValue(Storage.TheSecretLibrary.Mota) == 12
-end)
+addTravelKeyword("shortcut", 100, Position(32029, 32466, 7))
 
 -- Kick
 keywordHandler:addKeyword({ "kick" }, StdModule.kick, { npcHandler = npcHandler, destination = { Position(32535, 32792, 6), Position(32536, 32778, 6) } })

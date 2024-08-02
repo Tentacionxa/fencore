@@ -56,284 +56,36 @@ npcType.onCloseChannel = function(npc, creature)
 	npcHandler:onCloseChannel(npc, creature)
 end
 
-local function greetCallback(npc, creature)
-	local player = Player(creature)
-	local playerId = player:getId()
-
-	if player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) == -1 then
-		npcHandler:setMessage(MESSAGE_GREET, "Hello! Tell me what's on your mind. Time is money.")
-		player:setStorageValue(Storage.SearoutesAroundYalahar.TownsCounter, 0)
-	else
-		npcHandler:setMessage(MESSAGE_GREET, "Hello! Tell me what's on your mind. Time is money.")
+-- Travel
+local function addTravelKeyword(keyword, cost, destination, action, condition)
+	if condition then
+		keywordHandler:addKeyword({ keyword }, StdModule.say, { npcHandler = npcHandler, text = "I'm sorry but I don't sail there." }, condition)
 	end
-	return true
+
+	local travelKeyword = keywordHandler:addKeyword({ keyword }, StdModule.say, { npcHandler = npcHandler, text = "Do you seek a passage to " .. keyword:titleCase() .. " for |TRAVELCOST|?", cost = cost, discount = "postman" })
+	travelKeyword:addChildKeyword({ "yes" }, StdModule.travel, { npcHandler = npcHandler, premium = false, cost = cost, discount = "postman", destination = destination }, nil, action)
+	travelKeyword:addChildKeyword({ "no" }, StdModule.say, { npcHandler = npcHandler, text = "We would like to serve you some time.", reset = true })
 end
 
-local function creatureSayCallback(npc, creature, type, message)
-	local player = Player(creature)
-	local playerId = player:getId()
-
-	if not npcHandler:checkInteraction(npc, creature) then
-		return false
-	end
-
-	if MsgContains(message, "passage") or MsgContains(message, "sail") then
-		if player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) < 5 then
-			npcHandler:say({
-				"I see no reason to establish ship routes to other cities. There is nothing that would be worth the effort. ...",
-				"But since you won't stop bugging me, let's make a deal: If you can prove that at least five of your so-called 'cities' are not worthless, I might reconsider my position. ...",
-				"Bring me something SPECIAL! The local bar tenders usually know what's interesting about their city.",
-			}, npc, creature)
-			npcHandler:setTopic(playerId, 0)
-		elseif player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) >= 5 then
-			npcHandler:say({
-				"For the sake of profit, we established ship routes to {Ab'Dendriel}, {Darashia}, {Venore}, {Ankrahmun}, {Port Hope}, {Thais}, {Liberty Bay} and {Carlin}.",
-			}, npc, creature)
-			npcHandler:setTopic(playerId, 0)
-		else
-			return false
-		end
-	elseif MsgContains(message, "Ab'Dendriel") then
-		if player:getStorageValue(Storage.SearoutesAroundYalahar.AbDendriel) ~= 1 and player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) < 5 then
-			npcHandler:say({
-				"I've never been there. I doubt the elves there came up with something noteworthy. Or did you find something interesting there?",
-			}, npc, creature)
-			npcHandler:setTopic(playerId, 1)
-		elseif player:getStorageValue(Storage.SearoutesAroundYalahar.AbDendriel) == 1 or player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) >= 5 then
-			npcHandler:say({
-				"Do you want a passage to Ab'Dendriel for 160 gold?", ---missing line
-			}, npc, creature)
-			npcHandler:setTopic(playerId, 11)
-		else
-			return false
-		end
-	elseif MsgContains(message, "Darashia") then
-		if player:getStorageValue(Storage.SearoutesAroundYalahar.Darashia) ~= 1 and player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) < 5 then
-			npcHandler:say({
-				"From all what I have heard, it is an unremarkable pile of huts in the desert. Or did you find something interesting there?",
-			}, npc, creature)
-			npcHandler:setTopic(playerId, 2)
-		elseif player:getStorageValue(Storage.SearoutesAroundYalahar.Darashia) == 1 or player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) >= 5 then
-			npcHandler:say({
-				"Of course it is merely superstition that the darashian sand wasp honey brings back youth and vitality, but as long people pay a decent price, I couldn't care less. Do you want a passage to Darashia for 210 gold?",
-			}, npc, creature)
-			npcHandler:setTopic(playerId, 12)
-		else
-			return false
-		end
-	elseif MsgContains(message, "Venore") then
-		if player:getStorageValue(Storage.SearoutesAroundYalahar.Venore) ~= 1 and player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) < 5 then
-			npcHandler:say({
-				"Another port full of smelly humans, fittingly located in a swamp. Or did you find something interesting there?",
-			}, npc, creature)
-			npcHandler:setTopic(playerId, 3)
-		elseif player:getStorageValue(Storage.SearoutesAroundYalahar.Venore) == 1 or player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) >= 5 then
-			npcHandler:say({ "The swamp spice will turn out very lucrative considering that it helps to make even the most disgusting dish taste good. Do you want a passage to Venore for 185 gold?" }, npc, creature)
-			npcHandler:setTopic(playerId, 13)
-		else
-			return false
-		end
-	elseif MsgContains(message, "Ankrahmun") then
-		if player:getStorageValue(Storage.SearoutesAroundYalahar.Ankrahmun) ~= 1 and player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) < 5 then
-			npcHandler:say({
-				"A city full of mad death worshippers, no thanks. Or did you find something interesting there?",
-			}, npc, creature)
-			npcHandler:setTopic(playerId, 4)
-		elseif player:getStorageValue(Storage.SearoutesAroundYalahar.Ankrahmun) == 1 or player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) >= 5 then
-			npcHandler:say({
-				"The Yalahari seem to be obsessed with conserving their dead, so I guess the embalming fluid will be a great success in Yalahar. Do you want a passage to Ankrahmun for 230 gold?",
-			}, npc, creature)
-			npcHandler:setTopic(playerId, 14)
-		else
-			return false
-		end
-	elseif MsgContains(message, "Port Hope") then
-		if player:getStorageValue(Storage.SearoutesAroundYalahar.PortHope) ~= 1 and player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) < 5 then
-			npcHandler:say({
-				"Another pointless human settlement. Or did you find something interesting there?",
-			}, npc, creature)
-			npcHandler:setTopic(playerId, 5)
-		elseif player:getStorageValue(Storage.SearoutesAroundYalahar.PortHope) == 1 or player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) >= 5 then
-			npcHandler:say({
-				"Ivory is highly prized by the artisans of the Yalahari. Do you want a passage to Port Hope for 260 gold?",
-			}, npc, creature)
-			npcHandler:setTopic(playerId, 15)
-		else
-			return false
-		end
-	elseif MsgContains(message, "Thais") then
-		if player:getStorageValue(Storage.SearoutesAroundYalahar.Thais) ~= 1 and player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) < 5 then
-			npcHandler:say({
-				"Thais must be a hell hole if only half of the stories we hear about it are true. Or did you find something interesting there?",
-			}, npc, creature)
-			npcHandler:setTopic(playerId, 6)
-		elseif player:getStorageValue(Storage.SearoutesAroundYalahar.Thais) == 1 or player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) >= 5 then
-			npcHandler:say({
-				"Astonishing enough the royal satin seems to suit the exquisite taste of the Yalahari. Do you want a passage to Thais for 200 gold?",
-			}, npc, creature)
-			npcHandler:setTopic(playerId, 16)
-		else
-			return false
-		end
-	elseif MsgContains(message, "Liberty Bay") then
-		if player:getStorageValue(Storage.SearoutesAroundYalahar.LibertyBay) ~= 1 and player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) < 5 then
-			npcHandler:say({
-				"Which sane captain would sail his ship to a pirate town? Or did you find something interesting there?",
-			}, npc, creature)
-			npcHandler:setTopic(playerId, 7)
-		elseif player:getStorageValue(Storage.SearoutesAroundYalahar.LibertyBay) == 1 or player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) >= 5 then
-			npcHandler:say({
-				"Do you want a passage to Liberty Bay for 275 gold?", ---missing line
-			}, npc, creature)
-			npcHandler:setTopic(playerId, 17)
-		else
-			return false
-		end
-	elseif MsgContains(message, "Carlin") then
-		if player:getStorageValue(Storage.SearoutesAroundYalahar.Carlin) ~= 1 and player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) < 5 then
-			npcHandler:say({
-				"An unremarkable town compared to the wonders of Yalahar. Or did you find something interesting there?",
-			}, npc, creature)
-			npcHandler:setTopic(playerId, 8)
-		elseif player:getStorageValue(Storage.SearoutesAroundYalahar.Carlin) == 1 or player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) >= 5 then
-			npcHandler:say({
-				"The evergreen flower pots are an amusing item that might find some customers here. Do you want a passage to Carlin for 185 gold?",
-			}, npc, creature)
-			npcHandler:setTopic(playerId, 18)
-		else
-			return false
-		end
-	elseif MsgContains(message, "yes") then
-		if npcHandler:getTopic(playerId) == 1 and player:removeItem(8758, 1) then
-			npcHandler:say("What's that? Bug milk? Hm, perhaps I can find some customers for that! ", npc, creature)
-			player:setStorageValue(Storage.SearoutesAroundYalahar.AbDendriel, 1)
-			player:setStorageValue(Storage.SearoutesAroundYalahar.TownsCounter, player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) + 1)
-			npcHandler:setTopic(playerId, 0)
-		elseif npcHandler:getTopic(playerId) == 2 and player:removeItem(8760, 1) then
-			npcHandler:say("Sand wasp honey? Hm, interesting at least!", npc, creature)
-			player:setStorageValue(Storage.SearoutesAroundYalahar.Darashia, 1)
-			player:setStorageValue(Storage.SearoutesAroundYalahar.TownsCounter, player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) + 1)
-			npcHandler:setTopic(playerId, 0)
-		elseif npcHandler:getTopic(playerId) == 3 and player:removeItem(8759, 1) then
-			npcHandler:say("Some special spice might be of value indeed.", npc, creature)
-			player:setStorageValue(Storage.SearoutesAroundYalahar.Venore, 1)
-			player:setStorageValue(Storage.SearoutesAroundYalahar.TownsCounter, player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) + 1)
-			npcHandler:setTopic(playerId, 0)
-		elseif npcHandler:getTopic(playerId) == 4 and player:removeItem(8761, 1) then
-			npcHandler:say("I can hardly imagine that someone is interested in embalming fluid, but I'll give it a try.", npc, creature)
-			player:setStorageValue(Storage.SearoutesAroundYalahar.Ankrahmun, 1)
-			player:setStorageValue(Storage.SearoutesAroundYalahar.TownsCounter, player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) + 1)
-			npcHandler:setTopic(playerId, 0)
-		elseif npcHandler:getTopic(playerId) == 5 and player:removeItem(3044, 1) then
-			npcHandler:say("Of course! Ivory! Its value is quite obvious.", npc, creature)
-			player:setStorageValue(Storage.SearoutesAroundYalahar.PortHope, 1)
-			player:setStorageValue(Storage.SearoutesAroundYalahar.TownsCounter, player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) + 1)
-			npcHandler:setTopic(playerId, 0)
-		elseif npcHandler:getTopic(playerId) == 6 and player:removeItem(8762, 1) then
-			npcHandler:say("This royal satin is indeed of acceptable quality.", npc, creature)
-			player:setStorageValue(Storage.SearoutesAroundYalahar.Thais, 1)
-			player:setStorageValue(Storage.SearoutesAroundYalahar.TownsCounter, player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) + 1)
-			npcHandler:setTopic(playerId, 0)
-		elseif npcHandler:getTopic(playerId) == 7 and player:removeItem(5552, 1, 13) then
-			npcHandler:say("I doubt that the esteemed Yalahari will indulge into something profane as rum. But who knows, I'll give it a try.", npc, creature)
-			player:setStorageValue(Storage.SearoutesAroundYalahar.LibertyBay, 1)
-			player:setStorageValue(Storage.SearoutesAroundYalahar.TownsCounter, player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) + 1)
-			npcHandler:setTopic(playerId, 0)
-		elseif npcHandler:getTopic(playerId) == 8 and player:removeItem(8763, 1) then
-			npcHandler:say("I doubt that these flowers will stay fresh and healthy forever. But if they do, they could be indeed valuable.", npc, creature)
-			player:setStorageValue(Storage.SearoutesAroundYalahar.Carlin, 1)
-			player:setStorageValue(Storage.SearoutesAroundYalahar.TownsCounter, player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) + 1)
-			npcHandler:setTopic(playerId, 0)
-		elseif npcHandler:getTopic(playerId) == 11 then
-			if player:removeMoneyBank(160) then
-				npcHandler:say("Set the sails!", npc, creature)
-				doTeleportThing(creature, Position(32734, 31668, 6))
-				player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-				npcHandler:setTopic(playerId, 0)
-			else
-				npcHandler:say("You don't have enough money.", npc, creature)
-				npcHandler:setTopic(playerId, 0)
-			end
-		elseif npcHandler:getTopic(playerId) == 12 then
-			if player:removeMoneyBank(210) then
-				npcHandler:say("Set the sails!", npc, creature)
-				doTeleportThing(creature, Position(33289, 32480, 6))
-				player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-				npcHandler:setTopic(playerId, 0)
-			else
-				npcHandler:say("You don't have enough money.", npc, creature)
-				npcHandler:setTopic(playerId, 0)
-			end
-		elseif npcHandler:getTopic(playerId) == 13 then
-			if player:removeMoneyBank(185) then
-				npcHandler:say("Set the sails!", npc, creature)
-				doTeleportThing(creature, Position(32954, 32022, 6))
-				player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-				npcHandler:setTopic(playerId, 0)
-			else
-				npcHandler:say("You don't have enough money.", npc, creature)
-				npcHandler:setTopic(playerId, 0)
-			end
-		elseif npcHandler:getTopic(playerId) == 14 then
-			if player:removeMoneyBank(230) then
-				npcHandler:say("Set the sails!", npc, creature)
-				doTeleportThing(creature, Position(33092, 32883, 6))
-				player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-				npcHandler:setTopic(playerId, 0)
-			else
-				npcHandler:say("You don't have enough money.", npc, creature)
-				npcHandler:setTopic(playerId, 0)
-			end
-		elseif npcHandler:getTopic(playerId) == 15 then
-			if player:removeMoneyBank(260) then
-				npcHandler:say("Set the sails!", npc, creature)
-				doTeleportThing(creature, Position(32527, 32784, 6))
-				player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-				npcHandler:setTopic(playerId, 0)
-			else
-				npcHandler:say("You don't have enough money.", npc, creature)
-				npcHandler:setTopic(playerId, 0)
-			end
-		elseif npcHandler:getTopic(playerId) == 16 then
-			if player:removeMoneyBank(200) then
-				npcHandler:say("Set the sails!", npc, creature)
-				doTeleportThing(creature, Position(32310, 32210, 6))
-				player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-				npcHandler:setTopic(playerId, 0)
-			else
-				npcHandler:say("You don't have enough money.", npc, creature)
-				npcHandler:setTopic(playerId, 0)
-			end
-		elseif npcHandler:getTopic(playerId) == 17 then
-			if player:removeMoneyBank(275) then
-				npcHandler:say("Set the sails!", npc, creature)
-				doTeleportThing(creature, Position(32285, 32892, 6))
-				player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-				npcHandler:setTopic(playerId, 0)
-			else
-				npcHandler:say("You don't have enough money.", npc, creature)
-				npcHandler:setTopic(playerId, 0)
-			end
-		elseif npcHandler:getTopic(playerId) == 18 then
-			if player:removeMoneyBank(185) then
-				npcHandler:say("Set the sails!", npc, creature)
-				doTeleportThing(creature, Position(32387, 31820, 6))
-				player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-				npcHandler:setTopic(playerId, 0)
-			else
-				npcHandler:say("You don't have enough money.", npc, creature)
-				npcHandler:setTopic(playerId, 0)
-			end
-		else
-			npcHandler:say("Don't waste my time.", npc, creature)
-			npcHandler:setTopic(playerId, 0)
-		end
-	elseif MsgContains(message, "no") then
-		npcHandler:say({ "Then no." }, npc, creature)
-		npcHandler:setTopic(playerId, 0)
-	end
-	return true
-end
+addTravelKeyword("carlin", 110, Position(32387, 31820, 6))
+addTravelKeyword("thais", 200, Position(32311, 32211, 6))
+addTravelKeyword("ab'dendriel", 130, Position(32734, 31668, 6))
+addTravelKeyword("edron", 160, Position(33175, 31764, 6))
+addTravelKeyword("venore", 170, Position(32954, 32022, 6))
+addTravelKeyword("port hope", 160, Position(32527, 32784, 6))
+addTravelKeyword("roshamuul", 210, Position(33494, 32567, 7))
+addTravelKeyword("svargrond", 180, Position(32341, 31108, 6))
+addTravelKeyword("damona reef", 380, Position(31858, 31967, 6))
+addTravelKeyword("hellish basin", 580, Position(31424, 31740, 6))
+addTravelKeyword("kinfroain", 280, Position(32557, 31021, 7))
+addTravelKeyword("lionfield fort", 380, Position(31766, 32078, 6))
+addTravelKeyword("lamawood isles", 180, Position(31935, 31868, 7))
+addTravelKeyword("liberty bay", 180, Position(32285, 32892, 6))
+addTravelKeyword("fearsome desert", 380, Position(31482, 31925, 6))
+addTravelKeyword("ottawa", 280, Position(31015, 31687, 6))
+addTravelKeyword("dunly refuge", 580, Position(30722, 32115, 6))
+addTravelKeyword("oramond", 150, Position(33479, 31985, 7))
+addTravelKeyword("krailos", 230, Position(33492, 31712, 6))
 
 -- Kick
 keywordHandler:addKeyword({ "kick" }, StdModule.kick, { npcHandler = npcHandler, destination = { Position(32811, 31267, 6), Position(32811, 31270, 6), Position(32811, 31273, 6) } })
@@ -351,11 +103,10 @@ keywordHandler:addFarewellKeyword({ "asgha thrazi" }, { npcHandler = npcHandler,
 
 npcHandler:setMessage(MESSAGE_FAREWELL, "Good bye.")
 npcHandler:setMessage(MESSAGE_WALKAWAY, "Good bye.")
-
-npcHandler:setCallback(CALLBACK_GREET, greetCallback)
-npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
-
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
 -- npcType registering the npcConfig table
 npcType:register(npcConfig)
+
+
+

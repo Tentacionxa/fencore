@@ -231,7 +231,7 @@ partyShareLootBoosts = true
 partyShareLootBoostsDimishingFactor = 1.5
 
 -- Tibiadrome concoctions
-tibiadromeConcoctionCooldown = 3 * 60 * 60 -- 24 hours
+tibiadromeConcoctionCooldown = 1 * 60 * 60 -- 1 hours
 tibiadromeConcoctionDuration = 60 * 60 -- 1 hour
 tibiadromeConcoctionTickType = "online" -- "online" | "experience"
 
@@ -504,7 +504,7 @@ rateBossHealth = 1.0
 rateBossAttack = 1.0
 rateBossDefense = 1.0
 
-bossDefaultTimeToFightAgain = 20 * 60 * 60 -- 20 hours
+bossDefaultTimeToFightAgain = 14 * 60 * 60 -- 20 hours
 bossDefaultTimeToDefeat = 20 * 60 -- 20 minutes
 
 -- Monsters

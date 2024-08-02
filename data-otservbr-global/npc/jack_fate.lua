@@ -89,9 +89,7 @@ addTravelKeyword("ottawa", 280, Position(31015, 31687, 6))
 addTravelKeyword("dunly refuge", 580, Position(30722, 32115, 6))
 addTravelKeyword("lamawood isles", 180, Position(31935, 31868, 7))
 addTravelKeyword("goroma", 0, Position(32161, 32558, 6), "Ugh. You really want to go back to Goroma? I'll surely have to repair my ship afterwards, so I won't charge. Okay?")
-addTravelKeyword("yalaharx", 275, Position(32816, 31272, 6), nil, function(player)
-	return player:getStorageValue(Storage.SearoutesAroundYalahar.LibertyBay) ~= 1 and player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) < 5
-end)
+addTravelKeyword("yalahar", 275, Position(32816, 31272, 6))
 
 -- Thais
 local travelKeyword = keywordHandler:addKeyword({ "thais" }, StdModule.say, { npcHandler = npcHandler, text = "Do you seek a passage to Thais for |TRAVELCOST|?", cost = 180, discount = "postman" })

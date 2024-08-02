@@ -86,9 +86,7 @@ addTravelKeyword("fearsome desert", 380, Position(31482, 31925, 6))
 addTravelKeyword("ottawa", 280, Position(31015, 31687, 6))
 addTravelKeyword("dunly refuge", 580, Position(30722, 32115, 6))
 addTravelKeyword("lamawood isles", 180, Position(31935, 31868, 7))
-addTravelKeyword("yalaharx", 185, Position(32816, 31272, 6), function(player)
-	return player:getStorageValue(Storage.SearoutesAroundYalahar.Venore) ~= 1 and player:getStorageValue(Storage.SearoutesAroundYalahar.TownsCounter) < 5
-end)
+addTravelKeyword("yalahar", 185, Position(32816, 31272, 6))
 addTravelKeyword("ankrahmun", 150, Position(33092, 32883, 6))
 addTravelKeyword("issavi", 130, Position(33900, 31463, 6))
 

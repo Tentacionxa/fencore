@@ -86,6 +86,7 @@ npcConfig.shop = {
 	{ itemName = "drill bolt", clientId = 16142, buy = 12 },
 	{ itemName = "spectral bolt", clientId = 35902, buy = 70 },
 	{ itemName = "assassin star", clientId = 7368, buy = 100 },
+	{ itemName = "infernal bolt", clientId = 6528, buy = 90 },
 }
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

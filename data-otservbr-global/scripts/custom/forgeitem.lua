@@ -262,7 +262,7 @@ __SystemFunctions = {
             player:getPosition():sendMagicEffect(3)
         end
 
-
+        token:remove(1)
         
     end,
 }

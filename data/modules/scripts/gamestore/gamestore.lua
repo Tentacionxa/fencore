@@ -263,9 +263,8 @@ GameStore.Categories = {
 				type = GameStore.OfferTypes.OFFER_TYPE_CHARGES,
 					state = GameStore.States.STATE_NEW,
 			},
-		},
 		{
-			icons = { "Holy_Soil.png" },
+			icons = { "" },
 			name = "Holy Soil",
 			price = 600,
 			itemtype = 943,

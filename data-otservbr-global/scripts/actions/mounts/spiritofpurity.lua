@@ -3,8 +3,8 @@ SpiritualId = 44048
 local Spiritual = Action()
 
 function Spiritual.onUse(player, item, fromPosition, target, toPosition, isHotkey)
-	player:removeItem(44048, 1)
-	player:addMount(1682)
+	player:addMount(146)
+	item:remove(1)
 	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You received a Spirit of Purity mount.")
 	return true
 end

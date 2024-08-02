@@ -68,7 +68,7 @@ replaceKickOnLogin = true
 maxPacketsPerSecond = 25
 maxItem = 6000
 maxContainer = 100
-maxPlayersOnlinePerAccount = 1
+maxPlayersOnlinePerAccount = 2
 maxPlayersOutsidePZPerAccount = 1
 
 -- Packet Compression

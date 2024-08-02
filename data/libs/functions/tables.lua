@@ -14,6 +14,7 @@ table.find = function(table, value)
 end
 
 table.contains = function(array, value)
+	if array == nil then return false end
 	for _, targetColumn in pairs(array) do
 		if targetColumn == value then
 			return true

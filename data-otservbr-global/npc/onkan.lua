@@ -118,7 +118,6 @@ npcConfig.shop = {
 	{ itemName = "moon mirror", clientId = 25975, buy = 450000 },
 	{ itemName = "shockwave amulet", clientId = 9304, buy = 4000 },
 	{ itemName = "might ring", clientId = 3048, buy = 5000 },
-	{ itemName = "orc's boss reminder", clientId = 19155, buy = 500000 },
 	{ itemName = "enchanted theurgic amulet", clientId = 30403, buy = 2000000 },
 	{ itemName = "stone skin amulet", clientId = 3081, buy = 5000 },
 }

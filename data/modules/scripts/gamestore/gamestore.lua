@@ -251,7 +251,7 @@ GameStore.Categories = {
 				count = 1,
 				description = "<i>Let the powers of ancient gods recharge Your stamina</i>",
 				type = GameStore.OfferTypes.OFFER_TYPE_CHARGES,
-					state = GameStore.States.STATE_NEW,
+
 			},
 			{
 				icons = { "" },
@@ -260,8 +260,9 @@ GameStore.Categories = {
 				itemtype = 19371,
 				count = 10,
 				description = "<i>Remove all the cooldown for every boss</i>",
-				type = GameStore.OfferTypes.OFFER_TYPE_CHARGES,
+				type = GameStore.OfferTypes.OFFER_TYPE_STACKABLE,
 					state = GameStore.States.STATE_NEW,
+					movable = true,
 			},
 		{
 			icons = { "" },
@@ -271,6 +272,7 @@ GameStore.Categories = {
 			count = 100,
 			description = "<i>Using this item on any equipment can increase its Tier up to Tier 20 (for class 4-6), up to Tier 10 (for class 1-2), up to Tier 15 (for class 3)</i>",
 			type = GameStore.OfferTypes.OFFER_TYPE_STACKABLE,
+			state = GameStore.States.STATE_NEW,
 			movable = true,
 		},
 	},

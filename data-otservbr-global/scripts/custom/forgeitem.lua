@@ -55,17 +55,18 @@ Karin.Forge = {
 
 
 __SystemFunctions = {
-    getTierCostByTier = function (self, tier)
-        local configTier = self.Config.Tier[tier + 1]
+    getTierCostByClassificationAndTier = function (self, classification)
+        local configTier = configTier[classification]
 
-        if not configTier then
+        if not configTier[classification]
+    end, then
             return
         end
 
-        return configTier[tier]
+        return configTier[classification]
     end,
     forge = function (self, player, target, token)
-        local cost = self:getTierCostByTier(target:getTier())
+        local cost = self:getTierCostByClassificationAndTier(target:getClassification())
         if not cost then
             player:sendTextMessage(MESSAGE_GAME_HIGHLIGHT, 'You can\'t forge this item.')
             return
@@ -102,7 +103,7 @@ __SystemFunctions = {
             player:getPosition():sendMagicEffect(3)
         end
 
-        
+        token:remove(1)
         
     end,
 }

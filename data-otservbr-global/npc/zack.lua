@@ -751,6 +751,8 @@ npcConfig.shop = {
 	{ itemName = "blood preservation", clientId = 11449, sell = 320 },
 	{ itemName = "blood tincture in a vial", clientId = 18928, sell = 360 },
 	{ itemName = "blooded worm", clientId = 43857, sell = 4700 },
+	{ itemName = "golden sun coin", clientId = 43734, sell = 11000 },
+	{ itemName = "weretiger tooth", clientId = 43730, sell = 490 },
 	{ itemName = "bloody dwarven beard", clientId = 17827, sell = 110 },
 	{ itemName = "bloody pincers", clientId = 9633, sell = 100 },
 	{ itemName = "bloody tears", clientId = 32594, sell = 70000 },

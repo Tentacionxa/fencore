@@ -478,7 +478,7 @@ npcConfig.shop = {
 	{ itemName = "figurine of spite", clientId = 33952, sell = 3000000 },
 	{ itemName = "fir cone", clientId = 19111, sell = 25 },
 	{ itemName = "fire axe", clientId = 3320, sell = 8000 },
-	{ itemName = "fire mushroom", clientId = 3731, sell = 200 },
+	{ itemName = "fire mushroom", clientId = 3731, sell = 10 },
 	{ itemName = "fire sword", clientId = 3280, sell = 4000 },
 	{ itemName = "first verse of the hymn", clientId = 6087, sell = 100 },
 	{ itemName = "fish fin", clientId = 5895, sell = 150 },

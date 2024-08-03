@@ -72,7 +72,7 @@ npcConfig.shop = {
 	{ itemName = "dark mushroom", clientId = 3728, sell = 100 },
 	{ itemName = "dung ball", clientId = 14225, sell = 130 },
 	{ itemName = "fern", clientId = 3737, buy = 24 },
-	{ itemName = "fire mushroom", clientId = 3731, sell = 200 },
+	{ itemName = "fire mushroom", clientId = 3731, sell = 10 },
 	{ itemName = "goat grass", clientId = 3674, sell = 50 },
 	{ itemName = "grave flower", clientId = 3661, sell = 25 },
 	{ itemName = "green mushroom", clientId = 3732, sell = 100 },

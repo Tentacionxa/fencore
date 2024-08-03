@@ -1507,6 +1507,8 @@ npcConfig.shop = {
 	{ itemName = "cobra rod", clientId = 30400, sell = 400000 },
 	{ itemName = "cobra wand", clientId = 30399, sell = 400000 },
 	{ itemName = "cobra sword", clientId = 30398, sell = 400000 },
+	
+	{ itemName = "all loot in pouch", clientId = ITEM_GOLD_POUCH, sell = 1 },
 }
 
 -- On buy npc shop message

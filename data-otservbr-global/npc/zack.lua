@@ -1495,7 +1495,6 @@ npcConfig.shop = {
 	{ itemName = "ornate chestplate", clientId = 13993, sell = 1200000 },
 	{ itemName = "ornate shield", clientId = 14000, sell = 1000000 },
 	{ itemName = "ornate legs", clientId = 13999, sell = 900000 },
-	{ itemName = "ornate crossbow", clientId = 14247, sell = 1000000 },
 	{ itemName = "ornate mace", clientId = 14001, sell = 1000000 },
 
 	--cobra set
@@ -1507,7 +1506,7 @@ npcConfig.shop = {
 	{ itemName = "cobra rod", clientId = 30400, sell = 400000 },
 	{ itemName = "cobra wand", clientId = 30399, sell = 400000 },
 	{ itemName = "cobra sword", clientId = 30398, sell = 400000 },
-	
+
 	{ itemName = "all loot in pouch", clientId = ITEM_GOLD_POUCH, sell = 1 },
 }
 

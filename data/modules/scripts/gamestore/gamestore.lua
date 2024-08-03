@@ -3200,6 +3200,15 @@ GameStore.Categories = {
 				type = GameStore.OfferTypes.OFFER_TYPE_OUTFIT,
 			},
 			{
+				icons = { "Outfit_Glooth_Engineer_Male_Addon_3.png", "Outfit_Glooth_Engineer_Female_Addon_3.png" },
+				name = "Full Glooth Engineer Outfit",
+				price = 450,
+				sexId = { female = 618, male = 610 },
+				addon = 3,
+				description = "{character}\n{info} colours can be changed using the Outfit dialog\n{info} includes basic outfit and 2 addons which can be selected individually\n\n<i>A Glooth Enginer has mastered the art of engineering. No matter how far away his prey may be, a glooth enginer will always hit with extraordinary mechanical precision.</i>",
+				type = GameStore.OfferTypes.OFFER_TYPE_OUTFIT,
+			},
+			{
 				icons = { "Outfit_Void_Master_Male_Addon_3.png", "Outfit_Void_Master_Female_Addon_3.png" },
 				name = "Full Void Master Outfit",
 				price = 450,

@@ -286,7 +286,7 @@ GameStore.Categories = {
 		{
 			icons = { "Premium_Time_30.png" },
 			name = string.format("7 Days of %s", premiumOfferName),
-			price = 150,
+			price = 200,
 			id = 3007,
 			validUntil = 7,
 			description = premiumDescription,
@@ -295,7 +295,7 @@ GameStore.Categories = {
 			{
 				icons = { "Premium_Time_30.png" },
 				name = string.format("30 Days of %s", premiumOfferName),
-				price = 600,
+				price = 800,
 				id = 3030,
 				validUntil = 30,
 				description = premiumDescription,
@@ -304,7 +304,7 @@ GameStore.Categories = {
 			{
 				icons = { "Premium_Time_90.png" },
 				name = string.format("90 Days of %s", premiumOfferName),
-				price = 1800,
+				price = 2400,
 				id = 3090,
 				validUntil = 90,
 				description = premiumDescription,
@@ -313,7 +313,7 @@ GameStore.Categories = {
 			{
 				icons = { "Premium_Time_180.png" },
 				name = string.format("180 Days of %s", premiumOfferName),
-				price = 3600,
+				price = 4800,
 				id = 3180,
 				validUntil = 180,
 				description = premiumDescription,
@@ -322,7 +322,7 @@ GameStore.Categories = {
 			{
 				icons = { "Premium_Time_360.png" },
 				name = string.format("360 Days of %s", premiumOfferName),
-				price = 7200,
+				price = 9600,
 				id = 3360,
 				validUntil = 360,
 				description = premiumDescription,

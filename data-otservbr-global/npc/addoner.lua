@@ -89,8 +89,10 @@ addoninfo = {
 ['second shaman addon'] = {cost = 0, items = {{5014,1}, {3002,5}}, outfit_female = 158, outfit_male = 154, addon = 2, storageID = 51037},
 ['first norseman addon'] = {cost = 0, items = {{7290,5}}, outfit_female = 252, outfit_male = 251, addon = 1, storageID = 51038},
 ['second norseman addon'] = {cost = 0, items = {{7290,10}}, outfit_female = 252, outfit_male = 251, addon = 2, storageID = 51039}
+['first nightmare addon'] = {cost = 0, items = {{6499,500}, {768,1}}, outfit_female = 269, outfit_male = 268, addon = 1, storageID = 56038},
+['second nightmare addon'] = {cost = 0, items = {{6499,1000}, {770,1}}, outfit_female = 269, outfit_male = 268, addon = 2, storageID = 56039}
 }
-local o = {'citizen', 'hunter', 'knight', 'mage', 'nobleman', 'summoner', 'warrior', 'barbarian', 'druid', 'wizard', 'oriental', 'pirate', 'assassin', 'beggar', 'shaman', 'norseman'}
+local o = {'citizen', 'hunter', 'knight', 'mage', 'nobleman', 'summoner', 'warrior', 'barbarian', 'druid', 'wizard', 'oriental', 'pirate', 'assassin', 'beggar', 'shaman', 'norseman', 'nightmare'}
 local rtnt = {}
 local function creatureSayCallback(npc, creature, type, message)
 local talkUser = creature

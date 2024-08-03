@@ -6871,11 +6871,11 @@ GameStore.Categories = {
 			},
 				{
 				icons = { "Gold_Pouch.png" },
-				name = "Gold Pouch",
-				price = 300,
+				name = "Loot Pouch",
+				price = 700,
 				itemtype = 23721,
 				count = 1,
-				description = "<i>Carries as many gold, platinum or crystal coins as your capacity allows, however, no other items.</i>\n\n{character}\n{storeinbox}\n{once}\n{useicon} use it to open it\n{info} always placed on the first position of your Store inbox",
+				description = "<i>Has 5000+ slots for loot items. Best for long time hunts! </i>\n\n{character}\n{storeinbox}\n{once}\n{useicon} use it to open it\n{info} always placed on the first position of your Store inbox",
 				type = GameStore.OfferTypes.OFFER_TYPE_CHARGES,
 			},
 			

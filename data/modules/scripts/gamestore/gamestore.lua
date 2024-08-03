@@ -226,7 +226,7 @@ GameStore.Categories = {
 			{
 				icons = { "Loot_ring.png" },
 				name = "Loot Ring",
-				price = 500,
+				price = 1000,
 				itemtype = 18935,
 				count = 1,
 				description = "<i>You see a Loot ring<p>It increases your capacity by 65%.</p></i>",

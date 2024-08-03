@@ -27,7 +27,7 @@ monster.changeTarget = {
 
 monster.bosstiary = {
 	bossRaceId = 2366,
-	bossRace = RARITY_ARCHFOE,
+	bossRace = RARITY_NEMESIS,
         storageCooldown = Storage.Quest.U12_60.APiratesTail.ChagorzTimer
 }
 

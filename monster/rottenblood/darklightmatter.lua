@@ -15,21 +15,22 @@ monster.outfit = {
 
 monster.raceId = 2380
 monster.Bestiary = {
-	class = "Elemental",
-	race = BESTY_RACE_ELEMENTAL,
+	class = "Construct",
+	race = BESTY_RACE_CONSTRUCT,
 	toKill = 5000,
-	FirstUnlock = 100,
-	SecondUnlock = 1000,
+	FirstUnlock = 25,
+	SecondUnlock = 3394,
 	CharmsPoints = 100,
 	Stars = 5,
 	Occurrence = 0,
-	Locations = "Darklight Core",
-}
+	Locations = "Sanctuary"
+	}
+
 
 monster.health = 30150
 monster.maxHealth = 30150
-monster.race = "fire"
-monster.corpse = 27586
+monster.race = "undead"
+monster.corpse = 43571
 monster.speed = 230
 monster.manaCost = 0
 
@@ -79,17 +80,27 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ id = 676, chance = 14620, maxCount = 2 }, -- small enchanted ruby
+	{ id = 43779, chance = 54560, maxCount = 1 }, -- unstable darklight matter.
+    { id = 43853, chance = 54560, maxCount = 1 }, -- unstable darklight matter.
+    { id = 3043, chance = 4000, maxCount = 50 }, -- darklight core
+	{name = "ultimate health potion", chance = 32220, maxCount = 6},
+	{name = "collar of red plasma", chance = 54560},
+	{name = "red gem", chance = 74560},
+	{name = "green gem", chance = 21920},
+	{id = 21165, chance = 1500}, -- rubber cap
+	{id = 7451, chance = 5500}, --shadow spectre
 }
 
 monster.attacks = {
-	{ name = "melee", interval = 2000, chance = 100, minDamage = -500, maxDamage = -900 },
-	{ name = "combat", interval = 1000, chance = 15, type = COMBAT_FIREDAMAGE, minDamage = -150, maxDamage = -400, range = 7, length = 3, spread = 3, effect = CONST_ME_HITBYFIRE, target = false },
-	{ name = "combat", interval = 1000, chance = 12, type = COMBAT_FIREDAMAGE, minDamage = 0, maxDamage = -150, range = 7, length = 6, spread = 3, effect = CONST_ME_HITBYFIRE, target = false },
+	{name ="melee", interval = 2000, chance = 100, minDamage = -500, maxDamage = -800},
+	{name ="combat", interval = 4000, chance = 15, type = COMBAT_ENERGYDAMAGE, minDamage = -800, maxDamage = -2300, range = 7, shootEffect = CONST_ANI_ENERGY, effect = CONST_ME_ENERGYHIT, target = true},
+	{name ="combat", interval = 3000, chance = 20, type = COMBAT_ENERGYDAMAGE, minDamage = -900, maxDamage = -2250, radius = 4, effect = CONST_ME_ENERGYHIT, target = false},
+	{name ="combat", interval = 2000, chance = 14, type = COMBAT_HOLYDAMAGE, minDamage = -600, maxDamage = -2600, range = 7, shootEffect = CONST_ANI_SPECTRALBOLT, effect = CONST_ME_HOLYDAMAGE, target = true},
+	{name ="combat", interval = 2000, chance = 24, type = COMBAT_HOLYDAMAGE, minDamage = -600, maxDamage = -2500, range = 7, radius = 3, shootEffect = CONST_ANI_SMALLHOLY, effect = CONST_ME_GROUNDSHAKER, target = true}
 }
 
 monster.defenses = {
-	defense = 33,
+	defense = 100,
 	armor = 98,
 	mitigation = 3.28,
 }

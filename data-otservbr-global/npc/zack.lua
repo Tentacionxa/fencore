@@ -95,6 +95,21 @@ npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
 npcConfig.shop = {
 
+	--EQ
+	{ itemName = "frozen plate", clientId = 8059, sell = 600000 },
+	{ itemName = "molten plate", clientId = 8058, sell = 1000000 },
+	{ itemName = "spellbook of dark mysteries", clientId = 8090, sell = 1000000 },
+	{ itemName = "golden boots", clientId = 3555, sell = 1000000 },
+	{ itemName = "spellscroll of prophecies", clientId = 8076, sell = 300000 },	
+	{ itemName = "fireborn giant armor", clientId = 8053, sell = 500000 },
+	{ itemName = "demonbone", clientId = 7431, sell = 200000 },
+	{ itemName = "thunder hammer", clientId = 3309, sell = 1000000 },
+	{ itemName = "twin axe", clientId = 3335, sell = 1000000 },
+	{ itemName = "the stomper", clientId = 8101, sell = 500000 },
+	{ itemName = "obsidian truncheon", clientId = 8100, sell = 300000 },
+	{ itemName = "havoc blade", clientId = 7405, sell = 1000000 },
+
+
 
 	--Alaistar-
 	{ itemName = "cowbell", clientId = 21204, sell = 210 },

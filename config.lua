@@ -286,7 +286,7 @@ allowReload = true
 
 -- Stamina in Trainers
 staminaTrainer = true
-staminaTrainerDelay = 3
+staminaTrainerDelay = 2
 staminaTrainerGain = 1
 -- Stamina in PZ
 staminaPz = true
@@ -294,7 +294,7 @@ staminaOrangeDelay = 1
 staminaGreenDelay = 2
 staminaPzGain = 2
 -- Max players allowed on a dummy.
-maxAllowedOnADummy = 1
+maxAllowedOnADummy = 2
 
 -- Save interval per time
 -- NOTE: toggleSaveInterval: true = enable the save interval, false = disable the save interval

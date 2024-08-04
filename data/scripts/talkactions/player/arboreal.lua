@@ -1,4 +1,4 @@
-local arborealRepair = TalkAction("!alicorn")
+local arborealRepair = TalkAction("!arboreal")
 local config = {
 	wormSoftId = 39188,
 	newSoftId = 39186,

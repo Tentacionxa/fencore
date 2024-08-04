@@ -1492,10 +1492,10 @@ npcConfig.shop = {
 	{ itemName = "lion wand", clientId = 34152, sell = 600000 },
 
 	--ornate set
-	{ itemName = "ornate chestplate", clientId = 13993, sell = 1200000 },
-	{ itemName = "ornate shield", clientId = 14000, sell = 1000000 },
-	{ itemName = "ornate legs", clientId = 13999, sell = 900000 },
-	{ itemName = "ornate mace", clientId = 14001, sell = 1000000 },
+	{ itemName = "ornate chestplate", clientId = 13993, sell = 60000 },
+	{ itemName = "ornate shield", clientId = 14000, sell = 42000 },
+	{ itemName = "ornate legs", clientId = 13999, sell = 40000 },
+	{ itemName = "ornate mace", clientId = 14001, sell = 42000 },
 
 	--cobra set
 	{ itemName = "cobra axe", clientId = 30396, sell = 700000 },

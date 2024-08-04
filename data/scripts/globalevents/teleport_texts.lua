@@ -45,6 +45,24 @@ local effects = {
 {position = Position(32560, 32400, 5), text = 'Asura Palace', effect = CONST_ME_GROUNDSHAKER},
 {position = Position(32567, 32407, 5), text = 'Secret Library', effect = CONST_ME_GROUNDSHAKER},
 
+{position = Position(33447, 32488, 9), text = 'Blessing', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(33453, 32488, 10), text = 'Blessing', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(33454, 32492, 11), text = 'Blessing', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(33457, 32492, 11), text = 'Blessing', effect = CONST_ME_GROUNDSHAKER},
+
+{position = Position(33450, 32481, 11), text = '25%', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(33451, 32481, 11), text = 'More Skill', effect = CONST_ME_GROUNDSHAKER},
+
+{position = Position(33454, 32481, 11), text = '25%', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(33455, 32481, 11), text = 'More Skill', effect = CONST_ME_GROUNDSHAKER},
+
+{position = Position(33452, 32484, 11), text = 'Stamina', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(33453, 32484, 11), text = 'Recharge Zone', effect = CONST_ME_GROUNDSHAKER},
+
+{position = Position(33455, 32482, 9), text = 'RL Hunt', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(33461, 32488, 9), text = 'Town', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(33455, 32494, 9), text = 'Custom Hunt', effect = CONST_ME_GROUNDSHAKER},
+
 
 
 	{position = Position(32580, 32391, 5), text = 'Thais', effect = CONST_ME_GROUNDSHAKER},  

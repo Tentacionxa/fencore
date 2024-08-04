@@ -111,7 +111,7 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "primal bag", chance = 1200 },
+	{ name = "primal bag", chance = 300 },
 }
 
 monster.attacks = {

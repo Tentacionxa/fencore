@@ -7,8 +7,7 @@ function portalReward.onStepIn(creature, item, position, fromPosition)
 	if player:getStorageValue(Storage.Quest.U12_40.SoulWar.GoshnarMegalomaniaKilled) < 1 then
 		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Only warriors who defeated Goshnar's Megalomania can access this area.")
 		player:teleportTo(fromPosition, true)
-		return false
-	end
+	else
 
 	player:teleportTo(Position(33621, 31411, 10))
 	player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)

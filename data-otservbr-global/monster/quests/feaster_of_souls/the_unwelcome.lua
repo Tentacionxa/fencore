@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("The Unwelcome")
 local monster = {}
 
 monster.description = "The Unwelcome"
-monster.experience = 30000
+monster.experience = 80000
 monster.outfit = {
 	lookType = 1277,
 	lookHead = 0,
@@ -111,20 +111,20 @@ monster.defenses = {
 	armor = 10,
 	--	mitigation = ???,
 	{ name = "speed", interval = 10000, chance = 40, speedChange = 510, effect = CONST_ME_MAGIC_GREEN, target = false, duration = 20000 },
-	{ name = "combat", interval = 5000, chance = 60, type = COMBAT_HEALING, minDamage = 1000, maxDamage = 2500, effect = CONST_ME_MAGIC_BLUE, target = false },
+	{ name = "combat", interval = 5000, chance = 60, type = COMBAT_HEALING, minDamage = 400, maxDamage = 1000, effect = CONST_ME_MAGIC_BLUE, target = false },
 }
 
 monster.elements = {
-	{ type = COMBAT_PHYSICALDAMAGE, percent = 90 },
-	{ type = COMBAT_ENERGYDAMAGE, percent = 90 },
-	{ type = COMBAT_EARTHDAMAGE, percent = 90 },
-	{ type = COMBAT_FIREDAMAGE, percent = 90 },
-	{ type = COMBAT_LIFEDRAIN, percent = 90 },
-	{ type = COMBAT_MANADRAIN, percent = 90 },
-	{ type = COMBAT_DROWNDAMAGE, percent = 90 },
-	{ type = COMBAT_ICEDAMAGE, percent = 90 },
-	{ type = COMBAT_HOLYDAMAGE, percent = 90 },
-	{ type = COMBAT_DEATHDAMAGE, percent = 90 },
+	{ type = COMBAT_PHYSICALDAMAGE, percent = 20 },
+	{ type = COMBAT_ENERGYDAMAGE, percent = 20 },
+	{ type = COMBAT_EARTHDAMAGE, percent = 20 },
+	{ type = COMBAT_FIREDAMAGE, percent = 20 },
+	{ type = COMBAT_LIFEDRAIN, percent = 20 },
+	{ type = COMBAT_MANADRAIN, percent = 20 },
+	{ type = COMBAT_DROWNDAMAGE, percent = 20 },
+	{ type = COMBAT_ICEDAMAGE, percent = 20 },
+	{ type = COMBAT_HOLYDAMAGE, percent = 20 },
+	{ type = COMBAT_DEATHDAMAGE, percent = 20 },
 }
 
 monster.immunities = {

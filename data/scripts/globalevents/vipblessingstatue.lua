@@ -50,5 +50,5 @@ function blessItem.onUse(player, item, fromPosition, target, toPosition, isHotke
     return true
 end
 
-blessItem:uid(45200,45201)
+blessItem:uid(45200,45201,45202,45203,45204,45205)
 blessItem:register()

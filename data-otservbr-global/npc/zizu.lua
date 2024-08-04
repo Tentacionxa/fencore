@@ -1,4 +1,4 @@
-local internalNpcName = "Zack"
+local internalNpcName = "Zizu"
 local npcType = Game.createNpcType(internalNpcName)
 local npcConfig = {}
 
@@ -11,12 +11,12 @@ npcConfig.walkInterval = 2000
 npcConfig.walkRadius = 3
 
 npcConfig.outfit = {
-	lookType = 131,
-	lookHead = 78,
-	lookBody = 0,
-	lookLegs = 114,
-	lookFeet = 68,
-	lookAddons = 3
+	lookType = 1646,
+	lookHead = 19,
+	lookBody = 59,
+	lookLegs = 105,
+	lookFeet = 94,
+	lookAddons = 2,
 }
 
 npcConfig.flags = {
@@ -1530,49 +1530,48 @@ npcConfig.shop = {
 
 
 		--Nemesis boss loot
-	{ itemName = "dark lord’s cape", clientId = 10315, sell = 1000000 },
-	{ itemName = "oceanborn leviathan armor", clientId = 10315, sell = 1000000 },
-	{ itemName = "ravenwing", clientId = 10315, sell = 500000 },
+		{ itemName = "dark lord’s cape", clientId = 10315, sell = 1000000 },
+		{ itemName = "oceanborn leviathan armor", clientId = 10315, sell = 1000000 },
+		{ itemName = "ravenwing", clientId = 10315, sell = 500000 },
+		
 	
-
-	--primal bag items
-	{ itemName = "alicorn headguard", clientId = 39149, sell = 2000000 },
-	{ itemName = "alicorn quiver", clientId = 39150, sell = 2500000 },
-	{ itemName = "charged alicorn ring", clientId = 39180, sell = 1000000 },
-	{ itemName = "alicorn ring", clientId = 39182, sell = 1000000 },
-	{ itemName = "arboreal crown", clientId = 39153, sell = 1000000 },
-	{ itemName = "charged arboreal ring", clientId = 39186, sell = 1000000 },
-	{ itemName = "arboreal ring", clientId = 39188, sell = 1000000 },
-	{ itemName = "arboreal tome", clientId = 39154, sell = 1500000 },
-	{ itemName = "arcanomancer folio", clientId = 39152, sell = 1500000 },
-	{ itemName = "arcanomancer regalia", clientId = 39151, sell = 2000000 },
-	{ itemName = "charged arcanomancer sigil", clientId = 39183, sell = 1000000 },
-	{ itemName = "arcanomancer sigil", clientId = 39185, sell = 1500000 },
-	{ itemName = "spiritthorn armor", clientId = 39147, sell = 1500000 },
-	{ itemName = "spiritthorn helmet", clientId = 39148, sell = 2000000 },
-	{ itemName = "charged spiritthorn ring", clientId = 39179, sell = 1000000 },
-	{ itemName = "spiritthorn ring", clientId = 39179, sell = 1000000 },
-
-	--soul bag items
-	{ itemName = "soulbiter", clientId = 34084, sell = 3500000 },
-	{ itemName = "souleater", clientId = 34085, sell = 3500000 },
-	{ itemName = "soulcutter", clientId = 34082, sell = 3500000 },
-	{ itemName = "soulshredder", clientId = 34083, sell = 3500000 },
-	{ itemName = "soulcrusher", clientId = 34086, sell = 3500000 },
-	{ itemName = "soulmaimer", clientId = 34087, sell = 3500000 },
-	{ itemName = "soulbastion", clientId = 34099, sell = 3500000 },
-	{ itemName = "soulbleeder", clientId = 34088, sell = 3500000 },
-	{ itemName = "soulpiercer", clientId = 34089, sell = 3500000 },
-	{ itemName = "soultainter", clientId = 34090, sell = 3500000 },
-	{ itemName = "soulhexer", clientId = 34091, sell = 3500000 },
-	{ itemName = "soulshell", clientId = 34094, sell = 4500000 },
-	{ itemName = "soulmantle", clientId = 34095, sell = 3500000 },
-	{ itemName = "soulshroud", clientId = 34096, sell = 3500000 },
-	{ itemName = "soulshanks", clientId = 34092, sell = 3000000 },
-	{ itemName = "soulstrider", clientId = 34093, sell = 2500000 },
-	{ itemName = "pair of soulwalkers", clientId = 34097, sell = 3600000 },
-	{ itemName = "pair of soulstalkers", clientId = 34098, sell = 3600000 },
-
+		--primal bag items
+		{ itemName = "alicorn headguard", clientId = 39149, sell = 2000000 },
+		{ itemName = "alicorn quiver", clientId = 39150, sell = 2500000 },
+		{ itemName = "charged alicorn ring", clientId = 39180, sell = 1000000 },
+		{ itemName = "alicorn ring", clientId = 39182, sell = 1000000 },
+		{ itemName = "arboreal crown", clientId = 39153, sell = 1000000 },
+		{ itemName = "charged arboreal ring", clientId = 39186, sell = 1000000 },
+		{ itemName = "arboreal ring", clientId = 39188, sell = 1000000 },
+		{ itemName = "arboreal tome", clientId = 39154, sell = 1500000 },
+		{ itemName = "arcanomancer folio", clientId = 39152, sell = 1500000 },
+		{ itemName = "arcanomancer regalia", clientId = 39151, sell = 2000000 },
+		{ itemName = "charged arcanomancer sigil", clientId = 39183, sell = 1000000 },
+		{ itemName = "arcanomancer sigil", clientId = 39185, sell = 1500000 },
+		{ itemName = "spiritthorn armor", clientId = 39147, sell = 1500000 },
+		{ itemName = "spiritthorn helmet", clientId = 39148, sell = 2000000 },
+		{ itemName = "charged spiritthorn ring", clientId = 39179, sell = 1000000 },
+		{ itemName = "spiritthorn ring", clientId = 39179, sell = 1000000 },
+	
+		--soul bag items
+		{ itemName = "soulbiter", clientId = 34084, sell = 3500000 },
+		{ itemName = "souleater", clientId = 34085, sell = 3500000 },
+		{ itemName = "soulcutter", clientId = 34082, sell = 3500000 },
+		{ itemName = "soulshredder", clientId = 34083, sell = 3500000 },
+		{ itemName = "soulcrusher", clientId = 34086, sell = 3500000 },
+		{ itemName = "soulmaimer", clientId = 34087, sell = 3500000 },
+		{ itemName = "soulbastion", clientId = 34099, sell = 3500000 },
+		{ itemName = "soulbleeder", clientId = 34088, sell = 3500000 },
+		{ itemName = "soulpiercer", clientId = 34089, sell = 3500000 },
+		{ itemName = "soultainter", clientId = 34090, sell = 3500000 },
+		{ itemName = "soulhexer", clientId = 34091, sell = 3500000 },
+		{ itemName = "soulshell", clientId = 34094, sell = 4500000 },
+		{ itemName = "soulmantle", clientId = 34095, sell = 3500000 },
+		{ itemName = "soulshroud", clientId = 34096, sell = 3500000 },
+		{ itemName = "soulshanks", clientId = 34092, sell = 3000000 },
+		{ itemName = "soulstrider", clientId = 34093, sell = 2500000 },
+		{ itemName = "pair of soulwalkers", clientId = 34097, sell = 3600000 },
+		{ itemName = "pair of soulstalkers", clientId = 34098, sell = 3600000 },
 
 
 	{ itemName = "all loot in pouch", clientId = ITEM_GOLD_POUCH, sell = 1 },

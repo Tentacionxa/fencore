@@ -98,7 +98,7 @@ npcConfig.shop = {
     { itemName = "earth resilience", clientId = 36731, buy = 350300 },
     { itemName = "earth amplification", clientId = 36738, buy = 142600 },
     { itemName = "death resilience", clientId = 36734, buy = 8250 },
-    { itemName = "wealth duplex", clientId = 36727, buy = 2005500 },
+    { itemName = "wealth duplex", clientId = 36727, buy = 10005500 },
     { itemName = "stamina extension", clientId = 36725, buy = 4500000 },
     { itemName = "strike enhancement", clientId = 36724, buy = 350750 },
     { itemName = "physical resilience", clientId = 36735, buy = 35000 },

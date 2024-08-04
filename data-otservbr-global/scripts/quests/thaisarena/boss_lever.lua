@@ -2,7 +2,7 @@ local action = Action()
 local config = {
     boss = {
         position = Position(32395, 32192, 7),
-        names = { "Duke Krule", "Drume", "Gaffir", "Irgix the Flimsy", "Jaur", "Madareth", "Mawhawk", "Morgaroth", "Professor Maxxen", "Ragiaz", "Tanjis", "The Noxious Spawn", "The Pale Count", "The Welter", "Unaz the Mean", "Vok the Freakish", "Zavarash", "Zugurosh" },
+        names = { "Duke Krule", "Drume", "Gaffir", "Irgix the Flimsy", "Jaur", "Madareth", "Mawhawk", "Morgaroth", "Ragiaz", "Tanjis", "The Noxious Spawn", "The Pale Count", "The Welter", "Unaz the Mean", "Vok the Freakish", "Zavarash", "Zugurosh" },
     },
     playerPositions = {
         { pos = Position(32399, 32204, 7), teleport = Position(32394, 32198, 7) },

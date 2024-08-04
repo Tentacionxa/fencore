@@ -178,11 +178,11 @@ GameStore.RecivedPackets = {
 }
 
 GameStore.ExpBoostValues = {
-	[1] = 30,
-	[2] = 45,
-	[3] = 90,
-	[4] = 180,
-	[5] = 360,
+	[1] = 100,
+	[2] = 100,
+	[3] = 100,
+	[4] = 150,
+	[5] = 150,
 }
 
 GameStore.DefaultValues = {

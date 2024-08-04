@@ -6185,7 +6185,7 @@
 		<attribute key="charges" value="200"/>
 		<attribute key="weight" value="500"/>
 	</item>
-	<item id="3057" article="an" name="amulet of loss">
+<item id="3057" article="an" name="amulet of loss">
         <attribute key="charges" value="1"/>
         <attribute key="weight" value="420"/>
         <attribute key="script" value="moveevent">
@@ -9027,8 +9027,8 @@
 		<attribute key="weaponType" value="ammunition"/>
 		<attribute key="ammotype" value="arrow"/>
 		<attribute key="shootType" value="arrow"/>
-		<attribute key="maxhitchance" value="100"/>
-		<attribute key="attack" value="50"/>
+		<attribute key="maxhitchance" value="91"/>
+		<attribute key="attack" value="25"/>
 		<attribute key="weight" value="70"/>
 	</item>
 	<item id="3448" article="a" name="poison arrow">
@@ -9328,13 +9328,14 @@
 		<attribute key="showduration" value="1"/>
 		<attribute key="showAttributes" value="1"/>
 		<attribute key="manaticks" value="6000"/>
-		<attribute key="managain" value="12"/>
+		<attribute key="managain" value="50"/>
 		<attribute key="healthticks" value="6000"/>
-		<attribute key="healthgain" value="3"/>
+		<attribute key="healthgain" value="50"/>
 		<attribute key="duration" value="14400"/>
 		<attribute key="transformdeequipto" value="6529"/>
 		<attribute key="decayTo" value="6530"/>
 		<attribute key="weight" value="800"/>
+			<attribute key="armor" value="2"/>
 	</item>
 	<item id="3550" name="patched boots">
 		<attribute key="primarytype" value="boots"/>
@@ -10129,8 +10130,8 @@
 		<attribute key="decayTo" value="0"/>
 		<attribute key="weight" value="2000"/>
 	</item>
-	<item id="3997" name="Tibiora's box">
-		<attribute key="description" value="It contains all the knowledge of the Tibian lands gathered arduously by Tibia-Stats.com"/>
+	<item id="3997" name="Suprise Box">
+		<attribute key="description" value="It contains either a jewel or a rare item."/>
 		<attribute key="weight" value="4200"/>
 	</item>
 	<item id="3998" article="a" name="dead snake">
@@ -27814,9 +27815,9 @@
 		<attribute key="description" value="This hat was handcrafted by Uman the Wise and cursed by Zathroth the Destroyer. It is awarded by TibiaWiki.com.br"/>
 		<attribute key="weight" value="805"/>
 	</item>
-	<item fromid="12811" toid="12812" article="an" name="imortus">
+	<item fromid="12811" toid="12812" article="a" name="stamina recharger">
 		<attribute key="primarytype" value="fansite items"/>
-		<attribute key="description" value="It knows all secrets of all numbers. It was awarded by the Exhiti.com"/>
+		<attribute key="description" value="It will regenerate back Your stamina."/>
 		<attribute key="weight" value="4690"/>
 	</item>
 	<item fromid="12813" toid="12814" name="old radio">
@@ -29161,7 +29162,8 @@
 	<item fromid="14100" toid="14111" article="a" name="lava">
 		<attribute key="primarytype" value="natural tiles"/>
 	</item>
-	<item id="14112" article="a" name="bar of gold">
+	<item id="14112" article="a" name="event gold">
+<attribute key="description" value="Use it to get event points in order to buy items in the event shop."/>
 		<attribute key="weight" value="2100"/>
 	</item>
 	<item fromid="14113" toid="14132" article="a" name="lava stream">
@@ -29513,9 +29515,9 @@
 	<item id="14757" article="a" name="dragon's nest">
 		<attribute key="description" value="Young dragons will hatch soon."/>
 	</item>
-	<item id="14758" article="a" name="premium scroll">
+	<item id="14758" article="a" name="experience scroll">
 		<attribute key="primarytype" value="documents and papers"/>
-		<attribute key="description" value="Using this scroll will add 30 days of premium time to your account once."/>
+		<attribute key="description" value="Using this scroll will boost Your experience by 50 % for 1 hour."/>
 		<attribute key="weight" value="0"/>
 	</item>
 	<item id="14759" article="a" name="surprise nest">
@@ -30205,7 +30207,7 @@
 		<attribute key="weaponType" value="ammunition"/>
 		<attribute key="ammotype" value="arrow"/>
 		<attribute key="shootType" value="crystallinearrow"/>
-		<attribute key="maxhitchance" value="50"/>
+			<attribute key="maxhitchance" value="50"/>
 		<attribute key="attack" value="40"/>
 		<attribute key="weight" value="75"/>
 	</item>
@@ -34869,8 +34871,8 @@
 		<attribute key="description" value="A scroll of parchment, inscribed with an arcane incantation rite"/>
 		<attribute key="weight" value="10"/>
 	</item>
-	<item id="18935" article="a" name="vampire's signet ring">
-		<attribute key="description" value="A ring with a massive, faintly glowing seal, containing the blood of a vampire"/>
+	<item id="18935" article="a" name="loot ring">
+		<attribute key="description" value="A ring with a massive, faintly glowing seal that increases your capacity by 65%."/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="18936" article="the" name="Vampire Count's medal">
@@ -35594,8 +35596,8 @@
 		<attribute key="description" value="Souvenir from Thais Museum"/>
 		<attribute key="weight" value="1200"/>
 	</item>
-	<item id="19155" article="an" name="orc's jaw shredder">
-		<attribute key="description" value="Souvenir from Thais Museum"/>
+	<item id="19155" article="an" name="orc's boss reminder">
+		<attribute key="description" value="Orc's use it to check when their bosses will spawn"/>
 		<attribute key="weight" value="2500"/>
 	</item>
 	<item id="19156" article="a" name="frozen heart">
@@ -35867,8 +35869,7 @@
 		<attribute key="weight" value="150"/>
 	</item>
 	<item id="19370" name="RESERVED SPRITE"/>
-	<item id="19371" article="a" name="glass of goo">
-			<attribute key="description" value="Use it to remove all the cooldown effect on every boss"/>
+	<item id="19371" article="a" name="monster">
 		<attribute key="weight" value="170"/>
 	</item>
 	<item id="19372" article="a" name="goo shell">
@@ -38555,12 +38556,12 @@
 	</item>
 	<item id="21444" name="RESERVED SPRITE"/>
 	<item id="21445" article="a" name="war backpack">
-	<attribute key="primarytype" value="fansite items"/>
+  	<attribute key="primarytype" value="fansite items"/>
 		<attribute key="description" value="Carry all you need for battle in it. Sponsored by TibiaWars.com"/>
 		<attribute key="writeable" value="1"/>
 		<attribute key="maxtextlen" value="99"/>
 		<attribute key="weight" value="1800"/>
-</item>
+	</item>
 	<item id="21446" article="a" name="dead woodling">
 		<attribute key="fluidsource" value="blood"/>
 		<attribute key="duration" value="10"/>
@@ -42626,9 +42627,9 @@
 		<attribute key="weight" value="850"/>
 	</item>
 	<item id="23721" article="a" name="gold pouch">
-		<attribute key="description" value="A infinity bag where you can hold coins."/>
+		<attribute key="description" value="A infinity bag where you can hold your gold."/>
 		<attribute key="containersize" value="50000"/>
-		<attribute key="moveable" value="0"/>
+		<attribute key="moveable" value="1"/>
 	</item>
 	<item id="23722" article="a" name="gold converter">
 		<attribute key="primarytype" value="tools"/>
@@ -42980,9 +42981,9 @@
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="650"/>
 	</item>
-	<item id="24390" article="an" name="ancient coin" plural="ancient coins">
+	<item id="24390" article="an" name="event coin" plural="event coins">
 		<attribute key="primarytype" value="valuables"/>
-		<attribute key="description" value="The face design portrays the sun god Suon"/>
+		<attribute key="description" value="Press use on the coin to get Event Points. You can buy items on fencore.net website."/>
 		<attribute key="weight" value="30"/>
 	</item>
 	<item id="24391" article="a" name="coral brooch">
@@ -44465,10 +44466,10 @@
 	<item id="25757" article="a" name="diamond arrow">
 		<attribute key="primarytype" value="ammunition"/>
 		<attribute key="ammotype" value="arrow"/>
-		<attribute key="attack" value="1450"/>
+		<attribute key="attack" value="894"/>
 		<attribute key="decayTo" value="0"/>
 		<attribute key="duration" value="3600"/>
-		<attribute key="maxhitchance" value="200"/>
+		<attribute key="maxhitchance" value="100"/>
 		<attribute key="ammotype" value="arrow"/>
 		<attribute key="shootType" value="diamondarrow"/>
 		<attribute key="stopduration" value="0"/>
@@ -44476,7 +44477,7 @@
 		<attribute key="maxhitchance" value="100"/>
 		<attribute key="duration" value="3600"/>
 		<attribute key="decayTo" value="0"/>
-		<attribute key="attack" value="1450"/>
+		<attribute key="attack" value="894"/>
 		<attribute key="weight" value="80"/>
 	</item>
 	<item id="25758" article="a" name="spectral bolt">
@@ -48264,7 +48265,7 @@
 		<attribute key="wrapableto" value="23398"/>
 		<attribute key="rotateto" value="28564"/>
 		<attribute key="type" value="dummy">
-			<attribute key="rate" value="110"/>
+			<attribute key="rate" value="125"/>
 		</attribute>
 	</item>
 	<item id="28564" article="a" name="monk exercise dummy">
@@ -60737,7 +60738,7 @@
 		<attribute key="ammotype" value="arrow"/>
 		<attribute key="shootType" value="diamondarrow"/>
 		<attribute key="maxhitchance" value="100"/>
-		<attribute key="attack" value="950"/>
+		<attribute key="attack" value="37"/>
 		<attribute key="weight" value="80"/>
 	</item>
 	<item id="35902" article="a" name="spectral bolt">
@@ -63655,8 +63656,8 @@
 	<item id="37334" article="a" name="picture of the Colossus">
 		<attribute key="weight" value="100"/>
 	</item>
-	<item id="37335" article="a" name="black skull">
-		<attribute key="description" value="The real one"/>
+	<item id="37335" article="a" name="black skull remover">
+		<attribute key="description" value="Press use to remove your black skull."/>
 		<attribute key="weight" value="250"/>
 	</item>
 	<item id="37336" article="a" name="bridal wreath">
@@ -63666,7 +63667,8 @@
 	<item id="37337" article="a" name="white skull">
 		<attribute key="weight" value="250"/>
 	</item>
-	<item id="37338" article="a" name="red skull">
+	<item id="37338" article="a" name="red skull remover">
+		<attribute key="description" value="Press use to remove your red skull."/>
 		<attribute key="weight" value="250"/>
 	</item>
 	<item id="37339" article="a" name="yellow skull">
@@ -65057,7 +65059,7 @@
 		<attribute key="wrapableto" value="23398"/>
 	</item>
 	<item id="38641" name="dawnfire flowers"/>
-<item id="38642" article="a" name="best sword">
+	<item id="38642" article="a" name="best sword">
 		<attribute key="primarytype" value="sword weapons"/>
 		<attribute key="weaponType" value="sword"/>
 		<attribute key="attack" value="45"/>
@@ -68557,6 +68559,9 @@
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost sword" value="3"/>
 		</attribute>
+		<attribute key="augments" value="1">
+			<attribute key="fierce berserk" value="strong impact" />
+		</attribute>
 	</item>
 	<item id="43865" article="a" name="grand sanguine blade">
 		<attribute key="primarytype" value="sword weapons"/>
@@ -68573,6 +68578,11 @@
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost sword" value="3"/>
 		</attribute>
+		<attribute key="augments" value="1">
+			<attribute key="fierce berserk" value="powerful impact" />
+			<attribute key="intense wound cleansing" value="cooldown">
+				<attribute key="value" value="120000" />
+			</attribute>
 	</item>
 	<item id="43866" article="a" name="sanguine cudgel">
 		<attribute key="primarytype" value="club weapons"/>
@@ -68588,6 +68598,9 @@
 			<attribute key="mana leech" value="3"/>
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost club" value="3"/>
+		</attribute>
+		<attribute key="augments" value="1">
+			<attribute key="fierce berserk" value="strong impact" />
 		</attribute>
 	</item>
 	<item id="43867" article="a" name="grand sanguine cudgel">
@@ -68605,6 +68618,9 @@
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost club" value="3"/>
 		</attribute>
+		<attribute key="augments" value="1">
+			<attribute key="fierce berserk" value="powerful impact" />
+		</attribute>
 	</item>
 	<item id="43868" article="a" name="sanguine hatchet">
 		<attribute key="primarytype" value="axe weapons"/>
@@ -68621,6 +68637,9 @@
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost axe" value="3"/>
 		</attribute>
+		<attribute key="augments" value="1">
+			<attribute key="fierce berserk" value="strong impact" />
+		</attribute>
 	</item>
 	<item id="43869" article="a" name="grand sanguine hatchet">
 		<attribute key="primarytype" value="axe weapons"/>
@@ -68636,6 +68655,9 @@
 			<attribute key="mana leech" value="3"/>
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost axe" value="3"/>
+		</attribute>
+		<attribute key="augments" value="1">
+			<attribute key="fierce berserk" value="powerful impact" />
 		</attribute>
 	</item>
 	<item id="43870" article="a" name="sanguine razor">
@@ -68655,6 +68677,9 @@
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost sword" value="3"/>
 		</attribute>
+		<attribute key="augments" value="1">
+			<attribute key="fierce berserk" value="strong impact" />
+		</attribute>
 	</item>
 	<item id="43871" article="a" name="grand sanguine razor">
 		<attribute key="primarytype" value="sword weapons"/>
@@ -68672,6 +68697,9 @@
 			<attribute key="mana leech" value="3"/>
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost sword" value="3"/>
+		</attribute>
+		<attribute key="augments" value="1">
+			<attribute key="fierce berserk" value="powerful impact" />
 		</attribute>
 	</item>
 	<item id="43872" article="a" name="sanguine bludgeon">
@@ -68691,6 +68719,9 @@
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost club" value="3"/>
 		</attribute>
+		<attribute key="augments" value="1">
+			<attribute key="fierce berserk" value="strong impact" />
+		</attribute>
 	</item>
 	<item id="43873" article="a" name="grand sanguine bludgeon">
 		<attribute key="primarytype" value="club weapons"/>
@@ -68708,6 +68739,9 @@
 			<attribute key="mana leech" value="3"/>
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost club" value="3"/>
+		</attribute>
+		<attribute key="augments" value="1">
+			<attribute key="fierce berserk" value="powerful impact" />
 		</attribute>
 	</item>
 	<item id="43874" article="a" name="sanguine battleaxe">
@@ -68727,6 +68761,9 @@
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost axe" value="3"/>
 		</attribute>
+		<attribute key="augments" value="1">
+			<attribute key="fierce berserk" value="strong impact" />
+		</attribute>
 	</item>
 	<item id="43875" article="a" name="grand sanguine battleaxe">
 		<attribute key="primarytype" value="axe weapons"/>
@@ -68745,6 +68782,9 @@
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost axe" value="3"/>
 		</attribute>
+		<attribute key="augments" value="1">
+			<attribute key="fierce berserk" value="powerful impact" />
+		</attribute>
 	</item>
 	<item id="43876" article="a" name="sanguine legs">
 		<attribute key="primarytype" value="legs"/>
@@ -68755,6 +68795,14 @@
 		<attribute key="skillsword" value="4"/>
 		<attribute key="armor" value="12"/>
 		<attribute key="weight" value="3800"/>
+		<attribute key="augments" value="1">
+			<attribute key="avatar of steel" value="cooldown">
+				<attribute key="value" value="900000" />
+			</attribute>
+			<attribute key="fierce beserk" value="critical extra damage">
+				<attribute key="value" value="8" />
+			</attribute>
+		</attribute>
 	</item>
 	<item id="43877" article="a" name="sanguine bow">
 		<attribute key="primarytype" value="distance weapons"/>
@@ -68775,6 +68823,9 @@
 			<attribute key="mana leech" value="3"/>
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost distance" value="3"/>
+		</attribute>
+		<attribute key="augments" value="1">
+			<attribute key="divine caldera" value="strong impact" />
 		</attribute>
 	</item>
 	<item id="43878" article="a" name="grand sanguine bow">
@@ -68797,6 +68848,9 @@
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost distance" value="3"/>
 		</attribute>
+		<attribute key="augments" value="1">
+			<attribute key="divine caldera" value="powerful impact" />
+		</attribute>
 	</item>
 	<item id="43879" article="a" name="sanguine crossbow">
 		<attribute key="primarytype" value="distance weapons"/>
@@ -68817,6 +68871,9 @@
 			<attribute key="mana leech" value="3"/>
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost distance" value="3"/>
+		</attribute>
+		<attribute key="augments" value="1">
+			<attribute key="divine caldera" value="strong impact" />
 		</attribute>
 	</item>
 	<item id="43880" article="a" name="grand sanguine crossbow">
@@ -68839,6 +68896,9 @@
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost distance" value="3"/>
 		</attribute>
+		<attribute key="augments" value="1">
+			<attribute key="divine caldera" value="powerful impact" />
+		</attribute>
 	</item>
 	<item id="43881" article="a" name="sanguine greaves">
 		<attribute key="primarytype" value="legs"/>
@@ -68848,6 +68908,14 @@
 		<attribute key="holymagiclevelpoints" value="1"/>
 		<attribute key="armor" value="11"/>
 		<attribute key="weight" value="3200"/>
+		<attribute key="augments" value="1">
+			<attribute key="avatar of light" value="cooldown">
+				<attribute key="value" value="900000" />
+			</attribute>
+			<attribute key="divine caldera" value="critical extra damage">
+				<attribute key="value" value="8" />
+			</attribute>
+		</attribute>
 	</item>
 	<item id="43882" article="a" name="sanguine coil">
 		<attribute key="primarytype" value="wands"/>
@@ -68864,6 +68932,10 @@
 			<attribute key="mana leech" value="3"/>
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost magic level" value="3"/>
+		</attribute>
+		<attribute key="augments" value="1">
+			<attribute key="hell's core" value="strong impact" />
+			<attribute key="energy wave" value="strong impact" />
 		</attribute>
 	</item>
 	<item id="43883" article="a" name="grand sanguine coil">
@@ -68883,6 +68955,10 @@
 		<attribute key="critical hit" value="4"/>
 		<attribute key="skillboost magic level" value="4"/>
 		</attribute>
+		<attribute key="augments" value="1">
+			<attribute key="hell's core" value="powerful impact" />
+			<attribute key="energy wave" value="powerful impact" />
+		</attribute>
 	</item>
 	<item id="43884" name="sanguine boots">
 		<attribute key="primarytype" value="boots"/>
@@ -68895,6 +68971,17 @@
 		<attribute key="weight" value="1900"/>
 		<attribute key="imbuementslot" value="1">
 			<attribute key="increase speed" value="10"/>
+		</attribute>
+		<attribute key="augments" value="1">
+			<attribute key="avatar of storm" value="cooldown">
+				<attribute key="value" value="900000" />
+			</attribute>
+			<attribute key="hell's core" value="critical extra damage">
+				<attribute key="value" value="8" />
+			</attribute>
+			<attribute key="energy wave" value="critical extra damage">
+				<attribute key="value" value="8" />
+			</attribute>
 		</attribute>
 	</item>
 	<item id="43885" article="a" name="sanguine rod">
@@ -68913,6 +69000,10 @@
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost magic level" value="3"/>
 		</attribute>
+		<attribute key="augments" value="1">
+			<attribute key="eternal winter" value="strong impact" />
+			<attribute key="terra wave" value="strong impact" />
+		</attribute>
 	</item>
 	<item id="43886" article="a" name="grand sanguine rod">
 		<attribute key="primarytype" value="rods"/>
@@ -68930,6 +69021,10 @@
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost magic level" value="3"/>
 		</attribute>
+		<attribute key="augments" value="1">
+			<attribute key="eternal winter" value="powerful impact" />
+			<attribute key="terra wave" value="powerful impact" />
+		</attribute>
 	</item>
 	<item id="43887" article="a" name="sanguine galoshes">
 		<attribute key="primarytype" value="boots"/>
@@ -68942,6 +69037,17 @@
 		<attribute key="weight" value="1700"/>
 		<attribute key="imbuementslot" value="1">
 			<attribute key="increase speed" value="10"/>
+		</attribute>
+		<attribute key="augments" value="1">
+			<attribute key="avatar of nature" value="cooldown">
+				<attribute key="value" value="900000" />
+			</attribute>
+			<attribute key="eternal winter" value="critical extra damage">
+				<attribute key="value" value="8" />
+			</attribute>
+			<attribute key="terra wave" value="critical extra damage">
+				<attribute key="value" value="8" />
+			</attribute>
 		</attribute>
 	</item>
 	<item id="43895" article="a" name="bag you covet">

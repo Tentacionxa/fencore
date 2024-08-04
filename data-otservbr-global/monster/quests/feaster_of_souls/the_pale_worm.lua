@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("The Pale Worm")
 local monster = {}
 
 monster.description = "The Pale Worm"
-monster.experience = 30000
+monster.experience = 80000
 monster.outfit = {
 	lookType = 1272,
 	lookHead = 0,
@@ -13,8 +13,8 @@ monster.outfit = {
 	lookMount = 0,
 }
 
-monster.health = 420000
-monster.maxHealth = 420000
+monster.health = 220000
+monster.maxHealth = 220000
 monster.race = "undead"
 monster.corpse = 32702
 monster.speed = 125
@@ -116,24 +116,24 @@ monster.attacks = {
 }
 
 monster.defenses = {
-	defense = 150,
-	armor = 150,
+	defense = 90,
+	armor = 90,
 	--	mitigation = ???,
 	{ name = "speed", interval = 10000, chance = 40, speedChange = 510, effect = CONST_ME_MAGIC_GREEN, target = false, duration = 20000 },
-	{ name = "combat", interval = 5000, chance = 60, type = COMBAT_HEALING, minDamage = 600, maxDamage = 1200, effect = CONST_ME_MAGIC_BLUE, target = false },
+	{ name = "combat", interval = 5000, chance = 60, type = COMBAT_HEALING, minDamage = 200, maxDamage = 500, effect = CONST_ME_MAGIC_BLUE, target = false },
 }
 
 monster.elements = {
-	{ type = COMBAT_PHYSICALDAMAGE, percent = 90 },
-	{ type = COMBAT_ENERGYDAMAGE, percent = 90 },
-	{ type = COMBAT_EARTHDAMAGE, percent = 90 },
-	{ type = COMBAT_FIREDAMAGE, percent = 90 },
+	{ type = COMBAT_PHYSICALDAMAGE, percent = 20 },
+	{ type = COMBAT_ENERGYDAMAGE, percent = 20 },
+	{ type = COMBAT_EARTHDAMAGE, percent = 20 },
+	{ type = COMBAT_FIREDAMAGE, percent = 20 },
 	{ type = COMBAT_LIFEDRAIN, percent = 0 },
 	{ type = COMBAT_MANADRAIN, percent = 0 },
 	{ type = COMBAT_DROWNDAMAGE, percent = 0 },
-	{ type = COMBAT_ICEDAMAGE, percent = 90 },
-	{ type = COMBAT_HOLYDAMAGE, percent = 90 },
-	{ type = COMBAT_DEATHDAMAGE, percent = 90 },
+	{ type = COMBAT_ICEDAMAGE, percent = 20 },
+	{ type = COMBAT_HOLYDAMAGE, percent = 20 },
+	{ type = COMBAT_DEATHDAMAGE, percent = 20 },
 }
 
 monster.immunities = {

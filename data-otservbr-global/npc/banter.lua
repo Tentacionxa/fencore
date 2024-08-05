@@ -149,6 +149,7 @@ npcConfig.shop = {
 	{ itemName = "wand of decay", clientId = 3072, buy = 5000 },
 	{ itemName = "wand of dragonbreath", clientId = 3075, buy = 1000 },
 	{ itemName = "wand of vortex", clientId = 3074, buy = 500 },
+	{ itemName = "shopping bag", clientId = 21411, sell = 1 },
 }
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

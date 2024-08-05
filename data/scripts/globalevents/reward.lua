@@ -1,4 +1,4 @@
-local exerciseCharges = 2500
+local exerciseCharges = 10000
 local rewardStorage = 65998
 
 local reward = TalkAction("!rewards")

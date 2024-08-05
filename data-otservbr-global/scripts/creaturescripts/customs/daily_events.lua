@@ -7,6 +7,7 @@ local enableBonusWithBoosts = true
 local events_by_day = {
     ['Monday'] = {
         ['LOOT'] = 50, --50%
+        ['SKILL'] = 150, --50%
         ['EXP'] = 100, --50%
     },
     ['Tuesday'] = {

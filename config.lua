@@ -286,12 +286,12 @@ allowReload = true
 
 -- Stamina in Trainers
 staminaTrainer = true
-staminaTrainerDelay = 2
+staminaTrainerDelay = 1
 staminaTrainerGain = 1
 -- Stamina in PZ
 staminaPz = true
 staminaOrangeDelay = 1
-staminaGreenDelay = 2
+staminaGreenDelay = 1
 staminaPzGain = 2
 -- Max players allowed on a dummy.
 maxAllowedOnADummy = 2

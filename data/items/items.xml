@@ -10304,7 +10304,7 @@
 		<attribute key="speed" value="15"/>
 		<attribute key="armor" value="3"/>
 		<attribute key="weight" value="2500"/>
-		<attribute key="imbuementslot" value="1"/>
+		<attribute key="imbuementslot" value="2"/>
 	</item>
 	<item id="4034" article="a" name="slain ghoul">
 		<attribute key="duration" value="300"/>
@@ -56155,7 +56155,7 @@
 		<attribute key="magiclevelpoints" value="1"/>
 		<attribute key="armor" value="2"/>
 		<attribute key="weight" value="1300"/>
-		<attribute key="imbuementslot" value="1">
+		<attribute key="imbuementslot" value="2">
 			<attribute key="increase speed" value="3"/>
 		</attribute>
 	</item>
@@ -68969,7 +68969,7 @@
 		<attribute key="speed" value="10"/>
 		<attribute key="armor" value="3"/>
 		<attribute key="weight" value="1900"/>
-		<attribute key="imbuementslot" value="1">
+		<attribute key="imbuementslot" value="2">
 			<attribute key="increase speed" value="10"/>
 		</attribute>
 		<attribute key="augments" value="1">
@@ -69035,7 +69035,7 @@
 		<attribute key="speed" value="10"/>
 		<attribute key="armor" value="3"/>
 		<attribute key="weight" value="1700"/>
-		<attribute key="imbuementslot" value="1">
+		<attribute key="imbuementslot" value="2">
 			<attribute key="increase speed" value="10"/>
 		</attribute>
 		<attribute key="augments" value="1">

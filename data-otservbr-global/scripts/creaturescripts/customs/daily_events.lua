@@ -11,12 +11,12 @@ local events_by_day = {
     },
     ['Tuesday'] = {
         ['EXP'] = 50, --50%
-        ['SKILL'] = 50, --50%
+        ['SKILL'] = 150, --50%
         ['LOOT'] = 10, --10%
     },
     ['Wednesday'] = {
         ['EXP'] = 50, --50%
-        ['LOOT'] = 100,--100%
+        ['LOOT'] = 10, --10%
     },
     ['Thursday'] = {
         ['EXP'] = 150, --150%

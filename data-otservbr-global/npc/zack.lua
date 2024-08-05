@@ -1572,7 +1572,6 @@ npcConfig.shop = {
 	{ itemName = "soulstrider", clientId = 34093, sell = 2500000 },
 	{ itemName = "pair of soulwalkers", clientId = 34097, sell = 3600000 },
 	{ itemName = "pair of soulstalkers", clientId = 34098, sell = 3600000 },
-	{ itemName = "shopping bag", clientId = 21411, sell = 1 },
 
 
 	{ itemName = "all loot in pouch", clientId = ITEM_GOLD_POUCH, sell = 1 },

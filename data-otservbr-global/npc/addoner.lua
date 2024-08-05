@@ -89,8 +89,8 @@ addoninfo = {
 ['second shaman addon'] = {cost = 0, items = {{5014,1}, {3002,5}}, outfit_female = 158, outfit_male = 154, addon = 2, storageID = 51037},
 ['first norseman addon'] = {cost = 0, items = {{7290,5}}, outfit_female = 252, outfit_male = 251, addon = 1, storageID = 51038},
 ['second norseman addon'] = {cost = 0, items = {{7290,10}}, outfit_female = 252, outfit_male = 251, addon = 2, storageID = 51039},
-['first nightmare addon'] = {cost = 0, items = {{6499,500}, {768,1}}, outfit_female = 269, outfit_male = 268, addon = 1, storageID = Storage.OutfitQuest.BrotherhoodOutfit},
-['second nightmare addon'] = {cost = 0, items = {{6499,1000}, {770,1}}, outfit_female = 269, outfit_male = 268, addon = 2, storageID = Storage.OutfitQuest.BrotherhoodOutfit}
+['first nightmare addon'] = {cost = 0, items = {{6499,500}, {768,1}}, outfit_female = 269, outfit_male = 268, addon = 1},
+['second nightmare addon'] = {cost = 0, items = {{6499,1000}, {770,1}}, outfit_female = 269, outfit_male = 268, addon = 2}
 }
 local o = {'citizen', 'hunter', 'knight', 'mage', 'nobleman', 'summoner', 'warrior', 'barbarian', 'druid', 'wizard', 'oriental', 'pirate', 'assassin', 'beggar', 'shaman', 'norseman', 'nightmare'}
 local rtnt = {}
@@ -107,11 +107,7 @@ local talkState = {}
     if addoninfo[message] ~= nil then
         local itemsTable = addoninfo[message].items
         local items_list = ''
-        if (getPlayerStorageValue(creature, addoninfo[message].storageID) ~= -1) then
-                npcHandler:say('You already have this addon!', npc, creature)
-                npcHandler:resetNpc(creature)
-                return true
-        elseif table.maxn(itemsTable) > 0 then
+       if table.maxn(itemsTable) > 0 then
             for i = 1, table.maxn(itemsTable) do
                 local item = itemsTable[i]
                 items_list = items_list .. item[2] .. ' ' .. ItemType(item[1]):getName()

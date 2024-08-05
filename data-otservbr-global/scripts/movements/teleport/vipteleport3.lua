@@ -16,8 +16,8 @@ local config = {
 	{ name="Paladin Hunt 500+", position = Position(32985, 33433, 8) },
 	{ name="Knight Hunt 500+", position = Position(33354, 33544, 8) },
 	{ name="Sorcerer Hunt 500+", position = Position(33639, 33229, 8) },
-    { name="Druid Hunt 500+", position = Position(33628, 33457, 8) }
-	{ name="Asura Kingdom", position = Position(34507, 33227, 7) }
+    { name="Druid Hunt 500+", position = Position(33628, 33457, 8) },
+	{ name="Asura Kingdom", position = Position(34507, 33227, 7) },
 	{ name="Jungle Tunnels", position = Position(34626, 33046, 7) }
 	
 }

@@ -10,5 +10,5 @@ function Decaying.onUse(player, item, fromPosition, target, toPosition, isHotkey
 	return true
 end
 
-Phantasm:id(DecayingId)
-Phantasm:register()
+Decaying:id(DecayingId)
+Decaying:register()

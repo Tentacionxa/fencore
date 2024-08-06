@@ -52,7 +52,7 @@ function parasiteWarzone.onDeath(creature)
 			end
 		end
 		config.wall = config.wall + 1
-	elseif config.wall == 16169 then
+	elseif config.wall == 16171 then
 		for i = 1, #positionsWall do
 			local crystal = Tile(positionsWall[i]):getItemById(config.wall)
 			if crystal then
@@ -61,7 +61,7 @@ function parasiteWarzone.onDeath(creature)
 		end
 		config.wall = 16169
 		addEvent(recreateCrystals, 1 * 60 * 1000, config)
-		addEvent(warzoneConfig.spawnBoss, 1 * 60 * 1000, config.boss, config.bossResp)
+		addEvent(warzoneConfig.spawnBoss, 1000, config.boss, config.bossResp)
 		addEvent(warzoneConfig.resetRoom, 30 * 60 * 1000, config, "You were teleported out by the gnomish emergency device.", true)
 	end
 	return true

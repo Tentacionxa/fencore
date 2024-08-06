@@ -28,7 +28,7 @@ maintainModeMessage = "Server Start 19/07/2024"
 worldType = "pvp-enforced"
 hotkeyAimbotEnabled = true
 protectionLevel = 100
-pzLocked = 25 * 1000
+pzLocked = 60 * 1000
 removeChargesFromRunes = true
 removeChargesFromPotions = true
 removeWeaponAmmunition = true
@@ -75,7 +75,7 @@ maxPlayersOutsidePZPerAccount = 2
 -- Packet Compression
 -- Minimize network bandwith and reduce ping
 -- Levels: 0 = disabled, 1 = best speed, 9 = best compression
-packetCompressionLevel = 6
+packetCompressionLevel = 5
 
 -- Depot Limit
 freeDepotLimit = 2000

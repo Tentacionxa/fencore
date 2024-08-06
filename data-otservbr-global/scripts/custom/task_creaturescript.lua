@@ -38,4 +38,4 @@ function taskCreatureStartup.onStartup()
 		end
 	end	
 end
-taskCreatureStartup:register()
+-- taskCreatureStartup:register()

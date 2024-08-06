@@ -72,7 +72,7 @@ local charms = {
 	--Curse charm
 	[6] = {
 		name = "Curse",
-		description = "Triggers on a creature with a certain chance and deals 5% \z
+		description = "Triggers on a creature with a certain chance and deals 10% \z
                        of its initial hit points as death damage once.",
 		type = CHARM_OFFENSIVE,
 		damageType = COMBAT_DEATHDAMAGE,

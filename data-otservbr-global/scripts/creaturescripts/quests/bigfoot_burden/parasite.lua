@@ -52,7 +52,7 @@ function parasiteWarzone.onDeath(creature)
 			end
 		end
 		config.wall = config.wall + 1
-	elseif config.wall == 16171 then
+	elseif config.wall == 16169 then
 		for i = 1, #positionsWall do
 			local crystal = Tile(positionsWall[i]):getItemById(config.wall)
 			if crystal then

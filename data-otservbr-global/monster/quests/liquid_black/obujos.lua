@@ -111,6 +111,10 @@ monster.immunities = {
 	{ type = "bleed", condition = false },
 }
 
+monster.events = {
+	"DeeplingBossDeath"
+}
+
 mType.onThink = function(monster, interval) end
 
 mType.onAppear = function(monster, creature)

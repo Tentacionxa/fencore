@@ -72,7 +72,7 @@ monster.voices = {
 monster.summons = {
 	maxSummons = 2,
 	summons = {
-		{ name = "Elder Bloodjaw", chance = 1000, interval = 1000, count = 2 },
+		{ name = "elder bloodjaw", chance = 100, interval = 1000, count = 2 },
 	},
 }
 

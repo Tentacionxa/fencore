@@ -10304,7 +10304,7 @@
 		<attribute key="speed" value="15"/>
 		<attribute key="armor" value="3"/>
 		<attribute key="weight" value="2500"/>
-		<attribute key="imbuementslot" value="1"/>
+		<attribute key="imbuementslot" value="2"/>
 	</item>
 	<item id="4034" article="a" name="slain ghoul">
 		<attribute key="duration" value="300"/>
@@ -21170,6 +21170,7 @@
 		<attribute key="transformdeequipto" value="9019"/>
 		<attribute key="decayTo" value="9020"/>
 		<attribute key="armor" value="2"/>
+		<attribute key="imbuementslot" value="2">
 		<attribute key="weight" value="950"/>
 	</item>
 	<item id="9019" article="a" name="firewalker boots">
@@ -35869,7 +35870,7 @@
 		<attribute key="weight" value="150"/>
 	</item>
 	<item id="19370" name="RESERVED SPRITE"/>
-	<item id="19371" article="a" name="monster">
+	<item id="19371" article="a" name="glass of goo">
 		<attribute key="weight" value="170"/>
 	</item>
 	<item id="19372" article="a" name="goo shell">
@@ -56155,7 +56156,7 @@
 		<attribute key="magiclevelpoints" value="1"/>
 		<attribute key="armor" value="2"/>
 		<attribute key="weight" value="1300"/>
-		<attribute key="imbuementslot" value="1">
+		<attribute key="imbuementslot" value="2">
 			<attribute key="increase speed" value="3"/>
 		</attribute>
 	</item>
@@ -68559,9 +68560,6 @@
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost sword" value="3"/>
 		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="fierce berserk" value="strong impact" />
-		</attribute>
 	</item>
 	<item id="43865" article="a" name="grand sanguine blade">
 		<attribute key="primarytype" value="sword weapons"/>
@@ -68578,11 +68576,6 @@
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost sword" value="3"/>
 		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="fierce berserk" value="powerful impact" />
-			<attribute key="intense wound cleansing" value="cooldown">
-				<attribute key="value" value="120000" />
-			</attribute>
 	</item>
 	<item id="43866" article="a" name="sanguine cudgel">
 		<attribute key="primarytype" value="club weapons"/>
@@ -68598,9 +68591,6 @@
 			<attribute key="mana leech" value="3"/>
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost club" value="3"/>
-		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="fierce berserk" value="strong impact" />
 		</attribute>
 	</item>
 	<item id="43867" article="a" name="grand sanguine cudgel">
@@ -68618,9 +68608,6 @@
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost club" value="3"/>
 		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="fierce berserk" value="powerful impact" />
-		</attribute>
 	</item>
 	<item id="43868" article="a" name="sanguine hatchet">
 		<attribute key="primarytype" value="axe weapons"/>
@@ -68637,9 +68624,6 @@
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost axe" value="3"/>
 		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="fierce berserk" value="strong impact" />
-		</attribute>
 	</item>
 	<item id="43869" article="a" name="grand sanguine hatchet">
 		<attribute key="primarytype" value="axe weapons"/>
@@ -68655,9 +68639,6 @@
 			<attribute key="mana leech" value="3"/>
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost axe" value="3"/>
-		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="fierce berserk" value="powerful impact" />
 		</attribute>
 	</item>
 	<item id="43870" article="a" name="sanguine razor">
@@ -68698,9 +68679,6 @@
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost sword" value="3"/>
 		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="fierce berserk" value="powerful impact" />
-		</attribute>
 	</item>
 	<item id="43872" article="a" name="sanguine bludgeon">
 		<attribute key="primarytype" value="club weapons"/>
@@ -68718,9 +68696,6 @@
 			<attribute key="mana leech" value="3"/>
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost club" value="3"/>
-		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="fierce berserk" value="strong impact" />
 		</attribute>
 	</item>
 	<item id="43873" article="a" name="grand sanguine bludgeon">
@@ -68740,9 +68715,6 @@
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost club" value="3"/>
 		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="fierce berserk" value="powerful impact" />
-		</attribute>
 	</item>
 	<item id="43874" article="a" name="sanguine battleaxe">
 		<attribute key="primarytype" value="axe weapons"/>
@@ -68760,9 +68732,6 @@
 			<attribute key="mana leech" value="3"/>
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost axe" value="3"/>
-		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="fierce berserk" value="strong impact" />
 		</attribute>
 	</item>
 	<item id="43875" article="a" name="grand sanguine battleaxe">
@@ -68782,9 +68751,6 @@
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost axe" value="3"/>
 		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="fierce berserk" value="powerful impact" />
-		</attribute>
 	</item>
 	<item id="43876" article="a" name="sanguine legs">
 		<attribute key="primarytype" value="legs"/>
@@ -68795,14 +68761,6 @@
 		<attribute key="skillsword" value="4"/>
 		<attribute key="armor" value="12"/>
 		<attribute key="weight" value="3800"/>
-		<attribute key="augments" value="1">
-			<attribute key="avatar of steel" value="cooldown">
-				<attribute key="value" value="900000" />
-			</attribute>
-			<attribute key="fierce beserk" value="critical extra damage">
-				<attribute key="value" value="8" />
-			</attribute>
-		</attribute>
 	</item>
 	<item id="43877" article="a" name="sanguine bow">
 		<attribute key="primarytype" value="distance weapons"/>
@@ -68823,9 +68781,6 @@
 			<attribute key="mana leech" value="3"/>
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost distance" value="3"/>
-		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="divine caldera" value="strong impact" />
 		</attribute>
 	</item>
 	<item id="43878" article="a" name="grand sanguine bow">
@@ -68848,9 +68803,6 @@
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost distance" value="3"/>
 		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="divine caldera" value="powerful impact" />
-		</attribute>
 	</item>
 	<item id="43879" article="a" name="sanguine crossbow">
 		<attribute key="primarytype" value="distance weapons"/>
@@ -68871,9 +68823,6 @@
 			<attribute key="mana leech" value="3"/>
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost distance" value="3"/>
-		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="divine caldera" value="strong impact" />
 		</attribute>
 	</item>
 	<item id="43880" article="a" name="grand sanguine crossbow">
@@ -68896,9 +68845,6 @@
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost distance" value="3"/>
 		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="divine caldera" value="powerful impact" />
-		</attribute>
 	</item>
 	<item id="43881" article="a" name="sanguine greaves">
 		<attribute key="primarytype" value="legs"/>
@@ -68908,14 +68854,6 @@
 		<attribute key="holymagiclevelpoints" value="1"/>
 		<attribute key="armor" value="11"/>
 		<attribute key="weight" value="3200"/>
-		<attribute key="augments" value="1">
-			<attribute key="avatar of light" value="cooldown">
-				<attribute key="value" value="900000" />
-			</attribute>
-			<attribute key="divine caldera" value="critical extra damage">
-				<attribute key="value" value="8" />
-			</attribute>
-		</attribute>
 	</item>
 	<item id="43882" article="a" name="sanguine coil">
 		<attribute key="primarytype" value="wands"/>
@@ -68932,10 +68870,6 @@
 			<attribute key="mana leech" value="3"/>
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost magic level" value="3"/>
-		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="hell's core" value="strong impact" />
-			<attribute key="energy wave" value="strong impact" />
 		</attribute>
 	</item>
 	<item id="43883" article="a" name="grand sanguine coil">
@@ -68955,10 +68889,6 @@
 		<attribute key="critical hit" value="4"/>
 		<attribute key="skillboost magic level" value="4"/>
 		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="hell's core" value="powerful impact" />
-			<attribute key="energy wave" value="powerful impact" />
-		</attribute>
 	</item>
 	<item id="43884" name="sanguine boots">
 		<attribute key="primarytype" value="boots"/>
@@ -68969,19 +68899,8 @@
 		<attribute key="speed" value="10"/>
 		<attribute key="armor" value="3"/>
 		<attribute key="weight" value="1900"/>
-		<attribute key="imbuementslot" value="1">
+		<attribute key="imbuementslot" value="2">
 			<attribute key="increase speed" value="10"/>
-		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="avatar of storm" value="cooldown">
-				<attribute key="value" value="900000" />
-			</attribute>
-			<attribute key="hell's core" value="critical extra damage">
-				<attribute key="value" value="8" />
-			</attribute>
-			<attribute key="energy wave" value="critical extra damage">
-				<attribute key="value" value="8" />
-			</attribute>
 		</attribute>
 	</item>
 	<item id="43885" article="a" name="sanguine rod">
@@ -69000,10 +68919,6 @@
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost magic level" value="3"/>
 		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="eternal winter" value="strong impact" />
-			<attribute key="terra wave" value="strong impact" />
-		</attribute>
 	</item>
 	<item id="43886" article="a" name="grand sanguine rod">
 		<attribute key="primarytype" value="rods"/>
@@ -69021,10 +68936,6 @@
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost magic level" value="3"/>
 		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="eternal winter" value="powerful impact" />
-			<attribute key="terra wave" value="powerful impact" />
-		</attribute>
 	</item>
 	<item id="43887" article="a" name="sanguine galoshes">
 		<attribute key="primarytype" value="boots"/>
@@ -69035,19 +68946,8 @@
 		<attribute key="speed" value="10"/>
 		<attribute key="armor" value="3"/>
 		<attribute key="weight" value="1700"/>
-		<attribute key="imbuementslot" value="1">
+		<attribute key="imbuementslot" value="2">
 			<attribute key="increase speed" value="10"/>
-		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="avatar of nature" value="cooldown">
-				<attribute key="value" value="900000" />
-			</attribute>
-			<attribute key="eternal winter" value="critical extra damage">
-				<attribute key="value" value="8" />
-			</attribute>
-			<attribute key="terra wave" value="critical extra damage">
-				<attribute key="value" value="8" />
-			</attribute>
 		</attribute>
 	</item>
 	<item id="43895" article="a" name="bag you covet">

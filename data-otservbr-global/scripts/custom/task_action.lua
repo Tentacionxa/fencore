@@ -368,5 +368,5 @@ function task.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	return true
 end
 
-task:id(19236)
+task:id(21332)
 task:register()

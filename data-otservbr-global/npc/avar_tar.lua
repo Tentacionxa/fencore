@@ -97,7 +97,7 @@ local function creatureSayCallback(npc, creature, type, message)
 		end
 	elseif npcHandler:getTopic(playerId) == 2 then
 		if MsgContains(message, "base") then
-			if player:getStorageValue(Storage.Quest.U7_24.TheAnnihilator.Reward) == 1 then
+			if player:getStorageValue(Storage.Quest.U7_24.TheAnnihilator.Reward) < 1 then
 				player:addOutfit(541)
 				player:addOutfit(542)
 				player:getPosition():sendMagicEffect(CONST_ME_MAGIC_BLUE)

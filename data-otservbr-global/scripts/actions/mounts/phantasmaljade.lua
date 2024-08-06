@@ -9,5 +9,5 @@ function Phantasm.onUse(player, item, fromPosition, target, toPosition, isHotkey
 	return true
 end
 
-Phantasm:id(SpiritualId)
+Phantasm:id(PhantasmId)
 Phantasm:register()

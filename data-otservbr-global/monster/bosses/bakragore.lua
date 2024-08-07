@@ -89,7 +89,9 @@ monster.loot = {
     { id = 43946, chance = 7000, maxCount = 1 }, -- abridged promotion scroll
     { id = 43968, chance = 7000, maxCount = 5 }, -- bakragores amalgamation
     { id = 3036, chance = 2500, maxCount = 5 }, -- violet gem
-    { id = 43860, chance = 900, maxCount = 1 }, -- bag you covet
+    { id = 43860, chance = 300, maxCount = 1 }, -- bag you covet
+	{ id = 43854, chance = 500, maxCount = 1 }, -- tainted heart
+	{ id = 43855, chance = 500, maxCount = 1 }, -- darklight heart
 }
 
 monster.attacks = {

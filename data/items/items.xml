@@ -67109,8 +67109,6 @@
 	</item>
 	<item id="39698" article="a" name="lit rainbow torch">
 		<attribute key="primarytype" value="light sources"/>
-		<attribute key="duration" value="900"/>
-		<attribute key="decayTo" value="39700"/>
 		<attribute key="weight" value="500"/>
 	</item>
 	<item id="39699" article="a" name="rainbow torch">
@@ -68564,11 +68562,11 @@
 	<item id="43865" article="a" name="grand sanguine blade">
 		<attribute key="primarytype" value="sword weapons"/>
 		<attribute key="weaponType" value="sword"/>
-		<attribute key="attack" value="8"/>
-		<attribute key="elementfire" value="46"/>
-		<attribute key="extradef" value="3"/>
-		<attribute key="defense" value="32"/>
-		<attribute key="skillsword" value="5"/>
+		<attribute key="attack" value="45"/>
+		<attribute key="elementfire" value="55"/>
+		<attribute key="extradef" value="15"/>
+		<attribute key="defense" value="45"/>
+		<attribute key="skillsword" value="9"/>
 		<attribute key="weight" value="6000"/>
 		<attribute key="imbuementslot" value="3">
 			<attribute key="life leech" value="6"/>
@@ -68596,11 +68594,11 @@
 	<item id="43867" article="a" name="grand sanguine cudgel">
 		<attribute key="primarytype" value="club weapons"/>
 		<attribute key="weaponType" value="club"/>
-		<attribute key="attack" value="8"/>
-		<attribute key="elementdeath" value="46"/>
-		<attribute key="extradef" value="3"/>
-		<attribute key="defense" value="32"/>
-		<attribute key="skillclub" value="5"/>
+		<attribute key="attack" value="45"/>
+		<attribute key="elementdeath" value="55"/>
+		<attribute key="extradef" value="15"/>
+		<attribute key="defense" value="45"/>
+		<attribute key="skillclub" value="9"/>
 		<attribute key="weight" value="6800"/>
 		<attribute key="imbuementslot" value="3">
 			<attribute key="life leech" value="3"/>
@@ -68628,11 +68626,11 @@
 	<item id="43869" article="a" name="grand sanguine hatchet">
 		<attribute key="primarytype" value="axe weapons"/>
 		<attribute key="weaponType" value="axe"/>
-		<attribute key="attack" value="8"/>
-		<attribute key="elementfire" value="46"/>
-		<attribute key="extradef" value="3"/>
-		<attribute key="defense" value="32"/>
-		<attribute key="skillaxe" value="5"/>
+		<attribute key="attack" value="45"/>
+		<attribute key="elementfire" value="55"/>
+		<attribute key="extradef" value="15"/>
+		<attribute key="defense" value="45"/>
+		<attribute key="skillaxe" value="9"/>
 		<attribute key="weight" value="7200"/>
 		<attribute key="imbuementslot" value="3">
 			<attribute key="life leech" value="3"/>
@@ -68667,11 +68665,11 @@
 		<attribute key="weaponType" value="sword"/>
 		<attribute key="slotType" value="two-handed"/>
 		<attribute key="elementenergy" value="50"/>
-		<attribute key="criticalhitdamage" value="12"/>
-		<attribute key="criticalhitchance" value="10"/>
-		<attribute key="attack" value="8"/>
-		<attribute key="defense" value="35"/>
-		<attribute key="skillsword" value="5"/>
+		<attribute key="criticalhitdamage" value="19"/>
+		<attribute key="criticalhitchance" value="20"/>
+		<attribute key="attack" value="45"/>
+		<attribute key="defense" value="60"/>
+		<attribute key="skillsword" value="9"/>
 		<attribute key="weight" value="7900"/>
 		<attribute key="imbuementslot" value="3">
 			<attribute key="life leech" value="3"/>
@@ -68703,11 +68701,11 @@
 		<attribute key="weaponType" value="club"/>
 		<attribute key="slotType" value="two-handed"/>
 		<attribute key="elementearth" value="50"/>
-		<attribute key="criticalhitdamage" value="12"/>
-		<attribute key="criticalhitchance" value="10"/>
-		<attribute key="attack" value="8"/>
-		<attribute key="defense" value="35"/>
-		<attribute key="skillclub" value="5"/>
+		<attribute key="criticalhitdamage" value="15"/>
+		<attribute key="criticalhitchance" value="20"/>
+		<attribute key="attack" value="45"/>
+		<attribute key="defense" value="45"/>
+		<attribute key="skillclub" value="9"/>
 		<attribute key="weight" value="9100"/>
 		<attribute key="imbuementslot" value="3">
 			<attribute key="life leech" value="3"/>
@@ -68739,11 +68737,11 @@
 		<attribute key="weaponType" value="axe"/>
 		<attribute key="slotType" value="two-handed"/>
 		<attribute key="elementdeath" value="50"/>
-		<attribute key="criticalhitdamage" value="12"/>
-		<attribute key="criticalhitchance" value="10"/>
-		<attribute key="attack" value="8"/>
+		<attribute key="criticalhitdamage" value="15"/>
+		<attribute key="criticalhitchance" value="20"/>
+		<attribute key="attack" value="45"/>
 		<attribute key="defense" value="35"/>
-		<attribute key="skillaxe" value="5"/>
+		<attribute key="skillaxe" value="9"/>
 		<attribute key="weight" value="8300"/>
 		<attribute key="imbuementslot" value="3">
 			<attribute key="life leech" value="3"/>
@@ -68787,14 +68785,14 @@
 		<attribute key="primarytype" value="distance weapons"/>
 		<attribute key="weaponType" value="distance"/>
 		<attribute key="slotType" value="two-handed"/>
-		<attribute key="criticalhitdamage" value="12"/>
-		<attribute key="criticalhitchance" value="10"/>
+		<attribute key="criticalhitdamage" value="15"/>
+		<attribute key="criticalhitchance" value="20"/>
 		<attribute key="ammotype" value="arrow"/>
-		<attribute key="absorbpercentearth" value="6"/>
-		<attribute key="skilldist" value="4"/>
-		<attribute key="hitchance" value="6"/>
+		<attribute key="absorbpercentearth" value="15"/>
+		<attribute key="skilldist" value="9"/>
+		<attribute key="hitchance" value="15"/>
 		<attribute key="range" value="6"/>
-		<attribute key="attack" value="9"/>
+		<attribute key="attack" value="15"/>
 		<attribute key="weight" value="4700"/>
 		<attribute key="imbuementslot" value="3">
 			<attribute key="elemental damage" value="3"/>
@@ -68829,14 +68827,14 @@
 		<attribute key="primarytype" value="distance weapons"/>
 		<attribute key="weaponType" value="distance"/>
 		<attribute key="slotType" value="two-handed"/>
-		<attribute key="criticalhitdamage" value="12"/>
-		<attribute key="criticalhitchance" value="10"/>
+		<attribute key="criticalhitdamage" value="15"/>
+		<attribute key="criticalhitchance" value="20"/>
 		<attribute key="ammotype" value="bolt"/>
-		<attribute key="absorbpercentfire" value="6"/>
-		<attribute key="skilldist" value="4"/>
-		<attribute key="hitchance" value="7"/>
+		<attribute key="absorbpercentfire" value="15"/>
+		<attribute key="skilldist" value="9"/>
+		<attribute key="hitchance" value="15"/>
 		<attribute key="range" value="6"/>
-		<attribute key="attack" value="10"/>
+		<attribute key="attack" value="20"/>
 		<attribute key="weight" value="4700"/>
 		<attribute key="imbuementslot" value="3">
 			<attribute key="elemental damage" value="3"/>
@@ -68876,18 +68874,18 @@
 		<attribute key="primarytype" value="rods"/>
 		<attribute key="weaponType" value="wand"/>
 		<attribute key="shootType" value="energy"/>
-		<attribute key="absorbpercentearth" value="7"/>
-		<attribute key="magiclevelpoints" value="6"/>
+		<attribute key="absorbpercentearth" value="15"/>
+		<attribute key="magiclevelpoints" value="15"/>
 		<attribute key="range" value="5"/>
-		<attribute key="firemagiclevelpoints" value="2"/>
-		<attribute key="energymagiclevelpoints" value="2"/>
-		<attribute key="criticalhitdamage" value="15"/>
-		<attribute key="criticalhitchance" value="15"/>
+		<attribute key="firemagiclevelpoints" value="15"/>
+		<attribute key="energymagiclevelpoints" value="15"/>
+		<attribute key="criticalhitdamage" value="25"/>
+		<attribute key="criticalhitchance" value="25"/>
 		<attribute key="weight" value="2100"/>
 		<attribute key="imbuementslot" value="2">
 		<attribute key="mana leech" value="4"/>
 		<attribute key="critical hit" value="4"/>
-		<attribute key="skillboost magic level" value="4"/>
+		<attribute key="skillboost magic level" value="9"/>
 		</attribute>
 	</item>
 	<item id="43884" name="sanguine boots">
@@ -68924,17 +68922,17 @@
 		<attribute key="primarytype" value="rods"/>
 		<attribute key="weaponType" value="wand"/>
 		<attribute key="shootType" value="earth"/>
-		<attribute key="absorbpercentdeath" value="7"/>
-		<attribute key="magiclevelpoints" value="5"/>
-		<attribute key="earthmagiclevelpoints" value="1"/>
-		<attribute key="icemagiclevelpoints" value="1"/>
-		<attribute key="criticalhitdamage" value="5"/>
-		<attribute key="criticalhitchance" value="10"/>
+		<attribute key="absorbpercentdeath" value="15"/>
+		<attribute key="magiclevelpoints" value="10"/>
+		<attribute key="earthmagiclevelpoints" value="10"/>
+		<attribute key="icemagiclevelpoints" value="10"/>
+		<attribute key="criticalhitdamage" value="10"/>
+		<attribute key="criticalhitchance" value="20"/>
 		<attribute key="weight" value="2400"/>
 		<attribute key="imbuementslot" value="2">
 			<attribute key="mana leech" value="3"/>
 			<attribute key="critical hit" value="3"/>
-			<attribute key="skillboost magic level" value="3"/>
+			<attribute key="skillboost magic level" value="9"/>
 		</attribute>
 	</item>
 	<item id="43887" article="a" name="sanguine galoshes">

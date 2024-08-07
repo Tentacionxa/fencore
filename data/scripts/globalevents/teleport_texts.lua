@@ -63,7 +63,10 @@ local effects = {
 {position = Position(33461, 32488, 9), text = 'Town', effect = CONST_ME_GROUNDSHAKER},
 {position = Position(33455, 32494, 9), text = 'Custom Hunt', effect = CONST_ME_GROUNDSHAKER},
 
-
+{position = Position(32352, 32240, 7), text = 'Remove', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(33437, 32485, 8), text = 'Remove', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32353, 32211, 7), text = 'Remove', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32399, 32218, 7), text = 'Remove', effect = CONST_ME_GROUNDSHAKER},
 
 	{position = Position(32580, 32391, 5), text = 'Thais', effect = CONST_ME_GROUNDSHAKER},  
 	{position = Position(32583, 32391, 5), text = 'Venore', effect = CONST_ME_GROUNDSHAKER},  

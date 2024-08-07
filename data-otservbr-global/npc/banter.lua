@@ -138,6 +138,7 @@ npcConfig.shop = {
 	{ itemName = "sudden death rune", clientId = 3155, buy = 135 },
 	{ itemName = "terra rod", clientId = 3065, buy = 10000 },
     { itemName = "thunderstorm rune", clientId = 3202, buy = 52 },
+	{ itemName = "stone shower rune", clientId = 3175, buy = 41 },
 	{ itemName = "ultimate healing rune", clientId = 3160, buy = 175 },
 	{ itemName = "ultimate health potion", clientId = 7643, buy = 379 },
 	{ itemName = "ultimate mana potion", clientId = 23373, buy = 438 },

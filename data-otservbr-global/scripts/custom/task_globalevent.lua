@@ -25,4 +25,4 @@ function taskEvents.onLogin(player)
 	return true
 end
 
-taskEvents:register()
+--taskEvents:register()

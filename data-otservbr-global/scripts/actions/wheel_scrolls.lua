@@ -15,10 +15,10 @@ function scroll.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	end
 
 	local scrollData = promotionScrolls[item:getId()]
-	if player:getStorageValueByName(scrollData.storageName) == 1 then
+	if player:getStorageValueByName(scrollData.storageName) == 2 then
 		player:sendTextMessage(MESSAGE_INFO_DESCR, "You have already deciphered this scroll.")
 		return true
-	end
+	else
 
 	player:setStorageValueByName(scrollData.storageName, 1)
 	player:sendTextMessage(MESSAGE_INFO_DESCR, "You have gained " .. scrollData.points .. " promotion points for the Wheel of Destiny by deciphering the " .. scrollData.name .. ".")

@@ -34,7 +34,7 @@ end
  
 ret = doTileAddItemEx(pos, item)
 else
-doPlayerSendTextMessage(pid, MESSAGE_STATUS_CONSOLE_BLUE, "O "..getCreatureName(cid).." deu ("..amount.."x) "..getItemNameById(id).." para todos os players online.")
+doPlayerSendTextMessage(pid, MESSAGE_STATUS_CONSOLE_BLUE, "You "..getCreatureName(cid).." received ("..amount.."x) "..getItemNameById(id).." as a reward for being with us at Fencore.")
 ret = doPlayerAddItemEx(pid, item, true)
 end
  

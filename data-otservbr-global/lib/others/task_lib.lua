@@ -154,7 +154,7 @@ taskConfiguration = {
 
 {name = "Falcon Bastion - Falcon Knight, Falcon Paladin, Monk, Preceptor Lazare, Grand Canon Dominus, Grand Commander, Grand Chaplain Gaunder", color = 40, total = 5000, type = "daily", storage = 190018, storagecount = 190019, 
 	rewards = { 
-	{3043, 100},
+	{3043, 300},
 	{"exp", 10000000},
 	},
 	races = {
@@ -170,7 +170,7 @@ taskConfiguration = {
 
 {name = "Banuta - Medusa, Serpent Spawn, Hydra, Bonebeast, ", color = 40, total = 5000, type = "daily", storage = 190020, storagecount = 190021, 
 	rewards = { 
-	{3043, 100},
+	{3043, 200},
 	{"exp", 20000000},
 	},
 	races = {

@@ -20,7 +20,7 @@ Container::Container(uint16_t type) :
 	m_maxItems = static_cast<uint32_t>(g_configManager().getNumber(MAX_CONTAINER_ITEM, __FUNCTION__));
 	if (getID() == ITEM_GOLD_POUCH || isStoreInbox()) {
 		pagination = true;
-		m_maxItems = 2000;
+		m_maxItems = 50000;
 		maxSize = 32;
 	}
 }

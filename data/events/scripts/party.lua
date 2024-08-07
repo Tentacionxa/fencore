@@ -81,7 +81,7 @@ function Party:onShareExperience(exp)
 		end
 	end
 
-	local size = #self:getMembers()
+	local size = #vocationsIds
 	if size > 1 then
 		sharedExperienceMultiplier = 1.0 + ((size * (5 * (size - 1) + 10)) / 100)
 	end

@@ -49,6 +49,9 @@ Monster::Monster(const std::shared_ptr<MonsterType> mType) :
 	// Register creature events
 	for (const std::string &scriptName : mType->info.scripts) {
 		if (!registerCreatureEvent(scriptName)) {
+			if (asUpperCaseString(scriptName) == "TASKCREATURE") {
+				continue;
+			}
 			g_logger().warn("[Monster::Monster] - "
 							"Unknown event name: {}",
 							scriptName);

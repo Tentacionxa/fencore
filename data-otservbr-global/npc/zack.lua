@@ -1578,6 +1578,8 @@ npcConfig.shop = {
 	{ itemName = "soulful legs", clientId = 32618, sell = 500000 },
 	{ itemName = "tagralt blade", clientId = 31614, sell = 750000 },
 	{ itemName = "jungle rod", clientId = 35521, sell = 500000 },
+	{ itemName = "mortal mace", clientId = 31580, sell = 1000000 },
+	{ itemName = "toga mortis", clientId = 31583, sell = 1200000 },
 
 	{ itemName = "all loot in pouch", clientId = ITEM_GOLD_POUCH, sell = 1 },
 }

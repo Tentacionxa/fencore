@@ -92,7 +92,9 @@ monster.loot = {
 	{id = 16122, chance = 10000, maxCount = 3}, -- green crystal splinter
 	{id = 16120, chance = 10000, maxCount = 2}, -- violet crystal shard
 	{id = 30061, chance = 15000},
-	{id = 33778, chance = 2000}
+	{id = 33778, chance = 2000},
+	{ id = 43854, chance = 500, maxCount = 1 }, -- tainted heart
+	{ id = 43855, chance = 500, maxCount = 1 }, -- darklight heart
 
 }
 

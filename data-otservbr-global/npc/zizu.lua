@@ -1580,6 +1580,17 @@ npcConfig.shop = {
 		{ itemName = "jungle rod", clientId = 35521, sell = 500000 },
 		{ itemName = "mortal mace", clientId = 31580, sell = 1000000 },
 	{ itemName = "toga mortis", clientId = 31583, sell = 1200000 },
+	{ itemName = "demon armor", clientId = 3388, sell = 300000 },
+	{ itemName = "demon legs", clientId = 3389, sell = 700000 },
+	{ itemName = "demonwing axe", clientId = 8098, sell = 400000 },
+	{ itemName = "great shield", clientId = 3422, sell = 300000 },
+	{ itemName = "emerald sword", clientId = 8102, sell = 700000 },
+	{ itemName = "oceanborn leviathan armor", clientId = 8056, buy = 125000 },
+	{ itemName = "greenwood coat", clientId = 8041, sell = 400000 },
+	{ itemName = "hellforged axe", clientId = 8096, sell = 850000 },
+	{ itemName = "velvet mantle", clientId = 8040, sell = 300000 },
+	{ itemName = "skullcrusher", clientId = 7423, sell = 2000000 },
+	{ itemName = "runed sword", clientId = 7417, sell = 1200000 },
 
 		
 	{ itemName = "all loot in pouch", clientId = ITEM_GOLD_POUCH, sell = 1 },

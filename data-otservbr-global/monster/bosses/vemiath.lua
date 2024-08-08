@@ -102,7 +102,9 @@ monster.loot = {
     { id = 43967, chance = 6500, maxCount = 1 }, -- vemiath infused basalt
     { id = 43503, chance = 6500, maxCount = 1 }, -- essence of vemiath
     { id = 43860, chance = 300, maxCount = 1 }, -- bag you covet
-    { id = 44048, chance = 1500, maxCount = 1 }, -- spiritual horsehoe
+    { id = 44048, chance = 800, maxCount = 1 }, -- spiritual horsehoe
+	{ id = 43854, chance = 500, maxCount = 1 }, -- tainted heart
+	{ id = 43855, chance = 500, maxCount = 1 }, -- darklight heart
 }
 
 monster.attacks = {

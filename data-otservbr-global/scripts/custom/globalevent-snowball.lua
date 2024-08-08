@@ -11,8 +11,8 @@ function startGame(rounds)
 					Player(players):setStorageValue(10108, SnowBall_Configurations.Ammo_Configurations.Ammo_Start)
 					Player(players):teleportTo(CACHE_GAMEAREAPOSITIONS[math.random(#CACHE_GAMEAREAPOSITIONS)])
 			end
-			broadcastMessage("[Snowball Event]: The event has closed. The game started.", MESSAGE_EVENT_ADVANCE)
-			addEvent(Event_endGame, SnowBall_Configurations.Event_Duration * 60 * 1000)
+			broadcastMessage("[Snowball Event]: The event has closed. The game started. The game will take 10 minutes.", MESSAGE_EVENT_ADVANCE)
+			addEvent(Event_endGame, 10 * 60 * 1000)
 		end
 
 		Item(getTileItemById(SnowBall_Configurations.Area_Configurations.Position_EventTeleport, 1949).uid):remove(1)

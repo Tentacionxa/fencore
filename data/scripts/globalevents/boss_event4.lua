@@ -1,17 +1,11 @@
 local config = {
     teleportId = 25047,
     days = {
-        ["Monday"] = {Position(32356, 32219, 7), Position(32117, 32687, 4)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
-        ["Tuesday"] = {Position(32356, 32219, 7), Position(32117, 32687, 4)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
-        ["Wednesday"] = {Position(32356, 32219, 7), Position(32117, 32687, 4)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
-        ["Thursday"] = {Position(32356, 32219, 7), Position(32117, 32687, 4)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
         ["Friday"] = {Position(32356, 32219, 7), Position(32117, 32687, 4)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
-        ["Saturday"] = {Position(32356, 32219, 7), Position(32117, 32687, 4)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
-        ["Sunday"] = {Position(32356, 32219, 7), Position(32117, 32687, 4)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
     },
     bossPosition = Position(32122, 32686, 4),
     bossName     = 'Ferumbras',
-    spawnTime    = '16:00:00'
+    spawnTime    = '18:00:00'
 }
 
 local FerumbrasRespawn = GlobalEvent("FerumbrasRespawn")

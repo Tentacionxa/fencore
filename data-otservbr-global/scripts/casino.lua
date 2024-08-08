@@ -22,7 +22,7 @@ local config = {
         {itemId = 20086, count = {1, 1},    chance = 2500 }, -- umbrall crossbow
         {itemId = 3079, count = {1, 1},    chance = 8500 }, -- boots of haste
         {itemId = 8096, count = {1, 1},    chance = 2500 }, -- axe
-        {itemId = 3043, count = {15, 100}, chance = 4000 }, -- sudden death rune -- runes are given as stackable items, even tho they have 'charges'
+        {itemId = 3043, count = {15, 25}, chance = 4000 }, -- sudden death rune -- runes are given as stackable items, even tho they have 'charges'
         {itemId = 25718, count = {50, 100}, chance = 5000 }, -- temple teleport scroll     -- items with 'charges' and have 'showCharges' in items.xml will be given charges
         {itemId = 7417, count = {1, 1},    chance = 4000 }, -- roulette token
         {itemId = 3364, count = {1, 1},    chance = 3000 }, -- golden legs

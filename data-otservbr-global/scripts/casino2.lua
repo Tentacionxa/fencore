@@ -19,13 +19,13 @@ local config = {
 
 		{id = 3079, count = 100, chance = 1, raro = true},
 		{id = 943, count = 50, chance = 1, raro = true},
-		{id = 24390, count = 150, chance = 10,},
-        {id = 3043, count = 100, chance = 4},
-        {id = 14758, count = 25, chance = 8},
+		{id = 24390, count = 50, chance = 10,},
+        {id = 3043, count = 50, chance = 4},
+        {id = 14758, count = 1, chance = 0.5, raro = true},
         {id = 36728, count = 1, chance = 4},
-        {id = 36727, count = 1, chance = 2},
-        {id = 36725, count = 1, chance = 1},
-        {id = 12812, count = 1, chance = 1},
+        {id = 36727, count = 1, chance = 0.5, raro = true},
+        {id = 36725, count = 1, chance = 0.5, raro = true},
+        {id = 12812, count = 1, chance = 0.5, raro = true },
         {id = 3363, count = 1, chance = 5},
     }
 }

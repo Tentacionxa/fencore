@@ -16,6 +16,7 @@ local config = {
         {id = 24390, count = 150, chance = 10},
         {id = 3389, count = 1, chance = 1, raro = true},
         {id = 3079, count = 1, chance = 1, raro = true},
+
 		{id = 3079, count = 100, chance = 1, raro = true},
 		{id = 943, count = 50, chance = 1, raro = true},
 		{id = 24390, count = 150, chance = 10,},
@@ -33,10 +34,10 @@ local isRouletteRunning = false
 
 local function addItemToPlayer(player, item)
     player:addItem(item.id, item.count)
-    player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Legal! Ganhou um " .. ItemType(item.id):getName() .. "!")
+    player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Wiiner! You won " .. ItemType(item.id):getName() .. "!")
     player:getPosition():sendMagicEffect(CONST_ME_GIFT_WRAPS)
     if item.raro then
-        Game.broadcastMessage(player:getName() .. " ganhou um item raro: " .. ItemType(item.id):getName() .. " na roleta!", MESSAGE_EVENT_ADVANCE)
+        Game.broadcastMessage(player:getName() .. " won a rare item: " .. ItemType(item.id):getName() .. " in roulette!", MESSAGE_EVENT_ADVANCE)
     end
 end
 

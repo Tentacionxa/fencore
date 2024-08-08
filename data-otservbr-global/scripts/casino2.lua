@@ -21,7 +21,7 @@ local config = {
         {itemId = 24390, count = {1, 250},   chance = 10000}, -- {itemId = itemid, count = {min, max}, chance = chance/10000} (crystal coins)
         {itemId = 3389, count = {1, 1},    chance = 3000 }, -- demon legs
         {itemId = 3079, count = {1, 1},    chance = 8500 }, -- boots of haste
-        {itemId = 11687, count = {1, 1},    chance = 2500 }, -- royal scale robe
+        {itemId = 943, count = {1, 75},    chance = 2500 }, -- holy soil forge
         {itemId = 24390, count = {1, 150},   chance = 6500 }, -- sudden death rune -- runes are given as stackable items, even tho they have 'charges'
         {itemId = 14758, count = {1, 1}, chance = 500 }, -- temple teleport scroll     -- items with 'charges' and have 'showCharges' in items.xml will be given charges
         {itemId = 36728, count = {1, 1},    chance = 1000 }, -- bestiary betterment

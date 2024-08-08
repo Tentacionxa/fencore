@@ -3,8 +3,7 @@ local config = {
 		name = "Ragiaz",
 		position = Position(33481, 32334, 13),
 	},
-
-	timeToDefeat = 30 * 60,
+	requiredLevel = 250,
 	playerPositions = {
 		{ pos = Position(33456, 32356, 13), teleport = Position(33482, 32339, 13), effect = CONST_ME_TELEPORT },
 		{ pos = Position(33457, 32356, 13), teleport = Position(33482, 32339, 13), effect = CONST_ME_TELEPORT },
@@ -18,7 +17,6 @@ local config = {
 	},
 	exit = Position(33319, 32318, 13),
 }
-
 local deathDragons = {
 	Position(33476, 32331, 13),
 	Position(33476, 32340, 13),
@@ -39,3 +37,8 @@ end
 
 ferumbrasAscendantRagiaz:uid(1023)
 ferumbrasAscendantRagiaz:register()
+
+local lever = BossLever(config)
+
+lever:position(Position(33455, 32356, 13))
+lever:register()

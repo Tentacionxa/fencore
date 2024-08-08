@@ -574,11 +574,45 @@ taskConfiguration = {
 		"White Weretiger",
 	},
 },
+
+{name = "Library - Cursed Book, Biting Book, Animated Feather, Dark Knowledge, Energetic Book, Energuardian of Tales, Brain Squid, Flying Book, Guardian of Tales, Gulosh' Deathgaze, Knowledge elemental, The Book of Death, Rage Squid, Squid Warden", color = 40, total = 3000, type = "daily", storage = 190069, storagecount = 190070, 
+	rewards = { 
+		{3043, 250},
+	{"exp", 8000000},
+	},
+	races = {
+		"Cursed Book",
+		"Biting Book",
+		"Animated Feather",
+		"Dark Knowledge",
+		"Energetic Book",
+"Energuardian of Tales",
+		"Brain Squid",
+		"Flying Book",
+		"Guardian of Tales",
+		"Gulosh' Deathgaze",
+		"Knowledge elemental",
+		"The Book of Death",
+		"Rage Squid",
+		"Squid Warden",
+	},
+},
+
+{name = "Casino Coins - Juggernaut, Hellhound, Demon", color = 50, total = 100, type = "daily", storage = 190070, storagecount = 190071, 
+	rewards = { 
+		{37317, 6},
+	},
+	races = {
+		"Juggernaut",
+		"Hellhound",
+		"Demon",
+	},
+},
 }
 
 squareWaitTime = 5000
 taskQuestLog = 65000 -- A storage so you get the quest log
-dailyTaskWaitTime = 20 * 60 * 60 
+dailyTaskWaitTime = 12 * 60 * 60 
 
 function Player.getCustomActiveTasksName(self)
 local player = self

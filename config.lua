@@ -78,8 +78,8 @@ maxPlayersOutsidePZPerAccount = 2
 packetCompressionLevel = 5
 
 -- Depot Limit
-freeDepotLimit = 2000
-premiumDepotLimit = 10000
+freeDepotLimit = 100000
+premiumDepotLimit = 100000
 depotBoxes = 20
 
 -- Augments System (Get more info in: https://github.com/opentibiabr/canary/pull/2602)

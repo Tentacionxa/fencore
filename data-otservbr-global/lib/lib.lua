@@ -37,5 +37,7 @@ dofile(DATA_DIRECTORY.. '/scripts/custom/load.lua')
 -- Boss eye
 dofile(DATA_DIRECTORY.. '/lib/custom/boss_eye.lua')
 
+-- Casino level sqm
+dofile(DATA_DIRECTORY.. '/lib/tile_requirements.lua')
 
 

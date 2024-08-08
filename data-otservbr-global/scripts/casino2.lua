@@ -43,8 +43,8 @@ local config = {
 local chancedItems = {} -- used for broadcast. don't edit
 
 local function resetLever(position)
-    local lever = Tile(position):getItemById(config.lever.right)
-    lever:transform(config.lever.left)
+    local lever2 = Tile(position):getItemById(config.lever.right)
+    lever2:transform(config.lever.left)
 end
 
 local function updateRoulette(newItemInfo)

@@ -20,8 +20,8 @@ local events_by_day = {
         ['LOOT'] = 10, --10%
     },
     ['Thursday'] = {
-        ['EXP'] = 150, --150%
-        ['LOOT'] = 10,--10%
+        ['EXP'] = 250, --150%
+        ['LOOT'] = 50,--10%
     },
     ['Friday'] = {
         ['LOOT'] = 50, --50%

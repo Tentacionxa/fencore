@@ -752,6 +752,6 @@ local data = getTaskByStorage(storage)
 		end
 		return player:setStorageValue(data.storagecount, data.total)
 	end
-		player:say('Task: '..data.name ..' - ['.. kills + count .. '/'.. data.total ..']', TALKTYPE_MONSTER_SAY)
+		player:say(' ['.. kills + count .. '/'.. data.total ..']', TALKTYPE_MONSTER_SAY)
 		return player:setStorageValue(data.storagecount, kills + count)
 end

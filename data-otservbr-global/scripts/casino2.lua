@@ -2,7 +2,7 @@ local config = {
     actionId = 18563, -- on lever
     lever = {
         left = 30410,
-        right = 21126
+        right = 30411
     },
     playItem = {
         itemId = 37317, -- item required to pull lever

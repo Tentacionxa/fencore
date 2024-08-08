@@ -68,6 +68,8 @@ local effects = {
 {position = Position(32353, 32211, 7), text = 'Remove', effect = CONST_ME_GROUNDSHAKER},
 {position = Position(32399, 32218, 7), text = 'Remove', effect = CONST_ME_GROUNDSHAKER},
 
+{position = Position(33457, 32502, 11), text = 'Nemesis Boss', effect = CONST_ME_GROUNDSHAKER},
+
 	{position = Position(32580, 32391, 5), text = 'Thais', effect = CONST_ME_GROUNDSHAKER},  
 	{position = Position(32583, 32391, 5), text = 'Venore', effect = CONST_ME_GROUNDSHAKER},  
 	{position = Position(32577, 32391, 5), text = 'Kazordoon', effect = CONST_ME_GROUNDSHAKER},  

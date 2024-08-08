@@ -600,7 +600,7 @@ taskConfiguration = {
 
 {name = "Casino Coins - Juggernaut, Hellhound, Demon", color = 50, total = 100, type = "daily", storage = 190070, storagecount = 190071, 
 	rewards = { 
-		{37317, 6},
+		{37317, 1},
 	},
 	races = {
 		"Juggernaut",

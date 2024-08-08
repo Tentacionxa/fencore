@@ -6,13 +6,13 @@ local config = {
 }
 
 local rewards = {
-    { id = 37317, name = "casino coin", count = 3, text = "a" },
-    { id = 37317, name = "casino coin", count = 3, text = "a" },
-    { id = 37317, name = "casino coin", count = 3, text = "a" },
-    { id = 37317, name = "casino coin", count = 3, text = "a" },
-    { id = 37317, name = "casino coin", count = 3, text = "a" },
-    { id = 37317, name = "casino coin", count = 3, text = "a" },
-    { id = 37317, name = "casino coin", count = 3, text = "a" }
+    { id = 37317, name = "casino coin", count = 1, text = "a" },
+    { id = 37317, name = "casino coin", count = 1, text = "a" },
+    { id = 37317, name = "casino coin", count = 1, text = "a" },
+    { id = 37317, name = "casino coin", count = 1, text = "a" },
+    { id = 37317, name = "casino coin", count = 1, text = "a" },
+    { id = 37317, name = "casino coin", count = 1, text = "a" },
+    { id = 37317, name = "casino coin", count = 1, text = "a" }
 }
  
 local dailyRewardChest = Action()

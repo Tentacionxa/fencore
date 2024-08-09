@@ -52,6 +52,9 @@ monster.flags = {
 	canWalkOnPoison = false,
 }
 
+monster.events = {
+	"VersperothDeath"
+}
 monster.light = {
 	level = 0,
 	color = 0,

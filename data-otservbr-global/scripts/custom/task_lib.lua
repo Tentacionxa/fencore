@@ -335,6 +335,7 @@ taskConfiguration = {
 		"Spiteful Spitter",
 "Vibrant Phantom",
 "Branchy Crawler",
+"Infernal Demon",
 	},
 },
 

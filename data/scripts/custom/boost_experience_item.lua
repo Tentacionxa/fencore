@@ -6,7 +6,7 @@ function expscroll.onUse(cid, item, fromPosition, itemEx, toPosition)
     local currentExpBoostTime = player:getExpBoostStamina()
     local expBoostCount = player:getStorageValue(GameStore.Storages.expBoostCount)
 
-    if expBoostCount >= 3 then -- Xp boost can only be used 3 times a day
+    if expBoostCount >= 7 then -- Xp boost can only be used 3 times a day
         player:say('You have reached the limit for today, try again after Server Save.', TALKTYPE_MONSTER_SAY)
         return true
     end

@@ -22,9 +22,6 @@ npcConfig.outfit = {
 npcConfig.flags = {
 	floorchange = false,
 }
-npcConfig.shop = {
-	{ itemName = "holy tible", clientId = 2836 },
-}
 
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)
@@ -32,7 +29,7 @@ npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBac
 end
 -- On sell npc shop message
 npcType.onSellItem = function(npc, player, itemId, subtype, amount, ignore, name, totalCost)
-	player:sendTextMessage(MESSAGE_INFO_DESCR, string.format("Sold %ix %s for %i gold.", amount, name, totalCost))
+	player:sendTextMessage(MESSAGE_TRADE, string.format("Sold %ix %s for %i gold.", amount, name, totalCost))
 end
 -- On check npc shop message (look item)
 npcType.onCheckItem = function(npc, player, clientId, subType) end
@@ -176,6 +173,24 @@ local function creatureSayCallback(npc, creature, type, message)
 		npcHandler:say("Yenny, known as the Gentle, was one of the most powerful wielders of magic in ancient times. She was known throughout the world for her mercy and kindness.", npc, creature)
 		npcHandler:setTopic(playerId, 0)
 	end
+
+	if MsgContains(message, "holy") or MsgContains(message, "tible") then
+		if player:getStorageValue(Storage.Quest.U7_9.ThePitsOfInferno.ChestTible) == 1 then
+			npcHandler:say("Would you like to buy a The Holy Tible for 1000 gold?", npc, creature)
+			npcHandler:setTopic(playerId, 3)
+		else
+			npcHandler:say("You need to complete the quest for the book first before you can buy The Holy Tible.", npc, creature)
+		end
+	elseif MsgContains(message, "yes") and npcHandler:getTopic(playerId) == 3 then
+		if player:removeMoney(1000) then
+			player:addItem(2836, 1)
+			npcHandler:say("Here is your The Holy Tible.", npc, creature)
+		else
+			npcHandler:say("You do not have enough money.", npc, creature)
+		end
+		npcHandler:setTopic(playerId, 0)
+	end
+
 	return true
 end
 

@@ -317,6 +317,7 @@ taskConfiguration = {
 {name = "Soul War - Bony Sea Devil, Brachiodemon, Capricious Phantom, Cloak of Terror, Distorted Phantom, Courage Leech, Infernal Phantom, Infernal Demon, Hazardous Phantom, Many Faces, Mean Maw, Mould Phantom, Rotten Golem, Spiteful Spitter, Vibrant Phantom, Branchy Crawler", color = 40, total = 6000, type = "daily", storage = 190042, storagecount = 190043, 
 	rewards = {  
 		{3043, 400},
+		{37317, 1},
 	{"exp", 100000000},
 	},
 	races = {
@@ -456,6 +457,7 @@ taskConfiguration = {
 {name = "Rotten Blood - Bloated Man-Maggot, Converter, Darklight Construct, Darklight Emitter, Darklight Matter, Darklight Source, Darklight Striker, Mycobiontic Beetle, Oozing Carcass, Oozing Corpus, Rotten Man-Maggot, Sopping Carcass, Sopping Corpus, Walking Pilar, Wandering Pilar", color = 40, total = 4500, type = "daily", storage = 190054, storagecount = 190055, 
 	rewards = { 
 		{3043, 350},
+		{37317, 1},
 	{"exp", 10000000},
 	},
 	races = {

@@ -88,6 +88,7 @@ monster.loot = {
 	{ id = 7441, chance = 630 }, -- ice cube
 	{ name = "emerald bangle", chance = 630 },
 	{ name = "silver brooch", chance = 310 },
+	{ id = 39577, chance = 100 }, -- naga bag
 }
 
 monster.attacks = {

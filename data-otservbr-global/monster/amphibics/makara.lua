@@ -86,6 +86,7 @@ monster.loot = {
 	{ name = "green crystal shard", chance = 1950 },
 	{ name = "green crystal fragment", chance = 1170 },
 	{ name = "sea horse figurine", chance = 200 },
+	{ id = 39577, chance = 100 }, -- naga bag
 }
 
 monster.attacks = {

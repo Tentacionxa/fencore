@@ -602,7 +602,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "Casino Coins - Juggernaut, Hellhound, Demon, Hellfire Fighter", color = 50, total = 100, type = "daily", storage = 190075, storagecount = 190076, 
+{name = "Casino Coins - Juggernaut, Hellhound, Demon, Hellfire Fighter", color = 40, total = 100, type = "daily", storage = 190075, storagecount = 190076, 
 	rewards = { 
 		{37317, 1},
 	},
@@ -611,6 +611,19 @@ taskConfiguration = {
 		"Hellhound",
 		"Demon",
 		"Hellfire Fighter",
+	},
+},
+
+{name = "Drefia - Grim Reaper, Lich, Gravedigger, Spectre", color = 40, total = 2000, type = "daily", storage = 190077, storagecount = 190078, 
+	rewards = { 
+		{3043, 120},
+	{"exp", 1000000},
+	},
+	races = {
+		"Grim Reaper",
+		"Lich",
+		"Gravedigger",
+		"Spectre",
 	},
 },
 }

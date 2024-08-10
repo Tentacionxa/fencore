@@ -630,7 +630,7 @@ taskConfiguration = {
 
 squareWaitTime = 5000
 taskQuestLog = 65000 -- A storage so you get the quest log
-dailyTaskWaitTime = 12 * 60 * 60 
+dailyTaskWaitTime = 6 * 60 * 60 
 
 function Player.getCustomActiveTasksName(self)
 local player = self

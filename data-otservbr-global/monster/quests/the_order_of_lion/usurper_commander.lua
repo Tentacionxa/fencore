@@ -32,9 +32,7 @@ monster.strategiesTarget = {
 	nearest = 100,
 }
 
-monster.events = {
-	"UsurperCommanderDeath",
-}
+
 
 monster.flags = {
 	summonable = false,

@@ -598,6 +598,7 @@ taskConfiguration = {
 		"The Book of Death",
 		"Rage Squid",
 		"Squid Warden",
+		"Burning Book",
 	},
 },
 

@@ -7,7 +7,7 @@ local rewards = {
 	{ id = 30393, name = "cobra crossbow" },
 }
 
-feedBagId = 21292
+feedBagId = 35479
 local feedBag = Action()
 
 function feedBag.onUse(player, item, fromPosition, target, toPosition, isHotkey)

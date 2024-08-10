@@ -93,7 +93,7 @@ monster.loot = {
 	{ name = "violet crystal shard", chance = 2420 },
 	{ name = "green gem", chance = 1610 },
 	{ name = "onyx chip", chance = 1610, maxCount = 3 },
-	{ id = 21292, chance = 490 }, -- cobra bag 
+	{ id = 35479, chance = 490 }, -- cobra bag 
 }
 
 monster.attacks = {

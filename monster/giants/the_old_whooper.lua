@@ -1,7 +1,7 @@
-local mType = Game.createMonsterType("The Old Whooper")
+local mType = Game.createMonsterType("The Old Whopper")
 local monster = {}
 
-monster.description = "a cyclops smith"
+monster.description = "the old whopper"
 monster.experience = 255
 monster.outfit = {
 	lookType = 277,

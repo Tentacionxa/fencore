@@ -17,26 +17,7 @@ local config = {
 	},
 	exit = Position(33319, 32318, 13),
 }
-local deathDragons = {
-	Position(33476, 32331, 13),
-	Position(33476, 32340, 13),
-	Position(33487, 32340, 13),
-	Position(33488, 32331, 13),
-}
 
-local ferumbrasAscendantRagiaz = Action()
-function ferumbrasAscendantRagiaz.onUse(player, item, fromPosition, target, toPosition, isHotkey)
-	if CreateDefaultLeverBoss(player, config) then
-		for _, pos in pairs(deathDragons) do
-			Game.createMonster("Death Dragon", pos, true, true)
-		end
-		return true
-	end
-	return false
-end
-
-ferumbrasAscendantRagiaz:uid(1023)
-ferumbrasAscendantRagiaz:register()
 
 local lever = BossLever(config)
 

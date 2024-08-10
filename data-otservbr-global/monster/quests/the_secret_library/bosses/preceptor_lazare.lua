@@ -94,6 +94,7 @@ monster.loot = {
 	{ name = "mastermind shield", chance = 500 },
 	{ name = "falcon rod", chance = 200 },
 	{ name = "falcon greaves", chance = 110 },
+	{ id = 9151, chance = 100 }, -- bag of screws
 }
 
 monster.attacks = {

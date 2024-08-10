@@ -27,9 +27,7 @@ monster.Bestiary = {
 }
 
 
-monster.events = {
-	"VampireDeath",
-}
+
 
 
 monster.health = 40000
@@ -94,9 +92,6 @@ monster.voices = {
 	{ text = "You will leak blood.", yell = false },
 }
 
-monster.events = {
-	"VampireDeath",
-}
 
 monster.attacks = {
 	{ name = "melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -900 },

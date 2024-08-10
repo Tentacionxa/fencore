@@ -1,5 +1,4 @@
 local rewards = {
-	{ id = 43887, name = "Sanguine Galoshes" },
     { id = 43865, name = "Grand Sanguine Blade" },
 	{ id = 43867, name = "Grand Sanguine Cudgel" },
 	{ id = 43869, name = "Grand Sanguine Hatchet" },

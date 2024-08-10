@@ -6795,7 +6795,7 @@ GameStore.Categories = {
 			},
 			{
 				icons = { "XP_Boost_Scroll.png" },
-				name = "XP Boost Scroll",
+				name = "Experience Scroll",
 				price = 100,
 				id = 14758,
 				count = 1,

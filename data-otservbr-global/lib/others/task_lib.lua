@@ -574,6 +574,41 @@ taskConfiguration = {
 		"White Weretiger",
 	},
 },
+
+{name = "Library - Cursed Book, Biting Book, Animated Feather, Dark Knowledge, Energetic Book, Energuardian of Tales, Brain Squid, Flying Book, Guardian of Tales, Gulosh' Deathgaze, Knowledge elemental, The Book of Death, Rage Squid, Squid Warden", color = 40, total = 3000, type = "daily", storage = 190069, storagecount = 190070, 
+	rewards = { 
+		{3043, 250},
+	{"exp", 8000000},
+	},
+	races = {
+		"Cursed Book",
+		"Biting Book",
+		"Animated Feather",
+		"Dark Knowledge",
+		"Energetic Book",
+"Energuardian of Tales",
+		"Brain Squid",
+		"Flying Book",
+		"Guardian of Tales",
+		"Gulosh' Deathgaze",
+		"Knowledge elemental",
+		"The Book of Death",
+		"Rage Squid",
+		"Squid Warden",
+	},
+},
+
+{name = "Casino Coins - Juggernaut, Hellhound, Demon, Hellfire Fighter", color = 50, total = 100, type = "daily", storage = 190075, storagecount = 190076, 
+	rewards = { 
+		{37317, 1},
+	},
+	races = {
+		"Juggernaut",
+		"Hellhound",
+		"Demon",
+		"Hellfire Fighter",
+	},
+},
 }
 
 squareWaitTime = 5000

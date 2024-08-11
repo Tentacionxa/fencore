@@ -69,7 +69,7 @@ monster.voices = {
 	{ text = "RAAAR!", yell = false },
 }
 
-monster.summons = {
+monster.summon = {
 	maxSummons = 2,
 	summons = {
 		{ name = "elder bloodjaw", chance = 100, interval = 1000, count = 2 },

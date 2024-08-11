@@ -616,6 +616,22 @@ taskConfiguration = {
 		"Spectre",
 	},
 },
+{name = "Gnomprona - Hulking Prehemoth, Gore Horn, Gorerilla, Emerald Tortoise, Mantosaurus, Noxious Ripptor, Fungosaurus", color = 40, total = 2000, type = "daily", storage = 190079, storagecount = 190080, 
+	rewards = { 
+		{3043, 220},
+		{37317, 1},
+	{"exp", 8000000},
+	},
+	races = {
+		"Hulking Prehemoth",
+		"Gore Horn",
+		"Gorerilla",
+		"Emerald Tortoise",
+		"Mantosaurus",
+		"Noxious Ripptor",
+		"Fungosaurus",
+	},
+},
 }
 
 squareWaitTime = 5000

@@ -58,7 +58,7 @@ local portalId, t = 1949,
             portalTime = 60, --minutes
         }
     },
-    ["Ushuriel"] = {
+    ["ushuriel"] = {
         message = "You now have 10 minutes to exit this room through the teleporter. It will bring you to the next room.",
         config = {
             createPos = {x = 33175, y = 31728, z = 11},
@@ -66,7 +66,7 @@ local portalId, t = 1949,
             portalTime = 10, --minutes
         }
     },
-    ["Zugurosh"] = {
+    ["zugurosh"] = {
         message = "You now have 10 minutes to exit this room through the teleporter. It will bring you to the next room.",
         config = {
             createPos = {x = 33143, y = 31692, z = 11},
@@ -74,7 +74,7 @@ local portalId, t = 1949,
             portalTime = 10, --minutes
         }
     },
-    ["Golgordan"] = {
+    ["golgordan"] = {
         message = "You now have 10 minutes to exit this room through the teleporter. It will bring you to the next room.",
         config = {
             createPos = {x = 33232, y = 31722, z = 11},
@@ -82,7 +82,7 @@ local portalId, t = 1949,
             portalTime = 10, --minutes
         }
     },
-    ["Annihilon"] = {
+    ["annihilon"] = {
         message = "You now have 10 minutes to exit this room through the teleporter. It will bring you to the next room.",
         config = {
             createPos = {x = 33197, y = 31687, z = 11},
@@ -95,6 +95,14 @@ local portalId, t = 1949,
         config = {
             createPos = {x = 33104, y = 31717, z = 11},
             toPos = {x = 33110, y = 31682, z = 12},
+            portalTime = 10, --minutes
+        }
+    },
+    ["hatori hanzo"] = {
+        message = "You now have 10 minutes to exit this room through the teleporter. It will bring you to the reward room.",
+        config = {
+            createPos = {x = 32285, y = 31620, z = 7},
+            toPos = {x = 32286, y = 31622, z = 6},
             portalTime = 10, --minutes
         }
     },

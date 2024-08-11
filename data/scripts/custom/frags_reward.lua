@@ -31,7 +31,7 @@ local function load_rewards()
     logger.info("diff: {}, now: {}, start: {}", diff, now, start)
 
     local lastOcurrence = kv.scoped("weeklyReward"):get("last-ocurrence")
-    if type(lastOcurrence) ~= "number" then lastOcurrence = nil end
+    if type(lastOcurrence) ~= "number" then lastOcurrence = tonumber(lastOcurrence) end
     local lastOcurrenceDays = lastOcurrence and os.difftime(lastOcurrence, now) / (24*60*60) or -1
 
     if date.wday == DAY_TO_REWARD and (lastOcurrenceDays == -1 or lastOcurrenceDays >= PERIOD_TO_REWARD) then

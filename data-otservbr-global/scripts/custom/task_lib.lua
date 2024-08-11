@@ -565,6 +565,7 @@ taskConfiguration = {
 {name = "Oskayaat - Cunning Werepanther, Feral Werecrocodile, Werecrocodile, Werepanther, Weretiger, White Tiger, White Weretiger", color = 40, total = 3000, type = "daily", storage = 190067, storagecount = 190068, 
 	rewards = { 
 		{3043, 150},
+		{37317, 1},
 	{"exp", 8000000},
 	},
 	races = {
@@ -581,6 +582,7 @@ taskConfiguration = {
 {name = "Library - Cursed Book, Biting Book, Animated Feather, Dark Knowledge, Energetic Book, Energuardian of Tales, Brain Squid, Flying Book, Guardian of Tales, Gulosh' Deathgaze, Knowledge elemental, The Book of Death, Rage Squid, Squid Warden", color = 40, total = 3000, type = "daily", storage = 190069, storagecount = 190070, 
 	rewards = { 
 		{3043, 250},
+		{37317, 1},
 	{"exp", 8000000},
 	},
 	races = {
@@ -599,18 +601,6 @@ taskConfiguration = {
 		"Rage Squid",
 		"Squid Warden",
 		"Burning Book",
-	},
-},
-
-{name = "Casino Coins - Juggernaut, Hellhound, Demon, Hellfire Fighter", color = 40, total = 100, type = "daily", storage = 190075, storagecount = 190076, 
-	rewards = { 
-		{37317, 1},
-	},
-	races = {
-		"Juggernaut",
-		"Hellhound",
-		"Demon",
-		"Hellfire Fighter",
 	},
 },
 

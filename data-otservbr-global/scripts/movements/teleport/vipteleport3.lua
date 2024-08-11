@@ -11,7 +11,7 @@ local config = {
 	{ name="Team Hunt 250+", position = Position(32929, 33302, 8) },
 	{ name="Team Hunt 400+", position = Position(33209, 33376, 8)},
     { name="Team Hunt 700+", position = Position(33582, 33021, 8) },
-	{ name="Team Hunt 350+", position = Position(33323, 33255, 8) },
+	{ name="Deepling Space-Time", position = Position(33323, 33255, 8) },
 	{ name="Team Hunt 500+", position = Position(33292, 33074, 8) },
 	{ name="Paladin Hunt 500+", position = Position(32985, 33433, 8) },
 	{ name="Knight Hunt 500+", position = Position(33354, 33544, 8) },

@@ -48,6 +48,14 @@ function inServiceYalaharReward.onUse(player, item, fromPosition, target, toPosi
 		else
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "The chest is empty.")
 		end
+	elseif item.uid == 35027 then
+        if player:getStorageValue(96550) <= 0 then
+			player:setStorageValue(96550, 1)
+			player:addItem(43873, 1)
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You have found a grand sanguine bludgeon.")
+		else
+			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "The chest is empty.")
+		end
     elseif item.uid == 35026 then
         if player:getStorageValue(96550) <= 0 then
 			player:setStorageValue(96550, 1)
@@ -61,5 +69,5 @@ function inServiceYalaharReward.onUse(player, item, fromPosition, target, toPosi
 	return true
 end
 
-inServiceYalaharReward:uid(35020, 35021, 35022, 35023, 35024, 35025, 35026)
+inServiceYalaharReward:uid(35020, 35021, 35022, 35023, 35024, 35025, 35026, 35027)
 inServiceYalaharReward:register()

@@ -1,5 +1,5 @@
 local config = {
-	{ name="Arthom the Hunter", position = Position(32880, 32787, 8) },
+	{ name="Arthom the Hunter", position = Position(32880, 32788, 8) },
 	{ name="Big Boss Trolliver", position = Position(33120, 31744, 8) },
     { name="Burster", position = Position(32461, 32417, 10) },
 	{ name="Clubarc The Plunderer", position = Position(33274, 31454, 7)},

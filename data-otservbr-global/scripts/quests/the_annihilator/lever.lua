@@ -2,7 +2,7 @@ local setting = {
 	-- At what level can do the quest?
 	requiredLevel = 100,
 	-- Can it be done daily? true = yes, false = no
-	daily = true,
+	daily = false,
 	-- Do not change from here down
 	centerDemonRoomPosition = { x = 33221, y = 31659, z = 13 },
 	demonsPositions = {
@@ -28,10 +28,6 @@ function lever.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		-- Checks if you have the 4 players and if they have the required level
 		for i = 1, #setting.playersPositions do
 			local creature = Tile(setting.playersPositions[i].fromPos):getTopCreature()
-			if not creature then
-				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Four players are required to start the quest.")
-				return true
-			end
 			if creature and creature:getLevel() < setting.requiredLevel then
 				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "All the players need to be level " .. setting.requiredLevel .. " or higher.")
 				return true

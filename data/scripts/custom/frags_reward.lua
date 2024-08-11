@@ -28,19 +28,13 @@ local function load_rewards()
     local now = os.time()
     local start = now - diff
 
-    logger.info("diff: {}, now: {}, start: {}", diff, now, start)
-
     local lastOcurrence = kv.scoped("weeklyReward"):get("last-ocurrence")
-    if type(lastOcurrence) ~= "number" then lastOcurrence = nil end
+    if type(lastOcurrence) ~= "number" then lastOcurrence = tonumber(lastOcurrence) end
     local lastOcurrenceDays = lastOcurrence and os.difftime(lastOcurrence, now) / (24*60*60) or -1
 
     if date.wday == DAY_TO_REWARD and (lastOcurrenceDays == -1 or lastOcurrenceDays >= PERIOD_TO_REWARD) then
-        logger.info("\n\n\n\n\n\n\nThe last ocurrence is good, lets try to query")
-    
         local rewardAmount = #rewards
         local query = db.storeQuery("select p.id as player, count(*) as score from player_deaths join players p on killed_by = p.name where time >= " .. start .. " group by killed_by order by score desc limit " .. rewardAmount)
-    
-        logger.info("Running query to find top fragger players...")
     
         local index = 1
         if query then
@@ -54,8 +48,6 @@ local function load_rewards()
                 if rewardItems then
                     local playerGuid = Result.getNumber(query, "player")
     
-                    logger.info("Trying to reward player of name: {}", playerGuid)
-        
                     local player = Game.getOfflinePlayer(playerGuid)
     
                     if not player then

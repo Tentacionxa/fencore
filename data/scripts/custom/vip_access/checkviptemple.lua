@@ -5,9 +5,9 @@
 
 local coords = {
     viplocation = { -- Lugar q vai teleportar se for vip
-        x = 32376,
-        y = 32209,
-        z = 6
+        x = 32369,
+        y = 32241,
+        z = 7
     
     }
 }
@@ -33,5 +33,5 @@ else
 end
 
 tpvip:type("stepin")
-tpvip:uid(65000)
+tpvip:uid(65000, 65001)
 tpvip:register()

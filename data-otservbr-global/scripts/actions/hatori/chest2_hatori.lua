@@ -6,8 +6,8 @@ function chest.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 		return true
 	end
 
-	player:addItem(8097, 1)
-	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You found a wooden sword.")
+	player:addItem(14758, 1)
+	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You found an experience scroll.")
 	player:setStorageValue(37001, 1)
 	return true
 end

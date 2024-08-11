@@ -36,6 +36,7 @@ local effects = {
 {position = Position(32356, 32219, 7), text = 'Raids', effect = CONST_ME_GROUNDSHAKER},
 {position = Position(32353, 32221, 7), text = 'VIP Blessing', effect = CONST_ME_GROUNDSHAKER},
 {position = Position(32356, 32219, 7), text = 'Raid', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32363, 32219, 7), text = 'Quests', effect = CONST_ME_GROUNDSHAKER},
 
 {position = Position(32373, 32232, 7), text = 'Low Level Reward', effect = CONST_ME_GROUNDSHAKER},
 

@@ -15,7 +15,7 @@ tileRequerimentsConfig = {
    -- Example Tiles
    ---------------------------------------------------------
    [36001] = {
-       minLevel = 451, -- level req to enter
+       minLevel = 0, -- level req to enter
        maxLevel = 0, -- set 0 to disable (set level max to enter)
        storageReq = 0, -- set 0 to disable (if player need storage to enter)
        storageName = "Quest Retro", -- if you want show quest need to enter (example: you need >demon quest< to join this area)

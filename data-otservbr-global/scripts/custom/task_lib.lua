@@ -473,7 +473,7 @@ taskConfiguration = {
 		"Rotten Man-Maggot",
 		"Sopping Carcass",
 		"Walking Pilar",
-		"Wandering Pilar",
+		"Wandering Pillar",
 		
 	},
 },
@@ -630,6 +630,20 @@ taskConfiguration = {
 		"Mantosaurus",
 		"Noxious Ripptor",
 		"Fungosaurus",
+	},
+},
+{name = "Ballon Land - Ballon Cowboy, Ballon King, Ballon Orc, Ballon Rotworm, Ballon Cyclops", color = 40, total = 2000, type = "daily", storage = 190081, storagecount = 190082, 
+	rewards = { 
+		{3043, 320},
+		{37317, 1},
+	{"exp", 9000000},
+	},
+	races = {
+		"Ballon Cowboy",
+		"Ballon King",
+		"Ballon Orc",
+		"Ballon Rotworm",
+		"Ballon Cyclops",
 	},
 },
 }

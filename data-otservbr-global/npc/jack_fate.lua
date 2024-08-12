@@ -88,7 +88,7 @@ addTravelKeyword("fearsome desert", 380, Position(31482, 31925, 6))
 addTravelKeyword("ottawa", 280, Position(31015, 31687, 6))
 addTravelKeyword("dunly refuge", 580, Position(30722, 32115, 6))
 addTravelKeyword("lamawood isles", 180, Position(31935, 31868, 7))
-addTravelKeyword("goroma", 0, Position(32161, 32558, 6), "Ugh. You really want to go back to Goroma? I'll surely have to repair my ship afterwards, so I won't charge. Okay?")
+addTravelKeyword("goroma", 0, Position(32161, 32558, 6))
 addTravelKeyword("yalahar", 275, Position(32816, 31272, 6))
 
 -- Thais

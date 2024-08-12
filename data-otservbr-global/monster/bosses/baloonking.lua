@@ -19,18 +19,6 @@ monster.changeTarget = {
 	chance = 10
 }
 
-monster.raceId = 2397
-monster.Bestiary = {
-	class = "Undead",
-	race = BESTY_RACE_UNDEAD,
-	toKill = 5000,
-	FirstUnlock = 25,
-	SecondUnlock = 3394,
-	CharmsPoints = 100,
-	Stars = 5,
-	Occurrence = 0,
-	Locations = "Ballonland."
-	}
 
 monster.strategiesTarget = {
 	nearest = 80,

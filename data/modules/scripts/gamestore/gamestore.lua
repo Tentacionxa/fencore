@@ -262,6 +262,16 @@ GameStore.Categories = {
 				type = GameStore.OfferTypes.OFFER_TYPE_CHARGES,
 					state = GameStore.States.STATE_NEW,
 			},
+			{
+				icons = { "" },
+				name = "Temple Teleport Scroll",
+				price = 100,
+				itemtype = 25718,
+				count = 50,
+				description = "<i>Teleport back to Youre temple at any place and any time!</i>",
+				type = GameStore.OfferTypes.OFFER_TYPE_CHARGES,
+					state = GameStore.States.STATE_NEW,
+			},
 		{
 			icons = { "" },
 			name = "Holy Soil",

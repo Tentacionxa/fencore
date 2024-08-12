@@ -3,7 +3,7 @@ local staminaOnTrainer = MoveEvent()
 local function Stamina(playerId, seconds)
     local player = Player(playerId)
     if seconds > 0 and player then
-            player:setStamina(player:getStamina() + 10)
+            player:setStamina(player:getStamina() + 3)
             player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Regenerating Stamina")
         addEvent(Stamina, 90000, playerId, seconds - 1)
     end

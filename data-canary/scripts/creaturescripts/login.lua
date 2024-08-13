@@ -1,6 +1,16 @@
 local login = CreatureEvent("PlayerLogin")
 
 function login.onLogin(player)
+	local wasVip = player:kv():get("wasVip")
+	if not wasVip then
+		player:kv():set("wasVip", player:isVip())
+	end
+
+	if wasVip and not player:isVip() then
+		local town = Town(TOWNS_LIST.THAIS)
+		player:teleportTo(town:getTemplePosition())
+	end
+
 	local loginStr = "Welcome to " .. configManager.getString(configKeys.SERVER_NAME) .. "!"
 	if player:getLastLoginSaved() <= 0 then
 		loginStr = loginStr .. " Please choose your outfit."

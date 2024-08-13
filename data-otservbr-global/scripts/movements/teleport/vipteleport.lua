@@ -24,7 +24,19 @@ local config = {
 	{ name="Gloom Pillars Chagorz", position = Position(33896, 31875, 15)},
 	{ name="Jaded Roots Murcion", position = Position(33897, 31690, 15)},
 	{ name="Jaded Roots Ichgahal", position = Position(34063, 31715, 15)},
-	{ name="INQ", position = Position(33165, 31709, 14) }
+	{ name="INQ", position = Position(33165, 31709, 14) },
+	{ name="Drefia Wyrms", position = Position(33066, 32396, 12)  },
+	{ name="Lion Sanctum", position = Position(33123, 32247, 10)  },
+	{ name="Hero Cave", position = Position(33233, 31652, 8)  },
+	{ name="Forest of Life ", position = Position(33516, 31169, 6)  },
+	{ name="The Hive", position = Position(33831, 32124, 14) },
+	{ name="Nykri Delta ", position = Position(33881, 31436, 7)  },
+	{ name="Cementary Quarter", position = Position(32795, 31036, 7)  },
+	{ name="Oramond Factory Raids", position = Position(33689, 31899, 7)  },
+	{ name="MoTA", position = Position(33242, 32095, 8)},
+	{ name="Werecave", position = Position(33195, 31898, 8) },
+	{ name="Flimsy venore ", position = Position(32010, 32300, 8) },
+	{ name="Roshamuul West ", position = Position(33520, 32460, 7)  }
 }
 
 local teppvip = MoveEvent()

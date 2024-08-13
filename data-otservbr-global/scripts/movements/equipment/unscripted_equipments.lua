@@ -19344,8 +19344,12 @@ local items = {
 		type = "equip",
 		slot = "ring",
 		vocation = {
+			{ "Paladin", true, true}
 			{ "Knight", true },
-			{ "Paladin", true, true },
+			{ "Sorcerer", true },
+			{ "Druid", true},
+			{ "Master Sorcerer" },
+			{ "Elder Druid" },
 			{ "Elite Knight" },
 			{ "Royal Paladin" },
 		},

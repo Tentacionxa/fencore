@@ -2,3 +2,4 @@ lezinhu:
 -- FIX LOOT RING SCRIPT NOT HANDLING RING REMOVAL
 -- UPDATE PROTOCOL TO 13.32
 -- ADD AUGMENTS FEATURE
+-- energy ring for all professions

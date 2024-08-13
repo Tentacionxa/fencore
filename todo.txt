@@ -3,3 +3,4 @@ lezinhu:
 -- UPDATE PROTOCOL TO 13.32
 -- ADD AUGMENTS FEATURE
 -- energy ring for all professions
+-- make this item (id : 23681) be possible to give 200 % = 2x experience boost for 1 hour 

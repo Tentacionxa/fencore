@@ -18936,12 +18936,8 @@ local items = {
 		type = "equip",
 		slot = "ring",
 		vocation = {
-			{ "Paladin", true, true}
 			{ "Knight", true },
-			{ "Sorcerer", true },
-			{ "Druid", true},
-			{ "Master Sorcerer" },
-			{ "Elder Druid" },
+			{ "Paladin", true, true },
 			{ "Elite Knight" },
 			{ "Royal Paladin" },
 		},
@@ -19348,12 +19344,8 @@ local items = {
 		type = "equip",
 		slot = "ring",
 		vocation = {
-			{ "Paladin", true, true}
 			{ "Knight", true },
-			{ "Sorcerer", true },
-			{ "Druid", true},
-			{ "Master Sorcerer" },
-			{ "Elder Druid" },
+			{ "Paladin", true, true },
 			{ "Elite Knight" },
 			{ "Royal Paladin" },
 		},

@@ -269,8 +269,8 @@ GameStore.Categories = {
 				itemtype = 25718,
 				count = 50,
 				description = "<i>Teleport back to Youre temple at any place and any time!</i>",
-				type = GameStore.OfferTypes.OFFER_TYPE_CHARGES,
-					state = GameStore.States.STATE_NEW,
+				type = GameStore.OfferTypes.OFFER_TYPE_STACKABLE,
+				state = GameStore.States.STATE_NEW,
 			},
 		{
 			icons = { "" },

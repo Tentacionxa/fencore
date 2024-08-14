@@ -1,5 +1,6 @@
 lezinhu:
--- FIX LOOT RING SCRIPT NOT HANDLING RING REMOVAL
+-- script : staminatile.lua   Its supposed to regenerate stamina when player stand on it. But the problem is when player walk on the tile it double recharge stamina or if player walk on another player it double recharge stamina
+-- FIX LOOT RING SCRIPT NOT HANDLING RING REMOVAL (URGENT)
 -- UPDATE PROTOCOL TO 13.32
 -- ADD AUGMENTS FEATURE
 -- energy ring for all professions

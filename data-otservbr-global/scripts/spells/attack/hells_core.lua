@@ -4,8 +4,8 @@ combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_FIREAREA)
 combat:setArea(createCombatArea(AREA_CIRCLE5X5))
 
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 9)
-	local max = (level / 5) + (maglevel * 20)
+	local min = (level / 5) + (maglevel * 10)
+	local max = (level / 5) + (maglevel * 22)
 	return -min, -max
 end
 

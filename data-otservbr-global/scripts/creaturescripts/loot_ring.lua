@@ -3,99 +3,63 @@ local BONUS_STORAGE_KEY = 59321
 -- Configuration for items that have temporary effects when equipped
 local config = {
     [18935] = {
-        slot = "ring",
         equipEffect = 23,
         deEquipEffect = 24,
+        bonusCap = 65 --%
     },
 }
 
--- Function to manage capacity bonus
-function manageCapacityBonus(player, item, apply)
-    if not item then return end  -- Ensure item is valid, adjust logic as needed for logout and death
-    local itemId = item:getId()
-    local itemConfig = config[itemId]
-    if not itemConfig then return end
-    
+local function getBaseCapForPlayer(player)
+    if not player then return end
+    local level = player:getLevel()
+    local vocation = player:getVocation()
+    local capGain = vocation:getCapacityGain()
 
-
-    local currentBonus = player:getStorageValue(59321)
-    if currentBonus == -1 then currentBonus = 0 end
-    local currentCapacity = player:getCapacity()
-    local bonusCapacity = math.floor(currentCapacity * 0.65)  -- Calculate 10% of current capacity
-    
-   
-
-    if apply and currentBonus == 0 then
-        player:setCapacity(currentCapacity + bonusCapacity)
-        player:setStorageValue(59321, bonusCapacity)  -- Mark the bonus as applied
-        player:getPosition():sendMagicEffect(itemConfig.equipEffect)
-    elseif not apply and currentBonus > 0 then
-        player:setCapacity(currentCapacity - currentBonus)
-        player:setStorageValue(59321, 0)  -- Reset the bonus mark
-        player:getPosition():sendMagicEffect(itemConfig.deEquipEffect)
-    end
+    return (level - 8) * capGain + 470
 end
 
--- Registering the event for equipping and unequipping items
+local lootRingPlayerOnLogin = CreatureEvent("lootRingPlayerOnLogin")
+function lootRingPlayerOnLogin.onLogin(player)
+    if not player then return false end
+    local ringItem = player:getSlotItem(CONST_SLOT_RING)
+
+    local tmpConfig
+    if ringItem then
+        tmpConfig = config[ringItem:getId()]
+    end
+
+    local bonus = 1 + (tmpConfig and tmpConfig.bonusCap / 100 or 0)
+
+    player:setCapacity(getBaseCapForPlayer(player) * bonus)
+    return true
+end
+lootRingPlayerOnLogin:register()
+
+local moveEventEquip = MoveEvent()
+moveEventEquip:type("equip")
+moveEventEquip.onEquip = function(player, item, slot, isCheck)
+    local tmpConfig = config[item:getId()]
+    local bonus = 1 + tmpConfig.bonusCap / 100
+    player:setCapacity(getBaseCapForPlayer(player) * bonus)
+
+    player:getPosition():sendMagicEffect(tmpConfig.equipEffect)
+    return true
+end
 for itemId, itemConfig in pairs(config) do
-    local moveeventEquip = MoveEvent()
-    moveeventEquip:type("equip")
-    moveeventEquip:id(itemId)  -- Assigning the item ID
-    moveeventEquip.onEquip = function(player, item, slot, isCheck)
-        if not isCheck then
-            manageCapacityBonus(player, item, true)
-        end
-        return true
-    end
-    moveeventEquip:register()
-    logger.debug("\n\n\nEquipped the magical loot ring.")
-    local moveeventDeEquip = MoveEvent()
-    moveeventDeEquip:type("deEquip")
-    moveeventDeEquip:id(itemId)  -- Assigning the item ID
-    moveeventDeEquip.onDeEquip = function(player, item, slot, isCheck)
-        if not isCheck then
-            player:setCapacity(currentCapacity)
-        end
-        return true
-    end
-    moveeventDeEquip:register()
-    logger.debug("\n\n\nDeequipped the magical loot ring.")
+    moveEventEquip:id(itemId)  -- Assigning the item ID
 end
+moveEventEquip:register()
 
--- Login, Logout, and Death handlers
-local loginEvent = CreatureEvent("LoginHandler")
-loginEvent.onLogin = function(player)
-    for itemId, itemConfig in pairs(config) do
-        local item = player:getSlotItem(itemConfig.slot)
-        if item and config[item:getId()] then
-            manageCapacityBonus(player, item, true)
-        end
-    end
+local moveEventDeEquip = MoveEvent()
+moveEventDeEquip:type("deEquip")
+moveEventDeEquip.onDeEquip = function(player, item, slot, isCheck)
+    player:setCapacity(getBaseCapForPlayer(player))
+
+    local tmpConfig = config[item:getId()]
+    player:getPosition():sendMagicEffect(tmpConfig.deEquipEffect)
     return true
 end
-loginEvent:register()
-
-local logoutEvent = CreatureEvent("LogoutHandler")
-logoutEvent.onLogout = function(player)
-    for itemId, itemConfig in pairs(config) do
-        local item = player:getSlotItem(itemConfig.slot)
-        if item then
-            manageCapacityBonus(player, item, false)
-        end
-    end
-    return true
+for itemId, itemConfig in pairs(config) do
+    moveEventDeEquip:id(itemId)  -- Assigning the item ID
 end
-logoutEvent:register()
-
-local deathEvent = CreatureEvent("DeathHandler")
-deathEvent.onDeath = function(player)
-    for itemId, itemConfig in pairs(config) do
-        local item = player:getSlotItem(itemConfig.slot)
-        if item then
-            manageCapacityBonus(player, item, false)
-        end
-    end
-    return true
-end
-deathEvent:register()
-
+moveEventDeEquip:register()

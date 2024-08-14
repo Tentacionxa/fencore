@@ -17,11 +17,11 @@ function spell.onCastSpell(creature, variant)
 
 	local cooldown = 0
 	if grade >= 3 then
-		cooldown = 60
+		cooldown = 15
 	elseif grade >= 2 then
-		cooldown = 90
+		cooldown = 10
 	elseif grade >= 1 then
-		cooldown = 120
+		cooldown = 5
 	end
 	local duration = 15000
 	condition:setTicks(duration)

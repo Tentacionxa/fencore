@@ -82,7 +82,7 @@ monster.voices = {
 monster.loot = {
 	{ id = 43779, chance = 54560, maxCount = 1 }, -- unstable darklight matter.
     { id = 43853, chance = 54560, maxCount = 1 }, -- unstable darklight matter.
-    { id = 3043, chance = 4000, maxCount = 50 }, -- darklight core
+    { id = 3043, chance = 4000, maxCount = 2 }, -- darklight core
 	{name = "ultimate health potion", chance = 32220, maxCount = 6},
 	{name = "collar of red plasma", chance = 54560},
 	{name = "red gem", chance = 74560},

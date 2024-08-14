@@ -16,7 +16,7 @@ combat:setParameter(COMBAT_PARAM_BLOCKARMOR, true)
 function onGetFormulaValues(player, skill, attack, factor)
 	local distanceSkill = player:getEffectiveSkillLevel(SKILL_DISTANCE)
 	local min = (player:getLevel() / 5)
-	local max = (0.09 * factor) * distanceSkill * 172 + (player:getLevel() / 5)
+	local max = (0.09 * factor) * distanceSkill * 192 + (player:getLevel() / 5)
 	return -min, -max
 end
 
@@ -29,8 +29,8 @@ function boltArrow.onUseWeapon(player, variant)
 	return combat:execute(player, variant)
 end
 
-boltArrow:id(25757)
-boltArrow:id(35901)
+boltArrow:id(35902)
+boltArrow:id(35902)
 boltArrow:level(150)
 boltArrow:attack(37)
 boltArrow:action("removecount")

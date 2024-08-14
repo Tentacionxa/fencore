@@ -93,10 +93,10 @@ monster.loot = {
 }
 
 monster.attacks = {
-	{ name = "combat", interval = 2000, chance = 100, type = COMBAT_PHYSICALDAMAGE, minDamage = -120, maxDamage = -340, target = true }, -- basic_attack
-	{ name = "combat", interval = 2000, chance = 25, type = COMBAT_PHYSICALDAMAGE, minDamage = -320, maxDamage = -430, effect = CONST_ME_YELLOWSMOKE, range = 3, target = true }, -- eruption_strike
-	{ name = "nagadeathattack", interval = 2000, chance = 25, minDamage = -360, maxDamage = -415, target = true }, -- death_strike
-	{ name = "combat", interval = 4000, chance = 31, type = COMBAT_LIFEDRAIN, minDamage = -360, maxDamage = -386, radius = 4, effect = CONST_ME_DRAWBLOOD, target = false }, -- great_blood_ball
+	{ name = "combat", interval = 2000, chance = 100, type = COMBAT_PHYSICALDAMAGE, minDamage = -120, maxDamage = -140, target = true }, -- basic_attack
+	{ name = "combat", interval = 2000, chance = 25, type = COMBAT_PHYSICALDAMAGE, minDamage = -120, maxDamage = -150, effect = CONST_ME_YELLOWSMOKE, range = 3, target = true }, -- eruption_strike
+	{ name = "nagadeathattack", interval = 2000, chance = 25, minDamage = -100, maxDamage = -120, target = true }, -- death_strike
+	{ name = "combat", interval = 4000, chance = 31, type = COMBAT_LIFEDRAIN, minDamage = -160, maxDamage = -186, radius = 4, effect = CONST_ME_DRAWBLOOD, target = false }, -- great_blood_ball
 }
 
 monster.defenses = {

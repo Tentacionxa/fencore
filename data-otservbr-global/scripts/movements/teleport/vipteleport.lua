@@ -29,7 +29,7 @@ local config = {
 	{ name="Lion Sanctum", position = Position(33123, 32247, 10)  },
 	{ name="Hero Cave", position = Position(33233, 31652, 8)  },
 	{ name="Forest of Life ", position = Position(33516, 31169, 6)  },
-	{ name="The Hive", position = Position(33831, 32124, 14) },
+	{ name="The Hive", position = Position(33516, 31169, 6) },
 	{ name="Nykri Delta ", position = Position(33881, 31436, 7)  },
 	{ name="Cementary Quarter", position = Position(32795, 31036, 7)  },
 	{ name="Oramond Factory Raids", position = Position(33689, 31899, 7)  },

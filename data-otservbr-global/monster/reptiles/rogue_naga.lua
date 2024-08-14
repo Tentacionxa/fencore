@@ -67,7 +67,7 @@ monster.loot = {
 	{ name = "Platinum Coin", chance = 85600, minCount = 1, maxCount = 12 },
 	{ name = "Rogue Naga Scales", chance = 15450 },
 	{ name = "Green Crystal Shard", chance = 14400, minCount = 1, maxCount = 2 },
-	{ id = 39577, chance = 100 }, -- naga bag
+	{ id = 39577, chance = 50 }, -- naga bag
 }
 
 monster.attacks = {

@@ -89,7 +89,7 @@ monster.loot = {
 	{ name = "relic sword", chance = 1190 },
 	{ name = "knight armor", chance = 450 },
 	{ id = 7441, chance = 300 }, -- ice cube
-	{ id = 39577, chance = 100 }, -- naga bag
+	{ id = 39577, chance = 50 }, -- naga bag
 }
 
 monster.attacks = {

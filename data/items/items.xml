@@ -68922,6 +68922,7 @@
 		<attribute key="primarytype" value="rods"/>
 		<attribute key="weaponType" value="wand"/>
 		<attribute key="shootType" value="earth"/>
+			<attribute key="range" value="5"/>
 		<attribute key="absorbpercentdeath" value="35"/>
 		<attribute key="magiclevelpoints" value="10"/>
 		<attribute key="earthmagiclevelpoints" value="4"/>

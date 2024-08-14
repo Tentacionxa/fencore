@@ -1,4 +1,4 @@
-local BONUS_STORAGE_KEY = 65785
+local BONUS_STORAGE_KEY = 59321
 
 -- Configuration for items that have temporary effects when equipped
 local config = {
@@ -18,7 +18,7 @@ function manageCapacityBonus(player, item, apply)
     
 
 
-    local currentBonus = player:getStorageValue(BONUS_STORAGE_KEY)
+    local currentBonus = player:getStorageValue(59321)
     if currentBonus == -1 then currentBonus = 0 end
     local currentCapacity = player:getCapacity()
     local bonusCapacity = math.floor(currentCapacity * 0.65)  -- Calculate 10% of current capacity
@@ -27,11 +27,11 @@ function manageCapacityBonus(player, item, apply)
 
     if apply and currentBonus == 0 then
         player:setCapacity(currentCapacity + bonusCapacity)
-        player:setStorageValue(BONUS_STORAGE_KEY, bonusCapacity)  -- Mark the bonus as applied
+        player:setStorageValue(59321, bonusCapacity)  -- Mark the bonus as applied
         player:getPosition():sendMagicEffect(itemConfig.equipEffect)
     elseif not apply and currentBonus > 0 then
         player:setCapacity(currentCapacity - currentBonus)
-        player:setStorageValue(BONUS_STORAGE_KEY, 0)  -- Reset the bonus mark
+        player:setStorageValue(59321, 0)  -- Reset the bonus mark
         player:getPosition():sendMagicEffect(itemConfig.deEquipEffect)
     end
 end

@@ -16,7 +16,7 @@ function inServiceYalaharReward.onUse(player, item, fromPosition, target, toPosi
 		else
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "The chest is empty.")
 		end
-	elseif item.uid == 35035 then
+	elseif item.uid == 35022 then
         if player:getStorageValue(96550) <= 0 then
 			player:setStorageValue(96550, 1)
 			player:addItem(43869, 1)
@@ -77,5 +77,5 @@ function inServiceYalaharReward.onUse(player, item, fromPosition, target, toPosi
 	return true
 end
 
-inServiceYalaharReward:uid(35020, 35021, 35035, 35023, 35024, 35025, 35026, 35027, 35036)
+inServiceYalaharReward:uid(35020, 35021, 35022, 35023, 35024, 35025, 35026, 35027, 35036)
 inServiceYalaharReward:register()

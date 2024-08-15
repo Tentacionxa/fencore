@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Ballon Rotworm")
 local monster = {}
 
 monster.description = "a Ballon Rotworm"
-monster.experience = 40000
+monster.experience = 36000
 monster.outfit = {
 	lookTypeEx = 37433,
 }

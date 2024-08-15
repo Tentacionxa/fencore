@@ -106,6 +106,14 @@ local portalId, t = 1949,
             portalTime = 10, --minutes
         }
     },
+    ["furia"] = {
+        message = "You now have 10 minutes to get on the other side of the island! Run warrior!",
+        config = {
+            createPos = {x = 322027, y = 31701, z = 4},
+            toPos = {x = 33027, y = 31698, z = 4},
+            portalTime = 10, --minutes
+        }
+    },
 }
 ---------------------------------------------------------------------------------------
 -- Config end

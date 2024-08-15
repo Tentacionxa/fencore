@@ -88,15 +88,15 @@ monster.loot = {
 	{ id = 7441, chance = 630 }, -- ice cube
 	{ name = "emerald bangle", chance = 630 },
 	{ name = "silver brooch", chance = 310 },
-	{ id = 39577, chance = 100 }, -- naga bag
+	{ id = 39577, chance = 50 }, -- naga bag
 }
 
 monster.attacks = {
-	{ name = "combat", interval = 2000, chance = 100, type = COMBAT_PHYSICALDAMAGE, minDamage = -95, maxDamage = -390, shootEffect = CONST_ANI_EXPLOSION, effect = CONST_ME_PURPLEENERGY, range = 6, target = true }, -- basic_attack
-	{ name = "nagadeathattack", interval = 2000, chance = 25, minDamage = -430, maxDamage = -505, range = 6, target = true }, -- death_strike
-	{ name = "nagadeath", interval = 2000, chance = 25, minDamage = -380, maxDamage = -470, target = false }, -- short_death_wave
-	{ name = "death chain", interval = 2000, chance = 25, minDamage = -460, maxDamage = -520, range = 6, target = true }, -- death_chain
-	{ name = "combat", interval = 2000, chance = 25, type = COMBAT_PHYSICALDAMAGE, minDamage = -85, maxDamage = -190, shootEffect = CONST_ANI_EXPLOSION, effect = CONST_ME_PURPLEENERGY, range = 6, target = true }, -- explosion_strike
+	{ name = "combat", interval = 2000, chance = 100, type = COMBAT_PHYSICALDAMAGE, minDamage = -95, maxDamage = -190, shootEffect = CONST_ANI_EXPLOSION, effect = CONST_ME_PURPLEENERGY, range = 6, target = true }, -- basic_attack
+	{ name = "nagadeathattack", interval = 2000, chance = 25, minDamage = -130, maxDamage = -205, range = 6, target = true }, -- death_strike
+	{ name = "nagadeath", interval = 2000, chance = 25, minDamage = -100, maxDamage = -190, target = false }, -- short_death_wave
+	{ name = "death chain", interval = 2000, chance = 25, minDamage = -100, maxDamage = -120, range = 6, target = true }, -- death_chain
+	{ name = "combat", interval = 2000, chance = 25, type = COMBAT_PHYSICALDAMAGE, minDamage = -85, maxDamage = -100, shootEffect = CONST_ANI_EXPLOSION, effect = CONST_ME_PURPLEENERGY, range = 6, target = true }, -- explosion_strike
 }
 
 monster.defenses = {

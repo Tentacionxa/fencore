@@ -27,7 +27,7 @@ maintainModeMessage = "Server Start 19/07/2024"
 -- NOTE: refundManaOnBeginningWeapons: wand of vortex and snakebite refund mana used (allows training for mages)
 worldType = "pvp-enforced"
 hotkeyAimbotEnabled = true
-protectionLevel = 100
+protectionLevel = 300
 pzLocked = 60 * 1000
 removeChargesFromRunes = true
 removeChargesFromPotions = true
@@ -425,7 +425,7 @@ showScriptsLogInConsole = false
 minDelayBetweenConditions = 0
 -- configure maximum value of critical imbuement
 criticalChance = 20
-inventoryGlowOnFiveBless = false
+inventoryGlowOnFiveBless = true
 adventurersBlessingLevel = 50
 skulledDeathLoseStoreItem = false
 experienceDisplayRates = true

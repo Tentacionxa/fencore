@@ -2041,6 +2041,14 @@ GameStore.Categories = {
 				type = GameStore.OfferTypes.OFFER_TYPE_MOUNT,
 			},
 			{
+				icons = { "Darkfire_Devourer.png" },
+				name = "Darkfire Devourer",
+				price = 500,
+				id = 216,
+				description = "{character}\n{speedboost}\n\n<i>Vulcanic erapture created this ancient soul to protect its owner.</i>",
+				type = GameStore.OfferTypes.OFFER_TYPE_MOUNT,
+			},
+			{
 				icons = { "Jungle_Tiger.png" },
 				name = "Jungle Tiger",
 				price = 450,

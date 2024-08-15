@@ -42,7 +42,7 @@ function lootRingPlayerOnLogin.onLogin(player)
     player:setCapacity(newCap)
     return true
 end
-lootRingPlayerOnLogin:register()
+-- lootRingPlayerOnLogin:register()
 
 local moveEventEquip = MoveEvent()
 moveEventEquip:type("equip")
@@ -57,7 +57,7 @@ end
 for itemId, itemConfig in pairs(config) do
     moveEventEquip:id(itemId)  -- Assigning the item ID
 end
-moveEventEquip:register()
+-- moveEventEquip:register()
 
 local moveEventDeEquip = MoveEvent()
 moveEventDeEquip:type("deEquip")
@@ -71,4 +71,4 @@ end
 for itemId, itemConfig in pairs(config) do
     moveEventDeEquip:id(itemId)  -- Assigning the item ID
 end
-moveEventDeEquip:register()
+-- moveEventDeEquip:register()

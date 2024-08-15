@@ -152,7 +152,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "Falcon Bastion - Falcon Knight, Falcon Paladin, Monk, Preceptor Lazare, Grand Canon Dominus, Grand Commander, Grand Chaplain Gaunder", color = 40, total = 5000, type = "daily", storage = 190018, storagecount = 190019, 
+{name = "Falcon Bastion - Falcon Knight, Falcon Paladin, Monk, Preceptor Lazare, Grand Canon Dominus, Grand Commander, Grand Chaplain Gaunder", color = 40, total = 1500, type = "daily", storage = 190018, storagecount = 190019, 
 	rewards = { 
 	{3043, 300},
 	{"exp", 10000000},
@@ -374,7 +374,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "Cobra Bastion - Cobra Assassin, Cobra Vizier, Cobra Scout", color = 40, total = 2500, type = "daily", storage = 190048, storagecount = 190049, 
+{name = "Cobra Bastion - Cobra Assassin, Cobra Vizier, Cobra Scout", color = 40, total = 1500, type = "daily", storage = 190048, storagecount = 190049, 
 	rewards = { 
 		{3043, 190},
 	{"exp", 8000000},

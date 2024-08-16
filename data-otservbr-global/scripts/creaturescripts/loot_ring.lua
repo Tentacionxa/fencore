@@ -12,20 +12,23 @@ local config = {
 local function getBaseCapForPlayer(player)
     if not player then return end
     local level = player:getLevel()
-    logger.info("LOOT RING: PLAYER LEVEL: {}", level)
+    logger.trace("LOOT RING: PLAYER LEVEL: {}", level)
     local vocation = player:getVocation()
-    logger.info("LOOT RING: PLAYER VOCATION: {}", vocation)
+    logger.trace("LOOT RING: PLAYER VOCATION: {}", vocation)
     local capGain = vocation:getCapacityGain()
-    logger.info("LOOT RING: PLAYER CAP GAIN: {}", capGain)
+    logger.trace("LOOT RING: PLAYER CAP GAIN: {}", capGain)
+
+    local baseCap = (math.max(8, level) - 8) * capGain + 47000
+    logger.trace("LOOT RING: BASE CAP: {}", baseCap)
     
-    return (level - 8) * capGain + 470
+    return baseCap
 end
 
 local lootRingPlayerOnLogin = CreatureEvent("lootRingPlayerOnLogin")
 function lootRingPlayerOnLogin.onLogin(player)
     if not player then return false end
 
-    logger.info("Player: {} has logged in, calculating his cap")
+    logger.trace("Player: {} has logged in, calculating his cap", player:getName())
     local ringItem = player:getSlotItem(CONST_SLOT_RING)
 
     local tmpConfig
@@ -35,14 +38,16 @@ function lootRingPlayerOnLogin.onLogin(player)
 
     local bonus = 1 + (tmpConfig and tmpConfig.bonusCap / 100 or 0)
 
-    logger.info("Player bonus: {}", bonus)
+    logger.trace("Player bonus: {}", bonus)
 
     local newCap = getBaseCapForPlayer(player) * bonus
+
+    logger.trace("LOOT RING: NEW CAP: {}", newCap)
 
     player:setCapacity(newCap)
     return true
 end
--- lootRingPlayerOnLogin:register()
+lootRingPlayerOnLogin:register()
 
 local moveEventEquip = MoveEvent()
 moveEventEquip:type("equip")
@@ -57,7 +62,7 @@ end
 for itemId, itemConfig in pairs(config) do
     moveEventEquip:id(itemId)  -- Assigning the item ID
 end
--- moveEventEquip:register()
+moveEventEquip:register()
 
 local moveEventDeEquip = MoveEvent()
 moveEventDeEquip:type("deEquip")
@@ -71,4 +76,4 @@ end
 for itemId, itemConfig in pairs(config) do
     moveEventDeEquip:id(itemId)  -- Assigning the item ID
 end
--- moveEventDeEquip:register()
+moveEventDeEquip:register()

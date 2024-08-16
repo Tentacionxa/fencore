@@ -1,5 +1,5 @@
 local config = {
-	bossName = "Ascending Ferumbras",
+	bossName = "Ferumbras Mortal Shell",
 	summonName = "Rift Invader",
 	bossPos = Position(33392, 31473, 14),
 	centerRoom = Position(33392, 31473, 14), -- Center Room

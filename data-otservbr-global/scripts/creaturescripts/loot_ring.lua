@@ -12,14 +12,14 @@ local config = {
 local function getBaseCapForPlayer(player)
     if not player then return end
     local level = player:getLevel()
-    logger.trace("LOOT RING: PLAYER LEVEL: {}", level)
+
     local vocation = player:getVocation()
-    logger.trace("LOOT RING: PLAYER VOCATION: {}", vocation)
+
     local capGain = vocation:getCapacityGain()
-    logger.trace("LOOT RING: PLAYER CAP GAIN: {}", capGain)
+
 
     local baseCap = (math.max(8, level) - 8) * capGain + 47000
-    logger.trace("LOOT RING: BASE CAP: {}", baseCap)
+
     
     return baseCap
 end
@@ -28,7 +28,7 @@ local lootRingPlayerOnLogin = CreatureEvent("lootRingPlayerOnLogin")
 function lootRingPlayerOnLogin.onLogin(player)
     if not player then return false end
 
-    logger.trace("Player: {} has logged in, calculating his cap", player:getName())
+
     local ringItem = player:getSlotItem(CONST_SLOT_RING)
 
     local tmpConfig
@@ -38,11 +38,7 @@ function lootRingPlayerOnLogin.onLogin(player)
 
     local bonus = 1 + (tmpConfig and tmpConfig.bonusCap / 100 or 0)
 
-    logger.trace("Player bonus: {}", bonus)
-
     local newCap = getBaseCapForPlayer(player) * bonus
-
-    logger.trace("LOOT RING: NEW CAP: {}", newCap)
 
     player:setCapacity(newCap)
     return true

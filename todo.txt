@@ -2,8 +2,8 @@ lezinhu:
 -- script : staminatile.lua   Its supposed to regenerate stamina when player stand on it. But the problem is when player walk on the tile it double recharge stamina or if player walk on another player it double recharge stamina
 -- FIX LOOT RING SCRIPT NOT HANDLING RING REMOVAL (URGENT)
 -- UPDATE PROTOCOL TO 13.32
+-- Add protocol 13.40 sprites / items
 -- ADD AUGMENTS FEATURE
--- energy ring for all professions
 -- make this item (id : 23681) be possible to give 200 % = 2x experience boost for 1 hour 
 -- check npc mundan.lua    - when i buy mana keg or any other keg i get mana keg to unwrap in house instead of having it to be used in bp
 -- Add command for specific players names !stream on <text>  so it will automatically message every 10 seconds text on local chat / world chat the text

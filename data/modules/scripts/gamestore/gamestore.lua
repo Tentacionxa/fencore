@@ -1666,7 +1666,7 @@ GameStore.Categories = {
 				icons = { "Darkfire_Devourer.png" },
 				name = "Darkfire Devourer",
 				price = 400,
-				id = 213,
+				id = 216,
 				description = "{character}\n{speedboost}\n\n<i>A wild, ancient creature, which had been hiding in the depths of the shadows for a very long time, has been spotted in Tibia again! The almighty Shadow Draptor has returned and only the bravest Tibians can control such a beast!</i>",
 				type = GameStore.OfferTypes.OFFER_TYPE_MOUNT,
 			},

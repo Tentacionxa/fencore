@@ -317,7 +317,7 @@ taskConfiguration = {
 {name = "Soul War - Bony Sea Devil, Brachiodemon, Capricious Phantom, Cloak of Terror, Distorted Phantom, Courage Leech, Infernal Phantom, Infernal Demon, Hazardous Phantom, Many Faces, Mean Maw, Mould Phantom, Rotten Golem, Spiteful Spitter, Vibrant Phantom, Branchy Crawler", color = 40, total = 6000, type = "daily", storage = 190042, storagecount = 190043, 
 	rewards = {  
 		{3043, 400},
-		{37317, 1},
+		{37317, 4},
 	{"exp", 100000000},
 	},
 	races = {

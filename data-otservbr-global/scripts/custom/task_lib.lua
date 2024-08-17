@@ -646,6 +646,18 @@ taskConfiguration = {
 		"Ballon Cyclops",
 	},
 },
+{name = "Marapur - Naga Warrior, Naga Archer, Makara", color = 40, total = 1000, type = "daily", storage = 190083, storagecount = 190084, 
+	rewards = { 
+		{3043, 220},
+		{37317, 1},
+	{"exp", 5000000},
+	},
+	races = {
+		"Naga Warrior",
+		"Naga Archer",
+		"Makara",
+	},
+},
 }
 
 squareWaitTime = 5000

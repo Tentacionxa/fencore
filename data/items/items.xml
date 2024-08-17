@@ -12449,6 +12449,42 @@
 	<item fromid="4987" toid="4988" article="a" name="cleat">
 		<attribute key="primarytype" value="tools (objects)"/>
 	</item>
+	<item id="43816" article="a" name="dead bloated man-maggot">
+		<attribute key="containerSize" value="30"/>
+		<attribute key="decayTo" value="43815"/>
+		<attribute key="duration" value="10"/>
+		<attribute key="fluidSource" value="blood"/>
+	</item>
+	<item id="43836" article="a" name="dead oozing corpus">
+	<attribute key="containerSize" value="30"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="fluidSource" value="blood"/>
+	</item>
+	<item id="43555" article="a" name="dead oozing carcass">
+	<attribute key="containerSize" value="30"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="fluidSource" value="blood"/>
+	</item>
+	<item id="43571" article="a" name="dead darklight matter">
+	<attribute key="containerSize" value="30"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="fluidSource" value="blood"/>
+	</item>
+	<item id="43828" article="a" name="dead wandering pillar">
+	<attribute key="containerSize" value="30"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="fluidSource" value="blood"/>
+	</item>
+	<item id="43563" article="a" name="dead darklight construct">
+	<attribute key="containerSize" value="30"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="fluidSource" value="blood"/>
+	</item>
 	<item id="4989" article="a" name="white flag">
 		<attribute key="primarytype" value="flags"/>
 	</item>

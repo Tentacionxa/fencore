@@ -1,6 +1,4 @@
 local effects = {
-    {position = Position(32563, 32423, 6), text = 'Druid Hunt 100+', effect = CONST_ME_GROUNDSHAKER},
-    {position = Position(32567, 32423, 6), text = 'Sorcerer Hunt 100+', effect = CONST_ME_GROUNDSHAKER},
     {position = Position(32577, 32423, 6), text = 'Knight Hunt 100+', effect = CONST_ME_GROUNDSHAKER},
     {position = Position(32554, 32423, 6), text = 'Paladin Hunt 100+', effect = CONST_ME_GROUNDSHAKER},    
     {position = Position(32545, 32423, 6), text = 'Knight Hunt 200+', effect = CONST_ME_GROUNDSHAKER},

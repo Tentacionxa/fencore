@@ -1607,6 +1607,16 @@ npcConfig.shop = {
 	{ itemName = "giant amethyst", clientId = 32622, sell = 520000 },
 	{ itemName = "spiritual horseshoe", clientId = 44048, sell = 500000 },
 	{ itemName = "revised promotion scroll", clientId = 43948, sell = 400000 },
+	{ itemName = "oceanborn leviathan armor", clientId = 8056, sell = 85000 },
+	{ itemName = "ravenwing", clientId = 7433, sell = 30000 },
+	{ itemName = "arcane staff", clientId = 19400, sell = 300000 },
+	{ itemName = "thorn spitter", clientId = 14768, sell = 420000 },
+	{ itemName = "living vine bow", clientId = 29417, sell = 520000 },
+	{ itemName = "hammer of prophecy", clientId = 7450, sell = 520000 },
+	{ itemName = "energized limb", clientId = 29425, sell = 500000 },
+	{ itemName = "rift bow", clientId = 22866, sell = 920000 },
+	{ itemName = "rift crossbow", clientId = 22867, sell = 900000 },
+	{ itemName = "magic longsword", clientId = 3278, sell = 3000000 },
 
 	{ itemName = "all loot in pouch", clientId = ITEM_GOLD_POUCH, sell = 1 },
 }

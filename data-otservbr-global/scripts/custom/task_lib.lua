@@ -317,7 +317,7 @@ taskConfiguration = {
 {name = "Soul War - Bony Sea Devil, Brachiodemon, Capricious Phantom, Cloak of Terror, Distorted Phantom, Courage Leech, Infernal Phantom, Infernal Demon, Hazardous Phantom, Many Faces, Mean Maw, Mould Phantom, Rotten Golem, Spiteful Spitter, Vibrant Phantom, Branchy Crawler", color = 40, total = 6000, type = "daily", storage = 190042, storagecount = 190043, 
 	rewards = {  
 		{3043, 400},
-		{37317, 1},
+		{37317, 4},
 	{"exp", 100000000},
 	},
 	races = {
@@ -644,6 +644,35 @@ taskConfiguration = {
 		"Ballon Orc",
 		"Ballon Rotworm",
 		"Ballon Cyclops",
+	},
+},
+{name = "Marapur - Naga Warrior, Naga Archer, Makara", color = 40, total = 1000, type = "daily", storage = 190083, storagecount = 190084, 
+	rewards = { 
+		{3043, 220},
+		{37317, 1},
+	{"exp", 5000000},
+	},
+	races = {
+		"Naga Warrior",
+		"Naga Archer",
+		"Makara",
+	},
+},
+{name = "Ingol - Boar Man, Carnivostrich, Crape Man, Guardian Golem, Harpy, Lab Assistant, Liodile, Rhindeer", color = 40, total = 1500, type = "daily", storage = 190085, storagecount = 190086, 
+	rewards = { 
+		{3043, 320},
+		{37317, 1},
+	{"exp", 5000000},
+	},
+	races = {
+		"Boar Man",
+		"Carnivostrich",
+		"Crape Man",
+		"Guardian Golem",
+		"Harpy",
+		"Lab Assistant",
+		"Liodile",
+		"Rhindeer",
 	},
 },
 }

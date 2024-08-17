@@ -658,6 +658,23 @@ taskConfiguration = {
 		"Makara",
 	},
 },
+{name = "Ingol - Boar Man, Carnivostrich, Crape Man, Guardian Golem, Harpy, Lab Assistant, Liodile, Rhindeer", color = 40, total = 1500, type = "daily", storage = 190085, storagecount = 190086, 
+	rewards = { 
+		{3043, 320},
+		{37317, 1},
+	{"exp", 5000000},
+	},
+	races = {
+		"Boar Man",
+		"Carnivostrich",
+		"Crape Man",
+		"Guardian Golem",
+		"Harpy",
+		"Lab Assistant",
+		"Liodile",
+		"Rhindeer",
+	},
+},
 }
 
 squareWaitTime = 5000

@@ -13,8 +13,8 @@ local config = {
         ignoredItems = {15487}, -- if you have tables/counters/other items on the roulette tiles, add them here
         winEffects = {CONST_ANI_FIRE, CONST_ME_SOUND_YELLOW, CONST_ME_SOUND_PURPLE, CONST_ME_SOUND_BLUE, CONST_ME_SOUND_WHITE}, -- first effect needs to be distance effect
         effectDelay = 333,
-        spinTime = {min = 8, max = 12}, -- seconds
-        spinSlowdownRamping = 5,
+        spinTime = {min = 12, max = 15}, -- seconds
+        spinSlowdownRamping = 10,
         rouletteStorage = 48550 -- required storage to avoid player abuse (if they logout/die before roulette finishes.. they can spin again for free)
     },
     prizePool = {

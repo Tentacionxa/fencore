@@ -21,9 +21,13 @@ local config = {
 	},
 	monsters = {
 		{ name = "rift invader", pos = Position(33393, 31476, 14) },
+		{ name = "rift invader", pos = Position(33394, 31476, 14) },
+		{ name = "rift invader", pos = Position(33395, 31476, 14) },
 		{ name = "rift invader", pos = Position(33389, 31476, 14) },
 		{ name = "rift invader", pos = Position(33389, 31471, 14) },
 		{ name = "rift invader", pos = Position(33394, 31471, 14) },
+		{ name = "rift invader", pos = Position(33395, 31471, 14) },
+		{ name = "rift invader", pos = Position(33396, 31471, 14) },
 		{ name = "rift invader", pos = Position(33392, 31475, 14) },
 	},
 	specPos = {

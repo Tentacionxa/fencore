@@ -229,7 +229,7 @@ partyAutoShareExperience = true
 -- partyShareRangeMultiplier: the range of the party share experience, default 3/2 (1.5)
 partyShareRangeMultiplier = 2
 partyShareLootBoosts = true
-partyShareLootBoostsDimishingFactor = 1.5
+partyShareLootBoostsDimishingFactor = 1
 
 -- Tibiadrome concoctions
 tibiadromeConcoctionCooldown = 1 * 60 * 60 -- 1 hours

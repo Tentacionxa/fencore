@@ -1616,6 +1616,7 @@ npcConfig.shop = {
 	{ itemName = "energized limb", clientId = 29425, sell = 500000 },
 	{ itemName = "rift bow", clientId = 22866, sell = 920000 },
 	{ itemName = "rift crossbow", clientId = 22867, sell = 900000 },
+	{ itemName = "magic longsword", clientId = 3278, sell = 3000000 },
 
 	{ itemName = "all loot in pouch", clientId = ITEM_GOLD_POUCH, sell = 1 },
 }

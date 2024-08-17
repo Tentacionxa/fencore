@@ -9,7 +9,7 @@ local config = {
 }
 
 local GazRespawn = GlobalEvent("GazRespawn")
-function FerumbrasRespawn.onTime(interval)
+function GazRespawn.onTime(interval)
     local day = config.days[os.date("%A")]
     if day then
         local item = Game.createItem(config.teleportId, 1, day[1])

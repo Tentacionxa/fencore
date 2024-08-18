@@ -12467,8 +12467,20 @@
 		<attribute key="duration" value="60"/>
 		<attribute key="fluidSource" value="blood"/>
 	</item>
+	<item id="43815" article="a" name="dead rotten man-maggot">
+	<attribute key="containerSize" value="30"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="fluidSource" value="blood"/>
+	</item>
 	<item id="43571" article="a" name="dead darklight matter">
 	<attribute key="containerSize" value="30"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="fluidSource" value="blood"/>
+	</item>
+	<item id="43579" article="a" name="dead oozing caracass">
+		<attribute key="containerSize" value="30"/>
 		<attribute key="decayTo" value="0"/>
 		<attribute key="duration" value="60"/>
 		<attribute key="fluidSource" value="blood"/>

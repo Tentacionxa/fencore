@@ -40,7 +40,7 @@ function onlinePointsEvent.onThink(interval)
             local seconds = math.max(0, player:getStorageValue(storage))
             if seconds >= timeSeconds then
                 player:setStorageValue(storage, 0)
-                local item = player:addItem(pointItemId, pointsPerHour)
+                local item = player:addItemStoreInbox(pointItemId, pointsPerHour, false)
                 if item then
                     player:sendTextMessage(MESSAGE_LOOT, string.format("You received %d {%d|%s} for being online an hour.", pointsPerHour, pointItemId, item:getName()))
                     local accountId = player:getAccountId()

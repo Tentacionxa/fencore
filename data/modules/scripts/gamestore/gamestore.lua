@@ -304,7 +304,7 @@ GameStore.Categories = {
 			{
 				icons = { "The_Devileye.png" },
 				name = "The Devileye",
-				price = 400,
+				price = 40,
 				itemtype = 8024,
 				count = 1,
 				description = "<i>You see the devileye (Range: 6, Atk +20, Hit% -20).<p>It can only be wielded properly by paladins of level 100 or higher.</p><p>Imbuements: (Empty Slot, Empty Slot, Empty Slot).</p><p>Classification: 4 Tier: 0</p><p>It weighs 55.00 oz.</p></i>",
@@ -533,8 +533,9 @@ GameStore.Categories = {
 				itemtype = 25718,
 				count = 50,
 				description = "<i>Teleport back to Youre temple at any place and any time!</i>",
-				type = GameStore.OfferTypes.OFFER_TYPE_STACKABLE,
-				state = GameStore.States.STATE_NEW,
+				type = GameStore.OfferTypes.OFFER_TYPE_CHARGES,
+					state = GameStore.States.STATE_NEW,
+					movable = true,
 			},
 		{
 			icons = { "" },

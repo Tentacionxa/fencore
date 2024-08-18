@@ -43,6 +43,8 @@ function onlinePointsEvent.onThink(interval)
                 local item = player:addItem(pointItemId, pointsPerHour)
                 if item then
                     player:sendTextMessage(MESSAGE_LOOT, string.format("You received %d {%d|%s} for being online an hour.", pointsPerHour, pointItemId, item:getName()))
+                    local accountId = player:getAccountId()
+                    db.query('update accounts set coins_collected = coins_collected + ' .. pointsPerHour .. " where id = " .. accountId)
                     if showLog then
                         local playerName = player:getName()
                         Spdlog.info("Player Rewarded: " .. playerName .. " [Success]")

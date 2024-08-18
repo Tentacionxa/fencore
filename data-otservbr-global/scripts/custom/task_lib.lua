@@ -105,7 +105,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "Dragons - Dragon, Dragon Lord, Dragon Hatchling, Dragon Lord Hatchling", color = 40, total = 1000, type = "daily", storage = 190002, storagecount = 190003, 
+{name = "Dragons - Dragon, Dragon Lord, Dragon Hatchling, Dragon Lord Hatchling, Frost Dragon, Frost Dragon Hatchling, Dragon Warden, Dragonling, Ghastly Dragon, Undead Dragon", color = 40, total = 1000, type = "repeatable", storage = 190002, storagecount = 190003, 
 	rewards = {
 	{3043, 60},
 	{5908, 1},
@@ -116,10 +116,17 @@ taskConfiguration = {
 		"Dragon Lord",
 		"Dragon Hatchling",
 		"Dragon Lord Hatchling",
+		"Frost Dragon",
+		"Frost Dragon Hatchling",
+		"Dragon Warden",
+		"Dragonling",
+		"Ghastly Dragon",
+		"Undead Dragon",
+
 	},
 },
 
-{name = "Lower Roshamuul - Weakened Frazzlemaw, Frazzlemaw, Memory of Frazzlemaw, Guzzlemaw, Mawhawk, Silencer, Shock Head, Sight of Surrender", color = 40, total = 1500, type = "daily", storage = 190012, storagecount = 190013, 
+{name = "Lower Roshamuul - Weakened Frazzlemaw, Frazzlemaw, Memory of Frazzlemaw, Guzzlemaw, Mawhawk, Silencer, Shock Head, Sight of Surrender", color = 40, total = 1500, type = "repeatable", storage = 190012, storagecount = 190013, 
 	rewards = { 
 	{22516, 1},
 	{20270, 1},
@@ -152,7 +159,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "Falcon Bastion - Falcon Knight, Falcon Paladin, Monk, Preceptor Lazare, Grand Canon Dominus, Grand Commander, Grand Chaplain Gaunder", color = 40, total = 1500, type = "daily", storage = 190018, storagecount = 190019, 
+{name = "Falcon Bastion - Falcon Knight, Falcon Paladin, Monk, Preceptor Lazare, Grand Canon Dominus, Grand Commander, Grand Chaplain Gaunder", color = 40, total = 1500, type = "repeatable", storage = 190018, storagecount = 190019, 
 	rewards = { 
 	{3043, 300},
 	{"exp", 10000000},
@@ -168,7 +175,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "Banuta - Medusa, Serpent Spawn, Hydra, Bonebeast, ", color = 40, total = 5000, type = "daily", storage = 190020, storagecount = 190021, 
+{name = "Banuta - Medusa, Serpent Spawn, Hydra, Bonebeast, ", color = 40, total = 5000, type = "repeatable", storage = 190020, storagecount = 190021, 
 	rewards = { 
 	{3043, 200},
 	{"exp", 20000000},
@@ -187,7 +194,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "Hero Cave - Bonelord, Dark Apprentice, Dark Magician, Demon Skeleton, Dragon, Hero, Hunter, Monk, Priestess, Stalker, Stone Golem, Wild Warrior, Minotaur Mage", color = 40, total = 1500, type = "daily", storage = 190024, storagecount = 190025, 
+{name = "Hero Cave - Bonelord, Dark Apprentice, Dark Magician, Demon Skeleton, Dragon, Hero, Hunter, Monk, Priestess, Stalker, Stone Golem, Wild Warrior, Minotaur Mage", color = 40, total = 1500, type = "repeatable", storage = 190024, storagecount = 190025, 
 	rewards = { 
 	{3043, 50},
 	{"exp", 1000000},
@@ -209,7 +216,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "Ogre - Ogre Sage, Ogre Ruffian, Ogre Rowdy, Ogre Shaman", color = 40, total = 1500, type = "daily", storage = 190026, storagecount = 190027, 
+{name = "Ogre - Ogre Sage, Ogre Ruffian, Ogre Rowdy, Ogre Shaman", color = 40, total = 1500, type = "repeatable", storage = 190026, storagecount = 190027, 
 	rewards = { 
 	{3043, 60},
 	{"exp", 30000000},
@@ -222,7 +229,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "Pirat - Pirat Mate, Pirat Cutthroat, Pirat Scoundrel, Pirat Bombardier", color = 40, total = 1500, type = "daily", storage = 190028, storagecount = 190029, 
+{name = "Pirat - Pirat Mate, Pirat Cutthroat, Pirat Scoundrel, Pirat Bombardier", color = 40, total = 1500, type = "repeatable", storage = 190028, storagecount = 190029, 
 	rewards = { 
 		{3043, 60},
 	{"exp", 30000000},
@@ -235,7 +242,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "Asura Palace - Dawnfire Asura, Frost Flower Asura, Hellspawn, Midnight Asura, Destroyer", color = 40, total = 1500, type = "daily", storage = 190030, storagecount = 190031, 
+{name = "Asura Palace - Dawnfire Asura, Frost Flower Asura, Hellspawn, Midnight Asura, Destroyer", color = 40, total = 1500, type = "repeatable", storage = 190030, storagecount = 190031, 
 	rewards = { 
 		{3043, 60},
 	{"exp", 30000000},
@@ -249,7 +256,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "Asura Vaults - True Dawnfire Asura, True Midnight Asura, True Frost Flower Asura", color = 40, total = 2500, type = "daily", storage = 190032, storagecount = 190033, 
+{name = "Asura Vaults - True Dawnfire Asura, True Midnight Asura, True Frost Flower Asura", color = 40, total = 2500, type = "repeatable", storage = 190032, storagecount = 190033, 
 	rewards = { 
 		{3043, 100},
 	{"exp", 70000000},
@@ -261,7 +268,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "Summer Dream Court - Crazed Summer Rearguard, Crazed Summer Vanguard, Insane Siren, Arachnophobica, Thanatursus, Lacewing Moth", color = 40, total = 3500, type = "daily", storage = 190034, storagecount = 190035, 
+{name = "Summer Dream Court - Crazed Summer Rearguard, Crazed Summer Vanguard, Insane Siren, Arachnophobica, Thanatursus, Lacewing Moth", color = 40, total = 3500, type = "repeatable", storage = 190034, storagecount = 190035, 
 	rewards = { 
 		{3043, 100},
 		{"exp", 90000000},
@@ -276,7 +283,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "Court of Winter - Crazed Winter Vanguard, Crazed Winter Rearguard, Soul-Broken Harbinger, Hibernal Moth, Arachnophobica, Thanatursus", color = 40, total = 3500, type = "daily", storage = 190036, storagecount = 190037, 
+{name = "Court of Winter - Crazed Winter Vanguard, Crazed Winter Rearguard, Soul-Broken Harbinger, Hibernal Moth, Arachnophobica, Thanatursus", color = 40, total = 3500, type = "repeatable", storage = 190036, storagecount = 190037, 
 	rewards = { 
 		{3043, 100},
 		{"exp", 90000000},
@@ -291,7 +298,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "Lion Sanctum - White Lion, Werelion, Werelioness", color = 40, total = 4000, type = "daily", storage = 190038, storagecount = 190039, 
+{name = "Lion Sanctum - White Lion, Werelion, Werelioness", color = 40, total = 4000, type = "repeatable", storage = 190038, storagecount = 190039, 
 	rewards = { 
 	{3043, 100},
 	{"exp", 70000000},
@@ -340,7 +347,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "Zao - Lizard Chosen, Lizard High Guard, Lizard Legionnaire, Lizard Dragon Priest, Ghastly Dragon, Draken Elite, Draken Abomination, Draken Warmaster, Draken Spellweaver, Lizard Zaogun", color = 40, total = 2500, type = "daily", storage = 190044, storagecount = 190045, 
+{name = "Zao - Lizard Chosen, Lizard High Guard, Lizard Legionnaire, Lizard Dragon Priest, Ghastly Dragon, Draken Elite, Draken Abomination, Draken Warmaster, Draken Spellweaver, Lizard Zaogun", color = 40, total = 2500, type = "repeatable", storage = 190044, storagecount = 190045, 
 	rewards = { 
 		{3043, 170},
 	{"exp", 8000000},
@@ -374,7 +381,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "Cobra Bastion - Cobra Assassin, Cobra Vizier, Cobra Scout", color = 40, total = 1500, type = "daily", storage = 190048, storagecount = 190049, 
+{name = "Cobra Bastion - Cobra Assassin, Cobra Vizier, Cobra Scout", color = 40, total = 1500, type = "repeatable", storage = 190048, storagecount = 190049, 
 	rewards = { 
 		{3043, 190},
 	{"exp", 8000000},
@@ -477,7 +484,7 @@ taskConfiguration = {
 		
 	},
 },
-{name = "Kilmaresh Central Steppe - Young Goanna, Adult Goanna, Feral Sphinx, Manticore, Lamassu, Sphinx", color = 40, total = 2500, type = "daily", storage = 190055, storagecount = 190056, 
+{name = "Kilmaresh Central Steppe - Young Goanna, Adult Goanna, Feral Sphinx, Manticore, Lamassu, Sphinx", color = 40, total = 2500, type = "repeatable", storage = 190055, storagecount = 190056, 
 	rewards = { 
 		{3043, 150},
 	{"exp", 5000000},
@@ -507,7 +514,7 @@ taskConfiguration = {
 		"Rage Squid",
 	},
 },
-{name = "Marapur Turtles - Two-Headed Turtle, Foam Stalker", color = 40, total = 2500, type = "daily", storage = 190059, storagecount = 190060, 
+{name = "Marapur Turtles - Two-Headed Turtle, Foam Stalker", color = 40, total = 2500, type = "repeatable", storage = 190059, storagecount = 190060, 
 	rewards = { 
 		{3043, 200},
 	{"exp", 8000000},
@@ -604,7 +611,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "Drefia - Grim Reaper, Lich, Gravedigger, Spectre", color = 40, total = 2000, type = "daily", storage = 190077, storagecount = 190078, 
+{name = "Drefia - Grim Reaper, Lich, Gravedigger, Spectre", color = 40, total = 2000, type = "repeatable", storage = 190077, storagecount = 190078, 
 	rewards = { 
 		{3043, 120},
 	{"exp", 1000000},

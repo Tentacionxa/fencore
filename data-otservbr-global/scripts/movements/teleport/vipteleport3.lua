@@ -7,6 +7,9 @@ local config = {
 	{ name="Stonerefiner Underground", position = Position(31417, 33472, 7)  },
 	{ name="Asura Kingdom", position = Position(34507, 33227, 7) },
 	{ name="Jungle Tunnels", position = Position(34626, 33046, 7) },
+	{ name="Lamassu Isle Rock", position = Position(33477, 31446, 7)},
+	{ name="Flimsy Hideout", position = Position(33734, 31161, 8)},
+	{ name="Weretiger Cave", position = Position(33766, 30794, 8) },
 	{ name="Baloon Land", position = Position(31581, 32761, 8) }
 	
 }

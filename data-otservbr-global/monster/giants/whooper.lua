@@ -13,18 +13,9 @@ monster.outfit = {
 	lookMount = 0,
 }
 
-monster.raceId = 422 
-monster.Bestiary = {
-	class = "Giant",
-	race = BESTY_RACE_GIANT,
-	toKill = 5,
-	FirstUnlock = 1,
-	SecondUnlock = 5,
-	CharmsPoints = 25,
-	Stars = 3,
-	Occurrence = 0,
-	Locations = "Cyclopolis second floor and below, Mistrock, Mount Sternum, \z
-		Cyclops Camp second floor and in the Cyclops version of the Forsaken Mine.",
+monster.bosstiary = {
+	bossRaceId = 422 ,
+	bossRace = RARITY_NEMESIS,
 }
 
 monster.health = 435

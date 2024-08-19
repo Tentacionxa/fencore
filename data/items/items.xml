@@ -67157,6 +67157,7 @@
 	</item>
 	<item id="39698" article="a" name="lit rainbow torch">
 		<attribute key="primarytype" value="light sources"/>
+		<attribute key="magiclevelpoints" value="3"/>
 		<attribute key="weight" value="500"/>
 	</item>
 	<item id="39699" article="a" name="rainbow torch">

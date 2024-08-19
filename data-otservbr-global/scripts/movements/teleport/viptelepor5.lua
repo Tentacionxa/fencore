@@ -49,6 +49,22 @@ local config = {
 	{ name="Ocyakao", position = Position(32343, 31064, 7)},
     { name="Rukor Zad", position = Position(32602, 32378, 10)},
 	{ name="Jesse the Wicked ", position = Position(32370, 32219, 11) },
+	{ name="Man in the cave", position = Position(32135, 31146, 2)},
+	{ name="Dracola", position = Position(32826, 32279, 15)},
+	{ name="Willy Wasp", position = Position(32374, 31672, 7) },
+	{ name="Zomba", position = Position(33153, 32444, 7)},
+    { name="Omrafir", position = Position(33583, 32372, 12)},
+	{ name="Chikhaton", position = Position(33322, 31738, 8)},
+	{ name="Chizzoron the Distorter", position = Position(33344, 31605, 4)},
+    { name="Phrodomo", position = Position(32154, 31827, 8)},
+	{ name="Devovorga", position = Position(32913, 31514, 10)},
+    { name="Dreadmaw", position = Position(33301, 31155, 7)},
+	{ name="Raxias", position = Position(33439, 32161, 7) },
+	{ name="Feroxa", position = Position(33414, 31536, 10)},
+    { name="The Blightfather", position = Position(33315, 31145, 7) },
+	{ name="Teneshpar", position = Position(32883, 31499, 10)},
+    { name="The Abomination", position = Position(33154, 32815, 7)},
+	{ name="The Mutated Pumpkin", position = Position(33210, 32380, 6)},
 	{ name="Furyosa", position = Position(33308, 31825, 14)}
 	
 }

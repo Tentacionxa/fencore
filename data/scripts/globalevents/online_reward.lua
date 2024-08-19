@@ -6,7 +6,7 @@ local config = {
     storage = 20000, --mude o armazenamento para um tem livre
     pointItemId = 24390, -- no momento é Crystal Coin
     pointsPerHour = 25,
-    timeSeconds = 3600, -- 1 hour
+    timeSeconds = 1800, -- 1 hour
     checkDuplicateIps = true,
     showLog = false -- Mostrar mensagem no console?
 }

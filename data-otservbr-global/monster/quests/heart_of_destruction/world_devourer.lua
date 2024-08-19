@@ -18,8 +18,8 @@ monster.bosstiary = {
 	bossRace = RARITY_NEMESIS,
 }
 
-monster.health = 25000
-monster.maxHealth = 25000
+monster.health = 77500
+monster.maxHealth = 77500
 monster.race = "venom"
 monster.corpse = 0
 monster.speed = 225
@@ -105,7 +105,6 @@ monster.attacks = {
 	{ name = "combat", interval = 2000, chance = 20, type = COMBAT_ENERGYDAMAGE, minDamage = -400, maxDamage = -800, radius = 4, shootEffect = CONST_ANI_ENERGY, effect = CONST_ME_YELLOWENERGY, target = true },
 	{ name = "combat", interval = 2000, chance = 20, type = COMBAT_ENERGYDAMAGE, minDamage = -600, maxDamage = -1200, length = 10, spread = 3, effect = CONST_ME_LOSEENERGY, target = false },
 	{ name = "combat", interval = 2000, chance = 20, type = COMBAT_LIFEDRAIN, radius = 8, effect = CONST_ME_MAGIC_RED, target = false },
-	{ name = "anomaly break", interval = 2000, chance = 40, target = false },
 	{ name = "devourer summon", interval = 2000, chance = 25, target = false },
 }
 

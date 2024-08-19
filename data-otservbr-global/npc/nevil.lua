@@ -112,6 +112,7 @@ npcConfig.shop = {
     { itemName = "tropical fried terrorbird", clientId = 9082, buy = 144000 },
     { itemName = "tropical marinated tiger", clientId = 29410, buy = 124000 },
     { itemName = "coconout shrimp bake", clientId = 11584, buy = 134000 },
+	{ itemName = "veggie casserole", clientId = 9084, buy = 100000 },
 }
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

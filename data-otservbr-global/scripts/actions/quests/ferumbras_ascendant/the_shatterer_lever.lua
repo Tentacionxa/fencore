@@ -1,6 +1,6 @@
 local config = {
 	centerRoom = Position(33406, 32418, 14),
-	BossPosition = Position(33406, 32418, 14),
+	BossPosition = Position(33398, 32417, 14),
 	playerPositions = {
 		Position(33403, 32465, 13),
 		Position(33404, 32465, 13),

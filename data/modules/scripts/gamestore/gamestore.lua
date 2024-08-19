@@ -529,9 +529,9 @@ GameStore.Categories = {
 			{
 				icons = { "" },
 				name = "Temple Teleport Scroll",
-				price = 100,
+				price = 0,
 				itemtype = 25718,
-				count = 50,
+				count = 1,
 				description = "<i>Teleport back to Youre temple at any place and any time!</i>",
 				type = GameStore.OfferTypes.OFFER_TYPE_CHARGES,
 					state = GameStore.States.STATE_NEW,
@@ -646,15 +646,6 @@ GameStore.Categories = {
 				count = 1,
 				id = GameStore.SubActions.BLESSING_BLOOD,
 				description = "<i>Reduces your character's chance to lose any items as well as the amount of your character's experience and skill loss upon death:</i>\n\n&#8226; 1 blessing = 8.00% less Skill / XP loss, 30% equipment protection\n&#8226; 2 blessing = 16.00% less Skill / XP loss, 55% equipment protection\n&#8226; 3 blessing = 24.00% less Skill / XP loss, 75% equipment protection\n&#8226; 4 blessing = 32.00% less Skill / XP loss, 90% equipment protection\n&#8226; 5 blessing = 40.00% less Skill / XP loss, 100% equipment protection\n&#8226; 6 blessing = 48.00% less Skill / XP loss, 100% equipment protection\n&#8226; 7 blessing = 56.00% less Skill / XP loss, 100% equipment protection\n\n{character} \n{limit|5} \n{info} added directly to the Record of Blessings \n{info} characters with a red or black skull will always lose all equipment upon death",
-				type = GameStore.OfferTypes.OFFER_TYPE_BLESSINGS,
-			},
-			{
-				icons = { "Death_Redemption.png" },
-				name = "Death Redemption",
-				price = 100,
-				blessid = 10,
-				count = 1,
-				description = "<i>Reduces the penalty of your character's most recent death.</i>\n\n{character}\n{info} can only be used for the most recent death and only within 24 hours after this death",
 				type = GameStore.OfferTypes.OFFER_TYPE_BLESSINGS,
 			},
 			{
@@ -7203,7 +7194,7 @@ GameStore.Categories = {
 			{
 				icons = { "Temple_Teleport.png" },
 				name = "Temple Teleport",
-				price = 25,
+				price = 0,
 				description = "<i>Teleports you instantly to your home temple.</i>\n\n{character}\n{useicon} use it to teleport you to your home temple</i>\n{battlesign}\n{info} does not work in no-logout zones or close to a character's home temple",
 				type = GameStore.OfferTypes.OFFER_TYPE_TEMPLE,
 			},

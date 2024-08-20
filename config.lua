@@ -55,7 +55,7 @@ cleanProtectionZones = true
 -- NOTE: MaxPacketsPerSeconds if you change you will be subject to bugs by WPE, keep the default value of 25, 
 -- It's recommended to use a range like min 50 in this function, otherwise you will be disconnected after equipping two-handed distance weapons.
 ip = "fencore.net"
-allowOldProtocol = true
+allowOldProtocol = false
 bindOnlyGlobalAddress = false
 loginProtocolPort = 7171
 gameProtocolPort = 7172

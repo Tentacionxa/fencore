@@ -57,7 +57,6 @@ taskConfiguration = {
 		"White Pale",
 		"Rotworm Queen",
 		"Rat",
-		"Minotaur",
 	},
 },
 {name = "Intermediate - Minotaur, Minotaur Archer, Minotaur Mage, Minotaur Guard", color = 40, total = 100, type = "once", storage = 190000, storagecount = 190001, 
@@ -105,7 +104,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "Dragons - Dragon, Dragon Lord, Dragon Hatchling, Dragon Lord Hatchling, Frost Dragon, Frost Dragon Hatchling, Dragon Warden, Dragonling, Ghastly Dragon, Undead Dragon", color = 40, total = 1000, type = "repeatable", storage = 190002, storagecount = 190003, 
+{name = "Dragons - Dragon, Dragon Lord, Dragon Hatchling, Dragon Lord Hatchling, Frost Dragon, Frost Dragon Hatchling, Dragon Warden, Dragonling, Ghastly Dragon, Undead Dragon", color = 40, total = 450, type = "repeatable", storage = 190002, storagecount = 190003, 
 	rewards = {
 	{3043, 60},
 	{5908, 1},
@@ -680,6 +679,29 @@ taskConfiguration = {
 		"Lab Assistant",
 		"Liodile",
 		"Rhindeer",
+	},
+},
+{name = "Deathlings - Deathling Scout, Deathling Spellsinger", color = 40, total = 1500, type = "daily", storage = 190087, storagecount = 190088, 
+	rewards = { 
+		{3043, 220},
+		{37317, 1},
+	{"exp", 5000000},
+	},
+	races = {
+		"Deathling Scout",
+		"Deathling Spellsinger",
+	},
+},
+{name = "Flimsy - Flimsy Lost Soul, Mean Lost Soul, Freakish Lost Soul", color = 40, total = 1500, type = "daily", storage = 190089, storagecount = 190090, 
+	rewards = { 
+		{3043, 260},
+		{37317, 1},
+	{"exp", 5000000},
+	},
+	races = {
+		"Flimsy Lost Soul",
+		"Mean Lost Soul",
+		"Freakish Lost Soul",
 	},
 },
 }

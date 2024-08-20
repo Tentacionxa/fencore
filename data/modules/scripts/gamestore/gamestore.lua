@@ -1725,6 +1725,14 @@ GameStore.Categories = {
 		state = GameStore.States.STATE_NONE,
 		offers = {
 			{
+				icons = { "Gloothomotive.png" },
+				name = "Gloothomotive",
+				price = 430,
+				id = 194,
+				description = "{character}\n{speedboost}\n\n<i>The Gloothomotive is a beauty! When you see its threatening danger coming towards you, you'll know trouble is on its way. </i>",
+				type = GameStore.OfferTypes.OFFER_TYPE_MOUNT,
+			},
+			{
 				icons = { "Armoured_War_Horse.png" },
 				name = "Armoured War Horse",
 				price = 470,

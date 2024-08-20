@@ -70,7 +70,7 @@ monster.voices = {
 monster.loot = {}
 
 monster.attacks = {
-	{ name = "melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -1500 },
+	{ name = "melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -800 },
 	{ name = "source of corruption wave", interval = 2000, chance = 15, target = false },
 }
 

@@ -21,7 +21,7 @@ monster.bosstiary = {
 monster.health = 77500
 monster.maxHealth = 77500
 monster.race = "venom"
-monster.corpse = 0
+monster.corpse = 6068
 monster.speed = 225
 monster.manaCost = 0
 

@@ -366,9 +366,9 @@ npcConfig.shop = {
 	{ itemName = "fiery tear", clientId = 39040, sell = 1070000 },
 	{ itemName = "gemmed figurine", clientId = 24392, sell = 3500 },
 	{ itemName = "giant amethyst", clientId = 30061, sell = 60000 },
-	{ itemName = "giant emerald", clientId = 30060, sell = 90000 },
-	{ itemName = "giant ruby", clientId = 30059, sell = 70000 },
-	{ itemName = "giant sapphire", clientId = 30061, sell = 50000 },
+	{ itemName = "giant emerald", clientId = 30060, sell = 60000 },
+	{ itemName = "giant ruby", clientId = 30059, sell = 60000 },
+	{ itemName = "giant sapphire", clientId = 30061, sell = 40000 },
 	{ itemName = "giant shimmering pearl", clientId = 281, sell = 3000 }, -- green
 	{ itemName = "giant shimmering pearl", clientId = 282, sell = 3000 }, -- brown
 	{ itemName = "giant topaz", clientId = 32623, sell = 80000 },
@@ -1531,7 +1531,6 @@ npcConfig.shop = {
 
 		--Nemesis boss loot
 		{ itemName = "dark lord’s cape", clientId = 10315, sell = 1000000 },
-		{ itemName = "oceanborn leviathan armor", clientId = 10315, sell = 1000000 },
 		{ itemName = "ravenwing", clientId = 10315, sell = 500000 },
 		
 	
@@ -1585,7 +1584,6 @@ npcConfig.shop = {
 	{ itemName = "demonwing axe", clientId = 8098, sell = 400000 },
 	{ itemName = "great shield", clientId = 3422, sell = 300000 },
 	{ itemName = "emerald sword", clientId = 8102, sell = 700000 },
-	{ itemName = "oceanborn leviathan armor", clientId = 8056, buy = 125000 },
 	{ itemName = "greenwood coat", clientId = 8041, sell = 400000 },
 	{ itemName = "hellforged axe", clientId = 8096, sell = 850000 },
 	{ itemName = "velvet mantle", clientId = 8040, sell = 300000 },
@@ -1604,7 +1602,7 @@ npcConfig.shop = {
 	{ itemName = "bear skin", clientId = 31578, sell = 300000 },
 	{ itemName = "dark lord's cape", clientId = 8037, sell = 420000 },
 	{ itemName = "energized demonbone", clientId = 28830, sell = 520000 },
-	{ itemName = "giant amethyst", clientId = 32622, sell = 520000 },
+	{ itemName = "giant amethyst", clientId = 32622, sell = 60000 },
 	{ itemName = "spiritual horseshoe", clientId = 44048, sell = 500000 },
 	{ itemName = "revised promotion scroll", clientId = 43948, sell = 400000 },
 	{ itemName = "oceanborn leviathan armor", clientId = 8056, sell = 85000 },

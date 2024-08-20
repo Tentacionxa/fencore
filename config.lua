@@ -304,9 +304,9 @@ maxAllowedOnADummy = 2
 -- NOTE: saveIntervalTime: time based on what was set in "saveIntervalType"
 toggleSaveAsync = false
 toggleSaveInterval = true
-saveIntervalType = "hour"
-toggleSaveIntervalCleanMap = true
-saveIntervalTime = 1
+saveIntervalType = "minute"
+toggleSaveIntervalCleanMap = false
+saveIntervalTime = 15
 
 -- Imbuement
 toggleImbuementShrineStorage = false

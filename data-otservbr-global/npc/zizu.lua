@@ -1588,7 +1588,6 @@ npcConfig.shop = {
 	{ itemName = "hellforged axe", clientId = 8096, sell = 850000 },
 	{ itemName = "velvet mantle", clientId = 8040, sell = 300000 },
 	{ itemName = "skullcrusher", clientId = 7423, sell = 2000000 },
-	{ itemName = "runed sword", clientId = 7417, sell = 1200000 },
 	{ itemName = "plushie of tentugly", clientId = 35576, sell = 500000 },
 	{ itemName = "golden sea horse figurine", clientId = 31911, sell = 300000 },
 	{ itemName = "ravenwing", clientId = 7433, sell = 70000 },

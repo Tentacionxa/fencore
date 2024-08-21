@@ -18,6 +18,8 @@ local config = {
 		{ pos = Position(33271, 31479, 14), teleport = Position(33392, 31479, 14) },
 		{ pos = Position(33271, 31480, 14), teleport = Position(33392, 31479, 14) },
 		{ pos = Position(33271, 31481, 14), teleport = Position(33392, 31479, 14) },
+		{ pos = Position(33269, 31477, 14), teleport = Position(33392, 31479, 14) },
+
 	},
 	monsters = {
 		{ name = "rift invader", pos = Position(33393, 31476, 14) },

@@ -100,7 +100,6 @@ monster.attacks = {
 	{ name = "combat", interval = 2000, chance = 20, type = COMBAT_EARTHDAMAGE, minDamage = -700, maxDamage = -1000, radius = 5, effect = CONST_ME_BIGPLANTS, target = false },
 	{ name = "combat", interval = 2000, chance = 20, type = COMBAT_EARTHDAMAGE, minDamage = -700, maxDamage = -1000, radius = 7, effect = CONST_ME_BIGPLANTS, target = false },
 	{ name = "poison chain", interval = 2000, chance = 20, minDamage = -500, maxDamage = -700, radius = 7, effect = CONST_ME_BIGPLANTS, target = false },
-	{ name = "root", interval = 2000, chance = 1, target = true },
 }
 
 monster.defenses = {

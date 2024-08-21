@@ -27,7 +27,7 @@ function endTaskModalWindow(player, storage)
 	if completion and data.rewards then
 		if player:getStorageValue(taskOptions.bonusReward) >= 1 then
 				if taskOptions.selectLanguage == 1 then
-				player:say('Recompensa Resgatada:', TALKTYPE_MONSTER_SAY)
+				player:say('Redeemed Reward:', TALKTYPE_MONSTER_SAY)
 				else
 				player:say('Redeemed Reward:', TALKTYPE_MONSTER_SAY)
 				end
@@ -48,7 +48,7 @@ function endTaskModalWindow(player, storage)
 					player:getPosition():sendSingleSoundEffect(SOUND_EFFECT_TYPE_ACTION_LEVEL_ACHIEVEMENT, player:isInGhostMode() and nil or player)
 					player:getPosition():sendMagicEffect(CONST_ME_PRISMATIC_SPARK)
 					if taskOptions.selectLanguage == 1 then
-					player:say('Outros: '..  info[2]*taskOptions.bonusRate .. ' ' ..ItemType(info[1]):getName(), TALKTYPE_MONSTER_SAY)
+					player:say('Others: '..  info[2]*taskOptions.bonusRate .. ' ' ..ItemType(info[1]):getName(), TALKTYPE_MONSTER_SAY)
 					else
 					player:say('Others: '..  info[2]*taskOptions.bonusRate .. ' ' ..ItemType(info[1]):getName(), TALKTYPE_MONSTER_SAY)
 					end
@@ -57,7 +57,7 @@ function endTaskModalWindow(player, storage)
 			end
 		else
 				if taskOptions.selectLanguage == 1 then
-				player:say('Recompensa Resgatada:', TALKTYPE_MONSTER_SAY)
+				player:say('Redeemed Reward:', TALKTYPE_MONSTER_SAY)
 				else
 				player:say('Redeemed Reward:', TALKTYPE_MONSTER_SAY)
 				end
@@ -78,7 +78,7 @@ function endTaskModalWindow(player, storage)
 					player:getPosition():sendSingleSoundEffect(SOUND_EFFECT_TYPE_ACTION_LEVEL_ACHIEVEMENT, player:isInGhostMode() and nil or player)
 					player:getPosition():sendMagicEffect(CONST_ME_PRISMATIC_SPARK)
 					if taskOptions.selectLanguage == 1 then
-					player:say('Outros: '.. ItemType(info[1]):getName() .. '', TALKTYPE_MONSTER_SAY)
+					player:say('Others:  '.. ItemType(info[1]):getName() .. '', TALKTYPE_MONSTER_SAY)
 					else
 					player:say('Others: '.. ItemType(info[1]):getName() .. '', TALKTYPE_MONSTER_SAY)
 					end

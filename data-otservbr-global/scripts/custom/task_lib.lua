@@ -41,7 +41,7 @@ task_pt_br = {
 }
 
 taskConfiguration = {
-	{name = "Beginner - Rotworm, Minotaur, Rat, Carrion Worm, White Pale, Rotworm Queen", color = 40, total = 100, type = "once", storage = 190006, storagecount = 190007, 
+	{name = "Beginner - Rotworm, Rat, Carrion Worm, White Pale, Rotworm Queen", color = 40, total = 100, type = "once", storage = 190006, storagecount = 190007, 
 	rewards = {
 		{20082, 1},
 		{7405, 1},

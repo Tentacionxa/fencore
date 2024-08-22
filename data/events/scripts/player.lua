@@ -511,6 +511,16 @@ function Player:onGainExperience(target, exp, rawExp)
 		return exp
 	end
 
+	-- Bonus experience acording to weekday and daytime
+	local bonusExpDayTime = 1
+	local current_weekday = os.date("*t").wday
+	if current_weekday > 1 and current_weekday < 7 then
+		local currentHour = os.date("*t").hour
+		if currentHour >= 18 and currentHour <= 20 then
+			bonusExpDayTime = 2 --double xp when the event is active
+		end
+	end
+
 	-- Soul regeneration
 	local vocation = self:getVocation()
 	if self:getSoul() < vocation:getMaxSoul() and exp >= self:getLevel() then

@@ -392,7 +392,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "INQ/POI - Ancient Scarab, Behemoth, Betrayed Wraith, Blightwalker, Bonebeast, Braindeath, Crystal Spider, Dark Magician, Dark Torturer, Defiler, Demon, Destroyer, Diabolic Imp, Dreadbeast, Efreet, Eye of the Seven, Fire Devil, Fire Elemental, Fury, Gargoyle, Giant Spider, Hand of Cursed Fate, Hellfire Fighter, Hellhound, Ice Golem, Juggernaut, Lich, Lost Soul, Massive Fire Elemental, Nightmare, Phantom, The Count, Spectre, Plaguesmith, Warlock", color = 40, total = 5000, type = "daily", storage = 190052, storagecount = 190053, 
+{name = "INQ/POI - Ancient Scarab, Behemoth, Betrayed Wraith, Blightwalker, Bonebeast, Braindeath, Crystal Spider, Dark Magician, Dark Torturer, Defiler, Demon, Destroyer, Diabolic Imp, Dreadbeast, Efreet, Eye of the Seven, Fire Devil, Fire Elemental, Fury, Gargoyle, Giant Spider, Hand of Cursed Fate, Hellfire Fighter, Hellhound, Ice Golem, Juggernaut, Lich, Lost Soul, Massive Fire Elemental, Nightmare, Phantom, The Count, Spectre, Plaguesmith, Warlock", color = 40, total = 5000, type = "repeatable", storage = 190052, storagecount = 190053, 
 	rewards = { 
 		{3043, 350},
 	{"exp", 10000000},

@@ -54,14 +54,14 @@ cleanProtectionZones = true
 -- NOTE: maxPlayers set to 0 means no limit
 -- NOTE: MaxPacketsPerSeconds if you change you will be subject to bugs by WPE, keep the default value of 25, 
 -- It's recommended to use a range like min 50 in this function, otherwise you will be disconnected after equipping two-handed distance weapons.
-ip = "fencore.net"
-allowOldProtocol = false
+ip = "127.0.0.1"
+allowOldProtocol = true
 bindOnlyGlobalAddress = false
 loginProtocolPort = 7171
 gameProtocolPort = 7172
 statusProtocolPort = 7171
 maxPlayers = 0
-serverName = "Fencore"
+serverName = "fencore"
 serverMotd = "Welcome to the Fencore!"
 statusTimeout = 5 * 1000
 replaceKickOnLogin = true
@@ -365,7 +365,7 @@ pushWhenAttacking = true
 -- Note: If a map with the same name already exists in the world folder, the map will not be downloaded, even if toggleDownloadMap is set to true.
 toggleDownloadMap = false
 mapDownloadUrl = "https://github.com/opentibiabr/canary/releases/download/v3.1.0/otservbr.otbm"
-mapName = "otservbr"
+mapName = "teste"
 mapAuthor = "OpenTibiaBR"
 
 -- Party List limitations
@@ -385,9 +385,9 @@ maxMarketOffersAtATimePerPlayer = 100
 
 -- MySQL
 mysqlHost = "127.0.0.1"
-mysqlUser = "xtenx"
-mysqlPass = "2wrxqD+raLUOUeI7bv"
-mysqlDatabase = "otservbr-global"
+mysqlUser = "root"
+mysqlPass = "rufle121"
+mysqlDatabase = "fencore"
 mysqlPort = 3306
 mysqlSock = ""
 passwordType = "sha1"

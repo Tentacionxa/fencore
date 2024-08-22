@@ -28,6 +28,7 @@ local effects = {
 {position = Position(32595, 32749, 7), text = 'Adventurer Guild', effect = CONST_ME_GROUNDSHAKER},
 {position = Position(33224, 31814, 8), text = 'Adventurer Guild', effect = CONST_ME_GROUNDSHAKER},
 {position = Position(31460, 31719, 7), text = 'Adventurer Guild', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(33466, 32494, 11), text = 'Mount', effect = CONST_ME_GROUNDSHAKER},
 
 {position = Position(31469, 31765, 7), text = 'Task', effect = CONST_ME_GROUNDSHAKER},
 {position = Position(32342, 32229, 7), text = 'Task', effect = CONST_ME_GROUNDSHAKER},

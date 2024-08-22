@@ -9,5 +9,5 @@ function happyHourEvent.onTime(interval)
         targetPlayer:sendTextMessage(MESSAGE_ADMINISTRATOR, "THE HAPPY HOUR DOUBLE XP EVENT IS ON! GRAB YOUR WEAPONS AND BE READY TO HUNT!")
 	end
 end
-happyHourEvent:time("18:00:00")
+happyHourEvent:time("18:10:00")
 happyHourEvent:register()

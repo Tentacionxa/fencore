@@ -99,10 +99,18 @@ local portalId, t = 1949,
         }
     },
     ["hatori hanzo"] = {
-        message = "You now have 10 minutes to exit this room through the teleporter. It will bring you to the reward room.",
+        message = "You now have 3 minutes to exit this room through the teleporter. It will bring you to the reward room.",
         config = {
             createPos = {x = 32285, y = 31620, z = 7},
             toPos = {x = 32286, y = 31622, z = 6},
+            portalTime = 3, --minutes
+        }
+    },
+    ["soil guard"] = {
+        message = "You now have 10 minutes to exit this room through the teleporter. It will bring you to the reward room.",
+        config = {
+            createPos = {x = 32513, y = 31455, z = 8},
+            toPos = {x = 32541, y = 31452, z = 8},
             portalTime = 10, --minutes
         }
     },

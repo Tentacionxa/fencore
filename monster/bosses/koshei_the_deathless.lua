@@ -77,7 +77,9 @@ monster.voices = {
 	{ text = "Ahhh, your life energy tastes so delicious!", yell = false },
 }
 
-monster.loot = {}
+monster.loot = {
+	{ id = 7532, chance = 140000, maxCount = 1 }, -- koshei amulet
+}
 
 monster.attacks = {
 	{ name = "melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -170, condition = { type = CONDITION_POISON, totalDamage = 300, interval = 4000 } },

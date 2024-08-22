@@ -112,6 +112,7 @@ npcConfig.shop = {
 	{ itemName = "energy resilience", clientId = 36732, buy = 1000000 },
 	{ itemName = "death amplification", clientId = 36741, buy = 1000000 },
 	{ itemName = "bestiary betterment", clientId = 36728, buy = 1000000 },
+	{ itemName = "charm upgrade", clientId = 36726, buy = 6000000 },
 }
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

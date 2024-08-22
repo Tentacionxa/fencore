@@ -575,7 +575,7 @@ function Player:onGainExperience(target, exp, rawExp)
 
 	local guildBonus = self:getGuild() and 1.05 or 1.00
 
-	return (exp + (exp * (storeXpBoostAmount / 100) + (exp * (lowLevelBonuxExp / 100)))) * staminaBonusXp * baseRate * guildBonus
+	return (exp + (exp * (storeXpBoostAmount / 100) + (exp * (lowLevelBonuxExp / 100)))) * staminaBonusXp * baseRate * guildBonus * bonusExpDayTime
 end
 
 function Player:onLoseExperience(exp)

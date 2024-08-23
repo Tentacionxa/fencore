@@ -1,11 +1,13 @@
-local ferumbrasAscendantMysterious = Action()
-function ferumbrasAscendantMysterious.onUse(player, item, fromPosition, target, toPosition, isHotkey)
-	
-		player:addMount(87)
-		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You decipher something! You get a rift runner to accompany you on your journey.")
-		player:setStorageValue(Storage.FerumbrasAscension.RiftRunner, 1)
+FerumbrasAscendantMysteriousId = 34072
 
+local FerumbrasAscendantMysterious = Action()
+
+function FerumbrasAscendantMysterious.onUse(player, item, fromPosition, target, toPosition, isHotkey)
+	player:addMount(87)
+	item:remove(1)
+	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You decipher something! You get a rift runner to accompany you on your journey.")
+	return true
 end
 
-ferumbrasAscendantMysterious:id(22865)
-ferumbrasAscendantMysterious:register()
+FerumbrasAscendantMysterious:id(FerumbrasAscendantMysteriousId)
+FerumbrasAscendantMysterious:register()

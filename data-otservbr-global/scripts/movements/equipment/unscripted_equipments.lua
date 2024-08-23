@@ -92,7 +92,7 @@ local items = {
 		itemid = 43883,
 		type = "equip",
 		slot = "hand",
-		level = 200,
+		level = 600,
 		vocation = {
 		{ "Sorcerer", true },
 			{ "Druid", true, true },
@@ -105,7 +105,7 @@ local items = {
 		itemid = 43883,
 		type = "deequip",
 		slot = "hand",
-		level = 200,
+		level = 600,
 		vocation = {
 			{ "Sorcerer", true, true },
 			{ "Master Sorcerer" },

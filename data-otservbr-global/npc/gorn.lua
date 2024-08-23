@@ -16,7 +16,7 @@ npcConfig.outfit = {
 	lookBody = 68,
 	lookLegs = 101,
 	lookFeet = 95,
-	lookAddons = 0,
+	lookAddons = 3,
 }
 
 npcConfig.flags = {
@@ -150,6 +150,9 @@ npcConfig.shop = {
 	{ itemName = "scythe", clientId = 3453, buy = 50, sell = 10 },
 	{ itemName = "shovel", clientId = 3457, buy = 50, sell = 8 },
 	{ itemName = "torch", clientId = 2920, buy = 2 },
+	{ itemName = "whacking driller of fate", clientId = 9599, buy = 350000 },
+	{ itemName = "squeezing gear of girlpower", clientId = 9597, buy = 350000 },
+	{ itemName = "sneaky stabber of eliteness", clientId = 9594, buy = 350000 },
 	{ itemName = "valentine's card", clientId = 6538, buy = 30 },
 	{ itemName = "watch", clientId = 2906, buy = 20, sell = 6 },
 	{ itemName = "wooden hammer", clientId = 3459, sell = 15 },

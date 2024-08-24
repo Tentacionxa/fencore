@@ -13,7 +13,7 @@ local stages = {
 	{ name = "Wildness of Urmahlullu", health = 400000 * healthMultiplier },
 	{ name = "Urmahlullu the Tamed", health = 300000 * healthMultiplier },
 	{ name = "Wisdom of Urmahlullu", health = 200000 * healthMultiplier },
-	{ name = "Urmahlullu the Weakened", health = 60000 * healthMultiplier },
+	{ name = "Urmahlullu the Weakened", health = 100000 * healthMultiplier },
 }
 
 local changeEvent = nil

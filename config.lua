@@ -385,9 +385,9 @@
     
     -- MySQL
     mysqlHost = "127.0.0.1"
-    mysqlUser = "xtenx"
-    mysqlPass = "2wrxqD+raLUOUeI7bv"
-    mysqlDatabase = "otservbr-global"
+    mysqlUser = "root"
+    mysqlPass = "rufle121"
+    mysqlDatabase = "fencore"
     mysqlPort = 3306
     mysqlSock = ""
     passwordType = "sha1"

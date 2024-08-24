@@ -26,7 +26,7 @@ npcConfig.flags = {
 npcConfig.voices = {
 	interval = 15000,
 	chance = 50,
-	{ text = "Passages to Carlin, Ab'Dendriel, Edron, Venore, Port Hope, Liberty Bay, Yalahar, Roshamuul, Krailos, Oramond, Svargrond, Ottawa, Hellish Basin, Fearsome Desert, Damona Reef, Dunly Refuge, Lionfield Fort, Lamawood Isles and Kinfroain." },
+	{ text = "Passages to Carlin, Ab'Dendriel, Edron, Venore, Port Hope, Liberty Bay, Yalahar, Roshamuul, Krailos, Oramond and Svargrond." },
 }
 
 local keywordHandler = KeywordHandler:new()
@@ -72,28 +72,22 @@ addTravelKeyword("carlin", 110, Position(32387, 31820, 6), function(player)
 		player:setStorageValue(Storage.Postman.Mission01, 2)
 	end
 end)
-addTravelKeyword("yalahar", 200, Position(32817, 31271, 6))
-addTravelKeyword("thais", 200, Position(32311, 32211, 6))
+
 addTravelKeyword("ab'dendriel", 130, Position(32734, 31668, 6))
 addTravelKeyword("edron", 160, Position(33175, 31764, 6))
 addTravelKeyword("venore", 170, Position(32954, 32022, 6))
 addTravelKeyword("port hope", 160, Position(32527, 32784, 6))
 addTravelKeyword("roshamuul", 210, Position(33494, 32567, 7))
 addTravelKeyword("svargrond", 180, Position(32341, 31108, 6))
-addTravelKeyword("damona reef", 380, Position(31858, 31967, 6))
-addTravelKeyword("hellish basin", 580, Position(31424, 31740, 6))
-addTravelKeyword("kinfroain", 280, Position(32557, 31021, 7))
-addTravelKeyword("lionfield fort", 380, Position(31766, 32078, 6))
-addTravelKeyword("lamawood isles", 180, Position(31935, 31868, 7))
 addTravelKeyword("liberty bay", 180, Position(32285, 32892, 6))
-addTravelKeyword("fearsome desert", 380, Position(31482, 31925, 6))
-addTravelKeyword("ottawa", 280, Position(31015, 31687, 6))
-addTravelKeyword("dunly refuge", 580, Position(30722, 32115, 6))
+addTravelKeyword("yalahar", 200, Position(32816, 31272, 6), nil, function(player)
+	return player:getStorageValue(Storage.Quest.U8_4.InServiceOfYalahar.SearoutesAroundYalahar.Thais) ~= 1 and player:getStorageValue(Storage.Quest.U8_4.InServiceOfYalahar.SearoutesAroundYalahar.TownsCounter) < 5
+end)
 addTravelKeyword("oramond", 150, Position(33479, 31985, 7))
 addTravelKeyword("krailos", 230, Position(33492, 31712, 6))
 
 -- Kick
---keywordHandler:addKeyword({ "Thais" }, StdModule.kick, { npcHandler = npcHandler, destination = { Position(32320, 32219, 6), Position(32321, 32210, 6) } })
+keywordHandler:addKeyword({ "kick" }, StdModule.kick, { npcHandler = npcHandler, destination = { Position(32320, 32219, 6), Position(32321, 32210, 6) } })
 
 -- Basic
 keywordHandler:addKeyword({ "name" }, StdModule.say, { npcHandler = npcHandler, text = "My name is Captain Bluebear from the Royal Tibia Line." })
@@ -105,13 +99,13 @@ keywordHandler:addKeyword({ "company" }, StdModule.say, { npcHandler = npcHandle
 keywordHandler:addKeyword({ "tibia" }, StdModule.say, { npcHandler = npcHandler, text = "The Royal Tibia Line connects all seaside towns of Tibia." })
 keywordHandler:addKeyword({ "good" }, StdModule.say, { npcHandler = npcHandler, text = "We can transport everything you want." })
 keywordHandler:addKeyword({ "passenger" }, StdModule.say, { npcHandler = npcHandler, text = "We would like to welcome you on board." })
-keywordHandler:addKeyword({ "trip" }, StdModule.say, { npcHandler = npcHandler, text = "Where do you want to go? To {Carlin}, {Ab'Dendriel}, {Venore}, {Port Hope}, {Liberty Bay}, {Svargrond}, {Ottawa}, {Hellish Basin}, {Fearsome Desert}, {Damona Reef}, {Kinfroain}, {Lionfield Fort}, {Lamawood Isles}, {Yalahar}, {Dunly Refuge}, {Roshamuul}, {Oramond} or {Edron}?" })
-keywordHandler:addKeyword({ "route" }, StdModule.say, { npcHandler = npcHandler, text = "Where do you want to go? To {Carlin}, {Ab'Dendriel}, {Venore}, {Port Hope}, {Liberty Bay}, {Svargrond}, {Ottawa}, {Hellish Basin}, {Fearsome Desert}, {Damona Reef}, {Kinfroain}, {Lionfield Fort}, {Lamawood Isles}, {Yalahar}, {Dunly Refuge}, {Roshamuul}, {Oramond} or {Edron}?" })
-keywordHandler:addKeyword({ "passage" }, StdModule.say, { npcHandler = npcHandler, text = "Where do you want to go? To {Carlin}, {Ab'Dendriel}, {Venore}, {Port Hope}, {Liberty Bay}, {Svargrond}, {Ottawa}, {Hellish Basin}, {Fearsome Desert}, {Damona Reef}, {Kinfroain}, {Lionfield Fort}, {Lamawood Isles}, {Yalahar}, {Dunly Refuge}, {Roshamuul}, {Oramond} or {Edron}?" })
-keywordHandler:addKeyword({ "town" }, StdModule.say, { npcHandler = npcHandler, text = "Where do you want to go? To {Carlin}, {Ab'Dendriel}, {Venore}, {Port Hope}, {Liberty Bay}, {Svargrond}, {Ottawa}, {Hellish Basin}, {Fearsome Desert}, {Damona Reef}, {Kinfroain}, {Lionfield Fort}, {Lamawood Isles}, {Yalahar}, {Dunly Refuge}, {Roshamuul}, {Oramond} or {Edron}?" })
-keywordHandler:addKeyword({ "destination" }, StdModule.say, { npcHandler = npcHandler, text = "Where do you want to go? To {Carlin}, {Ab'Dendriel}, {Venore}, {Port Hope}, {Liberty Bay}, {Svargrond}, {Ottawa}, {Hellish Basin}, {Fearsome Desert}, {Damona Reef}, {Kinfroain}, {Lionfield Fort}, {Lamawood Isles}, {Yalahar}, {Dunly Refuge}, {Roshamuul}, {Oramond} or {Edron}?" })
-keywordHandler:addKeyword({ "sail" }, StdModule.say, { npcHandler = npcHandler, text = "Where do you want to go? To {Carlin}, {Ab'Dendriel}, {Venore}, {Port Hope}, {Liberty Bay}, {Svargrond}, {Ottawa}, {Hellish Basin}, {Fearsome Desert}, {Damona Reef}, {Kinfroain}, {Lionfield Fort}, {Lamawood Isles},  {Yalahar}, {Dunly Refuge},  {Roshamuul}, {Oramond} or {Edron}?" })
-keywordHandler:addKeyword({ "go" }, StdModule.say, { npcHandler = npcHandler, text = "Where do you want to go? To {Carlin}, {Ab'Dendriel}, {Venore}, {Port Hope}, {Liberty Bay}, {Svargrond}, {Ottawa}, {Hellish Basin}, {Fearsome Desert}, {Damona Reef}, {Kinfroain}, {Lionfield Fort}, {Lamawood Isles}, {Yalahar}, {Dunly Refuge}, {Roshamuul}, {Oramond} or {Edron}?" })
+keywordHandler:addKeyword({ "trip" }, StdModule.say, { npcHandler = npcHandler, text = "Where do you want to go? To {Carlin}, {Ab'Dendriel}, {Venore}, {Port Hope}, {Liberty Bay}, {Svargrond}, {Yalahar}, {Roshamuul}, {Oramond} or {Edron}?" })
+keywordHandler:addKeyword({ "route" }, StdModule.say, { npcHandler = npcHandler, text = "Where do you want to go? To {Carlin}, {Ab'Dendriel}, {Venore}, {Port Hope}, {Liberty Bay}, {Svargrond}, {Yalahar}, {Roshamuul}, {Oramond} or {Edron}?" })
+keywordHandler:addKeyword({ "passage" }, StdModule.say, { npcHandler = npcHandler, text = "Where do you want to go? To {Carlin}, {Ab'Dendriel}, {Venore}, {Port Hope}, {Liberty Bay}, {Svargrond}, {Yalahar}, {Roshamuul}, {Oramond} or {Edron}?" })
+keywordHandler:addKeyword({ "town" }, StdModule.say, { npcHandler = npcHandler, text = "Where do you want to go? To {Carlin}, {Ab'Dendriel}, {Venore}, {Port Hope}, {Liberty Bay}, {Svargrond}, {Yalahar}, {Roshamuul}, {Oramond} or {Edron}?" })
+keywordHandler:addKeyword({ "destination" }, StdModule.say, { npcHandler = npcHandler, text = "Where do you want to go? To {Carlin}, {Ab'Dendriel}, {Venore}, {Port Hope}, {Liberty Bay}, {Svargrond}, {Yalahar}, {Roshamuul}, {Oramond} or {Edron}?" })
+keywordHandler:addKeyword({ "sail" }, StdModule.say, { npcHandler = npcHandler, text = "Where do you want to go? To {Carlin}, {Ab'Dendriel}, {Venore}, {Port Hope}, {Liberty Bay}, {Svargrond}, {Yalahar}, {Roshamuul}, {Oramond} or {Edron}?" })
+keywordHandler:addKeyword({ "go" }, StdModule.say, { npcHandler = npcHandler, text = "Where do you want to go? To {Carlin}, {Ab'Dendriel}, {Venore}, {Port Hope}, {Liberty Bay}, {Svargrond}, {Yalahar}, {Roshamuul}, {Oramond} or {Edron}?" })
 keywordHandler:addKeyword({ "ice" }, StdModule.say, { npcHandler = npcHandler, text = "I'm sorry, but we don't serve the routes to the Ice Islands." })
 keywordHandler:addKeyword({ "senja" }, StdModule.say, { npcHandler = npcHandler, text = "I'm sorry, but we don't serve the routes to the Ice Islands." })
 keywordHandler:addKeyword({ "folda" }, StdModule.say, { npcHandler = npcHandler, text = "I'm sorry, but we don't serve the routes to the Ice Islands." })
@@ -119,7 +113,7 @@ keywordHandler:addKeyword({ "vega" }, StdModule.say, { npcHandler = npcHandler, 
 keywordHandler:addKeyword({ "darashia" }, StdModule.say, { npcHandler = npcHandler, text = "I'm not sailing there. This route is afflicted by a ghostship! However I've heard that Captain Fearless from Venore sails there." })
 keywordHandler:addKeyword({ "darama" }, StdModule.say, { npcHandler = npcHandler, text = "I'm not sailing there. This route is afflicted by a ghostship! However I've heard that Captain Fearless from Venore sails there." })
 keywordHandler:addKeyword({ "ghost" }, StdModule.say, { npcHandler = npcHandler, text = "Many people who sailed to Darashia never returned because they were attacked by a ghostship! I'll never sail there!" })
-
+keywordHandler:addKeyword({ "thais" }, StdModule.say, { npcHandler = npcHandler, text = "This is Thais. Where do you want to go?" })
 
 npcHandler:setMessage(MESSAGE_GREET, "Welcome on board, |PLAYERNAME|. Where can I {sail} you today?")
 npcHandler:setMessage(MESSAGE_FAREWELL, "Good bye. Recommend us if you were satisfied with our service.")

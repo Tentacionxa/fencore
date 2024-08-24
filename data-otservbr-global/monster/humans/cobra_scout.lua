@@ -91,7 +91,6 @@ monster.loot = {
 	{ name = "sacred tree amulet", chance = 5100 },
 	{ name = "green crystal shard", chance = 2130 },
 	{ id = 23533, chance = 740 }, -- ring of red plasma
-	{ id = 35479, chance = 390 }, -- cobra bag 
 }
 
 monster.attacks = {

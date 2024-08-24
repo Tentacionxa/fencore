@@ -13,6 +13,10 @@ monster.outfit = {
 	lookMount = 0,
 }
 
+monster.events = {
+	"ThreatenedDreamsNightmareMonstersDeath",
+}
+
 monster.bosstiary = {
 	bossRaceId = 1515,
 	bossRace = RARITY_BANE,
@@ -74,6 +78,7 @@ monster.loot = {
 	{ name = "strong health potion", chance = 91460, maxCount = 2 },
 	{ name = "great health potion", chance = 76330, maxCount = 3 },
 	{ name = "small enchanted amethyst", chance = 53560, maxCount = 5 },
+	{ name = "ancient coin", chance = 46980, maxCount = 3 },
 	{ name = "gemmed figurine", chance = 32030 },
 	{ name = "small enchanted emerald", chance = 11003, maxCount = 5 },
 	{ name = "small enchanted ruby", chance = 2000 },
@@ -90,7 +95,7 @@ monster.loot = {
 monster.attacks = {
 	{ name = "melee", interval = 200, chance = 20, minDamage = 0, maxDamage = -650 },
 	{ name = "combat", interval = 200, chance = 20, type = COMBAT_DEATHDAMAGE, minDamage = -300, maxDamage = -500, target = false },
-	{ name = "combat", interval = 500, chance = 10, type = COMBAT_DEATHDAMAGE, minDamage = -200, maxDamage = -300, length = 8, spread = 3, effect = CONST_ME_MORTAREA, target = true },
+	{ name = "combat", interval = 500, chance = 10, type = COMBAT_DEATHDAMAGE, minDamage = -200, maxDamage = -300, length = 8, spread = 0, effect = CONST_ME_MORTAREA, target = true },
 	{ name = "combat", interval = 500, chance = 10, type = COMBAT_DEATHDAMAGE, minDamage = -250, maxDamage = -300, radius = 8, effect = CONST_ME_MORTAREA, target = false },
 }
 

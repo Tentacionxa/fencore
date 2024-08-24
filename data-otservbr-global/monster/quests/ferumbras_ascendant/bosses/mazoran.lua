@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Mazoran")
 local monster = {}
 
 monster.description = "Mazoran"
-monster.experience = 50000
+monster.experience = 500000
 monster.outfit = {
 	lookType = 842,
 	lookHead = 77,
@@ -11,6 +11,10 @@ monster.outfit = {
 	lookFeet = 94,
 	lookAddons = 3,
 	lookMount = 0,
+}
+
+monster.events = {
+	"AscendantBossesDeath",
 }
 
 monster.bosstiary = {
@@ -43,7 +47,7 @@ monster.flags = {
 	hostile = true,
 	convinceable = false,
 	pushable = false,
-	rewardBoss = true,
+	rewardBoss = false,
 	illusionable = false,
 	canPushItems = true,
 	canPushCreatures = true,
@@ -88,7 +92,6 @@ monster.loot = {
 	{ id = 6499, chance = 11000 }, -- demonic essence
 	{ id = 7382, chance = 1000 }, -- demonrage sword
 	{ id = 238, chance = 23000, maxCount = 5 }, -- great mana potion
-{ id = 24390, chance = 23000, maxCount = 1000 },
 	{ id = 281, chance = 14000, maxCount = 5 }, -- giant shimmering pearl (green)
 	{ id = 282, chance = 14000, maxCount = 5 }, -- giant shimmering pearl (brown)
 	{ id = 817, chance = 1000 }, -- magma amulet

@@ -13,6 +13,10 @@ monster.outfit = {
 	lookMount = 0,
 }
 
+monster.events = {
+	"LizardMagistratusDeath",
+}
+
 monster.raceId = 655
 monster.Bestiary = {
 	class = "Reptile",
@@ -60,6 +64,7 @@ monster.flags = {
 	canWalkOnEnergy = false,
 	canWalkOnFire = true,
 	canWalkOnPoison = true,
+	isPreyExclusive = true,
 }
 
 monster.light = {

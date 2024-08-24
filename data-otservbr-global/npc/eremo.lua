@@ -59,16 +59,11 @@ local function creatureSayCallback(npc, creature, type, message)
 	end
 
 	if MsgContains(message, "letter") then
-		if player:getStorageValue(Storage.TheShatteredIsles.ReputationInSabrehaven) == 4 then
+		if player:getStorageValue(Storage.Quest.U7_8.TheShatteredIsles.ReputationInSabrehaven) == 7 then
 			if player:getItemCount(3506) > 0 then
 				if player:removeItem(3506, 1) then
-					npcHandler:say(
-						"A letter from that youngster Morgan? I believed him dead since years. \z
-						These news are good news indeed. Thank you very much, my friend.",
-						npc,
-						creature
-					)
-					player:setStorageValue(Storage.TheShatteredIsles.ReputationInSabrehaven, 5)
+					npcHandler:say("A letter from that youngster Morgan? I believed him dead since years. These news are good news indeed. Thank you very much, my friend.", npc, creature)
+					player:setStorageValue(Storage.Quest.U7_8.TheShatteredIsles.ReputationInSabrehaven, 8)
 				end
 			end
 		end
@@ -229,7 +224,7 @@ npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
 npcConfig.shop = {
-	{ itemName = "amulet of loss", clientId = 3057, buy = 500000, sell = 450000 },
+	{ itemName = "amulet of loss", clientId = 3057, buy = 50000, sell = 45000 },
 	{ itemName = "broken amulet", clientId = 3080, sell = 50000 },
 	{ itemName = "protection amulet", clientId = 3084, buy = 700, count = 250 },
 }
@@ -239,7 +234,7 @@ npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBac
 end
 -- On sell npc shop message
 npcType.onSellItem = function(npc, player, itemId, subtype, amount, ignore, name, totalCost)
-	player:sendTextMessage(MESSAGE_INFO_DESCR, string.format("Sold %ix %s for %i gold.", amount, name, totalCost))
+	player:sendTextMessage(MESSAGE_TRADE, string.format("Sold %ix %s for %i gold.", amount, name, totalCost))
 end
 -- On check npc shop message (look item)
 npcType.onCheckItem = function(npc, player, clientId, subType) end

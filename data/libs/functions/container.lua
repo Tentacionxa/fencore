@@ -12,7 +12,7 @@ function Container:addLoot(loot)
 			logger.warn("Container:addLoot: invalid item type: {}", itemId)
 			goto continue
 		end
-		if iType:isStackable() or iType:getCharges() ~= 0 then
+		if iType:isStackable() then
 			local stackSize = iType:getStackSize()
 			local remainingCount = item.count
 
@@ -23,8 +23,12 @@ function Container:addLoot(loot)
 					logger.warn("Container:addLoot: failed to add stackable item: {}, to corpse {} with id {}", ItemType(itemId):getName(), self:getName(), self:getId())
 					goto continue
 				end
-
 				remainingCount = remainingCount - countToAdd
+			end
+		elseif iType:getCharges() ~= 0 then
+			local tmpItem = self:addItem(itemId, item.count, INDEX_WHEREEVER, FLAG_NOLIMIT)
+			if not tmpItem then
+				logger.warn("Container:addLoot: failed to add charge item: {}, to corpse {} with id {}", ItemType(itemId):getName(), self:getName(), self:getId())
 			end
 		else
 			for i = 1, item.count do
@@ -58,5 +62,26 @@ function Container:addLoot(loot)
 		end
 
 		::continue::
+	end
+end
+
+function Container:addRewardBossItems(itemList)
+	for itemId, lootInfo in pairs(itemList) do
+		local iType = ItemType(itemId)
+		if iType then
+			local itemCount = lootInfo.count
+			local charges = iType:getCharges()
+			if charges > 0 then
+				itemCount = charges
+				logger.debug("Adding item with 'id' to the reward container, item charges {}", iType:getId(), charges)
+			end
+			if iType:isStackable() or iType:getCharges() ~= 0 then
+				self:addItem(itemId, itemCount, INDEX_WHEREEVER, FLAG_NOLIMIT)
+			else
+				for i = 1, itemCount do
+					self:addItem(itemId, 1, INDEX_WHEREEVER, FLAG_NOLIMIT)
+				end
+			end
+		end
 	end
 end

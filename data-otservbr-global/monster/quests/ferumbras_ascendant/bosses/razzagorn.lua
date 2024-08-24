@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Razzagorn")
 local monster = {}
 
 monster.description = "Razzagorn"
-monster.experience = 50000
+monster.experience = 500000
 monster.outfit = {
 	lookType = 842,
 	lookHead = 78,
@@ -11,6 +11,10 @@ monster.outfit = {
 	lookFeet = 126,
 	lookAddons = 0,
 	lookMount = 0,
+}
+
+monster.events = {
+	"AscendantBossesDeath",
 }
 
 monster.bosstiary = {
@@ -131,6 +135,7 @@ monster.defenses = {
 	--	mitigation = ???,
 	{ name = "combat", interval = 2000, chance = 15, type = COMBAT_HEALING, minDamage = 1000, maxDamage = 3000, effect = CONST_ME_MAGIC_BLUE, target = false },
 	{ name = "speed", interval = 2000, chance = 8, speedChange = 480, effect = CONST_ME_MAGIC_RED, target = false, duration = 6000 },
+	{ name = "razzagorn summon", interval = 2000, chance = 3, target = false },
 }
 
 monster.elements = {

@@ -76,29 +76,13 @@ local function addTravelKeyword(keyword, text, destination, randomDestination, r
 	travelKeyword:addChildKeyword({ "yes" }, StdModule.travel, { npcHandler = npcHandler, premium = false, cost = 50, discount = "postman", destination = randomDestination }, randomNumber)
 end
 
-local randomDestination = { Position(32225, 31381, 7), Position(32462, 31174, 7), Position(32333, 31227, 7), Position(32021, 31294, 7) }
-addTravelKeyword("okolnir", "It's nice there. Except of the ice dragons which are not very companionable.", Position(32225, 31381, 7), function()
+local randomDestination = { Position(32255, 31197, 7), Position(32462, 31174, 7), Position(32333, 31227, 7), Position(32021, 31294, 7) }
+addTravelKeyword("svargrond", "You know a town nicer than this? NICER DICER! Apropos, don't play dice when you are drunk ...", Position(32255, 31197, 7), function()
 	return randomDestination[math.random(#randomDestination)]
 end, function()
 	return math.random(5) > 1
 end, function(player)
-	return player:getItemCount(3097) > 0
-end, function(player)
-	return player:removeItem(3097, 1)
-end)
-addTravelKeyword("helheim", "T'at is a small island to the east.", Position(32462, 31174, 7), function()
-	return randomDestination[math.random(#randomDestination)]
-end, function()
-	return math.random(5) > 1
-end, function(player)
-	return player:getItemCount(3097) > 0
-end, function(player)
-	return player:removeItem(3097, 1)
-end)
-addTravelKeyword("tyrsung", "*HICKS* Big, big island east of here. Venorian hunters settled there ..... I could bring you north of their camp.", Position(32333, 31227, 7), function()
-	return randomDestination[math.random(#randomDestination)]
-end, function()
-	return math.random(5) > 1
+	return player:getStorageValue(Storage.Quest.U8_0.BarbarianTest.Questline) < 8
 end, function(player)
 	return player:getItemCount(3097) > 0
 end, function(player)
@@ -109,29 +93,45 @@ addTravelKeyword("camp", "Both of you look like you could defend yourself! If yo
 end, function()
 	return math.random(5) > 1
 end, function(player)
+	return player:getStorageValue(Storage.Quest.U8_0.BarbarianTest.Questline) < 8
+end, function(player)
 	return player:getItemCount(3097) > 0
 end, function(player)
 	return player:removeItem(3097, 1)
 end)
-addTravelKeyword("svargrond", "If you want to go there, ask me for a passage.", Position(32255, 31197, 7), function()
+addTravelKeyword("helheim", "T'at is a small island to the east.", Position(32462, 31174, 7), function()
 	return randomDestination[math.random(#randomDestination)]
 end, function()
 	return math.random(5) > 1
+end, function(player)
+	return player:getStorageValue(Storage.Quest.U8_0.BarbarianTest.Questline) < 8
+end, function(player)
+	return player:getItemCount(3097) > 0
+end, function(player)
+	return player:removeItem(3097, 1)
+end, function(player)
+	return player:getStorageValue(Storage.Quest.U8_0.TheIceIslands.Questline) < 30
+end)
+addTravelKeyword("tyrsung", "*HICKS* Big, big island east of here. Venorian hunters settled there ..... I could bring you north of their camp.", Position(32333, 31227, 7), function()
+	return randomDestination[math.random(#randomDestination)]
+end, function()
+	return math.random(5) > 1
+end, function(player)
+	return player:getStorageValue(Storage.Quest.U8_0.BarbarianTest.Questline) < 8
 end, function(player)
 	return player:getItemCount(3097) > 0
 end, function(player)
 	return player:removeItem(3097, 1)
 end)
 -- Kick
-keywordHandler:addKeyword({ "kick" }, StdModule.kick, { npcHandler = npcHandler, text = "Get out o' here!*HICKS*", destination = { Position(32255, 31193, 7), Position(32256, 31193, 7), Position(32257, 31193, 7) } })
+keywordHandler:addKeyword({ "kick" }, StdModule.kick, { npcHandler = npcHandler, text = "Get out o' here!*HICKS*", destination = { Position(32228, 31386, 7) } })
 
 keywordHandler:addKeyword({ "passage" }, StdModule.say, { npcHandler = npcHandler, text = "Where are we at the moment? Is this Svargrond? Ahh yes!*HICKS* Where do you want to go?" })
 keywordHandler:addAliasKeyword({ "trip" })
 keywordHandler:addAliasKeyword({ "go" })
 keywordHandler:addAliasKeyword({ "sail" })
 
-npcHandler:setMessage(MESSAGE_GREET, "Hey big guys. You? {Here}? *HICKS*")
-
+npcHandler:setMessage(MESSAGE_GREET, "Where are we at the moment? Is this {Svargrond}? NO,*HICKS* it's Okolnir! Anyway, where do you want to go?")
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
 npcConfig.shop = {
@@ -143,7 +143,7 @@ npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBac
 end
 -- On sell npc shop message
 npcType.onSellItem = function(npc, player, itemId, subtype, amount, ignore, name, totalCost)
-	player:sendTextMessage(MESSAGE_INFO_DESCR, string.format("Sold %ix %s for %i gold.", amount, name, totalCost))
+	player:sendTextMessage(MESSAGE_TRADE, string.format("Sold %ix %s for %i gold.", amount, name, totalCost))
 end
 -- On check npc shop message (look item)
 npcType.onCheckItem = function(npc, player, clientId, subType) end

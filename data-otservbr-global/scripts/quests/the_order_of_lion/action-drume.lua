@@ -9,12 +9,6 @@ local config = {
 		Position(32444, 32516, 7),
 		Position(32448, 32512, 7),
 	},
-	drumePosition = {
-		Position(32451, 32520, 7),
-	},
-	kesarPosition = {
-		Position(32446, 32511, 7),
-	},
 	firstPlayerPosition = Position(32457, 32508, 6),
 	centerPosition = Position(32439, 32523, 7), -- Center Room
 	exitPosition = Position(32453, 32503, 7), -- Exit Position
@@ -97,24 +91,6 @@ function drumeAction.onUse(player, item, fromPosition, target, toPosition, isHot
 		end
 		totalLion = totalLion + 1
 	end
-	for _, pos in pairs(config.kesarPosition) do
-		tempMonster = Game.createMonster("Kesar", pos)
-		if not tempMonster then
-			player:sendCancelMessage("There was an error, contact an admin.")
-			player:getPosition():sendMagicEffect(CONST_ME_POFF)
-			return true
-		end
-		totalLion = totalLion + 1
-	end
-	for _, pos in pairs(config.drumePosition) do
-		tempMonster = Game.createMonster("Drume", pos)
-		if not tempMonster then
-			player:sendCancelMessage("There was an error, contact an admin.")
-			player:getPosition():sendMagicEffect(CONST_ME_POFF)
-			return true
-		end
-		totalUsurper = totalUsurper + 1
-	end
 	for _, pos in pairs(config.usurperPosition) do
 		tempMonster = Game.createMonster("Usurper Commander", pos)
 		if not tempMonster then
@@ -135,6 +111,8 @@ function drumeAction.onUse(player, item, fromPosition, target, toPosition, isHot
 	currentEvent = addEvent(clearRoomDrume, config.timeToKill * 60 * 1000, config.centerPosition, config.rangeX, config.rangeY, resetGlobalStorage)
 	config.newPosition:sendMagicEffect(CONST_ME_TELEPORT)
 	toPosition:sendMagicEffect(CONST_ME_POFF)
+	Game.setStorageValue(GlobalStorage.TheOrderOfTheLion.Drume.TotalLionCommanders, totalLion)
+	Game.setStorageValue(GlobalStorage.TheOrderOfTheLion.Drume.TotalUsurperCommanders, totalUsurper)
 	return true
 end
 

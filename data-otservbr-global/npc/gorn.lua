@@ -16,7 +16,7 @@ npcConfig.outfit = {
 	lookBody = 68,
 	lookLegs = 101,
 	lookFeet = 95,
-	lookAddons = 3,
+	lookAddons = 0,
 }
 
 npcConfig.flags = {
@@ -150,9 +150,6 @@ npcConfig.shop = {
 	{ itemName = "scythe", clientId = 3453, buy = 50, sell = 10 },
 	{ itemName = "shovel", clientId = 3457, buy = 50, sell = 8 },
 	{ itemName = "torch", clientId = 2920, buy = 2 },
-	{ itemName = "whacking driller of fate", clientId = 9599, buy = 350000 },
-	{ itemName = "squeezing gear of girlpower", clientId = 9597, buy = 350000 },
-	{ itemName = "sneaky stabber of eliteness", clientId = 9594, buy = 350000 },
 	{ itemName = "valentine's card", clientId = 6538, buy = 30 },
 	{ itemName = "watch", clientId = 2906, buy = 20, sell = 6 },
 	{ itemName = "wooden hammer", clientId = 3459, sell = 15 },
@@ -164,7 +161,7 @@ npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBac
 end
 -- On sell npc shop message
 npcType.onSellItem = function(npc, player, itemId, subtype, amount, ignore, name, totalCost)
-	player:sendTextMessage(MESSAGE_INFO_DESCR, string.format("Sold %ix %s for %i gold.", amount, name, totalCost))
+	player:sendTextMessage(MESSAGE_TRADE, string.format("Sold %ix %s for %i gold.", amount, name, totalCost))
 end
 -- On check npc shop message (look item)
 npcType.onCheckItem = function(npc, player, clientId, subType) end

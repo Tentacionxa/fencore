@@ -81,6 +81,8 @@ local function creatureSayCallback(npc, creature, type, message)
 	return true
 end
 
+npcHandler:setMessage(MESSAGE_GREET, "Welcome to the Hard Rock Racing Track, |PLAYERNAME|.")
+
 npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
@@ -96,6 +98,8 @@ npcConfig.shop = {
 	{ itemName = "mug of lemonade", clientId = 2880, buy = 2, count = 12 },
 	{ itemName = "mug of water", clientId = 2880, buy = 2, count = 1 },
 	{ itemName = "mug of wine", clientId = 2880, buy = 3, count = 2 },
+	{ itemName = "vial of beer", clientId = 2874, buy = 2, count = 1, subType = 3 },
+	{ itemName = "vial of wine", clientId = 2874, buy = 3, count = 1, subType = 2 },
 }
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)
@@ -103,7 +107,7 @@ npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBac
 end
 -- On sell npc shop message
 npcType.onSellItem = function(npc, player, itemId, subtype, amount, ignore, name, totalCost)
-	player:sendTextMessage(MESSAGE_INFO_DESCR, string.format("Sold %ix %s for %i gold.", amount, name, totalCost))
+	player:sendTextMessage(MESSAGE_TRADE, string.format("Sold %ix %s for %i gold.", amount, name, totalCost))
 end
 -- On check npc shop message (look item)
 npcType.onCheckItem = function(npc, player, clientId, subType) end

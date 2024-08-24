@@ -4,7 +4,7 @@ local monster = {}
 monster.description = "a sand vortex"
 monster.experience = 0
 monster.outfit = {
-	lookTypeEx = 25717,
+	lookTypeEx = 23482,
 }
 
 monster.health = 20000

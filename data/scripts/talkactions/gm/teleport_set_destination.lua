@@ -12,15 +12,10 @@ function teleportSetDestination.onSay(player, words, param)
 	end
 
 	local params = param:split(",")
-	if params[3] or params[4] then
-		local destination = Position(params[1], params[2], params[3])
-		if not params[4] then
-			player:teleportTo(destination)
-			return
-		end
-
+	if params[3] then
 		local position = player:getPosition()
 		position:getNextPosition(player:getDirection(), 1)
+		local destination = Position(params[1], params[2], params[3])
 		if destination and destination:getTile() then
 			local tp = Game.createItem(35502, 1, position)
 			if tp then

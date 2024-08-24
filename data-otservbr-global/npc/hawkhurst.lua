@@ -26,7 +26,7 @@ npcConfig.flags = {
 npcConfig.voices = {
 	interval = 15000,
 	chance = 50,
-	{ text = "Passages to Ingol and Cormaya. Only here!" },
+	{ text = "There's a storm brewing." },
 }
 
 local keywordHandler = KeywordHandler:new()
@@ -57,31 +57,13 @@ npcType.onCloseChannel = function(npc, creature)
 end
 
 -- Travel
-local function addTravelKeyword(keyword, cost, destination, action, condition)
-	if condition then
-		keywordHandler:addKeyword({ keyword }, StdModule.say, { npcHandler = npcHandler, text = "I'm sorry but I don't go there." }, condition)
-	end
+local travelKeyword = keywordHandler:addKeyword({ "passage" }, StdModule.say, { npcHandler = npcHandler, text = "Ye' want a passage to the blasted isle, right? {Yes} or {no}?" })
+travelKeyword:addChildKeyword({ "yes" }, StdModule.travel, { npcHandler = npcHandler, premium = false, cost = 400, text = "All Hand Hoy!", destination = Position(33710, 32602, 6) })
+travelKeyword:addChildKeyword({ "no" }, StdModule.say, { npcHandler = npcHandler, text = "We would like to serve you some time.", reset = true })
 
-	local travelKeyword = keywordHandler:addKeyword({ keyword }, StdModule.say, { npcHandler = npcHandler, text = "Do you seek a passage to " .. keyword:titleCase() .. " for |TRAVELCOST|?", cost = cost, discount = "postman" })
-	travelKeyword:addChildKeyword({ "yes" }, StdModule.travel, { npcHandler = npcHandler, premium = false, cost = cost, discount = "postman", destination = destination }, nil, action)
-	travelKeyword:addChildKeyword({ "no" }, StdModule.say, { npcHandler = npcHandler, text = "We would like to serve you some time.", reset = true })
-end
-
-
-addTravelKeyword("ingol", 120, Position(33820, 32573, 7))
-addTravelKeyword("cormaya", 150, Position(33344, 31979, 7))
-
-
--- Kick
---keywordHandler:addKeyword({ "Thais" }, StdModule.kick, { npcHandler = npcHandler, destination = { Position(32320, 32219, 6), Position(32321, 32210, 6) } })
-
--- Basic
-
-
-npcHandler:setMessage(MESSAGE_GREET, "Welcome , |PLAYERNAME|. I can take you to {Ingol} or {Cormaya}...")
-npcHandler:setMessage(MESSAGE_FAREWELL, "Good bye. Recommend me if you were satisfied with my service")
-npcHandler:setMessage(MESSAGE_WALKAWAY, "Good bye then.")
-
+npcHandler:setMessage(MESSAGE_GREET, "Ahoy, matey! Lookin' for a {passage}, eh.")
+npcHandler:setMessage(MESSAGE_FAREWELL, "Good bye.")
+npcHandler:setMessage(MESSAGE_WALKAWAY, "Good bye.")
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
 -- npcType registering the npcConfig table

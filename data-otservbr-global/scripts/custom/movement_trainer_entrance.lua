@@ -1,6 +1,6 @@
 local config = {
 	-- Position of the first position (line 1 column 1)
-	firstRoomPosition = { x = 1052, y = 1045, z = 7 },
+	firstRoomPosition = { x = 1018, y = 1112, z = 7 },
 	-- X distance between each room (on the same line)
 	distancePositionX = 12,
 	-- Y distance between each room (on the same line)

@@ -106,6 +106,21 @@ local function addTravelKeyword(keyword, text, cost, discount, destination, cond
 	travelKeyword:addChildKeyword({ "no" }, StdModule.say, { npcHandler = npcHandler, text = text[3], reset = true })
 end
 
+addTravelKeyword("farmine", { "Do you seek a ride to Farmine for |TRAVELCOST|?", "Full steam ahead!", "We would like to serve you some time." }, 210, { "postman", "new frontier" }, function(player)
+	local destination = Position(33025, 31553, 14)
+	if player:getStorageValue(TheNewFrontier.Mission05[1]) == 2 then --if The New Frontier Quest 'Mission 05: Getting Things Busy' complete then Stage 3
+		destination.z = 10
+	elseif player:getStorageValue(TheNewFrontier.Mission03) >= 2 then --if The New Frontier Quest 'Mission 03: Strangers in the Night' complete then Stage 2
+		destination.z = 12
+	end
+	return destination
+end, function(player)
+	return player:getStorageValue(TheNewFrontier.FarmineFirstTravel) < 1
+end, function(player)
+	if player:getStorageValue(TheNewFrontier.FarmineFirstTravel) < 1 then
+		player:setStorageValue(TheNewFrontier.FarmineFirstTravel, 1)
+	end
+end)
 
 addTravelKeyword("cormaya", { "Do you seek a ride to Cormaya for |TRAVELCOST|?", "Full steam ahead!", "We would like to serve you some time." }, 160, { "postman" }, Position(33311, 31989, 15), function(player)
 	if player:getStorageValue(Storage.Postman.Mission01) == 4 then
@@ -114,7 +129,6 @@ addTravelKeyword("cormaya", { "Do you seek a ride to Cormaya for |TRAVELCOST|?",
 end)
 
 addTravelKeyword("gnomprona", { "Would you like to travel to Gnomprona for |TRAVELCOST|?", "Full steam ahead!", "Then not." }, 200, "postman", Position(33516, 32856, 14))
-addTravelKeyword("farmine", { "Would you like to travel to Farmine for |TRAVELCOST|?", "Full steam ahead!", "Then not." }, 210, "postman", Position(33025, 31553, 10))
 keywordHandler:addKeyword({ "passage" }, StdModule.say, { npcHandler = npcHandler, text = "Do you want me take you to {Cormaya}, {Farmine} or to {Gnomprona}?" })
 
 npcHandler:setMessage(MESSAGE_GREET, "Welcome, |PLAYERNAME|! May earth protect you on the rocky grounds. If you need a {passage}, I can help you.")

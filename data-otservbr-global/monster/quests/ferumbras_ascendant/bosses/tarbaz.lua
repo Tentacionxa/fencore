@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Tarbaz")
 local monster = {}
 
 monster.description = "Tarbaz"
-monster.experience = 55000
+monster.experience = 500000
 monster.outfit = {
 	lookType = 842,
 	lookHead = 0,
@@ -11,6 +11,10 @@ monster.outfit = {
 	lookFeet = 3,
 	lookAddons = 2,
 	lookMount = 0,
+}
+
+monster.events = {
+	"AscendantBossesDeath",
 }
 
 monster.health = 290000

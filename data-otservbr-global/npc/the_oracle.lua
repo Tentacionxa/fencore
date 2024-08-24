@@ -51,40 +51,24 @@ local config = {
 	towns = {
 		["venore"] = TOWNS_LIST.VENORE,
 		["thais"] = TOWNS_LIST.THAIS,
-		["hellish basin"] = 30,
+		["carlin"] = TOWNS_LIST.CARLIN,
 	},
 	vocations = {
 		["sorcerer"] = {
 			text = "A SORCERER! ARE YOU SURE? THIS DECISION IS IRREVERSIBLE!",
 			vocationId = VOCATION.ID.SORCERER,
-			--equipment spellbook, wand of vortex, magician's robe, mage hat, studded legs, leather boots, scarf
-			{{3059, 1}, {3074, 1}, {7991, 1}, {7992, 1}, {3362, 1}, {3552, 1}, {3572, 1}},
-			--container rope, shovel, mana potion
-			{{9597, 1}, {3043, 10}, {268, 1}}
 		},
 		["druid"] = {
 			text = "A DRUID! ARE YOU SURE? THIS DECISION IS IRREVERSIBLE!",
 			vocationId = VOCATION.ID.DRUID,
-			--equipment spellbook, snakebite rod, magician's robe, mage hat, studded legs, leather boots, scarf
-			{{3059, 1}, {3066, 1}, {7991, 1}, {7992, 1}, {3362, 1}, {3552, 1}, {3572, 1}},
-			--container rope, shovel, mana potion
-			{{9597, 1}, {3043, 10}, {268, 1}}
 		},
 		["paladin"] = {
 			text = "A PALADIN! ARE YOU SURE? THIS DECISION IS IRREVERSIBLE!",
 			vocationId = VOCATION.ID.PALADIN,
-			--equipment dwarven shield, 5 spear, ranger's cloak, ranger legs, scarf, leather boots, legion helmet
-			{{3425, 1}, {3277, 5}, {3571, 1}, {8095, 1}, {3572, 1}, {3552, 1}, {3374, 1}},
-			--container rope, shovel, health potion, bow, 50 arrow
-			{{9597, 1}, {3043, 10}, {266, 1}}
 		},
 		["knight"] = {
 			text = "A KNIGHT! ARE YOU SURE? THIS DECISION IS IRREVERSIBLE!",
 			vocationId = VOCATION.ID.KNIGHT,
-			--equipment dwarven shield, steel axe, brass armor, brass helmet, brass legs, leather boots, scarf
-			{{3425, 1}, {7773, 1}, {3359, 1}, {3354, 1}, {3372, 1}, {3552, 1}, {3572, 1}},
-			--container jagged sword, daramian mace, rope, shovel, health potion
-			{{7774, 1}, {3327, 1}, {9597, 1}, {3043, 10}, {266, 1}}
 		},
 	},
 }
@@ -97,7 +81,7 @@ local function greetCallback(npc, creature)
 		npcHandler:say("CHILD! COME BACK WHEN YOU HAVE GROWN UP!", npc, creature)
 		npcHandler:resetNpc(creature)
 		return false
-	elseif level > 5000 then
+	elseif level > 10 then
 		npcHandler:say(player:getName() .. ", I CAN'T LET YOU LEAVE - YOU ARE TOO STRONG ALREADY! \z
 		YOU CAN ONLY LEAVE WITH LEVEL 9 OR LOWER.", npc, creature)
 		npcHandler:resetNpc(creature)
@@ -122,7 +106,7 @@ local function creatureSayCallback(npc, creature, type, message)
 
 	if npcHandler:getTopic(playerId) == 0 then
 		if MsgContains(message, "yes") then
-			npcHandler:say("IN WHICH TOWN DO YOU WANT TO LIVE: {HELLISH BASIN}, {THAIS}, OR {VENORE}?", npc, creature)
+			npcHandler:say("IN WHICH TOWN DO YOU WANT TO LIVE: {CARLIN}, {THAIS}, OR {VENORE}?", npc, creature)
 			npcHandler:setTopic(playerId, 1)
 		end
 	elseif npcHandler:getTopic(playerId) == 1 then
@@ -133,7 +117,7 @@ local function creatureSayCallback(npc, creature, type, message)
 			{KNIGHT}, {PALADIN}, {SORCERER}, OR {DRUID}?", npc, creature)
 			npcHandler:setTopic(playerId, 2)
 		else
-			npcHandler:say("IN WHICH TOWN DO YOU WANT TO LIVE: {HELLISH BASIN}, {THAIS}, OR {VENORE}?", npc, creature)
+			npcHandler:say("IN WHICH TOWN DO YOU WANT TO LIVE: {CARLIN}, {THAIS}, OR {VENORE}?", npc, creature)
 		end
 	elseif npcHandler:getTopic(playerId) == 2 then
 		local vocationTable = config.vocations[message:lower()]
@@ -147,16 +131,6 @@ local function creatureSayCallback(npc, creature, type, message)
 	elseif npcHandler:getTopic(playerId) == 3 then
 		if MsgContains(message, "yes") then
 			npcHandler:say("SO BE IT!", npc, creature)
-
-			local targetVocation = config.vocations[Vocation(vocation[playerId]):getName():lower()]
-			for i = 1, #targetVocation[1] do
-				player:addItem(targetVocation[1][i][1], targetVocation[1][i][2])
-			end
-			local backpack = player:addItem(2854)
-			for i = 1, #targetVocation[2] do
-				backpack:addItem(targetVocation[2][i][1], targetVocation[2][i][2])
-			end
-			
 			player:setVocation(Vocation(vocation[playerId]))
 			player:setTown(Town(town[playerId]))
 			player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)

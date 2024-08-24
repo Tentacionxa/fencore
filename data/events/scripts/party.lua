@@ -66,8 +66,25 @@ function Party:onDisband()
 end
 
 function Party:onShareExperience(exp)
-	local totalMembers = #self:getMembers()
-	local bonusExperiencePerPlayer = totalMembers > 1 and totalMembers * 100 or 0 --percent
+	local sharedExperienceMultiplier = 1.20 --20%
+	local vocationsIds = {}
 
-	return math.ceil(exp * (1 + (bonusExperiencePerPlayer / 100)) / totalMembers)
+	local vocationId = self:getLeader():getVocation():getBase():getId()
+	if vocationId ~= VOCATION_NONE then
+		table.insert(vocationsIds, vocationId)
+	end
+
+	for _, member in ipairs(self:getMembers()) do
+		vocationId = member:getVocation():getBase():getId()
+		if not table.contains(vocationsIds, vocationId) and vocationId ~= VOCATION_NONE then
+			table.insert(vocationsIds, vocationId)
+		end
+	end
+
+	local size = #vocationsIds
+	if size > 1 then
+		sharedExperienceMultiplier = 1.0 + ((size * (5 * (size - 1) + 10)) / 100)
+	end
+
+	return math.ceil((exp * sharedExperienceMultiplier) / (#self:getMembers() + 1))
 end

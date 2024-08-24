@@ -112,7 +112,7 @@ monster.loot = {
 	{ name = "piggy bank", chance = 5000 },
 	{ name = "mysterious remains", chance = 5000 },
 	{ name = "energy bar", chance = 5000 },
-	{ name = "library ticket", chance = 500, unique = true },
+	{ name = "library ticket", chance = 500 },
 	{ name = "calamity", chance = 500, unique = true },
 	{ name = "spark sphere", chance = 100000 },
 }

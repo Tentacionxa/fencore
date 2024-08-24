@@ -61,7 +61,7 @@ function login.onLogin(player)
 		if SCHEDULE_EXP_RATE > 100 then
 			player:sendTextMessage(
 				MESSAGE_BOOSTED_CREATURE,
-				"Exp Rate Event! Monsters yield more experience points than usual \
+				"Exp Rate Event - ".. SCHEDULE_EXP_RATE .."%! Monsters yield more experience points than usual \
 			Happy Hunting!"
 			)
 		else
@@ -73,7 +73,7 @@ function login.onLogin(player)
 		if SCHEDULE_SPAWN_RATE > 100 then
 			player:sendTextMessage(
 				MESSAGE_BOOSTED_CREATURE,
-				"Spawn Rate Event! Monsters respawn at a faster rate \
+				"Spawn Rate Event - ".. SCHEDULE_SPAWN_RATE .."%! Monsters respawn at a faster rate \
 			Happy Hunting!"
 			)
 		else
@@ -85,7 +85,7 @@ function login.onLogin(player)
 		if SCHEDULE_LOOT_RATE > 100 then
 			player:sendTextMessage(
 				MESSAGE_BOOSTED_CREATURE,
-				"Loot Rate Event! Monsters carry more loot than usual \
+				"Loot Rate Event - ".. SCHEDULE_LOOT_RATE .."%! Monsters carry more loot than usual \
 			Happy Hunting!"
 			)
 		else
@@ -97,7 +97,7 @@ function login.onLogin(player)
 		if SCHEDULE_SKILL_RATE > 100 then
 			player:sendTextMessage(
 				MESSAGE_BOOSTED_CREATURE,
-				"Skill Rate Event! Your skills progresses at a higher rate \
+				"Skill Rate Event - ".. SCHEDULE_SKILL_RATE .."%! Your skills progresses at a higher rate \
 			Happy Hunting!"
 			)
 		else

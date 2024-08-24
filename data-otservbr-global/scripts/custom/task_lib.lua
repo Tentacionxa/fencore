@@ -309,17 +309,6 @@ taskConfiguration = {
 	},
 },
 
-{name = "Sphinx, Lamassu", color = 40, total = 4000, type = "daily", storage = 190040, storagecount = 190041, 
-	rewards = { 
-		{3043, 100},
-	{"exp", 70000000},
-	},
-	races = {
-		"Sphinx",
-		"Lamassu",
-	},
-},
-
 {name = "Soul War - Bony Sea Devil, Brachiodemon, Capricious Phantom, Cloak of Terror, Distorted Phantom, Courage Leech, Infernal Phantom, Infernal Demon, Hazardous Phantom, Many Faces, Mean Maw, Mould Phantom, Rotten Golem, Spiteful Spitter, Vibrant Phantom, Branchy Crawler", color = 40, total = 6000, type = "daily", storage = 190042, storagecount = 190043, 
 	rewards = {  
 		{3043, 400},
@@ -365,9 +354,9 @@ taskConfiguration = {
 	},
 },
 
-{name = "Issavi Sewers - Priestess of the Wild Sun, Black Sphinx Acolyte, Burning Gladiator, Sphinx, Crypt Warden, Gryphon", color = 40, total = 2500, type = "daily", storage = 190046, storagecount = 190047, 
+{name = "Issavi / Kilmaresh step - Priestess of the Wild Sun, Black Sphinx Acolyte, Burning Gladiator, Sphinx, Crypt Warden, Gryphon, Young Goanna, Adult goanna, Feral Sphinx, Manticore, Lamassu", color = 40, total = 2500, type = "daily", storage = 190046, storagecount = 190047, 
 	rewards = { 
-		{3043, 170},
+		{3043, 260},
 	{"exp", 8000000},
 	},
 	races = {
@@ -377,6 +366,11 @@ taskConfiguration = {
 		"Sphinx",
 		"Crypt Warden",
 		"Gryphon",
+		"Young Goanna",
+		"Adult Goanna",
+		"Feral Sphinx",
+		"Manticore",
+		"Lamassu",
 	},
 },
 
@@ -457,20 +451,6 @@ taskConfiguration = {
 		"Walking Pilar",
 		"Wandering Pillar",
 		
-	},
-},
-{name = "Kilmaresh Central Steppe - Young Goanna, Adult Goanna, Feral Sphinx, Manticore, Lamassu, Sphinx", color = 40, total = 2500, type = "repeatable", storage = 190055, storagecount = 190056, 
-	rewards = { 
-		{3043, 150},
-	{"exp", 5000000},
-	},
-	races = {
-		"Young Goanna",
-		"Adult Goanna",
-		"Feral Sphinx",
-		"Manticore",
-		"Lamassu",
-		"Sphinx",
 	},
 },
 {name = "The Secret Library - Cursed Book, Animated Feather, Biting Book, Dark Knowledge, Brain Squid, Burning Book, Flying Book, Rage Squid", color = 40, total = 3500, type = "daily", storage = 190057, storagecount = 190058, 

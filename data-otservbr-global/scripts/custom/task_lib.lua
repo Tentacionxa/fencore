@@ -193,9 +193,9 @@ taskConfiguration = {
 	},
 },
 
-{name = "Hero Cave - Bonelord, Dark Apprentice, Dark Magician, Demon Skeleton, Dragon, Hero, Hunter, Monk, Priestess, Stalker, Stone Golem, Wild Warrior, Minotaur Mage", color = 40, total = 1500, type = "repeatable", storage = 190024, storagecount = 190025, 
+{name = "Hero Cave - Bonelord, Dark Apprentice, Dark Magician, Demon Skeleton,Hero, Hunter, Monk, Priestess, Stalker, Stone Golem, Wild Warrior, Vile grandmaster, Vicious Squire", color = 40, total = 1500, type = "repeatable", storage = 190024, storagecount = 190025, 
 	rewards = { 
-	{3043, 50},
+	{3043, 150},
 	{"exp", 1000000},
 	},
 	races = {
@@ -204,14 +204,15 @@ taskConfiguration = {
 		"Dark Apprentice",
 		"Dark Magician",
 		"Demon Skeleton",
-		"Dragon",
 		"Hunter",
 		"Monk",
 		"Priestess",
 		"Stalker",
 		"Stone Golem",
 		"Wild Warrior",
-		"Minotaur Mage",
+		"Vile grandmaster",
+		"Vicious Squire",
+		"Renegade Knight",
 	},
 },
 

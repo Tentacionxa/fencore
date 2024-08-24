@@ -1,6 +1,6 @@
 /**
  * Canary - A free and open-source MMORPG server emulator
- * Copyright (©) 2019-2022 OpenTibiaBR <opentibiabr@outlook.com>
+ * Copyright (©) 2019-2024 OpenTibiaBR <opentibiabr@outlook.com>
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
@@ -35,7 +35,9 @@ bool GlobalEvents::registerLuaEvent(const std::shared_ptr<GlobalEvent> globalEve
 		auto result = timerMap.emplace(globalEvent->getName(), globalEvent);
 		if (result.second) {
 			if (timerEventId == 0) {
-				timerEventId = g_dispatcher().scheduleEvent(SCHEDULER_MINTICKS, std::bind(&GlobalEvents::timer, this), "GlobalEvents::timer");
+				timerEventId = g_dispatcher().scheduleEvent(
+					SCHEDULER_MINTICKS, [this] { timer(); }, "GlobalEvents::timer"
+				);
 			}
 			return true;
 		}
@@ -62,6 +64,14 @@ bool GlobalEvents::registerLuaEvent(const std::shared_ptr<GlobalEvent> globalEve
 
 void GlobalEvents::startup() const {
 	execute(GLOBALEVENT_STARTUP);
+}
+
+void GlobalEvents::shutdown() const {
+	execute(GLOBALEVENT_SHUTDOWN);
+}
+
+void GlobalEvents::save() const {
+	execute(GLOBALEVENT_SAVE);
 }
 
 void GlobalEvents::timer() {
@@ -99,7 +109,9 @@ void GlobalEvents::timer() {
 	}
 
 	if (nextScheduledTime != std::numeric_limits<int64_t>::max()) {
-		timerEventId = g_dispatcher().scheduleEvent(std::max<int64_t>(1000, nextScheduledTime * 1000), std::bind(&GlobalEvents::timer, this), __FUNCTION__);
+		timerEventId = g_dispatcher().scheduleEvent(
+			std::max<int64_t>(1000, nextScheduledTime * 1000), [this] { timer(); }, __FUNCTION__
+		);
 	}
 }
 
@@ -122,8 +134,8 @@ void GlobalEvents::think() {
 
 		if (!globalEvent->executeEvent()) {
 			g_logger().error("[GlobalEvents::think] - "
-							 "Failed to execute event: {}",
-							 globalEvent->getName());
+			                 "Failed to execute event: {}",
+			                 globalEvent->getName());
 		}
 
 		nextExecutionTime = globalEvent->getInterval();
@@ -136,7 +148,9 @@ void GlobalEvents::think() {
 
 	if (nextScheduledTime != std::numeric_limits<int64_t>::max()) {
 		auto delay = static_cast<uint32_t>(nextScheduledTime);
-		thinkEventId = g_dispatcher().scheduleEvent(delay, std::bind(&GlobalEvents::think, this), "GlobalEvents::think");
+		thinkEventId = g_dispatcher().scheduleEvent(
+			delay, [this] { think(); }, "GlobalEvents::think"
+		);
 	}
 }
 
@@ -159,7 +173,8 @@ GlobalEventMap GlobalEvents::getEventMap(GlobalEvent_t type) {
 		case GLOBALEVENT_PERIODCHANGE:
 		case GLOBALEVENT_STARTUP:
 		case GLOBALEVENT_SHUTDOWN:
-		case GLOBALEVENT_RECORD: {
+		case GLOBALEVENT_RECORD:
+		case GLOBALEVENT_SAVE: {
 			GlobalEventMap retMap;
 			for (const auto &it : serverMap) {
 				if (it.second->getEventType() == type) {
@@ -190,6 +205,8 @@ std::string GlobalEvent::getScriptTypeName() const {
 			return "onPeriodChange";
 		case GLOBALEVENT_ON_THINK:
 			return "onThink";
+		case GLOBALEVENT_SAVE:
+			return "onSave";
 		default:
 			g_logger().error("[GlobalEvent::getScriptTypeName] - Invalid event type");
 			return std::string();
@@ -200,8 +217,8 @@ bool GlobalEvent::executePeriodChange(LightState_t lightState, LightInfo lightIn
 	// onPeriodChange(lightState, lightTime)
 	if (!getScriptInterface()->reserveScriptEnv()) {
 		g_logger().error("[GlobalEvent::executePeriodChange - {}] "
-						 "Call stack overflow. Too many lua script calls being nested.",
-						 getName());
+		                 "Call stack overflow. Too many lua script calls being nested.",
+		                 getName());
 		return false;
 	}
 
@@ -220,8 +237,8 @@ bool GlobalEvent::executeRecord(uint32_t current, uint32_t old) {
 	// onRecord(current, old)
 	if (!getScriptInterface()->reserveScriptEnv()) {
 		g_logger().error("[GlobalEvent::executeRecord - {}] "
-						 "Call stack overflow. Too many lua script calls being nested.",
-						 getName());
+		                 "Call stack overflow. Too many lua script calls being nested.",
+		                 getName());
 		return false;
 	}
 
@@ -239,8 +256,8 @@ bool GlobalEvent::executeRecord(uint32_t current, uint32_t old) {
 bool GlobalEvent::executeEvent() const {
 	if (!getScriptInterface()->reserveScriptEnv()) {
 		g_logger().error("[GlobalEvent::executeEvent - {}] "
-						 "Call stack overflow. Too many lua script calls being nested.",
-						 getName());
+		                 "Call stack overflow. Too many lua script calls being nested.",
+		                 getName());
 		return false;
 	}
 

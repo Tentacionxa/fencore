@@ -1,6 +1,6 @@
 /**
  * Canary - A free and open-source MMORPG server emulator
- * Copyright (©) 2019-2022 OpenTibiaBR <opentibiabr@outlook.com>
+ * Copyright (©) 2019-2024 OpenTibiaBR <opentibiabr@outlook.com>
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
@@ -10,6 +10,7 @@
 #include "pch.hpp"
 
 #include "lua/functions/core/game/config_functions.hpp"
+
 #include "config/configmanager.hpp"
 
 void ConfigFunctions::init(lua_State* L) {
@@ -21,7 +22,6 @@ void ConfigFunctions::init(lua_State* L) {
 
 #define registerMagicEnumIn(L, tableName, enumValue)         \
 	do {                                                     \
-		auto number = magic_enum::enum_integer(enumValue);   \
 		auto name = magic_enum::enum_name(enumValue).data(); \
 		registerVariable(L, tableName, name, value);         \
 	} while (0)

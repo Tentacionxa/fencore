@@ -1,6 +1,6 @@
 /**
  * Canary - A free and open-source MMORPG server emulator
- * Copyright (©) 2019-2022 OpenTibiaBR <opentibiabr@outlook.com>
+ * Copyright (©) 2019-2024 OpenTibiaBR <opentibiabr@outlook.com>
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
@@ -88,6 +88,32 @@ public:
 				);
 			}
 		}
+	}
+	/**
+	 * @brief Checks if all registered callbacks of the specified event type succeed.
+	 * @param eventType The type of event to check.
+	 * @param callbackFunc Function pointer to the callback method.
+	 * @param args Variadic arguments to pass to the callback function.
+	 * @return ReturnValue enum.
+	 */
+	template <typename CallbackFunc, typename... Args>
+	ReturnValue checkCallbackWithReturnValue(EventCallback_t eventType, CallbackFunc callbackFunc, Args &&... args) {
+		ReturnValue res = RETURNVALUE_NOERROR;
+		for (const auto &callback : getCallbacksByType(eventType)) {
+			auto argsCopy = std::make_tuple(args...);
+			if (callback && callback->isLoadedCallback()) {
+				ReturnValue callbackResult = std::apply(
+					[&callback, &callbackFunc](auto &&... args) {
+						return ((*callback).*callbackFunc)(std::forward<decltype(args)>(args)...);
+					},
+					argsCopy
+				);
+				if (callbackResult != RETURNVALUE_NOERROR) {
+					return callbackResult;
+				}
+			}
+		}
+		return res;
 	}
 
 	/**

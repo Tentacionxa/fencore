@@ -75,6 +75,15 @@
 	<npc centerx="31981" centery="32826" centerz="2" radius="1">
 		<npc name="Klaus" x="0" y="0" z="2" spawntime="60" />
 	</npc>
+	<npc centerx="33023" centery="32914" centerz="2" radius="1">
+		<npc name="Kiru" x="0" y="0" z="2" spawntime="60" />
+	</npc>
+	<npc centerx="33020" centery="32931" centerz="2" radius="1">
+		<npc name="Yerga" x="0" y="0" z="2" spawntime="60" />
+	</npc>
+	<npc centerx="33034" centery="32948" centerz="2" radius="1">
+		<npc name="Tamru" x="0" y="0" z="2" spawntime="60" />
+	</npc>
 	<npc centerx="33632" centery="33019" centerz="2" radius="1">
 		<npc name="..." x="0" y="-1" z="2" spawntime="60" />
 		<npc name="An Old Dragonlord" x="0" y="0" z="2" spawntime="60" />
@@ -228,6 +237,9 @@
 	</npc>
 	<npc centerx="33149" centery="32842" centerz="4" radius="1">
 		<npc name="Arkhothep" x="0" y="0" z="4" spawntime="60" />
+	</npc>
+	<npc centerx="33020" centery="32931" centerz="4" radius="1">
+		<npc name="Gerib" x="0" y="0" z="4" spawntime="60" />
 	</npc>
 	<npc centerx="32912" centery="31018" centerz="5" radius="1">
 		<npc name="Tamoril" x="0" y="0" z="5" spawntime="60" />
@@ -823,6 +835,9 @@
 	<npc centerx="32022" centery="32202" centerz="6" radius="1">
 		<npc name="Zerbrus" x="0" y="0" z="6" spawntime="60" />
 	</npc>
+	<npc centerx="32361" centery="32205" centerz="6" radius="1">
+		<npc name="Grizzly Adams" x="0" y="0" z="6" spawntime="60" />
+	</npc>
 	<npc centerx="32340" centery="32206" centerz="6" radius="1">
 		<npc name="Black Bert" x="0" y="0" z="6" spawntime="60" />
 	</npc>
@@ -856,6 +871,9 @@
 	</npc>
 	<npc centerx="32343" centery="32238" centerz="6" radius="1">
 		<npc name="Galuna" x="0" y="1" z="6" spawntime="60" />
+	</npc>
+	<npc centerx="32350" centery="32246" centerz="6" radius="1">
+		<npc name="Brodmir" x="0" y="0" z="6" spawntime="60" />
 	</npc>
 	<npc centerx="32289" centery="32252" centerz="6" radius="1">
 		<npc name="Robin" x="0" y="0" z="6" spawntime="60" />
@@ -913,6 +931,9 @@
 	</npc>
 	<npc centerx="32578" centery="32394" centerz="6" radius="1">
 		<npc name="Xodet" x="0" y="0" z="6" spawntime="60" />
+	</npc>
+	<npc centerx="32578" centery="32407" centerz="6" radius="1">
+		<npc name="Galuna" x="0" y="0" z="6" spawntime="60" />
 	</npc>
 	<npc centerx="32553" centery="32408" centerz="6" radius="1">
 		<npc name="Luan" x="0" y="0" z="6" spawntime="60" />
@@ -1551,7 +1572,7 @@
 		<npc name="Gandalf" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="31471" centery="31781" centerz="7" radius="1">
-		<npc name="Mundan" x="0" y="0" z="7" spawntime="60" />
+		<npc name="Moyen" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="31478" centery="31781" centerz="7" radius="1">
 		<npc name="Carl" x="0" y="0" z="7" spawntime="60" />
@@ -1748,6 +1769,9 @@
 	<npc centerx="33189" centery="31982" centerz="7" radius="1">
 		<npc name="Scrutinon" x="0" y="0" z="7" spawntime="60" />
 	</npc>
+	<npc centerx="33352" centery="31986" centerz="7" radius="1">
+		<npc name="Hawkhurst" x="0" y="0" z="7" spawntime="60" />
+	</npc>
 	<npc centerx="33479" centery="31986" centerz="7" radius="1">
 		<npc name="Captain Gulliver" x="0" y="0" z="7" spawntime="60" />
 	</npc>
@@ -1926,7 +1950,7 @@
 		<npc name="Walter Jaeger" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="32359" centery="32209" centerz="7" radius="1">
-		<npc name="Mundan" x="0" y="0" z="7" spawntime="60" />
+		<npc name="Moyen" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="32645" centery="32213" centerz="7" radius="2">
 		<npc name="H.L." x="0" y="-1" z="7" spawntime="60" />
@@ -1940,9 +1964,6 @@
 	<npc centerx="32097" centery="32218" centerz="7" radius="1">
 		<npc name="Cipfried" x="0" y="0" z="7" spawntime="60" />
 	</npc>
-	<npc centerx="32349" centery="32219" centerz="7" radius="1">
-		<npc name="Benjamin" x="0" y="0" z="7" spawntime="60" />
-	</npc>
 	<npc centerx="32390" centery="32219" centerz="7" radius="1">
 		<npc name="Quero" x="0" y="0" z="7" spawntime="60" />
 	</npc>
@@ -1954,6 +1975,9 @@
 	</npc>
 	<npc centerx="32398" centery="32222" centerz="7" radius="1">
 		<npc name="Xodet" x="0" y="0" z="7" spawntime="60" />
+	</npc>
+	<npc centerx="32349" centery="32223" centerz="7" radius="1">
+		<npc name="Benjamin" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="32066" centery="32225" centerz="7" radius="1">
 		<npc name="Lily" x="0" y="0" z="7" spawntime="60" />
@@ -1979,8 +2003,8 @@
 	<npc centerx="33485" centery="32236" centerz="7" radius="1">
 		<npc name="Maelyrra" x="0" y="0" z="7" spawntime="60" />
 	</npc>
-	<npc centerx="32350" centery="32237" centerz="7" radius="1">
-		<npc name="Jefrey" x="0" y="0" z="7" spawntime="60" />
+	<npc centerx="32351" centery="32237" centerz="7" radius="1">
+		<npc name="Onkan" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="32391" centery="32237" centerz="7" radius="1">
 		<npc name="Sherry Mcronald" x="0" y="0" z="7" spawntime="60" />
@@ -1991,8 +2015,11 @@
 	<npc centerx="32368" centery="32240" centerz="7" radius="1">
 		<npc name="Quentin" x="0" y="0" z="7" spawntime="60" />
 	</npc>
-	<npc centerx="32345" centery="32242" centerz="7" radius="1">
-		<npc name="Onkan" x="-1" y="1" z="7" spawntime="60" />
+	<npc centerx="32346" centery="32242" centerz="7" radius="1">
+		<npc name="Jefrey" x="0" y="0" z="7" spawntime="60" />
+	</npc>
+	<npc centerx="32352" centery="32245" centerz="7" radius="1">
+		<npc name="Nevil" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="33450" centery="32246" centerz="7" radius="1">
 		<npc name="Gerimor" x="0" y="0" z="7" spawntime="60" />
@@ -2186,6 +2213,9 @@
 	<npc centerx="33494" centery="32568" centerz="7" radius="1">
 		<npc name="Captain Chelop" x="0" y="0" z="7" spawntime="60" />
 	</npc>
+	<npc centerx="33820" centery="32573" centerz="7" radius="1">
+		<npc name="Hawkhurst" x="0" y="0" z="7" spawntime="60" />
+	</npc>
 	<npc centerx="32350" centery="32588" centerz="7" radius="1">
 		<npc name="Raymond Striker" x="0" y="0" z="7" spawntime="60" />
 	</npc>
@@ -2372,11 +2402,17 @@
 	<npc centerx="33066" centery="32886" centerz="7" radius="1">
 		<npc name="Feizuhl" x="0" y="0" z="7" spawntime="60" />
 	</npc>
+	<npc centerx="33184" centery="32886" centerz="7" radius="1">
+		<npc name="Tonar" x="0" y="0" z="7" spawntime="60" />
+	</npc>
 	<npc centerx="32138" centery="32904" centerz="7" radius="1">
 		<npc name="John" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="32131" centery="32914" centerz="7" radius="1">
 		<npc name="Captain Waverider (Island)" x="0" y="0" z="7" spawntime="60" />
+	</npc>
+	<npc centerx="33070" centery="32917" centerz="7" radius="1">
+		<npc name="Tonar" x="0" y="0" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="32043" centery="32931" centerz="7" radius="1">
 		<npc name="Captain Waverider" x="0" y="0" z="7" spawntime="60" />
@@ -2593,6 +2629,15 @@
 	</npc>
 	<npc centerx="33203" centery="32459" centerz="8" radius="1">
 		<npc name="zack" x="0" y="0" z="8" spawntime="60" />
+	</npc>
+	<npc centerx="33441" centery="32482" centerz="8" radius="1">
+		<npc name="Banter" x="0" y="0" z="8" spawntime="60" />
+	</npc>
+	<npc centerx="33433" centery="32488" centerz="8" radius="1">
+		<npc name="Zizu" x="0" y="0" z="8" spawntime="60" />
+	</npc>
+	<npc centerx="33441" centery="32494" centerz="8" radius="1">
+		<npc name="Ash" x="0" y="0" z="8" spawntime="60" />
 	</npc>
 	<npc centerx="31939" centery="32502" centerz="8" radius="1">
 		<npc name="Jamesfrancis" x="0" y="0" z="8" spawntime="60" />
@@ -2931,6 +2976,12 @@
 	<npc centerx="33040" centery="32484" centerz="11" radius="1">
 		<npc name="Zarifan" x="0" y="0" z="11" spawntime="60" />
 	</npc>
+	<npc centerx="33451" centery="32487" centerz="11" radius="1">
+		<npc name="monti" x="0" y="0" z="11" spawntime="60" />
+	</npc>
+	<npc centerx="33448" centery="32495" centerz="11" radius="1">
+		<npc name="Mundan" x="0" y="0" z="11" spawntime="60" />
+	</npc>
 	<npc centerx="32242" centery="32598" centerz="11" radius="1">
 		<npc name="Gnombold" x="0" y="0" z="11" spawntime="60" />
 	</npc>
@@ -3036,6 +3087,12 @@
 	<npc centerx="33283" centery="32273" centerz="12" radius="1">
 		<npc name="Angelo" x="0" y="0" z="12" spawntime="60" />
 	</npc>
+	<npc centerx="33449" centery="32492" centerz="12" radius="1">
+		<npc name="Jordan" x="0" y="0" z="12" spawntime="60" />
+	</npc>
+	<npc centerx="33459" centery="32492" centerz="12" radius="1">
+		<npc name="Andalf" x="0" y="0" z="12" spawntime="60" />
+	</npc>
 	<npc centerx="32732" centery="32564" centerz="12" radius="1">
 		<npc name="Ghost Of A Priest" x="0" y="0" z="12" spawntime="60" />
 	</npc>
@@ -3137,6 +3194,9 @@
 	</npc>
 	<npc centerx="32700" centery="31992" centerz="14" radius="1">
 		<npc name="Rapanaio (Boat)" x="0" y="0" z="14" spawntime="60" />
+	</npc>
+	<npc centerx="34070" centery="32009" centerz="14" radius="1">
+		<npc name="Altar" x="0" y="0" z="14" spawntime="60" />
 	</npc>
 	<npc centerx="32527" centery="32029" centerz="14" radius="1">
 		<npc name="Lunch" x="0" y="0" z="14" spawntime="60" />

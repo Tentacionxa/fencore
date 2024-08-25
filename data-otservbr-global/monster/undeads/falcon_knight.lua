@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Falcon Knight")
 local monster = {}
 
 monster.description = "a falcon knight"
-monster.experience = 5985
+monster.experience = 6300
 monster.outfit = {
 	lookType = 1071,
 	lookHead = 57,
@@ -100,13 +100,12 @@ monster.loot = {
 	{ name = "heavy mace", chance = 460 },
 	{ id = 3481, chance = 370 }, -- closed trap
 	{ id = 3019, chance = 100 }, -- demonbone amulet
-	{ id = 9151, chance = 100 }, -- bag of screws
 }
 
 monster.attacks = {
 	{ name = "melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -400 },
 	{ name = "combat", interval = 2000, chance = 18, type = COMBAT_EARTHDAMAGE, minDamage = -400, maxDamage = -500, radius = 2, effect = CONST_ME_GROUNDSHAKER, target = false },
-	{ name = "combat", interval = 2000, chance = 14, type = COMBAT_HOLYDAMAGE, minDamage = -290, maxDamage = -360, length = 5, spread = 3, effect = CONST_ME_BLOCKHIT, target = false },
+	{ name = "combat", interval = 2000, chance = 14, type = COMBAT_HOLYDAMAGE, minDamage = -290, maxDamage = -360, length = 5, spread = 0, effect = CONST_ME_BLOCKHIT, target = false },
 }
 
 monster.defenses = {

@@ -14,7 +14,6 @@ table.find = function(table, value)
 end
 
 table.contains = function(array, value)
-	if array == nil then return false end
 	for _, targetColumn in pairs(array) do
 		if targetColumn == value then
 			return true
@@ -101,6 +100,14 @@ end
 
 function table.unserialize(str)
 	return loadstring("return " .. str)()
+end
+
+function table.shallowCopy(oldTable)
+	local newTable = {}
+	for k, v in pairs(oldTable) do
+		newTable[k] = v
+	end
+	return newTable
 end
 
 function pairsByKeys(t, f)

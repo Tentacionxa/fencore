@@ -108,7 +108,7 @@ do
 	local function EventCallbackNewIndex(self, key, value)
 		local func = eventCallbacks[key]
 		if func and type(func) == "function" then
-			logger.debug("[Registering EventCallback: {}", key)
+			logger.trace("[Registering EventCallback: {}", key)
 			func(self, value)
 			self:type(key)
 		else
@@ -232,6 +232,10 @@ do
 		elseif key == "onPeriodChange" then
 			self:type("periodchange")
 			self:onPeriodChange(value)
+			return
+		elseif key == "onSave" then
+			self:type("save")
+			self:onSave(value)
 			return
 		end
 		rawset(self, key, value)

@@ -2,6 +2,7 @@ local config = {
 	{ name="Thais", position = Position(32375, 32208, 6) },
 	{ name="Venore", position = Position(32940, 32065, 5) },
     { name="Oskayaat", position = Position(33026, 32916, 4) },
+	 { name="Candia", position = Position(33332, 32122, 7) },
 	{ name="Kazordoon", position = Position(32627, 31916, 8) },
 	{ name="Carlin", position = Position(32327, 31771, 5) },
 	{ name="Abdendriel", position = Position(32726, 31650, 6) },

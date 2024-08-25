@@ -8,10 +8,10 @@ combat:setArea(createCombatArea(AREA_SQUARE1X1))
 function onGetFormulaValues(player, skill, attack, factor)
 	local level = player:getLevel()
 
-	local min = (level / 5) + (skill + 2 * attack) * 1.1
+	local min = (level / 5) + (skill + 2 * attack) * 2
 	local max = (level / 5) + (skill + 2 * attack) * 3
 
-	return -min * 1.1, -max * 1.1 -- TODO : Use New Real Formula instead of an %
+	return -min * 1.5, -max * 2.5 -- TODO : Use New Real Formula instead of an %
 end
 
 combat:setCallback(CALLBACK_PARAM_SKILLVALUE, "onGetFormulaValues")
@@ -31,8 +31,8 @@ spell:level(90)
 spell:mana(340)
 spell:isPremium(true)
 spell:needWeapon(true)
-spell:cooldown(6 * 1000)
-spell:groupCooldown(2 * 1000)
+spell:cooldown(2 * 1000)
+spell:groupCooldown(1 * 1000)
 spell:needLearn(false)
 spell:vocation("knight;true", "elite knight;true")
 spell:register()

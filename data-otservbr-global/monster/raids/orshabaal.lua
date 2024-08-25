@@ -121,15 +121,11 @@ monster.loot = {
 	{ id = 6299, chance = 50000 }, -- death ring
 	{ name = "demonic essence", chance = 100000 },
 	{ name = "assassin star", chance = 12500, maxCount = 42 },
-{ id = 24390, chance = 12500, maxCount = 1000}, --event coins
 	{ name = "great mana potion", chance = 33333 },
 	{ name = "great health potion", chance = 20000 },
 	{ name = "great spirit potion", chance = 12500 },
 	{ name = "ultimate health potion", chance = 33333 },
 	{ name = "gold ingot", chance = 6666 },
-	{ id = 3388, chance = 25000 }, -- demon armor
-	{ id = 3389, chance = 25000 }, -- demon legs
-	{ id = 28830, chance = 25000 }, -- energized demonbone
 }
 
 monster.attacks = {

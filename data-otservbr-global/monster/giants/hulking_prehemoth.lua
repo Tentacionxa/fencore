@@ -84,7 +84,6 @@ monster.loot = {
 	{ name = "Doublet", chance = 2880 },
 	{ name = "Silver Brooch", chance = 1160 },
 	{ name = "Emerald Bangle", chance = 780 },
-	{ name = "Primal Bag", chance = 380 },
 }
 
 monster.attacks = {
@@ -120,3 +119,5 @@ monster.immunities = {
 }
 
 mType:register(monster)
+
+RegisterPrimalPackBeast(monster)

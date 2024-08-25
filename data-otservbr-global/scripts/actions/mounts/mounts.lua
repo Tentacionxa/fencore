@@ -48,7 +48,6 @@ local config = {
 	[17858] = { NAME = "Water Buffalo", ID = 35, BREAK = true, TYPE = TYPE_MONSTER, CHANCE = 30, FAIL_MSG = { { 1, "The water buffalo got scared and ran away." }, { 3, "The water buffalo is trying to nibble." } }, SUCCESS_MSG = "You tamed a water buffalo.", ACHIEV = "Swamp Beast" },
 	[12802] = { NAME = "Wild Horse", ID = 17, BREAK = true, TYPE = TYPE_MONSTER, CHANCE = 15, FAIL_MSG = { { 1, "The horse runs away." }, { 2, "The horse ate the oats." } }, SUCCESS_MSG = "You have tamed the horse.", ACHIEV = "Lucky Horseshoe" },
 	[34258] = { NAME = "White Lion", ID = 174, BREAK = true, TYPE = TYPE_MONSTER, CHANCE = 50, FAIL_MSG = { { 1, "The White Lion runs away." }, { 2, "The White Lion ate the flower." } }, SUCCESS_MSG = "You have tamed the white lion.", ACHIEV = "Well Roared, Lion!" },
-	[28791] = { NAME = "Flying Book", ID = 126, BREAK = false, TYPE = TYPE_MONSTER, CHANCE = 100, FAIL_MSG = { { 1, "The Flying Book runs away." }, { 2, "The Flying Book stole the ticket." } }, SUCCESS_MSG = "You have converted your library ticket and receive permission to ride a flying book.", ACHIEV = "Library Rider" },
 }
 
 local function doFailAction(cid, mount, pos, item, itemEx, loseItem)

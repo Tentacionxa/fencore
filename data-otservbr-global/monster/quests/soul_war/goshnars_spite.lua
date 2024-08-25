@@ -13,6 +13,10 @@ monster.outfit = {
 	lookMount = 0,
 }
 
+monster.events = {
+	"SoulwarsBossDeath",
+}
+
 monster.health = 300000
 monster.maxHealth = 300000
 monster.race = "undead"
@@ -97,13 +101,13 @@ monster.loot = {
 	{ name = "the skull of a beast", chance = 400 },
 	{ name = "figurine of spite", chance = 400 },
 	{ name = "spite's spirit", chance = 400 },
-	{ name = "bag you desire", chance = 400 },
+	{ name = "bag you desire", chance = 100 },
 }
 
 monster.attacks = {
 
 	{ name = "melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -5000 },
-	{ name = "combat", interval = 2000, chance = 10, type = COMBAT_EARTHDAMAGE, minDamage = -1400, maxDamage = -2200, length = 8, spread = 3, effect = CONST_ME_GREEN_RINGS, target = false },
+	{ name = "combat", interval = 2000, chance = 10, type = COMBAT_EARTHDAMAGE, minDamage = -1400, maxDamage = -2200, length = 8, spread = 0, effect = CONST_ME_GREEN_RINGS, target = false },
 	{ name = "singlecloudchain", interval = 6000, chance = 40, minDamage = -1700, maxDamage = -1900, range = 6, effect = CONST_ME_ENERGYHIT, target = true },
 	{ name = "combat", interval = 2000, chance = 30, type = COMBAT_EARTHDAMAGE, minDamage = -1200, maxDamage = -3500, range = 7, radius = 4, shootEffect = CONST_ANI_POISON, effect = CONST_ME_GREEN_RINGS, target = true },
 	{ name = "combat", interval = 2000, chance = 10, type = COMBAT_EARTHDAMAGE, minDamage = -1400, maxDamage = -2200, length = 8, spread = 0, effect = CONST_ME_GREEN_RINGS, target = false },

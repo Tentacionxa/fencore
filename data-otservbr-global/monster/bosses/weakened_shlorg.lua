@@ -68,6 +68,7 @@ monster.loot = {
 	{ id = 19083, chance = 3000 }, -- silver raid token
 	{ id = 3031, chance = 100000, maxCount = 105 }, -- gold coin
 	{ id = 3035, chance = 100000, maxCount = 8 }, -- platinum coin
+	{ id = 19371, chance = 3000 }, -- glass of goo
 	{ id = 19372, chance = 3000 }, -- goo shell
 	{ id = 3037, chance = 10000 }, -- yellow gem
 	{ id = 3038, chance = 10000 }, -- green gem
@@ -88,7 +89,7 @@ monster.loot = {
 
 monster.attacks = {
 	{ name = "melee", interval = 2000, chance = 100, skill = 150, attack = 50, condition = { type = CONDITION_POISON, totalDamage = 180, interval = 4000 } },
-	{ name = "combat", interval = 2000, chance = 10, type = COMBAT_LIFEDRAIN, minDamage = -90, maxDamage = -180, length = 4, spread = 3, effect = CONST_ME_MAGIC_GREEN, target = false },
+	{ name = "combat", interval = 2000, chance = 10, type = COMBAT_LIFEDRAIN, minDamage = -90, maxDamage = -180, length = 4, spread = 0, effect = CONST_ME_MAGIC_GREEN, target = false },
 	{ name = "combat", interval = 2000, chance = 14, type = COMBAT_PHYSICALDAMAGE, minDamage = 0, maxDamage = -150, radius = 5, effect = CONST_ME_GREEN_RINGS, target = false },
 	-- poison
 	{ name = "condition", type = CONDITION_POISON, interval = 2000, chance = 13, minDamage = -360, maxDamage = -440, radius = 5, effect = CONST_ME_GREEN_RINGS, target = false },

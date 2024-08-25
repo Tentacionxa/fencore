@@ -13,6 +13,10 @@ monster.outfit = {
 	lookMount = 0,
 }
 
+monster.events = {
+	"DeeplingBossDeath",
+}
+
 monster.bosstiary = {
 	bossRaceId = 773,
 	bossRace = RARITY_BANE,
@@ -117,10 +121,6 @@ monster.immunities = {
 	{ type = "outfit", condition = false },
 	{ type = "invisible", condition = true },
 	{ type = "bleed", condition = false },
-}
-
-monster.events = {
-	"DeeplingBossDeath"
 }
 
 mType.onThink = function(monster, interval) end

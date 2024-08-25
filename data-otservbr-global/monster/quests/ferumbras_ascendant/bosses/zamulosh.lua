@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Zamulosh")
 local monster = {}
 
 monster.description = "Zamulosh"
-monster.experience = 50000
+monster.experience = 500000
 monster.outfit = {
 	lookType = 862,
 	lookHead = 16,
@@ -11,6 +11,10 @@ monster.outfit = {
 	lookFeet = 55,
 	lookAddons = 0,
 	lookMount = 0,
+}
+
+monster.events = {
+	"AscendantBossesDeath",
 }
 
 monster.health = 300000

@@ -376,6 +376,9 @@
 	<npc centerx="32905" centery="32116" centerz="5" radius="1">
 		<npc name="Abran Ironeye" x="0" y="0" z="5" spawntime="60" />
 	</npc>
+	<npc centerx="33429" centery="32141" centerz="5" radius="3">
+		<npc name="Sugar Plum Fairy" x="2" y="3" z="5" spawntime="60" />
+	</npc>
 	<npc centerx="32429" centery="32173" centerz="5" radius="1">
 		<npc name="Miles, The Guard" x="0" y="0" z="5" spawntime="60" />
 	</npc>
@@ -916,9 +919,6 @@
 	</npc>
 	<npc centerx="33716" centery="32376" centerz="6" radius="1">
 		<npc name="Dream Butterfly" x="0" y="0" z="6" spawntime="60" />
-	</npc>
-	<npc centerx="32566" centery="32389" centerz="6" radius="1">
-		<npc name="Ivon" x="0" y="0" z="6" spawntime="60" />
 	</npc>
 	<npc centerx="33231" centery="32389" centerz="6" radius="1">
 		<npc name="Kazzan" x="0" y="0" z="6" spawntime="60" />
@@ -1877,6 +1877,9 @@
 	<npc centerx="31986" centery="32157" centerz="7" radius="1">
 		<npc name="An Orc Guard" x="0" y="0" z="7" spawntime="60" />
 	</npc>
+	<npc centerx="33352" centery="32169" centerz="7" radius="3">
+		<npc name="Dulcineo" x="-3" y="-3" z="7" spawntime="60" />
+	</npc>
 	<npc centerx="32408" centery="32170" centerz="7" radius="1">
 		<npc name="Gamon" x="0" y="0" z="7" spawntime="60" />
 	</npc>
@@ -1897,6 +1900,12 @@
 	</npc>
 	<npc centerx="32313" centery="32183" centerz="7" radius="1">
 		<npc name="Bozo" x="0" y="0" z="7" spawntime="60" />
+	</npc>
+	<npc centerx="33373" centery="32183" centerz="7" radius="3">
+		<npc name="Coco" x="-1" y="0" z="7" spawntime="60" />
+	</npc>
+	<npc centerx="33380" centery="32183" centerz="7" radius="3">
+		<npc name="Toffee" x="-1" y="-3" z="7" spawntime="60" />
 	</npc>
 	<npc centerx="32359" centery="32188" centerz="7" radius="1">
 		<npc name="Edgar-Ellen" x="0" y="0" z="7" spawntime="60" />
@@ -2581,6 +2590,9 @@
 	</npc>
 	<npc centerx="32389" centery="32118" centerz="8" radius="1">
 		<npc name="Lugri" x="0" y="0" z="8" spawntime="60" />
+	</npc>
+	<npc centerx="33359" centery="32140" centerz="8" radius="3">
+		<npc name="Candis" x="3" y="-2" z="8" spawntime="60" />
 	</npc>
 	<npc centerx="33305" centery="32141" centerz="8" radius="1">
 		<npc name="Gareth" x="0" y="0" z="8" spawntime="60" />

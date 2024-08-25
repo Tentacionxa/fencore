@@ -86,8 +86,8 @@ monster.loot = {
 	{ id = 16119, chance = 1900 }, -- blue crystal shard
 	{ id = 3039, chance = 1500 }, -- red gem
 	{ id = 8092, chance = 1100 }, -- wand of starstorm
-    { name = "energy vein", chance = 10240 },
-    { name = "dangerous proto matter", chance = 10240 },
+	{ id = 23508, chance = 8000 }, -- energy vein
+	{ id = 23515, chance = 8000 }, -- energy vein
 }
 
 monster.attacks = {

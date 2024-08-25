@@ -126,7 +126,6 @@ monster.loot = {
 	{ name = "steel boots", chance = 9000 },
 	{ name = "thunder hammer", chance = 9000 },
 	{ name = "small diamond", chance = 4500, maxCount = 5 },
-{ id = 24390, chance = 9000, maxCount = 1000 },
 	{ id = 3007, chance = 4500 }, -- crystal ring
 	{ name = "fire axe", chance = 4500 },
 	{ name = "great health potion", chance = 4500 },
@@ -134,7 +133,6 @@ monster.loot = {
 	{ name = "dragon robe", chance = 4500 },
 	{ name = "molten plate", chance = 4500 },
 	{ name = "great shield", chance = 500 },
-	{ id = 3007, chance = 4500 }, -- Chain Bolter
 }
 
 monster.attacks = {

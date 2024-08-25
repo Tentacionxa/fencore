@@ -13,6 +13,10 @@ monster.outfit = {
 	lookMount = 0,
 }
 
+monster.events = {
+	"WhiteDeerDeath",
+}
+
 monster.raceId = 720
 monster.Bestiary = {
 	class = "Mammal",
@@ -60,6 +64,7 @@ monster.flags = {
 	canWalkOnEnergy = false,
 	canWalkOnFire = false,
 	canWalkOnPoison = false,
+	isPreyExclusive = true,
 }
 
 monster.light = {

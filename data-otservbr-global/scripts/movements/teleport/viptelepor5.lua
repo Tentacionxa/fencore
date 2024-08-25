@@ -59,7 +59,7 @@ local config = {
     { name="Phrodomo", position = Position(32154, 31827, 8)},
 	{ name="Devovorga", position = Position(32913, 31514, 10)},
     { name="Dreadmaw", position = Position(33301, 31155, 7)},
-	{ name="Raxias", position = Position(33439, 32161, 7) },
+	{ name="Raxias", position = Position(33460, 32156, 7) },
 	{ name="Feroxa", position = Position(33414, 31536, 10)},
     { name="The Blightfather", position = Position(33315, 31145, 7) },
 	{ name="Teneshpar", position = Position(32883, 31499, 10)},

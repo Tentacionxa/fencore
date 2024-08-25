@@ -2,8 +2,8 @@ local expscroll = Action()
 
 function expscroll.onUse(cid, item, fromPosition, itemEx, toPosition)
     local player = Player(cid)
-    local remainingBoost = player:getExpBoostStamina()
-    local currentExpBoostTime = player:getExpBoostStamina()
+    local remainingBoost = player:getXpBoostTime()
+    local currentExpBoostTime = player:getXpBoostTime()
     local expBoostCount = player:getStorageValue(GameStore.Storages.expBoostCount)
 
     if expBoostCount >= 7 then -- Xp boost can only be used 3 times a day
@@ -16,8 +16,8 @@ function expscroll.onUse(cid, item, fromPosition, itemEx, toPosition)
         return true
     end
     
-    player:setStoreXpBoost(50)
-    player:setExpBoostStamina(currentExpBoostTime + 3600)
+    player:setXpBoostPercent(50)
+    player:setXpBoostTime(60 * 60)
     Item(item.uid):remove(1)
     player:say('Your hour of 50% bonus XP has started!', TALKTYPE_MONSTER_SAY)
     return true

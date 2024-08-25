@@ -158,7 +158,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "Falcon Bastion - Falcon Knight, Falcon Paladin, Monk, Preceptor Lazare, Grand Canon Dominus, Grand Commander, Grand Chaplain Gaunder", color = 40, total = 1500, type = "repeatable", storage = 190018, storagecount = 190019, 
+{name = "Falcon Bastion - Falcon Knight, Falcon Paladin, Monk, Preceptor Lazare, Grand Canon Dominus, Grand Chaplain Gaunder", color = 40, total = 1500, type = "repeatable", storage = 190018, storagecount = 190019, 
 	rewards = { 
 	{3043, 300},
 	{"exp", 10000000},
@@ -169,7 +169,6 @@ taskConfiguration = {
 		"Monk",
 		"Preceptor Lazare",
 		"Grand Canon Dominus",
-		"Grand Commander",
 		"Grand Chaplain Gaunder",
 	},
 },
@@ -193,9 +192,9 @@ taskConfiguration = {
 	},
 },
 
-{name = "Hero Cave - Bonelord, Dark Apprentice, Dark Magician, Demon Skeleton, Dragon, Hero, Hunter, Monk, Priestess, Stalker, Stone Golem, Wild Warrior, Minotaur Mage", color = 40, total = 1500, type = "repeatable", storage = 190024, storagecount = 190025, 
+{name = "Hero Cave - Bonelord, Dark Apprentice, Dark Magician, Demon Skeleton,Hero, Hunter, Monk, Priestess, Stalker, Stone Golem, Wild Warrior, Vile grandmaster, Vicious Squire", color = 40, total = 1500, type = "repeatable", storage = 190024, storagecount = 190025, 
 	rewards = { 
-	{3043, 50},
+	{3043, 150},
 	{"exp", 1000000},
 	},
 	races = {
@@ -204,14 +203,15 @@ taskConfiguration = {
 		"Dark Apprentice",
 		"Dark Magician",
 		"Demon Skeleton",
-		"Dragon",
 		"Hunter",
 		"Monk",
 		"Priestess",
 		"Stalker",
 		"Stone Golem",
 		"Wild Warrior",
-		"Minotaur Mage",
+		"Vile grandmaster",
+		"Vicious Squire",
+		"Renegade Knight",
 	},
 },
 
@@ -386,7 +386,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "INQ/POI - Ancient Scarab, Behemoth, Betrayed Wraith, Blightwalker, Bonebeast, Braindeath, Crystal Spider, Dark Magician, Dark Torturer, Defiler, Demon, Destroyer, Diabolic Imp, Dreadbeast, Efreet, Eye of the Seven, Fire Devil, Fire Elemental, Fury, Gargoyle, Giant Spider, Hand of Cursed Fate, Hellfire Fighter, Hellhound, Ice Golem, Juggernaut, Lich, Lost Soul, Massive Fire Elemental, Nightmare, Phantom, The Count, Spectre, Plaguesmith, Warlock", color = 40, total = 5000, type = "repeatable", storage = 190052, storagecount = 190053, 
+{name = "INQ/POI - Ancient Scarab, Behemoth, Betrayed Wraith, Blightwalker, Bonebeast, Braindeath, Crystal Spider, Dark Magician, Dark Torturer, Defiler, Demon, Destroyer, Diabolic Imp, Dreadbeast, Efreet, Eye of the Seven, Fire Devil, Fire Elemental, Fury, Gargoyle, Giant Spider, Hand of Cursed Fate, Hellfire Fighter, Hellhound, Ice Golem, Juggernaut, Lich, Lost Soul, Massive Fire Elemental, Nightmare, The Count, Spectre, Plaguesmith, Warlock", color = 40, total = 5000, type = "repeatable", storage = 190052, storagecount = 190053, 
 	rewards = { 
 		{3043, 350},
 	{"exp", 10000000},
@@ -423,14 +423,13 @@ taskConfiguration = {
 		"Lost Soul",
 		"Massive Fire Elemental",
 		"Nightmare",
-		"Phantom",
 		"The Count",
 		"Spectre",
 		"Plaguesmith",
 		"Warlock",
 	},
 },
-{name = "Rotten Blood - Bloated Man-Maggot, Converter, Darklight Construct, Darklight Emitter, Darklight Matter, Darklight Source, Darklight Striker, Mycobiontic Beetle, Oozing Carcass, Oozing Corpus, Rotten Man-Maggot, Sopping Carcass, Sopping Corpus, Walking Pilar, Wandering Pilar", color = 40, total = 4500, type = "daily", storage = 190054, storagecount = 190055, 
+{name = "Rotten Blood - Bloated Man-Maggot, Converter, Darklight Construct, Darklight Emitter, Darklight Matter, Darklight Source, Darklight Striker, Mycobiontic Beetle, Oozing Carcass, Oozing Corpus, Rotten Man-Maggot, Sopping Carcass, Sopping Corpus, Walking Pillar, Wandering Pilar", color = 40, total = 4500, type = "daily", storage = 190054, storagecount = 190055, 
 	rewards = { 
 		{3043, 350},
 		{37317, 1},
@@ -448,7 +447,7 @@ taskConfiguration = {
 		"Oozing Corpus",
 		"Rotten Man-Maggot",
 		"Sopping Carcass",
-		"Walking Pilar",
+		"Walking Pillar",
 		"Wandering Pillar",
 		
 	},
@@ -541,7 +540,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "Library - Cursed Book, Biting Book, Animated Feather, Dark Knowledge, Energetic Book, Energuardian of Tales, Brain Squid, Flying Book, Guardian of Tales, Gulosh' Deathgaze, Knowledge elemental, The Book of Death, Rage Squid, Squid Warden", color = 40, total = 3000, type = "daily", storage = 190069, storagecount = 190070, 
+{name = "Library - Cursed Book, Biting Book, Animated Feather, Dark Knowledge, Energetic Book, Energuardian of Tales, Brain Squid, Flying Book, Guardian of Tales, Ghulosh' Deathgaze, Knowledge elemental, The Book of Death, Rage Squid, Squid Warden", color = 40, total = 3000, type = "daily", storage = 190069, storagecount = 190070, 
 	rewards = { 
 		{3043, 250},
 		{37317, 1},
@@ -557,7 +556,7 @@ taskConfiguration = {
 		"Brain Squid",
 		"Flying Book",
 		"Guardian of Tales",
-		"Gulosh' Deathgaze",
+		"Ghulosh' Deathgaze",
 		"Knowledge elemental",
 		"The Book of Death",
 		"Rage Squid",
@@ -620,7 +619,7 @@ taskConfiguration = {
 		"Makara",
 	},
 },
-{name = "Ingol - Boar Man, Carnivostrich, Crape Man, Guardian Golem, Harpy, Lab Assistant, Liodile, Rhindeer", color = 40, total = 1500, type = "daily", storage = 190085, storagecount = 190086, 
+{name = "Ingol - Boar Man, Carnivostrich, Crape Man, Harpy, Liodile, Rhindeer", color = 40, total = 1500, type = "daily", storage = 190085, storagecount = 190086, 
 	rewards = { 
 		{3043, 320},
 		{37317, 1},
@@ -630,9 +629,7 @@ taskConfiguration = {
 		"Boar Man",
 		"Carnivostrich",
 		"Crape Man",
-		"Guardian Golem",
 		"Harpy",
-		"Lab Assistant",
 		"Liodile",
 		"Rhindeer",
 	},

@@ -68,15 +68,12 @@ local function addTravelKeyword(keyword, text, cost, destination, condition, act
 	travelKeyword:addChildKeyword({ "no" }, StdModule.say, { npcHandler = npcHandler, text = "We would like to serve you some time.", reset = true })
 end
 
-addTravelKeyword("farmine", "Do you seek a ride to Farmine for |TRAVELCOST|?", 60, Position(32983, 31539, 1), function(player)
-	return player:getStorageValue(TheNewFrontier.Mission10[1]) ~= 2
-end)
-addTravelKeyword("zao", "Do you seek a ride to Farmine for |TRAVELCOST|?", 60, Position(32983, 31539, 1), function(player)
-	return player:getStorageValue(TheNewFrontier.Mission10[1]) ~= 2
-end)
+
 addTravelKeyword("darashia", "Darashia on Darama", 40, Position(33270, 32441, 6))
 addTravelKeyword("darama", "Darashia on Darama", 40, Position(33270, 32441, 6))
 addTravelKeyword("kazordoon", "Kazordoon", 70, Position(32588, 31941, 0))
+addTravelKeyword("zao", "", 60, Position(32983, 31539, 1))
+addTravelKeyword("farmine", "", 60, Position(32983, 31539, 1))
 addTravelKeyword("kazor", "Kazordoon", 70, Position(32588, 31941, 0))
 addTravelKeyword("femor hills", "the Femor Hills", 60, Position(32536, 31837, 4))
 addTravelKeyword("hills", "the Femor Hills", 60, Position(32536, 31837, 4))
@@ -91,7 +88,7 @@ keywordHandler:addKeyword({ "kick" }, StdModule.kick, { npcHandler = npcHandler,
 keywordHandler:addKeyword({ "trip" }, StdModule.say, { npcHandler = npcHandler, text = "I can fly you to {Darashia}, to {Svargrond}, to {Kazordoon}, to {Zao}, to the {Femor Hills}, {Edron} or to {Marapur} if you like. Where do you want to go?" })
 keywordHandler:addKeyword({ "route" }, StdModule.say, { npcHandler = npcHandler, text = "I can fly you to {Darashia}, to {Svargrond}, to {Kazordoon}, to {Zao}, to the {Femor Hills}, {Edron} or to {Marapur} if you like. Where do you want to go?" })
 keywordHandler:addKeyword({ "passage" }, StdModule.say, { npcHandler = npcHandler, text = "I can fly you to {Darashia}, to {Svargrond}, to {Kazordoon}, to {Zao}, to the {Femor Hills}, {Edron} or to {Marapur} if you like. Where do you want to go?" })
-keywordHandler:addKeyword({ "fly" }, StdModule.say, { npcHandler = npcHandler, text = "I can fly you to {Darashia}, {Edron}, {Issavi}, {Svargrond}, {Kazordoon}, {Zao} or to {Femor Hills} if you like. Where do you want to go?" })
+keywordHandler:addKeyword({ "fly" }, StdModule.say, { npcHandler = npcHandler, text = "I can fly you to {Darashia}, {Edron}, {Svargrond}, {Kazordoon}, {Zao} or to {Femor Hills} if you like. Where do you want to go?" })
 keywordHandler:addKeyword({ "town" }, StdModule.say, { npcHandler = npcHandler, text = "I can fly you to {Darashia}, to {Svargrond}, to {Kazordoon}, to {Zao}, to the {Femor Hills}, {Edron} or to {Marapur} if you like. Where do you want to go?" })
 keywordHandler:addKeyword({ "destination" }, StdModule.say, { npcHandler = npcHandler, text = "I can fly you to {Darashia}, to {Svargrond}, to {Kazordoon}, to {Zao}, to the {Femor Hills}, {Edron} or to {Marapur} if you like. Where do you want to go?" })
 keywordHandler:addKeyword({ "sail" }, StdModule.say, { npcHandler = npcHandler, text = "I can fly you to {Darashia}, to {Svargrond}, to {Kazordoon}, to {Zao}, to the {Femor Hills}, {Edron} or to {Marapur} if you like. Where do you want to go?" })

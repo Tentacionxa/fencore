@@ -78,7 +78,6 @@ monster.loot = {
 	{ name = "strong health potion", chance = 91460, maxCount = 2 },
 	{ name = "great health potion", chance = 76330, maxCount = 3 },
 	{ name = "small enchanted amethyst", chance = 53560, maxCount = 5 },
-	{ name = "ancient coin", chance = 46980, maxCount = 3 },
 	{ name = "gemmed figurine", chance = 32030 },
 	{ name = "small enchanted emerald", chance = 11003, maxCount = 5 },
 	{ name = "small enchanted ruby", chance = 2000 },

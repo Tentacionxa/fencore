@@ -106,18 +106,18 @@ local imbuementPackagesData = {
 		text = "skill club",
 		moneyRequired = 6250,
 		itemList = {
-			{ itemId = 9657, count = 20 }, -- cyclops toe
-			{ itemId = 22189, count = 15 }, -- ogre nose ring
-			{ itemId = 10405, count = 10 }, -- warmaster's wristguards
+			{ itemId = 9657, count = 20 },
+			{ itemId = 22189, count = 15 },
+			{ itemId = 10405, count = 10 },
 		},
 	},
 	["blockade"] = {
 		text = "skill shield",
 		moneyRequired = 16150,
 		itemList = {
-			{ itemId = 9641, count = 20 }, -- piece of scarab shell
-			{ itemId = 11703, count = 25 }, -- brimstone shell
-			{ itemId = 20199, count = 25 }, -- frazzle skin
+			{ itemId = 9641, count = 20 },
+			{ itemId = 11703, count = 25 },
+			{ itemId = 20199, count = 25 },
 		},
 	},
 	["chop"] = {
@@ -333,8 +333,7 @@ local function creatureSayCallback(npc, creature, type, message)
 		return false
 	end
 
-	local imbuementPackages =
-		"These are the available imbuement packages, Skill increase: {bash}, {blockade}, {chop}, {epiphany}, {precision}, {slash}. Additional attributes: {featherweight}, {strike}, {swiftness}, {vampirism}, {vibrancy}, {void}. Elemental damage: {electrify}, {frost}, {reap}, {scorch}, {venom}. Elemental protection: {cloud fabric}, {demon presence}, {dragon hide}, {lich shroud}, {quara scale}, {snake skin}."
+	local imbuementPackages = "Available imbuement packages: {bash}, {blockade}, {chop}, {epiphany}, {precision}, {slash}. additional attributes: {featherweight}, {strike}, {swiftness}, {vampirism}, {vibrancy}, {void}. elemental damage: {electrify}, {frost}, {reap}, {scorch}, {venom}. elemental protection: {cloud fabric}, {demon presence}, {dragon hide}, {lich shroud}, {quara scale}, {snake skin}."
 	if MsgContains(message, "imbuement packages") then
 		npcHandler:setTopic(playerId, 1)
 		npcHandler:say(imbuementPackages, npc, creature)
@@ -441,7 +440,7 @@ npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBac
 end
 -- On sell npc shop message
 npcType.onSellItem = function(npc, player, itemId, subtype, amount, ignore, name, totalCost)
-	player:sendTextMessage(MESSAGE_TRADE, string.format("Sold %ix %s for %i gold.", amount, name, totalCost))
+	player:sendTextMessage(MESSAGE_INFO_DESCR, string.format("Sold %ix %s for %i gold.", amount, name, totalCost))
 end
 -- On check npc shop message (look item)
 npcType.onCheckItem = function(npc, player, clientId, subType) end

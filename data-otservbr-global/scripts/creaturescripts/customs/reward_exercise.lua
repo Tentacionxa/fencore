@@ -10,6 +10,4 @@ function winReward.onLogin(player)
 	return true
 end
 
-if configManager.getBoolean(configKeys.TOGGLE_RECEIVE_REWARD) then
-	winReward:register()
-end
+winReward:register()

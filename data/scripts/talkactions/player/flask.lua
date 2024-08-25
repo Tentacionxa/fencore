@@ -5,12 +5,14 @@ function flask.onSay(player, words, param)
 		player:sendCancelMessage("You need to specify on/off param.")
 		return true
 	end
-	if param == "on" then
-		player:kv():set("talkaction.potions.flask", true)
+	if param == "on" and player:getStorageValueByName("talkaction.potions.flask") ~= 1 then
+		player:setStorageValue(STORAGEVALUE_EMOTE, 1)
+		player:setStorageValueByName("talkaction.potions.flask", 1)
 		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You will not receive flasks!")
 		player:getPosition():sendMagicEffect(CONST_ME_REDSMOKE)
 	elseif param == "off" then
-		player:kv():remove("talkaction.potions.flask")
+		player:setStorageValue(STORAGEVALUE_EMOTE, 0)
+		player:setStorageValueByName("talkaction.potions.flask", 0)
 		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You will receive flasks.")
 		player:getPosition():sendMagicEffect(CONST_ME_REDSMOKE)
 	end

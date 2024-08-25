@@ -66,7 +66,7 @@ local function addTravelKeyword(keyword, cost, destination, condition)
 	travelKeyword:addChildKeyword({ "yes" }, StdModule.travel, { npcHandler = npcHandler, premium = false, cost = cost, discount = "postman", destination = destination })
 	travelKeyword:addChildKeyword({ "no" }, StdModule.say, { npcHandler = npcHandler, text = "We would like to serve you some time.", reset = true })
 end
-
+addTravelKeyword("yalahar", 200, Position(32804, 31269, 6))
 addTravelKeyword("thais", 170, Position(32310, 32210, 6))
 addTravelKeyword("krailos", 185, Position(33493, 31712, 6)) -- {x = 33493, y = 31712, z = 6}
 addTravelKeyword("carlin", 130, Position(32387, 31820, 6))
@@ -76,9 +76,17 @@ addTravelKeyword("edron", 40, Position(33173, 31764, 6))
 addTravelKeyword("port hope", 160, Position(32527, 32784, 6))
 addTravelKeyword("svargrond", 150, Position(32341, 31108, 6))
 addTravelKeyword("liberty bay", 180, Position(32285, 32892, 6))
-addTravelKeyword("yalahar", 185, Position(32816, 31272, 6), function(player)
-	return player:getStorageValue(Storage.Quest.U8_4.InServiceOfYalahar.SearoutesAroundYalahar.Venore) ~= 1 and player:getStorageValue(Storage.Quest.U8_4.InServiceOfYalahar.SearoutesAroundYalahar.TownsCounter) < 5
-end)
+addTravelKeyword("fearsome desert", 380, Position(31482, 31925, 6))
+addTravelKeyword("ottawa", 280, Position(31015, 31687, 6))
+addTravelKeyword("dunly refuge", 580, Position(30722, 32115, 6))
+addTravelKeyword("damona reef", 380, Position(31858, 31967, 6))
+addTravelKeyword("hellish basin", 580, Position(31424, 31740, 6))
+addTravelKeyword("lionfield fort", 380, Position(31766, 32078, 6))
+addTravelKeyword("fearsome desert", 380, Position(31482, 31925, 6))
+addTravelKeyword("ottawa", 280, Position(31015, 31687, 6))
+addTravelKeyword("dunly refuge", 580, Position(30722, 32115, 6))
+addTravelKeyword("lamawood isles", 180, Position(31935, 31868, 7))
+addTravelKeyword("yalahar", 185, Position(32816, 31272, 6))
 addTravelKeyword("ankrahmun", 150, Position(33092, 32883, 6))
 addTravelKeyword("issavi", 130, Position(33900, 31463, 6))
 
@@ -101,8 +109,8 @@ travelNode:addChildKeyword({ "no" }, StdModule.say, { npcHandler = npcHandler, r
 keywordHandler:addKeyword({ "kick" }, StdModule.kick, { npcHandler = npcHandler, destination = { Position(32952, 32031, 6), Position(32955, 32031, 6), Position(32957, 32032, 6) } })
 
 -- Basic
-keywordHandler:addKeyword({ "sail" }, StdModule.say, { npcHandler = npcHandler, text = "Where do you want to go? To {Issavi}, {krailos}, {Thais}, {Carlin}, {Ab'Dendriel}, {Port Hope}, {Edron}, {Darashia}, {Liberty Bay}, {Svargrond}, {Yalahar}, {Gray Island} or {Ankrahmun}?" })
-keywordHandler:addKeyword({ "passage" }, StdModule.say, { npcHandler = npcHandler, text = "Where do you want to go? To {Issavi} {krailos}, {Thais}, {Carlin}, {Ab'Dendriel}, {Port Hope}, {Edron}, {Darashia}, {Liberty Bay}, {Svargrond}, {Yalahar}, {Gray Island} or {Ankrahmun}?" })
+keywordHandler:addKeyword({ "sail" }, StdModule.say, { npcHandler = npcHandler, text = "Where do you want to go? To {Issavi}, {krailos}, {Thais}, {Carlin}, {Ab'Dendriel}, {Port Hope}, {Edron}, {Darashia}, {Liberty Bay}, {Svargrond}, {Ottawa}, {Hellish Basin}, {Fearsome Desert}, {Damona Reef}, {Kinfroain}, {Lionfield Fort}, {Lamawood Isles}, {Dunly Refuge}, {Yalahar}, {Gray Island} or {Ankrahmun}?" })
+keywordHandler:addKeyword({ "passage" }, StdModule.say, { npcHandler = npcHandler, text = "Where do you want to go? To {Issavi} {krailos}, {Thais}, {Carlin}, {Ab'Dendriel}, {Port Hope}, {Edron}, {Darashia}, {Liberty Bay}, {Svargrond}, {Ottawa}, {Hellish Basin}, {Fearsome Desert}, {Damona Reef}, {Kinfroain}, {Lionfield Fort}, {Lamawood Isles}, {Dunly Refuge}, {Yalahar}, {Gray Island} or {Ankrahmun}?" })
 keywordHandler:addKeyword({ "job" }, StdModule.say, { npcHandler = npcHandler, text = "I am the captain of this ship." })
 keywordHandler:addKeyword({ "captain" }, StdModule.say, { npcHandler = npcHandler, text = "I am the captain of this ship." })
 keywordHandler:addKeyword({ "venore" }, StdModule.say, { npcHandler = npcHandler, text = "This is Venore. Where do you want to go?" })

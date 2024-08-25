@@ -93,13 +93,13 @@ monster.loot = {
 	{ name = "violet crystal shard", chance = 2420 },
 	{ name = "green gem", chance = 1610 },
 	{ name = "onyx chip", chance = 1610, maxCount = 3 },
+	{ id = 35479, chance = 190 }, -- cobra bag 
 }
 
 monster.attacks = {
 	{ name = "melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -480 },
 	{ name = "explosion wave", interval = 2000, chance = 15, minDamage = -280, maxDamage = -400, target = false },
 	{ name = "combat", interval = 2000, chance = 12, type = COMBAT_EARTHDAMAGE, minDamage = -350, maxDamage = -520, radius = 4, shootEffect = CONST_ANI_SMALLEARTH, effect = CONST_ME_GREEN_RINGS, target = true },
-	{ name = "death chain", interval = 4000, chance = 30, minDamage = -550, maxDamage = -800, range = 3, target = true },
 }
 
 monster.defenses = {

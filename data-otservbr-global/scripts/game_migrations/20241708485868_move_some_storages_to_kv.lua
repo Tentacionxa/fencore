@@ -21,4 +21,4 @@ function migration:onExecute()
 	self:forEachPlayer(migrate)
 end
 
-migration:register()
+--migration:register()

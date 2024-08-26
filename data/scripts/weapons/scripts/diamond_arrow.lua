@@ -16,7 +16,7 @@ combat:setParameter(COMBAT_PARAM_BLOCKARMOR, true)
 function onGetFormulaValues(player, skill, attack, factor)
 	local distanceSkill = player:getEffectiveSkillLevel(SKILL_DISTANCE)
 	local min = (player:getLevel() / 5) 
-	local max = (0.09 * factor) * distanceSkill * 172 + (player:getLevel() / 5)
+	local max = (0.09 * factor) * distanceSkill * 192 + (player:getLevel() / 5)
 	return -min, -max
 end
 

@@ -23,4 +23,4 @@ function dreamCourtsEvent.onStartup()
 	return true
 end
 
-dreamCourtsEvent:register()
+--dreamCourtsEvent:register()

@@ -14,4 +14,4 @@ function migration:onExecute()
 	self:forEachPlayer(migrateIsVipSystem)
 end
 
-migration:register()
+--migration:register()

@@ -63882,7 +63882,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="primarytype" value="sword weapons"/>
 		<attribute key="weaponType" value="sword"/>
 		<attribute key="elementdeath" value="45"/>
-		<attribute key="manaleechamount" value="300"/>
+		<attribute key="manaleechamount" value="150"/>
 		<attribute key="manaleechchance" value="100"/>
 		<attribute key="lifeleechamount" value="500"/>
 		<attribute key="lifeleechchance" value="100"/>
@@ -63933,7 +63933,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="primarytype" value="axe weapons"/>
 		<attribute key="weaponType" value="axe"/>
 		<attribute key="elementdeath" value="45"/>
-		<attribute key="manaleechamount" value="300"/>
+		<attribute key="manaleechamount" value="150"/>
 		<attribute key="manaleechchance" value="100"/>
 		<attribute key="lifeleechamount" value="500"/>
 		<attribute key="lifeleechchance" value="100"/>
@@ -63984,7 +63984,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="primarytype" value="club weapons"/>
 		<attribute key="weaponType" value="club"/>
 		<attribute key="elementice" value="46"/>
-		<attribute key="manaleechamount" value="300"/>
+		<attribute key="manaleechamount" value="150"/>
 		<attribute key="manaleechchance" value="100"/>
 		<attribute key="lifeleechamount" value="500"/>
 		<attribute key="lifeleechchance" value="100"/>
@@ -64117,7 +64117,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="shootType" value="smallice"/>
 		<attribute key="absorbpercentice" value="12"/>
 		<attribute key="magiclevelpoints" value="5"/>
-		<attribute key="manaleechamount" value="300"/>
+		<attribute key="manaleechamount" value="150"/>
 		<attribute key="manaleechchance" value="100"/>
 		<attribute key="lifeleechamount" value="500"/>
 		<attribute key="lifeleechchance" value="100"/>

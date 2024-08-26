@@ -76493,5 +76493,75 @@ Granted by TibiaGoals.com"/>
 	</item>
 	<item id="44898" name="stairs">
 	</item>
+	<item id="48381" article="a" name="dead cookie">
+		<attribute key="duration" value="10"/>
+		<attribute key="decayTo" value="48380"/>
+		<attribute key="containersize" value="36"/>
+	</item>
+	<item id="48380" article="a" name="dead cookie">
+		<attribute key="duration" value="600"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="containersize" value="36"/>
+	</item>
+		<item id="48267" article="a" name="dead cookie">
+		<attribute key="duration" value="10"/>
+		<attribute key="decayTo" value="48257"/>
+		<attribute key="containersize" value="36"/>
+	</item>
+	<item id="48257" article="a" name="dead cookie">
+		<attribute key="duration" value="600"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="containersize" value="36"/>
+	</item>
+			<item id="48341" article="a" name="dead cookie">
+		<attribute key="duration" value="10"/>
+		<attribute key="decayTo" value="48338"/>
+		<attribute key="containersize" value="36"/>
+	</item>
+	<item id="48338" article="a" name="dead cookie">
+		<attribute key="duration" value="600"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="containersize" value="36"/>
+	</item>
+			<item id="48346" article="a" name="dead cookie">
+		<attribute key="duration" value="10"/>
+		<attribute key="decayTo" value="48344"/>
+		<attribute key="containersize" value="36"/>
+	</item>
+	<item id="48344" article="a" name="dead cookie">
+		<attribute key="duration" value="600"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="containersize" value="36"/>
+	</item>
+		<item id="48113" article="a" name="dead cookie">
+		<attribute key="duration" value="10"/>
+		<attribute key="decayTo" value="48111"/>
+		<attribute key="containersize" value="36"/>
+	</item>
+	<item id="48111" article="a" name="dead cookie">
+		<attribute key="duration" value="600"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="containersize" value="36"/>
+	</item>
+		<item id="48109" article="a" name="dead cookie">
+		<attribute key="duration" value="10"/>
+		<attribute key="decayTo" value="48106"/>
+		<attribute key="containersize" value="36"/>
+	</item>
+	<item id="48106" article="a" name="dead cookie">
+		<attribute key="duration" value="600"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="containersize" value="36"/>
+	</item>
+	<item id="48363" article="a" name="dead cookie">
+		<attribute key="duration" value="10"/>
+		<attribute key="decayTo" value="48360"/>
+		<attribute key="containersize" value="36"/>
+	</item>
+	<item id="48360" article="a" name="dead cookie">
+		<attribute key="duration" value="600"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="containersize" value="36"/>
+	</item>
 </items>
 

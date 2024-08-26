@@ -66581,7 +66581,7 @@ former students at the Noodles Academy. Awarded by TibiaLabs.com"/>
 		<attribute key="ammotype" value="arrow"/>
 		<attribute key="shootType" value="diamondarrow"/>
 		<attribute key="maxhitchance" value="100"/>
-		<attribute key="attack" value="150"/>
+		<attribute key="attack" value="250"/>
 		<attribute key="weight" value="80"/>
 	</item>
 	<item id="35902" article="a" name="spectral bolt">
@@ -66590,7 +66590,7 @@ former students at the Noodles Academy. Awarded by TibiaLabs.com"/>
 		<attribute key="ammotype" value="bolt"/>
 		<attribute key="shootType" value="spectralbolt"/>
 		<attribute key="maxhitchance" value="100"/>
-		<attribute key="attack" value="78"/>
+		<attribute key="attack" value="290"/>
 		<attribute key="weight" value="90"/>
 		<attribute key="script" value="moveevent;weapon">
 			<attribute key="action" value="removecount"/>

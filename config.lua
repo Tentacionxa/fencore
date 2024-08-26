@@ -69,8 +69,8 @@ maxPacketsPerSecond = 75
 maxItem = 6000
 maxContainer = 100
 onePlayerOnlinePerAccount = false
-maxPlayersOnlinePerAccount = 2
-maxPlayersOutsidePZPerAccount = 2
+maxPlayersOnlinePerAccount = 4
+maxPlayersOutsidePZPerAccount = 4
 
 -- Packet Compression
 -- Minimize network bandwith and reduce ping

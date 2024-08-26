@@ -76563,5 +76563,25 @@ Granted by TibiaGoals.com"/>
 		<attribute key="decayTo" value="0"/>
 		<attribute key="containersize" value="36"/>
 	</item>
+		<item id="48264" article="a" name="dead cookie">
+		<attribute key="duration" value="10"/>
+		<attribute key="decayTo" value="48262"/>
+		<attribute key="containersize" value="36"/>
+	</item>
+	<item id="48262" article="a" name="dead cookie">
+		<attribute key="duration" value="600"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="containersize" value="36"/>
+	</item>
+		<item id="48383" article="a" name="dead cookie">
+		<attribute key="duration" value="10"/>
+		<attribute key="decayTo" value="48380"/>
+		<attribute key="containersize" value="36"/>
+	</item>
+	<item id="48380" article="a" name="dead cookie">
+		<attribute key="duration" value="600"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="containersize" value="36"/>
+	</item>
 </items>
 

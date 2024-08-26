@@ -25,7 +25,7 @@ function nightmareIsleEvent.onStartup()
 	return true
 end
 
-nightmareIsleEvent:register()
+--nightmareIsleEvent:register()
 
 local teleportExits = {
 	{ position = Position(33255, 32678, 7), storage = GlobalStorage.WorldBoard.NightmareIsle.AnkrahmunNorth },

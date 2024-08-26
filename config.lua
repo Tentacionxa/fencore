@@ -27,8 +27,8 @@ maintainModeMessage = ""
 -- NOTE: refundManaOnBeginningWeapons: wand of vortex and snakebite refund mana used (allows training for mages)
 worldType = "pvp-enforced"
 hotkeyAimbotEnabled = true
-protectionLevel = 7
-pzLocked = 60 * 1000
+protectionLevel = 300
+pzLocked = 1 * 1000
 removeChargesFromRunes = true
 removeChargesFromPotions = true
 removeWeaponAmmunition = true
@@ -207,7 +207,7 @@ pvpMaxLevelDifference = 0
 -- NOTE: set wheelSystemEnabled = false to disable the wheel of destiny
 -- NOTE: only the wheel points are modified, all other data is on the client executable and cannot be modified
 wheelSystemEnabled = true
-wheelPointsPerLevel = 1
+wheelPointsPerLevel = 2
 
 -- Gem Atelier
 wheelAtelierRotateLesserCost = 125000
@@ -225,12 +225,12 @@ familiarTime = 30
 
 partyAutoShareExperience = true
 -- partyShareRangeMultiplier: the range of the party share experience, default 3/2 (1.5)
-partyShareRangeMultiplier = 1.5
+partyShareRangeMultiplier = 2
 partyShareLootBoosts = true
-partyShareLootBoostsDimishingFactor = 0.7
+partyShareLootBoostsDimishingFactor = 1
 
 -- Tibiadrome concoctions
-tibiadromeConcoctionCooldown = 24 * 60 * 60 -- 24 hours
+tibiadromeConcoctionCooldown = 1 * 60 * 60 -- 24 hours
 tibiadromeConcoctionDuration = 60 * 60 -- 1 hour
 tibiadromeConcoctionTickType = "online" -- "online" | "experience"
 
@@ -268,8 +268,8 @@ buyBlessCommandFee = 0
 teleportPlayerToVocationRoom = false
 toggleReceiveReward = false
 randomMonsterSpawn = false
-lootPouchMaxLimit = 2000
-storeInboxMaxLimit = 2000
+lootPouchMaxLimit = 5000
+storeInboxMaxLimit = 4000
 enablePlayerPutItemInAmmoSlot = true
 startStreakLevel = 0
 showLootsInBestiary = true
@@ -308,9 +308,9 @@ maxAllowedOnADummy = 1
 -- NOTE: saveIntervalTime: time based on what was set in "saveIntervalType"
 toggleSaveAsync = false
 toggleSaveInterval = true
-saveIntervalType = "hour"
+saveIntervalType = "minute"
 toggleSaveIntervalCleanMap = true
-saveIntervalTime = 1
+saveIntervalTime = 15
 
 -- Imbuement
 toggleImbuementShrineStorage = false
@@ -428,7 +428,7 @@ showScriptsLogInConsole = false
 -- time to suppress negative conditions after being affected by them (ms)
 minDelayBetweenConditions = 0
 -- configure maximum value of critical imbuement
-criticalChance = 10
+criticalChance = 15
 inventoryGlowOnFiveBless = false
 adventurersBlessingLevel = 50
 skulledDeathLoseStoreItem = false
@@ -461,7 +461,7 @@ globalServerSaveNotifyDuration = 5
 globalServerSaveCleanMap = false
 globalServerSaveClose = false
 globalServerSaveShutdown = true
-globalServerSaveTime = "08:00:00"
+globalServerSaveTime = "16:00:00"
 
 -- Sort loot by chance, most rare items drop first
 -- it is good to be setted when you have a higher

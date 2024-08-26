@@ -33,7 +33,7 @@ function furyGates.onStartup(interval)
 	return true
 end
 
-furyGates:register()
+--furyGates:register()
 
 local furyGatesTeleports = MoveEvent()
 

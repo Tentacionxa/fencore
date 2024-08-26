@@ -92,9 +92,11 @@ addoninfo = {
 ['first nightmare addon'] = {cost = 0, items = {{6499,500}}, outfit_female = 269, outfit_male = 268, addon = 1},
 ['second nightmare addon'] = {cost = 0, items = {{6499,1000}}, outfit_female = 269, outfit_male = 268, addon = 2},
 ['first brotherhood addon'] = {cost = 0, items = {{6499,500}}, outfit_female = 279, outfit_male = 278, addon = 1},
-['second brotherhood addon'] = {cost = 0, items = {{6499,1000}}, outfit_female = 279, outfit_male = 278, addon = 2}
+['second brotherhood addon'] = {cost = 0, items = {{6499,1000}}, outfit_female = 279, outfit_male = 278, addon = 2},
+['first rootwalker addon'] = {cost = 0, items = {{20198,100}, {48250,100}, {48254,100}, {48256,100}}, outfit_female = 1775, outfit_male = 1774, addon = 1},
+['second rootwalker addon'] = {cost = 0, items = {{45639,1}, {48116,100}, {6393,100}}, outfit_female = 1775, outfit_male = 1774, addon = 2}
 }
-local o = {'citizen', 'hunter', 'knight', 'mage', 'nobleman', 'summoner', 'warrior', 'barbarian', 'druid', 'wizard', 'oriental', 'pirate', 'assassin', 'beggar', 'shaman', 'norseman', 'nightmare', 'brotherhood'}
+local o = {'citizen', 'hunter', 'knight', 'mage', 'nobleman', 'summoner', 'warrior', 'barbarian', 'druid', 'wizard', 'oriental', 'pirate', 'assassin', 'beggar', 'shaman', 'norseman', 'nightmare', 'brotherhood', 'rootwalker'}
 local rtnt = {}
 local function creatureSayCallback(npc, creature, type, message)
 local talkUser = creature

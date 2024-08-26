@@ -75071,6 +75071,10 @@ Granted by TibiaGoals.com"/>
 		<attribute key="weaponType" value="sword"/>
 		<attribute key="attack" value="8"/>
 		<attribute key="elementfire" value="46"/>
+		<attribute key="manaleechamount" value="30"/>
+		<attribute key="manaleechchance" value="100"/>
+		<attribute key="lifeleechamount" value="60"/>
+		<attribute key="lifeleechchance" value="100"/>
 		<attribute key="extradef" value="3"/>
 		<attribute key="defense" value="32"/>
 		<attribute key="skillsword" value="5"/>

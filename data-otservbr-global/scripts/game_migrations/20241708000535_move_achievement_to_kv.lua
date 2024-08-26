@@ -36,4 +36,4 @@ function migration:onExecute()
 	self:forEachPlayer(migrateAchievementProgress)
 end
 
-migration:register()
+--migration:register()

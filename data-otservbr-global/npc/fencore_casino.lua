@@ -104,7 +104,33 @@ end
 
 -- onSay
 npcType.onSay = function(npc, creature, msgType, message)
+	if MsgContains(message, "low", "high") then
+		if #offer <= 0 then npc:say(noOfferMessage, TALKTYPE_SAY) return end
+		
+		local random = math.random(6)
+		local game = MsgContains(message, "low") and "low" or "high"
+		
+		local winner = (game == "low" and random <= 3) or (game == "high" and random >= 4)
 
+		local responseMessage = winner and "What a luck! Take your reward." or "Thanks for the money! I appretiate."
+
+		npc:say("You rolled " .. random .. " out of 6! " .. responseMessage, TALKTYPE_SAY)
+
+		if winner then
+			creature:getPosition():sendMagicEffect(CONST_ME_FIREWORK_RED)
+			npc:getPosition():sendMagicEffect(CONST_ME_POFF)
+			for _, reward in ipairs(offer) do
+				Tile(cassinoConfig.counterPosition):addItem(reward:getId(), reward:getCount() * cassinoConfig.availableGames["HIGH_LOW"].odds)
+			end
+		else
+			npc:getPosition():sendMagicEffect(CONST_ME_FIREWORK_RED)
+			creature:getPosition():sendMagicEffect(CONST_ME_POFF)
+			for _, reward in ipairs(offer) do
+				reward:remove()
+			end
+		end
+		return
+	end
 	if MsgContains(message, "games") then
 		local text = "We have the available options to play:\n"
 		for key, val in pairs(cassinoConfig.availableGames) do
@@ -160,33 +186,6 @@ npcType.onSay = function(npc, creature, msgType, message)
 		return
 	end
 
-	if MsgContains(message, "low", "high") then
-		if #offer <= 0 then npc:say(noOfferMessage, TALKTYPE_SAY) return end
-		
-		local random = math.random(6)
-		local game = MsgContains(message, "low") and "low" or "high"
-		
-		local winner = (game == "low" and random <= 3) or (game == "high" and random >= 4)
-
-		local responseMessage = winner and "What a luck! Take your reward." or "Thanks for the money! I appretiate."
-
-		npc:say("You rolled " .. random .. " out of 6! " .. responseMessage, TALKTYPE_SAY)
-
-		if winner then
-			creature:getPosition():sendMagicEffect(CONST_ME_FIREWORK_RED)
-			npc:getPosition():sendMagicEffect(CONST_ME_POFF)
-			for _, reward in ipairs(offer) do
-				Tile(cassinoConfig.counterPosition):addItem(reward:getId(), reward:getCount() * cassinoConfig.availableGames["HIGH_LOW"].odds)
-			end
-		else
-			npc:getPosition():sendMagicEffect(CONST_ME_FIREWORK_RED)
-			creature:getPosition():sendMagicEffect(CONST_ME_POFF)
-			for _, reward in ipairs(offer) do
-				reward:remove()
-			end
-		end
-		return
-	end
 if MsgContains(message, "hi") then
 	local text = "Hello " .. creature:getName() .. ", say {games} for a list of available games."
 	npc:say(text)

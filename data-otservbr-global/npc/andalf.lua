@@ -188,7 +188,7 @@ local stoneKeyword = keywordHandler:addKeyword({'venom'}, StdModule.say, {npcHan
 
 local stoneKeyword = keywordHandler:addKeyword({'cloud fabric'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for energy protection imbuement for 6750000 gold?'})
 	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Here you are. Take care.', reset = true},
-		function(player) return player:getMoney() + player:getBankBalance() >= 6750000 end,
+		function(player) return player:getMoney() + player:getBankBalance() >= 675000 end,
 		function(player) if player:removeMoneyBank(6750000) then player:addItem(9644, 25) player:addItem(14079, 15) player:addItem(9665, 10)  end end
 	)
 		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})

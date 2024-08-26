@@ -5,8 +5,8 @@ combat:setParameter(COMBAT_PARAM_DISTANCEEFFECT, CONST_ANI_ICE)
 combat:setArea(createCombatArea(AREA_CIRCLE3X3))
 
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 1.2) + 7
-	local max = (level / 5) + (maglevel * 2.8) + 17
+	local min = (level / 5) + (maglevel * 4.2) + 7
+	local max = (level / 5) + (maglevel * 15.5) + 17
 	return -min, -max
 end
 
@@ -30,5 +30,4 @@ rune:level(30)
 rune:magicLevel(4)
 rune:cooldown(2 * 1000)
 rune:groupCooldown(2 * 1000)
-rune:isBlocking(false) -- True = Solid / False = Creature
 rune:register()

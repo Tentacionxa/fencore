@@ -1,6 +1,6 @@
 local config = {
     max = 4,
-    maxVip = 2,
+    maxVip = 3,
     text = "Only 1 (FREE) & 2 (VIP) characters allowed per IP.",
     group_id = 1,  -- it apply the limit to players with a group less than or equal to the id
     milliseconds_before_kick_to_read_popup = 3500 -- 9000 = 9 seconds

@@ -98,4 +98,4 @@ function migration:onExecute()
 	self:forEachPlayer(migrateHirelingData)
 end
 
-migration:register()
+--migration:register()

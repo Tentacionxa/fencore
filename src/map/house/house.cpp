@@ -149,7 +149,7 @@ void House::updateDoorDescription() const {
 	if (owner != 0) {
 		ss << "It belongs to house '" << houseName << "'. " << ownerName << " owns this house.";
 	} else {
-		ss << "It belongs to house '" << houseName << "'. Nobody owns this house.";
+		ss << "It belongs to house '" << houseName << "'. Nobody owns this house.\nTo buy this house, go to fencore.net.";
 	}
 
 	ss << " It is " << getSize() << " square meters.";

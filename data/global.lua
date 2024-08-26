@@ -57,10 +57,10 @@ GLOBAL_CHARM_GUT = 120 -- 20% more chance to get creature products from looting
 GLOBAL_CHARM_SCAVENGE = 125 -- 25% more chance to get creature products from skinning
 
 -- Event Schedule
-SCHEDULE_LOOT_RATE = 100
-SCHEDULE_EXP_RATE = 100
+SCHEDULE_LOOT_RATE = 140
+SCHEDULE_EXP_RATE = 160
 SCHEDULE_BOSS_LOOT_RATE = 100
-SCHEDULE_SKILL_RATE = 100
+SCHEDULE_SKILL_RATE = 170
 SCHEDULE_SPAWN_RATE = 100
 
 -- MARRY

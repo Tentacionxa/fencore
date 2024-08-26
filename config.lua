@@ -299,7 +299,7 @@ staminaOrangeDelay = 1
 staminaGreenDelay = 2
 staminaPzGain = 2
 -- Max players allowed on a dummy.
-maxAllowedOnADummy = 1
+maxAllowedOnADummy = 3
 
 -- Save interval per time
 -- NOTE: toggleSaveInterval: true = enable the save interval, false = disable the save interval

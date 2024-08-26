@@ -226,7 +226,7 @@ familiarTime = 30
 
 partyAutoShareExperience = true
 -- partyShareRangeMultiplier: the range of the party share experience, default 3/2 (1.5)
-partyShareRangeMultiplier = 10
+partyShareRangeMultiplier = 2
 partyShareLootBoosts = true
 partyShareLootBoostsDimishingFactor = 1
 

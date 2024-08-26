@@ -75773,7 +75773,7 @@ Granted by TibiaGoals.com"/>
 			<attribute key="toDamage" value="110"/>
 			<attribute key="weaponType" value="wand"/>
 			<attribute key="wandType" value="death"/>
-			<attribute key="vocation" value="Sorcerer;true, Mster Sorcerer"/>
+			<attribute key="vocation" value="Sorcerer;true, Master Sorcerer"/>
 			<attribute key="slot" value="hand"/>
 		</attribute>
 	</item>

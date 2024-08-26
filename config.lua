@@ -226,7 +226,7 @@ familiarTime = 30
 
 partyAutoShareExperience = true
 -- partyShareRangeMultiplier: the range of the party share experience, default 3/2 (1.5)
-partyShareRangeMultiplier = 2
+partyShareRangeMultiplier = 10
 partyShareLootBoosts = true
 partyShareLootBoostsDimishingFactor = 1
 
@@ -376,7 +376,7 @@ mapAuthor = "OpenTibiaBR"
 -- Party List limitations
 -- max distance in which players in party list are visible
 -- NOTE partyListMaxDistance set to 0 means no limit
-partyListMaxDistance = 30
+partyListMaxDistance = 0
 
 -- Custom Map
 -- NOTE: toggleMapCustom set to true will load all maps in custom map folder

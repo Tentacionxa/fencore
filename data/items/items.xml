@@ -38435,7 +38435,7 @@
 		<attribute key="description" value="A scroll of parchment, inscribed with an arcane incantation rite"/>
 		<attribute key="weight" value="10"/>
 	</item>
-	<item id="18935" article="a" name="vampire's signet ring">
+	<item id="18935" article="a" name="loot ring">
 		<attribute key="description" value="A ring with a massive, faintly glowing seal, containing the blood of a vampire"/>
 		<attribute key="weight" value="10"/>
 		<attribute key="script" value="moveevent">

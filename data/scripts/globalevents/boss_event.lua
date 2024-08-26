@@ -11,7 +11,7 @@ local config = {
     },
     bossPosition = Position(33117, 31699, 7),
     bossName     = 'Orshabaal',
-    spawnTime    = '10:00:00'
+    spawnTime    = '12:00:00'
 }
 
 local OrshabaalRespawn = GlobalEvent("OrshabaalRespawn")

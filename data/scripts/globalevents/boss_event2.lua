@@ -11,7 +11,7 @@ local config = {
     },
     bossPosition = Position(32061, 32610, 14),
     bossName     = 'Morgaroth',
-    spawnTime    = '12:00:00'
+    spawnTime    = '14:00:00'
 }
 
 local MorgarothRespawn = GlobalEvent("MorgarothRespawn")

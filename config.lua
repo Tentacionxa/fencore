@@ -65,7 +65,7 @@ serverName = "Fencore"
 serverMotd = "Welcome to the Fencore!"
 statusTimeout = 5 * 1000
 replaceKickOnLogin = true
-maxPacketsPerSecond = 25
+maxPacketsPerSecond = 75
 maxItem = 6000
 maxContainer = 100
 onePlayerOnlinePerAccount = false
@@ -75,7 +75,7 @@ maxPlayersOutsidePZPerAccount = 2
 -- Packet Compression
 -- Minimize network bandwith and reduce ping
 -- Levels: 0 = disabled, 1 = best speed, 9 = best compression
-packetCompressionLevel = 6
+packetCompressionLevel = 4
 
 -- Depot Limit
 freeDepotLimit = 2000

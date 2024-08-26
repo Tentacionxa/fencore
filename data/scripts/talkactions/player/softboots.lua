@@ -2,7 +2,7 @@ local softBootsRepair = TalkAction("!softboots")
 local config = {
 	wormSoftId = 6530,
 	newSoftId = 6529,
-	value = 12000,
+	value = 0,
 }
 
 function softBootsRepair.onSay(player, words, param)

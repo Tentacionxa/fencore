@@ -1,5 +1,5 @@
 local config = {
-    max = 3,
+    max = 4,
     maxVip = 2,
     text = "Only 1 (FREE) & 2 (VIP) characters allowed per IP.",
     group_id = 1,  -- it apply the limit to players with a group less than or equal to the id

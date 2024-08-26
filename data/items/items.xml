@@ -11096,7 +11096,9 @@
 		<attribute key="transformdeequipto" value="6529"/>
 		<attribute key="decayTo" value="6530"/>
 		<attribute key="weight" value="800"/>
-			<attribute key="armor" value="2"/>
+		<attribute key="script" value="moveevent">
+			<attribute key="slot" value="feet"/>
+		</attribute>
 	</item>
 	<item id="3550" name="patched boots">
 		<attribute key="primarytype" value="boots"/>
@@ -32829,9 +32831,9 @@
 	<item id="14757" article="a" name="dragon's nest">
 		<attribute key="description" value="Young dragons will hatch soon."/>
 	</item>
-	<item id="14758" article="a" name="premium scroll">
+	<item id="14758" article="a" name="experience scroll">
 		<attribute key="primarytype" value="documents and papers"/>
-		<attribute key="description" value="Using this scroll will add 30 days of premium time to your account once."/>
+		<attribute key="description" value="Using this scroll will add a 50% XP boost for 1 hour."/>
 		<attribute key="weight" value="0"/>
 	</item>
 	<item id="14759" article="a" name="surprise nest">

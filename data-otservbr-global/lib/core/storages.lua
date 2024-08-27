@@ -2753,6 +2753,7 @@ Storage = {
 	VipSystem = {
 		OnlineCoinsGain = 150002,
 		OnlineTokensGain = 150003,
+		IsVip = 150004
 	},
 }
 

@@ -25,7 +25,7 @@ end
 spell:name("Ultimate Cure")
 spell:words("exana ultimate")
 spell:group("healing")
-spell:vocation("sorcerer;true", "master sorcerer;true","druid;true", "elder druid;true", "paladin;true", "royal paladin;true">
+spell:vocation("sorcerer;true", "master sorcerer;true","druid;true", "elder druid;true", "paladin;true", "royal paladin;true")
 spell:castSound(SOUND_EFFECT_TYPE_SPELL_CURE_BURNING)
 spell:id(600)
 spell:cooldown(6000)

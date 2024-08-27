@@ -1,7 +1,7 @@
 local config = {
-    exhaustTime = 20, -- Time to take another reward in hours
-    exhaustStorage = 30061, -- Storage of chest
-    level = 170, -- Minimum level to open the chest
+    exhaustTime = 2, -- Time to take another reward in hours
+    exhaustStorage = 30090, -- Storage of chest
+    level = 300, -- Minimum level to open the chest
     capacity = 100 -- Minimum capacity required to take a reward (Set to heaviest item's weight)
 }
 

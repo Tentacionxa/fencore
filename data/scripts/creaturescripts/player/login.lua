@@ -20,6 +20,8 @@ end
 local playerLoginGlobal = CreatureEvent("PlayerLoginGlobal")
 
 function playerLoginGlobal.onLogin(player)
+	if 1 == 1 then return true end
+
 	-- Welcome
 	local loginStr
 	if player:getLastLoginSaved() == 0 then

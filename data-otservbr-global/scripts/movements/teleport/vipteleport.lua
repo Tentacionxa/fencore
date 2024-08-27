@@ -1,6 +1,8 @@
 local config = {
 	{ name="Asura Palace", position = Position(32951, 32690, 7) },
 	{ name="Buried Cathedral", position = Position(33618, 32519, 14) },
+	{ name="Bulltaur Lair", position = Position(32872, 32371, 8) },
+	{ name="Iksupan", position = Position(34015, 31891, 8) },
 	{ name="Soul War", position = Position(33621, 31424, 10) },
 	{ name="Cobra Bastion", position = Position(33392, 32624, 7) },
 	{ name="Secret Library", position = Position(32515, 32533, 12) },

@@ -9324,7 +9324,7 @@
 	<item fromid="3547" toid="3548" article="a" name="tic-tac-toe token">
 		<attribute key="weight" value="500"/>
 	</item>
-	<item id="3549" article="a" name="pair of soft boots">
+	<item id="6529" article="a" name="pair of soft boots">
 		<attribute key="showduration" value="1"/>
 		<attribute key="showAttributes" value="1"/>
 		<attribute key="manaticks" value="6000"/>
@@ -9332,7 +9332,7 @@
 		<attribute key="healthticks" value="6000"/>
 		<attribute key="healthgain" value="50"/>
 		<attribute key="duration" value="14400"/>
-		<attribute key="transformdeequipto" value="6529"/>
+		<attribute key="transformdeequipto" value="3549"/>
 		<attribute key="decayTo" value="6530"/>
 		<attribute key="weight" value="800"/>
 			<attribute key="armor" value="2"/>
@@ -16123,10 +16123,10 @@
 		<attribute key="attack" value="72"/>
 		<attribute key="weight" value="90"/>
 	</item>
-	<item id="6529" article="a" name="pair of soft boots">
+	<item id="3549" article="a" name="pair of soft boots">
 		<attribute key="stopduration" value="1"/>
 		<attribute key="showduration" value="1"/>
-		<attribute key="transformequipto" value="3549"/>
+		<attribute key="transformequipto" value="6529"/>
 		<attribute key="weight" value="800"/>
 	</item>
 	<item id="6530" name="worn soft boots">

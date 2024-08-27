@@ -205,4 +205,4 @@ for weaponId, weapon in pairs(exerciseWeaponsTable) do
 	end
 end
 
-exerciseTraining:register()
+-- exerciseTraining:register()

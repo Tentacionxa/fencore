@@ -1,4 +1,5 @@
-local funreturn player:sendTextMessage(MESSAGE_BOOSTED_CREATURE, string.format("Event! %s is %screased. Happy Hunting!", category, isIncreased and "in" or "de"))
+local function sendBoostMessage(player, category, isIncreased)
+	return player:sendTextMessage(MESSAGE_BOOSTED_CREATURE, string.format("Event! %s is %screased. Happy Hunting!", category, isIncreased and "in" or "de"))
 end
 
 local function onMovementRemoveProtection(playerId, oldPos, time)
@@ -13,8 +14,7 @@ local function onMovementRemoveProtection(playerId, oldPos, time)
 		return true
 	end
 
-	addction sendBoostMessage(player, category, isIncreased)
-	Event(onMovementRemoveProtection, 1000, playerId, oldPos, time - 1)
+	addEvent(onMovementRemoveProtection, 1000, playerId, oldPos, time - 1)
 end
 
 local playerLoginGlobal = CreatureEvent("PlayerLoginGlobal")

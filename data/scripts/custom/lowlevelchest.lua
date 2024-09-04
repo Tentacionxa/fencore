@@ -1,7 +1,7 @@
 local config = {
-    exhaustTime = 20, -- Time to take another reward in hours
-    exhaustStorage = 30061, -- Storage of chest
-    level = 170, -- Minimum level to open the chest
+    exhaustTime = 2, -- Time to take another reward in hours
+    exhaustStorage = 30090, -- Storage of chest
+    level = 300, -- Minimum level to open the chest
     capacity = 100 -- Minimum capacity required to take a reward (Set to heaviest item's weight)
 }
 
@@ -24,12 +24,12 @@ function dailyRewardChest.onUse(creature, item, position, fromPosition, pos, tar
  
     local backpack = player:getSlotItem(CONST_SLOT_BACKPACK)   -- Checks your backpack has room
     if not backpack or backpack:getEmptySlots(true) < 1 then
-        player:sendTextMessage (MESSAGE_STATUS_WARNING, "You do not have any available space free in your backpack to receive your reward!")
+       player:sendTextMessage(MESSAGE_EVENT_ADVANCE,  "You do not have any available space free in your backpack to receive your reward!")
         return false
     end
   
     if (player:getFreeCapacity() / 100) < (config.capacity) then  -- Checks your characters capacity
-        player:sendTextMessage(MESSAGE_STATUS_WARNING, 'You do not have enough capacity to take a reward! Make sure you have a minimum of ' .. config.capacity .. ' before taking the reward!')
+        player:sendTextMessage(MESSAGE_EVENT_ADVANCE,  'You do not have enough capacity to take a reward! Make sure you have a minimum of ' .. config.capacity .. ' before taking the reward!')
         return false
     end
 

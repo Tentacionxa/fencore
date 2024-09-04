@@ -2,6 +2,7 @@ local config = {
 	{ name="Black Sheep", position = Position(33049, 32375, 10)},
 	{ name="Crystal Wolf", position = Position(33130, 32142, 7)},
     { name="Donkey", position = Position(32258, 32352, 7)},
+	{ name="Midnight Panther", position = Position(32871, 32690, 7)},
 	{ name="Dragonling", position = Position(33299, 31845, 14)},
 	{ name="Draptor", position = Position(33206, 31256, 7)  },
 	{ name="Dromedary", position = Position(33274, 32772, 7)  },

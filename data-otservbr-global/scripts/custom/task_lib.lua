@@ -90,7 +90,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "Amazon, Valkyrie, Xenia, Witch", color = 40, total = 500, type = "daily", storage = 190008, storagecount = 190009, 
+{name = "Amazon, Valkyrie, Xenia, Witch", color = 40, total = 500, type = "repeatable", storage = 190008, storagecount = 190009, 
 	rewards = { 
 	{3043, 60},
 	{"exp", 1500000},
@@ -132,6 +132,7 @@ taskConfiguration = {
 	{20272, 1},
 	{20062, 50},
 	{3043, 70},
+   {37317, 1},
 	{"exp", 3500000},
 	},
 	races = {
@@ -145,10 +146,11 @@ taskConfiguration = {
 	},
 },
 
-{name = "Deeplings - Deepling Guard, Deepling Warrior, Deepling Scount", color = 40, total = 1500, type = "daily", storage = 190016, storagecount = 190017, 
+{name = "Deeplings - Deepling Guard, Deepling Warrior, Deepling Scount", color = 40, total = 1500, type = "repeatable", storage = 190016, storagecount = 190017, 
 	rewards = { 
 	{14142, 1},
 	{3043, 60},
+{37317, 1},
 	{"exp", 10000000},
 	},
 	races = {
@@ -158,9 +160,10 @@ taskConfiguration = {
 	},
 },
 
-{name = "Falcon Bastion - Falcon Knight, Falcon Paladin, Monk, Preceptor Lazare, Grand Canon Dominus, Grand Commander, Grand Chaplain Gaunder", color = 40, total = 1500, type = "repeatable", storage = 190018, storagecount = 190019, 
+{name = "Falcon Bastion - Falcon Knight, Falcon Paladin, Monk, Preceptor Lazare, Grand Canon Dominus, Grand Chaplain Gaunder", color = 40, total = 1500, type = "repeatable", storage = 190018, storagecount = 190019, 
 	rewards = { 
 	{3043, 300},
+{37317, 1},
 	{"exp", 10000000},
 	},
 	races = {
@@ -169,7 +172,6 @@ taskConfiguration = {
 		"Monk",
 		"Preceptor Lazare",
 		"Grand Canon Dominus",
-		"Grand Commander",
 		"Grand Chaplain Gaunder",
 	},
 },
@@ -177,6 +179,7 @@ taskConfiguration = {
 {name = "Banuta - Medusa, Serpent Spawn, Hydra, Bonebeast, ", color = 40, total = 5000, type = "repeatable", storage = 190020, storagecount = 190021, 
 	rewards = { 
 	{3043, 200},
+{37317, 1},
 	{"exp", 20000000},
 	},
 	races = {
@@ -196,6 +199,7 @@ taskConfiguration = {
 {name = "Hero Cave - Bonelord, Dark Apprentice, Dark Magician, Demon Skeleton,Hero, Hunter, Monk, Priestess, Stalker, Stone Golem, Wild Warrior, Vile grandmaster, Vicious Squire", color = 40, total = 1500, type = "repeatable", storage = 190024, storagecount = 190025, 
 	rewards = { 
 	{3043, 150},
+{37317, 1},
 	{"exp", 1000000},
 	},
 	races = {
@@ -219,6 +223,7 @@ taskConfiguration = {
 {name = "Ogre - Ogre Sage, Ogre Ruffian, Ogre Rowdy, Ogre Shaman", color = 40, total = 1500, type = "repeatable", storage = 190026, storagecount = 190027, 
 	rewards = { 
 	{3043, 60},
+{37317, 1},
 	{"exp", 30000000},
 	},
 	races = {
@@ -232,6 +237,7 @@ taskConfiguration = {
 {name = "Pirat - Pirat Mate, Pirat Cutthroat, Pirat Scoundrel, Pirat Bombardier", color = 40, total = 1500, type = "repeatable", storage = 190028, storagecount = 190029, 
 	rewards = { 
 		{3043, 60},
+{37317, 1},
 	{"exp", 30000000},
 	},
 	races = {
@@ -245,6 +251,7 @@ taskConfiguration = {
 {name = "Asura Palace - Dawnfire Asura, Frost Flower Asura, Hellspawn, Midnight Asura, Destroyer", color = 40, total = 1500, type = "repeatable", storage = 190030, storagecount = 190031, 
 	rewards = { 
 		{3043, 60},
+{37317, 1},
 	{"exp", 30000000},
 	},
 	races = {
@@ -259,6 +266,7 @@ taskConfiguration = {
 {name = "Asura Vaults - True Dawnfire Asura, True Midnight Asura, True Frost Flower Asura", color = 40, total = 2500, type = "repeatable", storage = 190032, storagecount = 190033, 
 	rewards = { 
 		{3043, 100},
+{37317, 1},
 	{"exp", 70000000},
 	},
 	races = {
@@ -271,6 +279,7 @@ taskConfiguration = {
 {name = "Summer Dream Court - Crazed Summer Rearguard, Crazed Summer Vanguard, Insane Siren, Arachnophobica, Thanatursus, Lacewing Moth", color = 40, total = 3500, type = "repeatable", storage = 190034, storagecount = 190035, 
 	rewards = { 
 		{3043, 100},
+{37317, 1},
 		{"exp", 90000000},
 	},
 	races = {
@@ -286,6 +295,7 @@ taskConfiguration = {
 {name = "Court of Winter - Crazed Winter Vanguard, Crazed Winter Rearguard, Soul-Broken Harbinger, Hibernal Moth, Arachnophobica, Thanatursus", color = 40, total = 3500, type = "repeatable", storage = 190036, storagecount = 190037, 
 	rewards = { 
 		{3043, 100},
+{37317, 1},
 		{"exp", 90000000},
 	},
 	races = {
@@ -301,6 +311,7 @@ taskConfiguration = {
 {name = "Lion Sanctum - White Lion, Werelion, Werelioness", color = 40, total = 4000, type = "repeatable", storage = 190038, storagecount = 190039, 
 	rewards = { 
 	{3043, 100},
+{37317, 1},
 	{"exp", 70000000},
 	},
 	races = {
@@ -310,10 +321,10 @@ taskConfiguration = {
 	},
 },
 
-{name = "Soul War - Bony Sea Devil, Brachiodemon, Capricious Phantom, Cloak of Terror, Distorted Phantom, Courage Leech, Infernal Phantom, Infernal Demon, Hazardous Phantom, Many Faces, Mean Maw, Mould Phantom, Rotten Golem, Spiteful Spitter, Vibrant Phantom, Branchy Crawler", color = 40, total = 6000, type = "daily", storage = 190042, storagecount = 190043, 
+{name = "Soul War - Bony Sea Devil, Brachiodemon, Capricious Phantom, Cloak of Terror, Distorted Phantom, Courage Leech, Infernal Phantom, Infernal Demon, Hazardous Phantom, Many Faces, Mean Maw, Mould Phantom, Rotten Golem, Spiteful Spitter, Vibrant Phantom, Branchy Crawler", color = 40, total = 6000, type = "repeatable", storage = 190042, storagecount = 190043, 
 	rewards = {  
 		{3043, 400},
-		{37317, 4},
+		{37317, 2},
 	{"exp", 100000000},
 	},
 	races = {
@@ -339,6 +350,7 @@ taskConfiguration = {
 {name = "Zao - Lizard Chosen, Lizard High Guard, Lizard Legionnaire, Lizard Dragon Priest, Ghastly Dragon, Draken Elite, Draken Abomination, Draken Warmaster, Draken Spellweaver, Lizard Zaogun", color = 40, total = 2500, type = "repeatable", storage = 190044, storagecount = 190045, 
 	rewards = { 
 		{3043, 170},
+{37317, 1},
 	{"exp", 8000000},
 	},
 	races = {
@@ -355,9 +367,10 @@ taskConfiguration = {
 	},
 },
 
-{name = "Issavi / Kilmaresh step - Priestess of the Wild Sun, Black Sphinx Acolyte, Burning Gladiator, Sphinx, Crypt Warden, Gryphon, Young Goanna, Adult goanna, Feral Sphinx, Manticore, Lamassu", color = 40, total = 2500, type = "daily", storage = 190046, storagecount = 190047, 
+{name = "Issavi / Kilmaresh step - Priestess of the Wild Sun, Black Sphinx Acolyte, Burning Gladiator, Sphinx, Crypt Warden, Gryphon, Young Goanna, Adult goanna, Feral Sphinx, Manticore, Lamassu", color = 40, total = 2500, type = "repeatable", storage = 190046, storagecount = 190047, 
 	rewards = { 
 		{3043, 260},
+{37317, 1},
 	{"exp", 8000000},
 	},
 	races = {
@@ -378,6 +391,7 @@ taskConfiguration = {
 {name = "Cobra Bastion - Cobra Assassin, Cobra Vizier, Cobra Scout", color = 40, total = 1500, type = "repeatable", storage = 190048, storagecount = 190049, 
 	rewards = { 
 		{3043, 190},
+{37317, 1},
 	{"exp", 8000000},
 	},
 	races = {
@@ -387,9 +401,10 @@ taskConfiguration = {
 	},
 },
 
-{name = "INQ/POI - Ancient Scarab, Behemoth, Betrayed Wraith, Blightwalker, Bonebeast, Braindeath, Crystal Spider, Dark Magician, Dark Torturer, Defiler, Demon, Destroyer, Diabolic Imp, Dreadbeast, Efreet, Eye of the Seven, Fire Devil, Fire Elemental, Fury, Gargoyle, Giant Spider, Hand of Cursed Fate, Hellfire Fighter, Hellhound, Ice Golem, Juggernaut, Lich, Lost Soul, Massive Fire Elemental, Nightmare, Phantom, The Count, Spectre, Plaguesmith, Warlock", color = 40, total = 5000, type = "repeatable", storage = 190052, storagecount = 190053, 
+{name = "INQ/POI - Ancient Scarab, Behemoth, Betrayed Wraith, Blightwalker, Bonebeast, Braindeath, Crystal Spider, Dark Magician, Dark Torturer, Defiler, Demon, Destroyer, Diabolic Imp, Dreadbeast, Efreet, Eye of the Seven, Fire Devil, Fire Elemental, Fury, Gargoyle, Giant Spider, Hand of Cursed Fate, Hellfire Fighter, Hellhound, Ice Golem, Juggernaut, Lich, Lost Soul, Massive Fire Elemental, Nightmare, The Count, Spectre, Plaguesmith, Warlock", color = 40, total = 5000, type = "repeatable", storage = 190052, storagecount = 190053, 
 	rewards = { 
 		{3043, 350},
+{37317, 1},
 	{"exp", 10000000},
 	},
 	races = {
@@ -424,14 +439,13 @@ taskConfiguration = {
 		"Lost Soul",
 		"Massive Fire Elemental",
 		"Nightmare",
-		"Phantom",
 		"The Count",
 		"Spectre",
 		"Plaguesmith",
 		"Warlock",
 	},
 },
-{name = "Rotten Blood - Bloated Man-Maggot, Converter, Darklight Construct, Darklight Emitter, Darklight Matter, Darklight Source, Darklight Striker, Mycobiontic Beetle, Oozing Carcass, Oozing Corpus, Rotten Man-Maggot, Sopping Carcass, Sopping Corpus, Walking Pilar, Wandering Pilar", color = 40, total = 4500, type = "daily", storage = 190054, storagecount = 190055, 
+{name = "Rotten Blood - Bloated Man-Maggot, Converter, Darklight Construct, Darklight Emitter, Darklight Matter, Darklight Source, Darklight Striker, Mycobiontic Beetle, Oozing Carcass, Oozing Corpus, Rotten Man-Maggot, Sopping Carcass, Sopping Corpus, Walking Pillar, Wandering Pilar", color = 40, total = 4500, type = "repeatable", storage = 190054, storagecount = 190055, 
 	rewards = { 
 		{3043, 350},
 		{37317, 1},
@@ -444,19 +458,21 @@ taskConfiguration = {
 		"Darklight Emitter",
 		"Darklight Source",
 		"Darklight Striker",
+"Darklight Matter",
 		"Mycobiontic Beetle",
 		"Oozing Carcass",
 		"Oozing Corpus",
 		"Rotten Man-Maggot",
 		"Sopping Carcass",
-		"Walking Pilar",
+		"Walking Pillar",
 		"Wandering Pillar",
 		
 	},
 },
-{name = "The Secret Library - Cursed Book, Animated Feather, Biting Book, Dark Knowledge, Brain Squid, Burning Book, Flying Book, Rage Squid", color = 40, total = 3500, type = "daily", storage = 190057, storagecount = 190058, 
+{name = "The Secret Library - Cursed Book, Animated Feather, Biting Book, Dark Knowledge, Brain Squid, Burning Book, Flying Book, Rage Squid", color = 40, total = 3500, type = "repeatable", storage = 190057, storagecount = 190058, 
 	rewards = { 
 		{3043, 280},
+{37317, 1},
 	{"exp", 8000000},
 	},
 	races = {
@@ -473,6 +489,7 @@ taskConfiguration = {
 {name = "Marapur Turtles - Two-Headed Turtle, Foam Stalker", color = 40, total = 2500, type = "repeatable", storage = 190059, storagecount = 190060, 
 	rewards = { 
 		{3043, 200},
+{37317, 1},
 	{"exp", 8000000},
 	},
 	races = {
@@ -480,9 +497,10 @@ taskConfiguration = {
 		"Foam Stalker",
 	},
 },
-{name = "Bashmu - Bashmu, Juvenile Bashmu", color = 40, total = 2500, type = "daily", storage = 190059, storagecount = 190060, 
+{name = "Bashmu - Bashmu, Juvenile Bashmu", color = 40, total = 2500, type = "repeatable", storage = 190059, storagecount = 190060, 
 	rewards = { 
 		{3043, 200},
+{37317, 1},
 	{"exp", 8000000},
 	},
 	races = {
@@ -490,9 +508,10 @@ taskConfiguration = {
 		"Juvenile Bashmu",
 	},
 },
-{name = "Warzone 3 - Ironblight, Orewalker, Cliff Strider, Lost Berserker", color = 40, total = 1500, type = "daily", storage = 190061, storagecount = 190062, 
+{name = "Warzone 3 - Ironblight, Orewalker, Cliff Strider, Lost Berserker", color = 40, total = 1500, type = "repeatable", storage = 190061, storagecount = 190062, 
 	rewards = { 
 		{3043, 150},
+{37317, 1},
 	{"exp", 8000000},
 	},
 	races = {
@@ -502,9 +521,10 @@ taskConfiguration = {
 		"Lost Berserker",
 	},
 },
-{name = "Warzone 5 - Drillworm, Chasm Spawn, Mole, Elder Wyrm", color = 40, total = 1500, type = "daily", storage = 190063, storagecount = 190064, 
+{name = "Warzone 5 - Drillworm, Chasm Spawn, Mole, Elder Wyrm", color = 40, total = 1500, type = "repeatable", storage = 190063, storagecount = 190064, 
 	rewards = { 
 		{3043, 150},
+{37317, 1},
 	{"exp", 8000000},
 	},
 	races = {
@@ -514,9 +534,10 @@ taskConfiguration = {
 		"Elder Wyrm",
 	},
 },
-{name = "Buried Cathedral - Burster Spectre, Ripper Spectre, Gazer Spectre", color = 40, total = 2000, type = "daily", storage = 190065, storagecount = 190066, 
+{name = "Buried Cathedral - Burster Spectre, Ripper Spectre, Gazer Spectre", color = 40, total = 2000, type = "repeatable", storage = 190065, storagecount = 190066, 
 	rewards = { 
 		{3043, 200},
+{37317, 1},
 	{"exp", 8000000},
 	},
 	races = {
@@ -525,7 +546,7 @@ taskConfiguration = {
 		"Gazer Spectre",
 	},
 },
-{name = "Oskayaat - Cunning Werepanther, Feral Werecrocodile, Werecrocodile, Werepanther, Weretiger, White Tiger, White Weretiger", color = 40, total = 3000, type = "daily", storage = 190067, storagecount = 190068, 
+{name = "Oskayaat - Cunning Werepanther, Feral Werecrocodile, Werecrocodile, Werepanther, Weretiger, White Tiger, White Weretiger", color = 40, total = 3000, type = "repeatable", storage = 190067, storagecount = 190068, 
 	rewards = { 
 		{3043, 150},
 		{37317, 1},
@@ -542,7 +563,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "Library - Cursed Book, Biting Book, Animated Feather, Dark Knowledge, Energetic Book, Energuardian of Tales, Brain Squid, Flying Book, Guardian of Tales, Gulosh' Deathgaze, Knowledge elemental, The Book of Death, Rage Squid, Squid Warden", color = 40, total = 3000, type = "daily", storage = 190069, storagecount = 190070, 
+{name = "Library - Cursed Book, Biting Book, Animated Feather, Dark Knowledge, Energetic Book, Energuardian of Tales, Brain Squid, Flying Book, Guardian of Tales, Ghulosh' Deathgaze, Knowledge elemental, The Book of Death, Rage Squid, Squid Warden", color = 40, total = 3000, type = "repeatable", storage = 190069, storagecount = 190070, 
 	rewards = { 
 		{3043, 250},
 		{37317, 1},
@@ -558,7 +579,7 @@ taskConfiguration = {
 		"Brain Squid",
 		"Flying Book",
 		"Guardian of Tales",
-		"Gulosh' Deathgaze",
+		"Ghulosh' Deathgaze",
 		"Knowledge elemental",
 		"The Book of Death",
 		"Rage Squid",
@@ -570,6 +591,7 @@ taskConfiguration = {
 {name = "Drefia - Grim Reaper, Lich, Gravedigger, Spectre", color = 40, total = 2000, type = "repeatable", storage = 190077, storagecount = 190078, 
 	rewards = { 
 		{3043, 120},
+{37317, 1},
 	{"exp", 1000000},
 	},
 	races = {
@@ -579,7 +601,7 @@ taskConfiguration = {
 		"Spectre",
 	},
 },
-{name = "Gnomprona - Hulking Prehemoth, Gore Horn, Gorerilla, Emerald Tortoise, Mantosaurus, Noxious Ripptor, Fungosaurus", color = 40, total = 2000, type = "daily", storage = 190079, storagecount = 190080, 
+{name = "Gnomprona - Hulking Prehemoth, Gore Horn, Gorerilla, Emerald Tortoise, Mantosaurus, Noxious Ripptor, Fungosaurus", color = 40, total = 2000, type = "repeatable", storage = 190079, storagecount = 190080, 
 	rewards = { 
 		{3043, 220},
 		{37317, 1},
@@ -595,9 +617,9 @@ taskConfiguration = {
 		"Fungosaurus",
 	},
 },
-{name = "Ballon Land - Ballon Cowboy, Ballon King, Ballon Orc, Ballon Rotworm, Ballon Cyclops", color = 40, total = 2000, type = "daily", storage = 190081, storagecount = 190082, 
+{name = "Ballon Land - Ballon Cowboy, Ballon King, Ballon Orc, Ballon Rotworm, Ballon Cyclops", color = 40, total = 2000, type = "repeatable", storage = 190081, storagecount = 190082, 
 	rewards = { 
-		{3043, 320},
+		{3043, 260},
 		{37317, 1},
 	{"exp", 9000000},
 	},
@@ -609,9 +631,9 @@ taskConfiguration = {
 		"Ballon Cyclops",
 	},
 },
-{name = "Marapur - Naga Warrior, Naga Archer, Makara", color = 40, total = 1000, type = "daily", storage = 190083, storagecount = 190084, 
+{name = "Marapur - Naga Warrior, Naga Archer, Makara", color = 40, total = 1000, type = "repeatable", storage = 190083, storagecount = 190084, 
 	rewards = { 
-		{3043, 220},
+		{3043, 180},
 		{37317, 1},
 	{"exp", 5000000},
 	},
@@ -621,7 +643,7 @@ taskConfiguration = {
 		"Makara",
 	},
 },
-{name = "Ingol - Boar Man, Carnivostrich, Crape Man, Guardian Golem, Harpy, Lab Assistant, Liodile, Rhindeer", color = 40, total = 1500, type = "daily", storage = 190085, storagecount = 190086, 
+{name = "Ingol - Boar Man, Carnivostrich, Crape Man, Harpy, Liodile, Rhindeer", color = 40, total = 1500, type = "repeatable", storage = 190085, storagecount = 190086, 
 	rewards = { 
 		{3043, 320},
 		{37317, 1},
@@ -631,14 +653,12 @@ taskConfiguration = {
 		"Boar Man",
 		"Carnivostrich",
 		"Crape Man",
-		"Guardian Golem",
 		"Harpy",
-		"Lab Assistant",
 		"Liodile",
 		"Rhindeer",
 	},
 },
-{name = "Deathlings - Deathling Scout, Deathling Spellsinger", color = 40, total = 1500, type = "daily", storage = 190087, storagecount = 190088, 
+{name = "Deathlings - Deathling Scout, Deathling Spellsinger", color = 40, total = 1500, type = "repeatable", storage = 190087, storagecount = 190088, 
 	rewards = { 
 		{3043, 220},
 		{37317, 1},
@@ -649,7 +669,7 @@ taskConfiguration = {
 		"Deathling Spellsinger",
 	},
 },
-{name = "Flimsy - Flimsy Lost Soul, Mean Lost Soul, Freakish Lost Soul", color = 40, total = 1500, type = "daily", storage = 190089, storagecount = 190090, 
+{name = "Flimsy - Flimsy Lost Soul, Mean Lost Soul, Freakish Lost Soul", color = 40, total = 2000, type = "repeatable", storage = 190089, storagecount = 190090, 
 	rewards = { 
 		{3043, 260},
 		{37317, 1},
@@ -661,6 +681,55 @@ taskConfiguration = {
 		"Freakish Lost Soul",
 	},
 },
+{name = "Bulltaur Lair - Bulltaur Brute, Bulltaur Alchemist, Bulltaur Forgepriest", color = 40, total = 2000, type = "repeatable", storage = 190091, storagecount = 190092,
+        rewards = {
+                {3043, 260},
+                {37317, 1},
+        {"exp", 5000000},
+        },
+        races = {
+                "Bulltaur Brute",
+                "Bulltaur Alchemist",
+                "Bulltaur Forgepriest",
+        },
+},
+
+
+{name = "Candia - Goggle Cake, Candy Floss Elemental, Angry Sugar Fairy, Nibblemaw, Candy Horror, Honey Elemental, Gingerbread Man, Sugar Cube, Fruit Drop, Chocolate Blob, Truffle, Cream Blob", color = 40, total = 2500, type = "repeatable", storage = 190093, storagecount = 190094,
+        rewards = {
+                {3043, 300},
+                {37317, 1},
+        {"exp", 5000000},
+        },
+        races = {
+                "Goggle Cake",
+                "Candy Floss Elemental",
+                "Angry Sugar Fairy",
+  "Nibblemaw",
+                "Candy Horror",
+                "Honey Elemental",
+  "Gingerbread Man",
+                "Sugar Cube",
+                "Fruit Drop",
+  "Chocolate Blob",
+                "Truffle",
+                "Cream Blob",
+},
+},
+{name = "Nimmersalt - Mega Dragon, Dragolisk, Wardragon", color = 40, total = 2000, type = "repeatable", storage = 190095, storagecount = 190096,
+        rewards = {
+                {3043, 200},
+                {37317, 1},
+        {"exp", 5000000},
+        },
+        races = {
+                "Mega Dragon",
+                "Dragolisk",
+                "Wardragon",
+        
+        },
+},
+
 }
 
 squareWaitTime = 5000

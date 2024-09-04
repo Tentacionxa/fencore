@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Shulgrax")
 local monster = {}
 
 monster.description = "Shulgrax"
-monster.experience = 21000
+monster.experience = 500000
 monster.outfit = {
 	lookType = 842,
 	lookHead = 0,
@@ -11,6 +11,10 @@ monster.outfit = {
 	lookFeet = 87,
 	lookAddons = 1,
 	lookMount = 0,
+}
+
+monster.events = {
+	"AscendantBossesDeath",
 }
 
 monster.health = 40000

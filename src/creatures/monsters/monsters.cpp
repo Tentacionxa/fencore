@@ -1,6 +1,6 @@
 /**
  * Canary - A free and open-source MMORPG server emulator
- * Copyright (©) 2019-2022 OpenTibiaBR <opentibiabr@outlook.com>
+ * Copyright (©) 2019-2024 OpenTibiaBR <opentibiabr@outlook.com>
  * Repository: https://github.com/opentibiabr/canary
  * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
@@ -20,7 +20,7 @@ void MonsterType::loadLoot(const std::shared_ptr<MonsterType> monsterType, LootB
 	if (lootBlock.childLoot.empty()) {
 		bool isContainer = Item::items[lootBlock.id].isContainer();
 		if (isContainer) {
-			for (LootBlock child : lootBlock.childLoot) {
+			for (const LootBlock &child : lootBlock.childLoot) {
 				lootBlock.childLoot.push_back(child);
 			}
 		}
@@ -74,7 +74,7 @@ bool Monsters::deserializeSpell(const std::shared_ptr<MonsterSpell> spell, spell
 		return true;
 	}
 
-	std::shared_ptr<CombatSpell> combatSpell = nullptr;
+	std::shared_ptr<CombatSpell> combatSpell;
 
 	auto combatPtr = std::make_shared<Combat>();
 
@@ -97,7 +97,7 @@ bool Monsters::deserializeSpell(const std::shared_ptr<MonsterSpell> spell, spell
 	}
 
 	if (std::string spellName = asLowerCaseString(spell->name);
-		spellName == "melee") {
+	    spellName == "melee") {
 		sb.isMelee = true;
 
 		if (spell->attack > 0 && spell->skill > 0) {
@@ -144,7 +144,8 @@ bool Monsters::deserializeSpell(const std::shared_ptr<MonsterSpell> spell, spell
 		}
 
 		std::shared_ptr<ConditionSpeed> condition = Condition::createCondition(CONDITIONID_COMBAT, conditionType, duration, 0)->static_self_cast<ConditionSpeed>();
-		condition->setFormulaVars(speedChange / 1000.0, 0, speedChange / 1000.0, 0);
+		float multiplier = 1.0f + static_cast<float>(speedChange) / 1000.0f;
+		condition->setFormulaVars(multiplier / 2, 40, multiplier, 40);
 		combatPtr->addCondition(condition);
 	} else if (spellName == "outfit") {
 		int32_t duration = 10000;
@@ -155,7 +156,7 @@ bool Monsters::deserializeSpell(const std::shared_ptr<MonsterSpell> spell, spell
 
 		std::shared_ptr<ConditionOutfit> condition = Condition::createCondition(CONDITIONID_COMBAT, CONDITION_OUTFIT, duration, 0)->static_self_cast<ConditionOutfit>();
 
-		if (spell->outfitMonster != "") {
+		if (!spell->outfitMonster.empty()) {
 			condition->setLazyMonsterOutfit(spell->outfitMonster);
 		} else if (spell->outfitItem > 0) {
 			Outfit_t outfit;
@@ -163,8 +164,8 @@ bool Monsters::deserializeSpell(const std::shared_ptr<MonsterSpell> spell, spell
 			condition->setOutfit(outfit);
 		} else {
 			g_logger().error("[Monsters::deserializeSpell] - "
-							 "Missing outfit monster or item in outfit spell for: {}",
-							 description);
+			                 "Missing outfit monster or item in outfit spell for: {}",
+			                 description);
 			return false;
 		}
 
@@ -207,8 +208,8 @@ bool Monsters::deserializeSpell(const std::shared_ptr<MonsterSpell> spell, spell
 	} else if (spellName == "condition") {
 		if (spell->conditionType == CONDITION_NONE) {
 			g_logger().error("[Monsters::deserializeSpell] - "
-							 "{} condition is not set for: {}",
-							 description, spell->name);
+			                 "{} condition is not set for: {}",
+			                 description, spell->name);
 		}
 	} else if (spellName == "strength") {
 		//
@@ -216,8 +217,8 @@ bool Monsters::deserializeSpell(const std::shared_ptr<MonsterSpell> spell, spell
 		//
 	} else {
 		g_logger().error("[Monsters::deserializeSpell] - "
-						 "{} unknown or missing parameter on spell with name: {}",
-						 description, spell->name);
+		                 "{} unknown or missing parameter on spell with name: {}",
+		                 description, spell->name);
 	}
 
 	if (spell->shoot != CONST_ANI_NONE) {
@@ -294,9 +295,9 @@ bool MonsterType::loadCallback(LuaScriptInterface* scriptInterface) {
 std::shared_ptr<MonsterType> Monsters::getMonsterType(const std::string &name, bool silent /* = false*/) const {
 	std::string lowerCaseName = asLowerCaseString(name);
 	if (auto it = monsters.find(lowerCaseName);
-		it != monsters.end()
-		// We will only return the MonsterType if it match the exact name of the monster
-		&& it->first.find(lowerCaseName) != it->first.npos) {
+	    it != monsters.end()
+	    // We will only return the MonsterType if it match the exact name of the monster
+	    && it->first.find(lowerCaseName) != it->first.npos) {
 		return it->second;
 	}
 	if (!silent) {
@@ -306,7 +307,7 @@ std::shared_ptr<MonsterType> Monsters::getMonsterType(const std::string &name, b
 }
 
 std::shared_ptr<MonsterType> Monsters::getMonsterTypeByRaceId(uint16_t raceId, bool isBoss /* = false*/) const {
-	const auto bossType = g_ioBosstiary().getMonsterTypeByBossRaceId(raceId);
+	auto bossType = g_ioBosstiary().getMonsterTypeByBossRaceId(raceId);
 	if (isBoss && bossType) {
 		return bossType;
 	}

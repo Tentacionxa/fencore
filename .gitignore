@@ -32,6 +32,9 @@ bld/
 [Ll]og/
 build/
 vcproj/
+!vcproj/canary.sln
+!vcproj/canary.vcxproj
+!vcproj/settings.props
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -368,14 +371,19 @@ tasks.json
 
 ## CUSTOM
 # Files
+config.lua
 config_canary.lua
 client_assertions.txt
 .env
+data-otservbr-global/world/otservbr.otbm
+
 # Extensions
 *.ini
+*.otb
 *.exe
 *.manifest
 *.rar
+monster_count.txt
 
 # SFTP for Sublime
 sftp-config.json
@@ -388,7 +396,6 @@ canary.old
 vcpkg_installed
 
 # CLION
-cmake-build-debug*
-data-otservbr-global/world/otservbr.otbm
-data-otservbr-global/world/otservbr-npc.xml
-data-otservbr-global/scripts/custom/task_lib.lua
+cmake-build-*
+
+core.*

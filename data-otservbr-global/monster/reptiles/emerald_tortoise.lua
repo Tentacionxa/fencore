@@ -89,6 +89,7 @@ monster.loot = {
 	{ id = 282, chance = 2420 }, -- Giant Shimmering Pearl (Green)
 	{ id = 3039, chance = 2420 }, -- Red Gem
 	{ name = "Black Pearl", chance = 2160, minCount = 1, maxCount = 2 },
+{ name = "Primal Bag", chance = 30 },
 }
 
 monster.attacks = {
@@ -128,3 +129,5 @@ monster.immunities = {
 }
 
 mType:register(monster)
+
+RegisterPrimalPackBeast(monster)

@@ -9,11 +9,11 @@ local healthMultiplier = configManager.getFloat(configKeys.RATE_BOSS_HEALTH)
 local urmahlulluChanges = CreatureEvent("UrmahlulluChanges")
 
 local stages = {
-	{ name = "Urmahlullu the Immaculate", health = 515000 * healthMultiplier },
-	{ name = "Wildness of Urmahlullu", health = 400000 * healthMultiplier },
-	{ name = "Urmahlullu the Tamed", health = 300000 * healthMultiplier },
-	{ name = "Wisdom of Urmahlullu", health = 200000 * healthMultiplier },
-	{ name = "Urmahlullu the Weakened", health = 60000 * healthMultiplier },
+	{ name = "Urmahlullu the Immaculate", health = 515000  },
+	{ name = "Wildness of Urmahlullu", health = 400000 },
+	{ name = "Urmahlullu the Tamed", health = 300000 },
+	{ name = "Wisdom of Urmahlullu", health = 200000  },
+	{ name = "Urmahlullu the Weakened", health = 100000 },
 }
 
 local changeEvent = nil

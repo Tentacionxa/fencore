@@ -29,7 +29,7 @@ local effects = {
 {position = Position(33224, 31814, 8), text = 'Adventurer Guild', effect = CONST_ME_GROUNDSHAKER},
 {position = Position(31460, 31719, 7), text = 'Adventurer Guild', effect = CONST_ME_GROUNDSHAKER},
 {position = Position(33466, 32494, 11), text = 'Mount', effect = CONST_ME_GROUNDSHAKER},
-
+		{position = Position(32361, 32224, 7), text = 'World Bonus', effect = CONST_ME_GROUNDSHAKER},
 {position = Position(31469, 31765, 7), text = 'Task', effect = CONST_ME_GROUNDSHAKER},
 {position = Position(32342, 32229, 7), text = 'Task', effect = CONST_ME_GROUNDSHAKER},
 {position = Position(32361, 32219, 7), text = 'Hunt', effect = CONST_ME_GROUNDSHAKER},
@@ -70,6 +70,8 @@ local effects = {
 {position = Position(33437, 32485, 8), text = 'Remove', effect = CONST_ME_GROUNDSHAKER},
 {position = Position(32353, 32211, 7), text = 'Remove', effect = CONST_ME_GROUNDSHAKER},
 {position = Position(32399, 32218, 7), text = 'Remove', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(33437, 32491, 8), text = 'Remove', effect = CONST_ME_GROUNDSHAKER},
+{position = Position(32356, 32211, 7), text = 'Remove', effect = CONST_ME_GROUNDSHAKER},
 
 {position = Position(33457, 32502, 11), text = 'Nemesis Boss', effect = CONST_ME_GROUNDSHAKER},
 

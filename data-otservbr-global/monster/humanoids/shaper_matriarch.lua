@@ -77,6 +77,7 @@ monster.voices = {
 }
 
 monster.loot = {
+	{ id = 24390, chance = 6000 }, -- ancient coin
 	{ id = 3027, chance = 2500 }, -- black pearl
 	{ id = 24383, chance = 18000, maxCount = 2 }, -- cave turnip
 	{ id = 24385, chance = 15000 }, -- cracked alabaster vase

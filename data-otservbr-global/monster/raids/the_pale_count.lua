@@ -84,7 +84,7 @@ monster.loot = {
 	{ id = 8192, chance = 100000 }, -- vampire lord token
 	{ id = 18927, chance = 100000 }, -- vampire's cape chain
 	{ id = 18936, chance = 5000 }, -- vampire count's medal
-	{ id = 11449, chance = 50000 }, -- blood preservation
+		{ id = 11449, chance = 50000 }, -- blood preservation
 	{ id = 9685, chance = 50000 }, -- vampire teeth
 	{ id = 19083, chance = 5000 }, -- silver raid token
 	{ id = 3031, chance = 1000000, maxCount = 100 }, -- gold coin
@@ -112,7 +112,7 @@ monster.loot = {
 
 monster.attacks = {
 	{ name = "melee", interval = 2000, chance = 100, skill = 80, attack = 120 },
-	{ name = "speed", interval = 1000, chance = 17, speedChange = -600, range = 7, radius = 4, target = true, duration = 1500 },
+	{ name = "speed", interval = 1000, chance = 17, speedChange = -600, range = 7, radius = 4, effect = CONST_ME_MAGIC_RED, target = true, duration = 1500 },
 	{ name = "combat", interval = 2000, chance = 21, type = COMBAT_ICEDAMAGE, minDamage = -130, maxDamage = -350, range = 6, radius = 2, shootEffect = CONST_ANI_SMALLICE, effect = CONST_ME_GIANTICE, target = true },
 	{ name = "combat", interval = 2000, chance = 15, type = COMBAT_MANADRAIN, minDamage = -60, maxDamage = -120, range = 7, shootEffect = CONST_ANI_EARTH, effect = CONST_ME_CARNIPHILA, target = false },
 }

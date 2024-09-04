@@ -91,11 +91,11 @@ monster.loot = {
 	{ id = 7426, chance = 10000 }, -- amber staff
 	{ id = 828, chance = 8000 }, -- lightning headband
 	{ id = 23533, chance = 118000 }, -- ring of red plasma
-	{ id = 3036, chance = 118000 }, -- violet gem
-	{ id = 23474, chance = 15000 }, -- tiara of power
-	{ id = 23477, chance = 15000}, -- void boots
-	{ id = 23686, chance = 15000}, -- devourer core
-	{ id = 23684, chance = 15000}, -- crackling egg
+	{ id = 3036, chance = 8000 }, -- violet gem
+	{ id = 23474, chance = 5000 }, -- tiara of power
+	{ id = 23477, chance = 5000}, -- void boots
+	{ id = 23686, chance = 1000}, -- devourer core
+	{ id = 23684, chance = 1000}, -- crackling egg
 }
 
 monster.attacks = {

@@ -84,6 +84,7 @@ monster.loot = {
 	{ id = 24384, chance = 17000 }, -- ancient belt buckle
 	{ id = 24385, chance = 20000 }, -- cracked alabaster vase
 	{ id = 24386, chance = 13000 }, -- rhino horn carving
+	{ id = 24390, chance = 4000 }, -- ancient coin
 	{ id = 3147, chance = 15000 }, -- blank rune
 	{ id = 3577, chance = 50320, maxCount = 2 }, -- meat
 	{ id = 5021, chance = 5000, maxCount = 2 }, -- orichalcum pearl
@@ -104,7 +105,7 @@ monster.loot = {
 monster.attacks = {
 	{ name = "melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -200 },
 	{ name = "combat", interval = 2000, chance = 35, type = COMBAT_PHYSICALDAMAGE, minDamage = 0, maxDamage = -150, range = 7, shootEffect = CONST_ANI_SMALLSTONE, target = true },
-	{ name = "combat", interval = 2000, chance = 35, type = COMBAT_PHYSICALDAMAGE, minDamage = 0, maxDamage = -100, length = 5, spread = 3, effect = CONST_ME_SOUND_RED, target = false },
+	{ name = "combat", interval = 2000, chance = 35, type = COMBAT_PHYSICALDAMAGE, minDamage = 0, maxDamage = -100, length = 5, spread = 0, effect = CONST_ME_SOUND_RED, target = false },
 }
 
 monster.defenses = {

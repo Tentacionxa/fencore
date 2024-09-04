@@ -2,7 +2,7 @@ local BONUS_STORAGE_KEY = 59321
 
 -- Configuration for items that have temporary effects when equipped
 local config = {
-    [18935] = {
+    [39702] = {
         equipEffect = 23,
         deEquipEffect = 24,
         bonusCap = 65 --%
@@ -29,7 +29,7 @@ function lootRingPlayerOnLogin.onLogin(player)
     if not player then return false end
 
 
-    local ringItem = player:getSlotItem(CONST_SLOT_RING)
+    local ringItem = player:getSlotItem(CONST_SLOT_AMMO)
 
     local tmpConfig
     if ringItem then

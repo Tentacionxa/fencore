@@ -314,13 +314,13 @@ function sendTaskModalWindow(player)
 		end
 	end
 	if taskOptions.selectLanguage == 1 then
-		window:addButton(task_pt_br.exitButton)
 		window:addButton(task_pt_br.confirmButton, confirmCallback)
 		window:addButton(task_pt_br.cancelButton, cancelCallback)
+		window:addButton(task_pt_br.exitButton)
 	else
-		window:addButton("Exit")
 		window:addButton("Choose", confirmCallback)
 		window:addButton("Cancel", cancelCallback)
+		window:addButton("Exit")
 	end
 	window:sendToPlayer(player)
 end

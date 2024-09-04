@@ -13,6 +13,10 @@ monster.outfit = {
 	lookMount = 0,
 }
 
+monster.events = {
+	"ParasiteDeath",
+}
+
 monster.health = 550
 monster.maxHealth = 550
 monster.race = "venom"
@@ -91,7 +95,4 @@ monster.immunities = {
 	{ type = "bleed", condition = false },
 }
 
-monster.events = {
-	"ParasiteDeath"
-}
 mType:register(monster)

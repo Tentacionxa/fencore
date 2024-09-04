@@ -77,6 +77,7 @@ monster.voices = {
 }
 
 monster.loot = {
+	{ id = 24390, chance = 3000, maxCount = 3 }, -- ancient coin
 	{ id = 7439, chance = 1500 }, -- berserk potion
 	{ id = 9067, chance = 100 }, -- crystal of power
 	{ id = 25693, chance = 15000 }, -- shimmering beetles
@@ -98,7 +99,7 @@ monster.loot = {
 monster.attacks = {
 	{ name = "melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -450 },
 	-- bleed
-	{ name = "condition", type = CONDITION_BLEEDING, interval = 3000, chance = 11, minDamage = -100, maxDamage = -300, radius = 6, shootEffect = CONST_ANI_WHIRLWINDCLUB, target = true },
+	{ name = "condition", type = CONDITION_BLEEDING, interval = 3000, chance = 11, minDamage = -100, maxDamage = -300, radius = 6, shootEffect = CONST_ANI_WHIRLWINDCLUB, effect = CONST_ME_DRAWBLOOD, target = true },
 	{ name = "combat", interval = 2000, chance = 15, type = COMBAT_ENERGYDAMAGE, minDamage = -60, maxDamage = -115, range = 7, shootEffect = CONST_ANI_LARGEROCK, effect = CONST_ME_EXPLOSIONAREA, target = true },
 }
 

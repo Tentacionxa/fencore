@@ -65,9 +65,35 @@ function Party:onDisband()
 	return true
 end
 
-function Party:onShareExperience(exp)
-	local totalMembers = #self:getMembers()
-	local bonusExperiencePerPlayer = totalMembers > 1 and totalMembers * 100 or 0 --percent
+local config = {
+	maxPlayerCount = 4, -- If more than that, then the XP will have another type of bonus.
+	reducedExperience = 50% -- 5 = 5% (reduced bonus)
+}
 
-	return math.ceil(exp * (1 + (bonusExperiencePerPlayer / 100)) / totalMembers)
+function Party:onShareExperience(exp)
+	local sharedExperienceMultiplier = 2.00 -- 20%
+	local vocationsIds = {}
+
+	local vocationId = self:getLeader():getVocation():getBase():getId()
+	if vocationId ~= VOCATION_NONE then
+		table.insert(vocationsIds, vocationId)
+	end
+
+	for _, member in ipairs(self:getMembers()) do
+		vocationId = member:getVocation():getBase():getId()
+		if not table.contains(vocationsIds, vocationId) and vocationId ~= VOCATION_NONE then
+			table.insert(vocationsIds, vocationId)
+		end
+	end
+
+	local size = #vocationsIds
+	local membersCount = #self:getMembers() + 1
+
+	if membersCount > config.maxPlayerCount then
+		sharedExperienceMultiplier = 1.0 + (config.reducedExperience / 100) -- BÃ´nus reduzido
+	elseif size > 1 then
+		sharedExperienceMultiplier = 1.0 + ((size * (5 * (size - 1) + 10)) / 100)
+	end
+
+	return math.ceil((exp * sharedExperienceMultiplier) / membersCount)
 end

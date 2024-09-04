@@ -3,10 +3,10 @@ local lottery = GlobalEvent("lottery")
 local config = {
     interval = 60, -- 1 minute
     rewards = {
-			{3043, 5}, 			-- {Crystal Coin, 3} -- {itemID, quantity}
-			{3043, 10},			-- {Crystal Coin, 5}
-			{3043, 15},			-- {Crystal Coin, 10}
-			{3043, 20}},			-- {Crystal Coin, 20}
+			{22118, 5}, 			-- {Crystal Coin, 3} -- {itemID, quantity}
+			{22118, 10},			-- {Crystal Coin, 5}
+			{22118, 15},			-- {Crystal Coin, 10}
+			{22118, 25}},			-- {Crystal Coin, 20}
     website = false
 }
 

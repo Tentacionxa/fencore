@@ -83,6 +83,7 @@ monster.loot = {
 	{ name = "Diamond Sceptre", chance = 2060 },
 	{ name = "Doublet", chance = 1390 },
 	{ name = "Hammer of Wrath", chance = 1070 },
+{ name = "Primal Bag", chance = 30 },
 }
 
 monster.attacks = {
@@ -120,3 +121,5 @@ monster.immunities = {
 }
 
 mType:register(monster)
+
+RegisterPrimalPackBeast(monster)

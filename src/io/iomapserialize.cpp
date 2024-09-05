@@ -245,7 +245,8 @@ void IOMapSerialize::saveTile(PropWriteStream &stream, std::shared_ptr<Tile> til
 	items.reserve(32);
 
 	uint16_t count = 0;
-	for (auto &item : *tileItems) {
+	for (auto it = tileItems->rbegin(); it != tileItems->rend(); ++it) {
+		auto item = *it;
 		if (item->getID() == ITEM_BATHTUB_FILLED_NOTMOVABLE) {
 			std::shared_ptr<Item> tub = Item::CreateItem(ITEM_BATHTUB_FILLED);
 			items.emplace_back(tub);

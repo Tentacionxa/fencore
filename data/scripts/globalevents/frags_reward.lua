@@ -19,9 +19,6 @@ local rewards = { --here you add the items and quantity that will be given to pl
 }
 
 local function load_rewards()
-    logger.info("\n\n\n\n\n\n")
-
-
     local date = os.date("*t")
 
     local diff = PERIOD_TO_REWARD * 24 * 60 * 60

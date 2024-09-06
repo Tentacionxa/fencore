@@ -270,7 +270,7 @@ GameStore.Categories = {
 			price = 600,
 			itemtype = 943,
 			count = 100,
-			description = "<i>Using this item on any equipment can increase its Tier up to Tier 10 for all type of item classification. Chance to upgrade is 60%. If you upgrade the tier will increase +1. If You downgrade the tier will be -1. If You have Tier Any Tier  and fail to upgrade, Your item will be destroyed. Cost of each Tier = 4kk</i>",
+			description = "<i>Using this item on any equipment can increase its Tier up to Tier 10 for all type of item classification. Chance to upgrade is 60%. If you upgrade the tier will increase +1. If You downgrade the tier will be -1. If You have Tier Any Tier  and fail to upgrade, Your money will be taken. (Item will stay with you) Cost of each Tier = 4kk</i>",
 			type = GameStore.OfferTypes.OFFER_TYPE_STACKABLE,
 			state = GameStore.States.STATE_NEW,
 			movable = true,

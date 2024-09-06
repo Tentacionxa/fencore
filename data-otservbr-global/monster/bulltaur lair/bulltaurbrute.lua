@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Bulltaur Brute")
 local monster = {}
 
 monster.description = "a bulltaur brute"
-monster.experience = 13000
+monster.experience = 4700
 monster.outfit = {
 	lookType = 1717,
 	lookHead = 0,
@@ -13,9 +13,21 @@ monster.outfit = {
 	lookMount = 0,
 }
 
+monster.raceId = 2447 
+monster.Bestiary = {
+	class = "Humanoid",
+	race = BESTY_RACE_HUMANOID,
+	toKill = 2500,
+	FirstUnlock = 25,
+	SecondUnlock = 1000,
+	CharmsPoints = 50,
+	Stars = 4,
+	Occurrence = 0,
+	Locations = "Bulltaur Lair",
+}
 
-monster.health = 14000
-monster.maxHealth = 10000
+monster.health = 6560
+monster.maxHealth = 6560
 monster.race = "blood"
 monster.corpse = 44709
 monster.speed = 200
@@ -67,19 +79,18 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "platinum coin", chance = 100000, maxCount = 13 },
-	{ name = "bulltaur hoof", chance = 7000, maxCount = 1 },
-	{ name = "might ring", chance = 15000, maxCount = 2 },
-	{ name = "gold nugget", chance = 8000, maxCount = 1 },
-	{ name = "white gem", chance = 7000, maxCount = 2 },
-	{ name = "small topaz", chance = 6000, maxCount = 3 },
-	{ name = "bulltaur armor scrap", chance = 15000, maxCount = 1 },
-	{ name = "dwarven ring", chance = 15000, maxCount = 2 },
-	{ name = "blue gem", chance = 9000, maxCount = 2 },
-	{ name = "bulltaur horn", chance = 7000, maxCount = 2 },
-	{ name = "violet gem", chance = 5000, maxCount = 2 },
-	{ name = "mino shield", chance = 5000, maxCount = 1 },
-	{ name = "dragon hammer", chance = 5000, maxCount = 1 },
+	{ id = 3035, chance = 15000, maxCount = 33 }, 
+	{ id = 44737, chance = 15000, maxCount = 2 }, 
+	{ id = 3048, chance = 15000, maxCount = 1 },
+	{ id = 32769, chance = 5000, maxCount = 1 },
+	{ id = 9057, chance = 5000, maxCount = 1 },
+	{ id = 44738, chance = 5000, maxCount = 1 },
+	{ id = 3097, chance = 5000, maxCount = 1 },
+	{ id = 3041, chance = 5000, maxCount = 1 },
+	{ id = 44736, chance = 5000, maxCount = 1 },
+	{ id = 3036, chance = 5000, maxCount = 1 },
+	{ id = 21175, chance = 1000, maxCount = 1 },
+	{ id = 3322, chance = 1000, maxCount = 1 },
 }
 
 monster.attacks = {

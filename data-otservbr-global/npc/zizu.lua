@@ -416,6 +416,11 @@ npcConfig.shop = {
 	{ itemName = "wedding ring", clientId = 3004, sell = 100 },
 	{ itemName = "white pearl", clientId = 3026, sell = 160 },
 	{ itemName = "orichalcum pearl", clientId = 3026, sell = 80 },
+	{ itemName = "candy necklace", clientId = 45643, sell = 500000 },
+	{ itemName = "biscuit barrier", clientId = 45643, sell = 1000000 },
+	{ itemName = "cocoa grimoire", clientId =  45639, sell = 1500000 },
+	{ itemName = "creamy grimoire", clientId =  45640, sell = 1500000 },
+	{ itemName = "candy-coated quiver", clientId =  45644, sell = 1200000 },
 	
 	--lailene--
 	{ itemName = "batwing hat", clientId = 9103, sell = 8000 },
@@ -1579,7 +1584,8 @@ npcConfig.shop = {
 	{ itemName = "pair of soulstalkers", clientId = 34098, sell = 3600000 },
 	{ itemName = "darklight obsidian axe", clientId = 43781, sell = 10000 },
 	{ itemName = "darklight matter", clientId = 43851, sell = 12000 },
-	{ itemName = "obisidan knife", clientId = 5908, buy = 25000 },
+	{ itemName = "obisidan knife", clientId = 5908, buy = 60000 },
+	{ itemName = "blessed wooden stake", clientId = 5942, buy = 60000 },
 	{ itemName = "soulful legs", clientId = 32618, sell = 500000 },
 	{ itemName = "tagralt blade", clientId = 31614, sell = 750000 },
 	{ itemName = "jungle rod", clientId = 35521, sell = 500000 },

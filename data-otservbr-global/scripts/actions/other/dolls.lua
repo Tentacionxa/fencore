@@ -29,13 +29,6 @@ local dolls = {
 		"Can you stop squeezing me now... I'm starting to feel a little sick.",
 	},
 	[8146] = { "ARE YOU PREPARED TO FACE YOUR DESTINY?" },
-	[8149] = {
-		"Weirdo, you're a weirdo! Actually all of you are!",
-		"Pie for breakfast, pie for lunch and pie for dinner!",
-		"All hail the control panel!",
-		"I own, Tibiacity owns, perfect match!",
-		"Hug me! Feed me! Hail me!",
-	},
 	[8153] = {
 		"It's news to me.",
 		"News, updated as infrequently as possible!",

@@ -113,9 +113,12 @@ npcConfig.shop = {
 { itemName = "gold-scaled sentinel", clientId = 44751, sell = 400000 },
         { itemName = "exalted seal", clientId = 44750, sell = 200000 },
  { itemName = "crystallised blood", clientId = 44752, sell = 270000 },
-
-
-
+ { itemName = "candy necklace", clientId = 45643, sell = 500000 },
+ { itemName = "biscuit barrier", clientId = 45643, sell = 1000000 },
+ { itemName = "cocoa grimoire", clientId =  45639, sell = 1500000 },
+ { itemName = "creamy grimoire", clientId =  45640, sell = 1500000 },
+ { itemName = "candy-coated quiver", clientId =  45644, sell = 1200000 },
+ 
 	--Alaistar-
 	{ itemName = "cowbell", clientId = 21204, sell = 210 },
 	{ itemName = "execowtioner mask", clientId = 21201, sell = 240 },
@@ -1579,7 +1582,8 @@ npcConfig.shop = {
 	{ itemName = "pair of soulstalkers", clientId = 34098, sell = 3600000 },
 	{ itemName = "darklight obsidian axe", clientId = 43781, sell = 10000 },
 	{ itemName = "darklight matter", clientId = 43851, sell = 12000 },
-	{ itemName = "obisidan knife", clientId = 5908, buy = 25000 },
+	{ itemName = "obisidan knife", clientId = 5908, buy = 60000 },
+	{ itemName = "blessed wooden stake", clientId = 5942, buy = 60000 },
 	{ itemName = "soulful legs", clientId = 32618, sell = 500000 },
 	{ itemName = "tagralt blade", clientId = 31614, sell = 750000 },
 	{ itemName = "jungle rod", clientId = 35521, sell = 500000 },

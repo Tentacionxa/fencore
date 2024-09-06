@@ -274,12 +274,6 @@ __SystemFunctions = {
             forgeChest:moveTo(storeInbox)
             player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'Your forge was successful. Your item was upgraded.')
             player:getPosition():sendMagicEffect(182)
-        elseif itemChoosed:getTier() >= 1 then
-            itemChoosed:setTier(itemChoosed:getTier() - 1)
-            itemChoosed:moveTo(forgeChest)
-            forgeChest:moveTo(storeInbox)
-            player:sendTextMessage(MESSAGE_GAME_HIGHLIGHT, 'Your forge failed and your item was downgraded.')
-            player:getPosition():sendMagicEffect(10)
         else
             player:sendTextMessage(MESSAGE_GAME_HIGHLIGHT, 'Your forge failed.')
             player:getPosition():sendMagicEffect(3)

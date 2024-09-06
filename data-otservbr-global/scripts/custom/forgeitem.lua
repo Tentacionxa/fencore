@@ -281,7 +281,6 @@ __SystemFunctions = {
             player:sendTextMessage(MESSAGE_GAME_HIGHLIGHT, 'Your forge failed and your item was downgraded.')
             player:getPosition():sendMagicEffect(10)
         else
-            itemChoosed:remove(1)
             player:sendTextMessage(MESSAGE_GAME_HIGHLIGHT, 'Your forge failed.')
             player:getPosition():sendMagicEffect(3)
         end

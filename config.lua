@@ -78,8 +78,8 @@ maxPlayersOutsidePZPerAccount = 4
 packetCompressionLevel = 4
 
 -- Depot Limit
-freeDepotLimit = 2000
-premiumDepotLimit = 10000
+freeDepotLimit = 10000
+premiumDepotLimit = 15000
 depotBoxes = 20
 
 -- Augments System (Get more info in: https://github.com/opentibiabr/canary/pull/2602)
@@ -498,7 +498,7 @@ rateSoulRegenSpeed = 2.0
 rateSpellCooldown = 1.0
 rateAttackSpeed = 1.0
 rateOfflineTrainingSpeed = rateAttackSpeed
-rateExerciseTrainingSpeed = rateAttackSpeed
+rateExerciseTrainingSpeed = 3.0
 
 -- Monster rates
 rateMonsterHealth = 1.0

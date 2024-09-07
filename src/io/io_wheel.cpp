@@ -625,9 +625,7 @@ void IOWheel::slotGreen50(const std::shared_ptr<Player> &player, uint16_t points
 // SLOT_RED_50 = 16
 void IOWheel::slotRed50(const std::shared_ptr<Player> &player, uint16_t points, uint8_t vocationCipId, PlayerWheelMethodsBonusData &bonusData) const {
 	bonusData.mitigation += MITIGATION_INCREASE * points;
-	if (isKnight(vocationCipId)) {
-		addSpell(player, bonusData, WheelSlots_t::SLOT_RED_50, points, "Fierce Berserk");
-	} else if (isPaladin(vocationCipId)) {
+	if (isPaladin(vocationCipId)) {
 		addSpell(player, bonusData, WheelSlots_t::SLOT_RED_50, points, "Divine Caldera");
 	} else if (isSorcerer(vocationCipId)) {
 		addSpell(player, bonusData, WheelSlots_t::SLOT_RED_50, points, "Great Fire Wave");

@@ -33,6 +33,7 @@ local table = {
         [1800] = {items = {{itemid = 22118, count = 150}}, storage = 40126, msg = "You won x150 Tibia Coins for reaching level 1800!"},
         [2000] = {items = {{itemid = 22118, count = 400}}, storage = 40127, msg = "You won x400 Tibia Coins for reaching level 2000!"},
         [2100] = {items = {{itemid = 22118, count = 400}}, storage = 40128, msg = "You won x400 Tibia Coins for reaching level 2100!"},
+        [2200] = {items = {{itemid = 22118, count = 200}}, storage = 40140, msg = "You won x200 Tibia Coins for reaching level 2200!"},
         [2500] = {items = {{itemid = 22118, count = 400}}, storage = 40129, msg = "You won x400 Tibia Coins for reaching level 2500!"},
         [2700] = {items = {{itemid = 22118, count = 400}}, storage = 40129, msg = "You won x400 Tibia Coins for reaching level 2700!"},
         [3000] = {items = {{itemid = 22118, count = 600}}, storage = 40129, msg = "You won x600 Tibia Coins for reaching level 3000!"}
@@ -68,6 +69,7 @@ local table = {
      [1800] = {items = {{itemid = 22118, count = 150}}, storage = 40126, msg = "You won x150 Tibia Coins for reaching level 1800!"},
      [2000] = {items = {{itemid = 22118, count = 400}}, storage = 40127, msg = "You won x400 Tibia Coins for reaching level 2000!"},
      [2100] = {items = {{itemid = 22118, count = 400}}, storage = 40128, msg = "You won x400 Tibia Coins for reaching level 2100!"},
+     [2200] = {items = {{itemid = 22118, count = 200}}, storage = 40140, msg = "You won x200 Tibia Coins for reaching level 2200!"},
      [2500] = {items = {{itemid = 22118, count = 400}}, storage = 40129, msg = "You won x400 Tibia Coins for reaching level 2500!"},
      [2700] = {items = {{itemid = 22118, count = 400}}, storage = 40129, msg = "You won x400 Tibia Coins for reaching level 2700!"},
      [3000] = {items = {{itemid = 22118, count = 600}}, storage = 40129, msg = "You won x600 Tibia Coins for reaching level 3000!"}
@@ -103,6 +105,7 @@ local table = {
      [1800] = {items = {{itemid = 22118, count = 150}}, storage = 40126, msg = "You won x150 Tibia Coins for reaching level 1800!"},
      [2000] = {items = {{itemid = 22118, count = 400}}, storage = 40127, msg = "You won x400 Tibia Coins for reaching level 2000!"},
      [2100] = {items = {{itemid = 22118, count = 400}}, storage = 40128, msg = "You won x400 Tibia Coins for reaching level 2100!"},
+     [2200] = {items = {{itemid = 22118, count = 200}}, storage = 40140, msg = "You won x200 Tibia Coins for reaching level 2200!"},
      [2500] = {items = {{itemid = 22118, count = 400}}, storage = 40129, msg = "You won x400 Tibia Coins for reaching level 2500!"},
      [2700] = {items = {{itemid = 22118, count = 400}}, storage = 40129, msg = "You won x400 Tibia Coins for reaching level 2700!"},
      [3000] = {items = {{itemid = 22118, count = 600}}, storage = 40129, msg = "You won x600 Tibia Coins for reaching level 3000!"}
@@ -138,6 +141,7 @@ local table = {
        [1800] = {items = {{itemid = 22118, count = 150}}, storage = 40126, msg = "You won x150 Tibia Coins for reaching level 1800!"},
        [2000] = {items = {{itemid = 22118, count = 400}}, storage = 40127, msg = "You won x400 Tibia Coins for reaching level 2000!"},
        [2100] = {items = {{itemid = 22118, count = 400}}, storage = 40128, msg = "You won x400 Tibia Coins for reaching level 2100!"},
+       [2200] = {items = {{itemid = 22118, count = 200}}, storage = 40140, msg = "You won x200 Tibia Coins for reaching level 2200!"},
        [2500] = {items = {{itemid = 22118, count = 400}}, storage = 40129, msg = "You won x400 Tibia Coins for reaching level 2500!"},
        [2700] = {items = {{itemid = 22118, count = 400}}, storage = 40129, msg = "You won x400 Tibia Coins for reaching level 2700!"},
        [3000] = {items = {{itemid = 22118, count = 600}}, storage = 40129, msg = "You won x600 Tibia Coins for reaching level 3000!"}

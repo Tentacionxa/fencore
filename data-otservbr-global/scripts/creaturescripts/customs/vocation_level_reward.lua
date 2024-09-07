@@ -27,19 +27,19 @@ local table = {
         [700] = {items = {{itemid = 37317, count = 6}}, storage = 42136, msg = "You won x6 casino coins for reaching level 700!"},
         [800] = {items = {{itemid = 8149, count = 1}}, storage = 42120, msg = "You won Prey Card Encyclopedia for reaching level 800!"},
         [900] = {items = {{itemid = 8149, count = 1}}, storage = 42121, msg = "You won Prey Card Encyclopedia for reaching level 900!"},
-        [1000] = {items = {{itemid = 22118, count = 150}}, storage = 42123, msg = "You won x500 Tibia Coins for reaching level 1000!"},
+        [1000] = {items = {{itemid = 22118, count = 500}}, storage = 42123, msg = "You won x500 Tibia Coins for reaching level 1000!"},
        [1100] = {items = {{itemid = 943, count = 20}}, storage = 42145, msg = "You won x20 Holy Soil for reaching level 1100!"},
        [1200] = {items = {{itemid = 22118, count = 150}}, storage = 42124, msg = "You won x150 Tibia Coins for reaching level 1200!"},
        [1300] = {items = {{itemid = 36725, count = 2}}, storage = 42150, msg = "You won x2 Stamina Extension for reaching level 1300!"},
        [1400] = {items = {{itemid = 14758, count = 2}}, storage = 42154, msg = "You won x2 Experience Scroll for reaching level 1400!"},
        [1500] = {items = {{itemid = 22118, count = 150}}, storage = 42125, msg = "You won x150 Tibia Coins for reaching level 1500!"},
        [1800] = {items = {{itemid = 22118, count = 150}}, storage = 42126, msg = "You won x150 Tibia Coins for reaching level 1800!"},
-       [2000] = {items = {{itemid = 22118, count = 400}}, storage = 42127, msg = "You won x1000 Tibia Coins for reaching level 2000!"},
+       [2000] = {items = {{itemid = 22118, count = 1000}}, storage = 42127, msg = "You won x1000 Tibia Coins for reaching level 2000!"},
        [2100] = {items = {{itemid = 22118, count = 400}}, storage = 42128, msg = "You won x400 Tibia Coins for reaching level 2100!"},
        [2200] = {items = {{itemid = 22118, count = 200}}, storage = 42140, msg = "You won x200 Tibia Coins for reaching level 2200!"},
        [2500] = {items = {{itemid = 22118, count = 400}}, storage = 42129, msg = "You won x400 Tibia Coins for reaching level 2500!"},
        [2700] = {items = {{itemid = 22118, count = 400}}, storage = 42129, msg = "You won x400 Tibia Coins for reaching level 2700!"},
-       [3000] = {items = {{itemid = 22118, count = 600}}, storage = 42129, msg = "You won x1000 Tibia Coins for reaching level 3000!"}
+       [3000] = {items = {{itemid = 22118, count = 1000}}, storage = 42129, msg = "You won x1000 Tibia Coins for reaching level 3000!"}
 
    },
    [{2, 6}] = {
@@ -66,19 +66,19 @@ local table = {
      [700] = {items = {{itemid = 37317, count = 6}}, storage = 43136, msg = "You won x6 casino coins for reaching level 700!"},
      [800] = {items = {{itemid = 8149, count = 1}}, storage = 43120, msg = "You won Prey Card Encyclopedia for reaching level 800!"},
      [900] = {items = {{itemid = 8149, count = 1}}, storage = 43121, msg = "You won Prey Card Encyclopedia for reaching level 900!"},
-     [1000] = {items = {{itemid = 22118, count = 150}}, storage = 43123, msg = "You won x500 Tibia Coins for reaching level 1000!"},
+     [1000] = {items = {{itemid = 22118, count = 500}}, storage = 43123, msg = "You won x500 Tibia Coins for reaching level 1000!"},
      [1100] = {items = {{itemid = 943, count = 20}}, storage = 43145, msg = "You won x20 Holy Soil for reaching level 1100!"},
      [1200] = {items = {{itemid = 22118, count = 150}}, storage = 43124, msg = "You won x150 Tibia Coins for reaching level 1200!"},
      [1300] = {items = {{itemid = 36725, count = 2}}, storage = 43150, msg = "You won x2 Stamina Extension for reaching level 1300!"},
      [1400] = {items = {{itemid = 14758, count = 2}}, storage = 43154, msg = "You won x2 Experience Scroll for reaching level 1400!"},
      [1500] = {items = {{itemid = 22118, count = 150}}, storage = 43125, msg = "You won x150 Tibia Coins for reaching level 1500!"},
      [1800] = {items = {{itemid = 22118, count = 150}}, storage = 43126, msg = "You won x150 Tibia Coins for reaching level 1800!"},
-     [2000] = {items = {{itemid = 22118, count = 400}}, storage = 43127, msg = "You won x1000 Tibia Coins for reaching level 2000!"},
+     [2000] = {items = {{itemid = 22118, count = 1000}}, storage = 43127, msg = "You won x1000 Tibia Coins for reaching level 2000!"},
      [2100] = {items = {{itemid = 22118, count = 400}}, storage = 43128, msg = "You won x400 Tibia Coins for reaching level 2100!"},
      [2200] = {items = {{itemid = 22118, count = 200}}, storage = 43140, msg = "You won x200 Tibia Coins for reaching level 2200!"},
      [2500] = {items = {{itemid = 22118, count = 400}}, storage = 43129, msg = "You won x400 Tibia Coins for reaching level 2500!"},
      [2700] = {items = {{itemid = 22118, count = 400}}, storage = 43129, msg = "You won x400 Tibia Coins for reaching level 2700!"},
-     [3000] = {items = {{itemid = 22118, count = 600}}, storage = 43129, msg = "You won x1000 Tibia Coins for reaching level 3000!"}
+     [3000] = {items = {{itemid = 22118, count = 1000}}, storage = 43129, msg = "You won x1000 Tibia Coins for reaching level 3000!"}
 
    },
    [{3, 7}] = {
@@ -105,19 +105,19 @@ local table = {
      [700] = {items = {{itemid = 37317, count = 6}}, storage = 44136, msg = "You won x6 casino coins for reaching level 700!"},
      [800] = {items = {{itemid = 8149, count = 1}}, storage = 44120, msg = "You won Prey Card Encyclopedia for reaching level 800!"},
      [900] = {items = {{itemid = 8149, count = 1}}, storage = 44121, msg = "You won Prey Card Encyclopedia for reaching level 900!"},
-     [1000] = {items = {{itemid = 22118, count = 150}}, storage = 44123, msg = "You won x500 Tibia Coins for reaching level 1000!"},
+     [1000] = {items = {{itemid = 22118, count = 500}}, storage = 44123, msg = "You won x500 Tibia Coins for reaching level 1000!"},
      [1100] = {items = {{itemid = 943, count = 20}}, storage = 44145, msg = "You won x20 Holy Soil for reaching level 1100!"},
      [1200] = {items = {{itemid = 22118, count = 150}}, storage = 44124, msg = "You won x150 Tibia Coins for reaching level 1200!"},
      [1300] = {items = {{itemid = 36725, count = 2}}, storage = 44150, msg = "You won x2 Stamina Extension for reaching level 1300!"},
      [1400] = {items = {{itemid = 14758, count = 2}}, storage = 44154, msg = "You won x2 Experience Scroll for reaching level 1400!"},
      [1500] = {items = {{itemid = 22118, count = 150}}, storage = 44125, msg = "You won x150 Tibia Coins for reaching level 1500!"},
      [1800] = {items = {{itemid = 22118, count = 150}}, storage = 44126, msg = "You won x150 Tibia Coins for reaching level 1800!"},
-     [2000] = {items = {{itemid = 22118, count = 400}}, storage = 44127, msg = "You won x1000 Tibia Coins for reaching level 2000!"},
+     [2000] = {items = {{itemid = 22118, count = 1000}}, storage = 44127, msg = "You won x1000 Tibia Coins for reaching level 2000!"},
      [2100] = {items = {{itemid = 22118, count = 400}}, storage = 44128, msg = "You won x400 Tibia Coins for reaching level 2100!"},
      [2200] = {items = {{itemid = 22118, count = 200}}, storage = 44140, msg = "You won x200 Tibia Coins for reaching level 2200!"},
      [2500] = {items = {{itemid = 22118, count = 400}}, storage = 44129, msg = "You won x400 Tibia Coins for reaching level 2500!"},
      [2700] = {items = {{itemid = 22118, count = 400}}, storage = 44129, msg = "You won x400 Tibia Coins for reaching level 2700!"},
-     [3000] = {items = {{itemid = 22118, count = 600}}, storage = 44129, msg = "You won x1000 Tibia Coins for reaching level 3000!"}
+     [3000] = {items = {{itemid = 22118, count = 1000}}, storage = 44129, msg = "You won x1000 Tibia Coins for reaching level 3000!"}
    
    },
    [{4, 8}] = {
@@ -144,19 +144,19 @@ local table = {
        [700] = {items = {{itemid = 37317, count = 6}}, storage = 45136, msg = "You won x6 casino coins for reaching level 700!"},
        [800] = {items = {{itemid = 8149, count = 1}}, storage = 45120, msg = "You won Prey Card Encyclopedia for reaching level 800!"},
        [900] = {items = {{itemid = 8149, count = 1}}, storage = 45121, msg = "You won Prey Card Encyclopedia for reaching level 900!"},
-       [1000] = {items = {{itemid = 22118, count = 150}}, storage = 45123, msg = "You won x500 Tibia Coins for reaching level 1000!"},
+       [1000] = {items = {{itemid = 22118, count = 500}}, storage = 45123, msg = "You won x500 Tibia Coins for reaching level 1000!"},
        [1100] = {items = {{itemid = 943, count = 20}}, storage = 45145, msg = "You won x20 Holy Soil for reaching level 1100!"},
        [1200] = {items = {{itemid = 22118, count = 150}}, storage = 45124, msg = "You won x150 Tibia Coins for reaching level 1200!"},
        [1300] = {items = {{itemid = 36725, count = 2}}, storage = 45150, msg = "You won x2 Stamina Extension for reaching level 1300!"},
        [1400] = {items = {{itemid = 14758, count = 2}}, storage = 45154, msg = "You won x2 Experience Scroll for reaching level 1400!"},
        [1500] = {items = {{itemid = 22118, count = 150}}, storage = 45125, msg = "You won x150 Tibia Coins for reaching level 1500!"},
        [1800] = {items = {{itemid = 22118, count = 150}}, storage = 45126, msg = "You won x150 Tibia Coins for reaching level 1800!"},
-       [2000] = {items = {{itemid = 22118, count = 400}}, storage = 45127, msg = "You won x1000 Tibia Coins for reaching level 2000!"},
+       [2000] = {items = {{itemid = 22118, count = 1000}}, storage = 45127, msg = "You won x1000 Tibia Coins for reaching level 2000!"},
        [2100] = {items = {{itemid = 22118, count = 400}}, storage = 45128, msg = "You won x400 Tibia Coins for reaching level 2100!"},
        [2200] = {items = {{itemid = 22118, count = 200}}, storage = 45140, msg = "You won x200 Tibia Coins for reaching level 2200!"},
        [2500] = {items = {{itemid = 22118, count = 400}}, storage = 45129, msg = "You won x400 Tibia Coins for reaching level 2500!"},
        [2700] = {items = {{itemid = 22118, count = 400}}, storage = 45129, msg = "You won x400 Tibia Coins for reaching level 2700!"},
-       [3000] = {items = {{itemid = 22118, count = 600}}, storage = 45129, msg = "You won x1000 Tibia Coins for reaching level 3000!"}
+       [3000] = {items = {{itemid = 22118, count = 1000}}, storage = 45129, msg = "You won x1000 Tibia Coins for reaching level 3000!"}
 
    }
 }

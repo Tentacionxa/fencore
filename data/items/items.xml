@@ -39178,14 +39178,18 @@
 		<attribute key="description" value="Unlocks greatness in everyone. Souvenir from Thais Museum"/>
 		<attribute key="weight" value="150"/>
 	</item>
-	<item id="19153" article="a" name="friendship amulet">
-		<attribute key="primarytype" value="amulets and necklaces"/>
-		<attribute key="description" value="Souvenir from Thais Museum"/>
-		<attribute key="weight" value="520"/>
-		<attribute key="script" value="moveevent">
-			<attribute key="slot" value="necklace"/>
-		</attribute>
-	</item>
+	  <item id="19153" article="a" name="friendship amulet">
+                <attribute key="primarytype" value="amulets and necklaces"/>
+                <attribute key="description" value="Souvenir from Thais Museum">
+ <attribute key="manaleechamount" value="3000"/>
+                <attribute key="manaleechchance" value="3000"/>
+                                <attribute key="showattributes" value="1"/>
+                <attribute key="showduration" value="1"/>
+<attribute key="weight" value="520"/>
+                <attribute key="script" value="moveevent">
+                        <attribute key="slot" value="necklace"/>
+                </attribute>
+        </item>
 	<item id="19154" article="the" name="Mexcalibur">
 		<attribute key="description" value="Souvenir from Thais Museum"/>
 		<attribute key="weight" value="1200"/>

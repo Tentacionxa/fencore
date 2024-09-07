@@ -11,6 +11,11 @@ mastermind:setParameter(CONDITION_PARAM_SUBID, JeanPierreMagicLevel)
 mastermind:setParameter(CONDITION_PARAM_STAT_MAGICPOINTS, 3)
 mastermind:setParameter(CONDITION_PARAM_BUFF_SPELL, true)
 
+local terrorbird = Condition(CONDITION_ATTRIBUTES)
+mastermind:setParameter(CONDITION_PARAM_TICKS, 60 * 60 * 1000)
+mastermind:setParameter(CONDITION_PARAM_STAT_MAGICPOINTS, 5)
+mastermind:setParameter(CONDITION_PARAM_BUFF_SPELL, true)
+
 local bullseye = Condition(CONDITION_ATTRIBUTES)
 bullseye:setParameter(CONDITION_PARAM_TICKS, 10 * 60 * 1000)
 bullseye:setParameter(CONDITION_PARAM_SUBID, JeanPierreDistance)
@@ -41,6 +46,7 @@ local potions = {
 	[268] = { mana = { 75, 125 }, flask = 285 },
 	[6558] = { transform = { id = { 236, 237 } }, effect = CONST_ME_DRAWBLOOD },
 	[7439] = { vocations = { VOCATION.BASE_ID.KNIGHT }, condition = berserk, effect = CONST_ME_MAGIC_RED, description = "Only knights may drink this potion.", text = "You feel stronger.", achievement = "Berserker" },
+	[9082] = { vocations = { VOCATION.BASE_ID.SORCERER, VOCATION.BASE_ID.DRUID, VOCATION.BASE_ID.PALADIN, VOCATION.BASE_ID.KNIGHT }, condition = terrorbird, effect = CONST_ME_MAGIC_BLUE, description = "This magic treat gives you extra 5 magic points per hour", text = "Yammy.", achievement = "Mastermind" },
 	[7440] = { vocations = { VOCATION.BASE_ID.SORCERER, VOCATION.BASE_ID.DRUID }, condition = mastermind, effect = CONST_ME_MAGIC_BLUE, description = "Only sorcerers and druids may drink this potion.", text = "You feel smarter.", achievement = "Mastermind" },
 	[7443] = { vocations = { VOCATION.BASE_ID.PALADIN }, condition = bullseye, effect = CONST_ME_MAGIC_GREEN, description = "Only paladins may drink this potion.", text = "You feel more accurate.", achievement = "Sharpshooter" },
 	[7642] = { health = { 250, 350 }, mana = { 100, 200 }, vocations = { VOCATION.BASE_ID.PALADIN }, level = 80, flask = 284, description = "Only paladins of level 80 or above may drink this fluid." },

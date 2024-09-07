@@ -30,7 +30,6 @@ local gourmetDishes = {
 	[29408] = { condition = shieldCondition, message = "Chomp." },
 	[29409] = { condition = distanceCondition, message = "Yummm." },
 	[29410] = { condition = magicPointsCondition, message = "Munch." },
-	[9082] = { condition = magicextraPointsCondition, message = "Munch." },
 	[29411] = { condition = meleeCondition, message = "Munch." },
 	[29412] = { condition = hasteCondition, message = "Yummm." },
 	[29413] = { condition = fishingCondition, message = "Mmmmm." },

@@ -17,16 +17,16 @@ local config = {
         {id = 3389, count = 1, chance = 7},
         {id = 3079, count = 1, chance = 5},
 		{id = 3079, count = 100, chance = 5},
-		{id = 943, count = 25, chance = 1, raro = true},
-        {id = 36725, count = 1, chance = 3},
+		{id = 943, count = 25, chance = 0.6, raro = true},
+        {id = 36725, count = 1, chance = 0.7},
         {id = 8149, count = 1, chance = 2},
-        {id = 37317, count = 1, chance = 3},
+        {id = 37317, count = 1, chance = 0.8},
         {id = 14758, count = 1, chance = 0.1, raro = true},
         {id = 36728, count = 1, chance = 0.1, raro = true},
         {id = 36727, count = 1, chance = 0.1, raro = true},
         {id = 12812, count = 1, chance = 0.1, raro = true },
         {id = 14758, count = 1, chance = 3},
-        {id = 19153, count = 1, chance = 6},
+        {id = 19153, count = 1, chance = 0.5},
     }
 }
 

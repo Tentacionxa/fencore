@@ -1,6 +1,6 @@
 local function formulaFunction(player, level, maglevel)
 	local min = (level / 5) + (maglevel * 6)
-	local max = (level / 5) + (maglevel * 10)
+	local max = (level / 5) + (maglevel * 12.5)
 	return -min, -max
 end
 

@@ -63,7 +63,7 @@ spell:isPremium(true)
 spell:range(7)
 spell:isSelfTarget(true)
 spell:isAggressive(false)
-spell:cooldown(1000) -- Cooldown is calculated on the casting
+spell:cooldown(5000) -- Cooldown is calculated on the casting
 spell:groupCooldown(2 * 1000)
 spell:needLearn(true)
 spell:vocation("paladin;true", "royal paladin;true")

@@ -7,7 +7,7 @@ combat:setArea(area)
 
 function onGetFormulaValues(player, level, maglevel)
 	local min = (level / 5) + (maglevel * 7) + 16
-	local max = (level / 5) + (maglevel * 11) + 28 -- TODO: Formulas (TibiaWiki says ~Strong Flame Strike but we need more acurracy)
+	local max = (level / 5) + (maglevel * 13.5) + 28 -- TODO: Formulas (TibiaWiki says ~Strong Flame Strike but we need more acurracy)
 	return -min, -max
 end
 

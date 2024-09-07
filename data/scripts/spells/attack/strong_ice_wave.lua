@@ -5,7 +5,7 @@ combat:setArea(createCombatArea(AREA_SHORTWAVE3))
 
 function onGetFormulaValues(player, level, maglevel)
 	local min = (level / 5) + (maglevel * 8) + 20
-	local max = (level / 5) + (maglevel * 13) + 48
+	local max = (level / 5) + (maglevel * 15) + 48
 	return -min, -max
 end
 
@@ -25,7 +25,7 @@ spell:castSound(SOUND_EFFECT_TYPE_SPELL_STRONG_ICE_WAVE)
 spell:level(40)
 spell:mana(170)
 spell:needDirection(true)
-spell:cooldown(4 * 1000)
+spell:cooldown(1 * 1000)
 spell:groupCooldown(1 * 1000)
 spell:needLearn(false)
 spell:vocation("druid;true", "elder druid;true")

@@ -5,7 +5,7 @@ combat:setArea(createCombatArea(AREA_RING1_BURST3))
 
 function onGetFormulaValues(player, level, maglevel)
 	local min = (level / 5) + (maglevel * 7)
-	local max = (level / 5) + (maglevel * 10.5)
+	local max = (level / 5) + (maglevel * 14.5)
 	return -min, -max
 end
 
@@ -56,7 +56,7 @@ spell:words("exevo ulus tera")
 spell:level(1)
 spell:mana(170)
 spell:isPremium(true)
-spell:cooldown(1000) -- Cooldown is calculated on the casting
+spell:cooldown(4000) -- Cooldown is calculated on the casting
 spell:groupCooldown(2 * 1000)
 spell:needLearn(true)
 spell:vocation("druid;true", "elder druid;true")

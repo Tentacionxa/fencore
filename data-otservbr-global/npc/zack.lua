@@ -1535,7 +1535,7 @@ npcConfig.shop = {
 	{ itemName = "darklight basalt chunk", clientId = 43852, sell = 3800 },
 	{ itemName = "onyx chip", clientId = 22193, sell = 500 },
 	{ itemName = "basalt core", clientId = 43850, sell = 5800 },
-	{ itemName = "sulphurous stone", clientId = 10315, sell = 100 },
+	
 
 
 		--Nemesis boss loot

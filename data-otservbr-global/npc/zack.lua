@@ -1624,6 +1624,18 @@ npcConfig.shop = {
 	{ itemName = "rift bow", clientId = 22866, sell = 920000 },
 	{ itemName = "rift crossbow", clientId = 22867, sell = 900000 },
 	{ itemName = "magic longsword", clientId = 3278, sell = 3000000 },
+	{ itemName = "arcane dragon robe", clientId = 44623, sell = 400000 },
+	{ itemName = "mystical dragon robe", clientId = 44624, sell = 400000 },
+	{ itemName = "dauntless dragon scale armor", clientId = 44621, sell = 1200000 },
+	{ itemName = "unerring dragon scale armor", clientId = 44622, sell = 1200000 },
+	{ itemName = "stoic iks culet", clientId = 44642, sell = 600000 },
+	{ itemName = "stoic iks headpiece", clientId = 44637, sell = 520000 },
+	{ itemName = "stoic iks sandals", clientId = 44649, sell = 520000 },
+	{ itemName = "stoic iks faulds", clientId = 44643, sell = 520000 },
+	{ itemName = "stoic iks chestplate", clientId = 44620, sell = 500000 },
+	{ itemName = "stoic iks cuirass", clientId = 44619, sell = 720000 },
+	{ itemName = "stoic iks casque", clientId = 44636, sell = 600000 },
+	{ itemName = "stoic iks boots", clientId = 44648, sell = 300000 },
 
 	{ itemName = "all loot in pouch", clientId = ITEM_GOLD_POUCH, sell = 1 },
 }

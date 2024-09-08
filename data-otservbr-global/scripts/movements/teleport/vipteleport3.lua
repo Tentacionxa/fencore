@@ -11,6 +11,7 @@ local config = {
 	{ name="Lamassu Isle Rock", position = Position(33477, 31446, 7)},
 	{ name="Flimsy Hideout", position = Position(33734, 31161, 8)},
 	{ name="Weretiger Cave", position = Position(33766, 30794, 8) },
+	{ name="Melting Underground", position = Position(33846, 32679, 13) },
 	{ name="Baloon Land", position = Position(31581, 32761, 8) }
 	
 }

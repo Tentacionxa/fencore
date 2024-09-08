@@ -67,11 +67,11 @@ end
 
 local config = {
 	maxPlayerCount = 4, -- If more than that, then the XP will have another type of bonus.
-	reducedExperience = 50% -- 5 = 5% (reduced bonus)
+	reducedExperience = 5% -- 5 = 5% (reduced bonus)
 }
 
 function Party:onShareExperience(exp)
-	local sharedExperienceMultiplier = 2.00 -- 20%
+	local sharedExperienceMultiplier = 1.20 -- 20%
 	local vocationsIds = {}
 
 	local vocationId = self:getLeader():getVocation():getBase():getId()

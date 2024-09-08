@@ -150,9 +150,9 @@ ruseChanceFormulaA = 0.0307576
 ruseChanceFormulaB = 0.440697
 ruseChanceFormulaC = 0.026
 
-onslaughtChanceFormulaA = 0.05
-onslaughtChanceFormulaB = 0.4
-onslaughtChanceFormulaC = 0.05
+onslaughtChanceFormulaA = 0.02
+onslaughtChanceFormulaB = 0.3
+onslaughtChanceFormulaC = 0.03
 
 momentumChanceFormulaA = 0.05
 momentumChanceFormulaB = 1.9

@@ -4,10 +4,30 @@ combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_SMALLPLANTS)
 combat:setArea(createCombatArea(AREA_SQUAREWAVE5, AREADIAGONAL_SQUAREWAVE5))
 
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 8)
-	local max = (level / 5) + (maglevel * 14.5)
-	return -min, -max
-end
+	if level >= 2000 then
+	local min = (level) + (maglevel * 15)
+																	local max = (level) + (maglevel * 19)
+																	return -min, -max
+	else if  level >= 1500  and level <= 1999 then
+
+	local min = (level) + (maglevel * 10)
+																	local max = (level) + (maglevel * 16)
+																	return -min, -max
+
+	else if  level >= 700 and level <= 1499 then
+
+	local min = (level) + (maglevel * 8)
+																	local max = (level) + (maglevel * 14.5)
+																	return -min, -max
+	elseif level >= 2 and level <= 699 then
+	 local min = (level) + (maglevel * 6)
+																	local max = (level) + (maglevel * 13)
+																	return -min, -max
+	end
+	end
+	end
+	end
+
 
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
 

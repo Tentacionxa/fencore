@@ -6,7 +6,7 @@ combat:setParameter(COMBAT_PARAM_BLOCKARMOR, 1)
 
 function onGetFormulaValues(player, skill, attack, factor)
 	local levelTotal = player:getLevel() / 5
-	return -(((2 * skill + attack / 2500) * 1.30) + levelTotal + 7), -(((2 * skill + attack / 1875) * 4.50) + levelTotal + 13)
+	return -(((2 * skill + attack / 2500) * 1.30) + levelTotal + 7), -(((2 * skill + attack / 1875) * 7.50) + levelTotal + 13)
 end
 
 combat:setCallback(CALLBACK_PARAM_SKILLVALUE, "onGetFormulaValues")
@@ -29,7 +29,7 @@ spell:isPremium(true)
 spell:range(7)
 spell:needTarget(true)
 spell:blockWalls(true)
-spell:cooldown(8 * 1000)
+spell:cooldown(5 * 1000)
 spell:groupCooldown(2 * 1000)
 spell:needLearn(false)
 spell:vocation("paladin;true", "royal paladin;true")

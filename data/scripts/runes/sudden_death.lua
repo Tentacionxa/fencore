@@ -4,10 +4,30 @@ combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_MORTAREA)
 combat:setParameter(COMBAT_PARAM_DISTANCEEFFECT, CONST_ANI_SUDDENDEATH)
 
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 9.605) + 10
-	local max = (level / 5) + (maglevel * 17.395) + 20
-	return -min, -max
-end
+	if level >= 2000 then
+	local min = (level) + (maglevel * 24)
+			local max = (level) + (maglevel * 35)
+			return -min, -max
+	else if  level >= 1500  and level <= 1999 then
+	
+	local min = (level) + (maglevel * 23)
+			local max = (level) + (maglevel * 31)
+			return -min, -max
+	
+	else if  level >= 700 and level <= 1499 then
+	
+	local min = (level) + (maglevel * 18)
+			local max = (level) + (maglevel * 27)
+			return -min, -max
+	elseif level >= 2 and level <= 699 then
+	 local min = (level) + (maglevel * 8)
+			local max = (level) + (maglevel * 20)
+			return -min, -max
+	end
+	end
+	end
+	end
+	
 
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
 

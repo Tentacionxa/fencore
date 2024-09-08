@@ -3,11 +3,30 @@ combat:setParameter(COMBAT_PARAM_TYPE, COMBAT_EARTHDAMAGE)
 combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_SMALLPLANTS)
 combat:setArea(createCombatArea(AREA_CIRCLE6X6))
 
+
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 13)
-	local max = (level / 5) + (maglevel * 21)
-	return -min, -max
-end
+	if level >= 2000 then
+	local min = (level) + (maglevel * 28.5)
+					local max = (level) + (maglevel * 31)
+					return -min, -max
+	elseif level >= 1500 and level <= 1999 then
+	local min = (level) + (maglevel * 23)
+					local max = (level) + (maglevel * 26.5)
+					return -min, -max
+
+	else if  level >= 700 and level <= 1499 then
+
+	local min = (level) + (maglevel * 19)
+					local max = (level) + (maglevel * 23)
+					return -min, -max
+	elseif level >= 2 and level <= 699 then
+	 local min = (level) + (maglevel * 11)
+					local max = (level) + (maglevel * 18)
+					return -min, -max
+	end
+	end
+	end
+
 
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
 
@@ -26,7 +45,7 @@ spell:level(55)
 spell:mana(700)
 spell:isPremium(true)
 spell:isSelfTarget(true)
-spell:cooldown(20 * 1000)
+spell:cooldown(12 * 1000)
 spell:groupCooldown(2 * 1000, 12 * 1000)
 spell:needLearn(false)
 spell:vocation("druid;true", "elder druid;true")

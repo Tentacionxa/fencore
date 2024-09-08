@@ -3,11 +3,32 @@ combat:setParameter(COMBAT_PARAM_TYPE, COMBAT_FIREDAMAGE)
 combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_FIREAREA)
 combat:setArea(createCombatArea(AREA_CIRCLE5X5))
 
+
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 13)
-	local max = (level / 5) + (maglevel * 22)
-	return -min, -max
-end
+	if level >= 2000 then
+	local min = (level) + (maglevel * 27.5)
+			local max = (level) + (maglevel * 32.5)
+			return -min, -max
+	else if  level >= 1500  and level <= 1999 then
+	
+	local min = (level) + (maglevel * 25.5)
+			local max = (level) + (maglevel * 30)
+			return -min, -max
+	
+	else if  level >= 700 and level <= 1499 then
+	
+	local min = (level) + (maglevel * 23)
+			local max = (level) + (maglevel * 27)
+			return -min, -max
+	elseif level >= 2 and level <= 699 then
+	 local min = (level) + (maglevel * 16)
+			local max = (level) + (maglevel * 24)
+			return -min, -max
+	end
+	end
+	end
+	end
+	
 
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
 
@@ -26,7 +47,7 @@ spell:level(60)
 spell:mana(1100)
 spell:isSelfTarget(true)
 spell:isPremium(true)
-spell:cooldown(20 * 1000)
+spell:cooldown(12 * 1000)
 spell:groupCooldown(2 * 1000, 12 * 1000)
 spell:needLearn(false)
 spell:vocation("sorcerer;true", "master sorcerer;true")

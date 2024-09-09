@@ -481,11 +481,11 @@ void WheelModifierContext::addStrategies(WheelGemSupremeModifier_t modifier) {
 			m_strategies.push_back(std::make_unique<GemModifierSpellBonusStrategy>(m_wheel, "Ice Burst", bonus));
 			break;
 		case WheelGemSupremeModifier_t::Druid_EternalWinter_CriticalExtraDamage:
-			bonus.increase.criticalDamage = 3;
+			bonus.increase.criticalDamage = 5;
 			m_strategies.push_back(std::make_unique<GemModifierSpellBonusStrategy>(m_wheel, "Eternal Winter", bonus));
 			break;
 		case WheelGemSupremeModifier_t::Druid_EternalWinter_DamageIncrease:
-			bonus.increase.damage = 10;
+			bonus.increase.damage = 13;
 			m_strategies.push_back(std::make_unique<GemModifierSpellBonusStrategy>(m_wheel, "Eternal Winter", bonus));
 			break;
 		case WheelGemSupremeModifier_t::Druid_TerraWave_DamageIncrease:

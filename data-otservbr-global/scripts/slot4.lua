@@ -19,15 +19,15 @@ local config = {
 		{itemId = 3043, count = {300, 300},    chance = 10 },
     },
     roulettePositions = { 
-        Position(33450, 32491, 13), -- 1
-        Position(33451, 32491, 13), -- 2
-        Position(33452, 32491, 13), -- 3
-        Position(33450, 32492, 13), -- 4
-        Position(33451, 32492, 13), -- 5
-        Position(33452, 32492, 13), -- 6
-        Position(33450, 32493, 13), -- 7
-        Position(33451, 32493, 13), -- 8
-        Position(33452, 32493, 13), -- 9
+        Position(33462, 32491, 13), -- 1
+        Position(33463, 32491, 13), -- 2
+        Position(33464, 32491, 13), -- 3
+        Position(33462, 32492, 13), -- 4
+        Position(33463, 32492, 13), -- 5
+        Position(33464, 32492, 13), -- 6
+        Position(33462, 32493, 13), -- 7
+        Position(33463, 32493, 13), -- 8
+        Position(33464, 32493, 13), -- 9
     },
     animation = {
         spinTime = 10, -- czas trwania animacji w sekundach

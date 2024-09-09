@@ -5,14 +5,15 @@ combat:setParameter(COMBAT_PARAM_BLOCKARMOR, 1)
 combat:setParameter(COMBAT_PARAM_USECHARGES, 1)
 combat:setArea(createCombatArea(AREA_SQUARE1X1))
 
+
 function onGetFormulaValues(player, skill, attack, factor)
 	local level = player:getLevel()
 
-	local min = (level / 5) + (skill + 2 * attack) * 0.6
-	local max = (level / 5) + (skill + 2 * attack) * 1.3
-
+	local min = (level / 5) + (skill + 2 * attack) * 1.85
+	local max = (level / 5) + (skill + 2 * attack) * 3.00
 	return -min * 1.5, -max * 2.5 -- TODO : Use New Real Formula instead of an %
 end
+
 
 combat:setCallback(CALLBACK_PARAM_SKILLVALUE, "onGetFormulaValues")
 

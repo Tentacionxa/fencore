@@ -8,8 +8,9 @@ combat:setParameter(COMBAT_PARAM_USECHARGES, 1)
 function onGetFormulaValues(player, skill, attack, factor)
 	local skillTotal = skill * attack
 	local levelTotal = player:getLevel() / 5
-	return -(((skillTotal * 0.17) + 13) + levelTotal) * 2.00, -(((skillTotal * 0.20) + 34) + levelTotal) * 1.00 -- TODO : Use New Real Formula instead of an %
+	return -(((skillTotal * 0.17) + 13) + levelTotal) * 3.50, -(((skillTotal * 0.20) + 34) + levelTotal) * 4.00 -- TODO : Use New Real F>
 end
+
 
 combat:setCallback(CALLBACK_PARAM_SKILLVALUE, "onGetFormulaValues")
 

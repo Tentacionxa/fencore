@@ -3,11 +3,32 @@ combat:setParameter(COMBAT_PARAM_TYPE, COMBAT_ICEDAMAGE)
 combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_ICEATTACK)
 combat:setParameter(COMBAT_PARAM_DISTANCEEFFECT, CONST_ANI_SMALLICE)
 
+
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 1.403) + 8
-	local max = (level / 5) + (maglevel * 2.203) + 13
-	return -min, -max
-end
+	if level >= 2000 then
+	local min = (level) + (maglevel * 15)
+																	local max = (level) + (maglevel * 19)
+																	return -min, -max
+	else if  level >= 1500  and level <= 1999 then
+
+	local min = (level) + (maglevel * 13.5)
+																	local max = (level) + (maglevel * 17)
+																	return -min, -max
+
+	else if  level >= 700 and level <= 1499 then
+
+	local min = (level) + (maglevel * 12)+10
+																	local max = (level) + (maglevel * 16)+18
+																	return -min, -max
+	elseif level >= 2 and level <= 699 then
+	 local min = (level) + (maglevel * 10)+10
+																	local max = (level) + (maglevel * 15)+15
+																	return -min, -max
+	end
+	end
+	end
+	end
+
 
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
 

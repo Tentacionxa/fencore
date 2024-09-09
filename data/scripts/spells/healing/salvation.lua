@@ -4,11 +4,32 @@ combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_MAGIC_BLUE)
 combat:setParameter(COMBAT_PARAM_DISPEL, CONDITION_PARALYZE)
 combat:setParameter(COMBAT_PARAM_AGGRESSIVE, false)
 
-function onGetFormulaValues(player, level, magicLevel) -- already compared to the official tibia | compared date: 05/07/19(m/d/y)
-	local min = (level * 0.2 + magicLevel * 28) + 75
-	local max = (level * 0.2 + magicLevel * 41) + 125
-	return min, max
+
+function onGetFormulaValues(player, level, maglevel)
+	if level >= 2000 then
+			local min = (level) + (maglevel * 18)
+			local max = (level) + (maglevel * 20)
+			return -min, -max
+else if  level >= 1500  and level <= 1999 then
+
+local min = (level) + (maglevel * 15)
+			local max = (level) + (maglevel * 16)
+			return -min, -max
+
+else if  level >= 700 and level <= 1499 then
+
+local min = (level) + (maglevel * 10)
+			local max = (level) + (maglevel * 15)
+			return -min, -max
+elseif level >= 2 and level <= 699 then
+local min = (level) + (maglevel * 6)
+			local max = (level) + (maglevel * 12)
+			return -min, -max
 end
+end
+end
+end
+
 
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
 

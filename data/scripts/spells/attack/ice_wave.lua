@@ -3,6 +3,7 @@ combat:setParameter(COMBAT_PARAM_TYPE, COMBAT_ICEDAMAGE)
 combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_ICEAREA)
 combat:setArea(createCombatArea(AREA_WAVE4, AREADIAGONAL_WAVE4))
 
+
 function onGetFormulaValues(player, level, maglevel)
 	if level >= 2000 then
 	local min = (level) + (maglevel * 15)
@@ -10,23 +11,24 @@ function onGetFormulaValues(player, level, maglevel)
 																	return -min, -max
 	else if  level >= 1500  and level <= 1999 then
 
-	local min = (level) + (maglevel * 10)
-																	local max = (level) + (maglevel * 16)
+	local min = (level) + (maglevel * 13.5)
+																	local max = (level) + (maglevel * 17)
 																	return -min, -max
 
 	else if  level >= 700 and level <= 1499 then
 
-	local min = (level) + (maglevel * 8)
-																	local max = (level) + (maglevel * 14.5)
+	local min = (level) + (maglevel * 12)+10
+																	local max = (level) + (maglevel * 16)+18
 																	return -min, -max
 	elseif level >= 2 and level <= 699 then
-	 local min = (level) + (maglevel * 6)
-																	local max = (level) + (maglevel * 13)
+	 local min = (level) + (maglevel * 10)+10
+																	local max = (level) + (maglevel * 15)+15
 																	return -min, -max
 	end
 	end
 	end
 	end
+
 
 
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")

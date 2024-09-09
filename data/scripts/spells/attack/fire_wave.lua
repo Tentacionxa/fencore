@@ -5,30 +5,32 @@ combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_HITBYFIRE)
 local area = createCombatArea(AREA_WAVE4, AREADIAGONAL_WAVE4)
 combat:setArea(area)
 
+
 function onGetFormulaValues(player, level, maglevel)
 	if level >= 2000 then
-	local min = (level) + (maglevel * 15) +6
-																	local max = (level) + (maglevel * 19)+15
+	local min = (level) + (maglevel * 17)
+																	local max = (level) + (maglevel * 23)
 																	return -min, -max
 	else if  level >= 1500  and level <= 1999 then
 
-	local min = (level) + (maglevel * 10)+4
-																	local max = (level) + (maglevel * 16)+12
+	local min = (level) + (maglevel * 15)
+																	local max = (level) + (maglevel * 19)
 																	return -min, -max
 
 	else if  level >= 700 and level <= 1499 then
 
-	local min = (level) + (maglevel * 8)+3
-																	local max = (level) + (maglevel * 14.5)+10
+	local min = (level) + (maglevel * 12)+10
+																	local max = (level) + (maglevel * 16)+18
 																	return -min, -max
 	elseif level >= 2 and level <= 699 then
-	 local min = (level) + (maglevel * 6)+3
-																	local max = (level) + (maglevel * 13)+9
+	 local min = (level) + (maglevel * 10)+10
+																	local max = (level) + (maglevel * 15)+15
 																	return -min, -max
 	end
 	end
 	end
 	end
+
 
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
 

@@ -5,28 +5,29 @@ combat:setArea(createCombatArea(AREA_SHORTWAVE3))
 
 function onGetFormulaValues(player, level, maglevel)
 	if level >= 2000 then
-			local min = (level) + (maglevel * 16) +14
-			local max = (level) + (maglevel * 19)+19
-			return -min, -max
-else if  level >= 1500  and level <= 1999 then
+	local min = (level) + (maglevel * 3.75)
+																	local max = (level) + (maglevel * 5.0)
+																	return -min, -max
+	else if  level >= 1500  and level <= 1999 then
 
-local min = (level) + (maglevel * 13)+10
-			local max = (level) + (maglevel * 15)+13
-			return -min, -max
+	local min = (level) + (maglevel * 4.0)
+																	local max = (level) + (maglevel * 5.10)
+																	return -min, -max
 
-else if  level >= 700 and level <= 1499 then
+	else if  level >= 700 and level <= 1499 then
 
-local min = (level) + (maglevel * 10)+8
-			local max = (level) + (maglevel * 13.5)+11
-			return -min, -max
-elseif level >= 2 and level <= 699 then
-local min = (level) + (maglevel * 7)+5
-			local max = (level) + (maglevel * 12.5)+10
-			return -min, -max
-end
-end
-end
-end
+	local min = (level) + (maglevel * 4.75)
+																	local max = (level) + (maglevel * 4.75)
+																	return -min, -max
+	elseif level >= 2 and level <= 699 then
+	 local min = (level) + (maglevel * 4.65)
+																	local max = (level) + (maglevel * 4.65)
+																	return -min, -max
+	end
+	end
+	end
+	end
+
 
 
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")

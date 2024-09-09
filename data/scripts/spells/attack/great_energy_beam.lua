@@ -1,27 +1,29 @@
-local function formulaFunction(player, level, maglevel)
+
+function onGetFormulaValues(player, level, maglevel)
 	if level >= 2000 then
-	local min = (level) + (maglevel * 15) +6
-local max = (level) + (maglevel * 19)+15
-return -min, -max
+	local min = (level) + (maglevel * 4.35)
+																	local max = (level) + (maglevel * 5.85)
+																	return -min, -max
 	else if  level >= 1500  and level <= 1999 then
 
-	local min = (level) + (maglevel * 10)+4
-local max = (level) + (maglevel * 16)+12
-return -min, -max
+	local min = (level) + (maglevel * 4.10)
+																	local max = (level) + (maglevel * 5.30)
+																	return -min, -max
 
 	else if  level >= 700 and level <= 1499 then
 
-	local min = (level) + (maglevel * 8)+3
-local max = (level) + (maglevel * 14.5)+10
-return -min, -max
+	local min = (level) + (maglevel * 4.55)
+																	local max = (level) + (maglevel * 4.95)
+																	return -min, -max
 	elseif level >= 2 and level <= 699 then
-	 local min = (level) + (maglevel * 6)+3
-local max = (level) + (maglevel * 13)+9
-return -min, -max
+	 local min = (level) + (maglevel * 4.65)
+																	local max = (level) + (maglevel * 4.85)
+																	return -min, -max
 	end
 	end
 	end
 	end
+
 
 
 function onGetFormulaValues(player, level, maglevel)

@@ -2432,14 +2432,21 @@ int32_t PlayerWheel::checkAvatarSkill(WheelAvatarSkill_t skill) const {
 			return 5;
 		}
 	} else if (skill == WheelAvatarSkill_t::CRITICAL_CHANCE) {
-		return 10000;
+		//return 10000; [[Canary Main Repo]]
+		return 2000; // 20%
+		
 	} else if (skill == WheelAvatarSkill_t::CRITICAL_DAMAGE) {
 		if (stage >= 3) {
-			return 1500;
+			//return 1500; // 15% [[Canary Main Repo]]
+			return 1000; // 10%
+			
 		} else if (stage >= 2) {
-			return 1000;
+			//return 1000; // 10% [[Canary Main Repo]]
+			return 500; // 5%
+			
 		} else if (stage >= 1) {
-			return 500;
+			//return 500;  // 5% [[Canary Main Repo]]
+			return 200;  // 2%
 		}
 	}
 

@@ -4,10 +4,29 @@ combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_CARNIPHILA)
 combat:setParameter(COMBAT_PARAM_DISTANCEEFFECT, CONST_ANI_SMALLEARTH)
 
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 4.5) + 35
-	local max = (level / 5) + (maglevel * 7.3) + 55
-	return -min, -max
-end
+	if level >= 2000 then
+	local min = (level) + (maglevel * 4.75)
+																	local max = (level) + (maglevel * 5.0)
+																	return -min, -max
+	else if  level >= 1500  and level <= 1999 then
+
+	local min = (level) + (maglevel * 4.0)
+																	local max = (level) + (maglevel * 4.80)
+																	return -min, -max
+
+	else if  level >= 700 and level <= 1499 then
+
+	local min = (level) + (maglevel * 4.75)
+																	local max = (level) + (maglevel * 4.75)
+																	return -min, -max
+	elseif level >= 2 and level <= 699 then
+	 local min = (level) + (maglevel * 4.65)
+																	local max = (level) + (maglevel * 4.65)
+																	return -min, -max
+	end
+	end
+	end
+	end
 
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
 

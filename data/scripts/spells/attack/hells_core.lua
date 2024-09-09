@@ -6,18 +6,18 @@ combat:setArea(createCombatArea(AREA_CIRCLE5X5))
 
 function onGetFormulaValues(player, level, maglevel)
 	if level >= 2000 then
-	local min = (level) + (maglevel * 52)
-					local max = (level) + (maglevel * 56)
+	local min = (level) + (maglevel * 40)
+					local max = (level) + (maglevel * 46)
 					return -min, -max
 	else if  level >= 1500  and level <= 1999 then
 
-	local min = (level) + (maglevel * 45)
-					local max = (level) + (maglevel * 53)
+	local min = (level) + (maglevel * 39)
+					local max = (level) + (maglevel * 43)
 					return -min, -max
 
 	else if  level >= 700 and level <= 1499 then
 
-	local min = (level) + (maglevel * 37)
+	local min = (level) + (maglevel * 32)
 					local max = (level) + (maglevel * 42)
 					return -min, -max
 	elseif level >= 2 and level <= 699 then
@@ -28,6 +28,7 @@ function onGetFormulaValues(player, level, maglevel)
 	end
 	end
 	end
+
 
 	
 

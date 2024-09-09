@@ -9,7 +9,7 @@ function asuraMirror2.onUse(creature, item, position, fromPosition, pos, target,
 
 	if player:getLevel() >= 250 then
 		position:sendMagicEffect(CONST_ME_TELEPORT)
-		player:teleportTo(goPos)
+		player:teleportTo(33187, 31191, 7)
 		player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 	else
 		player:sendCancelMessage("You do not have enough level. Minimum level is 250")

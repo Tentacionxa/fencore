@@ -47,7 +47,7 @@ redSkullDuration = 2
 blackSkullDuration = 4
 orangeSkullDuration = 1
 
-cleanProtectionZones = true
+cleanProtectionZones = false
 
 -- Connection Config
 -- NOTE: allowOldProtocol can allow login on 10x protocol. (11.00)
@@ -310,7 +310,7 @@ maxAllowedOnADummy = 4
 toggleSaveAsync = false
 toggleSaveInterval = true
 saveIntervalType = "minute"
-toggleSaveIntervalCleanMap = true
+toggleSaveIntervalCleanMap = false
 saveIntervalTime = 15
 
 -- Imbuement
@@ -462,7 +462,7 @@ globalServerSaveNotifyDuration = 5
 globalServerSaveCleanMap = false
 globalServerSaveClose = false
 globalServerSaveShutdown = true
-globalServerSaveTime = "18:00:00"
+globalServerSaveTime = "16:00:00"
 
 -- Sort loot by chance, most rare items drop first
 -- it is good to be setted when you have a higher

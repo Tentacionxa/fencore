@@ -416,11 +416,11 @@ void WheelModifierContext::addStrategies(WheelGemSupremeModifier_t modifier) {
 			m_strategies.push_back(std::make_unique<GemModifierSpellBonusStrategy>(m_wheel, "Great Death Beam", bonus));
 			break;
 		case WheelGemSupremeModifier_t::Sorcerer_HellsCore_DamageIncrease:
-			bonus.increase.damage = 12;
+			bonus.increase.damage = 16;
 			m_strategies.push_back(std::make_unique<GemModifierSpellBonusStrategy>(m_wheel, "Hell's Core", bonus));
 			break;
 		case WheelGemSupremeModifier_t::Sorcerer_HellsCore_CriticalExtraDamage:
-			bonus.increase.criticalDamage = 4;
+			bonus.increase.criticalDamage = 10;
 			m_strategies.push_back(std::make_unique<GemModifierSpellBonusStrategy>(m_wheel, "Hell's Core", bonus));
 			break;
 		case WheelGemSupremeModifier_t::Sorcerer_EnergyWave_DamageIncrease:
@@ -481,11 +481,11 @@ void WheelModifierContext::addStrategies(WheelGemSupremeModifier_t modifier) {
 			m_strategies.push_back(std::make_unique<GemModifierSpellBonusStrategy>(m_wheel, "Ice Burst", bonus));
 			break;
 		case WheelGemSupremeModifier_t::Druid_EternalWinter_CriticalExtraDamage:
-			bonus.increase.criticalDamage = 2;
+			bonus.increase.criticalDamage = 3;
 			m_strategies.push_back(std::make_unique<GemModifierSpellBonusStrategy>(m_wheel, "Eternal Winter", bonus));
 			break;
 		case WheelGemSupremeModifier_t::Druid_EternalWinter_DamageIncrease:
-			bonus.increase.damage = 8;
+			bonus.increase.damage = 10;
 			m_strategies.push_back(std::make_unique<GemModifierSpellBonusStrategy>(m_wheel, "Eternal Winter", bonus));
 			break;
 		case WheelGemSupremeModifier_t::Druid_TerraWave_DamageIncrease:

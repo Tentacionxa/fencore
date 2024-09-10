@@ -5,30 +5,32 @@ combat:setParameter(COMBAT_PARAM_DISPEL, CONDITION_PARALYZE)
 combat:setParameter(COMBAT_PARAM_AGGRESSIVE, false)
 
 
+
 function onGetFormulaValues(player, level, maglevel)
 	if level >= 2000 then
-			local min = (level) + (maglevel * 18)
-			local max = (level) + (maglevel * 20)
+			local min = (level) + (maglevel * 23)
+			local max = (level) + (maglevel * 26)
 			return -min, -max
 else if  level >= 1500  and level <= 1999 then
 
-local min = (level) + (maglevel * 15)
-			local max = (level) + (maglevel * 16)
+local min = (level) + (maglevel * 18)
+			local max = (level) + (maglevel * 20)
 			return -min, -max
 
 else if  level >= 700 and level <= 1499 then
 
-local min = (level) + (maglevel * 10)
-			local max = (level) + (maglevel * 15)
+local min = (level) + (maglevel * 13)
+			local max = (level) + (maglevel * 18)
 			return -min, -max
 elseif level >= 2 and level <= 699 then
-local min = (level) + (maglevel * 6)
-			local max = (level) + (maglevel * 12)
+local min = (level) + (maglevel * 9)
+			local max = (level) + (maglevel * 14)
 			return -min, -max
 end
 end
 end
 end
+
 
 
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")

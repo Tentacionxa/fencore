@@ -1,34 +1,41 @@
 local config = {
+
     actionId = 18433,
+
     lever = {
         left = 8911,
         right = 8912
     },
+
     playItem = {
         itemId = 3043,
-        count = 500
+        count = 25
     },
+
     winCondition = {
         matchingItemsCount = 3, -- liczba elementów wymaganych do wygranej
     },
+
     prizePool = {
-        {itemId = 36725, count = {2, 3},   chance = 1},
-        {itemId = 36726, count = {2, 3},    chance = 2 },
-        {itemId = 36728, count = {2, 3},    chance = 4 },
-        {itemId = 36727, count = {2, 3},    chance = 4 },
-		{itemId = 3043, count = {300, 300},    chance = 10 },
+        {itemId = 36725, count = {2, 2}, chance = 1},
+        {itemId = 36726, count = {2, 2}, chance = 2},
+        {itemId = 36728, count = {2, 2}, chance = 3},
+        {itemId = 36727, count = {2, 2}, chance = 3},
+        {itemId = 36725, count = {2, 2}, chance = 3},
     },
-    roulettePositions = { 
-        Position(33450, 32491, 13), -- 1
-        Position(33451, 32491, 13), -- 2
-        Position(33452, 32491, 13), -- 3
-        Position(33450, 32492, 13), -- 4
-        Position(33451, 32492, 13), -- 5
-        Position(33452, 32492, 13), -- 6
-        Position(33450, 32493, 13), -- 7
-        Position(33451, 32493, 13), -- 8
-        Position(33452, 32493, 13), -- 9
+
+    roulettePositions = {
+        Position(33449, 32490, 14), -- 1
+        Position(33449, 32491, 14), -- 2
+        Position(33449, 32492, 14), -- 3
+        Position(33450, 32490, 14), -- 4
+        Position(33450, 32491, 14), -- 5
+        Position(33450, 32492, 14), -- 6
+        Position(33451, 32490, 14), -- 7
+        Position(33451, 32491, 14), -- 8
+        Position(33451, 32492, 14), -- 9
     },
+
     animation = {
         spinTime = 10, -- czas trwania animacji w sekundach
         slowdownRate = 1.2 -- stopniowe zwalnianie animacji
@@ -56,17 +63,18 @@ local function checkWinCondition()
 
     -- Sprawdzenie wygranych kombinacji (3 w jednej linii)
     local winningLines = {
-        {1, 2, 3}, -- poziomo górny rząd
-        {4, 5, 6}, -- poziomo środkowy rząd
-        {7, 8, 9}, -- poziomo dolny rząd
-        {1, 4, 7}, -- pionowo lewa kolumna
-        {2, 5, 8}, -- pionowo środkowa kolumna
-        {3, 6, 9}, -- pionowo prawa kolumna
-        {1, 5, 9}, -- przekątna z lewej do prawej
-        {3, 5, 7}  -- przekątna z prawej do lewej
+         -- poziomo górny rząd
+        {2, 5, 8}, -- poziomo środkowy rząd
+        -- poziomo dolny rząd
+         -- pionowo lewa kolumna
+         -- pionowo środkowa kolumna
+         -- pionowo prawa kolumna
+        -- przekątna z lewej do prawej
+          -- przekątna z prawej do lewej
     }
 
     local prizeItemId = nil
+
     for _, line in ipairs(winningLines) do
         if symbols[line[1]] and symbols[line[1]] == symbols[line[2]] and symbols[line[1]] == symbols[line[3]] then
             prizeItemId = symbols[line[1]]
@@ -102,8 +110,10 @@ local function spinAnimation(playerId, leverPosition, remainingTime, delay)
         return
     end
 
-    -- Przesuwanie symboli z dodaniem efektów magicznych
-    local lastItem = Tile(config.roulettePositions[9]):getTopVisibleThing()
+    -- Zapisz ostatni przedmiot z pozycji 9
+    local lastItem = Tile(config.roulettePositions[#config.roulettePositions]):getTopVisibleThing()
+
+    -- Przesuń przedmioty z każdej pozycji na następną
     for i = #config.roulettePositions, 2, -1 do
         local fromPosition = config.roulettePositions[i - 1]
         local toPosition = config.roulettePositions[i]
@@ -111,22 +121,21 @@ local function spinAnimation(playerId, leverPosition, remainingTime, delay)
         local item = Tile(fromPosition):getTopVisibleThing()
         if item then
             item:moveTo(toPosition)
-            toPosition:sendMagicEffect(math.random(CONST_ME_GIFT_WRAPS, CONST_ME_FIREWORK_BLUE)) -- dodanie losowego efektu magicznego
+             -- dodanie losowego efektu magicznego
         end
     end
 
-    -- Dodanie nowego symbolu w pierwszej pozycji
-    local newItemInfo = chanceNewReward()
-    Game.createItem(newItemInfo.itemId, newItemInfo.count, config.roulettePositions[1])
-    config.roulettePositions[1]:sendMagicEffect(math.random(CONST_ME_GIFT_WRAPS, CONST_ME_FIREWORK_BLUE)) -- efekt magiczny przy dodaniu nowego symbolu
-
-    -- Dodanie przedmiotu do 9 pozycji, aby kontynuować animację
+    -- Przesuń ostatni przedmiot z pozycji 9 na pozycję 1, aby kontynuować pętlę
     if lastItem then
-        Game.createItem(lastItem:getId(), lastItem:getCount(), config.roulettePositions[9])
-        config.roulettePositions[9]:sendMagicEffect(math.random(CONST_ME_GIFT_WRAPS, CONST_ME_FIREWORK_BLUE))
+        lastItem:moveTo(config.roulettePositions[1])
+         -- efekt magiczny dla nowego symbolu
     end
 
-    -- Zmniejszenie opóźnienia dla animacji
+    -- Stwórz nowy przedmiot w pozycji 1 (opcjonalnie, jeśli chcesz losowe przedmioty)
+    local newItemInfo = chanceNewReward()
+    Game.createItem(newItemInfo.itemId, newItemInfo.count, config.roulettePositions[1])
+
+    -- Kontynuuj obracanie z nowym opóźnieniem
     addEvent(spinAnimation, delay, playerId, leverPosition, remainingTime - delay, delay * config.animation.slowdownRate)
 end
 
@@ -150,7 +159,7 @@ local function roulette(playerId, leverPosition)
                     break
                 end
             end
-            if rewardItem then
+ if rewardItem then
                 player:addItem(rewardItem.itemId, math.random(rewardItem.count[1], rewardItem.count[2]))
             end
         else

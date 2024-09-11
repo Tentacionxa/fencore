@@ -4,6 +4,7 @@ function loginEvents.onLogin(player)
 		"RookgaardAdvance",
 		--Quests
 		--Cults Of Tibia Quest
+"IncreaseManaDamageEvent"
 		"HealthPillar",
 		"YalahariHealth",
 	}

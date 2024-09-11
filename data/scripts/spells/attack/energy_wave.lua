@@ -1,27 +1,9 @@
-local function formulaFunction(player, level, maglevel)
-	if level >= 2000 then
-	local min = (level) + (maglevel * 10)
-																	local max = (level) + (maglevel * 12)
-																	return -min, -max
-	else if  level >= 1500  and level <= 1999 then
+function onGetFormulaValues(player, level, maglevel)
+	local min = (level / 5) + (maglevel * 9)+30
+	local max = (level / 5) + (maglevel * 14)
 
-	local min = (level) + (maglevel * 6)
-																	local max = (level) + (maglevel * 10)
-																	return -min, -max
-
-	else if  level >= 700 and level <= 1499 then
-
-	local min = (level) + (maglevel * 4)
-																	local max = (level) + (maglevel * 7)
-																	return -min, -max
-	elseif level >= 2 and level <= 699 then
-	 local min = (level) + (maglevel * 2.5)
-																	local max = (level) + (maglevel * 5.5)
-																	return -min, -max
-	end
-	end
-	end
-	end
+return -min * 1.0, -max * 1.9 -- TODO : Use New Real Formula instead of an %
+end
 
 
 
@@ -66,7 +48,7 @@ spell:castSound(SOUND_EFFECT_TYPE_SPELL_ENERGY_WAVE)
 spell:level(38)
 spell:mana(170)
 spell:needDirection(true)
-spell:cooldown(3 * 1000)
+spell:cooldown(2 * 1000)
 spell:groupCooldown(1 * 1000)
 spell:needLearn(false)
 spell:vocation("sorcerer;true", "master sorcerer;true")

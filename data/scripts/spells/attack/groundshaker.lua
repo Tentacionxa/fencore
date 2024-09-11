@@ -5,12 +5,14 @@ combat:setParameter(COMBAT_PARAM_BLOCKARMOR, 1)
 combat:setParameter(COMBAT_PARAM_USECHARGES, 1)
 combat:setArea(createCombatArea(AREA_CIRCLE3X3))
 
+
 function onGetFormulaValues(player, skill, attack, factor)
 	local level = player:getLevel()
-	local min = (level / 5) + (skill + attack) * 1.5
-	local max = (level / 5) + (skill + attack) * 2.5
-	return -min * 1.28, -max * 1.28 -- TODO : Use New Real Formula instead of an %
+	local min = (level / 5) + (skill + attack) * 1.8
+	local max = (level / 5) + (skill + attack) * 2.6
+	return -min * 1.3, -max * 1.7 -- TODO : Use New Real Formula instead of an %
 end
+
 
 combat:setCallback(CALLBACK_PARAM_SKILLVALUE, "onGetFormulaValues")
 
@@ -29,7 +31,7 @@ spell:level(33)
 spell:mana(160)
 spell:isPremium(true)
 spell:needWeapon(true)
-spell:cooldown(4 * 1000)
+spell:cooldown(2 * 1000)
 spell:groupCooldown(1000)
 spell:needLearn(false)
 spell:vocation("knight;true", "elite knight;true")

@@ -26126,17 +26126,26 @@
 	</item>
 	<item fromid="9796" toid="9801" name="serpent decoration"/>
 	<item id="9802" article="a" name="friendship amulet">
-		<attribute key="primarytype" value="amulets and necklaces"/>
-		<attribute key="description" value="It shines as beautifully as a good friendship. This amulet was rewarded by Tibiafriends"/>
-		<attribute key="weight" value="520"/>
-	</item>
-	<item id="9803" article="a" name="friendship amulet">
-		<attribute key="primarytype" value="amulets and necklaces"/>
-		<attribute key="description" value="It shines as beautifully as a good friendship. This amulet was rewarded by Tibiafriends"/>
-		<attribute key="duration" value="2"/>
-		<attribute key="decayTo" value="9802"/>
-		<attribute key="weight" value="520"/>
-	</item>
+                <attribute key="primarytype" value="amulets and necklaces"/>
+                <attribute key="description" value="An uncharged amulet that requires its power back."/>
+                <attribute key="weight" value="520"/>
+        </item>
+<item id="9803" article="a" name="friendship amulet">
+    <attribute key="primarytype" value="amulets and necklaces"/>
+    <attribute key="description" value="It provides protecion from mana drain."/>
+    <attribute key="duration" value="1"/>
+     <attribute key="absorbpercentmanadrain" value="25"/>
+    <attribute key="decayTo" value="9802"/>
+	<attribute key="showduration" value="1"/>
+	<attribute key="stopduration" value="1"/>
+    <attribute key="showAttributes" value="1"/>
+     <attribute key="duration" value="3600"/>
+    <attribute key="weight" value="520"/>
+     <attribute key="script" value="moveevent">
+     <attribute key="slot" value="necklace"/>
+                </attribute>
+        </item>
+
 	<item id="9804" name="zaoan decoration"/>
 	<item fromid="9805" toid="9806" name="skull decoration"/>
 	<item fromid="9807" toid="9808" name="lizard statue">

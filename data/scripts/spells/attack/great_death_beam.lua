@@ -1,7 +1,8 @@
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 5.5)
-	local max = (level / 5) + (maglevel * 11.5)
-	return -min, -max
+	local min = (level / 5) + (maglevel * 10)+20
+	local max = (level / 5) + (maglevel * 16)
+
+return -min * 1.0, -max * 1.9 -- TODO : Use New Real Formula instead of an %
 end
 
 local initCombat = Combat()

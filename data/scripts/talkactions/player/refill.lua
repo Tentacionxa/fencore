@@ -13,8 +13,8 @@ local chargeItem = {
 	["arboreal ring"] = { noChargeID = 39188, ChargeID = 39187, cost = 75000 },
 	["worn soft boots"] = { noChargeID = 6530, ChargeID = 6529, cost = 75000 },
 	["worn firewalker boots"] = { noChargeID = 9020, ChargeID = 9019, cost = 75000 },
+	["friendship amulet"] = { noChargeID = 9802, ChargeID = 9803, cost = 300000 },
 }
-
 function refill.onSay(player, words, param)
 	local refilledItems = {}
 	local totalCost = 0

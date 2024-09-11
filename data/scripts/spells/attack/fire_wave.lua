@@ -5,31 +5,12 @@ combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_HITBYFIRE)
 local area = createCombatArea(AREA_WAVE4, AREADIAGONAL_WAVE4)
 combat:setArea(area)
 
-
 function onGetFormulaValues(player, level, maglevel)
-	if level >= 2000 then
-	local min = (level) + (maglevel * 17)
-																	local max = (level) + (maglevel * 23)
-																	return -min, -max
-	else if  level >= 1500  and level <= 1999 then
+	local min = (level / 5) + (maglevel * 9.5)+30
+	local max = (level / 5) + (maglevel * 14)
 
-	local min = (level) + (maglevel * 15)
-																	local max = (level) + (maglevel * 19)
-																	return -min, -max
-
-	else if  level >= 700 and level <= 1499 then
-
-	local min = (level) + (maglevel * 12)+10
-																	local max = (level) + (maglevel * 16)+18
-																	return -min, -max
-	elseif level >= 2 and level <= 699 then
-	 local min = (level) + (maglevel * 10)+10
-																	local max = (level) + (maglevel * 15)+15
-																	return -min, -max
-	end
-	end
-	end
-	end
+return -min * 1.0, -max * 1.9 -- TODO : Use New Real Formula instead of an %
+end
 
 
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
@@ -49,7 +30,7 @@ spell:level(18)
 spell:mana(25)
 spell:isPremium(true)
 spell:needDirection(true)
-spell:cooldown(4 * 1000)
+spell:cooldown(2 * 1000)
 spell:groupCooldown(2 * 1000)
 spell:needLearn(false)
 spell:vocation("sorcerer;true", "master sorcerer;true")

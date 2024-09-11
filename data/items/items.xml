@@ -76767,5 +76767,11 @@ Granted by TibiaGoals.com"/>
                         <attribute key="vocation" value="Sorcerer;true, Master Sorcerer"/>
                 </attribute>
                         </item>
+						<item id="48418" article="a" name="corpse of the rootkraken">
+		<attribute key="fluidsource" value="blood"/>
+		<attribute key="duration" value="300"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="containersize" value="25"/>
+	</item>
 </items>
 

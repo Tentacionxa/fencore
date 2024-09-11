@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Bulltaur Brute")
 local monster = {}
 
 monster.description = "a bulltaur brute"
-monster.experience = 4700
+monster.experience = 14700
 monster.outfit = {
 	lookType = 1717,
 	lookHead = 0,
@@ -26,8 +26,8 @@ monster.Bestiary = {
 	Locations = "Bulltaur Lair",
 }
 
-monster.health = 6560
-monster.maxHealth = 6560
+monster.health = 16560
+monster.maxHealth = 16560
 monster.race = "blood"
 monster.corpse = 44709
 monster.speed = 200

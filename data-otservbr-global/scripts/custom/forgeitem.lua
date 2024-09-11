@@ -11,7 +11,7 @@ end
 Karin.Forge = {
     Config = {
         tokenId = 943,  -- tutaj daj id tokena
-        Default = 35%, -- tutaj ustawiasz szanse na tier
+        Default = 40, -- tutaj ustawiasz szanse na tier
         Tier = {
             [1] = {
                 [1] = 25000,

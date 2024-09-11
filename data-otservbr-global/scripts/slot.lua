@@ -20,7 +20,7 @@ local config = {
         {itemId = 36725, count = {2, 2}, chance = 1},
         {itemId = 36726, count = {2, 2}, chance = 2},
         {itemId = 36728, count = {2, 2}, chance = 3},
-        {itemId = 36727, count = {2, 2}, chance = 3},
+        {itemId = 36727, count = {2, 2}, chance = 4},
         {itemId = 36725, count = {2, 2}, chance = 3},
     },
 

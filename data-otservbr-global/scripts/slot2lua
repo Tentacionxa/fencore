@@ -17,11 +17,12 @@ local config = {
     },
 
     prizePool = {
-        {itemId = 23679, count = {1, 1}, chance = 1},
+        {itemId = 23679, count = {1, 1}, chance = 3},
         {itemId = 14758, count = {1, 1}, chance = 1},
-        {itemId = 3997, count = {1, 1}, chance = 1},
-        {itemId = 943, count = {1, 1}, chance = 1},
+        {itemId = 3997, count = {1, 1}, chance = 4},
+        {itemId = 943, count = {1, 1}, chance = 2},
         {itemId = 37317, count = {1, 1}, chance = 1},
+        {itemId = 8149, count = {1, 1}, chance = 1},
     },
 
     roulettePositions = {

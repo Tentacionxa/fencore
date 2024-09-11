@@ -216,8 +216,8 @@ local stoneKeyword = keywordHandler:addKeyword({'lich shroud'}, StdModule.say, {
 	
 local stoneKeyword = keywordHandler:addKeyword({'quara scale'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for ice protection imbuement for 6750000 gold?'})
 	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Here you are. Take care.', reset = true},
-		function(player) return player:getMoney() + player:getBankBalance() >= 6750000 end,
-		function(player) if player:removeMoneyBank(6750000) then player:addItem(10295, 25) player:addItem(10307, 15) player:addItem(14012, 10)  end end
+		function(player) return player:getMoney() + player:getBankBalance() >= 675000 end,
+		function(player) if player:removeMoneyBank(675000) then player:addItem(10295, 25) player:addItem(10307, 15) player:addItem(14012, 10)  end end
 	)
 		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
 	

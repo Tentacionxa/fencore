@@ -76743,5 +76743,29 @@ Granted by TibiaGoals.com"/>
 		<attribute key="decayTo" value="0"/>
 		<attribute key="containersize" value="10"/>
 	</item>
+       
+        <item id="45639" article="a" name="cocoa grimoire">
+                <attribute key="description" value="It shows your spells and can also shield against attacks when worn"/>
+                <attribute key="weaponType" value="spellbook"/>
+                                        <attribute key="firemagiclevelpoints" value="1"/>
+                <attribute key="absorbpercentphysical" value="2"/>
+                <attribute key="absorbpercentfire" value="5"/>
+                <attribute key="magiclevelpoints" value="4"/>
+                <attribute key="defense" value="19"/>
+                <attribute key="weight" value="2500"/>
+<attribute key="imbuementslot" value="1">
+                        <attribute key="skillboost shielding" value="3"/>
+                                                                <attribute key="elemental protection death" value="3"/>
+                        <attribute key="elemental protection earth" value="3"/>
+                        <attribute key="elemental protection ice" value="3"/>
+                        <attribute key="elemental protection energy" value="3"/>
+                        <attribute key="elemental protection holy" value="3"/>
+</attribute>
+                        <attribute key="script" value="moveevent">
+                        <attribute key="level" value="200"/>
+                        <attribute key="slot" value="shield"/>
+                        <attribute key="vocation" value="Sorcerer;true, Master Sorcerer"/>
+                </attribute>
+                        </item>
 </items>
 

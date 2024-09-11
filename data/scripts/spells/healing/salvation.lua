@@ -13,18 +13,18 @@ function onGetFormulaValues(player, level, maglevel)
 			return -min, -max
 else if  level >= 1500  and level <= 1999 then
 
-local min = (level) + (maglevel * 20)
-			local max = (level) + (maglevel * 26)
+local min = (level) + (maglevel * 19)
+			local max = (level) + (maglevel * 24)
 			return -min, -max
 
 else if  level >= 700 and level <= 1499 then
 
-local min = (level) + (maglevel * 17)
-			local max = (level) + (maglevel * 24)
+local min = (level) + (maglevel * 16)
+			local max = (level) + (maglevel * 21)
 			return -min, -max
 elseif level >= 2 and level <= 699 then
-local min = (level) + (maglevel * 10)
-			local max = (level) + (maglevel * 17)
+local min = (level) + (maglevel * 14)
+			local max = (level) + (maglevel * 20)
 			return -min, -max
 end
 end

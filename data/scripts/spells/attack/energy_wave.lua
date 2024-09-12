@@ -1,4 +1,4 @@
-function onGetFormulaValues(player, level, maglevel)
+local function formulaFunction(player, level, maglevel)
 	local min = (level / 5) + (maglevel * 9)+30
 	local max = (level / 5) + (maglevel * 14)
 

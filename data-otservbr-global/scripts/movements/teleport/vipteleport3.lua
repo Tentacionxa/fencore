@@ -3,6 +3,8 @@ local config = {
 	{ name="Dragon Kingdom", position = Position(31079, 33080, 7)  },
  { name="Bulltaur Underground", position = Position(32022, 31603, 12)  },
     { name="Ancient Grimwale", position = Position(30426, 33295, 8)  },
+	{ name="Falcon Kingdom", position = Position(32479, 33455, 6)  },
+	{ name="Underworld Library", position = Position(34937, 33033, 7)  },
 	{ name="Gazer Anomaly", position = Position(31900, 33375, 7)  },
 	{ name="Deathling Universe", position = Position(32033, 33738, 7)  },
 	{ name="Stonerefiner Underground", position = Position(31417, 33472, 7)  },

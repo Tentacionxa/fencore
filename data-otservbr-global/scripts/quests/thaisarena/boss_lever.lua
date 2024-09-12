@@ -15,8 +15,8 @@ local config = {
         from = Position(32389, 32188, 7),
         to = Position(32402, 32200, 7),
     },
-    teleportTimer = 900, -- seconds, 15 minutes (900s)
-    cooldownTimer = 4 * 60 * 60, -- 2 hours in seconds
+    teleportTimer = 300, -- seconds, 15 minutes (900s)
+    cooldownTimer = 2 * 60 * 60, -- 2 hours in seconds
 	storage = 80011 -- Needs to be unique, used for player cooldown
 }
 
@@ -121,7 +121,7 @@ function action.onUse(player, item, fromPosition, target, toPosition, isHotkey)
                         creature:setStorageValue(config.storage, os.time() + config.cooldownTimer) -- cooldown timer
 
                         -- Inform player about the time they have to defeat the boss
-                        creature:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You have 20 minutes to defeat the boss before you will be teleported out.")
+                        creature:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You have 5 minutes to defeat the boss before you will be teleported out.")
                     end
                 end
             end

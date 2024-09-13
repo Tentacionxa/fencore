@@ -469,7 +469,7 @@ taskConfiguration = {
 		
 	},
 },
-{name = "The Secret Library - Cursed Book, Animated Feather, Biting Book, Dark Knowledge, Brain Squid, Burning Book, Flying Book, Rage Squid", color = 40, total = 3500, type = "repeatable", storage = 190057, storagecount = 190058, 
+{name = "The Secret Library - Cursed Book, Animated Feather, Biting Book, Dark Knowledge, Brain Squid, Energetic book, Burning Book, Flying Book, Rage Squid, Energuardian of tales ", color = 40, total = 3500, type = "repeatable", storage = 190057, storagecount = 190058, 
 	rewards = { 
 		{3043, 280},
 {37317, 1},
@@ -484,6 +484,9 @@ taskConfiguration = {
 		"Burning Book",
 		"Flying Book",
 		"Rage Squid",
+		"Energuardian of Tales",
+		"Energetic book",
+
 	},
 },
 {name = "Marapur Turtles - Two-Headed Turtle, Foam Stalker", color = 40, total = 2500, type = "repeatable", storage = 190059, storagecount = 190060, 

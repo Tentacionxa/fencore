@@ -7220,7 +7220,7 @@ GameStore.Categories = {
 			{
 				icons = { "Outfit_Lion_of_War_Male_Addon_3.png", "Outfit_Lion_of_War_Female_Addon_3.png" },
 				name = "Full Lion of War Outfit",
-				price = 1750,
+				price = 450,
 				sexId = { female = 1207, male = 1206 },
 				addon = 3,
 				description = "{info} usable by all characters of the account\n{info} colours can be changed using the Outfit dialog\n{info} includes basic outfit and 2 addons which can be selected individually\n\n<i>The Lion of War has fought on countless battlefields and never lost once. Enemies tremble with fear when he batters his sword against his almighty shield. Realising that a Lion of War knows no mercy, his opponents often surrender before the battle even begins.</i>",

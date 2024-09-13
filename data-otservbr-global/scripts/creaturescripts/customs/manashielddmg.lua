@@ -9,7 +9,7 @@ function manaDamage.onManaChange(creature, attacker, primaryDamage, primaryType,
 		return primaryDamage, primaryType, secondaryDamage, secondaryType
 	end
 	
-	local amount = 3.2 --Increase Dmg 200% [[1.1 = +10% dmg, 1.5 = +50% dmg]]
+	local amount = 2.2 --Increase Dmg 200% [[1.1 = +10% dmg, 1.5 = +50% dmg]]
 	
 	if amount > 0 then
 		return primaryDamage * amount, primaryType, amount * secondaryDamage, secondaryType

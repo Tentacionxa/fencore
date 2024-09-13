@@ -7158,7 +7158,8 @@ bool Game::combatChangeHealth(std::shared_ptr<Creature> attacker, std::shared_pt
 		std::stringstream ss;
 
 		if (target->hasCondition(CONDITION_MANASHIELD) && damage.primary.type != COMBAT_UNDEFINEDDAMAGE) {
-			int32_t manaDamage = std::min<int32_t>(target->getMana(), healthChange);
+			uint32_t manaDamageReceivedFactor = g_configManager().getFloat(MANA_SHIELD_DAMAGE_RECEIVED_FACTOR, __FUNCTION__);
+			int32_t manaDamage = std::min<int32_t>(target->getMana(), healthChange * manaDamageReceivedFactor);
 			uint32_t manaShield = target->getManaShield();
 			if (manaShield > 0) {
 				if (manaShield > manaDamage) {

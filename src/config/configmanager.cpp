@@ -55,6 +55,7 @@ bool ConfigManager::load() {
 
 		loadFloatConfig(L, HOUSE_PRICE_RENT_MULTIPLIER, "housePriceRentMultiplier", 1.0);
 		loadFloatConfig(L, HOUSE_RENT_RATE, "houseRentRate", 1.0);
+		loadFloatConfig(L, MANA_SHIELD_DAMAGE_RECEIVED_FACTOR, "manaShieldDamageReceivedFactor", 1.0);
 
 		loadIntConfig(L, DEPOT_BOXES, "depotBoxes", 20);
 		loadIntConfig(L, FREE_DEPOT_LIMIT, "freeDepotLimit", 2000);

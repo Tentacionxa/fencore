@@ -1648,7 +1648,7 @@ npcConfig.shop = {
 	{ itemName = "demon roots", clientId = 48510, sell = 720000 },
 	{ itemName = "stoic iks casque", clientId = 44636, sell = 600000 },
 	{ itemName = "stoic iks boots", clientId = 44648, sell = 300000 },
-	{ itemName = "candy necklace", clientId = 45641, sell = 50000 },
+	{ itemName = "candy necklace", clientId = 45641, sell = 20000 },
 
 	{ itemName = "all loot in pouch", clientId = ITEM_GOLD_POUCH, sell = 1 },
 }

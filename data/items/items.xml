@@ -48948,7 +48948,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="showduration" value="1"/>
 		<attribute key="maxhitchance" value="100"/>
 		<attribute key="duration" value="3600"/>
-		<attribute key="attack" value="400"/>
+		<attribute key="attack" value="200"/>
 		<attribute key="weight" value="90"/>
 		<attribute key="script" value="moveevent;weapon">
 			<attribute key="action" value="removecount"/>
@@ -66623,7 +66623,7 @@ former students at the Noodles Academy. Awarded by TibiaLabs.com"/>
 		<attribute key="ammotype" value="bolt"/>
 		<attribute key="shootType" value="spectralbolt"/>
 		<attribute key="maxhitchance" value="100"/>
-		<attribute key="attack" value="400"/>
+			<attribute key="attack" value="200"/>
 		<attribute key="weight" value="90"/>
 		<attribute key="script" value="moveevent;weapon">
 			<attribute key="action" value="removecount"/>

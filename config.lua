@@ -186,7 +186,7 @@ hazardPodsDropMultiplier = 87
 hazardPodsTimeToDamage = 2000
 hazardPodsTimeToSpawn = 4000
 hazardExpBonusMultiplier = 2
-hazardLootBonusMultiplier = 3
+hazardLootBonusMultiplier = 2
 hazardPodsDamage = 5
 hazardSpawnPlunderMultiplier = 25
 

@@ -733,7 +733,7 @@ taskConfiguration = {
         },
 },
 
-{name = "Rootthing - Rootthing Nutshell, Rootthing Amber Shaper, Rootthing Bug Tracker", color = 40, total = 2000, type = "repeatable", storage = 190950, storagecount = 190951,
+{name = "Rootthing Podzilla - Rootthing Nutshell, Rootthing Amber Shaper, Rootthing Bug Tracker", color = 40, total = 2000, type = "repeatable", storage = 190950, storagecount = 190951,
         rewards = {
                 {3043, 200},
                 {37317, 3},

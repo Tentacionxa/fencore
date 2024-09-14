@@ -669,6 +669,9 @@ npcConfig.shop = {
 { itemName = "bulltaur hoof", clientId = 44737, sell = 1300 },
 { itemName = "encrypted notes", clientId = 44739, sell = 1500 },
 { itemName = "bulltaur horn", clientId = 44736, sell = 1200 },
+{ itemName = "beijinho", clientId = 48253, sell = 2500 },
+{ itemName = "brigadeiro", clientId = 48252, sell = 1900 },
+{ itemName = "wad of fairy floss", clientId = 48544, sell = 2300 },
 }
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

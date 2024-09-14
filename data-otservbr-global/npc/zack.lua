@@ -1637,6 +1637,18 @@ npcConfig.shop = {
 	{ itemName = "stoic iks casque", clientId = 44636, sell = 600000 },
 	{ itemName = "stoic iks boots", clientId = 44648, sell = 300000 },
 
+	{ itemName = "amber sickle", clientId = 48413, sell = 400000 },
+	{ itemName = "resin parasite", clientId = 48511, sell = 1200000 },
+	{ itemName = "preserved violet seed", clientId = 45655, sell = 1200000 },
+	{ itemName = "preserved purple seed", clientId = 45656, sell = 600000 },
+	{ itemName = "preserved yellow seed", clientId = 45657, sell = 520000 },
+	{ itemName = "preserved red seed", clientId = 45653, sell = 520000 },
+	{ itemName = "preserved dark seed", clientId = 48505, sell = 520000 },
+	{ itemName = "preserved pink seed", clientId = 45652, sell = 500000 },
+	{ itemName = "demon roots", clientId = 48510, sell = 720000 },
+	{ itemName = "stoic iks casque", clientId = 44636, sell = 600000 },
+	{ itemName = "stoic iks boots", clientId = 44648, sell = 300000 },
+
 	{ itemName = "all loot in pouch", clientId = ITEM_GOLD_POUCH, sell = 1 },
 }
 

@@ -14,6 +14,8 @@ local config = {
 	{ name="Flimsy Hideout", position = Position(33734, 31161, 8)},
 	{ name="Weretiger Cave", position = Position(33766, 30794, 8) },
 	{ name="Melting Underground", position = Position(33846, 32679, 13) },
+	{ name="Rootthing Swamp", position = Position(31658, 31954, 7) },
+	{ name="Quara City", position = Position(31195, 31824, 6) },
 	{ name="Baloon Land", position = Position(31581, 32761, 8) }
 	
 }

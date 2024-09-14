@@ -76773,5 +76773,11 @@ Granted by TibiaGoals.com"/>
 		<attribute key="decayTo" value="0"/>
 		<attribute key="containersize" value="25"/>
 	</item>
+	<item id="49148" article="a" name="dead rootthing">
+		<attribute key="fluidsource" value="blood"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="containersize" value="28"/>
+	</item>
 </items>
 

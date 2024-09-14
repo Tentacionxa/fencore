@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Energetic Book")
 local monster = {}
 
 monster.description = "an energetic book"
-monster.experience = 12034
+monster.experience = 16034
 monster.outfit = {
 	lookType = 1061,
 	lookHead = 15,
@@ -26,8 +26,8 @@ monster.Bestiary = {
 	Locations = "Secret Library (energy section).",
 }
 
-monster.health = 18500
-monster.maxHealth = 18500
+monster.health = 21500
+monster.maxHealth = 21500
 monster.race = "ink"
 monster.corpse = 28778
 monster.speed = 220

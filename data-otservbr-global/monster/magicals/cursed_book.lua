@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Cursed Book")
 local monster = {}
 
 monster.description = "a cursed book"
-monster.experience = 13345
+monster.experience = 16345
 monster.outfit = {
 	lookType = 1061,
 	lookHead = 79,
@@ -26,8 +26,8 @@ monster.Bestiary = {
 	Locations = "Secret Library (earth section).",
 }
 
-monster.health = 20000
-monster.maxHealth = 20000
+monster.health = 23000
+monster.maxHealth = 23000
 monster.race = "ink"
 monster.corpse = 28590
 monster.speed = 220

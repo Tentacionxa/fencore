@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Animated Feather")
 local monster = {}
 
 monster.description = "an animated feather"
-monster.experience = 9860
+monster.experience = 11860
 monster.outfit = {
 	lookType = 1058,
 	lookHead = 0,
@@ -26,8 +26,8 @@ monster.Bestiary = {
 	Locations = "The Secret Library (ice section).",
 }
 
-monster.health = 13000
-monster.maxHealth = 13000
+monster.health = 16000
+monster.maxHealth = 16000
 monster.race = "ink"
 monster.corpse = 28578
 monster.speed = 210

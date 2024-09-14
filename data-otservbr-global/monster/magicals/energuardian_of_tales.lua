@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Energuardian of Tales")
 local monster = {}
 
 monster.description = "an energuardian of tales"
-monster.experience = 11361
+monster.experience = 14361
 monster.outfit = {
 	lookType = 1063,
 	lookHead = 86,
@@ -26,8 +26,8 @@ monster.Bestiary = {
 	Locations = "The Secret Library (energy section).",
 }
 
-monster.health = 14000
-monster.maxHealth = 14000
+monster.health = 18000
+monster.maxHealth = 18000
 monster.race = "undead"
 monster.corpse = 28873
 monster.speed = 210

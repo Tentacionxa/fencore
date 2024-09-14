@@ -78,7 +78,7 @@ monster.loot = {
 	{ id = 282, chance = 1570 }, -- giant shimmering pearl
 	{ name = "wand of everblazing", chance = 790 },
 	{ id = 23542, chance = 790 }, -- collar of blue plasma
-	{ id = 34109, chance = 20 }, -- bag you desire
+	{ id = 34109, chance = 50 }, -- bag you desire
 }
 
 monster.attacks = {

@@ -93,7 +93,7 @@ monster.loot = {
 	{ id = 23529, chance = 1040 }, -- ring of blue plasma
 	{ name = "ornate crossbow", chance = 840 },
 	{ name = "crystal crossbow", chance = 620 },
-	{ id = 34109, chance = 20 }, -- bag you desire
+	{ id = 34109, chance = 50 }, -- bag you desire
 }
 
 monster.attacks = {

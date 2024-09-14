@@ -94,7 +94,7 @@ monster.loot = {
 	{ name = "twiceslicer", chance = 420 },
 	{ name = "crystalline sword", chance = 390 },
 	{ name = "ruthless axe", chance = 330 },
-	{ id = 34109, chance = 20 }, -- bag you desire
+	{ id = 34109, chance = 50 }, -- bag you desire
 }
 
 monster.attacks = {

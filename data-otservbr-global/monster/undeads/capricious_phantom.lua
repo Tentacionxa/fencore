@@ -93,7 +93,7 @@ monster.loot = {
 	{ id = 23542, chance = 1180 }, -- collar of blue plasma
 	{ name = "glacial rod", chance = 940 },
 	{ name = "ornate crossbow", chance = 940 },
-	{ id = 34109, chance = 20 }, -- bag you desire
+	{ id = 34109, chance = 50 }, -- bag you desire
 }
 
 monster.attacks = {

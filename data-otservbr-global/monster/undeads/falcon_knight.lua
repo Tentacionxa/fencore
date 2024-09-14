@@ -100,6 +100,7 @@ monster.loot = {
 	{ name = "heavy mace", chance = 460 },
 	{ id = 3481, chance = 370 }, -- closed trap
 	{ id = 3019, chance = 100 }, -- demonbone amulet
+	{ id = 9151, chance = 1000 }, 
 }
 
 monster.attacks = {

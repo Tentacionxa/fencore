@@ -76779,5 +76779,23 @@ Granted by TibiaGoals.com"/>
 		<attribute key="decayTo" value="0"/>
 		<attribute key="containersize" value="28"/>
 	</item>
+	<item id="48388" article="a" name="dead quara">
+		<attribute key="fluidsource" value="blood"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="containersize" value="28"/>
+	</item>
+	<item id="48391" article="a" name="dead quara">
+		<attribute key="fluidsource" value="blood"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="containersize" value="28"/>
+	</item>
+	<item id="49146" article="a" name="dead quara">
+		<attribute key="fluidsource" value="blood"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="containersize" value="28"/>
+	</item>
 </items>
 

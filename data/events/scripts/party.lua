@@ -65,13 +65,8 @@ function Party:onDisband()
 	return true
 end
 
-local config = {
-	maxPlayerCount = 4, -- If more than that, then the XP will have another type of bonus.
-	reducedExperience = 5% -- 5 = 5% (reduced bonus)
-}
-
 function Party:onShareExperience(exp)
-	local sharedExperienceMultiplier = 1.20 -- 20%
+	local sharedExperienceMultiplier = 1.20 --20%
 	local vocationsIds = {}
 
 	local vocationId = self:getLeader():getVocation():getBase():getId()
@@ -87,13 +82,9 @@ function Party:onShareExperience(exp)
 	end
 
 	local size = #vocationsIds
-	local membersCount = #self:getMembers() + 1
-
-	if membersCount > config.maxPlayerCount then
-		sharedExperienceMultiplier = 1.0 + (config.reducedExperience / 100) -- BÃ´nus reduzido
-	elseif size > 1 then
+	if size > 1 then
 		sharedExperienceMultiplier = 1.0 + ((size * (5 * (size - 1) + 10)) / 100)
 	end
 
-	return math.ceil((exp * sharedExperienceMultiplier) / membersCount)
+	return math.ceil((exp * sharedExperienceMultiplier) / (#self:getMembers() + 1))
 end

@@ -376,7 +376,7 @@ mapAuthor = "OpenTibiaBR"
 -- Party List limitations
 -- max distance in which players in party list are visible
 -- NOTE partyListMaxDistance set to 0 means no limit
-partyListMaxDistance = 0
+partyListMaxDistance = 40
 
 -- Custom Map
 -- NOTE: toggleMapCustom set to true will load all maps in custom map folder

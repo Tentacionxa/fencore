@@ -283,6 +283,7 @@ npcConfig.shop = {
 	{ itemName = "spider fangs", clientId = 8031, sell = 4 },
 	{ itemName = "wolf paw", clientId = 5897, sell = 7 },
 	{ itemName = "wool", clientId = 10319, sell = 10 },
+	{ itemName = "sliver", clientId = 37109, sell = 3500 },
 }
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

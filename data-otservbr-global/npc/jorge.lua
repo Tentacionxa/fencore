@@ -59,6 +59,7 @@ local items = {
 	[7] = { name = "Dragon Eye", id = 22027 },
 	[8] = { name = "Dragon Goblet", id = 31265 },
 	[9] = { name = "Draken Doll", id = 12043 },
+	[10] = { name = "Encyclopedia", id = 8149 },
 	[11] = { name = "Friendship Amulet", id = 19153 },
 	[12] = { name = "Frozen Heart", id = 19156 },
 	[13] = { name = "Golden Falcon", id = 28896 },

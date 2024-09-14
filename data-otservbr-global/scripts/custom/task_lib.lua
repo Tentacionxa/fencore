@@ -733,6 +733,34 @@ taskConfiguration = {
         },
 },
 
+{name = "Rootthing - Rootthing Nutshell, Rootthing Amber Shaper, Rootthing Bug Tracker", color = 40, total = 2000, type = "repeatable", storage = 190950, storagecount = 190951,
+        rewards = {
+                {3043, 200},
+                {37317, 3},
+        {"exp", 9000000},
+        },
+        races = {
+                "Rootthing Nutshell",
+                "Rootthing Amber Shaper",
+                "Rootthing Bug Tracker",
+        
+        },
+},
+
+{name = "Quara Podzilla - Quara Raider, Quara Looter, Quara Plunderer", color = 40, total = 2500, type = "repeatable", storage = 190940, storagecount = 190941,
+        rewards = {
+			{3043, 200},
+			{37317, 4},
+	{"exp", 9000000},
+        },
+        races = {
+                "Quara Raider",
+                "Quara Looter",
+                "Quara Plunderer",
+        
+        },
+},
+
 }
 
 squareWaitTime = 5000

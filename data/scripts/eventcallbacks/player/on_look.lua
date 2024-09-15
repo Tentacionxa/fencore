@@ -1,6 +1,11 @@
 local callback = EventCallback()
 
 function callback.playerOnLook(player, thing, position, distance)
+	if thing:getName() == "Roulette Dummy" then
+		local item = ItemType(thing:getOutfit().lookTypeEx)
+		return player:sendTextMessage(MESSAGE_LOOK, string.format("You see %s.\n%s.", item:getName(), item:getDescription()))
+	end
+
 	local description = "You see "
 	if thing:isItem() then
 		if thing.actionid == 5640 then

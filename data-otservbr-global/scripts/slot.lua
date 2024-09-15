@@ -21,7 +21,7 @@ db.query([[
 
 local machinesConfig = {
 	[18433] = {
-		itemNecessario = {id = 3043, quantidade = 25},
+		itemNecessario = {id = 3043, quantidade = 50},
 		pisosPorMachine = 3,
 		posicaoDoCentro1 = Position(33449, 32491, 14),
 		posicaoDoCentro2 = Position(33450, 32491, 14),

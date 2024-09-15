@@ -73,3 +73,21 @@ function Party:onShareExperience(exp)
 
 	return math.ceil(exp * multiplier / #members)
 end
+
+
+local playerDieInPartyHandler = CreatureEvent("playerDieInPartyHandler")
+function playerDieInPartyHandler.onPrepareDeath(creature, lastHitKiller, mostDamageKiller)
+	local tmpParty = creature:getParty()
+	if tmpParty then
+		tmpParty:removeMember(creature)
+	end
+	return true
+end
+playerDieInPartyHandler:register()
+
+local registerPlayerDieInPartyEvent = CreatureEvent("registerPlayerDieInPartyEvent")
+function registerPlayerDieInPartyEvent.onLogin(player)
+	player:registerEvent("playerDieInPartyHandler")
+	return true
+end
+registerPlayerDieInPartyEvent:register()

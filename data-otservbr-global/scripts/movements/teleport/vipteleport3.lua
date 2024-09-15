@@ -16,6 +16,7 @@ local config = {
 	{ name="Melting Underground", position = Position(33846, 32679, 13) },
 	{ name="Rootthing Swamp", position = Position(31658, 31954, 7) },
 	{ name="Rootthing Cave", position = Position(34870, 33207, 7) },
+	{ name="Rootthing Lair", position = Position(35103, 33108, 5) },
 	{ name="Quara City", position = Position(31195, 31824, 6) },
 	{ name="Baloon Land", position = Position(31581, 32761, 8) }
 	

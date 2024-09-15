@@ -25,7 +25,7 @@ maintainModeMessage = ""
 -- NOTE: valid values for worldType are: "pvp", "no-pvp" and "pvp-enforced"
 -- NOTE: removeBeginningWeaponAmmunition: spears, arrows, bolt have endless ammo (allows training for paladins)
 -- NOTE: refundManaOnBeginningWeapons: wand of vortex and snakebite refund mana used (allows training for mages)
-worldType = "pvp-enforced"
+worldType = "pvp"
 hotkeyAimbotEnabled = true
 protectionLevel = 300
 pzLocked = 60 * 1000
@@ -36,7 +36,7 @@ removeWeaponCharges = true
 removeBeginningWeaponAmmunition = true
 refundBeginningWeaponMana = false
 timeToDecreaseFrags = 24 * 60 * 60 * 1000
-whiteSkullTime = 15 * 60 * 1000
+whiteSkullTime = 5 * 60 * 1000
 stairJumpExhaustion = 2 * 1000
 experienceByKillingPlayers = true
 expFromPlayersLevelRange = 100

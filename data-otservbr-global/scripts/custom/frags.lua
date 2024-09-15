@@ -1,11 +1,29 @@
 local frags = TalkAction("!frags")
 
 function frags.onSay(player, words, param)
-    local query = "SELECT count(*) as result FROM `player_deaths` WHERE killed_by = '" .. player:getName() .. "'"
-    local numFrags = db.storeQuery(query)
-    local value = Result.getNumber(numFrags, "result")
+    local fragTime = configManager.getNumber(configKeys.FRAG_TIME)
+    local skullTime = player:getSkullTime()
+    local fragsList = player:getKills()
+    local totalFrags = 0
 
-    player:sendTextMessage(MESSAGE_LOOT, "You have killed a total of " .. value .. " players so far.") 
+    for fragIndex, fragTable in pairs(fragsList) do
+        for subKey, subValue in pairs(fragTable) do
+            if subKey == 1 then
+                local resultName =
+                    db.storeQuery("SELECT `name` FROM `players` WHERE `id` = " .. db.escapeString(subValue))
+                local name = Result.getString(resultName, "name")
+                -- player:sendTextMessage(MESSAGE_MARKET, "You killed " .. name)
+                totalFrags = totalFrags + 1
+            elseif subKey == 2 then
+                local formattedDate = os.date("%d %b %Y, %H:%M:%S", subValue)
+                -- player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "at " .. formattedDate)
+            elseif subKey == 3 then
+            else
+            end
+        end
+    end
+
+    player:sendTextMessage(MESSAGE_INFO_DESCR, "You have " .. totalFrags .. " unjustified kills.")
 
     return false
 end

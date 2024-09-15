@@ -22,7 +22,7 @@ db.query([[
 local machinesConfig = {
 	[18433] = {
 		itemNecessario = {id = 3043, quantidade = 50},
-		pisosPorMachine = 3,
+		pisosPorMachine = 5,
 		posicaoDoCentro1 = Position(33449, 32491, 14),
 		posicaoDoCentro2 = Position(33450, 32491, 14),
 		posicaoDoCentro3 = Position(33451, 32491, 14),
@@ -38,7 +38,7 @@ local machinesConfig = {
 	
 [18434] = {
 		itemNecessario = {id = 3043, quantidade = 50},
-		pisosPorMachine = 3,
+		pisosPorMachine = 5,
 		posicaoDoCentro1 = Position(33453, 32491, 14),
 		posicaoDoCentro2 = Position(33454, 32491, 14),
 		posicaoDoCentro3 = Position(33455, 32491, 14),
@@ -54,7 +54,7 @@ local machinesConfig = {
 
 [18435] = {
 		itemNecessario = {id = 3043, quantidade = 50},
-		pisosPorMachine = 3,
+		pisosPorMachine = 5,
 		posicaoDoCentro1 = Position(33457, 32491, 14),
 		posicaoDoCentro2 = Position(33458, 32491, 14),
 		posicaoDoCentro3 = Position(33459, 32491, 14),
@@ -67,7 +67,7 @@ local machinesConfig = {
 	},
 [18436] = {
 		itemNecessario = {id = 37317, quantidade = 20},
-		pisosPorMachine = 3,
+		pisosPorMachine = 5,
 		posicaoDoCentro1 = Position(33461, 32491, 14),
 		posicaoDoCentro2 = Position(33462, 32491, 14),
 		posicaoDoCentro3 = Position(33463, 32491, 14),

@@ -374,7 +374,7 @@ mapName = "otservbr"
 mapAuthor = "OpenTibiaBR"
 
 -- Party List limitations
--- max distance in which players in party list are visible
+-- max p in which players in party list are visible
 -- NOTE partyListMaxDistance set to 0 means no limit
 partyListMaxDistance = 40
 

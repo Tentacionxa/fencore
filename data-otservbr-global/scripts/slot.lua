@@ -27,11 +27,11 @@ local machinesConfig = {
 		posicaoDoCentro2 = Position(33450, 32491, 14),
 		posicaoDoCentro3 = Position(33451, 32491, 14),
 		items = {
-			{ id = 36725, quantidade = 3 }, -- stamina extension
-			{ id = 36726, quantidade = 3 }, -- charm upgrade
-{ id = 36728, quantidade = 4 }, -- charm upgrade
-{ id = 36727, quantidade = 5 }, -- charm upgrade
-{ id = 36725, quantidade = 5 }, -- charm upgrade
+			{ id = 36725, quantidade = 1 }, -- stamina extension
+			{ id = 36726, quantidade = 1 }, -- charm upgrade
+{ id = 36728, quantidade = 1 }, -- charm upgrade
+{ id = 36727, quantidade = 1 }, -- charm upgrade
+{ id = 36725, quantidade = 1 }, -- charm upgrade
 		}
 	},
 
@@ -43,10 +43,10 @@ local machinesConfig = {
 		posicaoDoCentro2 = Position(33454, 32491, 14),
 		posicaoDoCentro3 = Position(33455, 32491, 14),
 		items = {
-			{ id = 23679, quantidade = 3 }, -- stamina extension
+			{ id = 23679, quantidade = 1 }, -- stamina extension
 			{ id = 14758, quantidade = 1 }, -- charm upgrade
-{ id = 3997, quantidade = 4 }, -- charm upgrade
-{ id = 943, quantidade = 2 }, -- charm upgrade
+{ id = 3997, quantidade = 1 }, -- charm upgrade
+{ id = 943, quantidade = 1 }, -- charm upgrade
 { id = 37317, quantidade = 1 }, -- charm upgrade
 { id = 8149, quantidade = 1 }, -- charm upgrade
 		}
@@ -59,10 +59,10 @@ local machinesConfig = {
 		posicaoDoCentro2 = Position(33458, 32491, 14),
 		posicaoDoCentro3 = Position(33459, 32491, 14),
 		items = {
-			{ id = 44613, quantidade = 4 }, -- stamina extension
-			{ id = 44607, quantidade = 4 }, -- charm upgrade
-{ id = 44610, quantidade = 3 }, -- charm upgrade
-{ id = 44604, quantidade = 5 }, -- charm upgrade
+			{ id = 44613, quantidade = 1 }, -- stamina extension
+			{ id = 44607, quantidade = 1 }, -- charm upgrade
+{ id = 44610, quantidade = 1 }, -- charm upgrade
+{ id = 44604, quantidade = 1 }, -- charm upgrade
 		}
 	},
 [18436] = {

@@ -74,10 +74,10 @@ local machinesConfig = {
 		items = {
 			{ id = 6529, quantidade = 1 }, -- stamina extension
 			{ id = 39702, quantidade = 1 }, -- charm upgrade
-{ id = 22118, quantidade = 2 }, -- charm upgrade
+{ id = 22118, quantidade = 1 }, -- charm upgrade
 { id = 23721, quantidade = 1 }, -- charm upgrade
-{ id = 23683, quantidade = 3 }, -- charm upgrade
-{ id = 19371, quantidade = 2 }, -- charm upgrade
+{ id = 23683, quantidade = 1 }, -- charm upgrade
+{ id = 19371, quantidade = 1 }, -- charm upgrade
 		}
 	}
 

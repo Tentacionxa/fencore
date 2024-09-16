@@ -347,8 +347,8 @@ houseRentPeriod = "monthly"
 houseRentRate = 2
 houseOwnedByAccount = false
 houseBuyLevel = 0
-housePurchasedShowPrice = true
-houseLoseAfterInactivity = 30 -- days; 0 = never
+housePurchasedShowPrice = false
+houseLoseAfterInactivity = 14 -- days; 0 = never
 onlyInvitedCanMoveHouseItems = true
 togglehouseTransferOnRestart = true
 

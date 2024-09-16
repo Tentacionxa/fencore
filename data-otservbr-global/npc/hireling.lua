@@ -357,6 +357,10 @@ function createHirelingType(HirelingName)
 	{ itemName = "stone skin amulet", clientId = 3081, buy = 5000 },
 	{ itemName = "leviathan's amulet", clientId = 9303, buy = 5000 },
 	{ itemName = "ring of healing", clientId = 3098, buy = 2500 },
+	{ itemName = "boots of haste", clientId = 3079, sell = 30000 },
+	{ itemName = "spellbook of warding", clientId = 8073, sell = 7000 },
+	{ itemName = "mystic turban", clientId = 3574, sell = 150 },
+	{ itemName = "clerical mace", clientId = 3311, sell = 170 },
 	}
 	-- On buy npc shop message
 	npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

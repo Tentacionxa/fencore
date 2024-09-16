@@ -26135,6 +26135,8 @@
     <attribute key="description" value="It provides protecion from mana drain."/>
     <attribute key="duration" value="1"/>
      <attribute key="absorbpercentmanadrain" value="25"/>
+	 <attribute key="manaleechamount" value="2500"/>
+                <attribute key="manaleechchance" value="100"/>
     <attribute key="decayTo" value="9802"/>
 	<attribute key="showduration" value="1"/>
 	<attribute key="stopduration" value="1"/>

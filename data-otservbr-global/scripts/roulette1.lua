@@ -21,7 +21,7 @@ db.query([[
 
 local roletasConfig = {
 	[17563] = {
-		itemNecessario = {id = 3043, quantidade = 25},
+		itemNecessario = {id = 3043, quantidade = 100},
 		pisosPorRoleta = 9,
 		posicaoDoCentro = Position(32346, 32222, 8),
 		items = {
@@ -44,7 +44,7 @@ local roletasConfig = {
 		}
 	},
 	[16563] = {
-		itemNecessario = {id = 3043, quantidade = 25},
+		itemNecessario = {id = 3043, quantidade = 100},
 		pisosPorRoleta = 9,
 		posicaoDoCentro = Position(32356, 32222, 8),
 		items = {

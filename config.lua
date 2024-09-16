@@ -47,7 +47,7 @@ redSkullDuration = 2
 blackSkullDuration = 4
 orangeSkullDuration = 1
 manaShieldDamageReceivedFactor = 2.0
-cleanProtectionZones = true
+cleanProtectionZones = false
 
 -- Connection Config
 -- NOTE: allowOldProtocol can allow login on 10x protocol. (11.00)
@@ -310,7 +310,7 @@ maxAllowedOnADummy = 4
 toggleSaveAsync = false
 toggleSaveInterval = true
 saveIntervalType = "minute"
-toggleSaveIntervalCleanMap = false
+toggleSaveIntervalCleanMap = true
 saveIntervalTime = 15
 
 -- Imbuement

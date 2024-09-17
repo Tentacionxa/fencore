@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Anomaly")
 local monster = {}
 
 monster.description = "anomaly"
-monster.experience = 50000
+monster.experience = 150000
 monster.outfit = {
 	lookType = 876,
 	lookHead = 38,
@@ -18,16 +18,14 @@ monster.bosstiary = {
 	bossRace = RARITY_ARCHFOE,
 }
 
-monster.health = 290000
-monster.maxHealth = 290000
+monster.health = 690000
+monster.maxHealth = 690000
 monster.race = "venom"
 monster.corpse = 23564
 monster.speed = 200
 monster.manaCost = 0
 
 monster.events = {
-	"AnomalyTransform",
-	"HeartBossDeath",
 }
 
 monster.changeTarget = {

@@ -20,18 +20,7 @@ local config = {
 		{ name = "Spark of Destruction", pos = Position(32274, 31249, 14) },
 		{ name = "Spark of Destruction", pos = Position(32267, 31249, 14) },
 	},
-	onUseExtra = function()
-		Game.setStorageValue(GlobalStorage.HeartOfDestruction.ChargedAnomaly, 0)
-		local tile = Tile(Position(32261, 31250, 14))
-		if tile then
-			local vortex = tile:getItemById(23482)
-			if vortex then
-				vortex:transform(23483)
-				vortex:setActionId(14324)
-			end
-		end
-	end,
-	exit = Position(32182, 31250, 14),
+	exit = Position(32261, 31250, 14),
 }
 
 local lever = BossLever(config)

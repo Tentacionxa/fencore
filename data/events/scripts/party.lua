@@ -68,8 +68,18 @@ end
 function Party:onShareExperience(exp)
 	local multiplier = 1
 	local members = self:getMembers()
+	table.insert(members, self:getLeader())
 
-	multiplier = math.min(4, #members)
+	local vocations = {}
+
+	for _, member in ipairs(members) do
+		local vocationId = member:getVocation():getBase():getId()
+		if not table.contains(vocations, vocationId) then
+			table.insert(vocations, vocationId)
+		end
+	end
+
+	multiplier = #vocations
 
 	return math.ceil(exp * multiplier / #members)
 end

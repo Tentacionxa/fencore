@@ -10,7 +10,7 @@ coreDirectory = "data"
 -- Set log level
 -- It can be trace, debug, info, warning, error, critical, off (default: info).
 -- NOTE: Will only display logs with level higher or equal the one set.
-logLevel = "debug"
+logLevel = "trace"
 
 --- Toggles the server's maintenance mode.
 -- When enabled, it restricts user access and indicates maintenance operations.
@@ -462,7 +462,7 @@ globalServerSaveNotifyDuration = 5
 globalServerSaveCleanMap = false
 globalServerSaveClose = false
 globalServerSaveShutdown = true
-globalServerSaveTime = "16:00:00"
+globalServerSaveTime = "15:00:00"
 
 -- Sort loot by chance, most rare items drop first
 -- it is good to be setted when you have a higher

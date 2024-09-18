@@ -1,5 +1,5 @@
 local config = {
-	[ITEM_GOLD_COIN] = { changeTo = ITEM_PLATINUM_COIN },
+	[3043] = { changeTo = 46316 },
 	[ITEM_PLATINUM_COIN] = { changeBack = ITEM_GOLD_COIN, changeTo = ITEM_CRYSTAL_COIN },
 	[ITEM_CRYSTAL_COIN] = { changeBack = ITEM_PLATINUM_COIN },
 }
@@ -13,23 +13,13 @@ function goldConverter.onUse(player, item, fromPosition, target, toPosition, isH
 	end
 
 	local charges = item:getCharges()
-	if coin.changeTo and target.type == 100 then
+	if coin.46087 and target.type == 100 then
 		target:remove()
 		player:addItem(coin.changeTo, 1)
-		item:transform(item:getId(), charges - 1)
-	elseif coin.changeBack then
-		target:transform(target.itemid, target.type - 1)
-		player:addItem(coin.changeBack, 100)
-		item:transform(item:getId(), charges - 1)
 	else
 		return false
 	end
 
-	if charges == 0 then
-		item:remove()
-	end
-	return true
-end
 
-goldConverter:id(23722, 25719)
+goldConverter:id(46087,46088)
 goldConverter:register()

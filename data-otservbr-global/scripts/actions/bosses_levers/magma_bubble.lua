@@ -1,7 +1,7 @@
 local config = {
 	boss = {
 		name = "Magma Bubble",
-		position = Position(33653, 32909, 15),
+		position = Position/pos ,
 	},
 	playerPositions = {
 		{ pos = Position(33669, 32926, 15), teleport = Position(33655, 32917, 15), effect = CONST_ME_TELEPORT },

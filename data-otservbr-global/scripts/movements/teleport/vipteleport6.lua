@@ -3,6 +3,7 @@ local config = {
 	{ name="Dragon Kingdom", position = Position(32021, 32470, 10)},
 	{ name="Lizard Tiquanda", position = Position(33005, 32754, 6)},
 	{ name="Hellhound INQ", position = Position(33231, 31635, 10)},
+	{ name="Nightmare Isle", position = Position(33498, 32614, 8)},
 	{ name="Grimeleech Lair", position = Position(33320, 31467, 14)},
 	{ name="Grimeleech Isle", position = Position(32545, 31021, 7)},
 	{ name="Bog Raider Lair", position = Position(33328, 31808, 12)},

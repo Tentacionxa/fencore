@@ -672,6 +672,12 @@ npcConfig.shop = {
 { itemName = "beijinho", clientId = 48253, sell = 2500 },
 { itemName = "brigadeiro", clientId = 48252, sell = 1900 },
 { itemName = "wad of fairy floss", clientId = 48544, sell = 2300 },
+{ itemName = "preserved pink seed", clientId = 45652, sell = 3300 },
+{ itemName = "preserved red seed", clientId = 45653, sell = 3300 },
+{ itemName = "preserved yellow seed", clientId = 45657, sell = 3300 },
+{ itemName = "preserved violet seed", clientId = 45655, sell = 3300 },
+{ itemName = "preserved purple seed", clientId = 45656, sell = 3300 },
+{ itemName = "preserved light blue seed", clientId = 45654, sell = 3300 },
 }
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

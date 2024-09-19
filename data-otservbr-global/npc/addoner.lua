@@ -65,7 +65,7 @@ addoninfo = {
 ['second knight addon'] = {cost = 0, items = {{5893,100}, {5924,1}, {5885,1}, {5887,1}}, outfit_female = 139, outfit_male = 131, addon = 2},
 ['first mage addon'] = {cost = 0, items = {{3074,1}, {3075,1}, {3072,1}, {3073,1}, {3071,1}, {3066,1}, {3070,1}, {3069,1}, {3065,1}, {3067,1}, {5904,10}, {3077,20}, {5809,1}}, outfit_female = 138, outfit_male = 130, addon = 1},
 ['second mage male addon'] = {cost = 0, items = {{5903,1}}, outfit_female = 130, outfit_male = 130, addon = 2},
-['second mage female  addon'] = {cost = 0, items = {{5894,70}, {5911,20}, {5883,40}, {5922,35}, {5886,10}, {5881,60}, {5882,40}, {5904,15}, {5905,30}}, outfit_female = 138, outfit_male = 138, addon = 2},
+['second mage female addon'] = {cost = 0, items = {{5894,70}, {5911,20}, {5883,40}, {5922,35}, {5886,10}, {5881,60}, {5882,40}, {5904,15}, {5905,30}}, outfit_female = 138, outfit_male = 138, addon = 2},
 ['first summoner addon'] = {cost = 0, items = {{5958,1}}, outfit_female = 141, outfit_male = 133, addon = 1},
 ['second summoner male addon'] = {cost = 0, items = {{5894,70}, {5911,20}, {5883,40}, {5922,35}, {5886,10}, {5881,60}, {5882,40}, {5904,15}, {5905,30}}, outfit_female = 133, outfit_male = 133, addon = 2},
 ['second summoner female addon'] = {cost = 0, items = {{5958,1}}, outfit_female = 141, outfit_male = 141, addon = 2},

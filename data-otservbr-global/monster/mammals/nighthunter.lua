@@ -85,6 +85,7 @@ monster.loot = {
 	{ name = "Warrior's Axe", chance = 1400 },
 	{ name = "Spellbook of Mind Control", chance = 960 },
 	{ name = "Stone Skin Amulet", chance = 850 },
+	{ name = "Primal Bag", chance = 30 },
 }
 
 monster.attacks = {

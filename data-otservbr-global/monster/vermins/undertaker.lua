@@ -86,6 +86,7 @@ monster.loot = {
 	{ name = "Butterfly Ring", chance = 1240 },
 	{ name = "Wand of Voodoo", chance = 960 },
 	{ name = "Violet Gem", chance = 850 },
+	{ name = "Primal Bag", chance = 30 },
 }
 
 monster.attacks = {

@@ -58145,6 +58145,10 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="duration" value="60"/>
 		<attribute key="decayTo" value="0"/>
 	</item>
+	<item id="43575" article="a" name="dead oozing">
+		<attribute key="duration" value="60"/>
+		<attribute key="decayTo" value="0"/>
+	</item>
 	<item id="31311" article="a" name="black marble floor">
 		<attribute key="primarytype" value="artificial tiles"/>
 	</item>

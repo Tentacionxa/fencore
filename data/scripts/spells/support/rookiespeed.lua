@@ -29,7 +29,7 @@ function spell.onCastSpell(creature, variant)
 end
 
 spell:name("Rookie Speed")
-spell:words("xori hur")
+spell:words("xori speed")
 spell:group("support")
 spell:vocation("none;true")
 spell:castSound(SOUND_EFFECT_TYPE_SPELL_HASTE)

@@ -2,7 +2,10 @@ local effects = {
 	{position = Position (32374, 32212, 7), text = 'VIP', effect = CONST_ME_TUTORIALARROW},
 	{position = Position (32377, 32212, 7), text = 'VIP', effect = CONST_ME_TUTORIALARROW},
  
-	  {position = Position(32353, 32219, 7), text = 'Adventurer Guild', effect = CONST_ME_PURPLESMOKE},
+	{position = Position(32358, 32218, 7), text = '', effect = CONST_ME_STEPSHORIZONTAL},
+{position = Position(32359, 32218, 7), text = '', effect = CONST_ME_STEPSHORIZONTAL},
+
+	  {position = Position(32351, 32219, 7), text = 'Adventurer Guild', effect = CONST_ME_PURPLESMOKE},
   {position = Position(32786, 31248, 5), text = 'Adventurer Guild', effect = CONST_ME_GROUNDSHAKER},
  {position = Position(32358, 31778, 7), text = 'Adventurer Guild', effect = CONST_ME_GROUNDSHAKER},
  {position = Position(32629, 31915, 8), text = 'Adventurer Guild', effect = CONST_ME_GROUNDSHAKER},
@@ -23,9 +26,9 @@ local effects = {
  
  {position = Position(31469, 31765, 7), text = 'Task', effect = CONST_ME_GROUNDSHAKER},
  {position = Position(32342, 32229, 7), text = 'Task', effect = CONST_ME_GROUNDSHAKER},
- {position = Position(32361, 32219, 7), text = 'Hunt', effect = CONST_ME_GREENSMOKE},
- {position = Position(32363, 32219, 7), text = 'Bosses', effect = CONST_ME_YELLOWSMOKE},
- {position = Position(32356, 32219, 7), text = 'Raids', effect = CONST_ME_BLACKSMOKE},
+ {position = Position(32362, 32219, 7), text = 'Hunt', effect = CONST_ME_GREENSMOKE},
+ {position = Position(32364, 32219, 7), text = 'Bosses', effect = CONST_ME_YELLOWSMOKE},
+ {position = Position(32354, 32219, 7), text = 'Raids', effect = CONST_ME_BLACKSMOKE},
  {position = Position(32353, 32222, 7), text = 'VIP Blessing', effect = CONST_ME_GROUNDSHAKER},
  {position = Position(32356, 32219, 7), text = 'Raid', effect = CONST_ME_GROUNDSHAKER},
  {position = Position(32365, 32219, 7), text = 'Quests', effect = CONST_ME_ENERGYHIT},
@@ -85,7 +88,7 @@ local effects = {
 		   {position = Position(32564, 32391, 5), text = 'Issavi', effect = CONST_ME_GROUNDSHAKER}, 
 			{position = Position(32552, 32413, 5), text = 'Ankrahmun', effect = CONST_ME_GROUNDSHAKER}, 
 			 {position = Position(32582, 32413, 5), text = 'Hellish Basin', effect = CONST_ME_GROUNDSHAKER},
-			{position = Position(32358, 32219, 7), text = 'Daily Quest', effect = CONST_ME_BLACKSMOKE}, 
+			{position = Position(32356, 32219, 7), text = 'Daily Quest', effect = CONST_ME_BLACKSMOKE}, 
 	   {position = Position(32790, 31248, 5), text = 'Daily Quest', effect = CONST_ME_GROUNDSHAKER}, 
 		{position = Position(32726, 31657, 7), text = 'Daily Quest', effect = CONST_ME_GROUNDSHAKER}, 
 		 {position = Position(32324, 31784, 6), text = 'Daily Quest', effect = CONST_ME_GROUNDSHAKER}, 

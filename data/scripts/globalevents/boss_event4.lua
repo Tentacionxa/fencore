@@ -1,7 +1,7 @@
 local config = {
     teleportId = 25047,
     days = {
-        ["Sunday"] = {Position(32356, 32219, 7), Position(32117, 32687, 4)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
+        ["Sunday"] = {Position(32354, 32219, 7), Position(32117, 32687, 4)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
     },
     bossPosition = Position(32122, 32686, 4),
     bossName     = 'Ferumbras',

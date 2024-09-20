@@ -1,7 +1,7 @@
 local config = {
     teleportId = 25047,
     days = {
-        ["Saturday"] = {Position(32356, 32219, 7), Position(33524, 32377, 11)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
+        ["Saturday"] = {Position(32354, 32219, 7), Position(33524, 32377, 11)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
     },
     bossPosition = Position(33540, 32383, 12),
     bossName     = 'Gaz\'haragoth',

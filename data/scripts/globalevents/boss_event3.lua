@@ -1,13 +1,13 @@
 local config = {
     teleportId = 25057,
     days = {
-        ["Monday"] = {Position(32356, 32219, 7), Position(32228, 31188, 14)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
-        ["Tuesday"] = {Position(32356, 32219, 7), Position(32228, 31188, 14)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
-        ["Wednesday"] = {Position(32356, 32219, 7), Position(32228, 31188, 14)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
-        ["Thursday"] = {Position(32356, 32219, 7), Position(32228, 31188, 14)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
-        ["Friday"] = {Position(32356, 32219, 7), Position(32228, 31188, 14)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
-        ["Saturday"] = {Position(32356, 32219, 7), Position(32228, 31188, 14)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
-        ["Sunday"] = {Position(32356, 32219, 7), Position(32228, 31188, 14)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
+        ["Monday"] = {Position(32354, 32219, 7), Position(32228, 31188, 14)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
+        ["Tuesday"] = {Position(32354, 32219, 7), Position(32228, 31188, 14)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
+        ["Wednesday"] = {Position(32354, 32219, 7), Position(32228, 31188, 14)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
+        ["Thursday"] = {Position(32354, 32219, 7), Position(32228, 31188, 14)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
+        ["Friday"] = {Position(32354, 32219, 7), Position(32228, 31188, 14)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
+        ["Saturday"] = {Position(32354, 32219, 7), Position(32228, 31188, 14)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
+        ["Sunday"] = {Position(32354, 32219, 7), Position(32228, 31188, 14)}, -- Morshabaal - monday-Segunda, tuesday-Terça, wednesday-Quarta, thursday-Quinta, friday-Sexta, saturday-Sabado and sunday-Domingo
     },
     bossPosition = Position(32228, 31164, 15),
     bossName     = 'Ghazbaran',

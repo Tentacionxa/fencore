@@ -7,6 +7,7 @@ local config = {
 	{ name="Underworld Library", position = Position(34953, 33033, 7)  },
 	{ name="Gazer Anomaly", position = Position(31900, 33375, 7)  },
 	{ name="Deathling Universe", position = Position(32033, 33738, 7)  },
+	{ name="Deathling Crypt", position = Position(34152, 33021, 8)  },
 	{ name="Stonerefiner Underground", position = Position(31417, 33472, 7)  },
 	{ name="Asura Kingdom", position = Position(34507, 33227, 7) },
 	{ name="Jungle Tunnels", position = Position(34626, 33046, 7) },

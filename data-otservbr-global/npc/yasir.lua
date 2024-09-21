@@ -678,6 +678,8 @@ npcConfig.shop = {
 { itemName = "preserved violet seed", clientId = 45655, sell = 3300 },
 { itemName = "preserved purple seed", clientId = 45656, sell = 3300 },
 { itemName = "preserved light blue seed", clientId = 45654, sell = 3300 },
+{ itemName = "fish eye", clientId = 48517, sell = 2300 },
+{ itemName = "root tentacle", clientId = 48516, sell = 2300 },
 }
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

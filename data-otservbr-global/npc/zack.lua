@@ -1661,6 +1661,7 @@ npcConfig.shop = {
 	{ itemName = "sanguine rod", clientId = 43885, sell = 1400000 },
 	{ itemName = "sanguine bow", clientId = 43877, sell = 1400000 },
 	{ itemName = "sanguine crossbow", clientId = 43879, sell = 1400000 },
+	{ itemName = "soul prism", clientId = 49164, sell = 25000 },
 
 	{ itemName = "all loot in pouch", clientId = ITEM_GOLD_POUCH, sell = 1 },
 }

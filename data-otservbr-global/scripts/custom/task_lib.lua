@@ -325,6 +325,7 @@ taskConfiguration = {
 	rewards = {  
 		{3043, 400},
 		{37317, 2},
+		{34109, 1},
 	{"exp", 100000000},
 	},
 	races = {
@@ -449,6 +450,7 @@ taskConfiguration = {
 	rewards = { 
 		{3043, 350},
 		{37317, 1},
+		{43898, 1},
 	{"exp", 10000000},
 	},
 	races = {
@@ -467,26 +469,6 @@ taskConfiguration = {
 		"Walking Pillar",
 		"Wandering Pillar",
 		
-	},
-},
-{name = "The Secret Library - Cursed Book, Animated Feather, Biting Book, Dark Knowledge, Brain Squid, Energetic book, Burning Book, Flying Book, Rage Squid, Energuardian of tales ", color = 40, total = 3500, type = "repeatable", storage = 190057, storagecount = 190058, 
-	rewards = { 
-		{3043, 280},
-{37317, 1},
-	{"exp", 8000000},
-	},
-	races = {
-		"Cursed Book",
-		"Animated Feather",
-		"Biting Book",
-		"Dark Knowledge",
-		"Brain Squid",
-		"Burning Book",
-		"Flying Book",
-		"Rage Squid",
-		"Energuardian of Tales",
-		"Energetic book",
-
 	},
 },
 {name = "Marapur Turtles - Two-Headed Turtle, Foam Stalker", color = 40, total = 2500, type = "repeatable", storage = 190059, storagecount = 190060, 
@@ -588,6 +570,7 @@ taskConfiguration = {
 		"Rage Squid",
 		"Squid Warden",
 		"Burning Book",
+		
 	},
 },
 
@@ -606,8 +589,9 @@ taskConfiguration = {
 },
 {name = "Gnomprona - Hulking Prehemoth, Gore Horn, Gorerilla, Sulphur Spouter, Undertaker,Sulphider, Nighthunter, Stalking Stalk, Emerald Tortoise, Mantosaurus, Noxious Ripptor, Fungosaurus", color = 40, total = 2000, type = "repeatable", storage = 190079, storagecount = 190080, 
 	rewards = { 
-		{3043, 220},
+		{3043, 250},
 		{37317, 1},
+		{39546, 1},
 	{"exp", 8000000},
 	},
 	races = {

@@ -224,6 +224,17 @@ GameStore.Categories = {
 					state = GameStore.States.STATE_NEW,
 					movable = true,
 			},
+			{
+				icons = { "House_Teleporter.png" },
+				name = "House Teleporter",
+				price = 150,
+				itemtype = 19361,
+				count = 1,
+				description = "<i>This magical sun mirror will always take You back home! It is an unlimited use item. Cost of each teleport is 50k.</p></i>",
+				type = GameStore.OfferTypes.OFFER_TYPE_STACKABLE,
+					state = GameStore.States.STATE_NEW,
+					movable = true,
+			},
 		},
 			},
 			{

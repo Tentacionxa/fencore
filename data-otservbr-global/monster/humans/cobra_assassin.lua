@@ -86,7 +86,7 @@ monster.loot = {
 	{ name = "machete", chance = 2250 },
 	{ name = "carlin sword", chance = 2250 },
 	{ id = 23533, chance = 1690 }, -- ring of red plasma
-	{ id = 35479, chance = 290 }, -- cobra bag  
+	{ id = 35479, chance = 100 }, -- cobra bag  
 }
 
 monster.attacks = {

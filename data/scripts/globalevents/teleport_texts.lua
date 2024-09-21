@@ -30,8 +30,7 @@ local effects = {
  {position = Position(32364, 32219, 7), text = 'Bosses', effect = CONST_ME_YELLOWSMOKE},
  {position = Position(32354, 32219, 7), text = 'Raids', effect = CONST_ME_BLACKSMOKE},
  {position = Position(32353, 32222, 7), text = 'VIP Blessing', effect = CONST_ME_GROUNDSHAKER},
- {position = Position(32356, 32219, 7), text = 'Raid', effect = CONST_ME_GROUNDSHAKER},
- {position = Position(32365, 32219, 7), text = 'Quests', effect = CONST_ME_ENERGYHIT},
+ {position = Position(32366, 32219, 7), text = 'Quests', effect = CONST_ME_ENERGYHIT},
  
  {position = Position(32373, 32232, 7), text = 'Low Level Reward', effect = CONST_ME_TUTORIALARROW},
  

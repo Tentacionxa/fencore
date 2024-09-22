@@ -23,8 +23,7 @@ public:
 
 		registerMethod(L, "Item", "isItem", ItemFunctions::luaItemIsItem);
 
-registerMethod(L, "Item", "getContainer", ItemFunctions::luaItemGetContainer);
-
+		registerMethod(L, "Item", "getContainer", ItemFunctions::luaItemGetContainer);
 		registerMethod(L, "Item", "getParent", ItemFunctions::luaItemGetParent);
 		registerMethod(L, "Item", "getTopParent", ItemFunctions::luaItemGetTopParent);
 
@@ -103,8 +102,7 @@ private:
 
 	static int luaItemIsItem(lua_State* L);
 
-static int luaItemGetContainer(lua_State* L);
-
+	static int luaItemGetContainer(lua_State* L);
 	static int luaItemGetParent(lua_State* L);
 	static int luaItemGetTopParent(lua_State* L);
 

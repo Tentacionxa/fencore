@@ -924,12 +924,6 @@ uint16_t Container::getFreeSlots() {
 }
 
 ContainerIterator Container::iterator() {
-	ContainerIterator cit;
-	if (!itemlist.empty()) {
-		cit.over.push_back(getContainer());
-		cit.cur = itemlist.begin();
-	}
-	return cit;
 	return { getContainer() };
 }
 
@@ -952,29 +946,6 @@ void Container::removeItem(std::shared_ptr<Thing> thing, bool sendUpdateToClient
 
 		itemlist.erase(it);
 		itemToRemove->resetParent();
-	}
-}
-
-std::shared_ptr<Item> ContainerIterator::operator*() {
-	return *cur;
-}
-
-void ContainerIterator::advance() {
-	if (std::shared_ptr<Item> i = *cur) {
-		if (std::shared_ptr<Container> c = i->getContainer()) {
-			if (!c->empty()) {
-				over.push_back(c);
-			}
-		}
-	}
-
-	++cur;
-
-	if (cur == over.front()->itemlist.end()) {
-		over.pop_front();
-		if (!over.empty()) {
-			cur = over.front()->itemlist.begin();
-		}
 	}
 }
 

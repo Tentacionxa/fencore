@@ -597,7 +597,7 @@ public:
 		count = n;
 	}
 
-	static uint32_t countByType(conststd::shared_ptr<Item> item, int32_t subType) {
+	static uint32_t countByType(const std::shared_ptr<Item> item, int32_t subType) {
 		if (!item) {
 			return 0;
 		}

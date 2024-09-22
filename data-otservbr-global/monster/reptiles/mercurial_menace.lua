@@ -86,6 +86,7 @@ monster.loot = {
 	{ name = "Wand of Cosmic Energy", chance = 860 },
 	{ name = "Gemmed Figurine", chance = 830 },
 	{ name = "Butterfly Ring", chance = 800 },
+	{ name = "Primal Bag", chance = 30 },
 }
 
 monster.attacks = {

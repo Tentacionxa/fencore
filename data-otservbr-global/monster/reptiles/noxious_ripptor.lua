@@ -84,6 +84,7 @@ monster.loot = {
 	{ name = "Muck Rod", chance = 1290 },
 	{ name = "Terra Legs", chance = 750 },
 	{ name = "Wooden Spellbook", chance = 450 },
+	{ name = "Primal Bag", chance = 30 },
 }
 
 monster.attacks = {

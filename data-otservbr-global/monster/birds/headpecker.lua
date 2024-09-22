@@ -85,6 +85,7 @@ monster.loot = {
 	{ name = "Blue Gem", chance = 1560 },
 	{ name = "Wand of Starstorm", chance = 980 },
 	{ name = "Gold Ingot", chance = 910 },
+	{ name = "Primal Bag", chance = 30 },
 }
 
 monster.attacks = {

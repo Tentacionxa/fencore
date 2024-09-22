@@ -98,10 +98,12 @@ addoninfo = {
 ['first rootwalker addon'] = {cost = 0, items = {{20198,100}, {48250,100}, {48254,100}, {48256,100}}, outfit_female = 1775, outfit_male = 1774, addon = 1},
 ['second rootwalker addon'] = {cost = 0, items = {{45639,1}, {48116,100}, {6393,100}}, outfit_female = 1775, outfit_male = 1774, addon = 2},
 ['first draccoon addon'] = {cost = 0, items = {{44754,1}}, outfit_female = 1723, outfit_male = 1722, addon = 1},
-['second draccoon addon'] = {cost = 0, items = {{44753,1}}, outfit_female = 1723, outfit_male = 1722, addon = 2}
+['second draccoon addon'] = {cost = 0, items = {{44753,1}}, outfit_female = 1723, outfit_male = 1722, addon = 2},
+['first deepling addon'] = {cost = 0, items = {{14174,1}, {14173,1}, {14175,1}}, outfit_female = 464, outfit_male = 463, addon = 1},
+['second deepling addon'] = {cost = 0, items = {{14021,1}, {14022,1}, {14023,1}, {14019,1}}, outfit_female = 464, outfit_male = 463, addon = 2}
 
 }
-local o = {'citizen', 'hunter', 'knight', 'mage', 'nobleman', 'summoner', 'warrior', 'barbarian', 'druid', 'wizard', 'oriental', 'pirate', 'assassin', 'beggar', 'shaman', 'norseman', 'nightmare', 'brotherhood', 'rootwalker', 'draccoon'}
+local o = {'citizen', 'hunter', 'knight', 'mage', 'nobleman', 'summoner', 'warrior', 'barbarian', 'druid', 'wizard', 'oriental', 'pirate', 'assassin', 'beggar', 'shaman', 'norseman', 'nightmare', 'brotherhood', 'rootwalker', 'draccoon', 'deepling'}
 local rtnt = {}
 local function creatureSayCallback(npc, creature, type, message)
 local talkUser = creature

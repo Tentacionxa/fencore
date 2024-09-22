@@ -26,7 +26,7 @@ local config = {
         {id = 36727, count = 1, chance = 0.1, raro = true},
         {id = 12812, count = 1, chance = 0.1, raro = true },
         {id = 14758, count = 1, chance = 3},
-        {id = 9802, count = 1, chance = 1},
+        {id = 9803, count = 1, chance = 1},
     }
 }
 

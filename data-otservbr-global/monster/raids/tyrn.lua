@@ -71,7 +71,6 @@ monster.voices = {
 
 monster.loot = {
 	{ id = 19083, chance = 5000 }, -- silver raid token
-	{ id = 19361, chance = 3000 }, -- sun mirror
 	{ id = 3583, chance = 55000, maxCount = 3 }, -- dragon ham
 	{ id = 3155, chance = 15000 }, -- sudden death rune
 	{ id = 3031, chance = 100000, maxCount = 50 }, -- gold coin

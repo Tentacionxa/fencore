@@ -731,7 +731,7 @@ function Player.canBuyOffer(self, offer)
 				disabledReason = "You already have maximum of reward tokens."
 			end
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_PREYBONUS then
-			if self:getPreyCards() >= GameStore.ItemLimit.PREY_WILDCARD then
+			if self:getPreyCards() =< GameStore.ItemLimit.PREY_WILDCARD then
 				disabled = 1
 				disabledReason = "You already have maximum of prey wildcards."
 			end

@@ -3609,7 +3609,7 @@ void Game::playerUseItemEx(uint32_t playerId, const Position &fromPos, uint8_t f
 	if (!player) {
 		return;
 	}
-
+g_logger().debug("Game::playerUseItem player: {} , itemId: {}", player->getName(), itemId);
 	bool isHotkey = (fromPos.x == 0xFFFF && fromPos.y == 0 && fromPos.z == 0);
 	if (isHotkey && !g_configManager().getBoolean(AIMBOT_HOTKEY_ENABLED, __FUNCTION__)) {
 		return;

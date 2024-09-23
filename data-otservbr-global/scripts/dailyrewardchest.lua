@@ -32,12 +32,12 @@ function dailyRewardChest.onUse(creature, item, position, fromPosition, pos, tar
  
     local backpack = player:getSlotItem(CONST_SLOT_BACKPACK)   -- Checks your backpack has room
     if not backpack or backpack:getEmptySlots(true) < 1 then
-        player:sendTextMessage (MESSAGE_STATUS_WARNING, "You do not have any available space free in your backpack to receive your Fencore daily!")
+        player:sendTextMessage (MESSAGE_EVENT_ADVANCE, "You do not have any available space free in your backpack to receive your Fencore daily!")
         return false
     end
   
     if (player:getFreeCapacity() / 100) < (config.capacity) then  -- Checks your characters capacity
-        player:sendTextMessage(MESSAGE_STATUS_WARNING, 'You do not have enough capacity to take a reward! Make sure you have a minimum of ' .. config.capacity .. ' before taking the reward!')
+        player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'You do not have enough capacity to take a reward! Make sure you have a minimum of ' .. config.capacity .. ' before taking the reward!')
         return false
     end
 

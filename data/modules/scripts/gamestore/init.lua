@@ -732,7 +732,7 @@ function Player.canBuyOffer(self, offer)
 			end
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_PREYBONUS then
 			if self:getPreyCards() <= GameStore.ItemLimit.PREY_WILDCARD then
-				disabled = 1
+				disabled = 0
 				disabledReason = "You already have maximum of prey wildcards."
 			end
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_CHARMS then

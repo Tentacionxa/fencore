@@ -86,7 +86,6 @@ monster.loot = {
 	{ name = "springsprout rod", chance = 12871, maxCount = 1 },
 	{ name = "green gem", chance = 5572, maxCount = 1 },
 	{ name = "wood cape", chance = 6096, maxCount = 1 },
-	{ name = "rootthing bug tracker soul core", chance = 8889, maxCount = 1 },
 	{ name = "composite hornbow", chance = 6363, maxCount = 1 },
 	{ name = "golden legs", chance = 13079, maxCount = 1 },
 	{ name = "soul prism", chance = 12738, maxCount = 1 },

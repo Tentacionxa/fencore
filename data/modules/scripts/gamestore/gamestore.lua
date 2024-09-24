@@ -235,6 +235,17 @@ GameStore.Categories = {
 					state = GameStore.States.STATE_NEW,
 					movable = true,
 			},
+			{
+				icons = { "Amber_Crusher.png" },
+				name = "Amber Crusher",
+				price = 300,
+				itemtype = 46628,
+				count = 1,
+				description = "<i>Use this on gems to receive gem fragments for Your fragment workshop.</p></i>",
+				type = GameStore.OfferTypes.OFFER_TYPE_STACKABLE,
+					state = GameStore.States.STATE_NEW,
+					movable = true,
+			},
 		},
 			},
 			{

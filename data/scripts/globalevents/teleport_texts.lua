@@ -5,7 +5,7 @@ local effects = {
 	{position = Position(32358, 32218, 7), text = '', effect = CONST_ME_STEPSHORIZONTAL},
 {position = Position(32359, 32218, 7), text = '', effect = CONST_ME_STEPSHORIZONTAL},
 
-	  {position = Position(32351, 32219, 7), text = 'Adventurer Guild', effect = CONST_ME_PURPLESMOKE},
+	  {position = Position(32351, 32219, 7), text = 'Other', effect = CONST_ME_PURPLESMOKE},
   {position = Position(32786, 31248, 5), text = 'Adventurer Guild', effect = CONST_ME_GROUNDSHAKER},
  {position = Position(32358, 31778, 7), text = 'Adventurer Guild', effect = CONST_ME_GROUNDSHAKER},
  {position = Position(32629, 31915, 8), text = 'Adventurer Guild', effect = CONST_ME_GROUNDSHAKER},

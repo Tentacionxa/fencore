@@ -731,7 +731,7 @@ function Player.canBuyOffer(self, offer)
 				disabledReason = "You already have maximum of reward tokens."
 			end
 		elseif offer.type == GameStore.OfferTypes.OFFER_TYPE_PREYBONUS then
-			if self:getPreyCards() =< GameStore.ItemLimit.PREY_WILDCARD then
+			if self:getPreyCards() <= GameStore.ItemLimit.PREY_WILDCARD then
 				disabled = 1
 				disabledReason = "You already have maximum of prey wildcards."
 			end
@@ -1795,7 +1795,7 @@ end
 
 function GameStore.processPreyBonusReroll(player, offerCount)
 	local limit = GameStore.ItemLimit.PREY_WILDCARD
-	if player:getPreyCards() + offerCount >= limit + 1 then
+	if player:getPreyCards() + offerCount <= limit + 1 then
 		return error({ code = 1, message = "You cannot own more than " .. limit .. " prey wildcards." })
 	end
 	player:addPreyCards(offerCount)

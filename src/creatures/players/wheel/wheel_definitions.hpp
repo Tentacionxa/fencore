@@ -127,8 +127,9 @@ enum class WheelStat_t : uint8_t {
 	MANA_LEECH_CHANCE = 12,
 	DODGE = 13,
 	CRITICAL_DAMAGE = 14,
+	MOMENTUM = 15,
 
-	TOTAL_COUNT = 15
+	TOTAL_COUNT = 16
 };
 
 enum class WheelMajor_t : uint8_t {
@@ -271,13 +272,13 @@ struct SlotInfo {
 namespace WheelSpells {
 	struct Increase {
 		bool area = false;
-		int damage = 0;
-		int heal = 0;
+		double damage = 0;
+		double heal = 0;
 		int aditionalTarget = 0;
-		int damageReduction = 0;
+		double damageReduction = 0;
 		int duration = 0;
-		int criticalDamage = 0;
-		int criticalChance = 0;
+		double criticalDamage = 0;
+		double criticalChance = 0;
 	};
 
 	struct Decrease {

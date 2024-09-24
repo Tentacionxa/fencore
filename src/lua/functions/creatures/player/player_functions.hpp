@@ -379,6 +379,12 @@ private:
 
 		registerMethod(L, "Player", "sendIconBakragore", PlayerFunctions::luaPlayerSendIconBakragore);
 
+		// Animus Mastery
+		registerMethod(L, "Player", "getAnimusMasteryPoints", PlayerFunctions::luaPlayerGetAnimusMasteryPoints);
+		registerMethod(L, "Player", "getAnimusMasteryBonus", PlayerFunctions::luaPlayerGetAnimusMasteryBonus);
+		registerMethod(L, "Player", "addAnimusMasteryPoints", PlayerFunctions::luaPlayerAddAnimusMasteryPoints);
+		registerMethod(L, "Player", "setActivedAnimusMasteryBonus", PlayerFunctions::luaPlayerSetActivedAnimusMasteryBonus);
+
 		GroupFunctions::init(L);
 		GuildFunctions::init(L);
 		MountFunctions::init(L);
@@ -743,6 +749,11 @@ private:
 
 	static int luaPlayerTakeScreenshot(lua_State* L);
 	static int luaPlayerSendIconBakragore(lua_State* L);
+
+	static int luaPlayerGetAnimusMasteryPoints(lua_State* L);
+	static int luaPlayerGetAnimusMasteryBonus(lua_State* L);
+	static int luaPlayerAddAnimusMasteryPoints(lua_State* L);
+	static int luaPlayerSetActivedAnimusMasteryBonus(lua_State* L);
 
 	friend class CreatureFunctions;
 };

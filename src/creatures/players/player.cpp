@@ -5368,7 +5368,7 @@ uint32_t Player::getCapacity() const {
 	} else if (hasFlag(PlayerFlags_t::HasInfiniteCapacity)) {
 		return std::numeric_limits<uint32_t>::max();
 	}
-	return capacity + bonusCapacity + varStats[STAT_CAPACITY] + m_wheelPlayer->getStat(WheelStat_t::CAPACITY);
+	return capacity + bonusCapacity + varStats[STAT_CAPACITY] + (m_wheelPlayer->getStat(WheelStat_t::CAPACITY) * 100);
 }
 
 int32_t Player::getMaxHealth() const {
@@ -6688,6 +6688,8 @@ void Player::triggerMomentum() {
 	}
 
 	double_t chance = item->getMomentumChance();
+	chance += static_cast<double>(m_wheelPlayer->getStat(WheelStat_t::MOMENTUM)) / 100.;
+
 	double_t randomChance = uniform_random(0, 10000) / 100.;
 	if (getZoneType() != ZONE_PROTECTION && hasCondition(CONDITION_INFIGHT) && ((OTSYS_TIME() / 1000) % 2) == 0 && chance > 0 && randomChance < chance) {
 		bool triggered = false;
@@ -7341,7 +7343,7 @@ void Player::forgeFuseItems(ForgeAction_t actionType, uint16_t firstItemId, uint
 		}
 	}
 
-	returnValue = g_game().internalAddItem(getStoreInbox(), exaltationContainer, INDEX_WHEREEVER);
+	returnValue = g_game().internalAddItem(static_self_cast<Player>(), exaltationContainer, INDEX_WHEREEVER);
 	if (returnValue != RETURNVALUE_NOERROR) {
 		g_logger().error("Failed to add exaltation chest to player with name {}", fmt::underlying(ITEM_EXALTATION_CHEST), getName());
 		sendCancelMessage(getReturnMessage(returnValue));

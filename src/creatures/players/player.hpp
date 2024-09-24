@@ -215,6 +215,49 @@ public:
 		return value > 0 ? static_cast<uint32_t>(value) : 0;
 	}
 
+	void addAnimusMasteryPoints(const uint16_t addPoints) const {
+		const auto oldPoints = kv()->scoped("animus-mastery")->get("points");
+		if (oldPoints) {
+			const uint16_t points = oldPoints.has_value() ? static_cast<uint16_t>(oldPoints->getNumber()) : 0;
+			kv()->scoped("animus-mastery")->set("points", (static_cast<uint16_t>(points) + addPoints));
+		}
+	}
+	uint16_t getAnimusMasteryPoints() const {
+		const auto animusMastery = kv()->scoped("animus-mastery")->get("points");
+		if (animusMastery) {
+			return animusMastery.has_value() ? static_cast<uint16_t>(animusMastery->getNumber()) : 0;
+		}
+		return 0;
+	}
+	void setActivedAnimusMasteryBonus(const uint16_t raceid) const {
+		const uint16_t activeBonus = 20;
+		kv()->scoped("animus-mastery-bonus")->set(std::to_string(raceid), activeBonus);
+	}
+	uint16_t getAnimusMasteryBonus(const uint16_t raceid) const {
+		uint16_t bonusRaceId = 0;
+		const auto animusMasteryBonus = kv()->scoped("animus-mastery-bonus")->get(std::to_string(raceid));
+		if (animusMasteryBonus) {
+			bonusRaceId = animusMasteryBonus.has_value() ? static_cast<uint16_t>(animusMasteryBonus->getNumber()) : 0;
+		}
+
+		if (bonusRaceId == 0) {
+			return 0;
+		}
+
+		uint16_t bonusPoints = 0;
+		const auto animusMastery = kv()->scoped("animus-mastery")->get("points");
+		if (animusMastery) {
+			bonusPoints = animusMastery.has_value() ? static_cast<uint16_t>(animusMastery->getNumber()) : 0;
+		}
+
+		uint16_t totalBonus = (bonusPoints / 10) + bonusRaceId;
+		if (totalBonus > 40) {
+			totalBonus = 40;
+		}
+
+		return totalBonus;
+	}
+
 	void setGUID(uint32_t newGuid) {
 		this->guid = newGuid;
 	}

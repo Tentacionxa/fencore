@@ -377,7 +377,7 @@ public:
 	void playerLookInBattleList(uint32_t playerId, uint32_t creatureId);
 	void playerQuickLootCorpse(std::shared_ptr<Player> player, std::shared_ptr<Container> corpse, const Position &position);
 	void playerQuickLoot(uint32_t playerId, const Position &pos, uint16_t itemId, uint8_t stackPos, std::shared_ptr<Item> defaultItem = nullptr, bool lootAllCorpses = false, bool autoLoot = false);
-	void playerLootAllCorpses(std::shared_ptr<Player> player, const Position &pos, bool lootAllCorpses);
+	void playerLootAllCorpses(std::shared_ptr<Player> player, const Position &pos, bool lootAllCorpses, bool autoloot);
 	void playerSetManagedContainer(uint32_t playerId, ObjectCategory_t category, const Position &pos, uint16_t itemId, uint8_t stackPos, bool isLootContainer);
 	void playerClearManagedContainer(uint32_t playerId, ObjectCategory_t category, bool isLootContainer);
 	void playerOpenManagedContainer(uint32_t playerId, ObjectCategory_t category, bool isLootContainer);

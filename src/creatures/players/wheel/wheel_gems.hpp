@@ -18,6 +18,7 @@ enum class WheelGemAction_t : uint8_t {
 	Reveal,
 	SwitchDomain,
 	ToggleLock,
+	EnhanceMod,
 };
 
 enum class WheelGemAffinity_t : uint8_t {
@@ -69,7 +70,7 @@ enum class WheelGemBasicModifier_t : uint8_t {
 	General_MitigationMultiplier,
 
 	Vocation_Health,
-	Vocation_Capacity,
+	Vocation_Capacity_Mix,
 	Vocation_Mana_FireResistance,
 	Vocation_Mana_EnergyResistance,
 	Vocation_Mana_Earth_Resistance,
@@ -85,6 +86,7 @@ enum class WheelGemBasicModifier_t : uint8_t {
 	Vocation_Capacity_EnergyResistance,
 	Vocation_Capacity_EarthResistance,
 	Vocation_Capacity_IceResistance,
+	Vocation_Capacity,
 };
 
 enum class WheelGemSupremeModifier_t : uint8_t {
@@ -103,12 +105,12 @@ enum class WheelGemSupremeModifier_t : uint8_t {
 	Knight_Fierce_Berserk_CriticalExtraDamage,
 	Knight_Berserk_DamageIncrease,
 	Knight_Berserk_CriticalExtraDamage,
-	Knight_Front_Sweep_CriticalExtraDamage,
 	Knight_Front_Sweep_DamageIncrease,
+	Knight_Front_Sweep_CriticalExtraDamage,
 	Knight_Groundshaker_DamageIncrease,
 	Knight_Groundshaker_CriticalExtraDamage,
-	Knight_Annihilation_CriticalExtraDamage,
 	Knight_Annihilation_DamageIncrease,
+	Knight_Annihilation_CriticalExtraDamage,
 	Knight_FairWoundCleansing_HealingIncrease,
 	Knight_RevelationMastery_AvatarOfSteel,
 	Knight_RevelationMastery_ExecutionersThrow,
@@ -157,8 +159,8 @@ enum class WheelGemSupremeModifier_t : uint8_t {
 	Druid_TerraBurst_CriticalExtraDamage,
 	Druid_IceBurst_DamageIncrease,
 	Druid_IceBurst_CriticalExtraDamage,
-	Druid_EternalWinter_CriticalExtraDamage,
 	Druid_EternalWinter_DamageIncrease,
+	Druid_EternalWinter_CriticalExtraDamage,
 	Druid_TerraWave_DamageIncrease,
 	Druid_TerraWave_CriticalExtraDamage,
 	Druid_StrongIceWave_DamageIncrease,
@@ -241,8 +243,8 @@ public:
 	explicit WheelModifierContext(PlayerWheel &wheel, Vocation_t vocation) :
 		m_wheel(wheel), m_vocation(vocation) { }
 
-	void addStrategies(WheelGemBasicModifier_t modifier);
-	void addStrategies(WheelGemSupremeModifier_t modifier);
+	void addStrategies(WheelGemBasicModifier_t modifier, const uint8_t grade);
+	void addStrategies(WheelGemSupremeModifier_t modifier, const uint8_t grade);
 
 	void resetStrategies() {
 		m_strategies.clear();

@@ -20,6 +20,10 @@ class Creature;
 class NetworkMessage;
 class IOWheel;
 
+static constexpr int32_t STORAGE_RESERVED_MODS_BASICS = 9000000;
+static constexpr int32_t STORAGE_RESERVED_MODS_SUPREMES = 9001000;
+static constexpr int32_t STORAGE_RESERVED_MODS_POINTS = 9002000;
+
 struct PlayerWheelGem {
 	std::string uuid;
 	bool locked;
@@ -114,6 +118,7 @@ public:
 	void saveSlotPointsOnPressSaveButton(NetworkMessage &msg);
 	void addPromotionScrolls(NetworkMessage &msg) const;
 	void addGems(NetworkMessage &msg) const;
+	void addEnhanceMods(NetworkMessage &msg) const;
 	void sendOpenWheelWindow(NetworkMessage &msg, uint32_t ownerId) const;
 	void sendGiftOfLifeCooldown() const;
 
@@ -150,6 +155,7 @@ public:
 	 * @return The total wheel points for the player. Includes extra points if includeExtraPoints is true.
 	 */
 	uint16_t getWheelPoints(bool includeExtraPoints = true) const;
+	int32_t getExtraPointsForFragments() const;
 	uint16_t getExtraPoints() const;
 	uint8_t getMaxPointsPerSlot(WheelSlots_t slot) const;
 	uint16_t getUnusedPoints() const;
@@ -393,6 +399,7 @@ public:
 	void destroyGem(uint16_t index);
 	void switchGemDomain(uint16_t index);
 	void toggleGemLock(uint16_t index);
+	void enhanceMod(const uint16_t index, const uint8_t posMod);
 	void setActiveGem(WheelGemAffinity_t affinity, uint16_t index);
 	void removeActiveGem(WheelGemAffinity_t affinity);
 	void addRevelationBonus(WheelGemAffinity_t affinity, uint16_t points) {

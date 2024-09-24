@@ -4399,6 +4399,90 @@ int PlayerFunctions::luaPlayerTakeScreenshot(lua_State* L) {
 	return 1;
 }
 
+int PlayerFunctions::luaPlayerGetAnimusMasteryPoints(lua_State* L) {
+	// player:getAnimusMasteryPoints()
+	const auto &player = getUserdataShared<Player>(L, 1);
+	if (!player) {
+		reportErrorFunc(getErrorDesc(LUA_ERROR_PLAYER_NOT_FOUND));
+		lua_pushnil(L);
+		return 1;
+	}
+
+	lua_pushnumber(L, player->getAnimusMasteryPoints());
+	return 1;
+}
+
+int PlayerFunctions::luaPlayerGetAnimusMasteryBonus(lua_State* L) {
+	// player:getAnimusMasteryBonus()
+	const auto &player = getUserdataShared<Player>(L, 1);
+	if (!player) {
+		reportErrorFunc(getErrorDesc(LUA_ERROR_PLAYER_NOT_FOUND));
+		lua_pushnil(L);
+		return 1;
+	}
+
+	const auto raceId = getNumber<uint16_t>(L, 2);
+	if (!g_monsters().getMonsterTypeByRaceId(raceId)) {
+		reportErrorFunc("Monster race id not exists");
+		lua_pushnil(L);
+		return 0;
+	}
+
+	lua_pushnumber(L, player->getAnimusMasteryBonus(raceId));
+	return 1;
+}
+
+int PlayerFunctions::luaPlayerAddAnimusMasteryPoints(lua_State* L) {
+	// player:addAnimusMasteryPoints(addPoints)
+	const auto &player = getUserdataShared<Player>(L, 1);
+	if (!player) {
+		reportErrorFunc(getErrorDesc(LUA_ERROR_PLAYER_NOT_FOUND));
+		lua_pushnil(L);
+		return 1;
+	}
+
+	const auto addPoints = getNumber<uint16_t>(L, 2);
+	if (addPoints > 0) {
+		player->addAnimusMasteryPoints(addPoints);
+	}
+	pushBoolean(L, true);
+	return 1;
+}
+
+int PlayerFunctions::luaPlayerSetActivedAnimusMasteryBonus(lua_State* L) {
+	// player:setActivedAnimusMasteryBonus(raceId)
+	const auto &player = getUserdataShared<Player>(L, 1);
+	if (!player) {
+		reportErrorFunc(getErrorDesc(LUA_ERROR_PLAYER_NOT_FOUND));
+		lua_pushnil(L);
+		return 1;
+	}
+
+	const auto raceId = getNumber<uint16_t>(L, 2);
+	if (!g_monsters().getMonsterTypeByRaceId(raceId)) {
+		reportErrorFunc("Monster race id not exists");
+		pushBoolean(L, false);
+		return 0;
+	}
+
+	player->setActivedAnimusMasteryBonus(raceId);
+	pushBoolean(L, true);
+	return 1;
+}
+
+int PlayerFunctions::luaPlayerSendCreatureAppear(lua_State* L) {
+	auto player = getUserdataShared<Player>(L, 1);
+	if (!player) {
+		reportErrorFunc(getErrorDesc(LUA_ERROR_PLAYER_NOT_FOUND));
+		return 1;
+	}
+
+	bool isLogin = getBoolean(L, 2, false);
+	player->sendCreatureAppear(player, player->getPosition(), isLogin);
+	pushBoolean(L, true);
+	return 1;
+}
+
 int PlayerFunctions::luaPlayerSendIconBakragore(lua_State* L) {
 	// player:sendIconBakragore()
 	const auto &player = getUserdataShared<Player>(L, 1);

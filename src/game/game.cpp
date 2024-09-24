@@ -5369,7 +5369,7 @@ void Game::playerQuickLoot(uint32_t playerId, const Position &pos, uint16_t item
 		return;
 	}
 
-	if (!autoLoot && !player->canDoAction()) {
+	if (!player->canDoAction()) {
 		uint32_t delay = player->getNextActionTime();
 		std::shared_ptr<Task> task = createPlayerTask(
 			delay, [this, playerId = player->getID(), pos, itemId, stackPos, defaultItem, lootAllCorpses, autoLoot] {
@@ -5498,55 +5498,84 @@ void Game::playerQuickLoot(uint32_t playerId, const Position &pos, uint16_t item
 			if (!lootAllCorpses) {
 				playerQuickLootCorpse(player, corpse, corpse->getPosition());
 			} else {
-				playerLootAllCorpses(player, pos, lootAllCorpses);
+				playerLootAllCorpses(player, pos, lootAllCorpses, autoLoot);
 			}
 		}
 	}
 }
 
-void Game::playerLootAllCorpses(std::shared_ptr<Player> player, const Position &pos, bool lootAllCorpses) {
+void Game::playerLootAllCorpses(std::shared_ptr<Player> player, const Position &pos, bool lootAllCorpses, bool autoloot = false) {
 	if (lootAllCorpses) {
-		std::shared_ptr<Tile> tile = g_game().map.getTile(pos.x, pos.y, pos.z);
-		if (!tile) {
-			player->sendCancelMessage(RETURNVALUE_NOTPOSSIBLE);
-			return;
-		}
+		if (autoloot) {
+			auto playerPosition = Position(player->getPosition().x, player->getPosition().y, player->getPosition().z);
+			playerLootAllCorpses(player, playerPosition, lootAllCorpses);
 
-		const TileItemVector* itemVector = tile->getItemList();
-		uint16_t corpses = 0;
-		for (auto &tileItem : *itemVector) {
-			if (!tileItem) {
-				continue;
-			}
+			playerPosition = Position(player->getPosition().x + 1, player->getPosition().y, player->getPosition().z);
+			playerLootAllCorpses(player, playerPosition, lootAllCorpses);
 
-			std::shared_ptr<Container> tileCorpse = tileItem->getContainer();
-			if (!tileCorpse || !tileCorpse->isCorpse() || tileCorpse->hasAttribute(ItemAttribute_t::UNIQUEID) || tileCorpse->hasAttribute(ItemAttribute_t::ACTIONID)) {
-				continue;
-			}
+			playerPosition = Position(player->getPosition().x + 1, player->getPosition().y + 1, player->getPosition().z);
+			playerLootAllCorpses(player, playerPosition, lootAllCorpses);
 
-			if (!tileCorpse->isRewardCorpse()
-			    && tileCorpse->getCorpseOwner() != 0
-			    && !player->canOpenCorpse(tileCorpse->getCorpseOwner())) {
+			playerPosition = Position(player->getPosition().x + 1, player->getPosition().y - 1, player->getPosition().z);
+			playerLootAllCorpses(player, playerPosition, lootAllCorpses);
+
+			playerPosition = Position(player->getPosition().x, player->getPosition().y + 1, player->getPosition().z);
+			playerLootAllCorpses(player, playerPosition, lootAllCorpses);
+
+			playerPosition = Position(player->getPosition().x, player->getPosition().y - 1, player->getPosition().z);
+			playerLootAllCorpses(player, playerPosition, lootAllCorpses);
+
+			playerPosition = Position(player->getPosition().x - 1, player->getPosition().y - 1, player->getPosition().z);
+			playerLootAllCorpses(player, playerPosition, lootAllCorpses);
+
+			playerPosition = Position(player->getPosition().x - 1, player->getPosition().y + 1, player->getPosition().z);
+			playerLootAllCorpses(player, playerPosition, lootAllCorpses);
+
+			playerPosition = Position(player->getPosition().x, player->getPosition().y - 1, player->getPosition().z);
+			playerLootAllCorpses(player, playerPosition, lootAllCorpses);
+		} else {
+			std::shared_ptr<Tile> tile = g_game().map.getTile(pos.x, pos.y, pos.z);
+			if (!tile) {
 				player->sendCancelMessage(RETURNVALUE_NOTPOSSIBLE);
-				g_logger().debug("Player {} cannot loot corpse from id {} in position {}", player->getName(), tileItem->getID(), tileItem->getPosition().toString());
-				continue;
+				return;
 			}
 
-			corpses++;
-			playerQuickLootCorpse(player, tileCorpse, tileCorpse->getPosition());
-			if (corpses >= 30) {
-				break;
-			}
-		}
+			const TileItemVector* itemVector = tile->getItemList();
+			uint16_t corpses = 0;
+			for (auto &tileItem : *itemVector) {
+				if (!tileItem) {
+					continue;
+				}
 
-		if (corpses > 0) {
-			if (corpses > 1) {
-				std::stringstream string;
-				string << "You looted " << corpses << " corpses.";
-				player->sendTextMessage(MESSAGE_LOOT, string.str());
+				std::shared_ptr<Container> tileCorpse = tileItem->getContainer();
+				if (!tileCorpse || !tileCorpse->isCorpse() || tileCorpse->hasAttribute(ItemAttribute_t::UNIQUEID) || tileCorpse->hasAttribute(ItemAttribute_t::ACTIONID)) {
+					continue;
+				}
+
+				if (!tileCorpse->isRewardCorpse()
+					&& tileCorpse->getCorpseOwner() != 0
+					&& !player->canOpenCorpse(tileCorpse->getCorpseOwner())) {
+					player->sendCancelMessage(RETURNVALUE_NOTPOSSIBLE);
+					g_logger().debug("Player {} cannot loot corpse from id {} in position {}", player->getName(), tileItem->getID(), tileItem->getPosition().toString());
+					continue;
+				}
+
+				corpses++;
+				playerQuickLootCorpse(player, tileCorpse, tileCorpse->getPosition());
+				if (corpses >= 30) {
+					break;
+				}
 			}
 
-			return;
+			if (corpses > 0) {
+				if (corpses > 1) {
+					std::stringstream string;
+					string << "You looted " << corpses << " corpses.";
+					player->sendTextMessage(MESSAGE_LOOT, string.str());
+				}
+
+				//return;
+			}
 		}
 	}
 
@@ -9728,6 +9757,7 @@ void Game::playerWheelGemAction(uint32_t playerId, NetworkMessage &msg) {
 
 	auto action = msg.get<uint8_t>();
 	auto param = msg.get<uint8_t>();
+	uint8_t posMod = 0;
 
 	switch (static_cast<WheelGemAction_t>(action)) {
 		case WheelGemAction_t::Destroy:
@@ -9741,6 +9771,10 @@ void Game::playerWheelGemAction(uint32_t playerId, NetworkMessage &msg) {
 			break;
 		case WheelGemAction_t::ToggleLock:
 			player->wheel()->toggleGemLock(param);
+			break;
+		case WheelGemAction_t::EnhanceMod:
+			posMod = msg.get<uint8_t>();
+			player->wheel()->enhanceMod(param, posMod);
 			break;
 		default:
 			g_logger().error("[{}] player {} is trying to do invalid action {} on wheel", __FUNCTION__, player->getName(), action);

@@ -2370,6 +2370,8 @@ void ProtocolGame::parseBestiarysendMonsterData(NetworkMessage &msg) {
 
 	uint32_t killCounter = player->getBestiaryKillCount(raceId);
 	uint8_t currentLevel = g_iobestiary().getKillStatus(mtype, killCounter);
+	const uint16_t animusMasteryBonus = player->getAnimusMasteryBonus(raceId);
+	const uint16_t animusMasteryPoints = player->getAnimusMasteryPoints();
 
 	NetworkMessage newmsg;
 	newmsg.addByte(0xd7);
@@ -2378,8 +2380,8 @@ void ProtocolGame::parseBestiarysendMonsterData(NetworkMessage &msg) {
 
 	newmsg.addByte(currentLevel);
 
-	newmsg.add<uint16_t>(0); // Animus Mastery Bonus
-	newmsg.add<uint16_t>(0); // Animus Mastery Points
+	newmsg.add<uint16_t>(animusMasteryBonus); // Animus Mastery Bonus
+	newmsg.add<uint16_t>(animusMasteryPoints); // Animus Mastery Points
 
 	newmsg.add<uint32_t>(killCounter);
 
@@ -3014,10 +3016,12 @@ void ProtocolGame::parseBestiarysendCreatures(NetworkMessage &msg) {
 			newmsg.addByte(0);
 		}
 
-		newmsg.add<uint16_t>(0); // Creature Animous Bonus
+		const uint16_t animusMasteryBonus = player->getAnimusMasteryBonus(raceid_);
+		newmsg.add<uint16_t>(animusMasteryBonus);
 	}
 
-	newmsg.add<uint16_t>(0); // Animus Mastery Points
+	const uint16_t animusMasteryPoints = player->getAnimusMasteryPoints();
+	newmsg.add<uint16_t>(animusMasteryPoints);
 
 	writeToOutputBuffer(newmsg);
 }
@@ -4722,16 +4726,18 @@ void ProtocolGame::sendContainer(uint8_t cid, std::shared_ptr<Container> contain
 	}
 
 	// New container menu options
-	if (container->isMovable()) { // Pickupable/Moveable (?)
-		msg.addByte(1);
-	} else {
-		msg.addByte(0);
-	}
+	if (version >= 1340) {
+		if (container->isMovable()) { // Pickupable/Moveable (?)
+			msg.addByte(1);
+		} else {
+			msg.addByte(0);
+		}
 
-	if (container->getHoldingPlayer()) { // Player holding the item (?)
-		msg.addByte(1);
-	} else {
-		msg.addByte(0);
+		if (container->getHoldingPlayer()) { // Player holding the item (?)
+			msg.addByte(1);
+		} else {
+			msg.addByte(0);
+		}
 	}
 
 	writeToOutputBuffer(msg);

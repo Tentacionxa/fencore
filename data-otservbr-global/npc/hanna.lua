@@ -189,6 +189,10 @@ npcConfig.shop = {
 	{ itemName = "greater guardian gem", clientId = 44604, buy = 25000000},
 	{ itemName = "greater marksman gem", clientId = 44607, buy = 25000000},
 	{ itemName = "greater sage gem", clientId = 44610, buy = 25000000 },
+	{ itemName = "lesser sage gem", clientId = 44608, buy = 15000000 },
+	{ itemName = "lesser marksman gem", clientId = 44605, buy = 15000000},
+	{ itemName = "lesser guardian gem", clientId = 44602, buy = 15000000},
+	{ itemName = "lesser mystic gem", clientId = 44611, buy = 15000000 },
 }
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

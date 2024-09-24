@@ -1330,7 +1330,8 @@ enum class CreatureIconModifications_t {
 	TurnedMelee,
 	Influenced,
 	Fiendish,
-	ReducedHealth,
+	SoulpitMonster,
+	SoulpitBoss,
 };
 
 enum class CreatureIconQuests_t {

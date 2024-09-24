@@ -384,6 +384,8 @@ private:
 		registerMethod(L, "Player", "getAnimusMasteryBonus", PlayerFunctions::luaPlayerGetAnimusMasteryBonus);
 		registerMethod(L, "Player", "addAnimusMasteryPoints", PlayerFunctions::luaPlayerAddAnimusMasteryPoints);
 		registerMethod(L, "Player", "setActivedAnimusMasteryBonus", PlayerFunctions::luaPlayerSetActivedAnimusMasteryBonus);
+		
+		registerMethod(L, "Player", "sendCreatureAppear", PlayerFunctions::luaPlayerSendCreatureAppear);
 
 		GroupFunctions::init(L);
 		GuildFunctions::init(L);
@@ -754,6 +756,8 @@ private:
 	static int luaPlayerGetAnimusMasteryBonus(lua_State* L);
 	static int luaPlayerAddAnimusMasteryPoints(lua_State* L);
 	static int luaPlayerSetActivedAnimusMasteryBonus(lua_State* L);
+
+	static int luaPlayerSendCreatureAppear(lua_State* L);
 
 	friend class CreatureFunctions;
 };

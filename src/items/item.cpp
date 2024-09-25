@@ -1182,12 +1182,20 @@ Item::getDescriptions(const ItemType &it, std::shared_ptr<Item> item /*= nullptr
 			}
 			descriptions.emplace_back("Attack", ss.str());
 		} else if (!it.isRanged() && attack != 0) {
+			} else if (!it.isRanged()) {
+			std::string attackDescription;
 			if (it.abilities && it.abilities->elementType != COMBAT_NONE && it.abilities->elementDamage != 0) {
-				ss.str("");
-				ss << attack << " physical +" << it.abilities->elementDamage << ' ' << getCombatName(it.abilities->elementType);
-				descriptions.emplace_back("Attack", ss.str());
-			} else {
-				descriptions.emplace_back("Attack", std::to_string(attack));
+				attackDescription = fmt::format("{} {}", it.abilities->elementDamage, getCombatName(it.abilities->elementType));
+			}
+
+			if (attack != 0 && !attackDescription.empty()) {
+				attackDescription = fmt::format("{} physical + {}", attack, attackDescription);
+			} else if (attack != 0 && attackDescription.empty()) {
+				attackDescription = std::to_string(attack);
+			}
+
+			if (!attackDescription.empty()) {
+				descriptions.emplace_back("Attack", attackDescription);
 			}
 		}
 
@@ -1239,7 +1247,9 @@ Item::getDescriptions(const ItemType &it, std::shared_ptr<Item> item /*= nullptr
 				ss << std::showpos << "speed " << (it.abilities->speed >> 1) << std::noshowpos;
 				skillBoost = true;
 			}
-
+if (it.abilities->regeneration) {
+				ss << ", faster regeneration";
+			}
 			for (uint8_t i = SKILL_FIRST; i <= SKILL_FISHING; i++) {
 				if (!it.abilities->skills[i]) {
 					continue;
@@ -1595,12 +1605,20 @@ Item::getDescriptions(const ItemType &it, std::shared_ptr<Item> item /*= nullptr
 			}
 			descriptions.emplace_back("Attack", ss.str());
 		} else if (!it.isRanged() && attack != 0) {
+			} else if (!it.isRanged()) {
+			std::string attackDescription;
 			if (it.abilities && it.abilities->elementType != COMBAT_NONE && it.abilities->elementDamage != 0) {
-				ss.str("");
-				ss << attack << " physical +" << it.abilities->elementDamage << ' ' << getCombatName(it.abilities->elementType);
-				descriptions.emplace_back("Attack", ss.str());
-			} else {
-				descriptions.emplace_back("Attack", std::to_string(attack));
+				attackDescription = fmt::format("{} {}", it.abilities->elementDamage, getCombatName(it.abilities->elementType));
+			}
+
+			if (attack != 0 && !attackDescription.empty()) {
+				attackDescription = fmt::format("{} physical + {}", attack, attackDescription);
+			} else if (attack != 0 && attackDescription.empty()) {
+				attackDescription = std::to_string(attack);
+			}
+
+			if (!attackDescription.empty()) {
+				descriptions.emplace_back("Attack", attackDescription);
 			}
 		}
 
@@ -2645,10 +2663,12 @@ std::string Item::getDescription(const ItemType &it, int32_t lookDistance, std::
 			if (attack != 0) {
 				begin = false;
 				s << " (Atk:" << attack;
-
-				if (it.abilities && it.abilities->elementType != COMBAT_NONE && it.abilities->elementDamage != 0) {
-					s << " physical + " << it.abilities->elementDamage << ' ' << getCombatName(it.abilities->elementType);
-				}
+}
+			if (it.abilities && it.abilities->elementType != COMBAT_NONE && it.abilities->elementDamage != 0 && !begin) {
+				s << " physical + " << it.abilities->elementDamage << ' ' << getCombatName(it.abilities->elementType);
+			} else if (it.abilities && it.abilities->elementType != COMBAT_NONE && it.abilities->elementDamage != 0 && begin) {
+				begin = false;
+				s << " (" << it.abilities->elementDamage << ' ' << getCombatName(it.abilities->elementType);
 			}
 
 			if (defense != 0 || extraDefense != 0 || it.isMissile()) {

@@ -8125,7 +8125,10 @@ void ProtocolGame::sendTaskHuntingData(const std::unique_ptr<TaskHuntingSlot> &s
 	if (!player || oldProtocol) {
 		return;
 	}
-
+if (shopBlock.itemBuyPrice >= 4294967295 || shopBlock.itemSellPrice >= 4294967295) {
+	g_logger().error("[{}] itemid {} being sold/bought above the allowed value.", __FUNCTION__, shopBlock.itemId);
+	return;
+}
 	NetworkMessage msg;
 	msg.addByte(0xBB);
 	msg.addByte(static_cast<uint8_t>(slot->id));
@@ -8312,10 +8315,6 @@ void ProtocolGame::AddShopItem(NetworkMessage &msg, const ShopBlock &shopBlock) 
 	msg.add<uint32_t>(shopBlock.itemBuyPrice == 4294967295 ? 0 : shopBlock.itemBuyPrice);
 	msg.add<uint32_t>(shopBlock.itemSellPrice == 4294967295 ? 0 : shopBlock.itemSellPrice);
 	
-}
-if (shopBlock.itemBuyPrice >= 4294967295 || shopBlock.itemSellPrice >= 4294967295) {
-	g_logger().error("[{}] itemid {} being sold/bought above the allowed value.", __FUNCTION__, shopBlock.itemId);
-	return;
 }
 void ProtocolGame::parseExtendedOpcode(NetworkMessage &msg) {
 	uint8_t opcode = msg.getByte();

@@ -250,10 +250,7 @@ public:
 			bonusPoints = animusMastery.has_value() ? static_cast<uint16_t>(animusMastery->getNumber()) : 0;
 		}
 
-		uint16_t totalBonus = (bonusPoints / 10) + bonusRaceId;
-		if (totalBonus > 40) {
-			totalBonus = 40;
-		}
+	 uint16_t totalBonus = (bonusPoints * 20) + bonusRaceId;
 
 		return totalBonus;
 	}

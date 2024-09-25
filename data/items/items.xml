@@ -75644,10 +75644,14 @@ Granted by TibiaGoals.com"/>
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost magic level" value="3"/>
 		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="hell's core" value="powerful impact" />
-			<attribute key="energy wave" value="powerful impact" />
-		</attribute>
+		    <attribute key="augments" value="1">
+                        <attribute key="hell's core" value="base">
+                                <attribute key="value" value="6"/>
+                        </attribute>
+                        <attribute key="energy wave" value="base">
+                                <attribute key="value" value="8"/>
+                        </attribute>
+                </attribute>
 		<attribute key="script" value="moveevent;weapon">
 			<attribute key="level" value="600"/>
 			<attribute key="mana" value="21"/>
@@ -75739,10 +75743,15 @@ Granted by TibiaGoals.com"/>
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost magic level" value="3"/>
 		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="eternal winter" value="powerful impact" />
-			<attribute key="terra wave" value="powerful impact" />
-		</attribute>
+	  <attribute key="augments" value="1">
+<attribute key="eternal winter" value="base">
+                                <attribute key="value" value="6"/>
+                        </attribute>
+                        <attribute key="terra wave" value="base">
+                                <attribute key="value" value="8"/>
+                        </attribute>
+</attribute>
+
 		<attribute key="script" value="moveevent;weapon">
 			<attribute key="level" value="600"/>
 			<attribute key="mana" value="20"/>

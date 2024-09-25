@@ -3,12 +3,13 @@ combat:setParameter(COMBAT_PARAM_TYPE, COMBAT_ENERGYDAMAGE)
 combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_BIGCLOUDS)
 combat:setArea(createCombatArea(AREA_CIRCLE6X6))
 
-function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 16.5)
-	local max = (level / 5) + (maglevel * 30)
 
-return -min * 1.0, -max * 1.7 -- TODO : Use New Real Formula instead of an %
+function onGetFormulaValues(player, level, maglevel)
+	local min = (level / 5) + (maglevel * 6)
+	local max = (level / 5) + (maglevel * 36)
+	return -min, -max
 end
+
 
 
 	

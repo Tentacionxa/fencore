@@ -5,12 +5,13 @@ combat:setArea(createCombatArea(AREA_CIRCLE5X5))
 
 
 
-function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 17)
-	local max = (level / 5) + (maglevel * 30)
 
-return -min * 1.0, -max * 1.7 -- TODO : Use New Real Formula instead of an %
+function onGetFormulaValues(player, level, maglevel)
+	local min = (level / 5) + (maglevel * 6)
+	local max = (level / 5) + (maglevel * 40)
+	return -min, -max
 end
+
 
 
 

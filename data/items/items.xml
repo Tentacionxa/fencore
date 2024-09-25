@@ -75373,8 +75373,10 @@ Granted by TibiaGoals.com"/>
 			<attribute key="skillboost club" value="3"/>
 		</attribute>
 		<attribute key="augments" value="1">
-			<attribute key="fierce berserk" value="powerful impact" />
-		</attribute>
+			<attribute key="fierce berserk" value="base">
+				<attribute key="value" value="8"/>
+			</attribute>
+			</attribute>
 		<attribute key="script" value="moveevent;weapon">
 			<attribute key="level" value="600"/>
 			<attribute key="unproperly" value="true"/>

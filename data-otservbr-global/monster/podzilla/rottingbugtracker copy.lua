@@ -88,7 +88,7 @@ monster.loot = {
 	{ name = "wood cape", chance = 6096, maxCount = 1 },
 	{ name = "composite hornbow", chance = 6363, maxCount = 1 },
 	{ name = "golden legs", chance = 13079, maxCount = 1 },
-	{ name = "soul prism", chance = 12738, maxCount = 1 },
+	{ name = "soul prism", chance = 138, maxCount = 1 },
 }
 
 monster.attacks = {

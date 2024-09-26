@@ -145,6 +145,10 @@ CombatDamage Weapon::getCombatDamage(CombatDamage combat, std::shared_ptr<Player
 	// Local variables
 	uint32_t level = player->getLevel();
 	int16_t elementalAttack = getElementDamageValue();
+	auto karinElementalDamage = item->getCustomAttribute("Elemental Damage");
+	if (karinElementalDamage && karinElementalDamage->getInteger() > 0) {
+		elementalAttack += karinElementalDamage->getInteger();
+	}
 	int32_t weaponAttack = std::max<int32_t>(0, item->getAttack());
 	int32_t playerSkill = player->getWeaponSkill(item);
 	float attackFactor = player->getAttackFactor(); // full atk, balanced or full defense
@@ -408,6 +412,10 @@ bool Weapon::calculateSkillFormula(const std::shared_ptr<Player> &player, int32_
 	bool shouldCalculateSecondaryDamage = false;
 	if (elementType != COMBAT_NONE) {
 		elementAttack = getElementDamageValue();
+		auto karinElementalDamage = item ? item->getCustomAttribute("Elemental Damage") : nullptr;
+		if (karinElementalDamage && karinElementalDamage->getInteger() > 0) {
+			elementAttack += karinElementalDamage->getInteger();
+		}
 		shouldCalculateSecondaryDamage = true;
 		attackValue += elementAttack;
 	}
@@ -542,6 +550,12 @@ int32_t WeaponMelee::getElementDamage(std::shared_ptr<Player> player, std::share
 
 	int32_t attackSkill = player->getWeaponSkill(item);
 	int32_t attackValue = elementDamage;
+	
+	auto karinElementalDamage = item->getCustomAttribute("Elemental Damage");
+	if (karinElementalDamage && karinElementalDamage->getInteger() > 0) {
+		attackValue += karinElementalDamage->getInteger();
+	}
+	
 	float attackFactor = player->getAttackFactor();
 	uint32_t level = player->getLevel();
 
@@ -777,6 +791,12 @@ int32_t WeaponDistance::getElementDamage(std::shared_ptr<Player> player, std::sh
 	}
 
 	int32_t attackValue = elementDamage;
+		
+	auto karinElementalDamage = item->getCustomAttribute("Elemental Damage");
+	if (karinElementalDamage && karinElementalDamage->getInteger() > 0) {
+		attackValue += karinElementalDamage->getInteger();
+	}
+	
 	if (item->getWeaponType() == WEAPON_AMMO) {
 		std::shared_ptr<Item> weapon = player->getWeapon(true);
 		if (weapon) {

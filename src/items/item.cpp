@@ -1185,7 +1185,12 @@ Item::getDescriptions(const ItemType &it, std::shared_ptr<Item> item /*= nullptr
 			} else if (!it.isRanged()) {
 			std::string attackDescription;
 			if (it.abilities && it.abilities->elementType != COMBAT_NONE && it.abilities->elementDamage != 0) {
-				attackDescription = fmt::format("{} {}", it.abilities->elementDamage, getCombatName(it.abilities->elementType));
+				auto elementDamage = it.abilities->elementDamage;
+				auto karinElementalDamage = item ? item->getCustomAttribute("Elemental Damage") : nullptr;
+				if (karinElementalDamage && karinElementalDamage->getInteger() > 0) {
+					elementDamage += karinElementalDamage->getInteger();
+				}
+				attackDescription = fmt::format("{} {}", elementDamage, getCombatName(it.abilities->elementType));
 			}
 
 			if (attack != 0 && !attackDescription.empty()) {
@@ -1608,7 +1613,12 @@ if (it.abilities->regeneration) {
 			} else if (!it.isRanged()) {
 			std::string attackDescription;
 			if (it.abilities && it.abilities->elementType != COMBAT_NONE && it.abilities->elementDamage != 0) {
-				attackDescription = fmt::format("{} {}", it.abilities->elementDamage, getCombatName(it.abilities->elementType));
+				auto elementDamage = it.abilities->elementDamage;
+				auto karinElementalDamage = item ? item->getCustomAttribute("Elemental Damage") : nullptr;
+				if (karinElementalDamage && karinElementalDamage->getInteger() > 0) {
+					elementDamage += karinElementalDamage->getInteger();
+				}
+				attackDescription = fmt::format("{} {}", elementDamage, getCombatName(it.abilities->elementType));
 			}
 
 			if (attack != 0 && !attackDescription.empty()) {
@@ -2665,7 +2675,12 @@ std::string Item::getDescription(const ItemType &it, int32_t lookDistance, std::
 				s << " (Atk:" << attack;
 }
 			if (it.abilities && it.abilities->elementType != COMBAT_NONE && it.abilities->elementDamage != 0 && !begin) {
-				s << " physical + " << it.abilities->elementDamage << ' ' << getCombatName(it.abilities->elementType);
+				auto elementDamage = it.abilities->elementDamage;
+				auto karinElementalDamage = item ? item->getCustomAttribute("Elemental Damage") : nullptr;
+				if (karinElementalDamage && karinElementalDamage->getInteger() > 0) {
+					elementDamage += karinElementalDamage->getInteger();
+				}
+				s << " physical + " << elementDamage << ' ' << getCombatName(it.abilities->elementType);
 			} else if (it.abilities && it.abilities->elementType != COMBAT_NONE && it.abilities->elementDamage != 0 && begin) {
 				begin = false;
 				s << " (" << it.abilities->elementDamage << ' ' << getCombatName(it.abilities->elementType);
@@ -3122,6 +3137,12 @@ std::string Item::getNameDescription(const ItemType &it, std::shared_ptr<Item> i
 			}
 
 			s << name;
+
+			
+			auto karinLevel = item ? item->getCustomAttribute("Level") : nullptr;
+			if (karinLevel && karinLevel->getInteger() > 0) {
+				s << " +" << karinLevel->getInteger();
+			}
 		}
 	} else {
 		s << "an item of type " << it.id;

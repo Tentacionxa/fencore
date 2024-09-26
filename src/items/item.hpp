@@ -402,22 +402,40 @@ public:
 	}
 
 	int32_t getAttack() const {
+		int32_t currentAttack = items[id].attack;
 		if (hasAttribute(ItemAttribute_t::ATTACK)) {
-			return getAttribute<int32_t>(ItemAttribute_t::ATTACK);
+			currentAttack = getAttribute<int32_t>(ItemAttribute_t::ATTACK);
 		}
-		return items[id].attack;
+
+		auto karinAttack = getCustomAttribute("Attack");
+		if (karinAttack && karinAttack->getInteger() > 0) {
+			currentAttack += karinAttack->getInteger();
+		}
+		return currentAttack;
 	}
 	int32_t getArmor() const {
+		int32_t currentArmor = items[id].armor;
 		if (hasAttribute(ItemAttribute_t::ARMOR)) {
-			return getAttribute<int32_t>(ItemAttribute_t::ARMOR);
+			currentArmor = getAttribute<int32_t>(ItemAttribute_t::ARMOR);
 		}
-		return items[id].armor;
+
+		auto karinArmor = getCustomAttribute("Armor");
+		if (karinArmor && karinArmor->getInteger() > 0) {
+			currentArmor += karinArmor->getInteger();
+		}
+		return currentArmor;
 	}
 	int32_t getDefense() const {
+		int32_t currentDefense = items[id].defense;
 		if (hasAttribute(ItemAttribute_t::DEFENSE)) {
-			return getAttribute<int32_t>(ItemAttribute_t::DEFENSE);
+			currentDefense = getAttribute<int32_t>(ItemAttribute_t::DEFENSE);
 		}
-		return items[id].defense;
+
+		auto karinDefense = getCustomAttribute("Defense");
+		if (karinDefense && karinDefense->getInteger() > 0) {
+			currentDefense += karinDefense->getInteger();
+		}
+		return currentDefense;
 	}
 	int32_t getExtraDefense() const {
 		if (hasAttribute(ItemAttribute_t::EXTRADEFENSE)) {

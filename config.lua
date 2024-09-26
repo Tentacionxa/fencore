@@ -10,7 +10,7 @@ coreDirectory = "data"
 -- Set log level
 -- It can be trace, debug, info, warning, error, critical, off (default: info).
 -- NOTE: Will only display logs with level higher or equal the one set.
-logLevel = "debug"
+logLevel = "warning"
 
 --- Toggles the server's maintenance mode.
 -- When enabled, it restricts user access and indicates maintenance operations.

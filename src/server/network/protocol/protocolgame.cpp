@@ -8290,7 +8290,7 @@ void ProtocolGame::AddHiddenShopItem(NetworkMessage &msg) {
 void ProtocolGame::AddShopItem(NetworkMessage &msg, const ShopBlock &shopBlock) {
 	// Sends the item information empty if the player doesn't have the storage to buy/sell a certain item
 	if (shopBlock.itemBuyPrice >= 4294967295 || shopBlock.itemSellPrice >= 4294967295) {
-    g_logger().error("[{}] itemid {} being sold/bought above the allowed value.", shopBlock.itemId);
+    g_logger().error("[{}] itemid {} being sold/bought above the allowed value.", __FUNCTION__, shopBlock.itemId);
     return;
 }
 	if (shopBlock.itemStorageKey != 0 && player->getStorageValue(shopBlock.itemStorageKey) < shopBlock.itemStorageValue) {
@@ -8313,6 +8313,7 @@ void ProtocolGame::AddShopItem(NetworkMessage &msg, const ShopBlock &shopBlock) 
 		msg.addString(shopBlock.itemName, "ProtocolGame::AddShopItem - shopBlock.itemName");
 	}
 	msg.add<uint32_t>(it.weight);
+
 	msg.add<uint32_t>(shopBlock.itemBuyPrice == 4294967295 ? 0 : shopBlock.itemBuyPrice);
 	msg.add<uint32_t>(shopBlock.itemSellPrice == 4294967295 ? 0 : shopBlock.itemSellPrice);
 	

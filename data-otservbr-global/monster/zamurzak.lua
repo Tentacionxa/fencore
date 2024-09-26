@@ -102,7 +102,7 @@ monster.attacks = {
 	{ name = "combat", interval = 2000, chance = 20, type = COMBAT_MANADRAIN, minDamage = -2600, maxDamage = -3300, length = 12, spread = 3, effect = CONST_ME_TELEPORT, target = false },
 	{ name = "combat", interval = 2000, chance = 20, type = COMBAT_FIREDAMAGE, minDamage = -900, maxDamage = -1500, length = 6, spread = 2, effect = CONST_ME_FIREAREA, target = false },
 	{ name = "gaz'haragoth death", interval = 4000, chance = 6, target = false },
-	{ name = "gaz'haragoth death", interval = 4000, chance = 6, target = false },
+	{ name = "zamurzakdoom", interval = 4000, chance = 19, target = false },
 	{ name = "speed", interval = 2000, chance = 35, speedChange = -600, radius = 8, effect = CONST_ME_MAGIC_RED, target = false, duration = 15000 },
 }
 

@@ -157,6 +157,7 @@ npcConfig.shop = {
 	{ itemName = "watch", clientId = 2906, buy = 20, sell = 6 },
 	{ itemName = "wooden hammer", clientId = 3459, sell = 15 },
 	{ itemName = "worm", clientId = 3492, buy = 1 },
+	{ itemName = "closed silvered trap", clientId = 22074, buy = 50000 },
 }
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

@@ -4,6 +4,7 @@ local config = {
     { name="Oskayaat", position = Position(33026, 32916, 4) },
 	 { name="Candia", position = Position(33332, 32122, 7) },
 	 { name="Gnomprona", position = Position(33530, 32868, 14) },
+	 { name="Podzilla", position = Position(33855, 32011, 5) },
 	{ name="Kazordoon", position = Position(32627, 31916, 8) },
 	{ name="Carlin", position = Position(32327, 31771, 5) },
 	{ name="Abdendriel", position = Position(32726, 31650, 6) },

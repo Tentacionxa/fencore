@@ -8313,10 +8313,6 @@ void ProtocolGame::AddShopItem(NetworkMessage &msg, const ShopBlock &shopBlock) 
 		msg.addString(shopBlock.itemName, "ProtocolGame::AddShopItem - shopBlock.itemName");
 	}
 	msg.add<uint32_t>(it.weight);
-	if (shopBlock.itemBuyPrice >= 4294967295 || shopBlock.itemSellPrice >= 4294967295) {
-	g_logger().error("[{}] itemid {} being sold/bought above the allowed value.", __FUNCTION__, shopBlock.itemId);
-	return;
-}
 	msg.add<uint32_t>(shopBlock.itemBuyPrice == 4294967295 ? 0 : shopBlock.itemBuyPrice);
 	msg.add<uint32_t>(shopBlock.itemSellPrice == 4294967295 ? 0 : shopBlock.itemSellPrice);
 	

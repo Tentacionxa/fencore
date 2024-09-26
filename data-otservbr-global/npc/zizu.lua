@@ -901,7 +901,6 @@ npcConfig.shop = {
 { itemName = "figurine of Bakragore", clientId = 43963, sell = 5400000 },
 { itemName = "putrefactive figurine", clientId = 43962, sell = 3200000 },
 { itemName = "fiery tear", clientId = 39040, sell = 3200000 },
-{ itemName = "dragon figurine", clientId = 30053, sell = 3200000 },
 { itemName = "Vemiath's infused basalt", clientId = 43967, sell = 1000000 },
 { itemName = "unicorn figurine", clientId = 30054, sell = 50000 },
 { itemName = "Ichgahal's fungal infestation", clientId = 43964, sell = 900000 },

@@ -166,11 +166,13 @@ SoulPit.checkMonsters = function()
                     spectator:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You have defeated the core of the " .. SoulPit.cache.monsterNameSoulPit .. " soul and unlocked its animus mastery!")
                     local monsterType = MonsterType(SoulPit.cache.monsterNameSoulPit)
                     if monsterType then
-                        spectator:setActivedAnimusMasteryBonus(monsterType:raceId())
-                        --spectator:addAnimusMasteryPoints(1)
-                        local oldPoints = spectator:kv():scoped("animus-mastery"):get("points") or 0
-                        if oldPoints then
-                            spectator:kv():scoped("animus-mastery"):set("points", oldPoints + 1)
+                        local raceId = monsterType:raceId()
+                        if spectator:getAnimusMasteryBonus(raceId) == 0 then
+                            spectator:setActivedAnimusMasteryBonus(raceId)
+                            local oldPoints = spectator:kv():scoped("animus-mastery"):get("points") or 0
+                            if oldPoints then
+                                spectator:kv():scoped("animus-mastery"):set("points", oldPoints + 1)
+                            end
                         end
                     end
                 end

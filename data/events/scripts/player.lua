@@ -519,7 +519,21 @@ function Player:onGainExperience(target, exp, rawExp)
 	if not target or target:isPlayer() then
 		return exp
 	end
- if getGlobalStorageValue(480664) > os.time() then
+
+	local monsterType = MonsterType(target:getName())
+	if monsterType then
+		if not monsterType:isRewardBoss() then
+			local raceId = monsterType:raceId()
+			if raceId and raceId > 0 then
+				local bonus = self:getAnimusMasteryBonus(monsterType:raceId())
+				if bonus > 0 then
+					exp = exp * (1 + (bonus / 1000))
+				end
+			end
+		end
+	end
+
+ 	if getGlobalStorageValue(480664) > os.time() then
         exp = exp * 2 --- 100% boost
     end
 

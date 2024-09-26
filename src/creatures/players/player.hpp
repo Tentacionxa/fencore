@@ -230,7 +230,7 @@ public:
 		return 0;
 	}
 	void setActivedAnimusMasteryBonus(const uint16_t raceid) const {
-		const uint16_t activeBonus = 20;
+		const uint16_t activeBonus = 6;
 		kv()->scoped("animus-mastery-bonus")->set(std::to_string(raceid), activeBonus);
 	}
 	uint16_t getAnimusMasteryBonus(const uint16_t raceid) const {

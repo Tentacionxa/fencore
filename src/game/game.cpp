@@ -4329,7 +4329,15 @@ void Game::playerWrapableItem(uint32_t playerId, const Position &pos, uint8_t st
 
 	const auto item = thing->getItem();
 	const auto tile = map.getTile(item->getPosition());
+	if (!tile) {
+		return;
+	}
+
 	const auto houseTile = tile->dynamic_self_cast<HouseTile>();
+	if (!houseTile) {
+		return;
+	}
+
 	if (!tile->hasFlag(TILESTATE_PROTECTIONZONE) || !houseTile) {
 		player->sendCancelMessage("You may construct this only inside a house.");
 		return;

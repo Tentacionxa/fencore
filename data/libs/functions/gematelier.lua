@@ -41,6 +41,17 @@ local config = {
 		},
 		maxCount = 1,
 	},
+	soulcore = {
+		names = {
+			"soul core",
+		},
+		chance = {
+			influenced = 0,
+			fiendish = 35000,
+			archfoe = 0,
+		},
+		maxCount = 1,
+	},
 }
 
 function Monster:generateGemAtelierLoot()

@@ -22,5 +22,5 @@ function penduletRepair.onSay(player, words, param)
 	end
 	return false
 end
-penduletRepair:groupType("normal")
-penduletRepair:register()
+--penduletRepair:groupType("normal")
+--penduletRepair:register()

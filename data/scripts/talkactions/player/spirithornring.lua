@@ -22,5 +22,5 @@ function spiritRepair.onSay(player, words, param)
 	end
 	return false
 end
-spiritRepair:groupType("normal")
-spiritRepair:register()
+--spiritRepair:groupType("normal")
+--spiritRepair:register()

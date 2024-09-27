@@ -22,5 +22,5 @@ function theurgicRepair.onSay(player, words, param)
 	end
 	return false
 end
-theurgicRepair:groupType("normal")
-theurgicRepair:register()
+--theurgicRepair:groupType("normal")
+--theurgicRepair:register()

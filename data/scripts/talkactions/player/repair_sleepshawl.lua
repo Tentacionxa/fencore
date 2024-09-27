@@ -22,6 +22,6 @@ function sleepRepair.onSay(player, words, param)
 	end
 	return false
 end
-sleepRepair:groupType("normal")
-sleepRepair:register()
+--sleepRepair:groupType("normal")
+--sleepRepair:register()
 

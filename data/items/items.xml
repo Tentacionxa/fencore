@@ -54462,8 +54462,8 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="28778" article="a" name="slain energetic book">
 		<attribute key="fluidsource" value="blood"/>
-		<attribute key="duration" value="10"/>
-		<attribute key="decayTo" value="28777"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="decayTo" value="0"/>
 		<attribute key="containersize" value="20"/>
 	</item>
 	<item id="28779" article="a" name="dead rage squid">
@@ -54484,8 +54484,8 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="28782" article="a" name="dead rage squid">
 		<attribute key="fluidsource" value="blood"/>
-		<attribute key="duration" value="10"/>
-		<attribute key="decayTo" value="28781"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="decayTo" value="0"/>
 		<attribute key="containersize" value="20"/>
 	</item>
 	<item id="28783" article="a" name="dead squid warden">
@@ -54894,8 +54894,8 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="28874" article="a" name="slain energuardian of tales">
 		<attribute key="fluidsource" value="blood"/>
-		<attribute key="duration" value="10"/>
-		<attribute key="decayTo" value="28873"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="decayTo" value="0"/>
 		<attribute key="containersize" value="24"/>
 	</item>
 	<item fromid="28875" toid="28878" name="RESERVED SPRITE"/>

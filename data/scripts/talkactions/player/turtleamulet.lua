@@ -22,5 +22,5 @@ function turtleRepair.onSay(player, words, param)
 	end
 	return false
 end
-turtleRepair:groupType("normal")
-turtleRepair:register()
+--turtleRepair:groupType("normal")
+--turtleRepair:register()

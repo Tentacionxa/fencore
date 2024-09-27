@@ -22,5 +22,5 @@ function arcanomancerRepair.onSay(player, words, param)
 	end
 	return false
 end
-arcanomancerRepair:groupType("normal")
-arcanomancerRepair:register()
+--arcanomancerRepair:groupType("normal")
+--arcanomancerRepair:register()

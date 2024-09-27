@@ -15,6 +15,6 @@ function talkaction.onSay(player, words, param)
 	return true
 end
 
-talkaction:separator(" ")
-talkaction:groupType("normal")
-talkaction:register()
+--talkaction:separator(" ")
+--talkaction:groupType("normal")
+--talkaction:register()

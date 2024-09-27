@@ -22,5 +22,5 @@ function alicornRepair.onSay(player, words, param)
 	end
 	return false
 end
-alicornRepair:groupType("normal")
-alicornRepair:register()
+--alicornRepair:groupType("normal")
+--alicornRepair:register()

@@ -22,5 +22,5 @@ function softBootsRepair.onSay(player, words, param)
 	end
 	return false
 end
-softBootsRepair:groupType("normal")
-softBootsRepair:register()
+--softBootsRepair:groupType("normal")
+--softBootsRepair:register()

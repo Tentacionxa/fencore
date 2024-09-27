@@ -13,5 +13,5 @@ function aol.onSay(player, words, param)
 	return true
 end
 
-aol:groupType("normal")
-aol:register()
+--aol:groupType("normal")
+--aol:register()

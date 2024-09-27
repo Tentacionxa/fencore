@@ -56,6 +56,6 @@ function buyHouse.onSay(player, words, param)
 	return true
 end
 
-buyHouse:separator(" ")
-buyHouse:groupType("normal")
-buyHouse:register()
+--buyHouse:separator(" ")
+--buyHouse:groupType("normal")
+--buyHouse:register()

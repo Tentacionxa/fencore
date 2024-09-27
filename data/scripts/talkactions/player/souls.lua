@@ -22,5 +22,5 @@ function soulRepair.onSay(player, words, param)
 	end
 	return false
 end
-soulRepair:groupType("normal")
-soulRepair:register()
+--soulRepair:groupType("normal")
+--soulRepair:register()

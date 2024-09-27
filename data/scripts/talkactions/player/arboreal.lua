@@ -22,5 +22,5 @@ function arborealRepair.onSay(player, words, param)
 	end
 	return false
 end
-arborealRepair:groupType("normal")
-arborealRepair:register()
+--arborealRepair:groupType("normal")
+--arborealRepair:register()

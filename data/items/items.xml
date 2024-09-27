@@ -58343,8 +58343,8 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="31385" article="a" name="dead sphinx">
 		<attribute key="fluidsource" value="blood"/>
-		<attribute key="duration" value="300"/>
-		<attribute key="decayTo" value="31384"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="decayTo" value="0"/>
 		<attribute key="containersize" value="32"/>
 	</item>
 	<item id="31386" article="a" name="dead sphinx">
@@ -58501,8 +58501,8 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="31419" article="a" name="dead priestess of the wild sun">
 		<attribute key="fluidsource" value="blood"/>
-		<attribute key="duration" value="10"/>
-		<attribute key="decayTo" value="31418"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="decayTo" value="0"/>
 		<attribute key="containersize" value="32"/>
 	</item>
 	<item id="31420" article="a" name="dead black sphinx acolyte">

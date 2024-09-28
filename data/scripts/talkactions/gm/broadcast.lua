@@ -26,5 +26,5 @@ function broadcast.onSay(player, words, param)
 end
 
 broadcast:separator(" ")
-broadcast:groupType("gamemaster")
+broadcast:groupType("tutor")
 broadcast:register()

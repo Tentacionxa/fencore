@@ -64,6 +64,28 @@ local roletasConfig = {
 			{id = 36727, quantidade = 1, raro = true}, -- durable exercise bow
 			{id = 36725, quantidade = 1, raro = true}, -- durable exercise rod
 		}
+	},
+	[17568] = {
+		itemNecessario = {id = 3043, quantidade = 5},
+		pisosPorRoleta = 9,
+		posicaoDoCentro = Position(32117, 32202, 6),
+		items = {
+			{id = 3043, quantidade = 10, raro = true},
+
+			{id = 35279, quantidade = 1, cargas = 5000}, -- durable exercise sword
+			{id = 35280, quantidade = 1, cargas = 5000}, -- durable exercise axe
+			{id = 35281, quantidade = 1, cargas = 5000}, -- durable exercise club
+			{id = 35282, quantidade = 1, cargas = 5000}, -- durable exercise bow
+			{id = 35283, quantidade = 1, cargas = 5000}, -- durable exercise rod
+			{id = 35284, quantidade = 1, cargas = 5000}, -- durable exercise wand
+			{id = 44066, quantidade = 1, cargas = 5000}, -- durable exercise shield
+
+			{id = 36725, quantidade = 1, raro = true}, -- durable exercise sword
+			{id = 36726, quantidade = 1, raro = true}, -- durable exercise axe
+			{id = 36728, quantidade = 1, raro = true}, -- durable exercise club
+			{id = 36727, quantidade = 1, raro = true}, -- durable exercise bow
+			{id = 36725, quantidade = 1, raro = true}, -- durable exercise rod
+		}
 	}
 
 	--[[

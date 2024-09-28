@@ -54,7 +54,7 @@ monster.flags = {
 }
 
 monster.events = {
-	"feroxaDeath",
+	"FeroxaDeath",
 }
 
 monster.light = {

@@ -2,6 +2,7 @@ local config = {
 	{name = "durable exercise sword", itemId = 35279, charges = 10000},
 	{name = "durable exercise axe", itemId = 35280, charges = 10000},
 	{name = "durable exercise club", itemId = 35281, charges = 10000},
+	{name = "durable exercise shield", itemId = 44066, charges = 10000},
 	{name = "durable exercise bow", itemId = 35282, charges = 10000},
 	{name = "durable exercise rod", itemId = 35283, charges = 10000},
 	{name = "durable exercise wand", itemId = 35284, charges = 10000}

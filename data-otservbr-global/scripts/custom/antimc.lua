@@ -1,7 +1,7 @@
 local config = {
     max = 3,
     maxVip = 3,
-    text = "Only 2 (FREE) or 2 (VIP) characters allowed per IP.",
+    text = "3 (VIP) characters allowed per IP.",
     group_id = 1,  -- it apply the limit to players with a group less than or equal to the id
     milliseconds_before_kick_to_read_popup = 6500 -- 9000 = 9 seconds
 }
@@ -24,5 +24,5 @@ function antimc.onLogin(player)
         end
             return true
     end
---antimc:register()
+antimc:register()
 

@@ -47,7 +47,7 @@ local config = {
 		},
 		chance = {
 			influenced = 0,
-			fiendish = 13000,
+			fiendish = 3500,
 			archfoe = 0,
 		},
 		maxCount = 1,
@@ -85,6 +85,10 @@ function Monster:generateGemAtelierLoot()
 				end
 
 				local name = names[math.random(1, #names)]
+				if name == "soul core" then
+					name = self:getName() .. " soul core"
+				end
+
 				local itemType = ItemType(name)
 				if not itemType then
 					goto continue

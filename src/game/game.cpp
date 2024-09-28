@@ -3609,7 +3609,7 @@ void Game::playerUseItemEx(uint32_t playerId, const Position &fromPos, uint8_t f
 	if (!player) {
 		return;
 	}
-g_logger().debug("Game::playerUseItem player: {} , fromItemId: {}, toItemId: {}", player->getName(), fromItemId, toItemId);
+	g_logger().debug("Game::playerUseItem player: {} , fromItemId: {}, toItemId: {}", player->getName(), fromItemId, toItemId);
 	bool isHotkey = (fromPos.x == 0xFFFF && fromPos.y == 0 && fromPos.z == 0);
 	if (isHotkey && !g_configManager().getBoolean(AIMBOT_HOTKEY_ENABLED, __FUNCTION__)) {
 		return;
@@ -6533,7 +6533,7 @@ bool Game::combatBlockHit(CombatDamage &damage, std::shared_ptr<Creature> attack
 	}
 
 	// Skill dodge (ruse)
-const auto &targetPlayer = target ? target->getPlayer() : nullptr;
+	const auto &targetPlayer = target ? target->getPlayer() : nullptr;
 	// Skill dodge (ruse)
 	if (targetPlayer) {
 		auto chance = targetPlayer->getDodgeChance();
@@ -6556,7 +6556,6 @@ const auto &targetPlayer = target ? target->getPlayer() : nullptr;
 	CombatParams damageReflectedParams;
 
 	BlockType_t primaryBlockType, secondaryBlockType;
-	std::shared_ptr<Player> targetPlayer = target ? target->getPlayer() : nullptr;
 
 	if (damage.primary.type != COMBAT_NONE) {
 		damage.primary.value = -damage.primary.value;

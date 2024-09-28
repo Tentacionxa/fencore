@@ -6533,14 +6533,15 @@ bool Game::combatBlockHit(CombatDamage &damage, std::shared_ptr<Creature> attack
 	}
 
 	// Skill dodge (ruse)
-	if (target) {
-		if (std::shared_ptr<Player> targetPlayer = target->getPlayer()) {
-			auto chance = targetPlayer->getDodgeChance();
-			if (chance > 0 && uniform_random(0, 10000) < chance) {
-				InternalGame::sendBlockEffect(BLOCK_DODGE, damage.primary.type, target->getPosition(), attacker);
-				targetPlayer->sendTextMessage(MESSAGE_ATTENTION, "You dodged an attack.");
-				return true;
-			}
+	const auto &targetPlayer = target ? target->getPlayer() : nullptr;
+	// Skill dodge (ruse)
+	if (targetPlayer) {
+		auto chance = targetPlayer->getDodgeChance();
+		if (chance > 0 && uniform_random(0, 10000) < chance) {
+			InternalGame::sendBlockEffect(BLOCK_DODGE, damage.primary.type, target->getPosition(), attacker);
+			targetPlayer->sendTextMessage(MESSAGE_ATTENTION, "You dodged an attack.");
+			return true;
+		}
 	}
 
 	bool canHeal = false;

@@ -1065,7 +1065,6 @@ npcConfig.shop = {
 	{ itemName = "hydra head", clientId = 10282, sell = 600 },
 	{ itemName = "hydrophytes", clientId = 39410, sell = 220 },
 	{ itemName = "ice flower", clientId = 30058, sell = 370 },
-	{ itemName = "ichgahal's fungal infestation", clientId = 43964, sell = 900000 },
 	{ itemName = "incantation notes", clientId = 18929, sell = 90 },
 	{ itemName = "infernal heart", clientId = 34139, sell = 2100 },
 	{ itemName = "infernal robe", clientId = 34146, sell = 1200 },

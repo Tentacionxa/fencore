@@ -85,7 +85,6 @@ monster.voices = {
 monster.loot = {
 	{ name = "platinum coin", chance = 100000, maxCount = 2 },
 	{ name = "fafnar symbol", chance = 7360 },
-	{ id = 31433, chance = 6610 }, -- secret instruction
 	{ id = 31435, chance = 6610 }, -- secret instruction
 	{ id = 31436, chance = 6610 }, -- secret instruction
 	{ id = 31331, chance = 2540 }, -- empty honey glass

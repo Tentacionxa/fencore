@@ -76799,6 +76799,37 @@ Granted by TibiaGoals.com"/>
 		<attribute key="decayTo" value="0"/>
 		<attribute key="containersize" value="25"/>
 	</item>
+
+	<item id="45640" article="a" name="creamy grimoire">
+                <attribute key="description" value="It shows your spells and can also shield against attacks when worn"/>
+                <attribute key="weaponType" value="spellbook"/>
+                                        <attribute key="healingmagiclevelpoints" value="1"/>
+                <attribute key="absorbpercentphysical" value="2"/>
+                <attribute key="absorbpercentfire" value="5"/>
+                <attribute key="magiclevelpoints" value="3"/>
+                <attribute key="defense" value="19"/>
+                <attribute key="weight" value="2500"/>
+<attribute key="imbuementslot" value="1">
+                        <attribute key="skillboost shielding" value="3"/>
+                                                                <attribute key="elemental protection death" value="3"/>
+                        <attribute key="elemental protection earth" value="3"/>
+                        <attribute key="elemental protection ice" value="3"/>
+                        <attribute key="elemental protection energy" value="3"/>
+                        <attribute key="elemental protection holy" value="3"/>
+</attribute>
+                        <attribute key="script" value="moveevent">
+                        <attribute key="level" value="200"/>
+                        <attribute key="slot" value="shield"/>
+                        <attribute key="vocation" value="Druid;true, Elder Druid"/>
+                </attribute>
+                        </item>
+						<item id="48418" article="a" name="corpse of the rootkraken">
+		<attribute key="fluidsource" value="blood"/>
+		<attribute key="duration" value="300"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="containersize" value="25"/>
+	</item>
+
 	<item id="49148" article="a" name="dead rootthing">
 		<attribute key="fluidsource" value="blood"/>
 		<attribute key="duration" value="60"/>

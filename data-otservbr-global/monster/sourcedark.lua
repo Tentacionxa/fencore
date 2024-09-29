@@ -77,7 +77,6 @@ monster.loot = {
 	{name = "crystal coin", chance = 70540},
 	{name = "darklight core", chance = 15500},
 	{name = "twiceslicer", chance = 2000},
-	{name = "yellow darklight matter", chance = 55500},
 	{name = "small sapphire", chance = 4500, maxCount = 2},
 	{name = "white gem", chance = 13500},
 	{name = "dark obsidian splinter", chance = 11500},

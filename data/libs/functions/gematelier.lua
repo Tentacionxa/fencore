@@ -47,7 +47,7 @@ local config = {
 		},
 		chance = {
 			influenced = 0,
-			fiendish = 3500,
+			fiendish = 35000,
 			archfoe = 0,
 		},
 		maxCount = 1,

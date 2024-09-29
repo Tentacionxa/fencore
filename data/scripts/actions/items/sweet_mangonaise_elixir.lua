@@ -1,4 +1,5 @@
 local ringMultiplicationTable = {
+	[16114] = 16114,
 	[3048] = 3048,
 	[3049] = 3086,
 	[3050] = 3087,
@@ -12,7 +13,6 @@ local ringMultiplicationTable = {
 	[3098] = 3100,
 	[6299] = 6300,
 	[12669] = 12670,
-	[16114] = 16264,
 }
 
 local sweetMangonaiseElixir = Action()

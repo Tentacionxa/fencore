@@ -89,7 +89,6 @@ npcHandler:setMessage(MESSAGE_SENDTRADE, "Take all the time you need to decide w
 
 
 
-npcHandler:setCallback(CALLBACK_ON_TRADE_REQUEST, onTradeRequest)
 npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 

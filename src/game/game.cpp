@@ -6578,8 +6578,8 @@ bool Game::combatBlockHit(CombatDamage &damage, std::shared_ptr<Creature> attack
 		}
 			if (target) {
 			damage.primary.value *= target->getBuff(BUFF_DAMAGERECEIVED) / 100.;
-		}
 		primaryBlockType = target->blockHit(attacker, damage.primary.type, damage.primary.value, checkDefense, checkArmor, field);
+		}
 
 		damage.primary.value = -damage.primary.value;
 	if (target) {

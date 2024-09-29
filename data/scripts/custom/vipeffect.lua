@@ -8,13 +8,10 @@ function globalevent.onThink(interval)
         local position = player:getPosition()
         if player:getGroup():getId() == 2 or player:getGroup():getId() == 3 then
             player:say("TUTOR", TALKTYPE_MONSTER_SAY)
-            position:sendMagicEffect(staffEffect)
         elseif player:getGroup():getId() == 4 or player:getGroup():getId() == 4 or player:getGroup():getId() == 4 then
             player:say("Streamer", TALKTYPE_MONSTER_SAY)
-            position:sendMagicEffect(staffEffect)
                 elseif player:isVip() then
             player:say("VIP", TALKTYPE_MONSTER_SAY)
-            position:sendMagicEffect(vipEffect)
         end
     end
     return true

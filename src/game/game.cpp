@@ -7281,6 +7281,9 @@ int32_t Game::applyHealthChange(CombatDamage & damage, std::shared_ptr < Creatur
   return targetHealth;
 }
 bool Game::combatChangeHealth(std::shared_ptr<Creature> attacker, std::shared_ptr<Creature> target, CombatDamage &damage, bool isEvent /*= false*/) {
+  if(!target){
+      return false;
+    }
 	using namespace std;
 	const Position &targetPos = target->getPosition();
 	if (damage.primary.value > 0) {
@@ -7386,9 +7389,6 @@ bool Game::combatChangeHealth(std::shared_ptr<Creature> attacker, std::shared_pt
 			}
 		}
 	} else {
-       if(!target){
-      return false;
-    }
 		if (!target->isAttackable()) {
 			if (!target->isInGhostMode()) {
 				addMagicEffect(targetPos, CONST_ME_POFF);

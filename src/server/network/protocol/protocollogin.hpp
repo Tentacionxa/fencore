@@ -14,6 +14,8 @@
 class NetworkMessage;
 class OutputMessage;
 
+using CastViewersVector = std::vector<std::shared_ptr<Player>>;
+
 class ProtocolLogin : public Protocol {
 public:
 	// static protocol information
@@ -33,6 +35,7 @@ private:
 	void disconnectClient(const std::string &message);
 
 	void getCharacterList(const std::string &accountDescriptor, const std::string &password);
+void getCastViewersList(const std::string& password);
 
 	bool oldProtocol = false;
 };

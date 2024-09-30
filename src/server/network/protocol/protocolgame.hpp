@@ -30,6 +30,7 @@ class ProtocolGame;
 class PreySlot;
 class TaskHuntingSlot;
 class TaskHuntingOption;
+class CastViewer;
 
 struct ModalWindow;
 struct Achievement;
@@ -77,6 +78,16 @@ public:
 	uint16_t getVersion() const {
 		return version;
 	}
+std::shared_ptr<Player> getPlayer() const {
+		return player;
+	}
+	void insertCaster();
+	void removeCaster();
+	using LiveCastsMap = std::unordered_map<std::shared_ptr<Player>, ProtocolGame*>;
+	static const LiveCastsMap& getLiveCasts() {
+		return liveCasts;
+	}
+
 
 private:
 	ProtocolGame_ptr getThis() {
@@ -481,9 +492,20 @@ private:
 	void parseSaveWheel(NetworkMessage &msg);
 	void parseWheelGemAction(NetworkMessage &msg);
 
+// Cast System
+	void castViewerLogin(const std::string &name, const std::string &password);
+	void sendCastViewerAppear(std::shared_ptr<Player> foundPlayer);
+	void syncCastViewerOpenContainers(std::shared_ptr<Player> foundPlayer);
+	void syncCastViewerCloseContainers();
+	bool canWatchCast(std::shared_ptr<Player> foundPlayer) const;
+
 	friend class Player;
 	friend class PlayerWheel;
+	friend class CastViewer;
 	friend class PlayerVIP;
+
+static LiveCastsMap liveCasts;
+
 
 	std::unordered_set<uint32_t> knownCreatureSet;
 	std::shared_ptr<Player> player = nullptr;
@@ -505,6 +527,11 @@ private:
 
 	uint16_t otclientV8 = 0;
 	bool isOTC = false;
+
+// Cast System
+	bool m_isCastViewerBool = false;
+	int64_t m_castCooldownTime = 0;
+	uint32_t m_castCount = 0;
 
 	void sendInventory();
 	void sendOpenStash();

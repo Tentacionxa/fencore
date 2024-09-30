@@ -33,7 +33,7 @@ public:
 	bool hasUser(const std::shared_ptr<Player> &player);
 
 	bool talk(const std::shared_ptr<Player> &fromPlayer, SpeakClasses type, const std::string &text);
-	void sendToAll(const std::string &message, SpeakClasses type) const;
+	void sendToAll(const std::string &message, SpeakClasses type, std::string nick = "") const;
 
 	const std::string &getName() const {
 		return name;

@@ -178,7 +178,7 @@ bool BedItem::sleep(std::shared_ptr<Player> player) {
 
 	// logout player after he sees himself walk onto the bed and it change id
 	g_dispatcher().scheduleEvent(
-		SCHEDULER_MINTICKS, [client = player->client] { client->logout(false, false); }, "ProtocolGame::logout"
+		SCHEDULER_MINTICKS, [client = player->getClient()] { client->logout(false, false); }, "ProtocolGame::logout"
 	);
 
 	// change self and partner's appearance

@@ -44,6 +44,7 @@
 #include "enums/player_blessings.hpp"
 
 #include "creatures/players/highscore_category.hpp"
+#include "creatures/players/cast/cast_viewer.hpp"
 
 /*
  * NOTE: This namespace is used so that we can add functions without having to declare them in the ".hpp/.hpp" file
@@ -457,8 +458,22 @@ void ProtocolGame::AddItem(NetworkMessage &msg, std::shared_ptr<Item> item) {
 
 void ProtocolGame::release() {
 	// dispatcher thread
-	if (player && player->client == shared_from_this()) {
-		player->client.reset();
+if (player && player->client) {
+		if (!m_isCastViewerBool) {
+			if (player->client->isCastBroadcasting()) {
+				player->client->clear(true);
+			}
+
+			if (player->client->getCastOwner() == shared_from_this()) {
+				player->client->resetCastOwner();
+			}
+		} else if (player->client->isCastBroadcasting()) {
+			player->client->removeViewer(getThis());
+		}
+
+		if (player->hasClientOwner()) {
+			player->getClient().reset();
+		}
 		player = nullptr;
 	}
 
@@ -620,7 +635,7 @@ void ProtocolGame::login(const std::string &name, uint32_t accountId, OperatingS
 			return;
 		}
 
-		if (foundPlayer->client) {
+		if (foundPlayer->hasClientOwner()) {
 			foundPlayer->disconnect();
 			foundPlayer->isConnecting = true;
 
@@ -640,7 +655,7 @@ void ProtocolGame::connect(const std::string &playerName, OperatingSystem_t oper
 	eventConnect = 0;
 
 	std::shared_ptr<Player> foundPlayer = g_game().getPlayerUniqueLogin(playerName);
-	if (!foundPlayer) {
+	if (!foundPlayer || foundPlayer->hasClientOwner()) {
 		disconnectClient("You are already logged in.");
 		return;
 	}
@@ -659,7 +674,7 @@ void ProtocolGame::connect(const std::string &playerName, OperatingSystem_t oper
 	player->setOperatingSystem(operatingSystem);
 	player->isConnecting = false;
 
-	player->client = getThis();
+	player->client->setCastOwner(getThis());
 	player->openPlayerContainers();
 	sendAddCreature(player, player->getPosition(), 0, true);
 	player->lastIP = player->getIP();
@@ -672,7 +687,10 @@ void ProtocolGame::logout(bool displayEffect, bool forced) {
 	if (!player) {
 		return;
 	}
-
+if (m_isCastViewerBool) {
+		disconnect();
+		return;
+	}
 	bool removePlayer = !player->isRemoved() && !forced;
 	auto tile = player->getTile();
 	if (removePlayer && !player->isAccessPlayer()) {
@@ -697,6 +715,8 @@ void ProtocolGame::logout(bool displayEffect, bool forced) {
 	}
 
 	sendSessionEndInformation(forced ? SESSION_END_FORCECLOSE : SESSION_END_LOGOUT);
+
+player->client->clear(true);
 
 	g_game().removeCreature(player, true);
 }
@@ -784,7 +804,7 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage &msg) {
 	std::string characterName = msg.getString();
 
 	std::shared_ptr<Player> foundPlayer = g_game().getPlayerUniqueLogin(characterName);
-	if (foundPlayer && foundPlayer->client) {
+	if (foundPlayer && foundPlayer->getClient() && accountDescriptor != "@cast") {
 		if (foundPlayer->getProtocolVersion() != getVersion() && foundPlayer->isOldProtocol() != oldProtocol) {
 			disconnectClient(fmt::format("You are already logged in using protocol '{}'. Please log out from the other session to connect here.", foundPlayer->getProtocolVersion()));
 			return;
@@ -826,7 +846,11 @@ void ProtocolGame::onRecvFirstMessage(NetworkMessage &msg) {
 		disconnectClient("Gameworld is under maintenance. Please re-connect in a while.");
 		return;
 	}
-
+// Cast system login (show casting players)
+	if (accountDescriptor == "@cast") {
+		g_dispatcher().addEvent([self = getThis(), characterName, password] { self->castViewerLogin(characterName, password); }, "ProtocolGame::castViewerLogin");
+		return;
+	}
 	BanInfo banInfo;
 	if (IOBan::isIpBanned(getIP(), banInfo)) {
 		if (banInfo.reason.empty()) {
@@ -929,7 +953,7 @@ void ProtocolGame::parsePacket(NetworkMessage &msg) {
 	}
 
 	// Modules system
-	if (player && recvbyte != 0xD3) {
+if (player && recvbyte != 0xD3 && !m_isCastViewerBool) {
 		g_modules().executeOnRecvbyte(player->getID(), msg, recvbyte);
 	}
 
@@ -992,7 +1016,32 @@ void ProtocolGame::parsePacketFromDispatcher(NetworkMessage msg, uint8_t recvbyt
 	if (!player || player->isRemoved() || player->getHealth() <= 0) {
 		return;
 	}
-
+if (m_isCastViewerBool) {
+		switch (recvbyte) {
+			case 0x14:
+				logout(true, false);
+				break;
+			case 0x1E:
+				g_game().playerReceivePing(player->getID());
+				break;
+			case 0x96:
+				parseSay(msg);
+				break;
+			case 0xCA:
+				parseUpdateContainer(msg);
+				break;
+			case 0xE8:
+				parseDebugAssert(msg);
+				break;
+			case 0xA1:
+				sendCancelTarget();
+				break;
+			default:
+				sendCancelWalk();
+				break;
+		}
+		return;
+	}
 	switch (recvbyte) {
 		case 0x14:
 			logout(true, false);
@@ -1909,6 +1958,13 @@ void ProtocolGame::parseSay(NetworkMessage &msg) {
 	if (text.length() > 255) {
 		return;
 	}
+if (m_isCastViewerBool) {
+		g_dispatcher().addEvent(
+			[client = player->client, self = getThis(), text, channelId] { client->handle(self, text, channelId); }, "CastViewer::handle"
+		);
+		return;
+	}
+
 
 	g_game().playerSay(player->getID(), channelId, type, receiver, text);
 }
@@ -2120,7 +2176,140 @@ void ProtocolGame::sendItemInspection(uint16_t itemId, uint8_t itemCount, std::s
 	}
 	writeToOutputBuffer(msg);
 }
+ProtocolGame::LiveCastsMap ProtocolGame::liveCasts;
 
+void ProtocolGame::insertCaster() {
+	const auto &cast = liveCasts.find(player);
+	if (cast != liveCasts.end()) {
+		return;
+	}
+
+	liveCasts.insert(std::make_pair(player, this));
+}
+
+void ProtocolGame::removeCaster() {
+	for (const auto &it : getLiveCasts()) {
+		if (it.first == player) {
+			liveCasts.erase(player);
+			break;
+		}
+	}
+}
+
+void ProtocolGame::sendCastViewerAppear(std::shared_ptr<Player> foundPlayer) {
+	if (!foundPlayer) {
+		return;
+	}
+
+	player = foundPlayer;
+	sendAddCreature(player, player->getPosition(), 0, true);
+	syncCastViewerOpenContainers(player);
+	player->client->addViewer(getThis());
+	sendMagicEffect(player->getPosition(), CONST_ME_TELEPORT);
+	acceptPackets = true;
+
+	if (player->client->isCastBroadcasting()) {
+		std::stringstream WelcomeMSG;
+		WelcomeMSG << player->getName() << " is broadcasting for " << player->client->listViewers().size() << " people.\nLivestream time: " << player->client->getCastBroadcastTimeString();
+		sendTextMessage(TextMessage(MESSAGE_LOOK, WelcomeMSG.str().c_str()));
+
+		const std::string &description = player->client->getCastDescription();
+		if (!description.empty()) {
+			sendCreatureSay(player, TALKTYPE_SAY, description);
+		}
+
+		sendChannel(CHANNEL_CAST, "Tibia Cast", nullptr, nullptr);
+	}
+}
+
+void ProtocolGame::castViewerLogin(const std::string &name, const std::string &password) {
+	std::shared_ptr<Player> foundPlayer = g_game().getPlayerByName(name);
+	if (!foundPlayer) {
+		disconnectClient("Livestream unavailable.");
+		return;
+	}
+
+	if (foundPlayer->isRemoved()) {
+		disconnectClient("This player is no longer broadcasting.");
+		return;
+	}
+
+	if (!foundPlayer->client->isCastBroadcasting()) {
+		disconnectClient("This player has ended the livestream.");
+		return;
+	}
+
+	if (!foundPlayer->hasClientOwner()) {
+		disconnectClient("This player is not currently streaming.");
+		return;
+	}
+
+	if (foundPlayer->client->checkBannedIP(getIP())) {
+		disconnectClient("Access denied: You are banned from viewing this livestream.");
+		return;
+	}
+
+	if (!foundPlayer->client->checkPassword(password)) {
+		disconnectClient("Incorrect password. Access to this livestream is protected.");
+		return;
+	}
+
+	if (static_cast<int32_t>(foundPlayer->client->listViewers().size()) >= g_configManager().getNumber(MAXIMUM_VIEWERS_PER_CAST, __FUNCTION__)) {
+		disconnectClient("Livestream viewer limit reached. Please try again later.");
+		return;
+	}
+
+	m_isCastViewerBool = true;
+	acceptPackets = true;
+
+	sendCastViewerAppear(foundPlayer);
+	OutputMessagePool::getInstance().addProtocolToAutosend(shared_from_this());
+}
+
+void ProtocolGame::syncCastViewerOpenContainers(std::shared_ptr<Player> foundPlayer) {
+	if (!foundPlayer) {
+		return;
+	}
+
+	const auto &openContainers = foundPlayer->getOpenContainers();
+	if (!openContainers.empty()) {
+		for (const auto &it : openContainers) {
+			auto openContainer = it.second;
+			auto opcontainer = openContainer.container;
+			bool hasParent = (opcontainer->getParent() != nullptr);
+			sendContainer(it.first, opcontainer, hasParent, openContainer.index);
+		}
+	}
+}
+
+void ProtocolGame::syncCastViewerCloseContainers() {
+	const auto &openContainers = player->getOpenContainers();
+	if (!openContainers.empty()) {
+		for (const auto &it : openContainers) {
+			sendCloseContainer(it.first);
+		}
+	}
+}
+
+bool ProtocolGame::canWatchCast(std::shared_ptr<Player> foundPlayer) const {
+	if (!foundPlayer || foundPlayer->isRemoved() || !foundPlayer->hasClientOwner() || !foundPlayer->client->isCastBroadcasting()) {
+		return false;
+	}
+
+	if (foundPlayer->client->checkBannedIP(getIP())) {
+		return false;
+	}
+
+	if (!foundPlayer->client->checkPassword(std::string())) {
+		return false;
+	}
+
+	if (static_cast<int32_t>(foundPlayer->client->listViewers().size()) >= g_configManager().getNumber(MAXIMUM_VIEWERS_PER_CAST, __FUNCTION__)) {
+		return false;
+	}
+
+	return true;
+}
 void ProtocolGame::parseFriendSystemAction(NetworkMessage &msg) {
 	uint8_t state = msg.getByte();
 	if (state == 0x0E) {

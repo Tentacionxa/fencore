@@ -363,6 +363,8 @@ private:
 		registerMethod(L, "Player", "getAchievementPoints", PlayerFunctions::luaPlayerGetAchievementPoints);
 		registerMethod(L, "Player", "addAchievementPoints", PlayerFunctions::luaPlayerAddAchievementPoints);
 		registerMethod(L, "Player", "removeAchievementPoints", PlayerFunctions::luaPlayerRemoveAchievementPoints);
+registerMethod(L, "Player", "getCastViewers", PlayerFunctions::luaPlayerGetCastViewers);
+		registerMethod(L, "Player", "setCastViewers", PlayerFunctions::luaPlayerSetCastViewers);
 
 		// Badge Functions
 		registerMethod(L, "Player", "addBadge", PlayerFunctions::luaPlayerAddBadge);
@@ -740,7 +742,10 @@ private:
 	static int luaPlayerGetAchievementPoints(lua_State* L);
 	static int luaPlayerAddAchievementPoints(lua_State* L);
 	static int luaPlayerRemoveAchievementPoints(lua_State* L);
-
+static int luaPlayerGetCastViewers(lua_State* L);
+	static int luaPlayerSetCastViewers(lua_State* L);
+	static int luaPlayerGetPrivateChannelID(lua_State* L);
+	
 	static int luaPlayerAddBadge(lua_State* L);
 
 	static int luaPlayerAddTitle(lua_State* L);

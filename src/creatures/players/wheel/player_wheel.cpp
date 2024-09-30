@@ -1376,8 +1376,8 @@ void PlayerWheel::addEnhanceMods(NetworkMessage &msg) const {
 	}
 }
 
-void PlayerWheel::sendOpenWheelWindow(NetworkMessage &msg, uint32_t ownerId) const {
-	if (m_player.client && m_player.client->oldProtocol) {
+void PlayerWheel::sendOpenWheelWindow(NetworkMessage& msg, uint32_t ownerId) const {
+	if (m_player.hasClientOwner() && m_player.getClient()->oldProtocol) {
 		return;
 	}
 
@@ -1403,17 +1403,17 @@ void PlayerWheel::sendOpenWheelWindow(NetworkMessage &msg, uint32_t ownerId) con
 
 	// TODO: read items from inventory
 	auto voc = m_player.getVocation();
-	m_player.client->sendResourceBalance(RESOURCE_BANK, m_player.getBankBalance());
-	m_player.client->sendResourceBalance(RESOURCE_INVENTORY_MONEY, m_player.getMoney());
-	m_player.client->sendResourceBalance(RESOURCE_LESSER_GEMS, m_player.getItemTypeCount(voc->getWheelGemId(WheelGemQuality_t::Lesser)));
-	m_player.client->sendResourceBalance(RESOURCE_REGULAR_GEMS, m_player.getItemTypeCount(voc->getWheelGemId(WheelGemQuality_t::Regular)));
-	m_player.client->sendResourceBalance(RESOURCE_GREATER_GEMS, m_player.getItemTypeCount(voc->getWheelGemId(WheelGemQuality_t::Greater)));
-	m_player.client->sendResourceBalance(RESOURCE_LESSER_FRAGMENTS, m_player.getItemTypeCount(46625));
-	m_player.client->sendResourceBalance(RESOURCE_GREATER_FRAGMENTS, m_player.getItemTypeCount(46626));
+	m_player.getClient()->sendResourceBalance(RESOURCE_BANK, m_player.getBankBalance());
+	m_player.getClient()->sendResourceBalance(RESOURCE_INVENTORY_MONEY, m_player.getMoney());
+	m_player.getClient()->sendResourceBalance(RESOURCE_LESSER_GEMS, m_player.getItemTypeCount(voc->getWheelGemId(WheelGemQuality_t::Lesser)));
+	m_player.getClient()->sendResourceBalance(RESOURCE_REGULAR_GEMS, m_player.getItemTypeCount(voc->getWheelGemId(WheelGemQuality_t::Regular)));
+	m_player.getClient()->sendResourceBalance(RESOURCE_GREATER_GEMS, m_player.getItemTypeCount(voc->getWheelGemId(WheelGemQuality_t::Greater)));
+	m_player.getClient()->sendResourceBalance(RESOURCE_LESSER_FRAGMENTS, m_player.getItemTypeCount(46625));
+	m_player.getClient()->sendResourceBalance(RESOURCE_GREATER_FRAGMENTS, m_player.getItemTypeCount(46626));
 }
 
 void PlayerWheel::sendGiftOfLifeCooldown() const {
-	if (!m_player.client || m_player.client->oldProtocol) {
+	if (!m_player.hasClientOwner() || m_player.getClient()->oldProtocol) {
 		return;
 	}
 
@@ -1430,7 +1430,7 @@ void PlayerWheel::sendGiftOfLifeCooldown() const {
 		msg.addByte(0x00);
 	}
 
-	m_player.client->writeToOutputBuffer(msg);
+	m_player.getClient()->writeToOutputBuffer(msg);
 }
 
 bool PlayerWheel::checkSavePointsBySlotType(WheelSlots_t slotType, uint16_t points) {
@@ -1464,7 +1464,7 @@ void PlayerWheel::saveSlotPointsHandleRetryErrors(std::vector<SlotInfo> &retryTa
 }
 
 void PlayerWheel::saveSlotPointsOnPressSaveButton(NetworkMessage &msg) {
-	if (m_player.client && m_player.client->oldProtocol) {
+	if (m_player.hasClientOwner() && m_player.getClient()->oldProtocol) {
 		return;
 	}
 
@@ -1736,7 +1736,7 @@ void PlayerWheel::resetPlayerBonusData() {
 }
 
 void PlayerWheel::initializePlayerData() {
-	if (m_player.client && m_player.client->oldProtocol) {
+	if (m_player.hasClientOwner() && m_player.getClient()->oldProtocol) {
 		return;
 	}
 
@@ -3448,8 +3448,8 @@ void PlayerWheel::decreaseGiftOfCooldown(int32_t value) {
 }
 
 void PlayerWheel::sendOpenWheelWindow(uint32_t ownerId) const {
-	if (m_player.client) {
-		m_player.client->sendOpenWheelWindow(ownerId);
+	if (m_player.hasClientOwner()) {
+		m_player.getClient()->sendOpenWheelWindow(ownerId);
 	}
 }
 

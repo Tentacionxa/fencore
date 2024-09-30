@@ -26,7 +26,7 @@ function inServiceYalaharReward.onUse(player, item, fromPosition, target, toPosi
 		end
 	elseif item.uid == 25019 then
         if player:getStorageValue(76550) <= 0 then
-			player:setStorageValue(76550, 1)
+			player:setStorageValue(776550, 1)
 			player:addItem(28723, 1)
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You have found a falcon longsword.")
 		else

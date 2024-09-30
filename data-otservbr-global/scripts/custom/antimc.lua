@@ -24,5 +24,5 @@ function antimc.onLogin(player)
         end
             return true
     end
-antimc:register()
+--antimc:register()
 

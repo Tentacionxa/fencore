@@ -366,8 +366,6 @@ bool ConfigManager::load() {
 	loadStringConfig(L, URL, "url", "");
 	loadStringConfig(L, WORLD_TYPE, "worldType", "pvp");
 
-loadIntConfig(L, MAXIMUM_VIEWERS_PER_CAST, "maximumViewersPerCast", 50);
-
 	loaded = true;
 	lua_close(L);
 	return true;

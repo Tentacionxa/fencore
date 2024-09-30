@@ -40,7 +40,6 @@
 #include "creatures/players/cyclopedia/player_cyclopedia.hpp"
 #include "creatures/players/cyclopedia/player_title.hpp"
 #include "creatures/players/vip/player_vip.hpp"
-#include "creatures/players/cast/cast_viewer.hpp"
 
 class House;
 class NetworkMessage;
@@ -195,13 +194,13 @@ public:
 	}
 
 	void sendFYIBox(const std::string &message) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendFYIBox(message);
 		}
 	}
 
 	void BestiarysendCharms() {
-		 		if (hasClientOwner()) {
+		if (client) {
 			client->BestiarysendCharms();
 		}
 	}
@@ -283,13 +282,13 @@ public:
 	}
 
 	void sendItemsPrice() {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendItemsPrice();
 		}
 	}
 
 	void sendForgingData() const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendForgingData();
 		}
 	}
@@ -370,7 +369,7 @@ public:
 	void removeMonsterFromCyclopediaTrackerList(std::shared_ptr<MonsterType> mtype, bool isBoss, bool reloadClient = false);
 
 	void sendBestiaryEntryChanged(uint16_t raceid) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendBestiaryEntryChanged(raceid);
 		}
 	}
@@ -380,7 +379,7 @@ public:
 	}
 
 	void refreshCyclopediaMonsterTracker(const std::unordered_set<std::shared_ptr<MonsterType>> &trackerList, bool isBoss) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->refreshCyclopediaMonsterTracker(trackerList, isBoss);
 		}
 	}
@@ -399,15 +398,15 @@ public:
 	}
 
 	bool isOldProtocol() {
-		return getClient() && getClient()->oldProtocol;
+		return client && client->oldProtocol;
 	}
 
 	uint32_t getProtocolVersion() const {
-		if (!getClient()) {
+		if (!client) {
 			return 0;
 		}
 
-		return getClient()->getVersion();
+		return client->getVersion();
 	}
 
 	bool hasSecureMode() const {
@@ -544,17 +543,12 @@ public:
 	}
 
 	uint32_t getIP() const {
-		return hasClientOwner() ? client->getIP() : 0;
+		return client ? client->getIP() : 0;
 	}
 
 	bool isDisconnected() const {
 		return getIP() == 0;
 	}
-
-bool hasClientOwner() const;
-	ProtocolGame_ptr getClient() const;
-
-	static bool sortByCastViewerCount(std::shared_ptr<Player> lhs, std::shared_ptr<Player> rhs);
 
 	void addContainer(uint8_t cid, std::shared_ptr<Container> container);
 	void closeContainer(uint8_t cid);
@@ -604,7 +598,7 @@ bool hasClientOwner() const;
 		supplyStash = supplyStashBool;
 		marketMenu = marketMenuBool;
 		depotSearch = depotSearchBool;
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendSpecialContainersAvailable();
 		}
 	}
@@ -1075,12 +1069,12 @@ bool hasClientOwner() const;
 	void clearAttacked();
 	void addUnjustifiedDead(std::shared_ptr<Player> attacked);
 	void sendCreatureEmblem(std::shared_ptr<Creature> creature) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCreatureEmblem(creature);
 		}
 	}
 	void sendCreatureSkull(std::shared_ptr<Creature> creature) const {
-		 		if (hasClientOwner()) {
+		if (client) {
 			client->sendCreatureSkull(creature);
 		}
 	}
@@ -1109,7 +1103,7 @@ bool hasClientOwner() const;
 	// tile
 	// send methods
 	void sendAddTileItem(std::shared_ptr<Tile> itemTile, const Position &pos, std::shared_ptr<Item> item) {
-		if (hasClientOwner()) {
+		if (client) {
 			int32_t stackpos = itemTile->getStackposOfItem(static_self_cast<Player>(), item);
 			if (stackpos != -1) {
 				client->sendAddTileItem(pos, stackpos, item);
@@ -1117,7 +1111,7 @@ bool hasClientOwner() const;
 		}
 	}
 	void sendUpdateTileItem(std::shared_ptr<Tile> updateTile, const Position &pos, std::shared_ptr<Item> item) {
-		if (hasClientOwner()) {
+		if (client) {
 			int32_t stackpos = updateTile->getStackposOfItem(static_self_cast<Player>(), item);
 			if (stackpos != -1) {
 				client->sendUpdateTileItem(pos, stackpos, item);
@@ -1125,23 +1119,23 @@ bool hasClientOwner() const;
 		}
 	}
 	void sendRemoveTileThing(const Position &pos, int32_t stackpos) {
-		if (stackpos != -1 && hasClientOwner()) {
+		if (stackpos != -1 && client) {
 			client->sendRemoveTileThing(pos, stackpos);
 		}
 	}
 	void sendUpdateTileCreature(const std::shared_ptr<Creature> creature) {
-	if (hasClientOwner()) {
+		if (client) {
 			client->sendUpdateTileCreature(creature->getPosition(), creature->getTile()->getClientIndexOfCreature(static_self_cast<Player>(), creature), creature);
 		}
 	}
 	void sendUpdateTile(std::shared_ptr<Tile> updateTile, const Position &pos) {
-	if (hasClientOwner()) {
+		if (client) {
 			client->sendUpdateTile(updateTile, pos);
 		}
 	}
 
 	void sendChannelMessage(const std::string &author, const std::string &text, SpeakClasses type, uint16_t channel) {
-	if (hasClientOwner()) {
+		if (client) {
 			client->sendChannelMessage(author, text, type, channel);
 		}
 	}
@@ -1160,12 +1154,12 @@ bool hasClientOwner() const;
 			return;
 		}
 
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendAddCreature(creature, pos, tile->getStackposOfCreature(static_self_cast<Player>(), creature), isLogin);
 		}
 	}
 	void sendCreatureMove(std::shared_ptr<Creature> creature, const Position &newPos, int32_t newStackPos, const Position &oldPos, int32_t oldStackPos, bool teleport) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendMoveCreature(creature, newPos, newStackPos, oldPos, oldStackPos, teleport);
 		}
 	}
@@ -1179,7 +1173,7 @@ bool hasClientOwner() const;
 			return;
 		}
 
-		 		if (hasClientOwner() && canSeeCreature(creature)) {
+		if (client && canSeeCreature(creature)) {
 			int32_t stackpos = tile->getStackposOfCreature(static_self_cast<Player>(), creature);
 			if (stackpos != -1) {
 				client->sendCreatureTurn(creature, stackpos);
@@ -1187,32 +1181,32 @@ bool hasClientOwner() const;
 		}
 	}
 	void sendCreatureSay(std::shared_ptr<Creature> creature, SpeakClasses type, const std::string &text, const Position* pos = nullptr) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCreatureSay(creature, type, text, pos);
 		}
 	}
 	void sendCreatureReload(std::shared_ptr<Creature> creature) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->reloadCreature(creature);
 		}
 	}
 	void sendPrivateMessage(std::shared_ptr<Player> speaker, SpeakClasses type, const std::string &text) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendPrivateMessage(speaker, type, text);
 		}
 	}
 	void sendCreatureSquare(std::shared_ptr<Creature> creature, SquareColor_t color) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCreatureSquare(creature, color);
 		}
 	}
 	void sendCreatureChangeOutfit(std::shared_ptr<Creature> creature, const Outfit_t &outfit) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCreatureOutfit(creature, outfit);
 		}
 	}
 	void sendCreatureChangeVisible(std::shared_ptr<Creature> creature, bool visible) {
-		if (!hasClientOwner() || !creature) {
+		if (!client || !creature) {
 			return;
 		}
 
@@ -1243,52 +1237,52 @@ bool hasClientOwner() const;
 		}
 	}
 	void sendCreatureLight(std::shared_ptr<Creature> creature) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCreatureLight(creature);
 		}
 	}
 	void sendCreatureIcon(std::shared_ptr<Creature> creature) {
-		if (hasClientOwner() && !client->oldProtocol) {
+		if (client && !client->oldProtocol) {
 			client->sendCreatureIcon(creature);
 		}
 	}
 	void sendUpdateCreature(std::shared_ptr<Creature> creature) const {
-		 		if (hasClientOwner()) {
+		if (client) {
 			client->sendUpdateCreature(creature);
 		}
 	}
 	void sendCreatureWalkthrough(std::shared_ptr<Creature> creature, bool walkthrough) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCreatureWalkthrough(creature, walkthrough);
 		}
 	}
 	void sendCreatureShield(std::shared_ptr<Creature> creature) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCreatureShield(creature);
 		}
 	}
 	void sendCreatureType(std::shared_ptr<Creature> creature, uint8_t creatureType) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCreatureType(creature, creatureType);
 		}
 	}
 	void sendSpellCooldown(uint16_t spellId, uint32_t time) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendSpellCooldown(spellId, time);
 		}
 	}
 	void sendSpellGroupCooldown(SpellGroup_t groupId, uint32_t time) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendSpellGroupCooldown(groupId, time);
 		}
 	}
 	void sendUseItemCooldown(uint32_t time) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendUseItemCooldown(time);
 		}
 	}
 	void reloadCreature(std::shared_ptr<Creature> creature) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->reloadCreature(creature);
 		}
 	}
@@ -1300,39 +1294,39 @@ bool hasClientOwner() const;
 	void sendUpdateContainerItem(std::shared_ptr<Container> container, uint16_t slot, std::shared_ptr<Item> newItem);
 	void sendRemoveContainerItem(std::shared_ptr<Container> container, uint16_t slot);
 	void sendContainer(uint8_t cid, std::shared_ptr<Container> container, bool hasParent, uint16_t firstIndex) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendContainer(cid, container, hasParent, firstIndex);
 		}
 	}
 
 	// inventory
 	void sendDepotItems(const ItemsTierCountList &itemMap, uint16_t count) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendDepotItems(itemMap, count);
 		}
 	}
 	void sendCloseDepotSearch() const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCloseDepotSearch();
 		}
 	}
 	void sendDepotSearchResultDetail(uint16_t itemId, uint8_t tier, uint32_t depotCount, const ItemVector &depotItems, uint32_t inboxCount, const ItemVector &inboxItems, uint32_t stashCount) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendDepotSearchResultDetail(itemId, tier, depotCount, depotItems, inboxCount, inboxItems, stashCount);
 		}
 	}
 	void sendCoinBalance() {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCoinBalance();
 		}
 	}
 	void sendInventoryItem(Slots_t slot, std::shared_ptr<Item> item) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendInventoryItem(slot, item);
 		}
 	}
 	void sendInventoryIds() {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendInventoryIds();
 		}
 	}
@@ -1341,19 +1335,19 @@ bool hasClientOwner() const;
 
 	// Quickloot
 	void sendLootContainers() {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendLootContainers();
 		}
 	}
 
 	void sendSingleSoundEffect(const Position &pos, SoundEffect_t id, SourceEffect_t source) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendSingleSoundEffect(pos, id, source);
 		}
 	}
 
 	void sendDoubleSoundEffect(const Position &pos, SoundEffect_t mainSoundId, SourceEffect_t mainSource, SoundEffect_t secondarySoundId, SourceEffect_t secondarySource) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendDoubleSoundEffect(pos, mainSoundId, mainSource, secondarySoundId, secondarySource);
 		}
 	}
@@ -1389,79 +1383,79 @@ bool hasClientOwner() const;
 	void onRemoveInventoryItem(std::shared_ptr<Item> item);
 
 	void sendCancelMessage(const std::string &msg) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendTextMessage(TextMessage(MESSAGE_FAILURE, msg));
 		}
 	}
 	void sendCancelMessage(ReturnValue message) const;
 	void sendCancelTarget() const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCancelTarget();
 		}
 	}
 	void sendCancelWalk() const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCancelWalk();
 		}
 	}
 	void sendChangeSpeed(std::shared_ptr<Creature> creature, uint16_t newSpeed) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendChangeSpeed(creature, newSpeed);
 		}
 	}
 	void sendCreatureHealth(std::shared_ptr<Creature> creature) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCreatureHealth(creature);
 		}
 	}
 	void sendPartyCreatureUpdate(std::shared_ptr<Creature> creature) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendPartyCreatureUpdate(creature);
 		}
 	}
 	void sendPartyCreatureShield(std::shared_ptr<Creature> creature) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendPartyCreatureShield(creature);
 		}
 	}
 	void sendPartyCreatureSkull(std::shared_ptr<Creature> creature) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendPartyCreatureSkull(creature);
 		}
 	}
 	void sendPartyCreatureHealth(std::shared_ptr<Creature> creature, uint8_t healthPercent) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendPartyCreatureHealth(creature, healthPercent);
 		}
 	}
 	void sendPartyPlayerMana(std::shared_ptr<Player> player, uint8_t manaPercent) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendPartyPlayerMana(player, manaPercent);
 		}
 	}
 	void sendPartyCreatureShowStatus(std::shared_ptr<Creature> creature, bool showStatus) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendPartyCreatureShowStatus(creature, showStatus);
 		}
 	}
 	void sendPartyPlayerVocation(std::shared_ptr<Player> player) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendPartyPlayerVocation(player);
 		}
 	}
 	void sendPlayerVocation(std::shared_ptr<Player> player) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendPlayerVocation(player);
 		}
 	}
 	void sendDistanceShoot(const Position &from, const Position &to, uint16_t type) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendDistanceShoot(from, to, type);
 		}
 	}
 	void sendHouseWindow(std::shared_ptr<House> house, uint32_t listId) const;
 	void sendCreatePrivateChannel(uint16_t channelId, const std::string &channelName) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCreatePrivateChannel(channelId, channelName);
 		}
 	}
@@ -1474,34 +1468,34 @@ bool hasClientOwner() const;
 		}
 	}
 	void sendGameNews() const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendGameNews();
 		}
 	}
 	void sendMagicEffect(const Position &pos, uint16_t type) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendMagicEffect(pos, type);
 		}
 	}
 	void removeMagicEffect(const Position &pos, uint16_t type) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->removeMagicEffect(pos, type);
 		}
 	}
 	void sendPing();
 	void sendPingBack() const {
-		 		if (hasClientOwner()) {
+		if (client) {
 			client->sendPingBack();
 		}
 	}
 	void sendStats();
 	void sendBasicData() const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendBasicData();
 		}
 	}
 	void sendBlessStatus() const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendBlessStatus();
 		}
 	}
@@ -1511,115 +1505,115 @@ bool hasClientOwner() const;
 		}
 	}
 	void sendTextMessage(MessageClasses mclass, const std::string &message) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendTextMessage(TextMessage(mclass, message));
 		}
 	}
 	void sendTextMessage(const TextMessage &message) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendTextMessage(message);
 		}
 	}
 	void sendReLoginWindow(uint8_t unfairFightReduction) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendReLoginWindow(unfairFightReduction);
 		}
 	}
 	void sendTextWindow(std::shared_ptr<Item> item, uint16_t maxlen, bool canWrite) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendTextWindow(windowTextId, item, maxlen, canWrite);
 		}
 	}
 	void sendToChannel(std::shared_ptr<Creature> creature, SpeakClasses type, const std::string &text, uint16_t channelId) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendToChannel(creature, type, text, channelId);
 		}
 	}
 	void sendShop(std::shared_ptr<Npc> npc) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendShop(npc);
 		}
 	}
 	void sendSaleItemList(const std::map<uint16_t, uint16_t> &inventoryMap) const;
 	void sendCloseShop() const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCloseShop();
 		}
 	}
 	void sendMarketEnter(uint32_t depotId);
 	void sendMarketLeave() {
 		inMarket = false;
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendMarketLeave();
 		}
 	}
 	void sendMarketBrowseItem(uint16_t itemId, const MarketOfferList &buyOffers, const MarketOfferList &sellOffers, uint8_t tier) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendMarketBrowseItem(itemId, buyOffers, sellOffers, tier);
 		}
 	}
 	void sendMarketBrowseOwnOffers(const MarketOfferList &buyOffers, const MarketOfferList &sellOffers) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendMarketBrowseOwnOffers(buyOffers, sellOffers);
 		}
 	}
 	void sendMarketBrowseOwnHistory(const HistoryMarketOfferList &buyOffers, const HistoryMarketOfferList &sellOffers) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendMarketBrowseOwnHistory(buyOffers, sellOffers);
 		}
 	}
 	void sendMarketDetail(uint16_t itemId, uint8_t tier) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendMarketDetail(itemId, tier);
 		}
 	}
 	void sendMarketAcceptOffer(const MarketOfferEx &offer) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendMarketAcceptOffer(offer);
 		}
 	}
 	void sendMarketCancelOffer(const MarketOfferEx &offer) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendMarketCancelOffer(offer);
 		}
 	}
 	void sendTradeItemRequest(const std::string &traderName, std::shared_ptr<Item> item, bool ack) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendTradeItemRequest(traderName, item, ack);
 		}
 	}
 	void sendTradeClose() const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCloseTrade();
 		}
 	}
 	void sendWorldLight(LightInfo lightInfo) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendWorldLight(lightInfo);
 		}
 	}
 	void sendTibiaTime(int32_t time) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendTibiaTime(time);
 		}
 	}
 	void sendChannelsDialog() {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendChannelsDialog();
 		}
 	}
 	void sendOpenPrivateChannel(const std::string &receiver) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendOpenPrivateChannel(receiver);
 		}
 	}
 	void sendExperienceTracker(int64_t rawExp, int64_t finalExp) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendExperienceTracker(rawExp, finalExp);
 		}
 	}
 	void sendOutfitWindow() {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendOutfitWindow();
 		}
 	}
@@ -1628,114 +1622,114 @@ bool hasClientOwner() const;
 	void onClearImbuement(std::shared_ptr<Item> item, uint8_t slot);
 	void openImbuementWindow(std::shared_ptr<Item> item);
 	void sendImbuementResult(const std::string message) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendImbuementResult(message);
 		}
 	}
 	void closeImbuementWindow() const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->closeImbuementWindow();
 		}
 	}
 	void sendPodiumWindow(std::shared_ptr<Item> podium, const Position &position, uint16_t itemId, uint8_t stackpos) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendPodiumWindow(podium, position, itemId, stackpos);
 		}
 	}
 	void sendCloseContainer(uint8_t cid) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCloseContainer(cid);
 		}
 	}
 
 	void sendChannel(uint16_t channelId, const std::string &channelName, const UsersMap* channelUsers, const InvitedMap* invitedUsers) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendChannel(channelId, channelName, channelUsers, invitedUsers);
 		}
 	}
 	void sendTutorial(uint8_t tutorialId) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendTutorial(tutorialId);
 		}
 	}
 	void sendAddMarker(const Position &pos, uint8_t markType, const std::string &desc) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendAddMarker(pos, markType, desc);
 		}
 	}
 	void sendItemInspection(uint16_t itemId, uint8_t itemCount, std::shared_ptr<Item> item, bool cyclopedia) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendItemInspection(itemId, itemCount, item, cyclopedia);
 		}
 	}
 	void sendCyclopediaCharacterNoData(CyclopediaCharacterInfoType_t characterInfoType, uint8_t errorCode) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCyclopediaCharacterNoData(characterInfoType, errorCode);
 		}
 	}
 	void sendCyclopediaCharacterBaseInformation() {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCyclopediaCharacterBaseInformation();
 		}
 	}
 	void sendCyclopediaCharacterGeneralStats() {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCyclopediaCharacterGeneralStats();
 		}
 	}
 	void sendCyclopediaCharacterCombatStats() {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCyclopediaCharacterCombatStats();
 		}
 	}
 	void sendCyclopediaCharacterRecentDeaths(uint16_t page, uint16_t pages, const std::vector<RecentDeathEntry> &entries) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCyclopediaCharacterRecentDeaths(page, pages, entries);
 		}
 	}
 	void sendCyclopediaCharacterRecentPvPKills(uint16_t page, uint16_t pages, const std::vector<RecentPvPKillEntry> &entries) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCyclopediaCharacterRecentPvPKills(page, pages, entries);
 		}
 	}
 	void sendCyclopediaCharacterAchievements(uint16_t secretsUnlocked, std::vector<std::pair<Achievement, uint32_t>> achievementsUnlocked);
 	void sendCyclopediaCharacterItemSummary(const ItemsTierCountList &inventoryItems, const ItemsTierCountList &storeInboxItems, const StashItemList &supplyStashItems, const ItemsTierCountList &depotBoxItems, const ItemsTierCountList &inboxItems) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCyclopediaCharacterItemSummary(inventoryItems, storeInboxItems, supplyStashItems, depotBoxItems, inboxItems);
 		}
 	}
 	void sendCyclopediaCharacterOutfitsMounts() {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCyclopediaCharacterOutfitsMounts();
 		}
 	}
 	void sendCyclopediaCharacterStoreSummary() {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCyclopediaCharacterStoreSummary();
 		}
 	}
 	void sendCyclopediaCharacterInspection() {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCyclopediaCharacterInspection();
 		}
 	}
 	void sendCyclopediaCharacterBadges() {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCyclopediaCharacterBadges();
 		}
 	}
 	void sendCyclopediaCharacterTitles() {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCyclopediaCharacterTitles();
 		}
 	}
 	void sendHighscoresNoData() {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendHighscoresNoData();
 		}
 	}
 	void sendHighscores(const std::vector<HighscoreCharacter> &characters, uint8_t categoryId, uint32_t vocationId, uint16_t page, uint16_t pages, uint32_t updateTimer) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendHighscores(characters, categoryId, vocationId, page, pages, updateTimer);
 		}
 	}
@@ -1749,17 +1743,17 @@ bool hasClientOwner() const;
 		asyncOngoingTasks &= ~(flags);
 	}
 	void sendEnterWorld() {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendEnterWorld();
 		}
 	}
 	void sendFightModes() {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendFightModes();
 		}
 	}
 	void sendNetworkMessage(const NetworkMessage &message) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->writeToOutputBuffer(message);
 		}
 	}
@@ -1769,13 +1763,13 @@ bool hasClientOwner() const;
 	}
 
 	void sendOpenStash(bool isNpc = false) {
-		if (hasClientOwner() && ((getLastDepotId() != -1) || isNpc)) {
+		if (client && ((getLastDepotId() != -1) || isNpc)) {
 			client->sendOpenStash();
 		}
 	}
 
 	void sendTakeScreenshot(Screenshot_t screenshotType) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendTakeScreenshot(screenshotType);
 		}
 	}
@@ -1930,7 +1924,7 @@ bool hasClientOwner() const;
 	}
 
 	bool updateKillTracker(std::shared_ptr<Container> corpse, const std::string &playerName, const Outfit_t creatureOutfit) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendKillTrackerUpdate(corpse, playerName, creatureOutfit);
 			return true;
 		}
@@ -1939,7 +1933,7 @@ bool hasClientOwner() const;
 	}
 
 	void updatePartyTrackerAnalyzer() const {
-		if (hasClientOwner() && m_party) {
+		if (client && m_party) {
 			client->updatePartyTrackerAnalyzer(m_party);
 		}
 	}
@@ -1949,28 +1943,28 @@ bool hasClientOwner() const;
 	void updateImpactTracker(CombatType_t type, int32_t amount) const;
 
 	void updateInputAnalyzer(CombatType_t type, int32_t amount, std::string target) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendUpdateInputAnalyzer(type, amount, target);
 		}
 	}
 
 	void createLeaderTeamFinder(NetworkMessage &msg) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->createLeaderTeamFinder(msg);
 		}
 	}
 	void sendLeaderTeamFinder(bool reset) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendLeaderTeamFinder(reset);
 		}
 	}
 	void sendTeamFinderList() {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendTeamFinderList();
 		}
 	}
 	void sendCreatureHelpers(uint32_t creatureId, uint16_t helpers) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendCreatureHelpers(creatureId, helpers);
 		}
 	}
@@ -2165,7 +2159,7 @@ bool hasClientOwner() const;
 	bool canAutoWalk(const Position &toPosition, const std::function<void()> &function, uint32_t delay = 500);
 
 	void sendMessageDialog(const std::string &message) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendMessageDialog(message);
 		}
 	}
@@ -2181,7 +2175,7 @@ bool hasClientOwner() const;
 	void removePreySlotById(PreySlot_t slotid);
 
 	void sendPreyData() const {
-		if (hasClientOwner()) {
+		if (client) {
 			for (const std::unique_ptr<PreySlot> &slot : preys) {
 				client->sendPreyData(slot);
 			}
@@ -2191,13 +2185,13 @@ bool hasClientOwner() const;
 	}
 
 	void sendPreyTimeLeft(const std::unique_ptr<PreySlot> &slot) const {
-		if (g_configManager().getBoolean(PREY_ENABLED, __FUNCTION__) && hasClientOwner()) {
+		if (g_configManager().getBoolean(PREY_ENABLED, __FUNCTION__) && client) {
 			client->sendPreyTimeLeft(slot);
 		}
 	}
 
 	void reloadPreySlot(PreySlot_t slotid) {
-		if (g_configManager().getBoolean(PREY_ENABLED, __FUNCTION__) && hasClientOwner()) {
+		if (g_configManager().getBoolean(PREY_ENABLED, __FUNCTION__) && client) {
 			client->sendPreyData(getPreySlotById(slotid));
 			client->sendResourcesBalance(getMoney(), getBankBalance(), getPreyCards(), getTaskHuntingPoints());
 		}
@@ -2229,7 +2223,7 @@ bool hasClientOwner() const;
 		}
 
 		preyCards -= amount;
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendResourcesBalance(getMoney(), getBankBalance(), getPreyCards(), getTaskHuntingPoints());
 		}
 		return true;
@@ -2237,7 +2231,7 @@ bool hasClientOwner() const;
 
 	void addPreyCards(uint64_t amount) {
 		preyCards += amount;
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendResourcesBalance(getMoney(), getBankBalance(), getPreyCards(), getTaskHuntingPoints());
 		}
 	}
@@ -2295,7 +2289,7 @@ bool hasClientOwner() const;
 	}
 
 	void reloadTaskSlot(PreySlot_t slotid) {
-		if (g_configManager().getBoolean(TASK_HUNTING_ENABLED, __FUNCTION__) && hasClientOwner()) {
+		if (g_configManager().getBoolean(TASK_HUNTING_ENABLED, __FUNCTION__) && client) {
 			client->sendTaskHuntingData(getTaskHuntingSlotById(slotid));
 			client->sendResourcesBalance(getMoney(), getBankBalance(), getPreyCards(), getTaskHuntingPoints());
 		}
@@ -2329,7 +2323,7 @@ bool hasClientOwner() const;
 	}
 
 	void sendTaskHuntingData() const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendResourcesBalance(getMoney(), getBankBalance(), getPreyCards(), getTaskHuntingPoints());
 			for (const std::unique_ptr<TaskHuntingSlot> &slot : taskHunting) {
 				if (slot) {
@@ -2341,7 +2335,7 @@ bool hasClientOwner() const;
 
 	void addTaskHuntingPoints(uint64_t amount) {
 		taskHuntingPoints += amount;
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendResourcesBalance(getMoney(), getBankBalance(), getPreyCards(), getTaskHuntingPoints());
 		}
 	}
@@ -2352,7 +2346,7 @@ bool hasClientOwner() const;
 		}
 
 		taskHuntingPoints -= amount;
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendResourcesBalance(getMoney(), getBankBalance(), getPreyCards(), getTaskHuntingPoints());
 		}
 		return true;
@@ -2437,46 +2431,46 @@ bool hasClientOwner() const;
 	void forgeHistory(uint8_t page) const;
 
 	void sendOpenForge() const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendOpenForge();
 		}
 	}
 	void sendForgeError(ReturnValue returnValue) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendForgeError(returnValue);
 		}
 	}
 	void sendForgeResult(ForgeAction_t actionType, uint16_t leftItemId, uint8_t leftTier, uint16_t rightItemId, uint8_t rightTier, bool success, uint8_t bonus, uint8_t coreCount, bool convergence) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendForgeResult(actionType, leftItemId, leftTier, rightItemId, rightTier, success, bonus, coreCount, convergence);
 		}
 	}
 	void sendForgeHistory(uint8_t page) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendForgeHistory(page);
 		}
 	}
 	void closeForgeWindow() const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->closeForgeWindow();
 		}
 	}
 
 	void setForgeDusts(uint64_t amount) {
 		forgeDusts = amount;
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendResourcesBalance(getMoney(), getBankBalance(), getPreyCards(), getTaskHuntingPoints(), getForgeDusts());
 		}
 	}
 	void addForgeDusts(uint64_t amount) {
 		forgeDusts += amount;
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendResourcesBalance(getMoney(), getBankBalance(), getPreyCards(), getTaskHuntingPoints(), getForgeDusts());
 		}
 	}
 	void removeForgeDusts(uint64_t amount) {
 		forgeDusts = std::max<uint64_t>(0, forgeDusts - amount);
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendResourcesBalance(getMoney(), getBankBalance(), getPreyCards(), getTaskHuntingPoints(), getForgeDusts());
 		}
 	}
@@ -2486,13 +2480,13 @@ bool hasClientOwner() const;
 
 	void addForgeDustLevel(uint64_t amount) {
 		forgeDustLevel += amount;
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendResourcesBalance(getMoney(), getBankBalance(), getPreyCards(), getTaskHuntingPoints(), getForgeDusts());
 		}
 	}
 	void removeForgeDustLevel(uint64_t amount) {
 		forgeDustLevel = std::max<uint64_t>(0, forgeDustLevel - amount);
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendResourcesBalance(getMoney(), getBankBalance(), getPreyCards(), getTaskHuntingPoints(), getForgeDusts());
 		}
 	}
@@ -2523,7 +2517,7 @@ bool hasClientOwner() const;
 		return bossPoints;
 	}
 	void sendBosstiaryCooldownTimer() const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendBosstiaryCooldownTimer();
 		}
 	}
@@ -2534,7 +2528,7 @@ bool hasClientOwner() const;
 		} else {
 			bossIdSlotTwo = bossId;
 		}
-		if (hasClientOwner()) {
+		if (client) {
 			client->parseSendBosstiarySlots();
 		}
 	}
@@ -2557,19 +2551,19 @@ bool hasClientOwner() const;
 	}
 
 	void sendMonsterPodiumWindow(std::shared_ptr<Item> podium, const Position &position, uint16_t itemId, uint8_t stackpos) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendMonsterPodiumWindow(podium, position, itemId, stackpos);
 		}
 	}
 
 	void sendBosstiaryEntryChanged(uint32_t bossid) {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendBosstiaryEntryChanged(bossid);
 		}
 	}
 
 	void sendInventoryImbuements(const std::map<Slots_t, std::shared_ptr<Item>> items) const {
-		if (hasClientOwner()) {
+		if (client) {
 			client->sendInventoryImbuements(items);
 		}
 	}
@@ -2868,7 +2862,7 @@ private:
 	std::shared_ptr<Npc> shopOwner = nullptr;
 	std::shared_ptr<Party> m_party = nullptr;
 	std::shared_ptr<Player> tradePartner = nullptr;
-	std::shared_ptr<CastViewer> client = nullptr;
+	ProtocolGame_ptr client;
 	std::shared_ptr<Task> walkTask;
 	std::shared_ptr<Town> town;
 	std::shared_ptr<Vocation> vocation = nullptr;
@@ -3083,8 +3077,6 @@ private:
 	friend class IOLoginDataLoad;
 	friend class IOLoginDataSave;
 	friend class PlayerAchievement;
-		friend class CastViewer;
-	friend class ProtocolLogin;
 	friend class PlayerBadge;
 	friend class PlayerCyclopedia;
 	friend class PlayerTitle;

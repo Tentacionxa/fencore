@@ -7282,7 +7282,7 @@ int32_t Game::applyHealthChange(CombatDamage & damage, std::shared_ptr < Creatur
 }
 bool Game::combatChangeHealth(std::shared_ptr<Creature> attacker, std::shared_ptr<Creature> target, CombatDamage &damage, bool isEvent /*= false*/) {
   	if (target) {
-		return false
+		return false;
 	}
 	using namespace std;
 	const Position &targetPos = target->getPosition();

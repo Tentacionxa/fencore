@@ -176,7 +176,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "Banuta - Medusa, Serpent Spawn, Hydra, Behemoth, Nightmare, Phatnasm", color = 40, total = 5000, type = "repeatable", storage = 190020, storagecount = 190021, 
+{name = "Banuta - Medusa, Serpent Spawn, Hydra, Bonebeast, ", color = 40, total = 5000, type = "repeatable", storage = 190020, storagecount = 190021, 
 	rewards = { 
 	{3043, 200},
 {37317, 1},
@@ -186,10 +186,13 @@ taskConfiguration = {
 		"Medusa",
 		"Serpent Spawn",
 		"Hydra",
+		"Bonebeast",
 		"Giant Spider",
 		"Behemoth",
 		"Nightmare",
+		"Hellspawn",
 		"Phantasm",
+		"Frost Dragon",
 	},
 },
 
@@ -399,7 +402,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "INQ/POI - Ancient Scarab, Betrayed Wraith, Blightwalker, Bonebeast, Braindeath, Crystal Spider, Dark Magician, Dark Torturer, Defiler, Demon, Destroyer, Diabolic Imp, Dreadbeast, Efreet, Eye of the Seven, Fire Devil, Fire Elemental, Fury, Gargoyle, Giant Spider, Hand of Cursed Fate, Hellfire Fighter, Hellhound, Ice Golem, Juggernaut, Lich, Lost Soul, Massive Fire Elemental, Nightmare, The Count, Spectre, Plaguesmith, Warlock", color = 40, total = 5000, type = "repeatable", storage = 190052, storagecount = 190053, 
+{name = "INQ/POI - Ancient Scarab, Behemoth, Betrayed Wraith, Blightwalker, Bonebeast, Braindeath, Crystal Spider, Dark Magician, Dark Torturer, Defiler, Demon, Destroyer, Diabolic Imp, Dreadbeast, Efreet, Eye of the Seven, Fire Devil, Fire Elemental, Fury, Gargoyle, Giant Spider, Hand of Cursed Fate, Hellfire Fighter, Hellhound, Ice Golem, Juggernaut, Lich, Lost Soul, Massive Fire Elemental, Nightmare, The Count, Spectre, Plaguesmith, Warlock", color = 40, total = 5000, type = "repeatable", storage = 190052, storagecount = 190053, 
 	rewards = { 
 		{3043, 350},
 {37317, 1},
@@ -408,6 +411,7 @@ taskConfiguration = {
 	races = {
 		"Banshee",
 		"Ancient Scarab",
+		"Behemoth",
 		"Betrayed Wraith",
 		"Blightwalker",
 		"Bonebeast",

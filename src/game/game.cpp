@@ -7647,7 +7647,7 @@ bool Game::combatChangeHealth(std::shared_ptr<Creature> attacker, std::shared_pt
 			return true;
 		} else if (realDamage >= targetHealth) {
 			for (const auto &creatureEvent : target->getCreatureEvents(CREATURE_EVENT_PREPAREDEATH)) {
-				if (!creatureEvent->executeOnPrepareDeath(target, attacker,(realDamage))) {
+				if (!creatureEvent->executeOnPrepareDeath(target, attacker)) { {
 					return false;
 				}
 			}

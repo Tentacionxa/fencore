@@ -112,11 +112,10 @@ npcConfig.shop = {
 { itemName = "gold-scaled sentinel", clientId = 44751, sell = 400000 },
         { itemName = "exalted seal", clientId = 44750, sell = 200000 },
  { itemName = "crystallised blood", clientId = 44752, sell = 270000 },
- { itemName = "candy necklace", clientId = 45643, sell = 500000 },
- { itemName = "biscuit barrier", clientId = 45643, sell = 1000000 },
- { itemName = "cocoa grimoire", clientId =  45639, sell = 1500000 },
- { itemName = "creamy grimoire", clientId =  45640, sell = 1500000 },
- { itemName = "candy-coated quiver", clientId =  45644, sell = 1200000 },
+ { itemName = "candy necklace", clientId = 45643, sell = 100000 },
+ { itemName = "cocoa grimoire", clientId =  45639, sell = 1000000 },
+ { itemName = "creamy grimoire", clientId =  45640, sell = 1000000 },
+ { itemName = "candy-coated quiver", clientId =  45644, sell = 1000000 },
  
 	--Alaistar-
 	{ itemName = "cowbell", clientId = 21204, sell = 210 },
@@ -1428,12 +1427,12 @@ npcConfig.shop = {
 	{ itemName = "naga rod", clientId = 39163, sell = 1000000 },
 	{ itemName = "naga wand", clientId = 39162, sell = 1000000 },
 	{ itemName = "naga club", clientId = 39157, sell = 1000000 },
-	{ itemName = "midnight sarong", clientId = 39167, sell = 1200000 },
-	{ itemName = "midnight tunic", clientId = 39165, sell = 1500000 },
-	{ itemName = "frostflower boots", clientId = 39158, sell = 1400000 },
+	{ itemName = "midnight sarong", clientId = 39167, sell = 1000000 },
+	{ itemName = "midnight tunic", clientId = 39165, sell = 1000000 },
+	{ itemName = "frostflower boots", clientId = 39158, sell = 1000000 },
 	{ itemName = "feverbloom boots", clientId = 39161, sell = 1500000 },
-	{ itemName = "dawnfire sherwani", clientId = 39164, sell = 1600000 },
-	{ itemName = "dawnfire pantaloons", clientId = 39166, sell = 1700000 },
+	{ itemName = "dawnfire sherwani", clientId = 39164, sell = 1000000 },
+	{ itemName = "dawnfire pantaloons", clientId = 39166, sell = 1000000 },
 
 	--deepling set
 	{ itemName = "deepling axe", clientId = 13991, sell = 200000 },

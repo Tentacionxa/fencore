@@ -68,7 +68,7 @@ addoninfo = {
 ['second mage female addon'] = {cost = 0, items = {{5894,70}, {5911,20}, {5883,40}, {5922,35}, {5886,10}, {5881,60}, {5882,40}, {5904,15}, {5905,30}}, outfit_female = 138, outfit_male = 138, addon = 2},
 ['first summoner addon'] = {cost = 0, items = {{5958,1}}, outfit_female = 141, outfit_male = 133, addon = 1},
 ['second summoner male addon'] = {cost = 0, items = {{5894,70}, {5911,20}, {5883,40}, {5922,35}, {5886,10}, {5881,60}, {5882,40}, {5904,15}, {5905,30}}, outfit_female = 133, outfit_male = 133, addon = 2},
-['second summoner female addon'] = {cost = 0, items = {{5958,1}}, outfit_female = 141, outfit_male = 141, addon = 2},
+['second summoner female addon'] = {cost = 0, items = {{5903,1}}, outfit_female = 141, outfit_male = 141, addon = 2},
 ['first barbarian addon'] = {cost = 0, items = {{5880,100}, {5892,1}, {5893,50}, {5876,50}}, outfit_female = 147, outfit_male = 143, addon = 1, storageID = 51032},
 ['second barbarian addon'] = {cost = 0, items = {{5884,1}, {5885,1}, {5910,50}, {5911,50}, {5886,10}}, outfit_female = 147, outfit_male = 143, addon = 2},
 ['first druid addon'] = {cost = 0, items = {{5896,50}, {5897,50}}, outfit_female = 148, outfit_male = 144, addon = 1},

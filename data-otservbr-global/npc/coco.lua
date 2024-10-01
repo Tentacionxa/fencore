@@ -164,7 +164,7 @@ npcConfig.shop = {
 	{ itemName = "biscuit barrier", clientId = 45643, buy = 9000000 },
 	{ itemName = "candy necklace", clientId = 45641, buy = 400000 },
 	{ itemName = "candy-coated quiver", clientId = 45644, buy = 500000 },
-	{ itemName = "lime tart", clientId = 48255, buy = 75, sell = 50000 },
+	{ itemName = "lime tart", clientId = 48255, sell = 5000 },
 	{ itemName = "milk chocolate coin", clientId = 48249, sell = 40000 },
 	{ itemName = "dark chocolate coin", clientId = 48250, sell = 40000 },
 }

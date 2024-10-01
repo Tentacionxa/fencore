@@ -165,8 +165,8 @@ npcConfig.shop = {
 	{ itemName = "candy necklace", clientId = 45641, buy = 500000 },
 	{ itemName = "candy-coated quiver", clientId = 45644, buy = 4500000 },
 	{ itemName = "lime tart", clientId = 48255, sell = 500 },
-	{ itemName = "milk chocolate coin", clientId = 48249, sell = 40000 },
-	{ itemName = "dark chocolate coin", clientId = 48250, sell = 40000 },
+	{ itemName = "milk chocolate coin", clientId = 48249, sell = 4000 },
+	{ itemName = "dark chocolate coin", clientId = 48250, sell = 4000 },
 }
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

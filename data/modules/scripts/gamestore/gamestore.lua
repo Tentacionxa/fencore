@@ -2824,7 +2824,7 @@ GameStore.Categories = {
 				icons = { "Outfit_Retro_Mage_Male.png", "Outfit_Retro_Mage_Female.png" },
 				name = "Full Retro Mage Outfit",
 				price = 500,
-				sexId = { female = 968, male = 969 },
+				sexId = { female = 969, male = 968 },
 				addon = 3,
 				description = "{character}\n{info} colours can be changed using the Outfit dialog\n{info} includes basic outfit and 2 addons which can be selected individually\n\n<i>Armed with a powerful set of potions, and gifted with steady hands as well as a sharp eye, the Retro Mage Outfit is not one to be trifled with. Requiring both magic skill and strength to properly wield, magical potions are a mighty tool in the hands of an able mage, hitting deadly spells across any enemy.</i>",
 				type = GameStore.OfferTypes.OFFER_TYPE_OUTFIT,

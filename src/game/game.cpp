@@ -7281,7 +7281,7 @@ int32_t Game::applyHealthChange(CombatDamage & damage, std::shared_ptr < Creatur
   return targetHealth;
 }
 bool Game::combatChangeHealth(std::shared_ptr<Creature> attacker, std::shared_ptr<Creature> target, CombatDamage &damage, bool isEvent /*= false*/) {
-  	if (target) {
+ if (!target) {
 		return false;
 	}
 	using namespace std;
@@ -7290,7 +7290,6 @@ bool Game::combatChangeHealth(std::shared_ptr<Creature> attacker, std::shared_pt
 		if (target->getHealth() <= 0) {
 			return false;
 		}
-
 		std::shared_ptr<Player> attackerPlayer;
 		if (attacker) {
 			attackerPlayer = attacker->getPlayer();

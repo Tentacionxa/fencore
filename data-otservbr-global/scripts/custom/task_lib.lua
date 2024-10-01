@@ -478,7 +478,7 @@ taskConfiguration = {
 		"Foam Stalker",
 	},
 },
-{name = "Bashmu - Bashmu, Juvenile Bashmu", color = 40, total = 2500, type = "repeatable", storage = 190059, storagecount = 190060, 
+{name = "Bashmu - Bashmu, Juvenile Bashmu", color = 40, total = 2500, type = "repeatable", storage = 197059, storagecount = 197060, 
 	rewards = { 
 		{3043, 200},
 {37317, 1},

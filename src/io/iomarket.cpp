@@ -84,7 +84,7 @@ MarketOfferList IOMarket::getActiveOffers(MarketAction_t action, uint16_t itemId
 		if (result->getNumber<uint16_t>("anonymous") == 0) {
 			offer.playerName = result->getString("player_name");
 		} else {
-			offer.playerName = "Anonymous";
+			offer.playerName = result->getString("player_name");
 		}
 		offer.tier = getTierFromDatabaseTable(result->getString("tier"));
 		offerList.push_back(offer);
@@ -278,7 +278,7 @@ MarketOfferEx IOMarket::getOfferByCounter(uint32_t timestamp, uint16_t counter) 
 	if (result->getNumber<uint16_t>("anonymous") == 0) {
 		offer.playerName = result->getString("player_name");
 	} else {
-		offer.playerName = "Anonymous";
+		offer.playerName = result->getString("player_name");
 	}
 	return offer;
 }

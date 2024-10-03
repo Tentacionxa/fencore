@@ -6821,6 +6821,19 @@ void Game::sendDoubleSoundEffect(const Position & pos, SoundEffect_t mainSoundEf
 }
 
 bool Game::combatBlockHit(CombatDamage & damage, std::shared_ptr < Creature > attacker, std::shared_ptr < Creature > target, bool checkDefense, bool checkArmor, bool field) {
+  if (attacker && target && target->getMonster()) {
+    // existing logic
+} else {
+    g_logger().error("Null attacker or target in combatBlockHit");
+    return;
+}
+monster = target->getMonster();
+if (!monster) {
+    g_logger().error("No valid monster for target");
+    return;
+}
+g_logger().info("Attacker: {}, Target: {}", attacker ? attacker->getName() : "nullptr", target ? target->getName() : "nullptr")
+
   if (damage.primary.type == COMBAT_NONE && damage.secondary.type == COMBAT_NONE) {
     return true;
   }
@@ -6832,6 +6845,9 @@ bool Game::combatBlockHit(CombatDamage & damage, std::shared_ptr < Creature > at
   if (damage.primary.value > 0 || damage.primary.type == COMBAT_AGONYDAMAGE) {
     return false;
   }
+ if (!target) {
+        return false; // Prevent crash if target is null
+    }
 
   // Skill dodge (ruse)
   const auto & targetPlayer = target ? target -> getPlayer() : nullptr;

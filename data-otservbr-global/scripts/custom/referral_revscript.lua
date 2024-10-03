@@ -1,5 +1,5 @@
 local config = {
-	requiredLevel = 500, -- Required level that the referred player must reach
+	requiredLevel = 1000, -- Required level that the referred player must reach
 	bonus = {
 		premiumPoints = 0,		-- The number of premium points (in myaac) that the referrer will get, zero to disable
 		coins = 0,				-- The number of coins (in myaac) that the referrer will get, zero to disable

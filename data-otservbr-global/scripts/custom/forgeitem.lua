@@ -1,3 +1,53 @@
+
+if not Karin then Karin = {} end
+
+-- Function to check player's capacity before forging
+function Karin.canForge(player)
+ 
+    
+    return true
+end
+
+function Karin.firstLetterUpper(self, str)
+    local words = str:split(" ")
+    for i, word in ipairs(words) do
+        words[i] = word:gsub("^%l", string.upper)
+    end
+    return table.concat(words, " ")
+end
+
+Karin.Forge = {
+    Config = {
+        tokenId = 943,  -- ID for the token used in forging
+        Default = 30,   -- Default success rate
+        Tier = {
+            [1] = {
+                [1] = 25000,
+                [2] = 50000,
+                [3] = 40000,
+            }
+        }
+    }
+}
+
+-- Updated ForgeItem function to ensure capacity check before consuming token
+function Karin.ForgeItem(player, item)
+    -- First check the player's free capacity
+    if not Karin.canForge(player) then
+        return false
+    end
+
+    -- Proceed only if the player has sufficient capacity
+    if player:removeItem(Karin.Forge.Config.tokenId, 1) then
+        -- If the token is successfully consumed, proceed with forging logic
+        player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "You have successfully forged the item.")
+        return true
+    else
+        -- If the token is not available, inform the player
+        player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "You do not have the required token to forge an item.")
+        return false
+    end
+end
 if not Karin then Karin = {} end
 
 function Karin.firstLetterUpper(self, str)
@@ -293,6 +343,12 @@ local TokenForge = Action()
 
 function TokenForge.onUse(player, item, fromPosition, target, toPosition, isHotkey)
     if not target or not target:isItem() then
+        return false
+    end
+    local freeCapacity = player:getFreeCapacity()
+    
+    if freeCapacity < 250 then
+        player:sendTextMessage(MESSAGE_GAME_HIGHLIGHT, "You need more than 250 free capacity to forge.")
         return false
     end
     Karin.Forge:forge(player, target, item)

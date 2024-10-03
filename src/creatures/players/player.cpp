@@ -7372,8 +7372,8 @@ return;
 }
 
 void Player::forgeTransferItemTier(ForgeAction_t actionType, uint16_t donorItemId, uint8_t tier, uint16_t receiveItemId, bool convergence) {
-if (player -> getCapacity() < 150) {
-      player -> sendCancelMessage(RETURNVALUE_NOTENOUGHCAPACITY);
+if (Player -> getCapacity() < 150) {
+      Player -> sendCancelMessage(RETURNVALUE_NOTENOUGHCAPACITY);
        return;
     }
 	if (getFreeBackpackSlots() == 0) {

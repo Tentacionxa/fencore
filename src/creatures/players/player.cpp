@@ -7119,7 +7119,11 @@ bool Player::saySpell(
 
 // Forge system
 void Player::forgeFuseItems(ForgeAction_t actionType, uint16_t firstItemId, uint8_t tier, uint16_t secondItemId, bool success, bool reduceTierLoss, bool convergence, uint8_t bonus, uint8_t coreCount) {
-	if (getFreeBackpackSlots() == 0) {
+	if (getCapacity() <= 150) {
+		sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
+		return;
+	}
+		if (getFreeBackpackSlots() == 0) {
 		sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
 		return;
 	}
@@ -7368,6 +7372,10 @@ return;
 }
 
 void Player::forgeTransferItemTier(ForgeAction_t actionType, uint16_t donorItemId, uint8_t tier, uint16_t receiveItemId, bool convergence) {
+if (getCapacity() <= 150) {
+		sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
+		return;
+	}
 	if (getFreeBackpackSlots() == 0) {
 		sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
 		return;

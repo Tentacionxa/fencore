@@ -6827,6 +6827,7 @@ bool Game::combatBlockHit(CombatDamage & damage, std::shared_ptr < Creature > at
     g_logger().error("Null attacker or target in combatBlockHit");
     return;
 }
+const std::shared_ptr < Monster > monster = creature -> getMonster();
 monster = target->getMonster();
 if (!monster) {
     g_logger().error("No valid monster for target");

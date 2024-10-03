@@ -165,3 +165,23 @@ end
 npcType.onCheckItem = function(npc, player, clientId, subType) end
 
 npcType:register(npcConfig)
+
+-- Handle trade interaction
+keywordHandler:addKeyword({ "trade" }, function(npc, creature)
+    local player = Player(creature)
+    
+    -- Debugging log to check if the player reaches this point
+    print("Player " .. player:getName() .. " is trying to trade.")
+
+    -- Reset the interaction state for the player
+    npcHandler:resetNpc(player)
+
+    -- Check if the player is in range of the NPC
+    if npcHandler:isInRange(npc, player) then
+        -- Open the trade window (or allow the system to handle it)
+        npcHandler:say("Here are my wares.", npc, player)
+    else
+        -- Inform the player that they are too far away
+        npcHandler:say("Please come closer to trade.", npc, player)
+    end
+end)

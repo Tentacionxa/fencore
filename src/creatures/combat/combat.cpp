@@ -1210,9 +1210,12 @@ void Combat::CombatFunc(std::shared_ptr<Creature> caster, const Position &origin
 			continue;
 		}
 
-		if (CreatureVector* creatures = tile->getCreatures()) {
-			const std::shared_ptr<Creature> topCreature = tile->getTopCreature();
-			for (auto &creature : *creatures) {
+		const std::shared_ptr<Creature> topCreature = tile->getTopCreature();
+
+		auto tmpCreatures = tile->getCreatures();
+		if (tmpCreatures) {
+			auto creatures = *tmpCreatures;
+			for (auto creature : creatures) {
 				if (params.targetCasterOrTopMost) {
 					if (caster && caster->getTile() == tile) {
 						if (creature != caster) {

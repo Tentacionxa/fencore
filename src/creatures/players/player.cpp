@@ -7123,7 +7123,13 @@ void Player::forgeFuseItems(ForgeAction_t actionType, uint16_t firstItemId, uint
 		sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
 		return;
 	}
-
+uint32_t maxContainer = static_cast<uint32_t>(g_configManager().getNumber(MAX_CONTAINER, FUNCTION));
+auto backpack = getInventoryItem(CONST_SLOT_BACKPACK);
+auto mainBackpack = backpack ? backpack->getContainer() : nullptr;
+if (mainBackpack && mainBackpack->getContainerHoldingCount() >= maxContainer) {
+sendCancelMessage(RETURNVALUE_CONTAINERISFULL);
+return;
+}
 	ForgeHistory history;
 	history.actionType = actionType;
 	history.tier = tier;
@@ -7366,7 +7372,13 @@ void Player::forgeTransferItemTier(ForgeAction_t actionType, uint16_t donorItemI
 		sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
 		return;
 	}
-
+uint32_t maxContainer = static_cast<uint32_t>(g_configManager().getNumber(MAX_CONTAINER, FUNCTION));
+auto backpack = getInventoryItem(CONST_SLOT_BACKPACK);
+auto mainBackpack = backpack ? backpack->getContainer() : nullptr;
+if (mainBackpack && mainBackpack->getContainerHoldingCount() >= maxContainer) {
+sendCancelMessage(RETURNVALUE_CONTAINERISFULL);
+return;
+}
 	ForgeHistory history;
 	history.actionType = actionType;
 	history.tier = tier;

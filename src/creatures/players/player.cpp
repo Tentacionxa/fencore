@@ -7374,11 +7374,11 @@ return;
 void Player::forgeTransferItemTier(ForgeAction_t actionType, uint16_t donorItemId, uint8_t tier, uint16_t receiveItemId, bool convergence) {
 if (getCapacity() <= 150) {
 		sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
-		return;
-	}
+		return false;
+}
 	if (getFreeBackpackSlots() == 0) {
 		sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
-		return;
+		return false;
 	}
 uint32_t maxContainer = static_cast<uint32_t>(g_configManager().getNumber(MAX_CONTAINER, __FUNCTION__));
 auto backpack = getInventoryItem(CONST_SLOT_BACKPACK);

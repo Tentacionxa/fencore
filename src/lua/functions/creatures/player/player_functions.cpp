@@ -1719,7 +1719,7 @@ int PlayerFunctions::luaPlayerSetBankBalance(lua_State* L) {
 	pushBoolean(L, true);
 	return 1;
 }
-int PlayerFunctions::luaPlayerGetbloodyBankBalance(lua_State* L) {
+int PlayerFunctions::luaPlayerGetBloodyBankBalance(lua_State* L) {
     // player:getbloodyBankBalance()
     std::shared_ptr<Player> player = getUserdataShared<Player>(L, 1);
     if (player) {
@@ -1730,7 +1730,7 @@ int PlayerFunctions::luaPlayerGetbloodyBankBalance(lua_State* L) {
     return 1;
 }
 
-int PlayerFunctions::luaPlayerSetbloodyBankBalance(lua_State* L) {
+int PlayerFunctions::luaPlayerSetBloodyBankBalance(lua_State* L) {
     // player:setbloodyBankBalance(bloodyBankBalance)
     std::shared_ptr<Player> player = getUserdataShared<Player>(L, 1);
     if (!player) {

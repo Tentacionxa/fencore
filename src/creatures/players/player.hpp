@@ -319,10 +319,10 @@ public:
 		bankBalance = balance;
 	}
 
-uint64_t gebloodyBankBalancet() const {
+uint64_t getBloodyBankBalance() const;
         return bloodyBankBalance;
     }
-    void setbloodyBankBalance(uint64_t balance) {
+void setBloodyBankBalance(uint64_t balance);
         bloodyBankBalance = balance;
     }
 

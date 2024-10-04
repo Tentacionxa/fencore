@@ -8,7 +8,7 @@ function moveEvent.onStepIn(creature, item, position, fromPosition)
 	if not player then
 		return false
 	end
-	if player:getLevel() < 8000 then
+	if player:getStorageValue(400857) == 0 then
 		player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You are not prepared to enter the other world.")
 		player:teleportTo(fromPosition)
 		return true

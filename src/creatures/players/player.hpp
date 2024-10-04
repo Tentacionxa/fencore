@@ -322,7 +322,7 @@ public:
 uint64_t getBloodyBankBalance() const;
         return bloodyBankBalance;
     }
-void setBloodyBankBalance(uint64_t balance);
+void setBloodyBankBalance(uint64_t balance);{
         bloodyBankBalance = balance;
     }
 

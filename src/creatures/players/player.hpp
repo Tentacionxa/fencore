@@ -2832,6 +2832,7 @@ private:
 	std::unordered_map<uint8_t, uint64_t> lastConditionTime;
 	uint64_t lastAggressiveAction = 0;
 	uint64_t bankBalance = 0;
+	uint64_t bloodyBankBalance = 0;  // Variable for storing the bloody bank balance
 	uint64_t lastQuestlogUpdate = 0;
 	uint64_t preyCards = 0;
 	uint64_t taskHuntingPoints = 0;

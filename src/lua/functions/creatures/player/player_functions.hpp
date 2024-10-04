@@ -168,8 +168,8 @@ private:
 		registerMethod(L, "Player", "getBankBalance", PlayerFunctions::luaPlayerGetBankBalance);
 		registerMethod(L, "Player", "setBankBalance", PlayerFunctions::luaPlayerSetBankBalance);
 		
-		registerMethod(L, "Player", "getBloodyBankBalance", PlayerFunctions::luaPlayerGetBloodyBankBalance);
-        registerMethod(L, "Player", "setBloodyBankBalance", PlayerFunctions::luaPlayerSetBloodyBankBalance);
+		registerMethod(L, "Player", "getbloodyBankBalance", PlayerFunctions::luaPlayerGetbloodyBankBalance);
+        registerMethod(L, "Player", "setbloodyBankBalance", PlayerFunctions::luaPlayerSetbloodyBankBalance);
 
 		registerMethod(L, "Player", "getStorageValue", PlayerFunctions::luaPlayerGetStorageValue);
 		registerMethod(L, "Player", "setStorageValue", PlayerFunctions::luaPlayerSetStorageValue);
@@ -545,8 +545,8 @@ private:
 
 	static int luaPlayerGetBankBalance(lua_State* L);
 	static int luaPlayerSetBankBalance(lua_State* L);
-	static int luaPlayerGetBloodyBankBalance(lua_State* L);
-    static int luaPlayerSetBloodyBankBalance(lua_State* L);
+	static int luaPlayerGetbloodyBankBalance(lua_State* L);
+    static int luaPlayerSetbloodyBankBalance(lua_State* L);
 
 	static int luaPlayerGetStorageValue(lua_State* L);
 	static int luaPlayerSetStorageValue(lua_State* L);

@@ -319,11 +319,11 @@ public:
 		bankBalance = balance;
 	}
 
-uint64_t getBloodyBankBalance() const {
-        return BloodyBankBalance;
+uint64_t gebloodyBankBalancet() const {
+        return bloodyBankBalance;
     }
-    void setBloodyBankBalance(uint64_t balance) {
-        BloodyBankBalance = balance;
+    void setbloodyBankBalance(uint64_t balance) {
+        bloodyBankBalance = balance;
     }
 
 	[[nodiscard]] std::shared_ptr<Guild> getGuild() const {

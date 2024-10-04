@@ -1723,7 +1723,7 @@ int PlayerFunctions::luaPlayerGetbloodyBankBalance(lua_State* L) {
     // player:getbloodyBankBalance()
     std::shared_ptr<Player> player = getUserdataShared<Player>(L, 1);
     if (player) {
-        lua_pushnumber(L, player->getbloodyBankBalance());
+        lua_pushnumber(L, player->getBloodyBankBalance());
     } else {
         lua_pushnil(L);
     }
@@ -1738,7 +1738,7 @@ int PlayerFunctions::luaPlayerSetbloodyBankBalance(lua_State* L) {
         return 1;
     }
 
-    player->setbloodyBankBalance(getNumber<uint64_t>(L, 2));
+    player->setBloodyBankBalance(getNumber<uint64_t>(L, 2));
     pushBoolean(L, true);
     return 1;
 }

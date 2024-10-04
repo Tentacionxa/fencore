@@ -268,12 +268,7 @@ public:
 	void setDailyReward(uint8_t reward) {
 		this->isDailyReward = reward;
 	}
-uint64_t getBloodyBankBalance() const {
-        return bloodyBankBalance;
-    }
-    void setBloodyBankBalance(uint64_t balance) {
-        bloodyBankBalance = balance;
-    }
+
 	void removeList() override;
 	void addList() override;
 	void removePlayer(bool displayEffect, bool forced = true);
@@ -323,6 +318,13 @@ uint64_t getBloodyBankBalance() const {
 	void setBankBalance(uint64_t balance) override {
 		bankBalance = balance;
 	}
+
+uint64_t getBloodyBankBalance() const {
+        return BloodyBankBalance;
+    }
+    void setBloodyBankBalance(uint64_t balance) {
+        BloodyBankBalance = balance;
+    }
 
 	[[nodiscard]] std::shared_ptr<Guild> getGuild() const {
 		return guild;

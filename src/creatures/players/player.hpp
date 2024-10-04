@@ -319,7 +319,7 @@ public:
 		bankBalance = balance;
 	}
 
-uint64_t geBloodyBankBalance() const {
+uint64_t getBloodyBankBalance() const {
         return bloodyBankBalance;
     }
     void setBloodyBankBalance(uint64_t balance) {

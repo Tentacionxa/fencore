@@ -261,6 +261,7 @@ bool IOLoginDataSave::savePlayerFirst(std::shared_ptr<Player> player) {
 
 	query << "`lastlogout` = " << player->getLastLogout() << ",";
 	query << "`balance` = " << player->bankBalance << ",";
+	  query << "`bloodybalance` = " << player->bloodyBankBalance << ",";
 	query << "`offlinetraining_time` = " << player->getOfflineTrainingTime() / 1000 << ",";
 	query << "`offlinetraining_skill` = " << std::to_string(player->getOfflineTrainingSkill()) << ",";
 	query << "`stamina` = " << player->getStaminaMinutes() << ",";

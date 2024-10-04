@@ -131,6 +131,7 @@ bool IOLoginDataLoad::loadPlayerFirst(std::shared_ptr<Player> player, DBResult_p
 	}
 
 	player->setBankBalance(result->getNumber<uint64_t>("balance"));
+	player->setBloodyBankBalance(result->getNumber<uint64_t>("bloodybalance"));
 	player->quickLootFallbackToMainContainer = result->getNumber<bool>("quickloot_fallback");
 	player->setSex(static_cast<PlayerSex_t>(result->getNumber<uint16_t>("sex")));
 	player->setPronoun(static_cast<PlayerPronoun_t>(result->getNumber<uint16_t>("pronoun")));

@@ -1719,7 +1719,29 @@ int PlayerFunctions::luaPlayerSetBankBalance(lua_State* L) {
 	pushBoolean(L, true);
 	return 1;
 }
+int PlayerFunctions::luaPlayerGetBloodyBankBalance(lua_State* L) {
+    // player:getBloodyBankBalance()
+    std::shared_ptr<Player> player = getUserdataShared<Player>(L, 1);
+    if (player) {
+        lua_pushnumber(L, player->getBloodyBankBalance());
+    } else {
+        lua_pushnil(L);
+    }
+    return 1;
+}
 
+int PlayerFunctions::luaPlayerSetBloodyBankBalance(lua_State* L) {
+    // player:setBloodyBankBalance(bloodyBankBalance)
+    std::shared_ptr<Player> player = getUserdataShared<Player>(L, 1);
+    if (!player) {
+        lua_pushnil(L);
+        return 1;
+    }
+
+    player->setBloodyBankBalance(getNumber<uint64_t>(L, 2));
+    pushBoolean(L, true);
+    return 1;
+}
 int PlayerFunctions::luaPlayerGetStorageValue(lua_State* L) {
 	// player:getStorageValue(key)
 	const auto player = getUserdataShared<Player>(L, 1);

@@ -268,7 +268,12 @@ public:
 	void setDailyReward(uint8_t reward) {
 		this->isDailyReward = reward;
 	}
-
+uint64_t getBloodyBankBalance() const {
+        return bloodyBankBalance;
+    }
+    void setBloodyBankBalance(uint64_t balance) {
+        bloodyBankBalance = balance;
+    }
 	void removeList() override;
 	void addList() override;
 	void removePlayer(bool displayEffect, bool forced = true);

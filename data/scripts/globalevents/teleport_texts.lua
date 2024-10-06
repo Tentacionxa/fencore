@@ -11,6 +11,16 @@ local effects = {
 
  {position = Position(32690, 33185, 7), text = 'Craft', effect = CONST_ME_PIXIE_EXPLOSION},
 
+ {position = Position (32732, 33235, 6), text = 'Upgrade', effect = CONST_ME_TUTORIALARROW},
+
+ {position = Position (32745, 33206, 6), text = 'Exchange', effect = CONST_ME_MAGIC_RED},
+ {position = Position (32745, 33211, 7), text = 'Exchange', effect = CONST_ME_MAGIC_RED},
+ {position = Position (32746, 33213, 5), text = 'Exchange', effect = CONST_ME_MAGIC_RED},
+
+
+ {position = Position (32744, 33199, 4), text = 'Exchange', effect = CONST_ME_MAGIC_RED},
+
+
  {position = Position(32347, 32231, 7), text = 'Casino', effect = CONST_ME_CRAPS},
  {position = Position(32348, 32231, 7), text = 'Casino', effect = CONST_ME_CRAPS},
  {position = Position(32348, 32229, 5), text = 'Casino', effect = CONST_ME_CRAPS},

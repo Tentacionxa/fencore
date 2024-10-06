@@ -10,6 +10,13 @@ Position.directionOffset = {
 	[DIRECTION_NORTHEAST] = { x = 1, y = -1 },
 }
 
+function Position:getRandomPosition(rangeX, rangeY)
+    local deltaX = math.random(-rangeX, rangeX)
+    local deltaY = math.random(-rangeY, rangeY)
+
+    return Position(self.x + deltaX, self.y + deltaY, self.z)
+end
+
 function Position:getNextPosition(direction, steps)
 	local offset = Position.directionOffset[direction]
 	if offset then

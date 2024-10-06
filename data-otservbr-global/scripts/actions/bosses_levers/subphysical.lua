@@ -1,6 +1,6 @@
 local config = {
 	boss = {
-		name = "Sub Physical",
+		name = "Sub Phys",
 		position = Position(32075, 33580, 8),
 	},
 	timeAfterKill = 60,

@@ -231,4 +231,20 @@
 	<mount id="229" clientid="1743" name="Bog Tyrant" speed="10" premium="no" type="store" />
 	<mount id="230" clientid="1744" name="Crimson Fang" speed="10" premium="no" type="store" />
 	<mount id="231" clientid="1778" name="Bumblebee" speed="10" premium="no" type="store" />
+	<mount id="232" clientid="167" name="Death Strike" speed="20" premium="no" type="store" />
+	<mount id="233" clientid="168" name="Haze Strike" speed="20" premium="no" type="store" />
+	<mount id="234" clientid="181" name="Flame Rush" speed="20" premium="no" type="quest" />
+	<mount id="235" clientid="182" name="Haze Rush" speed="20" premium="no" type="quest" />
+	<mount id="236" clientid="707" name="Crest Nexus" speed="20" premium="no" type="store" />
+	<mount id="237" clientid="708" name="Haze Nexus" speed="20" premium="no" type="store" />
+	<mount id="238" clientid="709" name="Viol Nexus" speed="20" premium="no" type="store" />
+	<mount id="239" clientid="710" name="Golden Nexus" speed="20" premium="no" type="store" />
+	<mount id="240" clientid="704" name="Heavy Draptor" speed="20" premium="no" type="store" />
+	<mount id="241" clientid="1693" name="White Ship" speed="20" premium="no" type="store" />
+	<mount id="242" clientid="1694" name="Red Ship" speed="20" premium="no" type="store" />
+	<mount id="243" clientid="1695" name="Yellow Ship" speed="20" premium="no" type="store" />
+	<mount id="244" clientid="1696" name="Green Ship" speed="20" premium="no" type="store" />
+	<mount id="245" clientid="1697" name="Blue Ship" speed="20" premium="no" type="store" />
+	<mount id="246" clientid="1698" name="Pirate Ship" speed="20" premium="no" type="store" />
+<mount id="247" clientid="1562" name="Cloudy Spirit" speed="20" premium="no" type="store" />
 </mounts>

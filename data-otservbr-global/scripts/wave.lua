@@ -3,7 +3,7 @@ local config = {
     sqmTrigger = Position(32712, 33337, 7), -- SQM WHERE THE PLAYERS WILL STEP IN TO TELEPORT TO THE EVENT
     teleportInPosition = Position(32710, 33324, 7), --SQM WHERE PLAYERS WILL TELEPORT TO
     timeToKick = 3, -- TIME IN MINUTES TO DETERMINE IF THE PLAYERS HAVE CONCLUDED OR NOT
-    timeToTeleportOnSuccess = 60, --TIME IN SECONDS TO TELEPORT THE WINNERS TO ANOTHER PLACE
+    timeToTeleportOnSuccess = 10, --TIME IN SECONDS TO TELEPORT THE WINNERS TO ANOTHER PLACE
     teleportPositionOnSuccess = Position(32705, 33287, 7), -- POSITION WHERE THE WINNERS OF THE EVENT WILL BE TELEPORTED TO
     waitingRoomTime = 1, -- TIME IN MINUTES AFTER THE FIRST PLAYER ENTER IN THE EVENT TO START SPAWNING THE WAVES
     kickPosition = Position(31491, 31738, 7), -- SQM WHERE PLAYERS THAT GET KICKED FROM THE EVENT WILL BE TELEPORTED TO
@@ -15,47 +15,31 @@ local config = {
     },
     waves = { --ADD AS MANY WAVES AS YOU WANT TO
         {
-            { name = "Griish Lord", qtt = 5, delay = 2000, position = Position(32706, 33322, 7) },
-            { name = "Griish Knight", qtt = 2, delay = 4000, position = Position(32712, 33322, 7) },
-            { name = "Griish Scout", qtt = 2, delay = 6000, position = Position(32707, 33328, 7)},
-            { name = "Griish Leader", qtt = 2, delay = 4000, position = Position(32713, 33330, 7) },
-            { name = "Griish Leader", qtt = 2, delay = 6000, position = Position(32707, 33329, 7)},
-            { name = "Griish Scout", qtt = 2, delay = 6000, position = Position(32708, 33324, 7)},
-            { name = "Griish Scout", qtt = 2, delay = 6000, position = Position(32704, 33321, 7)},
-            { name = "Griish Leader", qtt = 2, delay = 6000, position = Position(32716, 33332, 7)},
-            { name = "Griish Lord", qtt = 2, delay = 6000, position = Position(32709, 33331, 7)},
-            { name = "Griish Leader", qtt = 2, delay = 6000, position = Position(32707, 33329, 7)},
-            { name = "Griish Lord", qtt = 2, delay = 6000, position = Position(32709, 33323, 7)},
-            { name = "Griish Leader", qtt = 2, delay = 6000, position = Position(32711, 33325, 7)},
-
+            { name = "Griish Wizard", qtt = 5, delay = 2000, position = Position(32706, 33322, 7) },
+            { name = "Griish Hunter", qtt = 2, delay = 4000, position = Position(32712, 33322, 7) },
+            { name = "Griish Adventurer", qtt = 2, delay = 6000, position = Position(32707, 33328, 7)},
+            { name = "Griish Warrior", qtt = 2, delay = 4000, position = Position(32713, 33330, 7) },
+            { name = "Griish Hunter", qtt = 2, delay = 6000, position = Position(32707, 33329, 7)},
+            { name = "Griish Wizard", qtt = 2, delay = 6000, position = Position(32708, 33324, 7)},
+            { name = "Griish Adventurer", qtt = 2, delay = 6000, position = Position(32704, 33321, 7)},
         },
         {
-            { name = "Griish Sorcereress", qtt = 5, delay = 2000, position = Position(32706, 33322, 7) },
-            { name = "Griish Mage", qtt = 2, delay = 4000, position = Position(32712, 33322, 7) },
-            { name = "Griish Sorcereress", qtt = 2, delay = 6000, position = Position(32707, 33328, 7)},
-            { name = "Griish Druid", qtt = 2, delay = 4000, position = Position(32713, 33330, 7) },
-            { name = "Griish Druid", qtt = 2, delay = 6000, position = Position(32707, 33329, 7)},
-            { name = "Griish Priestess", qtt = 2, delay = 6000, position = Position(32708, 33324, 7)},
-            { name = "Griish Mage", qtt = 2, delay = 6000, position = Position(32704, 33321, 7)},
-            { name = "Griish Druid", qtt = 2, delay = 6000, position = Position(32716, 33332, 7)},
-            { name = "Griish Mage", qtt = 2, delay = 6000, position = Position(32709, 33331, 7)},
-            { name = "Griish Sorcereress", qtt = 2, delay = 6000, position = Position(32707, 33329, 7)},
-            { name = "Griish Druid", qtt = 2, delay = 6000, position = Position(32709, 33323, 7)},
-            { name = "Griish Priestess", qtt = 2, delay = 6000, position = Position(32711, 33325, 7)},
+            { name = "Griish Wizard", qtt = 5, delay = 2000, position = Position(32706, 33322, 7) },
+            { name = "Griish Hunter", qtt = 2, delay = 4000, position = Position(32712, 33322, 7) },
+            { name = "Griish Adventurer", qtt = 2, delay = 6000, position = Position(32707, 33328, 7)},
+            { name = "Griish Warrior", qtt = 2, delay = 4000, position = Position(32713, 33330, 7) },
+            { name = "Griish Hunter", qtt = 2, delay = 6000, position = Position(32707, 33329, 7)},
+            { name = "Griish Wizard", qtt = 2, delay = 6000, position = Position(32708, 33324, 7)},
+            { name = "Griish Adventurer", qtt = 2, delay = 6000, position = Position(32704, 33321, 7)},
         },
         {
-            { name = "Griish Lord", qtt = 5, delay = 2000, position = Position(32706, 33322, 7) },
-            { name = "Griish Knight", qtt = 2, delay = 4000, position = Position(32712, 33322, 7) },
-            { name = "Griish Scout", qtt = 2, delay = 6000, position = Position(32707, 33328, 7)},
-            { name = "Griish Leader", qtt = 2, delay = 4000, position = Position(32713, 33330, 7) },
-            { name = "Griish Leader", qtt = 2, delay = 6000, position = Position(32707, 33329, 7)},
-            { name = "Griish Priestess", qtt = 2, delay = 6000, position = Position(32708, 33324, 7)},
-            { name = "Griish Mage", qtt = 2, delay = 6000, position = Position(32704, 33321, 7)},
-            { name = "Griish Druid", qtt = 2, delay = 6000, position = Position(32716, 33332, 7)},
-            { name = "Griish Mage", qtt = 2, delay = 6000, position = Position(32709, 33331, 7)},
-            { name = "Griish Sorcereress", qtt = 2, delay = 6000, position = Position(32707, 33329, 7)},
-            { name = "Griish Druid", qtt = 2, delay = 6000, position = Position(32709, 33323, 7)},
-            { name = "Griish Priestess", qtt = 2, delay = 6000, position = Position(32711, 33325, 7)},
+            { name = "Griish Wizard", qtt = 5, delay = 2000, position = Position(32706, 33322, 7) },
+            { name = "Griish Hunter", qtt = 2, delay = 4000, position = Position(32712, 33322, 7) },
+            { name = "Griish Adventurer", qtt = 2, delay = 6000, position = Position(32707, 33328, 7)},
+            { name = "Griish Warrior", qtt = 2, delay = 4000, position = Position(32713, 33330, 7) },
+            { name = "Griish Hunter", qtt = 2, delay = 6000, position = Position(32707, 33329, 7)},
+            { name = "Griish Wizard", qtt = 2, delay = 6000, position = Position(32708, 33324, 7)},
+            { name = "Griish Adventurer", qtt = 2, delay = 6000, position = Position(32704, 33321, 7)},
         }
     }
 }

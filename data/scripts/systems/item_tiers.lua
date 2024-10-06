@@ -62,53 +62,53 @@ local itemTierClassifications = {
 	-- Upgrade classification 4
 	[4] = {
 		[1] = {
-			regular = 1500000,
+			regular = 7150000,
 			core = 1,
 			convergence = { fusion = { price = 6000000 }, transfer = { price = 12000000 } },
 		},
 		[2] = {
-			regular = 3000000,
+			regular = 14300000,
 			core = 2,
 			convergence = { fusion = { price = 12000000 }, transfer = { price = 24000000 } },
 		},
 		[3] = {
-			regular = 6000000,
+			regular = 37500000,
 			core = 5,
 			convergence = { fusion = { price = 24000000 }, transfer = { price = 48000000 } },
 		},
 		[4] = {
-			regular = 15000000,
+			regular = 75000000,
 			core = 10,
 			convergence = { fusion = { price = 48000000 }, transfer = { price = 100000000 } },
 		},
 		[5] = {
-			regular = 30000000,
+			regular = 150000000,
 			core = 15,
 			convergence = { fusion = { price = 100000000 }, transfer = { price = 200000000 } },
 		},
 		[6] = {
-			regular = 80000000,
-			core = 25,
+			regular = 300000000,
+			core = 35,
 			convergence = { fusion = { price = 200000000 }, transfer = { price = 400000000 } },
 		},
 		[7] = {
-			regular = 200000000,
-			core = 35,
+			regular = 600000000,
+			core = 75,
 			convergence = { fusion = { price = 400000000 }, transfer = { price = 800000000 } },
 		},
 		[8] = {
-			regular = 400000000,
-			core = 50,
+			regular = 1400000000,
+			core = 150,
 			convergence = { fusion = { price = 800000000 }, transfer = { price = 1600000000 } },
 		},
 		[9] = {
 			regular = 800000000,
-			core = 60,
+			core = 200,
 			convergence = { fusion = { price = 1600000000 }, transfer = { price = 3200000000 } },
 		},
 		[10] = {
 			regular = 1600000000,
-			core = 85,
+			core = 200,
 			convergence = { fusion = { price = 3200000000 }, transfer = { price = 6400000000 } },
 		},
 	},

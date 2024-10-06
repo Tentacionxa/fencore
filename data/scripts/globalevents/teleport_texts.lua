@@ -9,6 +9,8 @@ local effects = {
  {position = Position(33466, 32494, 11), text = 'Mount', effect = CONST_ME_GROUNDSHAKER},
  {position = Position(32208, 32296, 6), text = 'World Board', effect = CONST_ME_GROUNDSHAKER},
 
+ {position = Position(32690, 33185, 7), text = 'Craft', effect = CONST_ME_PIXIE_EXPLOSION},
+
  {position = Position(32347, 32231, 7), text = 'Casino', effect = CONST_ME_CRAPS},
  {position = Position(32348, 32231, 7), text = 'Casino', effect = CONST_ME_CRAPS},
  {position = Position(32348, 32229, 5), text = 'Casino', effect = CONST_ME_CRAPS},

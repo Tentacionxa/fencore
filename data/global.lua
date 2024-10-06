@@ -7,6 +7,19 @@ if startupFile ~= nil then
 	dofile(DATA_DIRECTORY .. "/startup/startup.lua")
 end
 
+function capAll(str)
+    local newStr = ""; wordSeparate = string.gmatch(str, "([^%s]+)")
+    for v in wordSeparate do
+        v = v:gsub("^%l", string.upper)
+        if newStr ~= "" then
+            newStr = newStr.." "..v
+        else
+            newStr = v
+        end
+    end
+    return newStr
+end
+
 function IsRunningGlobalDatapack()
 	if DATA_DIRECTORY == "data-otservbr-global" then
 		return true

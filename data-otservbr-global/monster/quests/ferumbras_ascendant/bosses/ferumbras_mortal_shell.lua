@@ -13,9 +13,15 @@ monster.outfit = {
 	lookMount = 0,
 }
 
+monster.bosstiary = {
+	bossRaceId = 2606,
+	bossRace = RARITY_NEMESIS,
+}
+
 monster.events = {
 	"AscendantBossesDeath",
 }
+
 
 monster.health = 300000
 monster.maxHealth = 300000

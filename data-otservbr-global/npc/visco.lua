@@ -59,11 +59,11 @@ local function creatureSayCallback(npc, creature, type, message)
 	end
 
 	if MsgContains(message, "battle access") then
-			npcHandler:say("Another poor soul... Yes, I can let You in. However, since I'm on my own, I'll need a few things. Do You have a figurine of bakragore, putrefactive figurine and darklight figurine?", npc, creature)
+			npcHandler:say("Another poor soul... Yes, I can let You in. However, since I'm on my own, I'll need a few things. Do You have a figurine of bakragore, putrefactive figurine, darklight figurine and vemiath's infused basalt?", npc, creature)
 			npcHandler:setTopic(playerId, 1)
 	elseif MsgContains(message, "yes") then
 		if npcHandler:getTopic(playerId) == 1 then
-			if player:removeItem(43961, 1) and player:removeItem(43962, 1) and player:removeItem(43963, 1) then
+			if player:removeItem(43961, 1) and player:removeItem(43962, 1) and player:removeItem(43963, 1) and player:removeItem(43967, 1) then
 				npcHandler:say("Ancient Souls! You got it. Here, I will let You in now. Good luck...", npc, creature)
 				player:setStorageValue(425857, 1)
 				npcHandler:setTopic(playerId, 0)

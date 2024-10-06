@@ -14,6 +14,11 @@ local magicextraPointsCondition = Condition(CONDITION_ATTRIBUTES)
 magicPointsCondition:setParameter(CONDITION_PARAM_TICKS, 60 * 60 * 1000)
 magicPointsCondition:setParameter(CONDITION_PARAM_STAT_MAGICPOINTS, 5)
 
+
+local magicultraPointsCondition = Condition(CONDITION_ATTRIBUTES)
+magicPointsCondition:setParameter(CONDITION_PARAM_TICKS, 60 * 60 * 1000)
+magicPointsCondition:setParameter(CONDITION_PARAM_STAT_MAGICPOINTS, 9)
+
 local meleeCondition = Condition(CONDITION_ATTRIBUTES)
 meleeCondition:setParameter(CONDITION_PARAM_TICKS, 60 * 60 * 1000)
 meleeCondition:setParameter(CONDITION_PARAM_SKILL_MELEE, 3)
@@ -22,14 +27,25 @@ local shieldCondition = Condition(CONDITION_ATTRIBUTES)
 shieldCondition:setParameter(CONDITION_PARAM_TICKS, 60 * 60 * 1000)
 shieldCondition:setParameter(CONDITION_PARAM_SKILL_SHIELD, 7)
 
+local shieldextraCondition = Condition(CONDITION_ATTRIBUTES)
+shieldCondition:setParameter(CONDITION_PARAM_TICKS, 60 * 60 * 1000)
+shieldCondition:setParameter(CONDITION_PARAM_SKILL_SHIELD, 18)
+
 local distanceCondition = Condition(CONDITION_ATTRIBUTES)
 distanceCondition:setParameter(CONDITION_PARAM_TICKS, 60 * 60 * 1000)
 distanceCondition:setParameter(CONDITION_PARAM_SKILL_DISTANCE, 7)
+
+local distanceextraCondition = Condition(CONDITION_ATTRIBUTES)
+distanceCondition:setParameter(CONDITION_PARAM_TICKS, 60 * 60 * 1000)
+distanceCondition:setParameter(CONDITION_PARAM_SKILL_DISTANCE, 13)
 
 local gourmetDishes = {
 	[29408] = { condition = shieldCondition, message = "Chomp." },
 	[29409] = { condition = distanceCondition, message = "Yummm." },
 	[29410] = { condition = magicPointsCondition, message = "Munch." },
+	[46051] = { condition = magicultraPointsCondition, message = "Munch." },
+	[46242] = { condition = distanceextraCondition, message = "Munch." },
+	[46305] = { condition = shieldextraCondition, message = "Munch." },
 	[29411] = { condition = meleeCondition, message = "Munch." },
 	[29412] = { condition = hasteCondition, message = "Yummm." },
 	[29413] = { condition = fishingCondition, message = "Mmmmm." },

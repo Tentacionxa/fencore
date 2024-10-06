@@ -16,5 +16,5 @@ local limitDusts = 200 -- quantidade maxima de dusts
 	end
 end
 
-dust:id(19111) -- ID do item a ser transformado em dusts
+dust:id() -- ID do item a ser transformado em dusts
 dust:register()

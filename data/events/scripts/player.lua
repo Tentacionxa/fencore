@@ -520,6 +520,8 @@ function Player:onGainExperience(target, exp, rawExp)
 		return exp
 	end
 
+exp = Karin.Scrolls:onGainExperience(self, exp, target)
+
 	local monsterType = MonsterType(target:getName())
 	if monsterType then
 		if not monsterType:isRewardBoss() then

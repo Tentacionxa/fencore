@@ -15,3 +15,9 @@ dofile(CORE_DIRECTORY .. "/libs/systems/load.lua")
 
 -- Tables
 dofile(CORE_DIRECTORY .. "/libs/tables/load.lua")
+
+
+dofile(CORE_DIRECTORY .. "/libs/custom/karin_lib.lua")
+
+-- Quests library
+dofile(CORE_DIRECTORY .. '/libs/custom/simple_crafting_system.lua')

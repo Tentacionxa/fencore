@@ -7,6 +7,8 @@ monster.outfit = {
 	lookTypeEx = 37432,
 }
 
+monster.raceId = 2582
+
 monster.health = 40000
 monster.maxHealth = 40000
 monster.race = "undead"

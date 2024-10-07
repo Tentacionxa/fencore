@@ -202,13 +202,14 @@ protected:
 
 	friend class MapCache;
 
+public:
+	std::shared_ptr<Container> getTopParentContainer();
 private:
 	void onAddContainerItem(std::shared_ptr<Item> item);
 	void onUpdateContainerItem(uint32_t index, std::shared_ptr<Item> oldItem, std::shared_ptr<Item> newItem);
 	void onRemoveContainerItem(uint32_t index, std::shared_ptr<Item> item);
 
 	std::shared_ptr<Container> getParentContainer();
-	std::shared_ptr<Container> getTopParentContainer();
 	void updateItemWeight(int32_t diff);
 
 	friend class ContainerIterator;

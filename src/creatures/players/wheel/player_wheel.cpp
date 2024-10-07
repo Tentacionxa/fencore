@@ -935,27 +935,45 @@ std::shared_ptr<KV> PlayerWheel::gemsKV() const {
 }
 
 std::vector<PlayerWheelGem> PlayerWheel::getRevealedGems() const {
-	std::vector<PlayerWheelGem> unlockedGems;
-	auto unlockedGemUUIDs = gemsKV()->scoped("revealed")->keys();
-	if (unlockedGemUUIDs.empty()) {
-		return unlockedGems;
-	}
-	std::vector<std::string> sortedUnlockedGemGUIDs;
-	for (const auto &uuid : unlockedGemUUIDs) {
-		sortedUnlockedGemGUIDs.push_back(uuid);
-	}
-	std::sort(sortedUnlockedGemGUIDs.begin(), sortedUnlockedGemGUIDs.end(), [](const std::string &a, const std::string &b) {
-		return std::stoull(a) < std::stoull(b);
-	});
+    std::vector<PlayerWheelGem> unlockedGems;
+    auto unlockedGemUUIDs = gemsKV()->scoped("revealed")->keys();
+    if (unlockedGemUUIDs.empty()) {
+        return unlockedGems;
+    }
 
-	for (const auto &uuid : sortedUnlockedGemGUIDs) {
-		auto gem = PlayerWheelGem::load(gemsKV(), uuid);
-		if (gem.uuid.empty()) {
-			continue;
-		}
-		unlockedGems.push_back(gem);
-	}
-	return unlockedGems;
+    std::vector<std::string> sortedUnlockedGemGUIDs;
+    for (const auto &uuid : unlockedGemUUIDs) {
+        sortedUnlockedGemGUIDs.push_back(uuid);
+    }
+
+    // Sort the UUIDs safely with validation and exception handling
+    std::sort(sortedUnlockedGemGUIDs.begin(), sortedUnlockedGemGUIDs.end(), [](const std::string &a, const std::string &b) {
+        try {
+            // Ensure both strings are valid numeric strings
+            if (!a.empty() && std::all_of(a.begin(), a.end(), ::isdigit) &&
+                !b.empty() && std::all_of(b.begin(), b.end(), ::isdigit)) {
+                return std::stoull(a) < std::stoull(b); // Compare numerically if valid
+            }
+        } catch (const std::invalid_argument& e) {
+            // Log the error and fallback to lexicographical comparison
+            std::cerr << "Invalid argument in UUID comparison: " << e.what() << std::endl;
+        } catch (const std::out_of_range& e) {
+            // Log the error and fallback
+            std::cerr << "Out of range in UUID comparison: " << e.what() << std::endl;
+        }
+        return a < b; // Fallback to lexicographical comparison in case of error
+    });
+
+    // Load the gems based on the sorted UUIDs
+    for (const auto &uuid : sortedUnlockedGemGUIDs) {
+        auto gem = PlayerWheelGem::load(gemsKV(), uuid);
+        if (gem.uuid.empty()) {
+            continue;
+        }
+        unlockedGems.push_back(gem);
+    }
+
+    return unlockedGems;
 }
 
 std::vector<PlayerWheelGem> PlayerWheel::getActiveGems() const {

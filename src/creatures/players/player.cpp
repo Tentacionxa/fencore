@@ -21,7 +21,6 @@
 #include "creatures/players/cyclopedia/player_title.hpp"
 #include "creatures/players/storages/storages.hpp"
 #include "game/game.hpp"
-#include "game/game.cpp"
 #include "game/modal_window/modal_window.hpp"
 #include "game/scheduling/dispatcher.hpp"
 #include "game/scheduling/task.hpp"

@@ -34,6 +34,7 @@
 #include "lua/creature/movement.hpp"
 #include "io/iologindata.hpp"
 #include "items/bed.hpp"
+#include "items/containers/container.cpp"
 #include "items/weapons/weapons.hpp"
 #include "core.hpp"
 #include "map/spectators.hpp"
@@ -7374,9 +7375,9 @@ return;
 }
 
 void Player::forgeTransferItemTier(ForgeAction_t actionType, uint16_t donorItemId, uint8_t tier, uint16_t receiveItemId, bool convergence) {
-std::shared_ptr<Item> receiveItem = getInventoryItemByID(receiveItemId);
+std::shared_ptr<Item> addItemCount = getInventoryItemsByID(receiveItemId);
     // Check if the player has space in their inventory or containers before proceeding
-    std::shared_ptr<Container> topParentContainer = receiveItem->getTopParentContainer();
+    std::shared_ptr<Container> topParentContainer = addItemCount->getTopParentContainer();
 	
     if (topParentContainer) {
 		auto donorItem = getForgeItemFromId(donorItemId, tier);

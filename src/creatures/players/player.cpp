@@ -7412,7 +7412,7 @@ sendCancelMessage(RETURNVALUE_CONTAINERISFULL);
 	history.tier = tier;
 	history.success = true;
 
-	auto donorItem = getForgeItemFromId(donorItemId, tier);
+	donorItem = getForgeItemFromId(donorItemId, tier);
 	if (!donorItem) {
 		g_logger().error("[Log 1] Player with name {} failed to transfer item with id {}", getName(), donorItemId);
 		sendForgeError(RETURNVALUE_CONTACTADMINISTRATOR);

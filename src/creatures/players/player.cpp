@@ -7376,17 +7376,17 @@ return;
 }
 
 void Player::forgeTransferItemTier(ForgeAction_t actionType, uint16_t donorItemId, uint8_t tier, uint16_t receiveItemId, bool convergence) {
-std::vector<std::shared_ptr<Item>> items = getInventoryItemsFromId(receiveItemId);
-std::shared_ptr<Item> receiveItem = items.empty() ? nullptr : items[0];
+std::shared_ptr<Item> receiveItem = getForgeItemFromId(receiveItemId, 0);
+std::shared_ptr<Item> donorItem = getForgeItemFromId(donorItemId, tier);
     // Check if the player has space in their inventory or containers before proceeding
 	std::shared_ptr<Item> donorItem = getForgeItemFromId(donorItemId, tier);  // Assuming similar logic for donorItem
-    std::shared_ptr<Container> parentContainer = std::dynamic_pointer_cast<Container>(addItemCount->getParent());
+    std::shared_ptr<Container> parentContainer = std::dynamic_pointer_cast<Container>(receiveItem->getParent());
 	
 if (parentContainer) {
     std::shared_ptr<Container> topParentContainer = parentContainer->getTopParentContainer();
     if (topParentContainer) {
-        uint32_t addItemCount = donorItem->getItemCount() + 1;
-        if (addItemCount + topParentContainer->getItemHoldingCount() > topParentContainer->getMaxCapacity()) {
+        uint32_t itemCount = donorItem->getItemCount() + 1;
+        if (itemCount + topParentContainer->getItemHoldingCount() > topParentContainer->getMaxCapacity()) {
             sendCancelMessage(RETURNVALUE_CONTAINERISFULL);
             return;  // Abort the transfer if the container is full
         }

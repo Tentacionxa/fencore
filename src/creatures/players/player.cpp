@@ -7379,7 +7379,6 @@ void Player::forgeTransferItemTier(ForgeAction_t actionType, uint16_t donorItemI
 std::shared_ptr<Item> receiveItem = getForgeItemFromId(receiveItemId, 0);
 std::shared_ptr<Item> donorItem = getForgeItemFromId(donorItemId, tier);
     // Check if the player has space in their inventory or containers before proceeding
-	std::shared_ptr<Item> donorItem = getForgeItemFromId(donorItemId, tier);  // Assuming similar logic for donorItem
     std::shared_ptr<Container> parentContainer = std::dynamic_pointer_cast<Container>(receiveItem->getParent());
 	
 if (parentContainer) {
@@ -7427,7 +7426,7 @@ sendCancelMessage(RETURNVALUE_CONTAINERISFULL);
 		return;
 	}
 
-	auto receiveItem = getForgeItemFromId(receiveItemId, 0);
+	receiveItem = getForgeItemFromId(receiveItemId, 0);
 	if (!receiveItem) {
 		g_logger().error("[Log 2] Player with name {} failed to transfer item with id {}", getName(), receiveItemId);
 		sendForgeError(RETURNVALUE_CONTACTADMINISTRATOR);

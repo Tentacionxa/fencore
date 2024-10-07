@@ -7376,6 +7376,7 @@ void Player::forgeTransferItemTier(ForgeAction_t actionType, uint16_t donorItemI
     // Check if the player has space in their inventory or containers before proceeding
     std::shared_ptr<Container> topParentContainer = receiveItem->getTopParentContainer();
     if (topParentContainer) {
+		auto donorItem = getForgeItemFromId(donorItemId, tier);
         uint32_t addItemCount = donorItem->getItemHoldingCount() + 1;
         if (addItemCount + topParentContainer->getItemHoldingCount() > topParentContainer->getMaxCapacity()) {
             sendCancelMessage(RETURNVALUE_CONTAINERISFULL);

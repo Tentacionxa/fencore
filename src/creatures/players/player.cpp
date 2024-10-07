@@ -34,7 +34,6 @@
 #include "lua/creature/movement.hpp"
 #include "io/iologindata.hpp"
 #include "items/bed.hpp"
-#include "items/containers/container.cpp"
 #include "items/containers/container.hpp"
 #include "items/weapons/weapons.hpp"
 #include "core.hpp"

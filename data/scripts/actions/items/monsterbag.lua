@@ -11,7 +11,7 @@ function priest.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	local randId = math.random(1, #rewards)
 	local rewardItem = rewards[randId]
 
-	player:addItem(rewardItem.id, 1)
+	player:addItem(rewardItem.id, 20)
 	item:remove(1)
 
 	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Brainstealer bag gave You a " .. rewardItem.name .. ".")
@@ -34,7 +34,7 @@ function warrior.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	local randId = math.random(1, #rewards)
 	local rewardItem = rewards[randId]
 
-	player:addItem(rewardItem.id, 1)
+	player:addItem(rewardItem.id, 20)
 	item:remove(1)
 
 	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Falcon bag gave You a " .. rewardItem.name .. ".")
@@ -57,7 +57,7 @@ function pall.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	local randId = math.random(1, #rewards)
 	local rewardItem = rewards[randId]
 
-	player:addItem(rewardItem.id, 1)
+	player:addItem(rewardItem.id, 20)
 	item:remove(1)
 
 	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Lion bag gave You a " .. rewardItem.name .. ".")
@@ -81,7 +81,7 @@ function mage.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	local randId = math.random(1, #rewards)
 	local rewardItem = rewards[randId]
 
-	player:addItem(rewardItem.id, 1)
+	player:addItem(rewardItem.id, 20)
 	item:remove(1)
 
 	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Ratmiral bag gave You a " .. rewardItem.name .. ".")
@@ -110,7 +110,7 @@ function team.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	local randId = math.random(1, #rewards)
 	local rewardItem = rewards[randId]
 
-	player:addItem(rewardItem.id, 1)
+	player:addItem(rewardItem.id, 20)
 	item:remove(1)
 
 	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Scarlett bag gave You a " .. rewardItem.name .. ".")
@@ -139,7 +139,7 @@ function team1.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	local randId = math.random(1, #rewards)
 	local rewardItem = rewards[randId]
 
-	player:addItem(rewardItem.id, 1)
+	player:addItem(rewardItem.id, 20)
 	item:remove(1)
 
 	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Timira bag gave You a " .. rewardItem.name .. ".")

@@ -46,7 +46,7 @@ end
 
 rune:id(1000)
 rune:group("attack")
-rune:name("great fireball rune")
+rune:name("holy launch rune")
 rune:castSound(SOUND_EFFECT_TYPE_SPELL_OR_RUNE)
 rune:impactSound(SOUND_EFFECT_TYPE_SPELL_GREAT_FIREBALL_RUNE)
 rune:runeId(46247)

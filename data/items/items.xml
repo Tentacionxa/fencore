@@ -82622,7 +82622,29 @@ Granted by TibiaGoals.com"/>
 			<attribute key="showCharges" value="1"/>
 		<attribute key="showAttributes" value="1"/>
 		<attribute key="absorbpercentice" value="40"/>
-		<attribute key="charges" value="10"/>
+		<attribute key="charges" value="100"/>
+		<attribute key="weight" value="100"/>
+		<attribute key="script" value="moveevent">
+			<attribute key="slot" value="ring"/>
+		</attribute>
+	</item>
+		<item id="46401" article="a" name="ring of fire">
+		<attribute key="primarytype" value="rings"/>
+			<attribute key="showCharges" value="1"/>
+		<attribute key="showAttributes" value="1"/>
+		<attribute key="absorbpercentfire" value="40"/>
+		<attribute key="charges" value="100"/>
+		<attribute key="weight" value="100"/>
+		<attribute key="script" value="moveevent">
+			<attribute key="slot" value="ring"/>
+		</attribute>
+	</item>
+		<item id="46398" article="a" name="ring of holy">
+		<attribute key="primarytype" value="rings"/>
+			<attribute key="showCharges" value="1"/>
+		<attribute key="showAttributes" value="1"/>
+		<attribute key="absorbpercentholy" value="40"/>
+		<attribute key="charges" value="100"/>
 		<attribute key="weight" value="100"/>
 		<attribute key="script" value="moveevent">
 			<attribute key="slot" value="ring"/>
@@ -82739,5 +82761,86 @@ Granted by TibiaGoals.com"/>
 			<attribute key="slot" value="necklace"/>
 		</attribute>
 	</item>
+		<item id="46244" article="a" name="charged celestius rune">
+		<attribute key="primarytype" value="attack runes"/>
+		<attribute key="type" value="rune"/>
+		<attribute key="runespellname" value="holy launch rune"/>
+		<attribute key="charges" value="3"/>
+		<attribute key="weight" value="70"/>
+	</item>
+	<item id="46248" article="a" name="charged voltagor rune">
+		<attribute key="primarytype" value="attack runes"/>
+		<attribute key="type" value="rune"/>
+		<attribute key="runespellname" value="storm launch rune"/>
+		<attribute key="charges" value="3"/>
+		<attribute key="weight" value="70"/>
+	</item>
+		<item id="46247" article="a" name="charged infernatus rune">
+		<attribute key="primarytype" value="attack runes"/>
+		<attribute key="type" value="rune"/>
+		<attribute key="runespellname" value="fire launch rune"/>
+		<attribute key="charges" value="3"/>
+		<attribute key="weight" value="70"/>
+	</item>
+		<item id="46245" article="a" name="charged glacialon rune">
+		<attribute key="primarytype" value="attack runes"/>
+		<attribute key="type" value="rune"/>
+		<attribute key="runespellname" value="ice launch rune"/>
+		<attribute key="charges" value="3"/>
+		<attribute key="weight" value="70"/>
+	</item>
+	<item id="46245" article="a" name="charged glacialon rune">
+		<attribute key="primarytype" value="attack runes"/>
+		<attribute key="type" value="rune"/>
+		<attribute key="runespellname" value="ice launch rune"/>
+		<attribute key="charges" value="3"/>
+		<attribute key="weight" value="70"/>
+	</item>
+
+	<item id="46243" article="a" name="charged terramorfo rune">
+		<attribute key="primarytype" value="attack runes"/>
+		<attribute key="type" value="rune"/>
+		<attribute key="runespellname" value="stone launch rune"/>
+		<attribute key="charges" value="3"/>
+		<attribute key="weight" value="70"/>
+	</item>
+		<item id="46246" article="a" name="charged necroshade rune">
+		<attribute key="primarytype" value="attack runes"/>
+		<attribute key="type" value="rune"/>
+		<attribute key="runespellname" value="death throw rune"/>
+		<attribute key="charges" value="3"/>
+		<attribute key="weight" value="70"/>
+	</item>
+	<item id="46394" article="an" name="eternal ultimate mana potion">
+		<attribute key="primarytype" value="liquids"/>
+		<attribute key="description" value="Only druids and sorcerers of level 4000 or above may drink this fluid."/>
+		<attribute key="weight" value="310"/>
+	</item>
+<item id="46393" article="an" name="eternal supreme health potion">
+		<attribute key="primarytype" value="liquids"/>
+		<attribute key="description" value="Only knights of level 4000 or above may drink this fluid."/>
+		<attribute key="weight" value="310"/>
+	</item>
+	<item id="46395" article="an" name="eternal ultimate spirit potion">
+		<attribute key="primarytype" value="liquids"/>
+		<attribute key="description" value="Only paladins of level 4000 or above may drink this fluid."/>
+		<attribute key="weight" value="310"/>
+	</item>
+	<item id="46390" article="a" name="taint elixir">
+		<attribute key="primarytype" value="liquids"/>
+		<attribute key="weight" value="210"/>
+		<attribute key="description" value="Only paladins of level 2000 or above may drink this fluid."/>
+	</item>
+	<item id="46391" article="a" name="magician elixir">
+		<attribute key="primarytype" value="liquids"/>
+		<attribute key="weight" value="210"/>
+		<attribute key="description" value="Only druids and sorcerers of level 2000 or above may drink this fluid."/>
+	</item>
+		<item id="46389" article="a" name="flameheart elixir">
+		<attribute key="primarytype" value="liquids"/>
+		<attribute key="weight" value="210"/>
+		<attribute key="description" value="Only knights of level 2000 or above may drink this fluid."/>
+	</item>
+
 </items>
 

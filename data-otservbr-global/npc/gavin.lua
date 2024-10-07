@@ -29,21 +29,21 @@ npcConfig.voices = {
 	{ text = "Runes, Magic... All You need!" },
 }
 
+npcConfig.currency = 46316
 
 npcConfig.shop = {
-	{ name = "flameheart elixir", clientId = 46389, buy = 1900 },
-	{ name = "taint elixir", clientId = 46390, buy = 1900 },
-	{ name = "magician elixir", clientId = 46391, buy = 1900 },
-	{ name = "eternal supreme health potion", clientId = 46393, buy = 3500 },
-	{ name = "eternal ultimate mana potion", clientId = 46394, buy = 3500 },
-	{ name = "eternal ultimate spirit potion", clientId = 46395, buy = 3500 },
-	{ name = "charged Terramorfo rune", clientId = 46243, buy = 2500 },
-	{ name = "charged Celestius rune", clientId = 46244, buy = 2500 },
-	{ name = "charged Glacialon rune", clientId = 46245, buy = 2500 },
-	{ name = "charged Necroshade rune", clientId = 46246, buy = 2500 },
-	{ name = "charged Infernatus rune", clientId = 46247, buy = 2500 },
-	{ name = "charged Voltagor rune", clientId = 46248, buy = 2500 },
-
+	{ name = "flameheart elixir", clientId = 46389, buy = 1 },
+	{ name = "taint elixir", clientId = 46390, buy = 1 },
+	{ name = "magician elixir", clientId = 46391, buy = 1 },
+	{ name = "eternal supreme health potion", clientId = 46393, buy = 1 },
+	{ name = "eternal ultimate mana potion", clientId = 46394, buy = 1 },
+	{ name = "eternal ultimate spirit potion", clientId = 46395, buy = 1 },
+	{ name = "charged Terramorfo rune", clientId = 46243, buy = 1 },
+	{ name = "charged Celestius rune", clientId = 46244, buy = 1 },
+	{ name = "charged Glacialon rune", clientId = 46245, buy = 1 },
+	{ name = "charged Necroshade rune", clientId = 46246, buy = 1 },
+	{ name = "charged Infernatus rune", clientId = 46247, buy = 1 },
+	{ name = "charged Voltagor rune", clientId = 46248, buy = 1 },
 }
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

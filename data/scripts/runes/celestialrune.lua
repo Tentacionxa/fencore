@@ -1,12 +1,12 @@
 local combat = Combat()
-combat:setParameter(COMBAT_PARAM_TYPE, COMBAT_FIREDAMAGE)
+combat:setParameter(COMBAT_PARAM_TYPE, COMBAT_HOLYDAMAGE)
 -- combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_FIREAREA)
 combat:setArea(createCombatArea(AREA_CIRCLE3X3))
 
 function onGetFormulaValues(player, level, maglevel)
-    local max = level / 50 + maglevel * 25
-    local min = max * 0.8
-    return -min, -max
+	local min = (level / 5) + (maglevel * 22.2) + 7
+	local max = (level / 5) + (maglevel * 27) + 17
+	return -min, -max
 end
 
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
@@ -14,7 +14,7 @@ combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
 local rune = Spell("rune")
 
 function rune.onCastSpell(player, var, isHotkey)
-    player:getPosition():sendMagicEffect(CONST_ME_MAGIC_RED)
+    player:getPosition():sendMagicEffect(CONST_ME_HOLYDAMAGE)
     local targetPosition = var:getPosition()
 
     for i = 0, 4 do
@@ -32,9 +32,9 @@ function rune.onCastSpell(player, var, isHotkey)
                     local fromPosition =
                         Position(hitPosition.x - 10, hitPosition.y - 10,
                                  hitPosition.z)
-                    doSendDistanceShoot(fromPosition, hitPosition, CONST_ANI_FIRE)
+                    doSendDistanceShoot(fromPosition, hitPosition, CONST_ANI_HOLY)
                     addEvent(function()
-                        hitPosition:sendMagicEffect(CONST_ME_FIREAREA)
+                        hitPosition:sendMagicEffect(CONST_ME_HOLYAREA)
                     end, 220)
                 end
             end, 200 * i)
@@ -43,18 +43,18 @@ function rune.onCastSpell(player, var, isHotkey)
     return true
 end
 
-
-rune:id(262)
+rune:id(265)
 rune:group("attack")
-rune:name("fire launch rune")
+rune:name("holy launch rune")
 rune:castSound(SOUND_EFFECT_TYPE_SPELL_OR_RUNE)
-rune:impactSound(SOUND_EFFECT_TYPE_SPELL_GREAT_FIREBALL_RUNE)
-rune:runeId(46247)
+rune:impactSound(SOUND_EFFECT_TYPE_SPELL_HOLY_MISSILE_RUNE)
+rune:runeId(46244)
 rune:allowFarUse(true)
 rune:charges(4)
 rune:level(2000)
-rune:magicLevel(45)
-rune:cooldown(5 * 1000)
+rune:magicLevel(4)
+rune:cooldown(2 * 1000)
 rune:groupCooldown(2 * 1000)
-rune:vocation("druid;true", "elder druid;true","sorcerer;true","master sorcerer;true")
+rune:vocation("paladin;true", "royal paladin;true")
 rune:register()
+

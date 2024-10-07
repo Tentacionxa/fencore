@@ -1,7 +1,7 @@
-local mType = Game.createMonsterType("Sub Physical")
+local mType = Game.createMonsterType("Sub Melee")
 local monster = {}
 
-monster.description = "a sub physical"
+monster.description = "a sub melee"
 monster.experience = 6300
 monster.outfit = {
 	lookType = 1593,

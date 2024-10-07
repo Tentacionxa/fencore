@@ -99,7 +99,7 @@ monster.loot = {
 	{id = 16122, chance = 10000, maxCount = 3}, -- green crystal splinter
 	{id = 16120, chance = 10000, maxCount = 2}, -- violet crystal shard
 	{id = 30061, chance = 15000},
-	{id = 33778, chance = 2000}
+	{id = 33778, chance = 2000},
 	{id = 46316, chance = 100000, maxCount = 1 },
 	{id = 43876, chance = 60},
 	{id = 43875, chance = 60},
@@ -109,7 +109,7 @@ monster.loot = {
 }
 
 monster.summon = {
-    maxSummons = 4,
+    maxSummons = 2,
     summons = {
         { name = "Sub Enerfire", chance = 100, interval = 1000, count = 4 },
     },
@@ -122,7 +122,7 @@ monster.attacks = {
 	{name ="combat", interval = 2000, chance = 90, type = COMBAT_FIREDAMAGE, minDamage = -4000, maxDamage = -7000, length = 10, spread = 3, effect = CONST_ME_HITBYFIRE, target = false},
 	{name ="combat", interval = 2000, chance = 40, type = COMBAT_LIFEDRAIN, minDamage = -4000, maxDamage = -7000, length = 10, spread = 3, effect = 70, target = false},
 	{name ="speed", interval = 2000, chance = 20, speedChange = -600, radius = 7, effect = CONST_ME_SOUND_RED, target = false, duration = 20000},
-	{ name = "outfit", interval = 1000, chance = 2, radius = 8, effect = CONST_ME_LOSEENERGY, target = false, duration = 5000, outfitItem = 111 }
+	{ name = "outfit", interval = 1000, chance = 2, radius = 8, effect = CONST_ME_LOSEENERGY, target = false, duration = 5000, outfitItem = 111 },
 }
 
 monster.defenses = {
@@ -141,14 +141,14 @@ monster.elements = {
 	{type = COMBAT_DROWNDAMAGE, percent = 100},
 	{type = COMBAT_ICEDAMAGE, percent = -50},
 	{type = COMBAT_HOLYDAMAGE , percent = -10},
-	{type = COMBAT_DEATHDAMAGE , percent = 100}
+	{type = COMBAT_DEATHDAMAGE , percent = 100},
 }
 
 monster.immunities = {
 	{type = "paralyze", condition = true},
 	{type = "outfit", condition = false},
 	{type = "invisible", condition = true},
-	{type = "bleed", condition = false}
+	{type = "bleed", condition = false},
 }
 
 mType.onThink = function(monster, interval)

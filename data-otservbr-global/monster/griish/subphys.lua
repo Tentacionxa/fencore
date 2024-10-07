@@ -65,8 +65,6 @@ monster.light = {
 	color = 0
 }
 
-monster.summon = {
-}
 
 monster.voices = {
 	interval = 5000,
@@ -107,7 +105,7 @@ monster.loot = {
 monster.summon = {
     maxSummons = 4,
     summons = {
-        { name = "Sub Physical", chance = 100, interval = 1000, count = 4 },
+        { name = "Sub Melee", chance = 100, interval = 1000, count = 4 },
     },
 }
 

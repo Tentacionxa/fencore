@@ -24,7 +24,7 @@ function rune.onCastSpell(creature, var, isHotkey)
     return combat:execute(creature, var) -- Jeżeli cel nie jest graczem, wykonaj atak
 end
 
-rune:id(250)
+rune:id(1250)
 rune:group("attack")
 rune:name("death throw rune")
 rune:castSound(SOUND_EFFECT_TYPE_SPELL_OR_RUNE)

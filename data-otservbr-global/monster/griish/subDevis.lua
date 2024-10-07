@@ -65,8 +65,6 @@ monster.light = {
 	color = 0
 }
 
-monster.summon = {
-}
 
 monster.voices = {
 	interval = 5000,
@@ -95,7 +93,7 @@ monster.loot = {
 	{id = 16122, chance = 10000, maxCount = 3}, -- green crystal splinter
 	{id = 16120, chance = 10000, maxCount = 2}, -- violet crystal shard
 	{id = 30061, chance = 15000},
-	{id = 33778, chance = 2000}
+	{id = 33778, chance = 2000},
 	{id = 46316, chance = 100000, maxCount = 1 },
 	{id = 43884, chance = 60},
 	{id = 43883, chance = 60},
@@ -104,7 +102,7 @@ monster.loot = {
 }
 
 monster.summon = {
-    maxSummons = 4,
+    maxSummons = 2,
     summons = {
         { name = "Sub Enerfire", chance = 100, interval = 1000, count = 4 },
     },

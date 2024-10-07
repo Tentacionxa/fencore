@@ -98,12 +98,6 @@ monster.loot = {
 
 }
 
-monster.summon = {
-    maxSummons = 4,
-    summons = {
-        { name = "Sub Icearth", chance = 100, interval = 1000, count = 4 },
-    },
-}
 
 monster.attacks = {
 	{name ="melee", interval = 2000, chance = 100, minDamage = -2300, maxDamage = -2750},

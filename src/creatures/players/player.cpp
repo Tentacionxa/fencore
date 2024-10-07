@@ -21,6 +21,7 @@
 #include "creatures/players/cyclopedia/player_title.hpp"
 #include "creatures/players/storages/storages.hpp"
 #include "game/game.hpp"
+#include "game/game.cpp"
 #include "game/modal_window/modal_window.hpp"
 #include "game/scheduling/dispatcher.hpp"
 #include "game/scheduling/task.hpp"
@@ -42,6 +43,7 @@
 #include "enums/account_type.hpp"
 #include "enums/account_group_type.hpp"
 #include "enums/player_blessings.hpp"
+
 
 MuteCountMap Player::muteCountMap;
 
@@ -7372,9 +7374,10 @@ return;
 }
 
 void Player::forgeTransferItemTier(ForgeAction_t actionType, uint16_t donorItemId, uint8_t tier, uint16_t receiveItemId, bool convergence) {
-
+std::shared_ptr<Item> receiveItem = getInventoryItemByID(receiveItemId);
     // Check if the player has space in their inventory or containers before proceeding
     std::shared_ptr<Container> topParentContainer = receiveItem->getTopParentContainer();
+	
     if (topParentContainer) {
 		auto donorItem = getForgeItemFromId(donorItemId, tier);
         uint32_t addItemCount = donorItem->getItemHoldingCount() + 1;

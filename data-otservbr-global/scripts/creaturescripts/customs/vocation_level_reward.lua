@@ -48,10 +48,10 @@ local table = {
        [4500] = {items = {{itemid = 22118, count = 600}}, storage = 31426, msg = "You won x600 Tibia Coins for reaching level 4500!"},
        [5000] = {items = {{itemid = 22118, count = 2000}}, storage = 46157, msg = "You won x2000 Tibia Coins for reaching level 5000!"},
        [5300] = {items = {{itemid = 22118, count = 400}}, storage = 58167, msg = "You won x400 Tibia Coins for reaching level 5300!"},
-       [5500] = {items = {{itemid = 22118, count = 400}}, storage = 61421, msg = "You won x400 Tibia Coins for reaching level 5500!"},
-       [6000] = {items = {{itemid = 22118, count = 3000}}, storage = 61422, msg = "You won x3000 Tibia Coins for reaching level 6000!"},
-       [6300] = {items = {{itemid = 22118, count = 400}}, storage = 74412, msg = "You won x400 Tibia Coins for reaching level 6300!"},
-       [6500] = {items = {{itemid = 22118, count = 400}}, storage = 61423, msg = "You won x400 Tibia Coins for reaching level 6500!"},
+       [5500] = {items = {{itemid = 22118, count = 400}}, storage = 63431, msg = "You won x400 Tibia Coins for reaching level 5500!"},
+       [6000] = {items = {{itemid = 22118, count = 3000}}, storage = 61542, msg = "You won x3000 Tibia Coins for reaching level 6000!"},
+       [6300] = {items = {{itemid = 22118, count = 400}}, storage = 75432, msg = "You won x400 Tibia Coins for reaching level 6300!"},
+       [6500] = {items = {{itemid = 22118, count = 400}}, storage = 61223, msg = "You won x400 Tibia Coins for reaching level 6500!"},
        [7000] = {items = {{itemid = 22118, count = 4000}}, storage = 61424, msg = "You won x4000 Tibia Coins for reaching level 7000!"},
        [7300] = {items = {{itemid = 22118, count = 400}}, storage = 68451, msg = "You won x400 Tibia Coins for reaching level 7300!"},
        [7500] = {items = {{itemid = 22118, count = 400}}, storage = 61425, msg = "You won x400 Tibia Coins for reaching level 7500!"},
@@ -211,9 +211,9 @@ local table = {
        [4300] = {items = {{itemid = 22118, count = 600}}, storage = 34425, msg = "You won x600 Tibia Coins for reaching level 4300!"},
        [4500] = {items = {{itemid = 22118, count = 600}}, storage = 34426, msg = "You won x600 Tibia Coins for reaching level 4500!"}
        [5000] = {items = {{itemid = 22118, count = 2000}}, storage = 47247, msg = "You won x2000 Tibia Coins for reaching level 5000!"},
-       [5300] = {items = {{itemid = 22118, count = 400}}, storage = 47157, msg = "You won x400 Tibia Coins for reaching level 5300!"},
-       [5500] = {items = {{itemid = 22118, count = 400}}, storage = 62751, msg = "You won x400 Tibia Coins for reaching level 5500!"},
-       [6000] = {items = {{itemid = 22118, count = 3000}}, storage = 64132, msg = "You won x3000 Tibia Coins for reaching level 6000!"},
+       [5300] = {items = {{itemid = 22118, count = 400}}, storage = 47137, msg = "You won x400 Tibia Coins for reaching level 5300!"},
+       [5500] = {items = {{itemid = 22118, count = 400}}, storage = 62251, msg = "You won x400 Tibia Coins for reaching level 5500!"},
+       [6000] = {items = {{itemid = 22118, count = 3000}}, storage = 64232, msg = "You won x3000 Tibia Coins for reaching level 6000!"},
        [6300] = {items = {{itemid = 22118, count = 400}}, storage = 74142, msg = "You won x400 Tibia Coins for reaching level 6300!"},
        [6500] = {items = {{itemid = 22118, count = 400}}, storage = 62573, msg = "You won x400 Tibia Coins for reaching level 6500!"},
        [7000] = {items = {{itemid = 22118, count = 4000}}, storage = 32564, msg = "You won x4000 Tibia Coins for reaching level 7000!"},
@@ -244,7 +244,7 @@ function rewardLevel.onAdvance(player, skill, oldLevel, newLevel)
                 			ret = ""
                 		
                                         end
-                                        player:addItemEx(Game.createItem(z.items[v].itemid, z.items[v].count), true, CONST_SLOT_STORE_INBOX)
+                                        player:addItem(z.items[v].itemid, z.items[v].count)
 				   
             				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, z.msg)
             				player:setStorageValue(z.storage, 1)

@@ -65,10 +65,6 @@ local function creatureSayCallback(npc, creature, type, message)
 		return false
 	end
 
-	if Karin.BloodyBalance:npcHandler(player, message, npc, npcHandler) then
-		return true
-	end
-
 	-- Parse bank
 	npc:parseBank(message, npc, creature, npcHandler)
 	-- Parse guild bank
@@ -78,7 +74,7 @@ local function creatureSayCallback(npc, creature, type, message)
 	return true
 end
 
-npcHandler:setMessage(MESSAGE_GREET, "Zzzz... What may I do for you, |PLAYERNAME|? Griish business, perhaps?")
+npcHandler:setMessage(MESSAGE_GREET, "Griish Blessings |PLAYERNAME|!! Bank business, perhaps?")
 npcHandler:setMessage(MESSAGE_FAREWELL, "Have a nice day.")
 npcHandler:setMessage(MESSAGE_WALKAWAY, "Have a nice day.")
 npcHandler:setCallback(CALLBACK_GREET, NpcBankGreetCallback)

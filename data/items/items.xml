@@ -82683,17 +82683,6 @@ Granted by TibiaGoals.com"/>
 			<attribute key="slot" value="ring"/>
 		</attribute>
 	</item>
-	<item id="46397" article="a" name="ring of holy">
-		<attribute key="primarytype" value="rings"/>
-			<attribute key="showCharges" value="1"/>
-		<attribute key="showAttributes" value="1"/>
-		<attribute key="absorbpercentholy" value="40"/>
-		<attribute key="charges" value="10"/>
-		<attribute key="weight" value="100"/>
-		<attribute key="script" value="moveevent">
-			<attribute key="slot" value="ring"/>
-		</attribute>
-	</item>
 
 	<item id="46403" article="a" name="amulet of death">
 		<attribute key="primarytype" value="amulets and necklaces"/>
@@ -82739,7 +82728,7 @@ Granted by TibiaGoals.com"/>
 			<attribute key="slot" value="necklace"/>
 		</attribute>
 	</item>
-	<item id="46406" article="a" name="amulet of ice">
+	<item id="46399" article="a" name="amulet of ice">
 		<attribute key="primarytype" value="amulets and necklaces"/>
 		<attribute key="showCharges" value="1"/>
 		<attribute key="showAttributes" value="1"/>
@@ -82750,7 +82739,7 @@ Granted by TibiaGoals.com"/>
 			<attribute key="slot" value="necklace"/>
 		</attribute>
 	</item>
-		<item id="46406" article="a" name="amulet of holy">
+		<item id="46408" article="a" name="amulet of holy">
 		<attribute key="primarytype" value="amulets and necklaces"/>
 		<attribute key="showCharges" value="1"/>
 		<attribute key="showAttributes" value="1"/>
@@ -82922,6 +82911,22 @@ Granted by TibiaGoals.com"/>
 		<attribute key="decayTo" value="0"/>
 		<attribute key="script" value="moveevent">
 			<attribute key="eventType" value="stepin"/>
+		</attribute>
+	</item>
+
+	<item id="46362" name="eternal night shadow boots">
+		<attribute key="absorbpercentphysical" value="10"/>
+		<attribute key="skilldist" value="7"/>
+		<attribute key="speed" value="20"/>
+		<attribute key="armor" value="9"/>
+		<attribute key="weight" value="1300"/>
+		<attribute key="imbuementslot" value="1">
+			<attribute key="increase speed" value="3"/>
+		</attribute>
+		<attribute key="script" value="moveevent">
+			<attribute key="slot" value="feet"/>
+			<attribute key="level" value="2500"/>
+			<attribute key="vocation" value="Paladin;true, Royal Paladin"/>
 		</attribute>
 	</item>
 </items>

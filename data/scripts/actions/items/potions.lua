@@ -60,7 +60,7 @@ local potions = {
 	[46390] = { health = { 1400, 1700 }, mana = { 700, 1000 }, vocations = { VOCATION.BASE_ID.PALADIN }, level = 2000, flask = 284, description = "Only paladins of level 2000 or above may drink this fluid." },
 	[46389] = { health = { 1600, 2000 }, vocations = { VOCATION.BASE_ID.KNIGHT }, level = 2000, flask = 284, description = "Only knights of level 2000 or above may drink this fluid." },
 	[46394] = { mana = { 2500, 2700 }, vocations = { VOCATION.BASE_ID.SORCERER, VOCATION.BASE_ID.DRUID }, level = 4000, flask = 284, description = "Only druids and sorcerers of level 4000 or above may drink this fluid." },
-	[46395] = { health = { 2000, 1600 }, mana = { 1300, 1700 }, vocations = { VOCATION.BASE_ID.PALADIN }, level = 4000, flask = 284, description = "Only paladins of level 4000 or above may drink this fluid." },
+	[46395] = { health = { 2300, 2900 }, mana = { 1600, 2200 }, vocations = { VOCATION.BASE_ID.PALADIN }, level = 4000, flask = 284, description = "Only paladins of level 4000 or above may drink this fluid." },
 	[46393] = { health = { 2200, 2500 }, vocations = { VOCATION.BASE_ID.KNIGHT }, level = 4000, flask = 284, description = "Only knights of level 4000 or above may drink this fluid." },
 }
 

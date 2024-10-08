@@ -82842,5 +82842,87 @@ Granted by TibiaGoals.com"/>
 		<attribute key="description" value="Only knights of level 2000 or above may drink this fluid."/>
 	</item>
 
+	<item id="49208" article="a" name="black magic wall">
+		<attribute key="type" value="magicfield"/>
+		<attribute key="blocking" value="1"/>
+		<attribute key="duration" value="20"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="script" value="moveevent">
+			<attribute key="eventType" value="stepin"/>
+		</attribute>
+	</item>
+		<item id="49196" article="a" name="blue green magic wall">
+		<attribute key="type" value="magicfield"/>
+		<attribute key="blocking" value="1"/>
+		<attribute key="duration" value="20"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="script" value="moveevent">
+			<attribute key="eventType" value="stepin"/>
+		</attribute>
+	</item>
+		<item id="49212" article="a" name="blue magic wall">
+		<attribute key="type" value="magicfield"/>
+		<attribute key="blocking" value="1"/>
+		<attribute key="duration" value="20"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="script" value="moveevent">
+			<attribute key="eventType" value="stepin"/>
+		</attribute>
+	</item>
+		<item id="49209" article="a" name="dark purple magic wall">
+		<attribute key="type" value="magicfield"/>
+		<attribute key="blocking" value="1"/>
+		<attribute key="duration" value="20"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="script" value="moveevent">
+			<attribute key="eventType" value="stepin"/>
+		</attribute>
+	</item>
+
+		<item id="49203" article="a" name="orange magic wall">
+		<attribute key="type" value="magicfield"/>
+		<attribute key="blocking" value="1"/>
+		<attribute key="duration" value="20"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="script" value="moveevent">
+			<attribute key="eventType" value="stepin"/>
+		</attribute>
+	</item>
+		<item id="49194" article="a" name="purple magic wall">
+		<attribute key="type" value="magicfield"/>
+		<attribute key="blocking" value="1"/>
+		<attribute key="duration" value="20"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="script" value="moveevent">
+			<attribute key="eventType" value="stepin"/>
+		</attribute>
+	</item>
+		<item id="49195" article="a" name="rainbow magic wall">
+		<attribute key="type" value="magicfield"/>
+		<attribute key="blocking" value="1"/>
+		<attribute key="duration" value="20"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="script" value="moveevent">
+			<attribute key="eventType" value="stepin"/>
+		</attribute>
+	</item>
+		<item id="49193" article="a" name="white magic wall">
+		<attribute key="type" value="magicfield"/>
+		<attribute key="blocking" value="1"/>
+		<attribute key="duration" value="20"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="script" value="moveevent">
+			<attribute key="eventType" value="stepin"/>
+		</attribute>
+	</item>
+		<item id="49210" article="a" name="yellow magic wall">
+		<attribute key="type" value="magicfield"/>
+		<attribute key="blocking" value="1"/>
+		<attribute key="duration" value="20"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="script" value="moveevent">
+			<attribute key="eventType" value="stepin"/>
+		</attribute>
+	</item>
 </items>
 

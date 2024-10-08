@@ -531,7 +531,7 @@ local rewards = {
 
 }
 
-feralId = 46092
+feraId = 46092
 
 local fera = Action()
 

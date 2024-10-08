@@ -127,7 +127,7 @@ monster.defenses = {
 }
 
 monster.elements = {
-	{type = COMBAT_PHYSICALDAMAGE, percent = 15},
+	{type = COMBAT_PHYSICALDAMAGE, percent = -50},
 	{type = COMBAT_ENERGYDAMAGE, percent = 15},
 	{type = COMBAT_EARTHDAMAGE, percent = 15},
 	{type = COMBAT_FIREDAMAGE, percent = 15},
@@ -135,7 +135,7 @@ monster.elements = {
 	{type = COMBAT_MANADRAIN, percent = 0},
 	{type = COMBAT_DROWNDAMAGE, percent = 0},
 	{type = COMBAT_ICEDAMAGE, percent = 15},
-	{type = COMBAT_HOLYDAMAGE , percent = 15},
+	{type = COMBAT_HOLYDAMAGE , percent = -40},
 	{type = COMBAT_DEATHDAMAGE , percent = 15}
 }
 
@@ -150,8 +150,8 @@ mType.onThink = function(monster, interval)
 end
 
 mType.onAppear = function(monster, creature)
-monster:setIcon("sub-holy", CreatureIconCategory_Quests, CreatureIconQuests_GreenShield, 100)
-monster:setIcon("subholy", CreatureIconCategory_Quests, CreatureIconQuests_RedShield, 100)
+monster:setIcon("sub-holy", CreatureIconCategory_Quests, CreatureIconQuests_YellowShield, 50)
+monster:setIcon("subholy", CreatureIconCategory_Quests, CreatureIconQuests_RedShield, 40)
 	if monster:getType():isRewardBoss() then
 		monster:setReward(true)
 	end

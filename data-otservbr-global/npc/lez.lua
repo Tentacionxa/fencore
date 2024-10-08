@@ -53,20 +53,20 @@ end
 npcConfig.currency = 46316
 
 npcConfig.shop = {
-	{ itemName = "nexus rod", clientId = 46329, buy = 25, count = 15000 },
-	{ itemName = "nexus wand", clientId = 46332, buy = 25, count = 15000 },
-	{ itemName = "nexus axe", clientId = 46326, buy = 25, count = 15000 },
-	{ itemName = "nexus sword", clientId = 46331, buy = 25, count = 15000 },
-	{ itemName = "nexus club", clientId = 46328, buy = 25, count = 15000 },
-	{ itemName = "nexus bow", clientId = 46327, buy = 25, count = 15000 },
-	{ itemName = "nexus shield", clientId = 46330, buy = 25, count = 15000 },
-	{ itemName = "xeno rod", clientId = 46298, buy = 40, count = 15000 },
-	{ itemName = "xeno wand", clientId = 46301, buy = 40, count = 15000 },
-	{ itemName = "xeno axe", clientId = 46295, buy = 40, count = 15000 },
-	{ itemName = "xeno sword", clientId = 46300, buy = 40, count = 15000 },
-	{ itemName = "xeno club", clientId = 46297, buy = 40, count = 15000 },
-	{ itemName = "xeno bow", clientId = 46296, buy = 40, count = 15000 },
-	{ itemName = "xeno shield", clientId = 46299, buy = 40, count = 15000 },
+	{ itemName = "nexus rod", clientId = 46329, buy = 300, count = 15000 },
+	{ itemName = "nexus wand", clientId = 46332, buy = 300, count = 15000 },
+	{ itemName = "nexus axe", clientId = 46326, buy = 300, count = 15000 },
+	{ itemName = "nexus sword", clientId = 46331, buy = 300, count = 15000 },
+	{ itemName = "nexus club", clientId = 46328, buy = 300, count = 15000 },
+	{ itemName = "nexus bow", clientId = 46327, buy = 300, count = 15000 },
+	{ itemName = "nexus shield", clientId = 46330, buy = 300, count = 15000 },
+	{ itemName = "xeno rod", clientId = 46298, buy = 500, count = 15000 },
+	{ itemName = "xeno wand", clientId = 46301, buy = 500, count = 15000 },
+	{ itemName = "xeno axe", clientId = 46295, buy = 500, count = 15000 },
+	{ itemName = "xeno sword", clientId = 46300, buy = 500, count = 15000 },
+	{ itemName = "xeno club", clientId = 46297, buy = 500, count = 15000 },
+	{ itemName = "xeno bow", clientId = 46296, buy = 500, count = 15000 },
+	{ itemName = "xeno shield", clientId = 46299, buy = 500, count = 15000 },
 }
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

@@ -81713,43 +81713,43 @@ Granted by TibiaGoals.com"/>
 		<item id="46330" article="an" name="nexus shield">
 		<attribute key="primarytype" value="training weapons"/>
 		<attribute key="showCharges" value="1"/>
-		<attribute key="charges" value="5000"/>
+		<attribute key="charges" value="15000"/>
 		<attribute key="weight" value="1000"/>
 	</item>
 		<item id="46326" article="an" name="nexus axe">
 		<attribute key="primarytype" value="training weapons"/>
 		<attribute key="showCharges" value="1"/>
-		<attribute key="charges" value="5000"/>
+		<attribute key="charges" value="15000"/>
 		<attribute key="weight" value="1000"/>
 	</item>
 		<item id="46327" article="an" name="nexus bow">
 		<attribute key="primarytype" value="training weapons"/>
 		<attribute key="showCharges" value="1"/>
-		<attribute key="charges" value="5000"/>
+		<attribute key="charges" value="15000"/>
 		<attribute key="weight" value="1000"/>
 	</item>
 		<item id="46328" article="an" name="nexus club">
 		<attribute key="primarytype" value="training weapons"/>
 		<attribute key="showCharges" value="1"/>
-		<attribute key="charges" value="5000"/>
+		<attribute key="charges" value="15000"/>
 		<attribute key="weight" value="1000"/>
 	</item>
 		<item id="46329" article="an" name="nexus rod">
 		<attribute key="primarytype" value="training weapons"/>
 		<attribute key="showCharges" value="1"/>
-		<attribute key="charges" value="5000"/>
+		<attribute key="charges" value="15000"/>
 		<attribute key="weight" value="1000"/>
 	</item>
 		<item id="46331" article="an" name="nexus sword">
 		<attribute key="primarytype" value="training weapons"/>
 		<attribute key="showCharges" value="1"/>
-		<attribute key="charges" value="5000"/>
+		<attribute key="charges" value="15000"/>
 		<attribute key="weight" value="1000"/>
 	</item>
 		<item id="46332" article="an" name="nexus wand">
 		<attribute key="primarytype" value="training weapons"/>
 		<attribute key="showCharges" value="1"/>
-		<attribute key="charges" value="5000"/>
+		<attribute key="charges" value="15000"/>
 		<attribute key="weight" value="1000"/>
 	</item>
 
@@ -81758,43 +81758,43 @@ Granted by TibiaGoals.com"/>
 		<item id="46299" article="an" name="xeno shield">
 		<attribute key="primarytype" value="training weapons"/>
 		<attribute key="showCharges" value="1"/>
-		<attribute key="charges" value="5000"/>
+		<attribute key="charges" value="15000"/>
 		<attribute key="weight" value="1000"/>
 	</item>
 		<item id="46295" article="an" name="xeno axe">
 		<attribute key="primarytype" value="training weapons"/>
 		<attribute key="showCharges" value="1"/>
-		<attribute key="charges" value="5000"/>
+		<attribute key="charges" value="15000"/>
 		<attribute key="weight" value="1000"/>
 	</item>
 		<item id="46296" article="an" name="xeno bow">
 		<attribute key="primarytype" value="training weapons"/>
 		<attribute key="showCharges" value="1"/>
-		<attribute key="charges" value="5000"/>
+		<attribute key="charges" value="15000"/>
 		<attribute key="weight" value="1000"/>
 	</item>
 		<item id="46297" article="an" name="xeno club">
 		<attribute key="primarytype" value="training weapons"/>
 		<attribute key="showCharges" value="1"/>
-		<attribute key="charges" value="5000"/>
+		<attribute key="charges" value="15000"/>
 		<attribute key="weight" value="1000"/>
 	</item>
 		<item id="46298" article="an" name="xeno rod">
 		<attribute key="primarytype" value="training weapons"/>
 		<attribute key="showCharges" value="1"/>
-		<attribute key="charges" value="5000"/>
+		<attribute key="charges" value="15000"/>
 		<attribute key="weight" value="1000"/>
 	</item>
 		<item id="46300" article="an" name="xeno sword">
 		<attribute key="primarytype" value="training weapons"/>
 		<attribute key="showCharges" value="1"/>
-		<attribute key="charges" value="5000"/>
+		<attribute key="charges" value="15000"/>
 		<attribute key="weight" value="1000"/>
 	</item>
 		<item id="46301" article="an" name="xeno wand">
 		<attribute key="primarytype" value="training weapons"/>
 		<attribute key="showCharges" value="1"/>
-		<attribute key="charges" value="5000"/>
+		<attribute key="charges" value="15000"/>
 		<attribute key="weight" value="1000"/>
 	</item>
   <item id="46280" article="an" name="exercise tower">

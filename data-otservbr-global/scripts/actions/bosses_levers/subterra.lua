@@ -18,8 +18,8 @@ local config = {
 		{ pos = Position(31985, 33639, 8), teleport = Position(31975, 33599, 8) },
 	},
 	specPos = {
-		from = Position(31813, 33576, 8),
-		to = Position(31857, 33607, 8),
+		from = Position(31969, 33580, 8),
+		to = Position(32000, 33602, 8),
 	},
 	exit = Position(31965, 33575, 8),
 	exitTeleporter = Position(32008, 33607, 8),

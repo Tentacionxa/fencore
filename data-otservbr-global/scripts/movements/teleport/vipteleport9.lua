@@ -1,8 +1,5 @@
 local config = {
-	{ name="Night Island", position = Position(31944, 32399, 5) },
-    { name="Cemetery", position = Position (32130, 32201, 7) },
-	{ name="Cyclops Mountain", position = Position(32189, 32231, 7) },
-    { name="Elf Island Cave", position = Position (31869, 32254, 6) }
+    { name="Private Room", position = Position (33514, 32496, 12) }
 	
 }
 
@@ -14,7 +11,7 @@ function tepppvip.onStepIn(creature, item, position, fromPosition, target, toPos
     end
 
 	local window = ModalWindow {
-		title = "Rookie Portal",
+		title = "VIP Portal",
 		message = "Locations"
 	}
 	for i, info in pairs(config) do
@@ -36,5 +33,5 @@ function tepppvip.onStepIn(creature, item, position, fromPosition, target, toPos
 	return true
 end
 tepppvip:type("stepin")
-tepppvip:uid(42535)
+tepppvip:uid(54612)
 tepppvip:register()

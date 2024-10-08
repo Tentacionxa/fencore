@@ -81,6 +81,7 @@ monster.loot = {
 	{ name = "fera bag", chance = 15 },
 	{ id = 46290, chance = 100, maxCount = 1 },
 	{ id = 46316, chance = 100000, maxCount = 1 },
+	{ id = 46082, chance = 100, maxCount = 1 },
 }
 
 monster.attacks = {

@@ -594,7 +594,7 @@ local rewards = {
 	{ id = 16124, name = "blue crystal splinter" },
 }
 
-tenebrisId = 46041
+tenebrisId = 46094
 
 local tenebris = Action()
 
@@ -655,7 +655,7 @@ local rewards = {
 	
 }
 
-mysticId = 46041
+mysticId = 46082
 
 local mystic = Action()
 
@@ -716,7 +716,7 @@ local rewards = {
 
 }
 
-albaId = 46041
+albaId = 46093
 
 local alba = Action()
 

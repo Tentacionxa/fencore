@@ -13,35 +13,35 @@ Karin.UpgradeSystem = {
         },
         [3] = {
             price = {46314,10},
-            chance = 30,
+            chance = 25,
         },
         [4] = {
             price = {46314,10},
-            chance = 40,
+            chance = 30,
         },
         [5] = {
             price = {46314,10},
-            chance = 50,
+            chance = 25,
         },
         [6] = {
             price = {46314,10},
-            chance = 60,
+            chance = 17,
         },
         [7] = {
             price = {46314,10},
-            chance = 90,
+            chance = 14,
         },
         [8] = {
             price = {46314,10},
-            chance = 120,
+            chance = 12,
         },
         [9] = {
             price = {46314,10},
-            chance = 150,
+            chance = 10,
         },
         [10] = {
             price = {46314,10},
-            chance = 200,
+            chance = 5,
         },
     },
     Attributes = {

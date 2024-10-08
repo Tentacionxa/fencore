@@ -15,11 +15,11 @@ logLevel = "debug"
 --- Toggles the server's maintenance mode.
 -- When enabled, it restricts user access and indicates maintenance operations.
 -- @field [parent=#global] #boolean toggleMaintainMode false by default, set to true to enable maintenance mode.
-toggleMaintainMode = true
+toggleMaintainMode = false
 --- Message displayed during maintenance mode.
 -- Should inform the expected downtime or resumption details succinctly.
 -- @field [parent=#global] #string maintainModeMessage an empty string by default, set a custom message if needed.
-maintainModeMessage = "We shut the server for maintenance. We will be back in 30 minutes!"
+maintainModeMessage = ""
 
 -- Combat settings
 -- NOTE: valid values for worldType are: "pvp", "no-pvp" and "pvp-enforced"

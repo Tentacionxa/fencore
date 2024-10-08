@@ -1,4 +1,4 @@
-arin.CraftSystem = {
+Karin.CraftSystem = {
     ['Equipments'] = {
         crafts = {  
             ['Eternal Night Root Spellbook'] = {

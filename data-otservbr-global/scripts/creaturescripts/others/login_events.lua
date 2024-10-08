@@ -5,7 +5,6 @@ function loginEvents.onLogin(player)
 		--Quests
 		--Cults Of Tibia Quest
 "IncreaseManaDamageEvent"
-		"HealthPillar",
 		"YalahariHealth",
 	}
 

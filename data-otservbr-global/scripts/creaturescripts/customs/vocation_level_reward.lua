@@ -154,7 +154,7 @@ local table = {
      [3800] = {items = {{itemid = 22118, count = 500}}, storage = 33423, msg = "You won x500 Tibia Coins for reaching level 3800!"},
      [4000] = {items = {{itemid = 22118, count = 1500}}, storage = 33424, msg = "You won x1500 Tibia Coins for reaching level 4000!"},
      [4300] = {items = {{itemid = 22118, count = 600}}, storage = 33425, msg = "You won x600 Tibia Coins for reaching level 4300!"},
-     [4500] = {items = {{itemid = 22118, count = 600}}, storage = 33426, msg = "You won x600 Tibia Coins for reaching level 4500!"}
+     [4500] = {items = {{itemid = 22118, count = 600}}, storage = 33426, msg = "You won x600 Tibia Coins for reaching level 4500!"},
      [5000] = {items = {{itemid = 22118, count = 2000}}, storage = 46157, msg = "You won x2000 Tibia Coins for reaching level 5000!"},
      [5300] = {items = {{itemid = 22118, count = 400}}, storage = 46157, msg = "You won x400 Tibia Coins for reaching level 5300!"},
      [5500] = {items = {{itemid = 22118, count = 400}}, storage = 61741, msg = "You won x400 Tibia Coins for reaching level 5500!"},

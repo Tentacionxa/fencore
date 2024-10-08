@@ -27,7 +27,7 @@ local caveExclusiva = {
 			[49178] = true, -- 12hrs
 			[49307] = true, -- 24hrs
 		},
-		buyItemID = {20453}, -- DOOR ID em que o jogador deve usar a KEY ID definida na actionItemIDS para comprar uma cave.
+		buyItemID = {20453, 31568}, -- DOOR ID em que o jogador deve usar a KEY ID definida na actionItemIDS para comprar uma cave.
 		caveStats = true, -- pode ser definido como true ou false, se definido como falso não irá permitir o uso da talkaction que exibe informações sobre as caves.
 		buyMessage = "[CAVE EXCLUSIVE] You bought the %s cave for %s.", -- esta é a mensagem que irá aparecer quando o jogador comprar uma cave. | 1° [%s] = Variavel para nome da cave, 2° [%s] = Variavel para duração da cave
 		timeLeftMessageInCave = "[CAVE EXCLUSIVE] Your time in the cave %s it's over and you've been teleported to the temple.", -- Mensagem quando acabar o tempo e o player estiver dentro da cave

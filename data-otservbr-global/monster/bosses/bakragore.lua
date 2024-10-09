@@ -84,13 +84,13 @@ monster.loot = {
     { id = 43950, chance = 6500, maxCount = 1 }, -- advanced promotion scroll
     { id = 43947, chance = 7500, maxCount = 1 }, -- basic promotion scroll
     { id = 43963, chance = 8000, maxCount = 1 }, -- figurine of bakragore
-    { id = 43962, chance = 7000, maxCount = 1 }, -- putrefactive figurine
+    { id = 43962, chance = 127000, maxCount = 2 }, -- putrefactive figurine
     { id = 43948, chance = 7000, maxCount = 1 }, -- revised promotion scroll
     { id = 43946, chance = 7000, maxCount = 1 }, -- abridged promotion scroll
-    { id = 43968, chance = 7000, maxCount = 5 }, -- bakragores amalgamation
+    { id = 43968 , chance = 127000, maxCount = 2 }, -- bakragores amalgamation
     { id = 3036, chance = 2500, maxCount = 5 }, -- violet gem
     { id = 43860, chance = 300, maxCount = 1 }, -- bag you covet
-	{ id = 43854, chance = 500, maxCount = 1 }, -- tainted heart
+	{ id = 43854, chance = 12521, maxCount = 2 }, -- tainted heart
 	{ id = 43855, chance = 500, maxCount = 1 }, -- darklight heart
 }
 

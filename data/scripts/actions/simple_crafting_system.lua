@@ -33,12 +33,11 @@ local config = {
 											[14] = {item = 39151, count = 1}, -- arcanomancer regalia
 									[15] = {item = 39152, count = 1}, -- arcanomancer folio
 									[16] = {item = 34095, count = 1},-- soulmantle
-										[17] = {item = 39152, count = 1},-- arcanomancer folio
-											[18] = {item = 43779, count = 1},-- unstable darklight matter.
-													[19] = {item = 43849, count = 20},-- rotten roots.
-														[20] = {item = 43850, count = 50},-- dark obsidian splinter.
-												[21] = {item = 10315, count = 50},-- sulphurous stone
-											[22] = {item = 16124, count = 50},-- blue crystal splinter
+											[17] = {item = 43779, count = 1},-- unstable darklight matter.
+													[18] = {item = 43849, count = 20},-- rotten roots.
+														[19] = {item = 43850, count = 50},-- dark obsidian splinter.
+												[20] = {item = 10315, count = 50},-- sulphurous stone
+											[21] = {item = 16124, count = 50},-- blue crystal splinter
 								},
 							},
 	 
@@ -46,27 +45,22 @@ local config = {
 							itemID = 46083,
 							reqItems = {
 									[1] = {item = 22516, count = 50}, -- Silver Tokens
-									[2] = {item = 8090, count = 1}, -- Spellbook of Dark mysteries
-									[3] = {item = 20207, count = 5}, -- pool of chitinous glue
-									[4] = {item = 9646, count = 20}, -- book of prayers
-									[5] = {item = 10320, count = 20}, -- book of necromantic rituals
-											[6] = {item = 22516, count = 30}, -- Silver Tokens
-									[7] = {item = 8090, count = 1}, -- Spellbook of Dark mysteries
-									[8] = {item = 20207, count = 5}, -- pool of chitinous glue
-									[9] = {item = 9646, count = 20}, -- book of prayers
-									[10] = {item = 10320, count = 20}, -- book of necromantic rituals
-									[11] = {item = 3598, count = 50}, -- cookie
-										[12] = {item = 48250, count = 100}, -- cookie
-										[13] = {item = 6393, count = 1}, -- cream cake
-										[14] = {item = 48252, count = 100}, -- brigadeiros
-										[15] = {item = 43851, count = 100}, -- darklight matter
-											[16] = {item = 7451, count = 1}, -- shadow sceptre
-												[17] = {item = 43850, count = 100}, -- dark obsidian splinter
-													[18] = {item = 43882, count = 1}, -- sanguine coil
-														[19] = {item = 11490, count = 100}, -- quara pincers
-														[20] = {item = 13990, count = 1}, -- necklace of the deep
-															[21] = {item = 48413, count = 1}, -- amber sickle
-																	[22] = {item = 48510, count = 100}, -- demon roots
+									[2] = {item = 9646, count = 20}, -- book of prayers
+									[3] = {item = 8090, count = 1}, -- Spellbook of Dark mysteries
+									[4] = {item = 20207, count = 5}, -- pool of chitinous glue
+									[5] = {item = 10320, count = 40}, -- book of necromantic rituals
+									[6] = {item = 3598, count = 50}, -- cookie
+										[7] = {item = 48250, count = 100}, -- cookie
+										[8] = {item = 6393, count = 1}, -- cream cake
+										[9] = {item = 48252, count = 100}, -- brigadeiros
+										[10] = {item = 43851, count = 100}, -- darklight matter
+											[11] = {item = 7451, count = 1}, -- shadow sceptre
+												[12] = {item = 43850, count = 100}, -- dark obsidian splinter
+													[13] = {item = 43882, count = 1}, -- sanguine coil
+														[14] = {item = 11490, count = 100}, -- quara pincers
+														[15] = {item = 13990, count = 1}, -- necklace of the deep
+															[16] = {item = 48413, count = 1}, -- amber sickle
+																	[17] = {item = 48510, count = 100}, -- demon roots
 													
 								},
 							},
@@ -79,27 +73,25 @@ local config = {
 							itemID = 46041,
 							reqItems = {
 								[1] = {item = 43887, count = 1}, --sanguine galoshes
-									[2] = {item = 34093, count = 1}, -- soulstrider
-									[3] = {item = 34096, count = 1}, -- soulshroud
-									[4] = {item = 34093, count = 1}, -- soulstrider 
-									[5] = {item = 39153, count = 1}, -- arboreal crown
-									[6] = {item = 39154, count = 1}, -- arboreal tome
-									[7] = {item = 16124, count = 2}, -- blue crystal splinter
-									[8] = {item = 16126, count = 2}, -- red crystal fragment
-									[9] = {item = 16138, count = 100},-- crystalline spikes
-									[10] = {item = 676, count = 1}, -- small enchanted ruby
-									[11] = {item = 9302, count = 1}, -- sacred tree amulet
-									[12] = {item = 32630, count = 1}, -- spooky hood.
-									[13] = {item = 32617, count = 1},-- fabulous legs
-											[14] = {item = 32618, count = 1}, -- soulful legs
-									[15] = {item = 32703, count = 1}, -- death toll
-									[16] = {item = 24392, count = 1},-- gemmed figurine
-										[17] = {item = 32773, count = 1},-- ivory comb
-											[18] = {item = 33926, count = 1},-- Spite's spirit
-													[19] = {item = 43849, count = 20},-- rotten roots.
-														[20] = {item = 43850, count = 50},-- dark obsidian splinter.
-												[21] = {item = 10315, count = 50},-- sulphurous stone
-											[22] = {item = 16124, count = 50},-- blue crystal splinter
+									[2] = {item = 34096, count = 1}, -- soulshroud
+									[3] = {item = 34093, count = 1}, -- soulstrider 
+									[4] = {item = 39153, count = 1}, -- arboreal crown
+									[5] = {item = 39154, count = 1}, -- arboreal tome
+									[6] = {item = 16126, count = 2}, -- red crystal fragment
+									[7] = {item = 16138, count = 100},-- crystalline spikes
+									[8] = {item = 676, count = 1}, -- small enchanted ruby
+									[9] = {item = 9302, count = 1}, -- sacred tree amulet
+									[10] = {item = 32630, count = 1}, -- spooky hood.
+									[11] = {item = 32617, count = 1},-- fabulous legs
+											[12] = {item = 32618, count = 1}, -- soulful legs
+									[13] = {item = 32703, count = 1}, -- death toll
+									[14] = {item = 24392, count = 1},-- gemmed figurine
+										[15] = {item = 32773, count = 1},-- ivory comb
+											[16] = {item = 33926, count = 1},-- Spite's spirit
+													[17] = {item = 43849, count = 20},-- rotten roots.
+														[18] = {item = 43850, count = 50},-- dark obsidian splinter.
+												[19] = {item = 10315, count = 50},-- sulphurous stone
+											[20] = {item = 16124, count = 50},-- blue crystal splinter
 							},
 						},
 	 

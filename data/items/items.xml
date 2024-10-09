@@ -82177,6 +82177,8 @@ Granted by TibiaGoals.com"/>
 		<attribute key="attack" value="16"/>
 		<attribute key="elementfire" value="65"/>
 		<attribute key="elementearth" value="65"/>
+				<attribute key="criticalhitdamage" value="1900"/>
+		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="extradef" value="7"/>
 		<attribute key="defense" value="50"/>
 		<attribute key="skillsword" value="9"/>
@@ -82207,6 +82209,8 @@ Granted by TibiaGoals.com"/>
 		<attribute key="attack" value="16"/>
 		<attribute key="elementdeath" value="65"/>
 		<attribute key="elementfire" value="65"/>
+				<attribute key="criticalhitdamage" value="1900"/>
+		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="extradef" value="7"/>
 		<attribute key="defense" value="50"/>
 		<attribute key="skillclub" value="9"/>
@@ -82284,7 +82288,7 @@ Granted by TibiaGoals.com"/>
 			<attribute key="vocation" value="Knight;true, Elite Knight"/>
 		</attribute>
 	</item>
-    <item id="46347" article="a" name="grand griish battleaxe">
+    <item id="46348" article="a" name="grand griish battleaxe">
 		<attribute key="primarytype" value="axe weapons"/>
 		<attribute key="weaponType" value="axe"/>
 		<attribute key="slotType" value="two-handed"/>
@@ -82438,7 +82442,7 @@ Granted by TibiaGoals.com"/>
 			<attribute key="slot" value="hand"/>
 		</attribute>
 	</item>
-   <item id="46348" article="a" name="grand griish axe">
+   <item id="46347" article="a" name="grand griish axe">
 		<attribute key="primarytype" value="axe weapons"/>
 		<attribute key="weaponType" value="axe"/>
 		<attribute key="attack" value="16"/>

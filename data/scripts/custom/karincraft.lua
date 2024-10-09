@@ -155,7 +155,7 @@ Karin.CraftSystem = {
 			
 		
 			['Ethernal Night Root Rod'] = {
-				id = 46338,
+				id = 46344,
 				minLevel = 3000,
 				vocation = 'Druid', -- Knight|Sorcerer|Druid|Paladin|None
 				requireToCraft = {

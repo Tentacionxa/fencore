@@ -7556,6 +7556,17 @@ GameStore.Categories = {
 				state = GameStore.States.STATE_NEW,
 				movable = true,
 			},
+			{
+				icons = { "XP_Boost_Scroll.png" },
+				name = "Retro Experience Scroll",
+				price = 100,
+				itemtype = 14758,
+				count = 1,
+				description = "<i>This experience scroll will provide you 1 hour extra 50 % experience on all monster except those listed in Your server log. (Exception : Griish World monsters)",
+				type = GameStore.OfferTypes.OFFER_TYPE_STACKABLE,
+				state = GameStore.States.STATE_NEW,
+				movable = true,
+			},
 		},
 	},
 	-- Extras

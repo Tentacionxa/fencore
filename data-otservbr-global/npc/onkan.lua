@@ -114,14 +114,15 @@ npcConfig.shop = {
 	{ itemName = "life ring", clientId = 3052, buy = 350 },
 	{ itemName = "dwarven ring", clientId = 3097, buy = 400 },
 	{ itemName = "starlight vial", clientId = 25976, buy = 3400 },
-	{ itemName = "sun catcher", clientId = 25977, buy = 410000 },
-	{ itemName = "moon mirror", clientId = 25975, buy = 450000 },
+	{ itemName = "sun catcher", clientId = 25977, buy = 2410000 },
+	{ itemName = "moon mirror", clientId = 25975, buy = 2450000 },
 	{ itemName = "shockwave amulet", clientId = 9304, buy = 4000 },
 	{ itemName = "might ring", clientId = 3048, buy = 5000 },
 	{ itemName = "enchanted theurgic amulet", clientId = 30403, buy = 2000000 },
 	{ itemName = "stone skin amulet", clientId = 3081, buy = 5000 },
 	{ itemName = "leviathan's amulet", clientId = 9303, buy = 5000 },
 	{ itemName = "ring of healing", clientId = 3098, buy = 2500 },
+	{ itemName = "bone fiddle", clientId = 28493, buy = 2000000 },
 }
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

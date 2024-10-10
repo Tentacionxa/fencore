@@ -14,6 +14,17 @@ monster.outfit = {
 }
 
 monster.raceId = 2595
+monster.Bestiary = {
+	class = "Demon",
+	race = BESTY_RACE_DEMON,
+	toKill = 2500,
+	FirstUnlock = 2500,
+	SecondUnlock = 5000,
+	CharmsPoints = 500,
+	Stars = 5,
+	Occurrence = 0,
+	Locations = "Griish World",
+}
 
 monster.health = 70000
 monster.maxHealth = 70000

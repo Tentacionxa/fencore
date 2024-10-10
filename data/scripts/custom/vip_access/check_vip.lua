@@ -27,7 +27,7 @@ function tpvip.onStepIn(creature, item, position, fromPosition)
     else
         local msg = "You are not a Vip member, Be Gone!"
 		player:sendTextMessage(MESSAGE_STATUS, msg)
-        player:teleportTo(fromPosition, true)
+        player:teleportTo(Position(32369, 32241, 7))
 		fromPosition:sendMagicEffect(CONST_ME_HOLYDAMAGE)
     end
     return true

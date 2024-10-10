@@ -6,15 +6,15 @@ local config = {
 }
 
 local rewards = {
-    { id = 19111, name = "dust forge item", count = 5, text = "a" },
-    { id = 19111, name = "dust forge item", count = 5, text = "a" },
-    { id = 19111, name = "dust forge item", count = 5, text = "a" },
-    { id = 19111, name = "dust forge item", count = 5, text = "a" },
-    { id = 19111, name = "dust forge item", count = 5, text = "a" },
-    { id = 19111, name = "dust forge item", count = 5, text = "a" },
-    { id = 19111, name = "dust forge item", count = 5, text = "a" },
-    { id = 19111, name = "dust forge item", count = 5, text = "a" },
-    { id = 19111, name = "dust forge item", count = 5, text = "a" }
+    { id = 49181, name = "dust forge item", count = 45, text = "a" },
+    { id = 49181, name = "dust forge item", count = 45, text = "a" },
+    { id = 49181, name = "dust forge item", count = 45, text = "a" },
+    { id = 49181, name = "dust forge item", count = 45, text = "a" },
+    { id = 49181, name = "dust forge item", count = 45, text = "a" },
+    { id = 49181, name = "dust forge item", count = 45, text = "a" },
+    { id = 49181, name = "dust forge item", count = 45, text = "a" },
+    { id = 49181, name = "dust forge item", count = 45, text = "a" },
+    { id = 49181, name = "dust forge item", count = 45, text = "a" }
 }
  
 local dailyRewardChest = Action()

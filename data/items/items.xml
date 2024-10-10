@@ -82438,7 +82438,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="weaponType" value="axe"/>
 		<attribute key="slotType" value="two-handed"/>
 		<attribute key="attack" value="16"/>
-		<attribute key="elementfire" value="65"/>
+		<attribute key="elementdeath" value="90"/>
 		<attribute key="extradef" value="7"/>
 		<attribute key="defense" value="50"/>
 		<attribute key="skillaxe" value="9"/>
@@ -82457,14 +82457,13 @@ Granted by TibiaGoals.com"/>
 			<attribute key="unproperly" value="true"/>
 			<attribute key="weaponType" value="axe"/>
 			<attribute key="vocation" value="Knight;true, Elite Knight"/>
-			<attribute key="slot" value="hand"/>
 		</attribute>
 	</item>
     <item id="46367" article="an" name="griish quiver">
 		<attribute key="primarytype" value="quivers"/>
 		<attribute key="slotType" value="right-hand"/>
 		<attribute key="showattributes" value="1"/>
-		<attribute key="containersize" value="30"/>
+		<attribute key="containersize" value="35"/>
 		<attribute key="weight" value="2000"/>
 		<attribute key="magiclevelpoints" value="5"/>
 		<attribute key="perfectshotdamage" value="40"/>

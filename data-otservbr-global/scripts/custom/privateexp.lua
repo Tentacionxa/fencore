@@ -35,7 +35,7 @@ local caveExclusiva = {
 		signs = {
 			useSigns = true, -- se definido como "true" irá exibir o dono e o tempo restante em um quadro ou qualquer item configurado na variável abaixo.
 			signID = 2597, -- ID do item em que será exibido as informações da cave.
-			signLook = "This cave belongs to %s, will be free again in %s." -- mensagem a ser exibida ao dar look no item definido na variável acima. | 1° [%s] = Variavel para nome do player, 2° [%s] = Variavel para horário em que estara livre novamente
+			signLook = "This cave belongs to %s. Use command !cave stats to check rent time" -- mensagem a ser exibida ao dar look no item definido na variável acima. | 1° [%s] = Variavel para nome do player, 2° [%s] = Variavel para horário em que estara livre novamente
 		},
 		positionExitCaves = Position(32745, 33198, 7),
 	},

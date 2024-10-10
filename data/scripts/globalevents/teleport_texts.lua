@@ -49,7 +49,7 @@ local effects = {
  
  {position = Position(33451, 32484, 11), text = 'Stamina', effect = CONST_ME_GROUNDSHAKER},
  {position = Position(33452, 32484, 11), text = 'Recharge Zone', effect = CONST_ME_GROUNDSHAKER},
- {position = Position(33461, 32484, 11), text = 'Training Room', effect = CONST_ME_GROUNDSHAKER},
+ {position = Position(33461, 32484, 11), text = 'Private Hunt Room', effect = CONST_ME_GROUNDSHAKER},
  
  {position = Position(33455, 32482, 9), text = 'RL Hunt', effect = CONST_ME_GROUNDSHAKER},
  {position = Position(33461, 32488, 9), text = 'Town', effect = CONST_ME_GROUNDSHAKER},

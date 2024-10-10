@@ -49,8 +49,8 @@ local caveExclusiva = {
 		[7006] = { caveName = "Mix Hunt", enterPos = Position(32525, 34075, 7), signPos = Position(32748, 33200, 7) },
 		[7010] = { caveName = "Rootthing Hunt", enterPos = Position(33537, 33263, 12), signPos = Position(33511, 32487, 12) },
 		[7011] = { caveName = "Quara 1 Hunt", enterPos = Position(33531, 33122, 12), signPos = Position(33511, 32491, 12) },
-		[7012] = { caveName = "Quara 2 Hunt", enterPos = Position(33511, 32502, 12), signPos = Position(32748, 33196, 7) },
-		[7013] = { caveName = "Bulltaur Hunt", enterPos = Position(33511, 32498, 12), signPos = Position(33770, 33122, 12) },
+		[7012] = { caveName = "Quara 2 Hunt", enterPos = Position(33511, 32502, 12), signPos = Position(33511, 32495, 12) },
+		[7013] = { caveName = "Bulltaur Hunt", enterPos = Position(33511, 32498, 12), signPos = Position(33511, 32498, 12) },
 		[7014] = { caveName = "Deathling Hunt", enterPos = Position(33677, 33076, 12), signPos = Position(33511, 32495, 12) },
 	},
 

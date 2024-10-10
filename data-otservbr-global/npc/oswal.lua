@@ -96,9 +96,9 @@ npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 npcConfig.currency = 46316
 
 npcConfig.shop = {
-	{ itemName = "chicken", clientId = 46051, buy = 2 },
-    { itemName = "01's birthday cake", clientId = 46242, buy = 2 },
-    { itemName = "divine food", clientId = 46305, buy = 2 },
+	{ itemName = "chicken", clientId = 46051, buy = 50 },
+    { itemName = "01's birthday cake", clientId = 46242, buy = 50 },
+    { itemName = "divine food", clientId = 46305, buy = 50 },
  
 }
 -- On buy npc shop message

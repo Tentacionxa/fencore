@@ -56,7 +56,7 @@ npcType.onCloseChannel = function(npc, creature)
 	npcHandler:onCloseChannel(npc, creature)
 end
 
-addoninfo = {
+addonreq = {
 
 ['first citizen addon'] = {cost = 0, items = {{5878,100}}, outfit_female = 136, outfit_male = 128, addon = 1},
 ['second citizen addon'] = {cost = 0, items = {{5890,50}, {5902,25}, {3374,1}}, outfit_female = 136, outfit_male = 128, addon = 2},
@@ -116,8 +116,8 @@ local talkState = {}
 		return false
 	end
 
-    if addoninfo[message] ~= nil then
-        local itemsTable = addoninfo[message].items
+    if addonreq[message] ~= nil then
+        local itemsTable = addonreq[message].items
         local items_list = ''
        if table.maxn(itemsTable) > 0 then
             for i = 1, table.maxn(itemsTable) do
@@ -129,39 +129,39 @@ local talkState = {}
             end
         end
         local text = ''
-        if (addoninfo[message].cost > 0) then
-            text = addoninfo[message].cost .. ' gp'
-        elseif table.maxn(addoninfo[message].items) then
+        if (addonreq[message].cost > 0) then
+            text = addonreq[message].cost .. ' gp'
+        elseif table.maxn(addonreq[message].items) then
             text = items_list
-        elseif (addoninfo[message].cost > 0) and table.maxn(addoninfo[message].items) then
-            text = items_list .. ' and ' .. addoninfo[message].cost .. ' gp'
+        elseif (addonreq[message].cost > 0) and table.maxn(addonreq[message].items) then
+            text = items_list .. ' and ' .. addonreq[message].cost .. ' gp'
         end
         npcHandler:say('For ' .. message .. ' you will need ' .. text .. '. Do you have it all with you?', npc, creature)
         rtnt = message
-        talkState[talkUser] = addoninfo[message].storageID
+        talkState[talkUser] = addonreq[message].storageID
         npcHandler:setTopic(playerId, 2)
         return true
     elseif npcHandler:getTopic(playerId) == 2 then
         if MsgContains(message, "yes") then
             local items_number = 0
-            if table.maxn(addoninfo[rtnt].items) > 0 then
-                for i = 1, table.maxn(addoninfo[rtnt].items) do
-                    local item = addoninfo[rtnt].items[i]
+            if table.maxn(addonreq[rtnt].items) > 0 then
+                for i = 1, table.maxn(addonreq[rtnt].items) do
+                    local item = addonreq[rtnt].items[i]
                     if (getPlayerItemCount(creature,item[1]) >= item[2]) then
                         items_number = items_number + 1
                     end
                 end
             end
-            if(getPlayerMoney(creature) >= addoninfo[rtnt].cost) and (items_number == table.maxn(addoninfo[rtnt].items)) then
-                doPlayerRemoveMoney(creature, addoninfo[rtnt].cost)
-                if table.maxn(addoninfo[rtnt].items) > 0 then
-                    for i = 1, table.maxn(addoninfo[rtnt].items) do
-                        local item = addoninfo[rtnt].items[i]
+            if(getPlayerMoney(creature) >= addonreq[rtnt].cost) and (items_number == table.maxn(addonreq[rtnt].items)) then
+                doPlayerRemoveMoney(creature, addonreq[rtnt].cost)
+                if table.maxn(addonreq[rtnt].items) > 0 then
+                    for i = 1, table.maxn(addonreq[rtnt].items) do
+                        local item = addonreq[rtnt].items[i]
                         doPlayerRemoveItem(creature,item[1],item[2])
                     end
                 end
-                doPlayerAddOutfit(creature, addoninfo[rtnt].outfit_male, addoninfo[rtnt].addon)
-                doPlayerAddOutfit(creature, addoninfo[rtnt].outfit_female, addoninfo[rtnt].addon)
+                doPlayerAddOutfit(creature, addonreq[rtnt].outfit_male, addonreq[rtnt].addon)
+                doPlayerAddOutfit(creature, addonreq[rtnt].outfit_female, addonreq[rtnt].addon)
                 npcHandler:say('Here you are.', npc, creature)
             else
                 npcHandler:say('You do not have needed items!', npc, creature)

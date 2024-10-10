@@ -602,7 +602,7 @@ function tenebris.onUse(player, item, fromPosition, target, toPosition, isHotkey
 	local randId = math.random(1, #rewards)
 	local rewardItem = rewards[randId]
 
-	player:addItem(rewardItem.id, 1)
+	player:addItem(rewardItem.id, 5)
 	item:remove(1)
 
 	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Tenebris Bag gives You a " .. rewardItem.name .. ".")
@@ -663,7 +663,7 @@ function mystic.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	local randId = math.random(1, #rewards)
 	local rewardItem = rewards[randId]
 
-	player:addItem(rewardItem.id, 1)
+	player:addItem(rewardItem.id, 5)
 	item:remove(1)
 
 	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Mystic Bag gives You a " .. rewardItem.name .. ".")
@@ -724,7 +724,7 @@ function alba.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	local randId = math.random(1, #rewards)
 	local rewardItem = rewards[randId]
 
-	player:addItem(rewardItem.id, 1)
+	player:addItem(rewardItem.id, 5)
 	item:remove(1)
 
 	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Alba Bag gives You a " .. rewardItem.name .. ".")

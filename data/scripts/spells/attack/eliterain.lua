@@ -7,8 +7,8 @@ combat:setParameter(COMBAT_PARAM_USECHARGES, 1)
 combat:setParameter(COMBAT_PARAM_TYPE, COMBAT_PHYSICALDAMAGE)
 
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 22.2) + 7
-	local max = (level / 5) + (maglevel * 27) + 17
+	local min = (level / 5) + (maglevel * 36.2) + 7
+	local max = (level / 5) + (maglevel * 49) + 17
 	return -min, -max
 end
 combat:setCallback(CALLBACK_PARAM_SKILLVALUE, "onGetFormulaValues")

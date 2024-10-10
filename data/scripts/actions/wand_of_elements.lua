@@ -36,5 +36,5 @@ function elementsWand.onUse(player, item, fromPosition, target, toPosition, isHo
 	return true
 end
 
-elementsWand:id(28479)
+elementsWand:id(46377,46344)
 elementsWand:register()

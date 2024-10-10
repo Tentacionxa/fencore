@@ -12,7 +12,7 @@ for i = 1, #elements do
     combat:setParameter(COMBAT_PARAM_BLOCKARMOR, 1)
     combat:setParameter(COMBAT_PARAM_TYPE, elements[i].type)
     combat:setParameter(COMBAT_PARAM_DISTANCEEFFECT, elements[i].distanceeffect)
-    combat:setFormula(COMBAT_FORMULA_DAMAGE, -200, 0, -350, 0)
+    combat:setFormula(COMBAT_FORMULA_DAMAGE, -640, 0, -800, 0)
     table.insert(combats, combat)
 end
 
@@ -25,7 +25,7 @@ function elementsWand.onUseWeapon(player, variant)
     return combat:execute(player, variant)
 end
 
-elementsWand:id(46377)
+elementsWand:id(46344)
 elementsWand:mana(25)
 elementsWand:range(6)
 elementsWand:level(2000)

@@ -75,7 +75,7 @@ maxPlayersOutsidePZPerAccount = 4
 -- Packet Compression
 -- Minimize network bandwith and reduce ping
 -- Levels: 0 = disabled, 1 = best speed, 9 = best compression
-packetCompressionLevel = 5
+packetCompressionLevel = 4
 
 -- Depot Limit
 freeDepotLimit = 10000

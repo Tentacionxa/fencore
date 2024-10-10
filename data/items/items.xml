@@ -81582,26 +81582,6 @@ Granted by TibiaGoals.com"/>
 			<attribute key="vocation" value="Paladin;true, Royal Paladin"/>
 		</attribute>
 	</item>
-<item id="46338" article="a" name="eternal night root spellbook">
-		<attribute key="description" value="It shows your spells and can also shield against attacks when worn"/>
-		<attribute key="weaponType" value="spellbook"/>
-		<attribute key="magiclevelpoints" value="10"/>
-		<attribute key="defense" value="30"/>
-		<attribute key="weight" value="2850"/>
-<attribute key="imbuementslot" value="1">
-			<attribute key="elemental protection death" value="3"/>
-			<attribute key="elemental protection earth" value="3"/>
-			<attribute key="elemental protection fire" value="3"/>
-			<attribute key="elemental protection ice" value="3"/>
-			<attribute key="elemental protection holy" value="3"/>
-			<attribute key="skillboost shielding" value="3"/>
-		</attribute>		
-<attribute key="script" value="moveevent">
-			<attribute key="level" value="2500"/>
-			<attribute key="slot" value="shield"/>
-			<attribute key="vocation" value="Druid;true, Elder Druid"/>
-		</attribute>
-	</item>
 <item id="46341" article="an" name="eternal night root mask">
 		<attribute key="primarytype" value="helmets"/>
 		<attribute key="absorbpercentice" value="15"/>
@@ -81680,35 +81660,6 @@ Granted by TibiaGoals.com"/>
 			<attribute key="vocation" value="Paladin;true, Royal Paladin"/>
 		</attribute>
 	</item>
-	<item id="46347" article="a" name="griish grand battleaxe">
-                <attribute key="primarytype" value="axe weapons"/>                              
- <attribute key="weaponType" value="axe"/>
-<attribute key="slotType" value="two-handed"/>
-                <attribute key="elementdeath" value="90"/>
-                <attribute key="criticalhitdamage" value="2200"/>
-                <attribute key="criticalhitchance" value="1000"/>
-                <attribute key="attack" value="16"/>
-                <attribute key="defense" value="44"/>
-                <attribute key="skillaxe" value="7"/>
-                <attribute key="weight" value="8300"/>
-
-<attribute key="imbuementslot" value="3">
-                        <attribute key="life leech" value="3"/>
-                        <attribute key="mana leech" value="3"/>
-                        <attribute key="critical hit" value="3"/>
-                        <attribute key="skillboost axe" value="3"/>
-                </attribute>
-                <attribute key="augments" value="1">
-                        <attribute key="fierce berserk" value="powerful impact" />
-                </attribute>
-                                  <attribute key="script" value="moveevent;weapon">
-                                                <attribute key="level" value="2500"/>
-                        <attribute key="unproperly" value="true"/>
-                        <attribute key="weaponType" value="axe"/>
-                        <attribute key="slot" value="hand"/>
-                </attribute>
-
-        </item>
 
 		<item id="46330" article="an" name="nexus shield">
 		<attribute key="primarytype" value="training weapons"/>
@@ -82257,7 +82208,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="primarytype" value="club weapons"/>
 		<attribute key="weaponType" value="club"/>
 		<attribute key="slotType" value="two-handed"/>
-		<attribute key="elementearth" value="65"/>
+		<attribute key="elementearth" value="90"/>
 		<attribute key="criticalhitdamage" value="1900"/>
 		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="attack" value="16"/>
@@ -82370,7 +82321,7 @@ Granted by TibiaGoals.com"/>
     <item id="46377" article="a" name="grand griish coil">
 		<attribute key="primarytype" value="wands"/>
 		<attribute key="weaponType" value="wand"/>
-		<attribute key="shootType" value="energy"/>
+		<attribute key="shootType" value="death"/>
 		<attribute key="absorbpercentenergy" value="12"/>
 		<attribute key="magiclevelpoints" value="11"/>
 		<attribute key="firemagiclevelpoints" value="4"/>
@@ -82384,10 +82335,13 @@ Granted by TibiaGoals.com"/>
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost magic level" value="3"/>
 		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="hell's core" value="powerful impact" />
-			<attribute key="energy wave" value="powerful impact" />
-		</attribute>
+		 <attribute key="hell's core" value="base">
+                                <attribute key="value" value="10"/>
+                        </attribute>
+                        <attribute key="energy wave" value="base">
+                                <attribute key="value" value="12"/>
+                        </attribute>
+                </attribute>
 		<attribute key="script" value="moveevent;weapon">
 			<attribute key="level" value="2300"/>
 			<attribute key="mana" value="21"/>
@@ -82418,9 +82372,14 @@ Granted by TibiaGoals.com"/>
 			<attribute key="skillboost magic level" value="3"/>
 		</attribute>
 		<attribute key="augments" value="1">
-			<attribute key="eternal winter" value="powerful impact" />
-			<attribute key="terra wave" value="powerful impact" />
-		</attribute>
+			  <attribute key="augments" value="1">
+<attribute key="eternal winter" value="base">
+                                <attribute key="value" value="10"/>
+                        </attribute>
+                        <attribute key="terra wave" value="base">
+                                <attribute key="value" value="12"/>
+                        </attribute>
+</attribute>
 		<attribute key="script" value="moveevent;weapon">
 			<attribute key="level" value="2300"/>
 			<attribute key="mana" value="20"/>
@@ -82490,39 +82449,6 @@ Granted by TibiaGoals.com"/>
                         <attribute key="vocation" value="Druid;true, Elder Druid"/>
                 </attribute>
         </item>
-        <item id="49179" article="a" name="charged eternal night root ring">
-                <attribute key="primarytype" value="rings"/>
-                <attribute key="absorbpercentphysical" value="10"/>
-                <attribute key="absorbpercentearth" value="10"/>
-                <attribute key="absorbpercentice" value="10"/>
-                 <attribute key="armor" value="2"/>
-                <attribute key="transformDeEquipTo" value="46342"/>
-                <attribute key="showduration" value="1"/>
-                <attribute key="showattributes" value="1"/>
-                <attribute key="duration" value="10800"/>
-                <attribute key="decayTo" value="49180"/>
-                <attribute key="weight" value="95"/>
-                <attribute key="script" value="moveevent">
-                        <attribute key="level" value="2300"/>
-                        <attribute key="slot" value="ring"/>
-                        <attribute key="vocation" value="Druid;true, Elder Druid"/>
-                </attribute>
-        </item>
-        <item id="39179" article="a" name="spiritthorn ring">
-                <attribute key="primarytype" value="rings"/>
-                <attribute key="absorbpercentphysical" value="2"/>
-                <attribute key="absorbpercentfire" value="4"/>
-                <attribute key="absorbpercentearth" value="4"/>
-                <attribute key="absorbpercentenergy" value="4"/>
-                <attribute key="absorbpercentice" value="4"/>
-                <attribute key="showattributes" value="1"/>
-                <attribute key="weight" value="95"/>
-                <attribute key="script" value="moveevent">
-                        <attribute key="level" value="400"/>
-                        <attribute key="slot" value="ring"/>
-                        <attribute key="vocation" value="Knight;true, Elite Knight"/>
-                </attribute>
-        </item>
 <item id="46358" article="a" name="grand griish blade">
 		<attribute key="primarytype" value="sword weapons"/>
 		<attribute key="weaponType" value="sword"/>
@@ -82582,7 +82508,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="primarytype" value="sword weapons"/>
 		<attribute key="weaponType" value="sword"/>
 		<attribute key="slotType" value="two-handed"/>
-		<attribute key="elementenergy" value="65"/>
+		<attribute key="elementenergy" value="90"/>
 		<attribute key="criticalhitdamage" value="1900"/>
 		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="attack" value="16"/>
@@ -82629,33 +82555,6 @@ Granted by TibiaGoals.com"/>
 			<attribute key="level" value="2500"/>
 			<attribute key="unproperly" value="true"/>
 			<attribute key="weaponType" value="club"/>
-			<attribute key="vocation" value="Knight;true, Elite Knight"/>
-		</attribute>
-	</item>
-    <item id="46347" article="a" name="grand griish battleaxe">
-		<attribute key="primarytype" value="axe weapons"/>
-		<attribute key="weaponType" value="axe"/>
-		<attribute key="slotType" value="two-handed"/>
-		<attribute key="elementdeath" value="50"/>
-		<attribute key="criticalhitdamage" value="1900"/>
-		<attribute key="criticalhitchance" value="1000"/>
-		<attribute key="attack" value="16"/>
-		<attribute key="defense" value="50"/>
-		<attribute key="skillaxe" value="9"/>
-		<attribute key="weight" value="8300"/>
-		<attribute key="imbuementslot" value="3">
-			<attribute key="life leech" value="3"/>
-			<attribute key="mana leech" value="3"/>
-			<attribute key="critical hit" value="3"/>
-			<attribute key="skillboost axe" value="3"/>
-		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="fierce berserk" value="powerful impact" />
-		</attribute>
-		<attribute key="script" value="moveevent;weapon">
-			<attribute key="level" value="2500"/>
-			<attribute key="unproperly" value="true"/>
-			<attribute key="weaponType" value="axe"/>
 			<attribute key="vocation" value="Knight;true, Elite Knight"/>
 		</attribute>
 	</item>
@@ -82785,32 +82684,6 @@ Granted by TibiaGoals.com"/>
 			<attribute key="slot" value="hand"/>
 		</attribute>
 	</item>
-   <item id="46348" article="a" name="grand griish axe">
-		<attribute key="primarytype" value="axe weapons"/>
-		<attribute key="weaponType" value="axe"/>
-		<attribute key="attack" value="16"/>
-		<attribute key="elementfire" value="65"/>
-		<attribute key="extradef" value="7"/>
-		<attribute key="defense" value="50"/>
-		<attribute key="skillaxe" value="9"/>
-		<attribute key="weight" value="7200"/>
-		<attribute key="imbuementslot" value="3">
-			<attribute key="life leech" value="3"/>
-			<attribute key="mana leech" value="3"/>
-			<attribute key="critical hit" value="3"/>
-			<attribute key="skillboost axe" value="3"/>
-		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="fierce berserk" value="powerful impact" />
-		</attribute>
-		<attribute key="script" value="moveevent;weapon">
-			<attribute key="level" value="2500"/>
-			<attribute key="unproperly" value="true"/>
-			<attribute key="weaponType" value="axe"/>
-			<attribute key="vocation" value="Knight;true, Elite Knight"/>
-			<attribute key="slot" value="hand"/>
-		</attribute>
-	</item>
    <item id="46367" article="an" name="griish quiver">
 		<attribute key="primarytype" value="quivers"/>
 		<attribute key="slotType" value="right-hand"/>
@@ -82831,10 +82704,10 @@ Granted by TibiaGoals.com"/>
 		<attribute key="primarytype" value="spellbooks"/>
 		<attribute key="weaponType" value="spellbook"/>
 		<attribute key="absorbpercentfire" value="14"/>
-		<attribute key="absorbpercentphysical" value="6"/>
-		<attribute key="magiclevelpoints" value="7"/>
-		<attribute key="firemagiclevelpoints" value="2"/>
-		<attribute key="energymagiclevelpoints" value="2"/>
+		<attribute key="absorbpercentenergy" value="14"/>
+		<attribute key="magiclevelpoints" value="12" />
+		<attribute key="firemagiclevelpoints" value="4"/>
+		<attribute key="energymagiclevelpoints" value="4"/>
 		<attribute key="defense" value="32"/>
 		<attribute key="weight" value="2600"/>
 		<attribute key="imbuementslot" value="2">
@@ -83043,7 +82916,7 @@ Granted by TibiaGoals.com"/>
         		<attribute key="absorbpercentearth" value="9"/>
 		<attribute key="absorbpercentice" value="9"/>
 		<attribute key="absorbpercentice" value="16"/>
-		<attribute key="transformDeEquipTo" value="39233"/>
+		<attribute key="transformDeEquipTo" value="49186"/>
 		<attribute key="showduration" value="1"/>
 		<attribute key="showattributes" value="1"/>
 		<attribute key="duration" value="7200"/>
@@ -83819,7 +83692,7 @@ Granted by TibiaGoals.com"/>
 			<attribute key="slot" value="necklace"/>
 		</attribute>
 	</item>
-	<item id="46399" article="a" name="amulet of ice">
+	<item id="46407" article="a" name="amulet of ice">
 		<attribute key="primarytype" value="amulets and necklaces"/>
 		<attribute key="showCharges" value="1"/>
 		<attribute key="showAttributes" value="1"/>

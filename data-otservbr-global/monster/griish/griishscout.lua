@@ -87,14 +87,12 @@ monster.loot = {
 	{ name = "glacier amulet", chance = 8810, maxCount = 1 },
 	{ name = "skull helmet", chance = 13047, maxCount = 1 },
 	{ name = "wood cape", chance = 9153, maxCount = 1 },
-	{ id = 23529, chance = 9172, maxCount = 1 }, -- ring of blue plasma
-	{ id = 23542, chance = 12966, maxCount = 1 }, -- collar of blue plasma
-	{ id = 46314, chance = 1130, maxCount = 2 },
 	{ name = "stone skin amulet", chance = 11779, maxCount = 1 },
 	{ name = "composite hornbow", chance = 5682, maxCount = 1 },
 	{ name = "tenebris bag", chance = 15 },
-	{ id = 46291, chance = 100, maxCount = 1 },
-	{ id = 46316, chance = 100000, maxCount = 1 },
+	{ name = "lion bag", chance = 15 },
+	{ name = "red crystal coin", chance = 100000, maxCount = 1 },
+	{ name = "green crystal coin", chance = 100000, maxCount = 1 },
 }
 
 monster.attacks = {

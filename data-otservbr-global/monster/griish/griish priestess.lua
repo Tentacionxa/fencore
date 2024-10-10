@@ -92,10 +92,10 @@ monster.loot = {
 	{ name = "wand of starstorm", chance = 1310 },
 	{ name = "stone skin amulet", chance = 1310 },
 	{ name = "alloy legs", chance = 440 },
-	{ id = 46314, chance = 1130, maxCount = 2 },
+	{ name = "brainstealer bag", chance = 30 },
 	{ name = "alba bag", chance = 30 },
-	{ id = 46289, chance = 100, maxCount = 1 },
-	{ id = 46316, chance = 100000, maxCount = 1 },
+	{ name = "green crystal coin", chance = 1130, maxCount = 2 },
+	{ name = "red crystal coin", chance = 100000, maxCount = 1 },
 }
 
 monster.attacks = {

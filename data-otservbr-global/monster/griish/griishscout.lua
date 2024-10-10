@@ -92,7 +92,7 @@ monster.loot = {
 	{ id = 46314, chance = 1130, maxCount = 2 },
 	{ name = "stone skin amulet", chance = 11779, maxCount = 1 },
 	{ name = "composite hornbow", chance = 5682, maxCount = 1 },
-	{ name = "fera bag", chance = 15 },
+	{ name = "tenebris bag", chance = 15 },
 	{ id = 46291, chance = 100, maxCount = 1 },
 	{ id = 46316, chance = 100000, maxCount = 1 },
 }

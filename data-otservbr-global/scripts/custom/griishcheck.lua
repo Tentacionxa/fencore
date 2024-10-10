@@ -13,7 +13,7 @@ local itemConfig = {
     [46366] = {storage = 921010}, 
     [46377] = {storage = 921011},
 
-    [46338] = {storage = 921012}, 
+    [46344] = {storage = 921012}, 
     [46352] = {storage = 921013}, 
     -- Example item ID with unique storage value
     -- Add more item IDs and their storage values as needed

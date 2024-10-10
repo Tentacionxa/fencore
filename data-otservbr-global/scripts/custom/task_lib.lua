@@ -545,7 +545,7 @@ taskConfiguration = {
 	},
 },
 
-{name = "Library - Cursed Book, Biting Book, Animated Feather, Dark Knowledge, Energetic Book, Energuardian of Tales, Brain Squid, Flying Book, Guardian of Tales, Ghulosh' Deathgaze, Knowledge elemental, The Book of Death, Rage Squid, Squid Warden", color = 40, total = 3000, type = "repeatable", storage = 190069, storagecount = 190070, 
+{name = "Library - Cursed Book, Biting Book, Animated Feather, Icecold Book, Dark Knowledge, Energetic Book, Energuardian of Tales, Brain Squid, Flying Book, Guardian of Tales, Ghulosh' Deathgaze, Knowledge elemental, The Book of Death, Rage Squid, Squid Warden", color = 40, total = 3000, type = "repeatable", storage = 190069, storagecount = 190070, 
 	rewards = { 
 		{3043, 250},
 		{37317, 1},
@@ -567,6 +567,7 @@ taskConfiguration = {
 		"Rage Squid",
 		"Squid Warden",
 		"Burning Book",
+		"Icecold Book",
 		
 	},
 },

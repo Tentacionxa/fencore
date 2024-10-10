@@ -91,7 +91,7 @@ monster.loot = {
 	{ name = "glacier robe", chance = 7211, maxCount = 1 },
 	{ id = 23544, chance = 12519, maxCount = 1 }, -- collar of red plasma
 	{ id = 46314, chance = 1130, maxCount = 2 },
-	{ name = "fera bag", chance = 15 },
+	{ name = "alba bag", chance = 15 },
 	{ id = 46289, chance = 150, maxCount = 1 },
 	{ id = 46316, chance = 100000, maxCount = 1 },
 }

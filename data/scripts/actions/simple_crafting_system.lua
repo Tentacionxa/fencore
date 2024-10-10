@@ -229,7 +229,7 @@ local config = {
 									[6] = {item = 6131, count = 3}, -- tortoise shield
 									[7] = {item = 45641, count = 5}, -- candy necklace
 									[8] = {item = 39147, count = 1}, -- spiritthorn armor
-									[9] = {item = 45643, count = 100},-- biscuit barrier
+									[9] = {item = 45643, count = 5},-- biscuit barrier
 									[10] = {item = 5910, count = 100}, -- green piece of cloth
 									[11] = {item = 6553, count = 1}, -- ruthless axe
 									[12] = {item = 44745, count = 50}, -- mega dragon hearts.

@@ -66,8 +66,8 @@ serverMotd = "Welcome to the Fencore!"
 statusTimeout = 15 * 1000
 replaceKickOnLogin = true
 maxPacketsPerSecond = 100
-maxItem = 15000
-maxContainer = 300
+maxItem = 25000
+maxContainer = 400
 onePlayerOnlinePerAccount = false
 maxPlayersOnlinePerAccount = 4
 maxPlayersOutsidePZPerAccount = 4
@@ -79,7 +79,7 @@ packetCompressionLevel = 3
 
 -- Depot Limit
 freeDepotLimit = 10000
-premiumDepotLimit = 15000
+premiumDepotLimit = 30000
 depotBoxes = 20
 
 -- Augments System (Get more info in: https://github.com/opentibiabr/canary/pull/2602)

@@ -42,7 +42,7 @@ Karin.CraftSystem = {
     ['Weapons'] = {
         crafts = {
             ['Grand Griish Enchanted Axe'] = {
-                id = 46348,
+                id = 46347,
                 minLevel = 3000,
                 vocation = 'Knight',
                 requireToCraft = {
@@ -70,7 +70,7 @@ Karin.CraftSystem = {
                 storageId = 921005, -- Unique storage ID
             },
             ['Grand Griish Battleaxe'] = {
-                id = 46347,
+                id = 46348,
                 minLevel = 3000,
                 vocation = 'Knight',
                 requireToCraft = {
@@ -119,7 +119,7 @@ Karin.CraftSystem = {
 				requireToCraft = {
 					[43878] = 8,
                     [46316] = 500,
-					['level'] = 2000,
+					['level'] = 1000,
 					['skill'] = {
 					[SKILL_DISTANCE] = 20, 
 				},
@@ -133,7 +133,7 @@ Karin.CraftSystem = {
 				requireToCraft = {
 					[43878] = 10,
                     [46316] = 500,
-					['level'] = 2000,
+					['level'] = 1000,
 					['skill'] = {
 					[SKILL_DISTANCE] = 20, 
 				},
@@ -175,7 +175,7 @@ Karin.CraftSystem = {
 				requireToCraft = {
 					[43873] = 8,
                     [46316] = 500,
-					['level'] = 2000, 
+					['level'] = 1000, 
 					['skill'] = {
 					[SKILL_CLUB] = 20,  
 				},

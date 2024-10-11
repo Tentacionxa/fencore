@@ -4,43 +4,43 @@ Karin.UpgradeSystem = {
     },
     Tiers = {
         [1] = {
-            price = {46316,10},
+            price = {46316,250},
             chance = 50,
         },
         [2] = {
-            price = {46314,10},
+            price = {46314,250},
             chance = 20,
         },
         [3] = {
-            price = {46314,10},
+            price = {46314,50},
             chance = 25,
         },
         [4] = {
-            price = {46314,10},
+            price = {46314,60},
             chance = 30,
         },
         [5] = {
-            price = {46314,10},
+            price = {46314,70},
             chance = 25,
         },
         [6] = {
-            price = {46314,10},
+            price = {46314,80},
             chance = 17,
         },
         [7] = {
-            price = {46314,10},
+            price = {46314,100},
             chance = 14,
         },
         [8] = {
-            price = {46314,10},
+            price = {46314,125},
             chance = 12,
         },
         [9] = {
-            price = {46314,10},
+            price = {46314,150},
             chance = 10,
         },
         [10] = {
-            price = {46314,10},
+            price = {46314,200},
             chance = 5,
         },
     },

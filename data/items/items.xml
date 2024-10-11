@@ -82195,7 +82195,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="primarytype" value="sword weapons"/>
 		<attribute key="weaponType" value="sword"/>
 		<attribute key="slotType" value="two-handed"/>
-		<attribute key="elementenergy" value="65"/>
+		<attribute key="elementenergy" value="90"/>
 		<attribute key="criticalhitdamage" value="1900"/>
 		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="attack" value="16"/>
@@ -82248,7 +82248,7 @@ Granted by TibiaGoals.com"/>
     <item id="46347" article="a" name="grand griish enchanted axe">
 		<attribute key="primarytype" value="axe weapons"/>
 		<attribute key="weaponType" value="axe"/>
-		<attribute key="elementdeath" value="65"/>
+		<attribute key="elementice" value="65"/>
 		<attribute key="criticalhitdamage" value="1900"/>
 		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="attack" value="16"/>

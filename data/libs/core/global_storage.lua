@@ -20,13 +20,14 @@ Reserved player action storage key ranges (const.hpp)
 
 	Questline = Storage through the Quest
 ]]
-
+Storage = {
+    WandOfElements = 984765,
+    }
 Global = {
 	Storage = {
 		FamiliarSummonEvent10 = 30054,
 		FamiliarSummonEvent60 = 30055,
 		CobraFlask = 30056,
-		WandOfElements = 784465,
 
 		-- Reserved storage from 64000 - 64099
 		TibiaDrome = {

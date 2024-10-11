@@ -655,7 +655,7 @@ local rewards = {
 	
 }
 
-mysticId = 46082
+mysticId = 46312
 
 local mystic = Action()
 
@@ -666,7 +666,7 @@ function mystic.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	player:addItem(rewardItem.id, 5)
 	item:remove(1)
 
-	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Mystic Bag gives You a " .. rewardItem.name .. ".")
+	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Supreme Mistery Bag gives You a " .. rewardItem.name .. ".")
 	return true
 end
 

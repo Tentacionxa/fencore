@@ -77,20 +77,21 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "waterskin", chance = 1350 },
-	{ name = "crystal coin", chance = 75000, maxCount = 10 },
-	{ name = "rift bow", chance = 4000 },
-	{ name = "crystal arrow", chance = 30710, maxCount = 12 },
-	{ name = "ethernal spear", chance = 15400, maxCount = 4 },
-	{ name = "sandals", chance = 1180 },
-	{ name = "grapes", chance = 17750 }, 
-	{ name = "elvish bow", chance = 140 },
-	{ name = "elvish talisman", chance = 5200 },
-	{ name = "elven scouting glass", chance = 9750 },
-	{ name = "green crystal coin", chance = 1130, maxCount = 1 },
-	{ name = "fera bag", chance = 15 , maxCount = 1 },
-	{ name = "scarlett bag", chance = 15 , maxCount = 1 },
-	{ name = "red crystal coin", chance = 1130, maxCount = 1 },
+	{ name = "crystal coin", chance = 12880, maxCount = 1 },
+	{ name = "warrior helmet", chance = 8701, maxCount = 1 },
+	{ name = "great spirit potion", chance = 7870, maxCount = 1 },
+	{ name = "green gem", chance = 8590, maxCount = 1 },
+	{ name = "violet gem", chance = 9444, maxCount = 1 },
+	{ name = "blue gem", chance = 11964, maxCount = 1 },
+	{ name = "glacier mask", chance = 14910, maxCount = 1 },
+	{ name = "glacier amulet", chance = 8810, maxCount = 1 },
+	{ name = "skull helmet", chance = 13047, maxCount = 1 },
+	{ name = "wood cape", chance = 9153, maxCount = 1 },
+	{ name = "stone skin amulet", chance = 11779, maxCount = 1 },
+	{ name = "composite hornbow", chance = 5682, maxCount = 1 },
+	{ name = "scarlett bag", chance = 50 , maxCount = 1 },
+	{ name = "red crystal coin", chance = 100000, maxCount = 1 },
+	{ name = "green crystal coin", chance = 100000, maxCount = 1 },
 }
 
 monster.attacks = {

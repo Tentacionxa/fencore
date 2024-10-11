@@ -5919,6 +5919,14 @@
 			<attribute key="slot" value="backpack"/>
 		</attribute>
 	</item>
+	<item id="46005" article="a" name="magical loot pouch">
+		<attribute key="primarytype" value="containers"/>
+		<attribute key="containersize" value="50"/>
+		<attribute key="weight" value="800"/>
+		<attribute key="script" value="moveevent">
+			<attribute key="slot" value="backpack"/>
+		</attribute>
+	</item>
 	<item id="2854" article="a" name="backpack">
 		<attribute key="primarytype" value="containers"/>
 		<attribute key="containersize" value="20"/>

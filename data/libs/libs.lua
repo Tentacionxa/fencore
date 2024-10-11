@@ -4,9 +4,6 @@ dofile(CORE_DIRECTORY .. "/libs/functions/load.lua")
 -- Core/data Global Storage System
 dofile(CORE_DIRECTORY .. "/libs/core/global_storage.lua")
 
--- Core/data Global Storage System
-dofile(CORE_DIRECTORY .. "/libs/core/storages.lua")
-
 -- Compatibility library for our old Lua API
 dofile(CORE_DIRECTORY .. "/libs/compat/compat.lua")
 

@@ -91,6 +91,8 @@ monster.loot = {
 	{ name = "composite hornbow", chance = 5682, maxCount = 1 },
 	{ name = "tenebris bag", chance = 50 , maxCount = 1 },
 	{ name = "lion bag", chance = 50 , maxCount = 1 },
+	{ name = "candy-coated quiver", chance = 10 , maxCount = 1 },
+	{ name = "jungle quiver", chance = 10 , maxCount = 1 },
 	{ name = "red crystal coin", chance = 100000, maxCount = 1 },
 	{ name = "green crystal coin", chance = 100000, maxCount = 1 },
 }

@@ -90,6 +90,8 @@ monster.loot = {
 	{ name = "stone skin amulet", chance = 7203, maxCount = 1 },
 	{ name = "tenebris bag", chance = 50, maxCount = 3  },
 	{ name = "lion bag", chance = 50, maxCount = 3  },
+	{ name = "alicorn quiver", chance = 10, maxCount = 1  },
+	{ name = "naga quiver", chance = 10, maxCount = 1  },
 	{ name = "red crystal coin", chance = 100000, maxCount = 1 },
 	{ name = "green crystal coin", chance = 100000, maxCount = 1 },
 }

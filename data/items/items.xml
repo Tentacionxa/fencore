@@ -82335,6 +82335,7 @@ Granted by TibiaGoals.com"/>
 			<attribute key="critical hit" value="3"/>
 			<attribute key="skillboost magic level" value="3"/>
 		</attribute>
+				<attribute key="augments" value="1">
 		 <attribute key="hell's core" value="powerful impact">
         
                         <attribute key="energy wave" value="powerful impact">

@@ -90,8 +90,8 @@ monster.loot = {
 	{ name = "wand of starstorm", chance = 1310 },
 	{ name = "stone skin amulet", chance = 1310 },
 	{ name = "alloy legs", chance = 440 },
-	{ name = "fera bag", chance = 30 },
-	{ name = "ratmiral bag", chance = 30 },
+	{ name = "fera bag", chance = 30 , maxCount = 1 },
+	{ name = "ratmiral bag", chance = 30, maxCount = 1  },
 	{ name = "red crystal coin", chance = 100000, maxCount = 1 },
 	{ name = "green crystal coin", chance = 1130, maxCount = 2 },
 }

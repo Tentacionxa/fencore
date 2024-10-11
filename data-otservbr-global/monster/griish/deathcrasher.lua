@@ -84,7 +84,7 @@ monster.loot = {
 	{ name = "spectral bolt", chance = 15400, maxCount = 4 },
 	{ name = "giant shimmering pearl ", chance = 140 },
 	{ id = 46314, chance = 1130, maxCount = 2 },
-	{ name = "fera bag", chance = 15 },
+	{ name = "fera bag", chance = 15 , maxCount = 1 },
 	{ id = 46293, chance = 100, maxCount = 1 },
 	{ id = 46316, chance = 100000, maxCount = 1 },
 }

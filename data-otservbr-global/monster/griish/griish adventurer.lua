@@ -88,8 +88,8 @@ monster.loot = {
 	{ name = "elvish talisman", chance = 5200 },
 	{ name = "elven scouting glass", chance = 9750 },
 	{ name = "green crystal coin", chance = 1130, maxCount = 1 },
-	{ name = "fera bag", chance = 15 },
-	{ name = "scarlett bag", chance = 15 },
+	{ name = "fera bag", chance = 15 , maxCount = 1 },
+	{ name = "scarlett bag", chance = 15 , maxCount = 1 },
 	{ name = "red crystal coin", chance = 1130, maxCount = 1 },
 }
 

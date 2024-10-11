@@ -89,8 +89,8 @@ monster.loot = {
 	{ name = "springsprout rod", chance = 12363, maxCount = 1 },
 	{ name = "platinum amulet", chance = 8615, maxCount = 1 },
 	{ name = "glacier robe", chance = 7211, maxCount = 1 },
-	{ name = "alba bag", chance = 15, maxCount = 1  },
-	{ name = "brainstealer bag", chance = 15, maxCount = 1  },
+	{ name = "alba bag", chance = 50, maxCount = 1  },
+	{ name = "brainstealer bag", chance = 50, maxCount = 1  },
 	{ name = "green crystal coin", chance = 1130, maxCount = 2 },
 	{ name = "red crystal coin", chance = 100000, maxCount = 1 },
 }

@@ -89,8 +89,8 @@ monster.loot = {
 	{ name = "crown shield", chance = 8795, maxCount = 1 },
 	{ name = "stone skin amulet", chance = 7203, maxCount = 1 },
 	{ name = "green crystal coin", chance = 1130, maxCount = 2 },
-	{ name = "mystic bag", chance = 15, maxCount = 1  },
-	{ name = "falcon bag", chance = 15, maxCount = 1 },
+	{ name = "mystic bag", chance = 50, maxCount = 1  },
+	{ name = "falcon bag", chance = 50, maxCount = 1 },
 	{ name = "red crystal coin", chance = 100000, maxCount = 1 },
 }
 

@@ -542,8 +542,8 @@ location = "Europe"
 -- Sends Discord webhook notifications on startup, raids and shutdown.
 -- The URL layout is https://discord.com/api/webhooks/:id/:token
 -- Leave empty if you wish to disable.
-discordWebhookURL = "https://discord.com/api/webhooks/1244009139915460742/txax2xF7r_DF66y_KbpQFtWIfrEOmXKC_oP4QLDi_H2j8Fm1_xBHVDBjVZQkvtX8GcNW"
-discordSendFooter = true
+discordWebhookURL = ""
+discordSendFooter = false
 discordWebhookDelayMs = 1000
 
 -- Vip System (Get more info in: https://github.com/opentibiabr/canary/pull/1063)

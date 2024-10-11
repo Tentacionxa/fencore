@@ -26,6 +26,7 @@ Global = {
 		FamiliarSummonEvent10 = 30054,
 		FamiliarSummonEvent60 = 30055,
 		CobraFlask = 30056,
+		WandOfElements = 784465,
 
 		-- Reserved storage from 64000 - 64099
 		TibiaDrome = {
@@ -65,6 +66,7 @@ Global = {
 				TimeLeft = 64016,
 				LastActivatedAt = 64017,
 			},
+			
 			EnergyResilience = {
 				TimeLeft = 64018,
 				LastActivatedAt = 64019,

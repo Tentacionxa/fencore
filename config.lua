@@ -255,7 +255,7 @@ onlyPremiumAccount = false
 -- NOTE: startStreakLevel will make a reward streak level for new players who never logged in
 -- NOTE: if showLootsInBestiary is true, will cause all loots to be shown in the bestiary even if the player has not reached the required number of kills
 -- NOTE: minTownIdToBankTransfer blocks towns less than defined from receiving money transfers
-stashMoving = true
+stashMoving = false
 stashItemCount = 10000
 depotChest = 4
 autoLoot = true

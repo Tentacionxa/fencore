@@ -259,8 +259,8 @@ stashMoving = false
 stashItemCount = 10000
 depotChest = 4
 autoLoot = true
-autoBank = false
-toggleGoldPouchAllowAnything = true
+autoBank = true
+toggleGoldPouchAllowAnything = false
 toggleGoldPouchQuickLootOnly = true
 toggleServerIsRetroPVP = false
 toggleTravelsFree = false
@@ -517,7 +517,7 @@ bossDefaultTimeToDefeat = 20 * 60 -- 20 minutes
 -- Monsters
 
 defaultRespawnTime = 90
-deSpawnRange = 1
+deSpawnRange = 6
 deSpawnRadius = 30
 
 

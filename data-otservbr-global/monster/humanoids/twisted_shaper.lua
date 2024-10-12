@@ -92,7 +92,6 @@ monster.loot = {
 	{ id = 3055, chance = 370 }, -- platinum amulet
 	{ id = 24384, chance = 17000 }, -- ancient belt buckle
 	{ id = 24385, chance = 20000 }, -- cracked alabaster vase
-	{ id = 24390, chance = 4000 }, -- ancient coin
 }
 
 monster.attacks = {

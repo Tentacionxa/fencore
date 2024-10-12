@@ -84,7 +84,6 @@ monster.loot = {
 	{ id = 24384, chance = 17000 }, -- ancient belt buckle
 	{ id = 24385, chance = 20000 }, -- cracked alabaster vase
 	{ id = 24386, chance = 13000 }, -- rhino horn carving
-	{ id = 24390, chance = 4000 }, -- ancient coin
 	{ id = 3147, chance = 15000 }, -- blank rune
 	{ id = 3577, chance = 50320, maxCount = 2 }, -- meat
 	{ id = 5021, chance = 5000, maxCount = 2 }, -- orichalcum pearl

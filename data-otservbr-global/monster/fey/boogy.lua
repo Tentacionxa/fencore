@@ -77,7 +77,6 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ id = 24390, chance = 3000, maxCount = 3 }, -- ancient coin
 	{ id = 7439, chance = 1500 }, -- berserk potion
 	{ id = 9067, chance = 100 }, -- crystal of power
 	{ id = 25693, chance = 15000 }, -- shimmering beetles

@@ -92,7 +92,7 @@ monster.loot = {
 	{ name = "fera bag", chance = 15, maxCount = 1  },
 	{ id = 46316, chance = 100000, maxCount = 1 },
 	{ id = 46292, chance = 100, maxCount = 1 },
-	{ name = "crystal arcane nectar	", chance = 15, maxCount = 1  },
+	{ name = "crystal arcane nectar", chance = 15, maxCount = 1  },
 }
 
 monster.attacks = {

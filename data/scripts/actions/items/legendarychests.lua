@@ -328,7 +328,6 @@ local rewards = {
 	{ id = 43867, name = "Grand Sanguine Cudgel" },
 	{ id = 43869, name = "Grand Sanguine Hatchet" },
 	{ id = 39148, name = "spiritthorn helmet" },
-	{ id = 46356, name = "eternal night headguard" },
     { id = 46345, name = "eternal night demon plate" },
     { id = 34097, name = "pair of soulwalkers" },
 	{ id = 43871, name = "Grand Sanguine Razor" },

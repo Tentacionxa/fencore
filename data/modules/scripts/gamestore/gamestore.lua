@@ -767,7 +767,18 @@ GameStore.Categories = {
 						parent = "Fencore SALE",
 						rookgaard = true,
 						state = GameStore.States.STATE_NONE,
-					offers = {
+					offers = { 
+					{
+						icons = { "Outfit_Rootwalker_Male_Addon_3.png", "Outfit_Rootwalker_Female_Addon_3.png" },
+						name = "Full Griish Soul Outfit",
+						price = 1000,
+						sexId = { female = 175, male = 705 },
+						addon = 3,
+						description = "{character}\n{info} colours can be changed using the Outfit dialog\n{info} includes basic outfit and 2 addons which can be selected individually\n\n<i>Let the power of nature take care of Your body.</i>",
+						type = GameStore.OfferTypes.OFFER_TYPE_OUTFIT,
+						home = true,
+						
+					},
 						{
 							icons = { "Outfit_Rootwalker_Male_Addon_3.png", "Outfit_Rootwalker_Female_Addon_3.png" },
 							name = "Full Griish Angel Outfit",
@@ -7612,9 +7623,19 @@ GameStore.Categories = {
 				type = GameStore.OfferTypes.OFFER_TYPE_PREYBONUS,
 			},
 			{
+				icons = { "" },
+				name = "Prey Card Enhacnement",
+				price = 750,
+				itemtype = 46286,
+				count = 1,
+				description = "<i>This scroll will add 100 Prey Wildcards to Your characters prey card balance.</i>",
+				type = GameStore.OfferTypes.OFFER_TYPE_STACKABLE,
+					state = GameStore.States.STATE_NEW,
+			},
+			{
 				icons = { "Instant_Reward_Access.png" },
 				name = "Instant Reward Access",
-				price = 100,
+				price = 0,
 				id = GameStore.SubActions.INSTANT_REWARD,
 				count = 1,
 				description = "<i>No matter where you are in Tibia, claim your daily reward on the spot!</i>\n\n{character}\n{info} added to your reward wall\n{info} maximum amount that can be owned by character: 90",

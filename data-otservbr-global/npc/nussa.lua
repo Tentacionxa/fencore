@@ -58,7 +58,7 @@ end
 
 addoninfo = {
 ['first adventurer addon'] = {cost = 0, items = {{46409,1}, {46311,1}, {46310,1}}, outfit_female = 175, outfit_male = 703, addon = 1},
-['second adventurer addon'] = {cost = 0, items = {{46309,1}, {46308,1}, {46213,1}, {46097,50}}, outfit_female = 175, outfit_male = 703, addon = 2}
+['second adventurer addon'] = {cost = 0, items = {{46309,1}, {46308,1}, {46097,50}}, outfit_female = 175, outfit_male = 703, addon = 2}
 
 }
 local o = {'adventurer'}

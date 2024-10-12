@@ -130,9 +130,7 @@ monster.immunities = {
 }
 
 mType.onAppear = function(monster, creature)
-	monster:setIcon("scout1", CreatureIconCategory_Quests, CreatureIconQuests_WhiteCross, 45)
-	monster:setIcon("scout2", CreatureIconCategory_Quests, CreatureIconQuests_RedBall, 30)
-	monster:setIcon("scout3", CreatureIconCategory_Quests, CreatureIconQuests_YellowShield, 45)
+
 		if monster:getType():isRewardBoss() then
 			monster:setReward(true)
 		end

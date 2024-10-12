@@ -3,12 +3,12 @@ local changeCoins = Action()
 local config = {
     coinId = 3043,
     changeTo = 46316,
-    requiredAmount = 100,
+    requiredAmount = 200,
     requiredAmount2 = 1000,
     requiredAmount3 = 10000, -- Added requiredAmount3 for 100 blood coins
     giveAmount = 1,
-    giveAmount2 = 10,
-    giveAmount3 = 100
+    giveAmount2 = 5,
+    giveAmount3 = 50
 }
 
 function changeCoins.onUse(player, item, fromPosition, target, toPosition, isHotkey)
@@ -17,9 +17,9 @@ function changeCoins.onUse(player, item, fromPosition, target, toPosition, isHot
 
     -- Create modal window
     local modal = ModalWindow(0, "Blood Exchange")
-    modal:addChoice(1, "1 kk = 1 blood coin")
-    modal:addChoice(2, "10 kk = 10 blood coins")
-    modal:addChoice(3, "100 kk = 100 blood coins")
+    modal:addChoice(1, "2 kk = 1 blood coin")
+    modal:addChoice(2, "10 kk = 5 blood coins")
+    modal:addChoice(3, "100 kk = 50 blood coins")
     modal:addButton(0, "Accept")
     modal:addButton(1, "Cancel")
     modal:setDefaultEnterButton(0)

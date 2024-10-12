@@ -87,6 +87,7 @@ monster.loot = {
 	{name = "green gem", chance = 21920},
 	{id = 21165, chance = 1500}, -- rubber cap
 	{id = 7451, chance = 5500}, --shadow spectre
+	{id = 43851, chance = 15500, maxCount = 100}, --darklight matter
 }
 
 monster.attacks = {

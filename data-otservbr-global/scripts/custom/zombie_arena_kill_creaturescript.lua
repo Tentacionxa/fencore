@@ -24,4 +24,4 @@ function zombieArenaKill.onDeath(creature, corpse, lasthitkiller, mostdamagekill
     zombieArena:onKill(player)
     return true
 end
-zombieArenaKill:register()
+--zombieArenaKill:register()

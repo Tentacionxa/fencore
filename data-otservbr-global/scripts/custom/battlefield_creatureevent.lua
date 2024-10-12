@@ -66,4 +66,4 @@ function battlefieldOnPrepareDeath.onPrepareDeath(player, killer)
 	end
 	return false
 end
-battlefieldOnPrepareDeath:register()
+--battlefieldOnPrepareDeath:register()

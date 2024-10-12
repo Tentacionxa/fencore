@@ -53,6 +53,6 @@ function snowball.onTime(interval)
 	return true
 end
 
-snowball:time("18:00") 
-snowball:register()
+--snowball:time("18:00") 
+--snowball:register()
 

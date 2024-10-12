@@ -127,6 +127,7 @@ rift<outfits>
 	<outfit type="0" looktype="169" name="Griish Mage" premium="no" unlocked="no" enabled="yes" from="store" />
 	<outfit type="0" looktype="178" name="Griish Knight" premium="no" unlocked="no" enabled="yes" from="store" />
 	<outfit type="0" looktype="176" name="Griish Scout" premium="no" unlocked="no" enabled="yes" from="store" />
+	<outfit type="0" looktype="175" name="Griish Soul" premium="no" unlocked="no" enabled="yes" from="store" />
 
 	<!-- Male -->
 	<outfit type="1" looktype="128" name="Citizen" premium="no" unlocked="yes" enabled="yes" />
@@ -255,4 +256,5 @@ rift<outfits>
 	<outfit type="1" looktype="170" name="Griish Mage" premium="no" unlocked="no" enabled="yes" from="store" />
 	<outfit type="1" looktype="172" name="Griish Knight" premium="no" unlocked="no" enabled="yes" from="store" />
 	<outfit type="1" looktype="171" name="Griish Scout" premium="no" unlocked="no" enabled="yes" from="store" />
+		<outfit type="1" looktype="705" name="Griish Soul" premium="no" unlocked="no" enabled="yes" from="store" />
 </outfits>

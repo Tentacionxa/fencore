@@ -20,5 +20,5 @@ function snowball.onStepIn(creature, item, position, fromPosition)
 end
 
 
-snowball:aid(10101, 10102)
-snowball:register()
+--snowball:aid(10101, 10102)
+--snowball:register()

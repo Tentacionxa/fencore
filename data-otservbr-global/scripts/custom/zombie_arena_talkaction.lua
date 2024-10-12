@@ -16,6 +16,6 @@ function zombieArenaCommand.onSay(player, words, param)
     return true
 end
 
-zombieArenaCommand:separator(" ")
-zombieArenaCommand:groupType("god")
-zombieArenaCommand:register()
+--zombieArenaCommand:separator(" ")
+--zombieArenaCommand:groupType("god")
+--zombieArenaCommand:register()

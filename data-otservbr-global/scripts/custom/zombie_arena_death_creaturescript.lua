@@ -26,4 +26,4 @@ function zombieArenaDeath.onPrepareDeath(player, corpse, killer, mostDamageKille
     return false
 end
 
-zombieArenaDeath:register()
+--zombieArenaDeath:register()

@@ -109,14 +109,14 @@ monster.defenses = {
 monster.elements = {
 	{ type = COMBAT_PHYSICALDAMAGE, percent = 100 },
 	{ type = COMBAT_ENERGYDAMAGE, percent = -15 },
-	{ type = COMBAT_EARTHDAMAGE, percent = 100 },
-	{ type = COMBAT_FIREDAMAGE, percent = 45 },
+	{ type = COMBAT_EARTHDAMAGE, percent = -40 },
+	{ type = COMBAT_FIREDAMAGE, percent = -45 },
 	{ type = COMBAT_LIFEDRAIN, percent = 100 },
 	{ type = COMBAT_MANADRAIN, percent = 100 },
 	{ type = COMBAT_DROWNDAMAGE, percent = 100 },
-	{ type = COMBAT_ICEDAMAGE, percent = 100 },
+	{ type = COMBAT_ICEDAMAGE, percent = -50 },
 	{ type = COMBAT_HOLYDAMAGE, percent = -35 },
-	{ type = COMBAT_DEATHDAMAGE, percent = 100 },
+	{ type = COMBAT_DEATHDAMAGE, percent = -50 },
 }
 
 monster.immunities = {
@@ -127,9 +127,7 @@ monster.immunities = {
 }
 
 mType.onAppear = function(monster, creature)
-	monster:setIcon("scout1", CreatureIconCategory_Quests, CreatureIconQuests_Energy, 45)
-	monster:setIcon("scout2", CreatureIconCategory_Quests, CreatureIconQuests_Fire, 45)
-	monster:setIcon("scout3", CreatureIconCategory_Quests, CreatureIconQuests_RedBall, 30)
+
 		if monster:getType():isRewardBoss() then
 			monster:setReward(true)
 		end

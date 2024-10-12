@@ -95,6 +95,7 @@ monster.loot = {
 	{ name = "fera bag", chance = 15, maxCount = 1  },
 	{ id = 46294, chance = 100, maxCount = 1 },
 	{ id = 46316, chance = 100000, maxCount = 1 },
+	{ name = "crystal arcane nectar	", chance = 15, maxCount = 1  },
 }
 
 monster.attacks = {
@@ -134,9 +135,7 @@ monster.immunities = {
 }
 
 mType.onAppear = function(monster, creature)
-	monster:setIcon("scout1", CreatureIconCategory_Quests, CreatureIconQuests_Energy, 45)
-	monster:setIcon("scout2", CreatureIconCategory_Quests, CreatureIconQuests_Fire, 45)
-	monster:setIcon("scout3", CreatureIconCategory_Quests, CreatureIconQuests_RedBall, 30)
+
 		if monster:getType():isRewardBoss() then
 			monster:setReward(true)
 		end

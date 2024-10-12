@@ -76,6 +76,6 @@ function battlefield.onStepIn(creature, item, position, fromPosition)
 	return true
 end
 
-battlefield:type("stepin")
-battlefield:aid(9612)
-battlefield:register()
+--battlefield:type("stepin")
+--battlefield:aid(9612)
+--battlefield:register()

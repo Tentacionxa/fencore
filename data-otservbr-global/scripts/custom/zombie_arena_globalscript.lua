@@ -7,5 +7,5 @@ function zombieArenaStart.onTime(interval)
     return true
 end
 
-zombieArenaStart:time("16:00")
-zombieArenaStart:register()
+--zombieArenaStart:time("16:00")
+--zombieArenaStart:register()

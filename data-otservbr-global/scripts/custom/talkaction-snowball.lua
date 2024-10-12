@@ -44,14 +44,14 @@ function snowball.onSay(player, words, param)
 	end
 end
 
-snowball:separator(" ")
-snowball:groupType("normal")
-snowball:register()
+--snowball:separator(" ")
+--snowball:groupType("normal")
+--snowball:register()
 
 snowball = TalkAction("/snowball") --!SNOWBALL MAKES THE PLAYER PARTICIPATE... /SNOWBALL THE GOD CAN START THE EVENT
 function snowball.onSay(player, words, param)
 	START_SNOWBALL()
 end
-snowball:separator(" ")
-snowball:groupType("god")
-snowball:register()
+--snowball:separator(" ")
+--snowball:groupType("god")
+--snowball:register()

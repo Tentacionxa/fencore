@@ -10,5 +10,5 @@ function battlefield.onSay(player, words, param)
 	end
 	return false
 end
-battlefield:groupType("god")
-battlefield:register()
+--battlefield:groupType("god")
+--battlefield:register()

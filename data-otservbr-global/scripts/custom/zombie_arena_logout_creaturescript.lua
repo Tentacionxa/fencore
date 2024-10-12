@@ -23,4 +23,4 @@ function zombieArenaLogout.onLogout(player)
     return true
 end
 
-zombieArenaLogout:register()
+--zombieArenaLogout:register()

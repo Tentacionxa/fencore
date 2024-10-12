@@ -269,7 +269,7 @@ buyBlessCommandFee = 0
 teleportPlayerToVocationRoom = false
 toggleReceiveReward = false
 randomMonsterSpawn = true
-lootPouchMaxLimit = 10000
+lootPouchMaxLimit = 7000
 storeInboxMaxLimit = 5000
 enablePlayerPutItemInAmmoSlot = false
 startStreakLevel = 0
@@ -353,8 +353,9 @@ onlyInvitedCanMoveHouseItems = true
 togglehouseTransferOnRestart = true
 
 -- Item Usage
-timeBetweenActions = 200
-timeBetweenExActions = 1000
+timeBetweenActions = 1000
+timeBetweenExActions = 1500
+
 
 -- Push
 -- NOTE: pushDelay: interval for every push
@@ -495,7 +496,7 @@ rateManaRegenSpeed = 3.0
 rateSoulRegen = 2.0
 rateSoulRegenSpeed = 2.0
 
-rateSpellCooldown = 1.0
+rateSpellCooldown = 0.9
 rateAttackSpeed = 1.0
 rateOfflineTrainingSpeed = rateAttackSpeed
 rateExerciseTrainingSpeed = rateAttackSpeed

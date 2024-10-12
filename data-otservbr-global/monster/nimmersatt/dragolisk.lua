@@ -77,6 +77,7 @@ monster.voices = {
 
 monster.loot = {
 	{ name = "Platinum Coin", chance = 52610, minCount = 1, maxCount = 25 },
+	{ name = "Mega Dragon Heart", chance = 52610, minCount = 1, maxCount = 1 },
 	{ name = "Dragolisk Poison Gland", chance = 1000 },
 	{ name = "Nimmersatt's Seal", chance = 1020 },
 	{ id = 282, chance = 7580 },

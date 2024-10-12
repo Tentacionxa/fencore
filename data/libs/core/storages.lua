@@ -1,3 +1,3 @@
-Storage = {
-    WandOfElements = 784465,
-    }
+Wand = {
+	WandOfElements = 92475,
+}

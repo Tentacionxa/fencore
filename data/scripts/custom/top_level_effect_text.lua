@@ -22,5 +22,5 @@ function event.onThink(interval)
     return true
 end
 
-event:interval(config.interval)
-event:register()
+--event:interval(config.interval)
+--event:register()

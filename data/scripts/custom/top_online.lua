@@ -41,5 +41,5 @@ function globalEvent.onThink(interval)
     end
     return true
 end
-globalEvent:interval(config.interval)
-globalEvent:register()
+--globalEvent:interval(config.interval)
+--globalEvent:register()

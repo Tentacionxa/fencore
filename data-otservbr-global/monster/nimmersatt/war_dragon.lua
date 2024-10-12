@@ -86,6 +86,7 @@ monster.loot = {
 	{ name = "Black Pearl", chance = 4000 },
 	{ name = "White Gem", chance = 1000 },
 	{ name = "Dragonbone Staff", chance = 740 },
+	{ name = "Mega Dragon Heart", chance = 52610, minCount = 1, maxCount = 1 },
 }
 
 monster.attacks = {

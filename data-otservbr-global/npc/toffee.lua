@@ -68,7 +68,7 @@ npcConfig.shop = {
 	{ itemName = "taiyaki ice cream", clientId = 48273, sell = 13000 },
 	{ itemName = "pastry dragon", clientId = 48256, sell = 12000 },
 	{ itemName = "churro heart", clientId = 48254, sell = 13000 },
-	{ itemName = "brigadeiro", clientId = 48252, sell = 13000 },
+	{ itemName = "brigadeiro", clientId = 48252, buy = 5000 , sell = 13000 },
 	{ itemName = "beijinho", clientId = 48253, sell = 15000 },
 	{ itemName = "banana", clientId = 3587, buy = 5 },
 	{ itemName = "bulb of garlic", clientId = 8197, buy = 3 },

@@ -22,4 +22,3 @@ dofile(CORE_DIRECTORY .. "/libs/custom/karin_lib.lua")
 -- Quests library
 dofile(CORE_DIRECTORY .. '/libs/custom/simple_crafting_system.lua')
 
-dofile(CORE_DIRECTORY .. '/libs/custom/wand.lua')

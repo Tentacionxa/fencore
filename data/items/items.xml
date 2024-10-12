@@ -83164,7 +83164,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="script" value="moveevent">
 			<attribute key="level" value="2500"/>
 			<attribute key="slot" value="head"/>
-			<attribute key="vocation" value="Paladin;true, Royal Paladin"/>
+			<attribute key="vocation" value="Knight;true, Elite Knight"/>
 		</attribute>
 	</item>
 <item id="49290" article="an" name="Pair of pixelwalkers">

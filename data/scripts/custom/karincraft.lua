@@ -7,8 +7,9 @@ Karin.CraftSystem = {
                 vocation = 'Druid',
                 requireToCraft = {
                     [39154] = 8,
+                    [36673] = 1,
                     [46316] = 500,
-                    ['level'] = 1000, 
+                    ['level'] = 2000, 
                 },
                 storageId = 921001, -- Unique storage ID
             },
@@ -18,8 +19,9 @@ Karin.CraftSystem = {
                 vocation = 'Sorcerer',
                 requireToCraft = {
                     [34095] = 8,
+                    [36672] = 1,
                     [46316] = 500,
-                    ['level'] = 1000,
+                    ['level'] = 2000,
                 },
                 storageId = 921002, -- Unique storage ID
             },

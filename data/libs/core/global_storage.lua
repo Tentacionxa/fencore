@@ -21,7 +21,9 @@ Reserved player action storage key ranges (const.hpp)
 	Questline = Storage through the Quest
 ]]
 
-
+Wand = {
+	WandOfElements = 98475,
+}
 
 Global = {
 	Storage = {

@@ -84066,7 +84066,7 @@ Granted by TibiaGoals.com"/>
 
 
 
-<item id="46372" article="an" name="enchanted flamy grimoire">
+<item id="49250" article="an" name="enchanted flamy grimoire">
 		<attribute key="primarytype" value="spellbooks"/>
 		<attribute key="weaponType" value="spellbook"/>
 		<attribute key="absorbpercentfire" value="18"/>
@@ -84292,7 +84292,7 @@ Granted by TibiaGoals.com"/>
 
 
 
-<item id="46362" article="an" name="enchanted boots">
+<item id="46276" article="an" name="enchanted boots">
 		<attribute key="primarytype" value="boots"/>
 		<attribute key="absorbpercentphysical" value="15"/>
 		<attribute key="skilldist" value="12"/>

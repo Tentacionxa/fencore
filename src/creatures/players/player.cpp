@@ -8238,3 +8238,15 @@ uint16_t Player::getPlayerVocationEnum() const {
 
 	return Vocation_t::VOCATION_NONE;
 }
+
+bool Player::isExhausted(uint32_t exhaustType) const {
+    auto it = exhaustMap.find(exhaustType);
+    if (it != exhaustMap.end() && OTSYS_TIME() < it->second) {
+        return true;
+    }
+    return false;
+}
+
+void Player::addExhaustion(uint32_t exhaustType, uint32_t time) {
+    exhaustMap[exhaustType] = OTSYS_TIME() + time;
+}

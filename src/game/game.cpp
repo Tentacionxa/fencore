@@ -640,7 +640,13 @@ void Game::start(ServiceManager * manager) {
 
   serviceManager = manager;
 
- initializeLootQueueProcessing();
+void Game::initializeLootQueueProcessing() {
+    // This will periodically call processLootQueue every 100 milliseconds.
+    g_dispatcher.addTask(createTask(EVENT_MS + 100, [this]() {
+        processLootQueue();
+        initializeLootQueueProcessing();  // Reschedule it
+    }));
+}
  
   time_t now = time(0);
   const tm * tms = localtime( & now);
@@ -11178,4 +11184,11 @@ const std::unordered_map < uint16_t, std::string > & Game::getHirelingSkills() {
 
 const std::unordered_map < uint16_t, std::string > & Game::getHirelingOutfits() {
   return m_hirelingOutfits;
+}
+void Game::initializeLootQueueProcessing() {
+    // Periodically process the loot queue every 100 milliseconds
+    g_dispatcher.addTask(createTask(EVENT_MS + 100, [this]() {
+        processLootQueue();
+        initializeLootQueueProcessing();  // Reschedule it to run continuously
+    }));
 }

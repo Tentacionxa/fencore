@@ -80,6 +80,10 @@ struct HighscoreCacheEntry {
 
 class Game {
 public:
+
+    void queueLootRequest(std::shared_ptr<Player> player);
+    void processLootQueue();
+    void initializeLootQueueProcessing();
 	Game();
 	~Game();
 
@@ -94,7 +98,7 @@ public:
     void processLootQueue();
 	void resetMonsters() const;
 	void resetNpcs() const;
-
+ void initializeLootQueueProcessing();
 	void loadBoostedCreature();
 	void start(ServiceManager* manager);
 

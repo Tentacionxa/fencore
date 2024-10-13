@@ -170,18 +170,12 @@ bool SpawnMonster::spawnMonster(uint32_t spawnMonsterId, spawnBlock_t &sb, const
 	if (spawnedMonsterMap.contains(spawnMonsterId)) {
 		return false;
 	}
-	Position pos = sb.pos;
-    int16_t xOffset = 2;  // Ensure 2 sqm distance in x-direction
-    int16_t yOffset = 2;  // Ensure 2 sqm distance in y-direction
-    
-    pos.x += xOffset;
-    pos.y += yOffset;
 	auto monster = std::make_shared<Monster>(monsterType);
 	if (startup) {
 		// No need to send out events to the surrounding since there is no one out there to listen!
-		if (!g_game().internalPlaceCreature(monster, pos, startup)) {
-    return false;
-}
+		if (!g_game().internalPlaceCreature(monster, sb.pos, true)) {
+			return false;
+		}
 	} else {
 		g_logger().debug("[SpawnMonster] Spawning {} at {}", monsterType->name, sb.pos.toString());
 		if (!g_game().placeCreature(monster, sb.pos, false, true)) {

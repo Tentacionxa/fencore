@@ -79,7 +79,7 @@ packetCompressionLevel = 3
 
 -- Depot Limit
 freeDepotLimit = 10000
-premiumDepotLimit = 30000
+premiumDepotLimit = 40000
 depotBoxes = 20
 
 -- Augments System (Get more info in: https://github.com/opentibiabr/canary/pull/2602)

@@ -15,7 +15,7 @@ logLevel = "info"
 --- Toggles the server's maintenance mode.
 -- When enabled, it restricts user access and indicates maintenance operations.
 -- @field [parent=#global] #boolean toggleMaintainMode false by default, set to true to enable maintenance mode.
-toggleMaintainMode = true
+toggleMaintainMode = false
 --- Message displayed during maintenance mode.
 -- Should inform the expected downtime or resumption details succinctly.
 -- @field [parent=#global] #string maintainModeMessage an empty string by default, set a custom message if needed.
@@ -66,7 +66,7 @@ serverMotd = "Welcome to the Fencore!"
 statusTimeout = 15 * 1000
 replaceKickOnLogin = true
 maxPacketsPerSecond = 100
-maxItem = 40000
+maxItem = 30000
 maxContainer = 400
 onePlayerOnlinePerAccount = false
 maxPlayersOnlinePerAccount = 4

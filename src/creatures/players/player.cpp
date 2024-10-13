@@ -8257,7 +8257,7 @@ void Player::updateLastLootTime() {
 }
 
 bool Player::isExhausted(uint32_t exhaustType) const {
-    auto it = exhaustMap.find(exhaustType);
+    auto it = this->exhaustMap.find(exhaustType);
     if (it == exhaustMap.end()) {
         return false;  // Not exhausted
     }
@@ -8267,5 +8267,5 @@ bool Player::isExhausted(uint32_t exhaustType) const {
 
 void Player::addExhaustion(uint32_t exhaustType, uint32_t time) {
     uint64_t currentTime = OTSYS_TIME();
-    exhaustMap[exhaustType] = currentTime + time;  // Set exhaustion cooldown
+    this->exhaustMap[exhaustType] = currentTime + time;  // Set exhaustion cooldown
 }

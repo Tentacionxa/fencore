@@ -94,10 +94,8 @@ public:
 	static Game &getInstance() {
 		return inject<Game>();
 	}
- void queueLootRequest(std::shared_ptr<Player> player);
 	void resetMonsters() const;
 	void resetNpcs() const;
- void initializeLootQueueProcessing();
 	void loadBoostedCreature();
 	void start(ServiceManager* manager);
 

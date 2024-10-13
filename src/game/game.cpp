@@ -11164,9 +11164,3 @@ const std::unordered_map < uint16_t, std::string > & Game::getHirelingSkills() {
 const std::unordered_map < uint16_t, std::string > & Game::getHirelingOutfits() {
   return m_hirelingOutfits;
 }
-void Game::checkItemLimit(std::shared_ptr<Player> player) {
-    if (player->getInventoryItemCount() >= 30000) {
-        player->disableAutoLoot(); // Assuming there's a method to disable auto loot
-        player->sendTextMessage("You have reached the maximum item limit. Auto-loot has been disabled.");
-    }
-}

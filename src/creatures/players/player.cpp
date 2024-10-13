@@ -100,6 +100,14 @@ bool Player::isPushable() {
 	return Creature::isPushable();
 }
 
+bool Player::canLoot() {
+    uint64_t currentTime = OTSYS_TIME();
+    return currentTime - lastLootTime >= lootCooldown;
+}
+
+void Player::updateLastLootTime() {
+    lastLootTime = OTSYS_TIME();
+}
 std::shared_ptr<Task> Player::createPlayerTask(uint32_t delay, std::function<void(void)> f, std::string context) {
 	return std::make_shared<Task>(std::move(f), std::move(context), delay);
 }

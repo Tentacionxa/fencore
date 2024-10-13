@@ -640,6 +640,8 @@ void Game::start(ServiceManager * manager) {
 
   serviceManager = manager;
 
+ initializeLootQueueProcessing();
+ 
   time_t now = time(0);
   const tm * tms = localtime( & now);
   int minutes = tms -> tm_min;
@@ -3048,7 +3050,20 @@ void Game::playerQuickLootCorpse(std::shared_ptr < Player > player, std::shared_
   if (!player || !corpse) {
     return;
   }
+  #ifdef ENABLE_DEBUG_LOOT
+    g_logger().debug("Executing task Game::playerQuickLootCorpse for player {}", player->getName());
+#endif
+ if (!player->canLoot()) {
+        player->sendCancelMessage("You must wait before looting again.");
+        return;
+    }
 
+    // Update last loot time
+    player->updateLastLootTime();
+
+    // Queue the loot request instead of processing it immediately
+    queueLootRequest(player);
+}
   std::vector < std::shared_ptr < Item >> itemList;
   bool ignoreListItems = (player -> quickLootFilter == QUICKLOOTFILTER_SKIPPEDLOOT);
 

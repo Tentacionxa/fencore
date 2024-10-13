@@ -101,7 +101,6 @@ bool Player::isPushable() {
 }
 
 bool Player::canLoot() {
-    bool Player::canLoot() {
     uint64_t currentTime = OTSYS_TIME();
     return currentTime - lastLootTime >= lootCooldown;
 }
@@ -8248,7 +8247,7 @@ uint16_t Player::getPlayerVocationEnum() const {
 	return Vocation_t::VOCATION_NONE;
 }
 
-    bool Player::canLoot() {
+bool Player::canLoot() {
     uint64_t currentTime = OTSYS_TIME();
     return currentTime - lastLootTime >= lootCooldown;
 }

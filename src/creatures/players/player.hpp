@@ -105,20 +105,17 @@ static constexpr uint16_t PLAYER_MIN_SPEED = 10;
 static constexpr uint8_t PLAYER_SOUND_HEALTH_CHANGE = 10;
 
 class Player final : public Creature, public Cylinder, public Bankable {
+    public:
+        bool isExhausted(uint32_t exhaustType) const;
+        void addExhaustion(uint32_t exhaustType, uint32_t time);
+        bool canLoot() const;
+        void updateLastLootTime();
+    private:
+        std::unordered_map<uint32_t, uint64_t> exhaustMap;
+        uint64_t lastLootTime;
+        uint32_t lootCooldown = 1000; // 1 second cooldown for looting
+        
 public:
-    bool canLoot() const;
-    void updateLastLootTime();
-    bool isExhausted(uint32_t exhaustType) const;
-    void addExhaustion(uint32_t exhaustType, uint32_t time);
-
-private:
-    std::unordered_map<uint32_t, uint64_t> exhaustMap; // Store the exhaustion timers
-    uint64_t lastLootTime; // Tracks last loot time for cooldown
-    uint32_t lootCooldown = 2000; // Cooldown for looting, in milliseconds
-    
-public:
- bool isExhausted(uint32_t exhaustType) const;
-    void addExhaustion(uint32_t exhaustType, uint32_t time);
 	class PlayerLock {
 	public:
 		explicit PlayerLock(const std::shared_ptr<Player> &p) :
@@ -134,7 +131,6 @@ public:
 
 	private:
 		const std::shared_ptr<Player> &player;
-		 std::unordered_map<uint32_t, uint64_t> exhaustMap; // Stores exhaust timers
 	};
 
 	explicit Player(ProtocolGame_ptr p);

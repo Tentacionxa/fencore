@@ -19,7 +19,7 @@ toggleMaintainMode = true
 --- Message displayed during maintenance mode.
 -- Should inform the expected downtime or resumption details succinctly.
 -- @field [parent=#global] #string maintainModeMessage an empty string by default, set a custom message if needed.
-maintainModeMessage = "Please Download The Latest Client. Server Will Start in 10 minutes -- https://fencore.net/?download"
+maintainModeMessage = "Please Download The Latest Client. Server Will Start in 10 minute"
 
 -- Combat settings
 -- NOTE: valid values for worldType are: "pvp", "no-pvp" and "pvp-enforced"

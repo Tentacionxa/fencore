@@ -106,6 +106,9 @@ static constexpr uint8_t PLAYER_SOUND_HEALTH_CHANGE = 10;
 
 class Player final : public Creature, public Cylinder, public Bankable {
 public:
+
+  bool canLoot();
+    void updateLastLootTime();
 	class PlayerLock {
 	public:
 		explicit PlayerLock(const std::shared_ptr<Player> &p) :
@@ -2703,6 +2706,10 @@ uint64_t getBloodyBankBalance() const {
 	uint16_t getPlayerVocationEnum() const;
 
 private:
+
+uint64_t lastLootTime = 0;  // Track the player's last loot time
+    static constexpr uint64_t lootCooldown = 1000;  // 1 second cooldown
+	
 	friend class PlayerLock;
 	std::mutex mutex;
 

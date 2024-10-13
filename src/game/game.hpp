@@ -90,7 +90,8 @@ public:
 	static Game &getInstance() {
 		return inject<Game>();
 	}
-
+ void queueLootRequest(std::shared_ptr<Player> player);
+    void processLootQueue();
 	void resetMonsters() const;
 	void resetNpcs() const;
 

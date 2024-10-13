@@ -54,7 +54,7 @@ rune:charges(4)
 rune:level(2000)
 rune:magicLevel(4)
 rune:cooldown(5 * 1000)
-rune:groupCooldown(3 * 1000)
+rune:groupCooldown(2 * 1000)
 rune:vocation("paladin;true", "royal paladin;true")
 rune:register()
 

@@ -90,7 +90,7 @@ monster.loot = {
 	{ name = "steel boots", chance = 5050 },
 	{ name = "ham", chance = 60000, maxCount = 2 },
 	{ name = "orichalcum pearl", chance = 2760, maxCount = 2 },
-	{ name = "cat's paw", chance = 2222, maxCount = 2 },
+	{ name = "cat's paw", chance = 2222, maxCount = 4 },
 	{ name = "jewelled backpack", chance = 1192 },
 	{ name = "soul orb", chance = 23000 },
 	{ id = 6299, chance = 2008 }, -- death ring

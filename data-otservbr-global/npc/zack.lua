@@ -1535,8 +1535,8 @@ npcConfig.shop = {
 
 
 		--Nemesis boss loot
-	{ itemName = "dark lord’s cape", clientId = 10315, sell = 1000000 },
-	{ itemName = "ravenwing", clientId = 10315, sell = 500000 },
+	{ itemName = "dark lord’s cape", clientId = 10315, sell = 100 },
+	{ itemName = "ravenwing", clientId = 10315, sell = 500 },
 	
 
 	--primal bag items

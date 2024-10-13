@@ -100,6 +100,14 @@ bool Player::isPushable() {
 	return Creature::isPushable();
 }
 
+bool Player::canLoot() {
+    uint64_t currentTime = OTSYS_TIME();
+    return currentTime - lastLootTime >= lootCooldown;
+}
+
+void Player::updateLastLootTime() {
+    lastLootTime = OTSYS_TIME();
+}
 std::shared_ptr<Task> Player::createPlayerTask(uint32_t delay, std::function<void(void)> f, std::string context) {
 	return std::make_shared<Task>(std::move(f), std::move(context), delay);
 }
@@ -8239,14 +8247,25 @@ uint16_t Player::getPlayerVocationEnum() const {
 	return Vocation_t::VOCATION_NONE;
 }
 
+bool Player::canLoot() {
+    uint64_t currentTime = OTSYS_TIME();
+    return currentTime - lastLootTime >= lootCooldown;
+}
+
+void Player::updateLastLootTime() {
+    lastLootTime = OTSYS_TIME();
+}
+
 bool Player::isExhausted(uint32_t exhaustType) const {
     auto it = exhaustMap.find(exhaustType);
-    if (it != exhaustMap.end() && OTSYS_TIME() < it->second) {
-        return true;
+    if (it == exhaustMap.end()) {
+        return false;  // Not exhausted
     }
-    return false;
+    uint64_t currentTime = OTSYS_TIME();  // Get current system time
+    return currentTime < it->second;      // Check if still exhausted
 }
 
 void Player::addExhaustion(uint32_t exhaustType, uint32_t time) {
-    exhaustMap[exhaustType] = OTSYS_TIME() + time;
+    uint64_t currentTime = OTSYS_TIME();
+    exhaustMap[exhaustType] = currentTime + time;  // Set exhaustion cooldown
 }

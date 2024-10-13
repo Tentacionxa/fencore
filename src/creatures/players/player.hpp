@@ -106,6 +106,8 @@ static constexpr uint8_t PLAYER_SOUND_HEALTH_CHANGE = 10;
 
 class Player final : public Creature, public Cylinder, public Bankable {
 public:
+ bool isExhausted(uint32_t exhaustType) const;
+    void addExhaustion(uint32_t exhaustType, uint32_t time);
 	class PlayerLock {
 	public:
 		explicit PlayerLock(const std::shared_ptr<Player> &p) :
@@ -121,6 +123,7 @@ public:
 
 	private:
 		const std::shared_ptr<Player> &player;
+		 std::unordered_map<uint32_t, uint64_t> exhaustMap; // Stores exhaust timers
 	};
 
 	explicit Player(ProtocolGame_ptr p);

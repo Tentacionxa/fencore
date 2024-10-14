@@ -85,108 +85,102 @@ Karin.CraftSystem = {
                 },
                 storageId = 921006, -- Unique storage ID
             },
-          ['Grand Griish Razor'] = {
+            ['Grand Griish Razor'] = {
 				id = 46357,
 				minLevel = 3000,
-				vocation = 'Knight', -- Knight|Sorcerer|Druid|Paladin|None
+				vocation = 'Knight',
 				requireToCraft = {
 					[43871] = 8,
                     [46316] = 500,
 					['level'] = 1000,
 					['skill'] = {
 					[SKILL_SWORD] = 20, 
-			},
-		},
-		storageId = 921007,-- Unique storage ID
-		},
-
-			['Grand Griish Blade'] = {
+			    },
+		    },
+		    storageId = 921007, -- Unique storage ID
+		  },
+          ['Grand Griish Blade'] = {
 				id = 46358,
 				minLevel = 3000,
-				vocation = 'Knight', -- Knight|Sorcerer|Druid|Paladin|None
+				vocation = 'Knight',
 				requireToCraft = {
 					[43865] = 8,
                     [46316] = 500,
 					['level'] = 1000,
 					['skill'] = {
 					[SKILL_SWORD] = 20, 
-				},
-			},
-			storageId = 921008,-- Unique storage ID-- Unique storage ID
-			},
-			['Grand Griish Bow'] = {
+			    },
+		    },
+		    storageId = 921008, -- Unique storage ID
+		  },
+          ['Grand Griish Bow'] = {
 				id = 46363,
 				minLevel = 3000,
-				vocation = 'Paladin', -- Knight|Sorcerer|Druid|Paladin|None
+				vocation = 'Paladin',
 				requireToCraft = {
 					[43878] = 6,
                     [46316] = 500,
 					['level'] = 1000,
 					['skill'] = {
 					[SKILL_DISTANCE] = 20, 
-				},
-			},
-			storageId = 921009,-- Unique storage ID-- Unique storage ID
-			},
-			['Grand Griish Crossbow'] = {
+			    },
+		    },
+		    storageId = 921009, -- Unique storage ID
+		  },
+          ['Grand Griish Crossbow'] = {
 				id = 46366,
 				minLevel = 3000,
-				vocation = 'Paladin', -- Knight|Sorcerer|Druid|Paladin|None
+				vocation = 'Paladin',
 				requireToCraft = {
 					[43880] = 6,
                     [46316] = 500,
 					['level'] = 1000,
 					['skill'] = {
 					[SKILL_DISTANCE] = 20, 
-				},
-			},
-			storageId = 921010,-- Unique storage ID-- Unique storage ID
-			},
-			['Grand Griish Coil'] = {
+			    },
+		    },
+		    storageId = 921010, -- Unique storage ID
+		  },
+          ['Grand Griish Coil'] = {
 				id = 46377,
 				minLevel = 3000,
-				vocation = 'Sorcerer', -- Knight|Sorcerer|Druid|Paladin|None
+				vocation = 'Sorcerer',
 				requireToCraft = {
 					[43883] = 8,
                     [46316] = 500,
 					['level'] = 1000,
-
-				},
-				storageId = 921011,-- Unique storage ID-- Unique storage ID
-			},
-			
-		
-			['Ethernal Night Root Rod'] = {
+			    },
+			    storageId = 921011, -- Unique storage ID
+		  },
+		  ['Ethernal Night Root Rod'] = {
 				id = 46344,
 				minLevel = 3000,
-				vocation = 'Druid', -- Knight|Sorcerer|Druid|Paladin|None
+				vocation = 'Druid',
 				requireToCraft = {
 					[43886] = 10,
                     [46316] = 500,
 					['level'] = 1000, 
 				},
-				storageId = 921012,-- Unique storage ID-- Unique storage ID
-			},
-			
-	
-		 
-			['Grand Griish Bludgeon'] = {
+				storageId = 921012, -- Unique storage ID
+		  },
+		  ['Grand Griish Bludgeon'] = {
 				id = 46352,
 				minLevel = 3000,
 				vocation = 'Knight',
 				requireToCraft = {
 					[43873] = 8,
                     [46316] = 500,
-					['level'] = 1000, 
+					['level'] = 1000,
 					['skill'] = {
 					[SKILL_CLUB] = 20,  
 				},
-			},
-			storageId = 921013,-- Unique storage ID-- Unique storage ID
-			},
-    },    
-},
+		    },
+		    storageId = 921013, -- Unique storage ID
+		  },
+        },    
+    },
 }
+
 __CraftFunctions = {
     getCraftByAid = function (self, aid)
         for craftListName, data in pairs(self) do
@@ -261,9 +255,7 @@ __CraftFunctions = {
                 end
             end)
         end
-        window:addButton("Cancel", function()
-            
-        end)
+        window:addButton("Cancel", function() end)
         window:sendToPlayer(player)
     end,
     openConfirmWindow = function (self, name, itemName, craft, player)
@@ -277,9 +269,7 @@ __CraftFunctions = {
                 self:doCraft(name, itemName, craft, player)
             end
         end)
-        window:addButton("Cancel", function()
-            
-        end)
+        window:addButton("Cancel", function() end)
         window:sendToPlayer(player)
     end,
     doCraft = function (self, name, itemName, craft, player)
@@ -311,8 +301,6 @@ __CraftFunctions = {
     end,
     checkCraft = function (self, craft, player)
         local canCraft = true
-        
-
 
         if craft.vocation then
             if craft.vocation ~= 'None' and craft.vocation ~= self:getVocation(player) then
@@ -365,15 +353,20 @@ __CraftFunctions = {
                 message = 'List of crafts:'
             }
             for name, subdata in pairs(craft.crafts) do
+                -- Check if the player has already crafted the item
+                if subdata.storageId and player:getStorageValue(subdata.storageId) == 1 then
+                    goto continue -- Skip the item if player already has it
+                end
+
                 if subdata.minLevel and player:getLevel() < subdata.minLevel then
-                    goto continue
+                    goto continue -- Skip if level requirement not met
                 end
 
                 if subdata.vocation and (subdata.vocation ~= 'None' and subdata.vocation ~= self:getVocation(player)) then
-                    goto continue
+                    goto continue -- Skip if vocation requirement not met
                 end
 
-                window:addChoice(name)
+                window:addChoice(name) -- Add the item to the list
 
                 ::continue::
             end

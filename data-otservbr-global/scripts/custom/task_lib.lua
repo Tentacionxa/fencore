@@ -750,8 +750,10 @@ taskConfiguration = {
 
 {name = "Griish - Griish Knight, Griish Lord, Griish Scout, Griish Leader, Griish Sorcereress, Griish Mage, Griish Druid, Griish Priestess, Griish Warior, Griish Wizard, Griish Adventurer, Griish Hunter", color = 40, total = 3000, type = "repeatable", storage = 190945, storagecount = 190946,
         rewards = {
-			{46316, 35},
-	{"exp", 9000000},
+			{46316, 200},
+			{46314, 200},
+			{37317, 5},
+	{"exp", 20000000},
         },
         races = {
                 "Griish Knight",

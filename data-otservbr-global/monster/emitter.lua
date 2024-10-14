@@ -80,7 +80,6 @@ monster.loot = {
 	{name = "platinum coin", chance = 82220, maxCount = 9},
 	{name = "great spirit potion", chance = 32220, maxCount = 7},
 	{name = "blue gem", chance = 54560},
-	{id = 32018, chance = 4500, maxCount = 1},
 	{name = "basalt crumbs", chance = 74560},
 	{name = "darklight core", chance = 21920},
 	{name = "amber staff", chance = 4000},

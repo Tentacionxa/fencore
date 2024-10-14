@@ -82,7 +82,6 @@ monster.loot = {
 	{name = "small emerald", chance = 8000, maxCount = 2},
 	{name = "small amethyst", chance = 8000, maxCount = 2},
     {name = "lightning boots", chance = 1880},
-	{id = 32018, chance = 4500, maxCount = 1},
 	{name = "spellbook of mind control", chance = 3000},
     {name = "stone skin amulet", chance = 1880},
     {name = "cyan crystal fragment", chance = 4100},

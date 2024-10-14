@@ -47,7 +47,7 @@ redSkullDuration = 3
 blackSkullDuration = 5
 orangeSkullDuration = 1
 manaShieldDamageReceivedFactor = 2.0
-cleanProtectionZones = false
+cleanProtectionZones = true
 
 -- Connection Config
 -- NOTE: allowOldProtocol can allow login on 10x protocol. (11.00)

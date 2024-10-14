@@ -82189,33 +82189,6 @@ Granted by TibiaGoals.com"/>
 			<attribute key="slot" value="hand"/>
 		</attribute>
 	</item>
-<item id="46357" article="a" name="grand griish razor">
-		<attribute key="primarytype" value="sword weapons"/>
-		<attribute key="weaponType" value="sword"/>
-		<attribute key="slotType" value="two-handed"/>
-		<attribute key="elementenergy" value="90"/>
-		<attribute key="criticalhitdamage" value="1900"/>
-		<attribute key="criticalhitchance" value="1000"/>
-		<attribute key="attack" value="16"/>
-		<attribute key="defense" value="50"/>
-		<attribute key="skillsword" value="9"/>
-		<attribute key="weight" value="7900"/>
-		<attribute key="imbuementslot" value="3">
-			<attribute key="life leech" value="3"/>
-			<attribute key="mana leech" value="3"/>
-			<attribute key="critical hit" value="3"/>
-			<attribute key="skillboost sword" value="3"/>
-		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="fierce berserk" value="powerful impact" />
-		</attribute>
-		<attribute key="script" value="moveevent;weapon">
-			<attribute key="level" value="2500"/>
-			<attribute key="unproperly" value="true"/>
-			<attribute key="weaponType" value="sword"/>
-			<attribute key="vocation" value="Knight;true, Elite Knight"/>
-		</attribute>
-	</item>
     <item id="46352" article="a" name="grand griish bludgeon">
 		<attribute key="primarytype" value="club weapons"/>
 		<attribute key="weaponType" value="club"/>
@@ -82468,6 +82441,8 @@ Granted by TibiaGoals.com"/>
 		<attribute key="primarytype" value="sword weapons"/>
 		<attribute key="weaponType" value="sword"/>
 		<attribute key="attack" value="16"/>
+				<attribute key="criticalhitdamage" value="1400"/>
+		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="elementfire" value="65"/>
 			<attribute key="criticalhitdamage" value="1400"/>
 		<attribute key="criticalhitchance" value="1000"/>
@@ -82549,33 +82524,7 @@ Granted by TibiaGoals.com"/>
 			<attribute key="vocation" value="Knight;true, Elite Knight"/>
 		</attribute>
 	</item>
-    <item id="46352" article="a" name="grand griish bludgeon">
-		<attribute key="primarytype" value="club weapons"/>
-		<attribute key="weaponType" value="club"/>
-		<attribute key="slotType" value="two-handed"/>
-		<attribute key="elementearth" value="65"/>
-		<attribute key="criticalhitdamage" value="1900"/>
-		<attribute key="criticalhitchance" value="1000"/>
-		<attribute key="attack" value="16"/>
-		<attribute key="defense" value="50"/>
-		<attribute key="skillclub" value="9"/>
-		<attribute key="weight" value="9100"/>
-		<attribute key="imbuementslot" value="3">
-			<attribute key="life leech" value="3"/>
-			<attribute key="mana leech" value="3"/>
-			<attribute key="critical hit" value="3"/>
-			<attribute key="skillboost club" value="3"/>
-		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="fierce berserk" value="powerful impact" />
-		</attribute>
-		<attribute key="script" value="moveevent;weapon">
-			<attribute key="level" value="2500"/>
-			<attribute key="unproperly" value="true"/>
-			<attribute key="weaponType" value="club"/>
-			<attribute key="vocation" value="Knight;true, Elite Knight"/>
-		</attribute>
-	</item>
+    
     <item id="46363" article="a" name="grand griish bow">
 		<attribute key="primarytype" value="distance weapons"/>
 		<attribute key="weaponType" value="distance"/>

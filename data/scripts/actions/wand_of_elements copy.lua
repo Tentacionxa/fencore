@@ -1,8 +1,5 @@
 local elements = {
-    ["Holy"] = { index = 1 },
     ["Ice"] = { index = 2 },
-    ["Fire"] = { index = 3 },
-    ["Energy"] = { index = 4 },
     ["Earth"] = { index = 5 }
 }
 

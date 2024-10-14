@@ -28,11 +28,11 @@ local config = {
 									[9] = {item = 7401, count = 1},-- minotaur trophy
 									[10] = {item = 46628, count = 1}, -- amber crussher
 									[11] = {item = 9667, count = 1}, -- boggy dreads
-									[12] = {item = 43884, count = 1, ignoreEquipped = true}, -- sanguine boots
+									[12] = {item = 43884, count = 1}, -- sanguine boots
 									[13] = {item = 5909, count = 50},-- white piece of cloth
-											[14] = {item = 39151, count = 1, ignoreEquipped = true}, -- arcanomancer regalia
-									[15] = {item = 39152, count = 1, ignoreEquipped = true}, -- arcanomancer folio
-									[16] = {item = 34095, count = 1, ignoreEquipped = true},-- soulmantle
+											[14] = {item = 39151, count = 1}, -- arcanomancer regalia
+									[15] = {item = 39152, count = 1}, -- arcanomancer folio
+									[16] = {item = 34095, count = 1},-- soulmantle
 											[17] = {item = 43779, count = 1},-- unstable darklight matter.
 													[18] = {item = 43849, count = 20},-- rotten roots.
 														[19] = {item = 43850, count = 50},-- dark obsidian splinter.
@@ -46,7 +46,7 @@ local config = {
 							reqItems = {
 									[1] = {item = 22516, count = 50}, -- Silver Tokens
 									[2] = {item = 9646, count = 20}, -- book of prayers
-									[3] = {item = 8090, count = 1, ignoreEquipped = true}, -- Spellbook of Dark mysteries
+									[3] = {item = 8090, count = 1}, -- Spellbook of Dark mysteries
 									[4] = {item = 20207, count = 5}, -- pool of chitinous glue
 									[5] = {item = 10320, count = 40}, -- book of necromantic rituals
 									[6] = {item = 3598, count = 50}, -- cookie
@@ -56,7 +56,7 @@ local config = {
 										[10] = {item = 43851, count = 100}, -- darklight matter
 											[11] = {item = 7451, count = 1}, -- shadow sceptre
 												[12] = {item = 43850, count = 100}, -- dark obsidian splinter
-													[13] = {item = 43882, count = 1, ignoreEquipped = true}, -- sanguine coil
+													[13] = {item = 43882, count = 1}, -- sanguine coil
 														[14] = {item = 11490, count = 100}, -- quara pincers
 														[15] = {item = 13990, count = 1}, -- necklace of the deep
 															[16] = {item = 48413, count = 1}, -- amber sickle
@@ -72,17 +72,17 @@ local config = {
 					[1] = {item = "Bronze Castle Box",
 							itemID = 46041,
 							reqItems = {
-								[1] = {item = 43887, count = 1, ignoreEquipped = true}, --sanguine galoshes
-									[2] = {item = 34096, count = 1, ignoreEquipped = true}, -- soulshroud
-									[3] = {item = 34093, count = 1, ignoreEquipped = true}, -- soulstrider 
-									[4] = {item = 39153, count = 1, ignoreEquipped = true}, -- arboreal crown
-									[5] = {item = 39154, count = 1, ignoreEquipped = true}, -- arboreal tome
+								[1] = {item = 43887, count = 1}, --sanguine galoshes
+									[2] = {item = 34096, count = 1}, -- soulshroud
+									[3] = {item = 34093, count = 1}, -- soulstrider 
+									[4] = {item = 39153, count = 1}, -- arboreal crown
+									[5] = {item = 39154, count = 1}, -- arboreal tome
 									[6] = {item = 16126, count = 2}, -- red crystal fragment
 									[7] = {item = 16138, count = 100},-- crystalline spikes
 									[8] = {item = 676, count = 1}, -- small enchanted ruby
 									[9] = {item = 9302, count = 1}, -- sacred tree amulet
 									[10] = {item = 32630, count = 1}, -- spooky hood.
-									[11] = {item = 32617, count = 1, ignoreEquipped = true},-- fabulous legs
+									[11] = {item = 32617, count = 1},-- fabulous legs
 											[12] = {item = 32618, count = 1}, -- soulful legs
 									[13] = {item = 32703, count = 1}, -- death toll
 									[14] = {item = 24392, count = 1},-- gemmed figurine
@@ -111,10 +111,10 @@ local config = {
 									[11] = {item = 9667, count = 1}, -- boggy dreads
 									[12] = {item = 43884, count = 1}, -- sanguine boots
 									[13] = {item = 5909, count = 50},-- white piece of cloth
-											[14] = {item = 39151, count = 1, ignoreEquipped = true}, -- arcanomancer regalia
-									[15] = {item = 39152, count = 1, ignoreEquipped = true}, -- arcanomancer folio
+											[14] = {item = 39151, count = 1}, -- arcanomancer regalia
+									[15] = {item = 39152, count = 1}, -- arcanomancer folio
 									[16] = {item = 48413, count = 1},--  amber sickle
-										[17] = {item = 43885, count = 1, ignoreEquipped = true},-- sanguine rod
+										[17] = {item = 43885, count = 1},-- sanguine rod
 											[18] = {item = 43779, count = 1},-- unstable darklight matter.
 													[19] = {item = 43849, count = 20},-- rotten roots.
 														[20] = {item = 43850, count = 50},-- dark obsidian splinter.
@@ -144,10 +144,10 @@ local config = {
 									[11] = {item = 9667, count = 1}, -- boggy dreads
 									[12] = {item = 43884, count = 1}, -- sanguine boots
 									[13] = {item = 5909, count = 50},-- white piece of cloth
-											[14] = {item = 39151, count = 1, ignoreEquipped = true}, -- arcanomancer regalia
-									[15] = {item = 39152, count = 1, ignoreEquipped = true}, -- arcanomancer folio
+											[14] = {item = 39151, count = 1}, -- arcanomancer regalia
+									[15] = {item = 39152, count = 1}, -- arcanomancer folio
 									[16] = {item = 48413, count = 1},--  amber sickle
-										[17] = {item = 43885, count = 1, ignoreEquipped = true},-- sanguine rod
+										[17] = {item = 43885, count = 1},-- sanguine rod
 											[18] = {item = 43779, count = 1},-- unstable darklight matter.
 													[19] = {item = 43849, count = 20},-- rotten roots.
 														[20] = {item = 43850, count = 50},-- dark obsidian splinter.
@@ -159,10 +159,10 @@ local config = {
 						[2] = {item = "Paladin's Chest",
 								itemID = 46086,
 								reqItems = {
-								[1] = {item = 34088, count = 1, ignoreEquipped = true}, -- soulbleeder
-									[2] = {item = 43881, count = 1, ignoreEquipped = true}, -- sanguine greaves
-									[3] = {item = 39149, count = 1, ignoreEquipped = true}, --alicorn headguard
-									[4] = {item = 34098, count = 1, ignoreEquipped = true}, -- pair of soulstalkers 
+								[1] = {item = 34088, count = 1}, -- soulbleeder
+									[2] = {item = 43881, count = 1}, -- sanguine greaves
+									[3] = {item = 39149, count = 1}, --alicorn headguard
+									[4] = {item = 34098, count = 1}, -- pair of soulstalkers 
 									[5] = {item = 34094, count = 1}, -- soulshell
 									[6] = {item = 10300, count = 1}, -- carniphila's seeds
 									[7] = {item = 19110, count = 1}, -- dowser
@@ -172,10 +172,10 @@ local config = {
 									[11] = {item = 44751, count = 1}, -- gold-scaled sentinel
 									[12] = {item = 44745, count = 50}, -- mega dragon hearts.
 									[13] = {item = 5909, count = 50},-- white piece of cloth
-											[14] = {item = 3350, count = 1, ignoreEquipped = true}, -- bow
-									[15] = {item = 44624, count = 1, ignoreEquipped = true}, -- mystical dragon robe
-									[16] = {item = 22866, count = 1, ignoreEquipped = true},--  rift bow
-										[17] = {item = 8027, count = 1, ignoreEquipped = true},-- composite hornbow
+											[14] = {item = 3350, count = 1}, -- bow
+									[15] = {item = 44624, count = 1}, -- mystical dragon robe
+									[16] = {item = 22866, count = 1},--  rift bow
+										[17] = {item = 8027, count = 1},-- composite hornbow
 											[18] = {item = 43779, count = 1},-- unstable darklight matter.
 													[19] = {item = 43849, count = 20},-- rotten roots.
 														[20] = {item = 5479, count = 100},-- cat's paw.
@@ -193,24 +193,24 @@ local config = {
 						[1] = {item = "Golden Castle Box",
 								itemID = 46039,
 								reqItems = {
-								[1] = {item = 3278, count = 1, ignoreEquipped = true}, -- magic longsword
-									[2] = {item = 3288, count = 1, ignoreEquipped = true}, -- magic sword
-									[3] = {item = 43870, count = 1, ignoreEquipped = true}, --sanguine razor
-									[4] = {item = 43866, count = 1, ignoreEquipped = true}, -- sanguine cudgel
-									[5] = {item = 34097, count = 1, ignoreEquipped = true}, -- pair of soulwalkers
-									[6] = {item = 34099, count = 1, ignoreEquipped = true}, -- soulbastion
-									[7] = {item = 39148, count = 1, ignoreEquipped = true}, -- spiritthorn helmet
-									[8] = {item = 39147, count = 1, ignoreEquipped = true}, -- spiritthorn armor
+								[1] = {item = 3278, count = 1}, -- magic longsword
+									[2] = {item = 3288, count = 1}, -- magic sword
+									[3] = {item = 43870, count = 1}, --sanguine razor
+									[4] = {item = 43866, count = 1}, -- sanguine cudgel
+									[5] = {item = 34097, count = 1}, -- pair of soulwalkers
+									[6] = {item = 34099, count = 1}, -- soulbastion
+									[7] = {item = 39148, count = 1}, -- spiritthorn helmet
+									[8] = {item = 39147, count = 1}, -- spiritthorn armor
 									[9] = {item = 5914, count = 100},-- yellow piece of cloth
 									[10] = {item = 5910, count = 100}, -- green piece of cloth
-									[11] = {item = 6553, count = 1, ignoreEquipped = true}, -- ruthless axe
+									[11] = {item = 6553, count = 1}, -- ruthless axe
 									[12] = {item = 44745, count = 50}, -- mega dragon hearts.
 									[13] = {item = 5909, count = 50},-- white piece of cloth
-											[14] = {item = 3350, count = 1, ignoreEquipped = true}, -- bow
-									[15] = {item = 44624, count = 1, ignoreEquipped = true}, -- mystical dragon robe
+											[14] = {item = 3350, count = 1}, -- bow
+									[15] = {item = 44624, count = 1}, -- mystical dragon robe
 									[16] = {item = 5925, count = 1},-- hardened bone
-										[17] = {item = 43874, count = 1, ignoreEquipped = true},-- sanguine battleaxe
-											[18] = {item = 7413, count = 1, ignoreEquipped = true},-- titan axe
+										[17] = {item = 43874, count = 1},-- sanguine battleaxe
+											[18] = {item = 7413, count = 1},-- titan axe
 													[19] = {item = 43849, count = 20},-- rotten roots.
 														[20] = {item = 5479, count = 100},-- cat's paw.
 												[21] = {item = 5944, count = 100},-- soul orbs
@@ -221,20 +221,20 @@ local config = {
 						[2] = {item = "Knight's Chest",
 								itemID = 46085,
 								reqItems = {
-									[1] = {item = 3370, count = 5, ignoreEquipped = true}, -- knight armor
-									[2] = {item = 3389, count = 2, ignoreEquipped = true}, -- demon legs
-									[3] = {item = 3420, count = 2, ignoreEquipped = true}, --demon shield
-									[4] = {item = 27650, count = 1, ignoreEquipped = true}, -- gnome shield
-									[5] = {item = 11688, count = 2, ignoreEquipped = true}, -- shield of corruption
-									[6] = {item = 6131, count = 3, ignoreEquipped = true}, -- tortoise shield
+									[1] = {item = 3370, count = 5}, -- knight armor
+									[2] = {item = 3389, count = 2}, -- demon legs
+									[3] = {item = 3420, count = 2}, --demon shield
+									[4] = {item = 27650, count = 1}, -- gnome shield
+									[5] = {item = 11688, count = 2}, -- shield of corruption
+									[6] = {item = 6131, count = 3}, -- tortoise shield
 									[7] = {item = 45641, count = 5}, -- candy necklace
-									[8] = {item = 39147, count = 1, ignoreEquipped = true}, -- spiritthorn armor
+									[8] = {item = 39147, count = 1}, -- spiritthorn armor
 									[9] = {item = 45643, count = 5},-- biscuit barrier
 									[10] = {item = 5910, count = 100}, -- green piece of cloth
 									[11] = {item = 6553, count = 1}, -- ruthless axe
 									[12] = {item = 44745, count = 50}, -- mega dragon hearts.
 									[13] = {item = 5909, count = 50},-- white piece of cloth
-											[14] = {item = 3280, count = 1, ignoreEquipped = true}, -- fire sword
+											[14] = {item = 3280, count = 1}, -- fire sword
 									[15] = {item = 3002, count = 1}, -- voodoo doll
 									[16] = {item = 16120, count = 50},-- violet crystal shard
 										[17] = {item = 43968, count = 1},-- Bakragore's amalgamation

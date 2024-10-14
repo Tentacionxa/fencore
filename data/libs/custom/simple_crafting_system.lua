@@ -60,71 +60,24 @@ function Player:sendVocCraftWindow(config, lastChoice)
  
 		-- if the player presses the craft button then begin checks. 
 		if button.name == "Craft" then
-			-- Check if player has required items to craft, excluding equipped items
+ 
+			-- Check if player has required items to craft the item. If they dont send needItems message.
 			for i = 1, #config.system[lastChoice].items[choice.id].reqItems do
-				local reqItem = config.system[lastChoice].items[choice.id].reqItems[i].item
-				local reqItemCount = config.system[lastChoice].items[choice.id].reqItems[i].count
-		
-				-- Count all items excluding equipped items manually
-				local totalItemCount = self:getItemCount(reqItem)
-				local equippedCount = 0
-		
-				-- Check equipped slots to determine how many of the required items are equipped
-				local slots = {
-					CONST_SLOT_HEAD,
-					CONST_SLOT_NECKLACE,
-					CONST_SLOT_ARMOR,
-					CONST_SLOT_RIGHT,
-					CONST_SLOT_LEFT,
-					CONST_SLOT_LEGS,
-					CONST_SLOT_FEET,
-					CONST_SLOT_RING,
-					CONST_SLOT_AMMO
-				}
-		
-				for _, slot in ipairs(slots) do
-					local equippedItem = self:getSlotItem(slot)
-					if equippedItem and equippedItem:getId() == reqItem then
-						equippedCount = equippedCount + equippedItem:getCount()
-					end
-				end
-		
-				-- Calculate the available count by subtracting the equipped count from the total count
-				local availableItemCount = totalItemCount - equippedCount
-		
-				-- If the available count is less than the required count, notify the player and stop crafting
-				if availableItemCount < reqItemCount then
-					self:say(config.needItems .. config.system[lastChoice].items[choice.id].item, TALKTYPE_MONSTER_SAY)
+				if self:getItemCount(config.system[lastChoice].items[choice.id].reqItems[i].item) < config.system[lastChoice].items[choice.id].reqItems[i].count then
+					self:say(config.needItems..config.system[lastChoice].items[choice.id].item, TALKTYPE_MONSTER_SAY)
 					return false
 				end
-			end
-		
-			-- Remove the required items from the player's backpack and inventory, excluding equipped items
+			end	
+			-- Remove the required items and there count from the player.
 			for i = 1, #config.system[lastChoice].items[choice.id].reqItems do
-				local reqItem = config.system[lastChoice].items[choice.id].reqItems[i].item
-				local reqItemCount = config.system[lastChoice].items[choice.id].reqItems[i].count
-				local removedCount = 0
-		
-				-- Remove items from backpack and inventory slots only, avoiding equipped slots
-				local backpack = self:getSlotItem(CONST_SLOT_BACKPACK)
-				if backpack and backpack:isContainer() then
-					local containerSize = backpack:getSize()
-					for j = 0, containerSize - 1 do
-						local item = backpack:getItem(j)
-						if item and item:getId() == reqItem and removedCount < reqItemCount then
-							local toRemove = math.min(item:getCount(), reqItemCount - removedCount)
-							self:removeItem(reqItem, toRemove)
-							removedCount = removedCount + toRemove
-						end
-					end
-				end
-			end
-		
-			-- Send effect and give player the crafted item
-			self:addItem(config.system[lastChoice].items[choice.id].itemID)
-			self:getPosition():sendMagicEffect(CONST_ME_FIREATTACK)
-		end
-	end
+				self:removeItem(config.system[lastChoice].items[choice.id].reqItems[i].item, config.system[lastChoice].items[choice.id].reqItems[i].count)
+			end				
+		-- Send effect and give player item.
+		self:addItem(config.system[lastChoice].items[choice.id].itemID)
+		self:getPosition():sendMagicEffect(CONST_ME_FIREATTACK)
+		end	
+    end
+ 
 	-- Modal window design
     local window = ModalWindow {
         title = config.craftTitle..config.system[lastChoice].vocation, -- The title of the vocation specific window

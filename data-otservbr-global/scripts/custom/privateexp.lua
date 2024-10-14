@@ -55,7 +55,7 @@ local caveExclusiva = {
 		[7015] = { caveName = "Knight 2 Hunt", enterPos = Position(32913, 34194, 8), signPos = Position(32744, 33196, 7) },
 		[7016] = { caveName = "Knight & Paladin Mix", enterPos = Position(32914, 33534, 9), signPos = Position(32746, 33196, 7) },
 		[7017] = { caveName = "Roothing Hunt 2", enterPos = Position(33411, 32692, 15), signPos = Position(33514, 32487, 12) },
-		[7018] = { caveName = "Roothing Hunt 3", enterPos = Position(33757, 32663, 15), signPos = Position(33516, 32487, 12) },
+		[7018] = { caveName = "Roothing Hunt 3", enterPos = Position(33757, 32663, 15), signPos = Position(33517, 32487, 12) },
 	},
 
 	storages = {

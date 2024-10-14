@@ -11,6 +11,19 @@ Karin.Scrolls = {
             toUse = 720 * 60, -- 60 minutes
         }
     },
+    [23681] = { -- Item Id
+    bonus = {
+        Experience = 2.2, -- 50%, 1.2 = 20%, 1.5 = 50%, 2 = 100%
+        Monsters = {
+            'Griish Knight', 'Griish Lord', 'Griish Scout', 'Griish Leader', 'Griish Sorcereress', 'Griish Mage', 'Griish Priestess', 'Griish Druid', 'Griish Wizard', 'Griish Hunter', 'Griish Adventurer','Death Crusher', 'Griish Warrior',  
+        }
+    },
+    cooldown = {
+        bonus = 60 * 60, -- 1 minute
+        toUse = 60 * 60, -- 60 minutes
+    }
+},
+
     [49266] = { -- Item Id
         bonus = {
             Experience = 2.2, -- 50%, 1.2 = 20%, 1.5 = 50%, 2 = 100%

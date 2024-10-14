@@ -7550,6 +7550,17 @@ GameStore.Categories = {
 			},
 			{
 				icons = { "XP_Boost_Scroll.png" },
+				name = "Gold Experience Newspaper",
+				price = 150,
+				itemtype = 23681,
+				count = 1,
+				description = "<i>This experience scroll will provide you 1 hour extra 120 % experience on all monsters listed in Your server log. (Currently : Griish World monsters)",
+				type = GameStore.OfferTypes.OFFER_TYPE_STACKABLE,
+				state = GameStore.States.STATE_NEW,
+				movable = true,
+			},
+			{
+				icons = { "XP_Boost_Scroll.png" },
 				name = "Silver Experience Scroll",
 				price = 1300,
 				itemtype = 49265,

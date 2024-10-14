@@ -25,7 +25,7 @@ function elementsWand.onUseWeapon(player, variant)
     return combat:execute(player, variant)
 end
 
-elementsWand:id(46377)
+elementsWand:id(46344)
 elementsWand:mana(25)
 elementsWand:range(6)
 elementsWand:level(2000)

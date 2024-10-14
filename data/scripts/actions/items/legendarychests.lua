@@ -231,7 +231,7 @@ local rewards = {
 	{ id = 43877, name = "Sanguine Bow" },
 	{ id = 43879, name = "Sanguine Crossbow" },
 	{ id = 43881, name = "Sanguine Greaves" },
-	{ id = 46356, name = "eternal night headguard" },
+	{ id = 46365, name = "eternal night shadow headguard" },
     { id = 43878, name = "Grand Sanguine Bow" },
 	{ id = 43880, name = "Grand Sanguine Crossbow" },
 	{ id = 43877, name = "Sanguine Bow" },

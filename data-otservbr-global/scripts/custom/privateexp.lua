@@ -27,7 +27,7 @@ local caveExclusiva = {
 			[49178] = true, -- 12hrs
 			[49307] = true, -- 24hrs
 		},
-		buyItemID = {20453, 31568, 20444}, -- DOOR ID em que o jogador deve usar a KEY ID definida na actionItemIDS para comprar uma cave.
+		buyItemID = {20453, 31568, 20444, 31570}, -- DOOR ID em que o jogador deve usar a KEY ID definida na actionItemIDS para comprar uma cave.
 		caveStats = true, -- pode ser definido como true ou false, se definido como falso não irá permitir o uso da talkaction que exibe informações sobre as caves.
 		buyMessage = "[CAVE EXCLUSIVE] You bought the %s cave for %s.", -- esta é a mensagem que irá aparecer quando o jogador comprar uma cave. | 1° [%s] = Variavel para nome da cave, 2° [%s] = Variavel para duração da cave
 		timeLeftMessageInCave = "[CAVE EXCLUSIVE] Your time in the cave %s it's over and you've been teleported to the temple.", -- Mensagem quando acabar o tempo e o player estiver dentro da cave
@@ -54,6 +54,8 @@ local caveExclusiva = {
 		[7012] = { caveName = "Deathling Hunt", enterPos = Position(33677, 33076, 12), signPos = Position(33511, 32495, 12) },
 		[7015] = { caveName = "Knight 2 Hunt", enterPos = Position(32913, 34194, 8), signPos = Position(32744, 33196, 7) },
 		[7016] = { caveName = "Knight & Paladin Mix", enterPos = Position(32914, 33534, 9), signPos = Position(32746, 33196, 7) },
+		[7017] = { caveName = "Roothing Hunt 2", enterPos = Position(33411, 32692, 15), signPos = Position(33514, 32487, 12) },
+		[7018] = { caveName = "Roothing Hunt 3", enterPos = Position(33757, 32663, 15), signPos = Position(33516, 32487, 12) },
 	},
 
 	storages = {

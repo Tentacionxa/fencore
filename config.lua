@@ -254,7 +254,7 @@ onlyPremiumAccount = false
 -- NOTE: enablePlayerPutItemInAmmoSlot = true, will enable players to put any items on ammo slot, more used in custom shopping system
 -- NOTE: startStreakLevel will make a reward streak level for new players who never logged in
 -- NOTE: if showLootsInBestiary is true, will cause all loots to be shown in the bestiary even if the player has not reached the required number of kills
--- NOTE: minTownIdToBankTransfer blocks towns less than defined from receiving money transfers
+-- NOTE: minTownIdToBankTransfer blocks towns less than defined from receiving money transfers Hello, can you check the whole project and find things that lag the server?
 stashMoving = false
 stashItemCount = 10000
 depotChest = 4

@@ -258,7 +258,7 @@ GameStore.Categories = {
 					{
 						icons = { "Amber_Greataxe.png" },
 						name = "Private Token 1h",
-						price = 25,
+						price = 100,
 						itemtype = 49176,
 						count = 1,
 						description = "<i>This token allows You to access the private hunting areas for 1 hour.</p></i>",
@@ -269,7 +269,7 @@ GameStore.Categories = {
 					{
 						icons = { "Amber_Greataxe.png" },
 						name = "Private Token 6h",
-						price = 150,
+						price = 600,
 						itemtype = 49177,
 						count = 1,
 						description = "<i>This token allows You to access the private hunting areas for 6 hours.</p></i>",
@@ -280,7 +280,7 @@ GameStore.Categories = {
 					{
 						icons = { "Amber_Greataxe.png" },
 						name = "Private Token 12h",
-						price = 300,
+						price = 1000,
 						itemtype = 49178,
 						count = 1,
 						description = "<i>This token allows You to access the private hunting areas for 12 hours.</p></i>",
@@ -291,7 +291,7 @@ GameStore.Categories = {
 					{
 						icons = { "Amber_Greataxe.png" },
 						name = "Private Token 24h",
-						price = 600,
+						price = 2000,
 						itemtype = 49307,
 						count = 1,
 						description = "<i>This token allows You to access the private hunting areas for 24 hours.</p></i>",

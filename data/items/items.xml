@@ -75937,6 +75937,30 @@ Granted by TibiaGoals.com"/>
 				<attribute key="value" value="8" />
 			</attribute>
 		</attribute>
+		
+		<item id="46339" article="a" name="eternal night root galoshes">
+		<attribute key="primarytype" value="boots"/>
+		<attribute key="absorbpercentphysical" value="10"/>
+		<attribute key="absorbpercentfire" value="10"/>
+		<attribute key="magiclevelpoints" value="4"/>
+		<attribute key="healingmagiclevelpoints" value="3"/>
+		<attribute key="speed" value="30"/>
+		<attribute key="armor" value="5"/>
+		<attribute key="weight" value="1700"/>
+		<attribute key="imbuementslot" value="1">
+			<attribute key="increase speed" value="10"/>
+		</attribute>
+		<attribute key="augments" value="1">
+			<attribute key="avatar of nature" value="cooldown">
+				<attribute key="value" value="900000" />
+			</attribute>
+			<attribute key="eternal winter" value="critical extra damage">
+				<attribute key="value" value="12" />
+			</attribute>
+			<attribute key="terra wave" value="critical extra damage">
+				<attribute key="value" value="12" />
+			</attribute>
+		</attribute>
 		<attribute key="script" value="moveevent">
 			<attribute key="level" value="500"/>
 			<attribute key="slot" value="feet"/>

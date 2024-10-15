@@ -84380,5 +84380,9 @@ Granted by TibiaGoals.com"/>
 			</attribute>
 		</attribute>
 		</item>
+			<item id="46314" article="a" name="green crystal coin">
+		<attribute key="primarytype" value="valuables"/>
+		<attribute key="weight" value="10"/>
+	</item>
 </items>
 

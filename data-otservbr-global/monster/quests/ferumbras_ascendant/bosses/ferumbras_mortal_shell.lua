@@ -112,7 +112,7 @@ monster.loot = {
 	{ id = 7418, chance = 600 }, -- nightmare blade
 	{ id = 3439, chance = 800 }, -- phoenix shield
 	{ id = 3420, chance = 800 }, -- demon shield
-	{ id = 30146, chance = 150 }, -- elven parchment
+	{ id = 22865, chance = 150 }, -- elven parchment
 	{ id = 3031, chance = 100000, maxCount = 100 }, -- gold coin
 	{ id = 823, chance = 800 }, -- glacier kilt
 	{ id = 3366, chance = 400 }, -- magic plate armor

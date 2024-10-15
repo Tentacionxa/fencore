@@ -7561,6 +7561,17 @@ GameStore.Categories = {
 			},
 			{
 				icons = { "XP_Boost_Scroll.png" },
+				name = "Willa's Experience Scroll",
+				price = 200,
+				itemtype = 46255,
+				count = 1,
+				description = "<i>This experience scroll will provide you 1 hour extra 100 % experience on all monsters.",
+				type = GameStore.OfferTypes.OFFER_TYPE_STACKABLE,
+				state = GameStore.States.STATE_NEW,
+				movable = true,
+			},
+			{
+				icons = { "XP_Boost_Scroll.png" },
 				name = "Silver Experience Scroll",
 				price = 1300,
 				itemtype = 49265,

@@ -18,7 +18,7 @@ end
 
 local elementsWand = Weapon(WEAPON_WAND)
 function elementsWand.onUseWeapon(player, variant)
-    local combat = combats[math.max(1, player:getStorageValue(57845))]
+    local combat = combats[math.max(1, player:getStorageValue(77845))]
     if not combat then
         return false
     end

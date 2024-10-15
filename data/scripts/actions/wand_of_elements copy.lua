@@ -18,7 +18,7 @@ function elementsWand.onUse(player, item, fromPosition, target, toPosition, isHo
                 if (button.name == 'Cancel') then 
 					return true
 				end
-                player:setStorageValue(589321, elementObj.index)
+                player:setStorageValue(77845, elementObj.index)
                 player:sendTextMessage(MESSAGE_LOOK, 'Element changed to: ' .. elementName)
                 player:save()
 				return true

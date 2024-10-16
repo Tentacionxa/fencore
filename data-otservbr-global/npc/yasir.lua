@@ -75,6 +75,7 @@ npcConfig.shop = {
 	{ itemName = "black hood", clientId = 9645, sell = 190 },
 	{ itemName = "black wool", clientId = 11448, sell = 300 },
 	{ itemName = "blazing bone", clientId = 16131, sell = 610 },
+	{ itemName = "rotten vermin ichor", clientId =  43847, sell = 4500 },
 	{ itemName = "blood preservation", clientId = 11449, sell = 320 },
 	{ itemName = "blood tincture in a vial", clientId = 18928, sell = 360 },
 	{ itemName = "bloody dwarven beard", clientId = 17827, sell = 110 },

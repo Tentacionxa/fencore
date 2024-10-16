@@ -75425,8 +75425,8 @@ Granted by TibiaGoals.com"/>
 		<attribute key="primarytype" value="axe weapons"/>
 		<attribute key="weaponType" value="axe"/>
 		<attribute key="slotType" value="two-handed"/>
-		<attribute key="elementdeath" value="50"/>
-		<attribute key="criticalhitdamage" value="1200"/>
+		<attribute key="elementdeath" value="70"/>
+		<attribute key="criticalhitdamage" value="1500"/>
 		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="attack" value="9"/>
 		<attribute key="defense" value="37"/>
@@ -82112,7 +82112,9 @@ Granted by TibiaGoals.com"/>
 		<attribute key="primarytype" value="sword weapons"/>
 		<attribute key="weaponType" value="sword"/>
 		<attribute key="attack" value="16"/>
-		<attribute key="elementfire" value="65"/>
+		<attribute key="elementfire" value="70"/>
+			<attribute key="criticalhitdamage" value="1500"/>
+		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="extradef" value="7"/>
 		<attribute key="defense" value="50"/>
 		<attribute key="skillsword" value="9"/>
@@ -82141,8 +82143,8 @@ Granted by TibiaGoals.com"/>
 		<attribute key="primarytype" value="club weapons"/>
 		<attribute key="weaponType" value="club"/>
 		<attribute key="attack" value="16"/>
-		<attribute key="elementdeath" value="65"/>
-			<attribute key="criticalhitdamage" value="1400"/>
+		<attribute key="elementdeath" value="70"/>
+			<attribute key="criticalhitdamage" value="1500"/>
 		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="extradef" value="7"/>
 		<attribute key="defense" value="50"/>

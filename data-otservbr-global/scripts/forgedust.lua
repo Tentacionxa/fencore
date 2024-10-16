@@ -15,8 +15,8 @@ function dust.onUse(player, item, fromPosition, target, toPosition, isHotkey)
         player:addForgeDusts(dustToAdd)
         player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You gained " .. dustToAdd .. " dusts.")
         
-        -- Remove the corresponding number of items
-        item:remove(dustToAdd)
+        -- Remove the corresponding number of items from the player's inventory
+        player:removeItem(itemId, dustToAdd)
         
         return true
     else

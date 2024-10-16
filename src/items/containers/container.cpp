@@ -124,6 +124,17 @@ bool Container::hasParent() {
 }
 
 void Container::addItem(std::shared_ptr<Item> item) {
+	 if (!item) {
+        std::cerr << "Error: Tried to add a null item to container." << std::endl;
+        return;
+    }
+
+    // Check if the parent container is null
+    Container* parentContainer = getContainer();
+    if (!parentContainer) {
+        std::cerr << "Error: Parent container is null." << std::endl;
+        return;
+    }
 	itemlist.push_back(item);
 	item->setParent(getContainer());
 }

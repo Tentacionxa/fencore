@@ -27,7 +27,7 @@ Karin.Scrolls = {
 [46255] = { -- Item Id
 bonus = {
     Experience = 2.0, -- 50%, 1.2 = 20%, 1.5 = 50%, 2 = 100%
-    Monsters = {
+    Exception = {
         '',  
     }
 },

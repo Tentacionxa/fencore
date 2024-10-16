@@ -3,7 +3,7 @@ combat:setParameter(COMBAT_PARAM_TYPE, COMBAT_ENERGYDAMAGE)
 combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_ENERGYAREA)
 combat:setParameter(COMBAT_PARAM_DISTANCEEFFECT, CONST_ANI_ENERGY)
 
-local function formulaFunction(player, level, maglevel)
+local function onGetFormulaValues(player, level, maglevel)
 	local min = (level / 5) + (maglevel * 6) + 11
 	local max = (level / 5) + (maglevel * 14) + 19
 	return -min, -max

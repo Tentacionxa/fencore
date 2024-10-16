@@ -8,7 +8,7 @@ Karin.UpgradeSystem = {
             chance = 50,
         },
         [2] = {
-            price = {46314,250},
+            price = {46316,250},
             chance = 20,
         },
         [3] = {

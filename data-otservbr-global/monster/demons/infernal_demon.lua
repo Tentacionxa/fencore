@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Infernal Demon")
 local monster = {}
 
 monster.description = "an infernal demon"
-monster.experience = 160000
+monster.experience = 180000
 monster.outfit = {
 	lookType = 1313,
 	lookHead = 0,

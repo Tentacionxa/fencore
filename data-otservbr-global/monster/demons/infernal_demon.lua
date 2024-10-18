@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Infernal Demon")
 local monster = {}
 
 monster.description = "an infernal demon"
-monster.experience = 31430
+monster.experience = 100000
 monster.outfit = {
 	lookType = 1313,
 	lookHead = 0,
@@ -26,8 +26,8 @@ monster.Bestiary = {
 	Locations = "Claustrophobic Inferno.",
 }
 
-monster.health = 32000
-monster.maxHealth = 32000
+monster.health = 100000
+monster.maxHealth = 100000
 monster.race = "blood"
 monster.corpse = 33901
 monster.speed = 200
@@ -78,7 +78,7 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "crystal coin", chance = 64000 },
+	{ name = "crystal coin", chance = 61900, maxCount = 10 },
 	{ name = "ultimate health potion", chance = 22860, maxCount = 5 },
 	{ name = "gold ingot", chance = 18860 },
 	{ name = "cyan crystal fragment", chance = 7430 },
@@ -98,11 +98,11 @@ monster.loot = {
 }
 
 monster.attacks = {
-	{ name = "melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -1450 },
-	{ name = "combat", interval = 2000, chance = 15, type = COMBAT_FIREDAMAGE, minDamage = -1150, maxDamage = -1400, range = 7, shootEffect = CONST_ANI_FIRE, effect = CONST_ME_FIREAREA, target = false },
-	{ name = "combat", interval = 2000, chance = 10, type = COMBAT_FIREDAMAGE, minDamage = -800, maxDamage = -1250, length = 8, effect = CONST_ME_EXPLOSIONHIT, target = false },
-	{ name = "combat", interval = 2000, chance = 20, type = COMBAT_DEATHDAMAGE, minDamage = -1000, maxDamage = -1350, radius = 4, effect = CONST_ME_MORTAREA, target = false },
-	{ name = "death chain", interval = 2000, chance = 20, minDamage = -1100, maxDamage = -1380, target = true },
+	{ name = "melee", interval = 2000, chance = 100, minDamage = -4000, maxDamage = -6450 },
+	{ name = "combat", interval = 2000, chance = 15, type = COMBAT_FIREDAMAGE, minDamage = -5150, maxDamage = -6400, range = 7, shootEffect = CONST_ANI_FIRE, effect = CONST_ME_FIREAREA, target = false },
+	{ name = "combat", interval = 2000, chance = 10, type = COMBAT_FIREDAMAGE, minDamage = -4000, maxDamage = -6250, length = 8, effect = CONST_ME_EXPLOSIONHIT, target = false },
+	{ name = "combat", interval = 2000, chance = 20, type = COMBAT_DEATHDAMAGE, minDamage = -4000, maxDamage = -6350, radius = 4, effect = CONST_ME_MORTAREA, target = false },
+	{ name = "death chain", interval = 2000, chance = 20, minDamage = -3100, maxDamage = -5380, target = true },
 }
 
 monster.defenses = {

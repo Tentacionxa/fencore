@@ -79,6 +79,7 @@ monster.voices = {
 
 monster.loot = {
 	{ name = "gold coin", chance = 100000, maxCount = 100 },
+	{ name = "crystal coin", chance = 100000, maxCount = 5 },
 	{ name = "platinum coin", chance = 100000, maxCount = 41 },
 	{ name = "strong health potion", chance = 5000, maxCount = 1 },
 	{ name = "honeycomb", chance = 5000, maxCount = 2 },

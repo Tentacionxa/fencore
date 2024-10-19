@@ -665,6 +665,7 @@ npcConfig.shop = {
 { itemName = "dragolisk eye", clientId = 44746, sell = 1000 },
 { itemName = "dragolisk poison gland", clientId = 44747, sell = 1000 },
 { itemName = "wardragon tooth", clientId = 44749, sell = 1000 },
+{ itemName = "resinous fish fin", clientId = 48509, sell = 1250 },
 { itemName = "wardragon claw", clientId = 44748, sell = 1000 },
 { itemName = "bulltaur armor scrap", clientId = 44738, sell = 1400 },
 { itemName = "bulltaur hoof", clientId = 44737, sell = 1300 },

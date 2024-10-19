@@ -82172,7 +82172,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="weaponType" value="sword"/>
 		<attribute key="slotType" value="two-handed"/>
 		<attribute key="elementenergy" value="90"/>
-		<attribute key="criticalhitdamage" value="1900"/>
+		<attribute key="criticalhitdamage" value="2200"/>
 		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="attack" value="16"/>
 		<attribute key="defense" value="50"/>
@@ -82224,8 +82224,8 @@ Granted by TibiaGoals.com"/>
     <item id="46347" article="a" name="grand griish enchanted axe">
 		<attribute key="primarytype" value="axe weapons"/>
 		<attribute key="weaponType" value="axe"/>
-		<attribute key="elementice" value="65"/>
-		<attribute key="criticalhitdamage" value="1400"/>
+		<attribute key="elementice" value="70"/>
+		<attribute key="criticalhitdamage" value="1500"/>
 		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="attack" value="16"/>
 		<attribute key="defense" value="50"/>
@@ -82252,7 +82252,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="primarytype" value="distance weapons"/>
 		<attribute key="weaponType" value="distance"/>
 		<attribute key="slotType" value="two-handed"/>
-		<attribute key="criticalhitdamage" value="1900"/>
+		<attribute key="criticalhitdamage" value="2200"/>
 		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="ammotype" value="arrow"/>
 		<attribute key="absorbpercentearth" value="15"/>
@@ -82282,7 +82282,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="primarytype" value="distance weapons"/>
 		<attribute key="weaponType" value="distance"/>
 		<attribute key="slotType" value="two-handed"/>
-		<attribute key="criticalhitdamage" value="1900"/>
+		<attribute key="criticalhitdamage" value="2200"/>
 		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="ammotype" value="bolt"/>
 		<attribute key="absorbpercentfire" value="15"/>
@@ -82317,7 +82317,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="firemagiclevelpoints" value="4"/>
 		<attribute key="energymagiclevelpoints" value="4"/>
 		<attribute key="range" value="7"/>
-		<attribute key="criticalhitdamage" value="2000"/>
+		<attribute key="criticalhitdamage" value="2200"/>
 		<attribute key="criticalhitchance" value="1500"/>
 		<attribute key="weight" value="2100"/>
 		<attribute key="imbuementslot" value="2">
@@ -82446,8 +82446,8 @@ Granted by TibiaGoals.com"/>
 		<attribute key="primarytype" value="sword weapons"/>
 		<attribute key="weaponType" value="sword"/>
 		<attribute key="attack" value="16"/>
-		<attribute key="elementfire" value="65"/>
-			<attribute key="criticalhitdamage" value="1400"/>
+		<attribute key="elementfire" value="70"/>
+			<attribute key="criticalhitdamage" value="1500"/>
 		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="extradef" value="7"/>
 		<attribute key="defense" value="50"/>
@@ -82477,8 +82477,9 @@ Granted by TibiaGoals.com"/>
 		<attribute key="primarytype" value="club weapons"/>
 		<attribute key="weaponType" value="club"/>
 		<attribute key="attack" value="16"/>
-		<attribute key="elementdeath" value="65"/>
-		
+		<attribute key="elementdeath" value="70"/>
+		<attribute key="criticalhitdamage" value="1500"/>
+		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="extradef" value="7"/>
 		<attribute key="defense" value="50"/>
 		<attribute key="skillclub" value="9"/>
@@ -82531,8 +82532,8 @@ Granted by TibiaGoals.com"/>
 		<attribute key="primarytype" value="club weapons"/>
 		<attribute key="weaponType" value="club"/>
 		<attribute key="slotType" value="two-handed"/>
-		<attribute key="elementearth" value="65"/>
-		<attribute key="criticalhitdamage" value="1900"/>
+		<attribute key="elementearth" value="70"/>
+		<attribute key="criticalhitdamage" value="2200"/>
 		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="attack" value="16"/>
 		<attribute key="defense" value="50"/>
@@ -82558,7 +82559,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="primarytype" value="distance weapons"/>
 		<attribute key="weaponType" value="distance"/>
 		<attribute key="slotType" value="two-handed"/>
-		<attribute key="criticalhitdamage" value="1900"/>
+		<attribute key="criticalhitdamage" value="2200"/>
 		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="ammotype" value="arrow"/>
 		<attribute key="absorbpercentearth" value="15"/>
@@ -82588,7 +82589,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="primarytype" value="distance weapons"/>
 		<attribute key="weaponType" value="distance"/>
 		<attribute key="slotType" value="two-handed"/>
-		<attribute key="criticalhitdamage" value="1900"/>
+		<attribute key="criticalhitdamage" value="2200"/>
 		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="ammotype" value="bolt"/>
 		<attribute key="absorbpercentfire" value="15"/>
@@ -82623,7 +82624,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="firemagiclevelpoints" value="4"/>
 		<attribute key="energymagiclevelpoints" value="4"/>
 		<attribute key="range" value="7"/>
-		<attribute key="criticalhitdamage" value="2000"/>
+		<attribute key="criticalhitdamage" value="2200"/>
 		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="weight" value="2100"/>
 		<attribute key="imbuementslot" value="2">
@@ -82656,7 +82657,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="earthmagiclevelpoints" value="4"/>
 		<attribute key="range" value="6"/>
 		<attribute key="icemagiclevelpoints" value="4"/>
-		<attribute key="criticalhitdamage" value="2000"/>
+		<attribute key="criticalhitdamage" value="2200"/>
 		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="weight" value="2400"/>
 		<attribute key="imbuementslot" value="2">

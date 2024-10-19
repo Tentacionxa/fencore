@@ -63063,30 +63063,30 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	</item>
 	<item id="33807" article="a" name="dead branchy crawler">
 		<attribute key="duration" value="600"/>
-		<attribute key="decayTo" value="33806"/>
+		<attribute key="decayTo" value="0"/>
 		<attribute key="containersize" value="48"/>
 	</item>
 	<item id="33808" article="a" name="dead branchy crawler">
-		<attribute key="duration" value="600"/>
-		<attribute key="decayTo" value="33807"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="decayTo" value="0"/>
 		<attribute key="containersize" value="48"/>
 	</item>
 	<item id="33809" article="a" name="dead branchy crawler">
 		<attribute key="duration" value="10"/>
-		<attribute key="decayTo" value="33808"/>
+		<attribute key="decayTo" value="0"/>
 		<attribute key="containersize" value="48"/>
 	</item>
 	<item id="33810" article="a" name="dead vibrant phantom">
-		<attribute key="duration" value="600"/>
+		<attribute key="duration" value="60"/>
 		<attribute key="decayTo" value="0"/>
 	</item>
 	<item id="33811" article="a" name="dead vibrant phantom">
-		<attribute key="duration" value="600"/>
-		<attribute key="decayTo" value="33810"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="decayTo" value="0"/>
 		<attribute key="containersize" value="48"/>
 	</item>
 	<item id="33812" article="a" name="dead vibrant phantom">
-		<attribute key="duration" value="600"/>
+		<attribute key="duration" value="60"/>
 		<attribute key="decayTo" value="33811"/>
 		<attribute key="containersize" value="48"/>
 	</item>
@@ -63096,22 +63096,22 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="containersize" value="48"/>
 	</item>
 	<item id="33814" article="a" name="dead brachiodemon">
-		<attribute key="duration" value="600"/>
+		<attribute key="duration" value="60"/>
 		<attribute key="decayTo" value="0"/>
 	</item>
 	<item id="33815" article="a" name="dead brachiodemon">
-		<attribute key="duration" value="600"/>
-		<attribute key="decayTo" value="33814"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="decayTo" value="0"/>
 		<attribute key="containersize" value="48"/>
 	</item>
 	<item id="33816" article="a" name="dead brachiodemon">
-		<attribute key="duration" value="600"/>
-		<attribute key="decayTo" value="33815"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="decayTo" value="0"/>
 		<attribute key="containersize" value="48"/>
 	</item>
 	<item id="33817" article="a" name="dead brachiodemon">
-		<attribute key="duration" value="10"/>
-		<attribute key="decayTo" value="33816"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="decayTo" value="0"/>
 		<attribute key="containersize" value="48"/>
 	</item>
 	<item id="33818" article="a" name="dead werehyaena">
@@ -63297,22 +63297,22 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="containersize" value="48"/>
 	</item>
 	<item id="33898" article="a" name="dead infernal demon">
-		<attribute key="duration" value="600"/>
+		<attribute key="duration" value="60"/>
 		<attribute key="decayTo" value="0"/>
 	</item>
 	<item id="33899" article="a" name="dead infernal demon">
-		<attribute key="duration" value="600"/>
-		<attribute key="decayTo" value="33898"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="decayTo" value="0"/>
 		<attribute key="containersize" value="48"/>
 	</item>
 	<item id="33900" article="a" name="dead infernal demon">
-		<attribute key="duration" value="600"/>
-		<attribute key="decayTo" value="33899"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="decayTo" value="0"/>
 		<attribute key="containersize" value="48"/>
 	</item>
 	<item id="33901" article="a" name="dead infernal demon">
 		<attribute key="duration" value="10"/>
-		<attribute key="decayTo" value="33900"/>
+		<attribute key="decayTo" value="0"/>
 		<attribute key="containersize" value="48"/>
 	</item>
 	<item id="33902" article="a" name="dead turbulent elemental">

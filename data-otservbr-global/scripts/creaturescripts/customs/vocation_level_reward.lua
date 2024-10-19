@@ -297,7 +297,12 @@ function rewardLevel.onAdvance(player, skill, oldLevel, newLevel)
                 			ret = ""
                 		
                                         end
-                                        player:addItem(z.items[v].itemid, z.items[v].count)
+                                        local count = z.items[v].count
+while count > 0 do
+    local addCount = math.min(count, 100)  -- Batch in chunks of 100
+    player:addItemStoreInbox(z.items[v].itemid, addCount)
+    count = count - addCount
+end
 				   
             				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, z.msg)
             				player:setStorageValue(z.storage, 1)

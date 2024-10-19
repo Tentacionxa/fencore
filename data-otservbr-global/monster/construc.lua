@@ -76,6 +76,7 @@ monster.voices = {
 
 monster.loot = {
 	{name = "crystal coin", chance = 32220, maxCount = 6},
+	{name = "tainted heart", chance = 3000, maxCount = 1},
 	{name = "ultimate health potion", chance = 32220, maxCount = 9},
 	{name = "darklight obsidian axe", chance = 5560},
 	{name = "small emerald", chance = 32220, maxCount = 3},

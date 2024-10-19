@@ -81,6 +81,7 @@ monster.voices = {
 
 monster.loot = {
 	{ id = 43779, chance = 54560, maxCount = 1 }, -- unstable darklight matter.
+	{name = "tainted heart", chance = 3000, maxCount = 1},
     { id = 43853, chance = 54560, maxCount = 1 }, -- unstable darklight matter.
     { id = 3043, chance = 4000, maxCount = 50 }, -- darklight core
 	{name = "ultimate health potion", chance = 32220, maxCount = 6},

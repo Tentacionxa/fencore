@@ -1,7 +1,7 @@
 local mType = Game.createMonsterType("Griish Mage")
 local monster = {}
 
-monster.description = "a griish sorcereress"
+monster.description = "a griish mage"
 monster.experience = 155000
 monster.outfit = {
 	lookType = 170,
@@ -17,9 +17,9 @@ monster.raceId = 2597
 monster.Bestiary = {
 	class = "Demon",
 	race = BESTY_RACE_DEMON,
-	toKill = 2500,
+	toKill = 5000,
 	FirstUnlock = 2500,
-	SecondUnlock = 5000,
+	SecondUnlock = 3500,
 	CharmsPoints = 500,
 	Stars = 5,
 	Occurrence = 0,

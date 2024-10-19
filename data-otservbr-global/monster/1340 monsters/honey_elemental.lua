@@ -79,16 +79,16 @@ monster.voices = {
 
 monster.loot = {
 	{ name = "gold coin", chance = 100000, maxCount = 100 },
-	{ name = "platinum coin", chance = 100000, maxCount = 7 },
+	{ name = "platinum coin", chance = 100000, maxCount = 41 },
 	{ name = "strong health potion", chance = 5000, maxCount = 1 },
-	{ name = "honeycomb", chance = 5000, maxCount = 1 },
-	{ name = "beijinho", chance = 5000, maxCount = 1 },
-	{ name = "terra amulet", chance = 5000, maxCount = 1 },
-	{ name = "magma boots", chance = 5000, maxCount = 1 },
-	{ name = "magma legs", chance = 5000, maxCount = 1 },
-	{ name = "small emerald", chance = 5000, maxCount = 2 },
-	{ name = "dark chocolate coin", chance = 5000, maxCount = 2 },
-	{ name = "fire sword", chance = 5000, maxCount = 1 },
+	{ name = "honeycomb", chance = 5000, maxCount = 2 },
+	{ name = "beijinho", chance = 5000, maxCount = 4 },
+	{ name = "terra amulet", chance = 5000, maxCount = 4 },
+	{ name = "magma boots", chance = 5000, maxCount = 3 },
+	{ name = "magma legs", chance = 5000, maxCount = 4 },
+	{ name = "small emerald", chance = 5000, maxCount = 5 },
+	{ name = "dark chocolate coin", chance = 5000, maxCount = 4 },
+	{ name = "fire sword", chance = 5000, maxCount = 3 },
 }
 
 monster.attacks = {

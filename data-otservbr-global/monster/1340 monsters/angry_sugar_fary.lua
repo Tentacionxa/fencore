@@ -80,14 +80,14 @@ monster.voices = {
 
 monster.loot = {
 	{ name = "gold coin", chance = 100000, maxCount = 100 },
-	{ name = "platinum coin", chance = 100000, maxCount = 7 },
-	{ name = "prismatic quartz", chance = 15000, maxCount = 1 },
-	{ name = "spellbook of enlightenment", chance = 15000, maxCount = 1 },
-	{ name = "small ruby", chance = 5000, maxCount = 3 },
-	{ name = "ruby necklace", chance = 5000, maxCount = 1 },
-	{ name = "milk chocolate coin", chance = 5000, maxCount = 2 },
-	{ name = "white pearl", chance = 5000, maxCount = 2 },
-	{ name = "hibiscus dress", chance = 5000, maxCount = 2 },
+	{ name = "platinum coin", chance = 100000, maxCount = 407 },
+	{ name = "prismatic quartz", chance = 15000, maxCount = 2 },
+	{ name = "spellbook of enlightenment", chance = 15000, maxCount = 2 },
+	{ name = "small ruby", chance = 5000, maxCount = 6 },
+	{ name = "ruby necklace", chance = 5000, maxCount = 2 },
+	{ name = "milk chocolate coin", chance = 5000, maxCount = 4 },
+	{ name = "white pearl", chance = 5000, maxCount = 4 },
+	{ name = "hibiscus dress", chance = 5000, maxCount = 4 },
 }
 
 monster.attacks = {

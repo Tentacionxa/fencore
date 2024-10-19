@@ -80,13 +80,13 @@ monster.voices = {
 
 monster.loot = {
 	{ name = "gold coin", chance = 100000, maxCount = 100 },
-	{ name = "platinum coin", chance = 100000, maxCount = 7 },
-	{ name = "energy bar", chance = 5000, maxCount = 3 },
-	{ name = "opal", chance = 5000, maxCount = 1 },
-	{ name = "milk chocolate coin", chance = 5000, maxCount = 2 },
-	{ name = "fairy wings", chance = 5000, maxCount = 2 },
-	{ name = "gummy rotworm", chance = 5000, maxCount = 2 },
-	{ name = "wad of fairy floss", chance = 5000, maxCount = 2 },
+	{ name = "platinum coin", chance = 100000, maxCount = 45 },
+	{ name = "energy bar", chance = 5000, maxCount = 6 },
+	{ name = "opal", chance = 5000, maxCount = 2 },
+	{ name = "milk chocolate coin", chance = 5000, maxCount = 4 },
+	{ name = "fairy wings", chance = 5000, maxCount = 4 },
+	{ name = "gummy rotworm", chance = 5000, maxCount = 4 },
+	{ name = "wad of fairy floss", chance = 5000, maxCount = 4 },
 }
 
 monster.attacks = {

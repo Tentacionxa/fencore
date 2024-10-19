@@ -326,6 +326,8 @@ npcConfig.shop = {
 	{ itemName = "halberd", clientId = 3269, sell = 400 },
 	{ itemName = "plate armor", clientId = 3357, sell = 400 },
 	{ itemName = "two handed sword", clientId = 3265, sell = 450 },
+	{ itemName = "naga quiver", clientId = 39160, sell = 50000 },
+	{ itemName = "jungle quiver", clientId = 35524, sell = 50000 },
 	{ itemName = "fire sword", clientId = 3280, sell = 1000 },
 	{ itemName = "broken halberd", clientId = 10418, sell = 100 },
 	{ itemName = "spiked iron ball", clientId = 10408, sell = 100 },

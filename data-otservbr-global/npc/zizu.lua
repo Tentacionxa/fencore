@@ -344,6 +344,8 @@ npcConfig.shop = {
 		{ itemName = "zaoan armor", clientId = 10384, sell = 14000 },
 		{ itemName = "zaoan legs", clientId = 10387, sell = 14000 },
 		{ itemName = "sai", clientId = 10389, sell = 16500 },
+		{ itemName = "naga quiver", clientId = 39160, sell = 50000 },
+		{ itemName = "jungle quiver", clientId = 35524, sell = 50000 },
 		{ itemName = "twiceslicer", clientId = 11657, sell = 28000 },
 		{ itemName = "zaoan sword", clientId = 10390, sell = 30000 },
 		{ itemName = "guardian boots", clientId = 10323, sell = 35000 },

@@ -123,6 +123,10 @@ npcConfig.shop = {
 	{ itemName = "leviathan's amulet", clientId = 9303, buy = 5000 },
 	{ itemName = "ring of healing", clientId = 3098, buy = 2500 },
 	{ itemName = "bone fiddle", clientId = 28493, buy = 2000000 },
+	{ itemName = "lit torch", clientId = 34016, buy = 2000000 },
+	{ itemName = "magical torch", clientId = 9042, buy = 2000000 },
+	{ itemName = "scarab ocarina", clientId = 43740, buy = 2000000 },
+	{ itemName = "conch shell horn", clientId = 43863, buy = 2000000 },
 }
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

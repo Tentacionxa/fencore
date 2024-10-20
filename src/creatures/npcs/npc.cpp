@@ -324,15 +324,6 @@ void Npc::onPlayerSellAllLoot(uint32_t playerId, uint16_t itemId, bool ignore, u
 	if (!player) {
 		return;
 	}
-	  uint32_t playerId = player->getID();
-    uint32_t currentTime = static_cast<uint32_t>(std::time(nullptr));
-
-	  // Check if the player is on cooldown
-    if (playerExhaust.count(playerId) > 0 && (currentTime - playerExhaust[playerId]) < cooldownTime) {
-        player->sendTextMessage(MESSAGE_STATUS, "You need to wait before selling again.");
-        return;
-    }
-
 	if (itemId == ITEM_GOLD_POUCH) {
 		auto container = player->getLootPouch();
 		if (!container) {
@@ -377,7 +368,6 @@ void Npc::onPlayerSellAllLoot(uint32_t playerId, uint16_t itemId, bool ignore, u
 		player->sendTextMessage(MESSAGE_TRANSACTION, ss.str());
 		player->openPlayerContainers();
 	}
-	 playerExhaust[playerId] = currentTime;
 }
 
 void Npc::onPlayerSellItem(std::shared_ptr<Player> player, uint16_t itemId, uint8_t subType, uint16_t amount, bool ignore, uint64_t &totalPrice, std::shared_ptr<Cylinder> parent /*= nullptr*/) {

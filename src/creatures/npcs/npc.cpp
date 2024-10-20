@@ -17,6 +17,7 @@
 #include "game/scheduling/dispatcher.hpp"
 #include "map/spectators.hpp"
 #include "lib/metrics/metrics.hpp"
+#include "game/movement/position.hpp"
 
 int32_t Npc::despawnRange;
 int32_t Npc::despawnRadius;
@@ -324,6 +325,18 @@ void Npc::onPlayerSellAllLoot(uint32_t playerId, uint16_t itemId, bool ignore, u
 	if (!player) {
 		return;
 	}
+	// Define the maximum allowed distance for interaction (e.g., 4 tiles)
+	 const uint32_t maxInteractionDistance = 4;
+    const Position& npcPosition = this->getPosition();  // Get the NPC's position
+    const Position& playerPosition = player->getPosition();  // Get the player's position
+ // Check if the player is too far away from the NPC using diagonal distance
+    if (Position::getDiagonalDistance(npcPosition, playerPosition) > maxInteractionDistance) {
+        player->sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "You are too far away to sell items.");
+        return;
+    }
+	 const uint32_t sellLimit = 300;
+    uint32_t totalSoldCount = 0;
+
 	if (itemId == ITEM_GOLD_POUCH) {
 		auto container = player->getLootPouch();
 		if (!container) {
@@ -345,9 +358,11 @@ void Npc::onPlayerSellAllLoot(uint32_t playerId, uint16_t itemId, bool ignore, u
 			if (item->isStackable()) {
 				toSellCount++;
 			} else {
-				toSellCount += item->getItemAmount();
-			}
-		}
+			       toSellCount += sellableAmount;
+            }
+
+            totalSoldCount += sellableAmount;
+        }
 		for (auto &[m_itemId, amount] : toSell) {
 			onPlayerSellItem(player, m_itemId, 0, amount, ignore, totalPrice, container);
 		}

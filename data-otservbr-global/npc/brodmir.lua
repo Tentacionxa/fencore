@@ -114,10 +114,49 @@ npcConfig.shop = {
 	{ itemName = "bestiary betterment", clientId = 36728, buy = 1000000 },
 	{ itemName = "charm upgrade", clientId = 36726, buy = 6000000 },
 }
--- On buy npc shop message
+
+local maxItemLimits = {
+    [36739] = 50,  -- Max 10 Crystal Coins (itemId 2160) per transaction
+    [36731] = 50,   -- Max 5 Health Potions (itemId 7618) per transaction
+	[36738] = 50,  -- Max 10 Crystal Coins (itemId 2160) per transaction
+    [36734] = 50,  -- Add more items with their respective limits
+
+	[36727] = 50,  -- Max 10 Crystal Coins (itemId 2160) per transaction
+    [36725] = 50,   -- Max 5 Health Potions (itemId 7618) per transaction
+	[36724] = 50,  -- Max 10 Crystal Coins (itemId 2160) per transaction
+    [36735] = 50, 
+
+	[36742] = 50,  -- Max 10 Crystal Coins (itemId 2160) per transaction
+    [36730] = 50,   -- Max 5 Health Potions (itemId 7618) per transaction
+	[36737] = 50,  -- Max 10 Crystal Coins (itemId 2160) per transaction
+    [36733] = 50, 
+
+	[36740] = 50,  -- Max 10 Crystal Coins (itemId 2160) per transaction
+    [36729] = 50,   -- Max 5 Health Potions (itemId 7618) per transaction
+	[36736] = 50,  -- Max 10 Crystal Coins (itemId 2160) per transaction
+    [36732] = 50, 
+
+	[36741] = 50,  -- Max 10 Crystal Coins (itemId 2160) per transaction
+    [36728] = 50,   -- Max 5 Health Potions (itemId 7618) per transaction
+	[36726] = 50,  -- Max 10 Crystal Coins (itemId 2160) per transaction
+}
+
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)
-	npc:sellItem(player, itemId, amount, subType, 0, ignore, inBackpacks)
+    -- Check the item limit
+    local maxLimit = maxItemLimits[itemId]
+
+    if maxLimit and amount > maxLimit then
+        player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You can only buy up to 50 of this item per transaction.")
+        return false  -- Deny the transaction if the limit is exceeded
+    end
+
+    -- Proceed with the actual selling of the item
+    npc:sellItem(player, itemId, amount, subType, 0, ignore, inBackpacks)
+
+    -- Continue with any additional logic you have for onBuyItem
+    return true
 end
+
 
 -- On sell npc shop message
 npcType.onSellItem = function(npc, player, itemId, subtype, amount, ignore, name, totalCost)

@@ -195,9 +195,36 @@ npcConfig.shop = {
 	{ itemName = "lesser mystic gem", clientId = 44611, buy = 15000000 },
 }
 -- On buy npc shop message
+local maxItemLimits = {
+    [44613] = 50,  -- Max 10 Crystal Coins (itemId 2160) per transaction
+    [44604] = 50,   -- Max 5 Health Potions (itemId 7618) per transaction
+	[44610] = 50,  -- Max 10 Crystal Coins (itemId 2160) per transaction
+    [44607] = 50,  -- Add more items with their respective limits
+
+	[44608] = 50,  -- Max 10 Crystal Coins (itemId 2160) per transaction
+    [44605] = 50,   -- Max 5 Health Potions (itemId 7618) per transaction
+	[44602] = 50,  -- Max 10 Crystal Coins (itemId 2160) per transaction
+    [44611] = 50, 
+
+
+}
+
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)
-	npc:sellItem(player, itemId, amount, subType, 0, ignore, inBackpacks)
+    -- Check the item limit
+    local maxLimit = maxItemLimits[itemId]
+
+    if maxLimit and amount > maxLimit then
+        player:sendTextMessage(MESSAGE_INFO_DESCR, "You can only buy up to " .. maxLimit .. " of this item per transaction.")
+        return false  -- Deny the transaction if the limit is exceeded
+    end
+
+    -- Proceed with the actual selling of the item
+    npc:sellItem(player, itemId, amount, subType, 0, ignore, inBackpacks)
+
+    -- Continue with any additional logic you have for onBuyItem
+    return true
 end
+
 -- On sell npc shop message
 npcType.onSellItem = function(npc, player, itemId, subtype, amount, ignore, name, totalCost)
 	player:sendTextMessage(MESSAGE_INFO_DESCR, string.format("Sold %ix %s for %i gold.", amount, name, totalCost))

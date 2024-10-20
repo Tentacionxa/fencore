@@ -430,7 +430,7 @@ showScriptsLogInConsole = false
 -- time to suppress negative conditions after being affected by them (ms)
 minDelayBetweenConditions = 0
 -- configure maximum value of critical imbuement
-criticalChance = 35
+criticalChance = 50
 inventoryGlowOnFiveBless = true
 adventurersBlessingLevel = 300
 skulledDeathLoseStoreItem = false

@@ -576,8 +576,8 @@ rewardChestMaxCollectItems = 200
 
 -- Metrics
 --- Prometheus
-metricsEnablePrometheus = false
-metricsPrometheusAddress = "0.0.0.0:9464"
+metricsEnablePrometheus = true
+metricsPrometheusAddress = "localhost:9090"
 
 --- OStream
 metricsEnableOstream = false

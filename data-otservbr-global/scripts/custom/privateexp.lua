@@ -70,6 +70,12 @@ local caveExclusiva = {
 		[7030] = { caveName = "Knight Hunt 12", enterPos = Position(34298, 34160, 8), signPos = Position(32748, 33201, 8) },
 		[7035] = { caveName = "Druid Hunt 2", enterPos = Position(32712, 33938, 7), signPos = Position(32742, 33202, 7) },
 		[7036] = { caveName = "Mage Hunt 3", enterPos = Position(32702, 34030, 7), signPos = Position(32748, 33202, 7) },
+[7037] = { caveName = "Paladin 2", enterPos = Position(31749, 33141, 8), signPos = Position(32742, 33204, 8) },
+[7038] = { caveName = "Paladin 3", enterPos = Position(31609, 33141, 8), signPos = Position(32742, 33206, 8) },
+[7039] = { caveName = "Paladin 4", enterPos = Position(31474, 33137, 8), signPos = Position(32742, 33208, 8) },
+[7040] = { caveName = "Paladin 5", enterPos = Position(31342, 33136, 8), signPos = Position(32742, 33210, 8) },
+[7041] = { caveName = "Paladin 6", enterPos = Position(31210, 33136, 8), signPos = Position(32748, 33204, 8) },
+		[7042] = { caveName = "Paladin 7", enterPos = Position(31077, 33168, 8), signPos = Position(32748, 33206, 8) },
 
 	},
 

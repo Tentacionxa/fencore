@@ -1,19 +1,19 @@
-local mType = Game.createMonsterType("Goldhanded Cultist Bride")
+local mType = Game.createMonsterType("Horse Taupe")
 local monster = {}
 
-monster.description = "a goldhanded cultist bride"
+monster.description = "a horse taupe"
 monster.experience = 40
 monster.outfit = {
-	lookType = 140,
-	lookHead = 114,
-	lookBody = 79,
-	lookLegs = 62,
-	lookFeet = 94,
-	lookAddons = 2,
+	lookType = 435,
+	lookHead = 0,
+	lookBody = 0,
+	lookLegs = 0,
+	lookFeet = 0,
+	lookAddons = 0,
 	lookMount = 0,
 }
 
-monster.raceId = 1482
+monster.raceId = 752
 
 monster.health = 75
 monster.maxHealth = 75

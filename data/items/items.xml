@@ -80810,13 +80810,13 @@ Granted by TibiaGoals.com"/>
     <attribute key="primarytype" value="valuables" />
     <attribute key="weight" value="1000" />
   </item>
-  <item id="48962" name="horse soul core">
+  <item id="48962" name="horse taupe soul core">
     <attribute key="description" value="Offers a soul to the Soulpit. Combine with another soul core to create a random new soul core" />
     <attribute key="loottype" value="valuable" />
     <attribute key="primarytype" value="valuables" />
     <attribute key="weight" value="1000" />
   </item>
-  <item id="48963" name="horse soul core">
+  <item id="48963" name="horse brown soul core">
     <attribute key="description" value="Offers a soul to the Soulpit. Combine with another soul core to create a random new soul core" />
     <attribute key="loottype" value="valuable" />
     <attribute key="primarytype" value="valuables" />
@@ -80828,13 +80828,13 @@ Granted by TibiaGoals.com"/>
     <attribute key="primarytype" value="valuables" />
     <attribute key="weight" value="1000" />
   </item>
-  <item id="48965" name="nomad soul core">
+  <item id="48965" name="nomad blue soul core">
     <attribute key="description" value="Offers a soul to the Soulpit. Combine with another soul core to create a random new soul core" />
     <attribute key="loottype" value="valuable" />
     <attribute key="primarytype" value="valuables" />
     <attribute key="weight" value="1000" />
   </item>
-  <item id="48966" name="nomad soul core">
+  <item id="48966" name="nomad female soul core">
     <attribute key="description" value="Offers a soul to the Soulpit. Combine with another soul core to create a random new soul core" />
     <attribute key="loottype" value="valuable" />
     <attribute key="primarytype" value="valuables" />

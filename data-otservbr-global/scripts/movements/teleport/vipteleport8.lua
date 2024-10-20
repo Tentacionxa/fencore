@@ -2,6 +2,7 @@ local config = {
 	{ name="Night Island", position = Position(31944, 32399, 5) },
     { name="Cemetery", position = Position (32130, 32201, 7) },
 	{ name="Cyclops Mountain", position = Position(32189, 32231, 7) },
+	{ name="Retching Disaster", position = Position(31828, 32160, 8) },
     { name="Elf Island Cave", position = Position (31869, 32254, 6) }
 	
 }

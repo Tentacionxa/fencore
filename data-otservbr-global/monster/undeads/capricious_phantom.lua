@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Capricious Phantom")
 local monster = {}
 
 monster.description = "a capricious phantom"
-monster.experience = 19360
+monster.experience = 160360
 monster.outfit = {
 	lookType = 1298,
 	lookHead = 81,
@@ -26,8 +26,8 @@ monster.Bestiary = {
 	Locations = "Ebb and Flow.",
 }
 
-monster.health = 30000
-monster.maxHealth = 30000
+monster.health = 110000
+monster.maxHealth = 110000
 monster.race = "undead"
 monster.corpse = 34121
 monster.speed = 240
@@ -97,12 +97,12 @@ monster.loot = {
 }
 
 monster.attacks = {
-	{ name = "melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -900 },
-	{ name = "combat", interval = 3000, chance = 20, type = COMBAT_EARTHDAMAGE, minDamage = -850, maxDamage = -1200, range = 7, radius = 3, shootEffect = CONST_ANI_POISONARROW, effect = CONST_ME_GREEN_RINGS, target = true },
-	{ name = "combat", interval = 2000, chance = 10, type = COMBAT_EARTHDAMAGE, minDamage = -700, maxDamage = -1050, length = 6, spread = 4, effect = CONST_ME_GREEN_RINGS, target = false },
-	{ name = "combat", interval = 3000, chance = 20, type = COMBAT_ICEDAMAGE, minDamage = -850, maxDamage = -900, radius = 3, effect = CONST_ME_ICETORNADO, target = false },
-	{ name = "combat", interval = 3000, chance = 20, type = COMBAT_ICEDAMAGE, minDamage = -850, maxDamage = -1100, range = 7, radius = 4, effect = CONST_ME_ICEATTACK, target = true },
-	{ name = "ice chain", interval = 2000, chance = 15, minDamage = -1100, maxDamage = -1300, range = 7 },
+	{ name = "melee", interval = 2000, chance = 100, minDamage = -4000, maxDamage = -5000 },
+	{ name = "combat", interval = 3000, chance = 20, type = COMBAT_EARTHDAMAGE, minDamage = -4050, maxDamage = -5200, range = 7, radius = 3, shootEffect = CONST_ANI_POISONARROW, effect = CONST_ME_GREEN_RINGS, target = true },
+	{ name = "combat", interval = 2000, chance = 10, type = COMBAT_EARTHDAMAGE, minDamage = -4100, maxDamage = -5050, length = 6, spread = 4, effect = CONST_ME_GREEN_RINGS, target = false },
+	{ name = "combat", interval = 3000, chance = 20, type = COMBAT_ICEDAMAGE, minDamage = -4450, maxDamage = -5000, radius = 3, effect = CONST_ME_ICETORNADO, target = false },
+	{ name = "combat", interval = 3000, chance = 20, type = COMBAT_ICEDAMAGE, minDamage = -4150, maxDamage = -5100, range = 7, radius = 4, effect = CONST_ME_ICEATTACK, target = true },
+	{ name = "ice chain", interval = 2000, chance = 15, minDamage = -4100, maxDamage = -5300, range = 7 },
 }
 
 monster.defenses = {

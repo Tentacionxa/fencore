@@ -331,7 +331,7 @@ void Npc::onPlayerSellAllLoot(uint32_t playerId, uint16_t itemId, bool ignore, u
     const Position& playerPosition = player->getPosition();  // Get the player's position
  // Check if the player is too far away from the NPC using diagonal distance
     if (Position::getDiagonalDistance(npcPosition, playerPosition) > maxInteractionDistance) {
-        player->sendTextMessage(MESSAGE_STATUS "You are too far away to sell items.");
+        player->sendTextMessage(MESSAGE_STATUS, "You are too far away to sell items.");
         return;
     }
 	 const uint32_t sellLimit = 500;

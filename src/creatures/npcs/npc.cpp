@@ -241,7 +241,7 @@ void Npc::onPlayerBuyItem(std::shared_ptr<Player> player, uint16_t itemId, uint8
     uint32_t currentTime = static_cast<uint32_t>(std::time(nullptr));
 
 	 if (playerExhaust.count(playerId) > 0 && (currentTime - playerExhaust[playerId]) < cooldownTime) {
-        player->sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "You need to wait before buying again.");
+        player->sendTextMessage(MESSAGE_STATUS, "You need to wait before buying again.");
         return;
     }
 	// Check if the player not have empty slots
@@ -329,7 +329,7 @@ void Npc::onPlayerSellAllLoot(uint32_t playerId, uint16_t itemId, bool ignore, u
 
 	  // Check if the player is on cooldown
     if (playerExhaust.count(playerId) > 0 && (currentTime - playerExhaust[playerId]) < cooldownTime) {
-        player->sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "You need to wait before selling again.");
+        player->sendTextMessage(MESSAGE_STATUS, "You need to wait before selling again.");
         return;
     }
 

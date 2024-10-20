@@ -45,8 +45,8 @@ local caveExclusiva = {
 		[7002] = { caveName = "Knight Hunt", enterPos = Position(32737, 33414, 9), signPos = Position(32742, 33198, 7) },
 		[7003] = { caveName = "Druid Hunt", enterPos = Position(32906, 33668, 7), signPos = Position(32748, 33198, 7) },
 		[7004] = { caveName = "Sorcerer Hunt", enterPos = Position(32530, 33784, 7), signPos = Position(32748, 33196, 7) },
-		[7005] = { caveName = "Mix Hunt", enterPos = Position(32868, 33946, 7), signPos = Position(32742, 33200, 7) },
-		[7006] = { caveName = "Mix Hunt", enterPos = Position(32525, 34075, 7), signPos = Position(32748, 33200, 7) },
+		[7005] = { caveName = "Druid Hunt 1", enterPos = Position(32858, 33941, 7), signPos = Position(32742, 33200, 7) },
+		[7006] = { caveName = "Mage Hunt 2", enterPos = Position(32521, 34018, 7), signPos = Position(32748, 33200, 7) },
 		[7010] = { caveName = "Rootthing Hunt", enterPos = Position(33537, 33263, 12), signPos = Position(33511, 32487, 12) },
 		[7011] = { caveName = "Quara 1 Hunt", enterPos = Position(33531, 33122, 12), signPos = Position(33511, 32491, 12) },
 		[7014] = { caveName = "Quara 2 Hunt", enterPos = Position(33770, 33122, 12), signPos = Position(33511, 32502, 12) },
@@ -68,6 +68,8 @@ local caveExclusiva = {
 		[7028] = { caveName = "Knight Hunt 10", enterPos = Position(34015, 34157, 8), signPos = Position(32748, 33199, 8) },
 		[7029] = { caveName = "Knight Hunt 11", enterPos = Position(34155, 34157, 8), signPos = Position(32742, 33201, 8) },
 		[7030] = { caveName = "Knight Hunt 12", enterPos = Position(34298, 34160, 8), signPos = Position(32748, 33201, 8) },
+		[7035] = { caveName = "Druid Hunt 2", enterPos = Position(32712, 33938, 7), signPos = Position(32742, 33202, 7) },
+		[7036] = { caveName = "Mage Hunt 3", enterPos = Position(32702, 34030, 7), signPos = Position(32748, 33202, 7) },
 
 	},
 

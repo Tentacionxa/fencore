@@ -48930,7 +48930,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	<item id="25757" article="a" name="diamond arrow">
 		<attribute key="primarytype" value="ammunition"/>
 		<attribute key="ammotype" value="arrow"/>
-		<attribute key="attack" value="250"/>
+		<attribute key="attack" value="300"/>
 		<attribute key="decayTo" value="0"/>
 		<attribute key="duration" value="3600"/>
 		<attribute key="maxhitchance" value="100"/>
@@ -48941,7 +48941,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="maxhitchance" value="100"/>
 		<attribute key="duration" value="3600"/>
 		<attribute key="decayTo" value="0"/>
-		<attribute key="attack" value="250"/>
+		<attribute key="attack" value="300"/>
 		<attribute key="weight" value="80"/>
 	</item>
 	<item id="25758" article="a" name="spectral bolt">
@@ -48953,7 +48953,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="showduration" value="1"/>
 		<attribute key="maxhitchance" value="100"/>
 		<attribute key="duration" value="3600"/>
-		<attribute key="attack" value="250"/>
+		<attribute key="attack" value="350"/>
 		<attribute key="weight" value="90"/>
 		<attribute key="script" value="moveevent;weapon">
 			<attribute key="action" value="removecount"/>
@@ -66624,7 +66624,7 @@ former students at the Noodles Academy. Awarded by TibiaLabs.com"/>
 		<attribute key="ammotype" value="arrow"/>
 		<attribute key="shootType" value="diamondarrow"/>
 		<attribute key="maxhitchance" value="100"/>
-		<attribute key="attack" value="250"/>
+		<attribute key="attack" value="300"/>
 		<attribute key="weight" value="80"/>
 	</item>
 	<item id="35902" article="a" name="spectral bolt">
@@ -66633,7 +66633,7 @@ former students at the Noodles Academy. Awarded by TibiaLabs.com"/>
 		<attribute key="ammotype" value="bolt"/>
 		<attribute key="shootType" value="spectralbolt"/>
 		<attribute key="maxhitchance" value="100"/>
-			<attribute key="attack" value="250"/>
+			<attribute key="attack" value="350"/>
 		<attribute key="weight" value="90"/>
 		<attribute key="script" value="moveevent;weapon">
 			<attribute key="action" value="removecount"/>
@@ -77588,13 +77588,13 @@ Granted by TibiaGoals.com"/>
     <attribute key="primarytype" value="valuables" />
     <attribute key="weight" value="1000" />
   </item>
-  <item id="47503" name="butterfly soul core">
+  <item id="47503" name="blue butterfly soul core">
     <attribute key="description" value="Offers a soul to the Soulpit. Combine with another soul core to create a random new soul core" />
     <attribute key="loottype" value="valuable" />
     <attribute key="primarytype" value="valuables" />
     <attribute key="weight" value="1000" />
   </item>
-  <item id="47504" name="butterfly soul core">
+  <item id="47504" name="red butterfly soul core">
     <attribute key="description" value="Offers a soul to the Soulpit. Combine with another soul core to create a random new soul core" />
     <attribute key="loottype" value="valuable" />
     <attribute key="primarytype" value="valuables" />

@@ -17,6 +17,8 @@ local effects = {
  {position = Position (32745, 33211, 7), text = 'Exchange', effect = CONST_ME_MAGIC_RED},
  {position = Position (32746, 33213, 5), text = 'Exchange', effect = CONST_ME_MAGIC_RED},
 
+ {position = Position (33451, 32476, 11), text = 'Testing', effect = CONST_ME_MAGIC_RED},
+ {position = Position (33452, 32476, 11), text = 'Ground', effect = CONST_ME_MAGIC_RED},
 
  {position = Position (32744, 33199, 4), text = 'Exchange', effect = CONST_ME_MAGIC_RED},
 

@@ -1,10 +1,10 @@
-local mType = Game.createMonsterType("Training Machine")
+local mType = Game.createMonsterType("Training Tower")
 local monster = {}
 
-monster.description = "a training machine"
+monster.description = "a training tower"
 monster.experience = 0
 monster.outfit = {
-	lookType = 1142,
+	lookTypeEx = 46281,
 }
 
 monster.health = 1000000

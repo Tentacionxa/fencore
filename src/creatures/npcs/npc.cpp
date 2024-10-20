@@ -331,10 +331,10 @@ void Npc::onPlayerSellAllLoot(uint32_t playerId, uint16_t itemId, bool ignore, u
     const Position& playerPosition = player->getPosition();  // Get the player's position
  // Check if the player is too far away from the NPC using diagonal distance
     if (Position::getDiagonalDistance(npcPosition, playerPosition) > maxInteractionDistance) {
-        player->sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "You are too far away to sell items.");
+        player->sendTextMessage(MESSAGE_STATUS "You are too far away to sell items.");
         return;
     }
-	 const uint32_t sellLimit = 300;
+	 const uint32_t sellLimit = 500;
     uint32_t totalSoldCount = 0;
 
 	if (itemId == ITEM_GOLD_POUCH) {
@@ -354,7 +354,12 @@ void Npc::onPlayerSellAllLoot(uint32_t playerId, uint16_t itemId, bool ignore, u
 			if (!item) {
 				continue;
 			}
-			toSell[item->getID()] += item->getItemAmount();
+			 uint16_t itemAmount = item->getItemAmount();
+    uint16_t remainingSellSpace = sellLimit - toSellCount;
+
+			 // Declare sellableAmount and calculate the amount that can be sold
+    uint16_t sellableAmount = std::min(itemAmount, remainingSellSpace);
+    toSell[item->getID()] += sellableAmount;
 			if (item->isStackable()) {
 				toSellCount++;
 			} else {

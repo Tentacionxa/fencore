@@ -227,6 +227,9 @@ void Npc::onThink(uint32_t interval) {
 		onThinkSound(interval);
 	}
 }
+// Add this at the top of npc.cpp
+std::map<uint32_t, uint32_t> playerExhaust;  // Player exhaust tracking
+const uint32_t cooldownTime = 5;  // Cooldown period in seconds
 
 void Npc::onPlayerBuyItem(std::shared_ptr<Player> player, uint16_t itemId, uint8_t subType, uint16_t amount, bool ignore, bool inBackpacks) {
 	if (player == nullptr) {
@@ -234,11 +237,19 @@ void Npc::onPlayerBuyItem(std::shared_ptr<Player> player, uint16_t itemId, uint8
 		return;
 	}
 
+ uint32_t playerId = player->getID();
+    uint32_t currentTime = static_cast<uint32_t>(std::time(nullptr));
+
+	 if (playerExhaust.count(playerId) > 0 && (currentTime - playerExhaust[playerId]) < cooldownTime) {
+        player->sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "You need to wait before buying again.");
+        return;
+    }
 	// Check if the player not have empty slots
 	if (!ignore && player->getFreeBackpackSlots() == 0) {
 		player->sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
 		return;
 	}
+
 
 	uint32_t shoppingBagPrice = 20;
 	uint32_t shoppingBagSlots = 20;
@@ -300,6 +311,7 @@ void Npc::onPlayerBuyItem(std::shared_ptr<Player> player, uint16_t itemId, uint8
 	if (callback.persistLuaState()) {
 		return;
 	}
+	 playerExhaust[playerId] = currentTime;
 }
 
 void Npc::onPlayerSellItem(std::shared_ptr<Player> player, uint16_t itemId, uint8_t subType, uint16_t amount, bool ignore) {
@@ -312,6 +324,15 @@ void Npc::onPlayerSellAllLoot(uint32_t playerId, uint16_t itemId, bool ignore, u
 	if (!player) {
 		return;
 	}
+	  uint32_t playerId = player->getID();
+    uint32_t currentTime = static_cast<uint32_t>(std::time(nullptr));
+
+	  // Check if the player is on cooldown
+    if (playerExhaust.count(playerId) > 0 && (currentTime - playerExhaust[playerId]) < cooldownTime) {
+        player->sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "You need to wait before selling again.");
+        return;
+    }
+
 	if (itemId == ITEM_GOLD_POUCH) {
 		auto container = player->getLootPouch();
 		if (!container) {
@@ -356,6 +377,7 @@ void Npc::onPlayerSellAllLoot(uint32_t playerId, uint16_t itemId, bool ignore, u
 		player->sendTextMessage(MESSAGE_TRANSACTION, ss.str());
 		player->openPlayerContainers();
 	}
+	 playerExhaust[playerId] = currentTime;
 }
 
 void Npc::onPlayerSellItem(std::shared_ptr<Player> player, uint16_t itemId, uint8_t subType, uint16_t amount, bool ignore, uint64_t &totalPrice, std::shared_ptr<Cylinder> parent /*= nullptr*/) {

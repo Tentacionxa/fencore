@@ -83476,7 +83476,7 @@ Granted by TibiaGoals.com"/>
 		</attribute>
 		<attribute key="script" value="moveevent">
 			<attribute key="level" value="2500"/>
-			<attribute key="slot" value="head"/>
+			<attribute key="slot" value="feet"/>
 			<attribute key="vocation" value="Paladin;true, Royal Paladin"/>
 		</attribute>
 	</item>

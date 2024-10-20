@@ -214,7 +214,7 @@ npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBac
     local maxLimit = maxItemLimits[itemId]
 
     if maxLimit and amount > maxLimit then
-        player:sendTextMessage(MESSAGE_INFO_DESCR, "You can only buy up to " .. maxLimit .. " of this item per transaction.")
+        player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You can only buy up to 50 of this item per transaction.")
         return false  -- Deny the transaction if the limit is exceeded
     end
 
@@ -227,7 +227,7 @@ end
 
 -- On sell npc shop message
 npcType.onSellItem = function(npc, player, itemId, subtype, amount, ignore, name, totalCost)
-	player:sendTextMessage(MESSAGE_INFO_DESCR, string.format("Sold %ix %s for %i gold.", amount, name, totalCost))
+	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("Sold %ix %s for %i gold.", amount, name, totalCost))
 end
 -- On check npc shop message (look item)
 npcType.onCheckItem = function(npc, player, clientId, subType) end

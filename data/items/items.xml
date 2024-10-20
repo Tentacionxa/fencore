@@ -83006,7 +83006,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="icemagiclevelpoints" value="4"/>
 		<attribute key="defense" value="30"/>
 		<attribute key="weight" value="2850"/>
-<attribute key="imbuementslot" value="1">
+<attribute key="imbuementslot" value="2">
 			<attribute key="elemental protection death" value="3"/>
 			<attribute key="elemental protection earth" value="3"/>
 			<attribute key="elemental protection fire" value="3"/>

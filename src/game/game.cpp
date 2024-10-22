@@ -3286,8 +3286,7 @@ ReturnValue Game::internalCollectManagedItems(std::shared_ptr < Player > player,
 
   // Send money to the bank
   if (g_configManager().getBoolean(AUTOBANK, __FUNCTION__)) {
-     // Prevent depositing gold, platinum, and crystal coins into the bank
-    if (item->getID() == ITEM_GOLD_COIN || item->getID() == ITEM_PLATINUM_COIN || item->getID() == ITEM_CRYSTAL_COIN) {
+     if (item->getID() == ITEM_GOLD_COIN || item->getID() == ITEM_PLATINUM_COIN || item->getID() == ITEM_CRYSTAL_COIN) {
         // Collect these coins as ordinary items and remove from corpse
         ReturnValue ret = internalAddItem(player, item, CONST_SLOT_WHEREEVER);
         if (ret == RETURNVALUE_NOERROR) {

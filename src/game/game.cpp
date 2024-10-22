@@ -3295,19 +3295,25 @@ ReturnValue Game::internalCollectManagedItems(std::shared_ptr < Player > player,
         } else {
             money = item -> getItemCount();
         }
-        auto parent = item -> getParent();
-        if (parent) {
-            parent -> removeThing(item, item -> getItemCount());
+        
+        // Remove the coins from the corpse or container
+    auto parent = item->getParent();
+    if (parent) {
+        parent->removeThing(item, item->getItemCount());
+    } else {
+        g_logger().debug("Item has no parent");
+        return RETURNVALUE_NOTPOSSIBLE;
+    }
+
+      // Add the coins to the player's container instead of the bank
+        ReturnValue ret = internalAddItem(player, item, CONST_SLOT_WHEREEVER);
+        if (ret == RETURNVALUE_NOERROR) {
+            // Successfully added coins to the player's container
+            return RETURNVALUE_NOERROR;
         } else {
-            g_logger().debug("Item has no parent");
-            return RETURNVALUE_NOTPOSSIBLE;
+            // Handle the error if the coins couldn't be added to the inventory
+            return ret;
         }
-        player -> setBankBalance(player -> getBankBalance() + money);
-        g_metrics().addCounter("balance_increase", money, {
-            {"player", player -> getName()},
-            {"context", "loot"}
-        });
-        return RETURNVALUE_NOERROR;
     }
 }
 

@@ -3304,9 +3304,10 @@ ReturnValue Game::internalCollectManagedItems(std::shared_ptr < Player > player,
         money = item -> getItemCount();
       }
       auto parent = item -> getParent();
-      if (parent) {
-        parent -> removeThing(item, item -> getItemCount());
-      } else {
+        // Remove the coins from the corpse after collecting them
+        if (auto parent = item->getParent()) {
+            parent->removeThing(item, item->getItemCount());
+        }else {
         g_logger().debug("Item has no parent");
         return RETURNVALUE_NOTPOSSIBLE;
       }
@@ -3325,12 +3326,20 @@ ReturnValue Game::internalCollectManagedItems(std::shared_ptr < Player > player,
     }
   }
 
-  bool fallbackConsumed = false;
-  std::shared_ptr < Container > lootContainer = findManagedContainer(player, fallbackConsumed, category, isLootContainer);
+bool fallbackConsumed = false;
+  std::shared_ptr<Container> lootContainer = findManagedContainer(player, fallbackConsumed, category, isLootContainer);
+
+  // Ensure the container was found
   if (!lootContainer) {
     return RETURNVALUE_NOTPOSSIBLE;
   }
 
+  // Allow all items to go into the Gold Pouch, including coins
+  if (lootContainer->getID() == ITEM_GOLD_POUCH) {
+    // No restrictions: all items are allowed to go into the Gold Pouch, including coins
+  }
+
+  // Process moving the item into the appropriate container
   return processLootItems(player, lootContainer, item, fallbackConsumed);
 }
 

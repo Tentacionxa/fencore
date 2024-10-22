@@ -580,7 +580,7 @@ metricsEnablePrometheus = true
 metricsPrometheusAddress = "localhost:9090"
 
 --- OStream
-metricsEnableOstream = false
+metricsEnableOstream = true
 metricsOstreamInterval = 1000
 
 

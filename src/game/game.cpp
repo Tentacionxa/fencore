@@ -3050,18 +3050,59 @@ void Game::playerQuickLootCorpse(std::shared_ptr < Player > player, std::shared_
   if (!player || !corpse) {
     return;
 
-  if (item->getID() == ITEM_GOLD_COIN || item->getID() == ITEM_PLATINUM_COIN || item->getID() == ITEM_CRYSTAL_COIN) {
-      // Collect coins as items instead of sending to bank
-      ReturnValue ret = internalAddItem(player, item, CONST_SLOT_WHEREEVER);
-      if (ret == RETURNVALUE_NOERROR) {
-          // Remove coins from corpse after looting
-          auto parent = item->getParent();
-          if (parent) {
-              parent->removeThing(item, item->getItemCount());
-          }
-      }
-      continue;  // Skip banking for coins
+void Game::playerQuickLootCorpse(std::shared_ptr<Player> player, std::shared_ptr<Container> corpse, const Position& position) {
+  if (!player || !corpse) {
+    return;
   }
+
+  std::vector<std::shared_ptr<Item>> itemList;
+  bool ignoreListItems = (player->quickLootFilter == QUICKLOOTFILTER_SKIPPEDLOOT);
+
+  bool missedAnyGold = false;
+  bool missedAnyItem = false;
+
+  for (ContainerIterator it = corpse->iterator(); it.hasNext(); it.advance()) {
+    std::shared_ptr<Item> item = *it;  // Correct 'item' declaration here
+    bool listed = player->isQuickLootListedItem(item);
+    if ((listed && ignoreListItems) || (!listed && !ignoreListItems)) {
+      if (item->getWorth() != 0) {
+        missedAnyGold = true;
+      } else {
+        missedAnyItem = true;
+      }
+      continue;
+    }
+
+    itemList.push_back(item);
+  }
+
+  bool shouldNotifyCapacity = false;
+  ObjectCategory_t shouldNotifyNotEnoughRoom = OBJECTCATEGORY_NONE;
+
+  for (const std::shared_ptr<Item>& item : itemList) {
+    ObjectCategory_t category = getObjectCategory(item);
+
+    // Attempt to add the item to the player's inventory
+    ReturnValue ret = internalCollectManagedItems(player, item, category);
+
+    if (ret == RETURNVALUE_NOERROR) {
+      // If the item is a coin, remove it from the corpse after looting
+      if (item->getID() == ITEM_GOLD_COIN || item->getID() == ITEM_PLATINUM_COIN || item->getID() == ITEM_CRYSTAL_COIN) {
+        corpse->removeThing(item, item->getItemCount());  // Remove coins from the corpse
+      }
+    } else if (ret == RETURNVALUE_NOTENOUGHCAPACITY) {
+      shouldNotifyCapacity = true;
+    } else if (ret == RETURNVALUE_CONTAINERNOTENOUGHROOM) {
+      shouldNotifyNotEnoughRoom = category;
+    }
+  }
+
+  if (shouldNotifyCapacity) {
+    player->sendTextMessage(MESSAGE_GAME_HIGHLIGHT, "You do not have enough capacity to carry all the loot.");
+  } else if (shouldNotifyNotEnoughRoom != OBJECTCATEGORY_NONE) {
+    player->sendTextMessage(MESSAGE_GAME_HIGHLIGHT, "Your loot container is full.");
+  }
+}
   }
 
   std::vector < std::shared_ptr < Item >> itemList;
@@ -3304,18 +3345,59 @@ ReturnValue Game::internalCollectManagedItems(std::shared_ptr < Player > player,
   if (!player || !item) {
     return RETURNVALUE_NOTPOSSIBLE;
 
-  if (item->getID() == ITEM_GOLD_COIN || item->getID() == ITEM_PLATINUM_COIN || item->getID() == ITEM_CRYSTAL_COIN) {
-      // Collect coins as items instead of sending to bank
-      ReturnValue ret = internalAddItem(player, item, CONST_SLOT_WHEREEVER);
-      if (ret == RETURNVALUE_NOERROR) {
-          // Remove coins from corpse after looting
-          auto parent = item->getParent();
-          if (parent) {
-              parent->removeThing(item, item->getItemCount());
-          }
-      }
-      continue;  // Skip banking for coins
+void Game::playerQuickLootCorpse(std::shared_ptr<Player> player, std::shared_ptr<Container> corpse, const Position& position) {
+  if (!player || !corpse) {
+    return;
   }
+
+  std::vector<std::shared_ptr<Item>> itemList;
+  bool ignoreListItems = (player->quickLootFilter == QUICKLOOTFILTER_SKIPPEDLOOT);
+
+  bool missedAnyGold = false;
+  bool missedAnyItem = false;
+
+  for (ContainerIterator it = corpse->iterator(); it.hasNext(); it.advance()) {
+    std::shared_ptr<Item> item = *it;  // Correct 'item' declaration here
+    bool listed = player->isQuickLootListedItem(item);
+    if ((listed && ignoreListItems) || (!listed && !ignoreListItems)) {
+      if (item->getWorth() != 0) {
+        missedAnyGold = true;
+      } else {
+        missedAnyItem = true;
+      }
+      continue;
+    }
+
+    itemList.push_back(item);
+  }
+
+  bool shouldNotifyCapacity = false;
+  ObjectCategory_t shouldNotifyNotEnoughRoom = OBJECTCATEGORY_NONE;
+
+  for (const std::shared_ptr<Item>& item : itemList) {
+    ObjectCategory_t category = getObjectCategory(item);
+
+    // Attempt to add the item to the player's inventory
+    ReturnValue ret = internalCollectManagedItems(player, item, category);
+
+    if (ret == RETURNVALUE_NOERROR) {
+      // If the item is a coin, remove it from the corpse after looting
+      if (item->getID() == ITEM_GOLD_COIN || item->getID() == ITEM_PLATINUM_COIN || item->getID() == ITEM_CRYSTAL_COIN) {
+        corpse->removeThing(item, item->getItemCount());  // Remove coins from the corpse
+      }
+    } else if (ret == RETURNVALUE_NOTENOUGHCAPACITY) {
+      shouldNotifyCapacity = true;
+    } else if (ret == RETURNVALUE_CONTAINERNOTENOUGHROOM) {
+      shouldNotifyNotEnoughRoom = category;
+    }
+  }
+
+  if (shouldNotifyCapacity) {
+    player->sendTextMessage(MESSAGE_GAME_HIGHLIGHT, "You do not have enough capacity to carry all the loot.");
+  } else if (shouldNotifyNotEnoughRoom != OBJECTCATEGORY_NONE) {
+    player->sendTextMessage(MESSAGE_GAME_HIGHLIGHT, "Your loot container is full.");
+  }
+}
   }
 
   // Send money to the bank

@@ -2596,7 +2596,12 @@ std::tuple < ReturnValue, uint32_t, uint32_t > Game::addItemBatch(const std::sha
       // If it failed to add to the autoContainer, or it's not set, use the current logic
       if (!addedToAutoContainer) {
         ret = internalCollectManagedItems(player, item, g_game().getObjectCategory(item), false);
-        // If it can't place in the player's backpacks, add normally
+
+        // Allow all items to go into the Gold Pouch, including coins
+        if (lootContainer->getID() == ITEM_GOLD_POUCH) {
+            // No restrictions: all items are allowed to go into the Gold Pouch, including coins
+        }
+            // If it can't place in the player's backpacks, add normally
         if (ret != RETURNVALUE_NOERROR) {
           ret = internalAddItem(destination, item, CONST_SLOT_WHEREEVER, flags, false, remainderCount);
         }
@@ -2672,7 +2677,12 @@ ReturnValue Game::internalPlayerAddItem(std::shared_ptr < Player > player, std::
   ReturnValue ret;
   if (slot == CONST_SLOT_WHEREEVER) {
     ret = internalCollectManagedItems(player, item, getObjectCategory(item), false);
-    // If cannot place it in the obtain containers, will add it normally
+
+        // Allow all items to go into the Gold Pouch, including coins
+        if (lootContainer->getID() == ITEM_GOLD_POUCH) {
+            // No restrictions: all items are allowed to go into the Gold Pouch, including coins
+        }
+        // If cannot place it in the obtain containers, will add it normally
     if (ret != RETURNVALUE_NOERROR) {
       ret = internalAddItem(player, item, slot, 0, false, remainderCount);
     }
@@ -3046,7 +3056,17 @@ ReturnValue Game::internalTeleport(const std::shared_ptr < Thing > & thing,
 }
 
 void Game::playerQuickLootCorpse(std::shared_ptr < Player > player, std::shared_ptr < Container > corpse,
-  const Position & position) {
+
+        // Remove the coins from the corpse after collecting them
+        if (item->getID() == ITEM_GOLD_COIN || item->getID() == ITEM_PLATINUM_COIN || item->getID() == ITEM_CRYSTAL_COIN) {
+            if (auto parent = item->getParent()) {
+                parent->removeThing(item, item->getItemCount());
+            } else {
+                g_logger().debug("Item has no parent");
+                return RETURNVALUE_NOTPOSSIBLE;
+            }
+        }
+      const Position & position) {
   if (!player || !corpse) {
     return;
   }
@@ -3091,7 +3111,12 @@ void Game::playerQuickLootCorpse(std::shared_ptr < Player > player, std::shared_
     }
 
     ReturnValue ret = internalCollectManagedItems(player, item, category);
-    if (ret == RETURNVALUE_NOTENOUGHCAPACITY) {
+
+        // Allow all items to go into the Gold Pouch, including coins
+        if (lootContainer->getID() == ITEM_GOLD_POUCH) {
+            // No restrictions: all items are allowed to go into the Gold Pouch, including coins
+        }
+        if (ret == RETURNVALUE_NOTENOUGHCAPACITY) {
       shouldNotifyCapacity = true;
     } else if (ret == RETURNVALUE_CONTAINERNOTENOUGHROOM) {
       shouldNotifyNotEnoughRoom = category;
@@ -3288,7 +3313,12 @@ ReturnValue Game::processLootItems(std::shared_ptr < Player > player, std::share
 }
 
 ReturnValue Game::internalCollectManagedItems(std::shared_ptr < Player > player, std::shared_ptr < Item > item, ObjectCategory_t category /* = OBJECTCATEGORY_DEFAULT*/ , bool isLootContainer /* = true*/ ) {
-  if (!player || !item) {
+
+        // Allow all items to go into the Gold Pouch, including coins
+        if (lootContainer->getID() == ITEM_GOLD_POUCH) {
+            // No restrictions: all items are allowed to go into the Gold Pouch, including coins
+        }
+      if (!player || !item) {
     return RETURNVALUE_NOTPOSSIBLE;
   }
 
@@ -3372,7 +3402,12 @@ ReturnValue Game::collectRewardChestItems(std::shared_ptr < Player > player, uin
 
     ObjectCategory_t category = getObjectCategory(item);
     if (internalCollectManagedItems(player, item, category) == RETURNVALUE_NOERROR) {
-      movedRewardItems++;
+
+        // Allow all items to go into the Gold Pouch, including coins
+        if (lootContainer->getID() == ITEM_GOLD_POUCH) {
+            // No restrictions: all items are allowed to go into the Gold Pouch, including coins
+        }
+          movedRewardItems++;
     }
   }
 
@@ -3584,7 +3619,12 @@ void Game::playerEquipItem(uint32_t playerId, uint16_t itemId, bool hasTier /* =
         !rightItem -> isQuiver()
       ) {
         ret = internalCollectManagedItems(player, rightItem, getObjectCategory(rightItem), false);
-      }
+
+        // Allow all items to go into the Gold Pouch, including coins
+        if (lootContainer->getID() == ITEM_GOLD_POUCH) {
+            // No restrictions: all items are allowed to go into the Gold Pouch, including coins
+        }
+          }
 
       if (slotItem) {
         ret = internalMoveItem(slotItem -> getParent(), player, INDEX_WHEREEVER, slotItem, slotItem -> getItemCount(), nullptr);
@@ -5759,6 +5799,11 @@ void Game::playerQuickLoot(uint32_t playerId,
     ObjectCategory_t category = getObjectCategory(item);
     ReturnValue ret = internalCollectManagedItems(player, item, category);
 
+        // Allow all items to go into the Gold Pouch, including coins
+        if (lootContainer->getID() == ITEM_GOLD_POUCH) {
+            // No restrictions: all items are allowed to go into the Gold Pouch, including coins
+        }
+    
     std::stringstream ss;
     if (ret == RETURNVALUE_NOTENOUGHCAPACITY) {
       ss << "Attention! The loot you are trying to pick up is too heavy for you to carry.";
@@ -5795,11 +5840,31 @@ void Game::playerQuickLoot(uint32_t playerId,
       auto reward = player -> getReward(rewardId, false);
       if (reward) {
         playerQuickLootCorpse(player, reward -> getContainer(), corpse -> getPosition());
-      }
+
+        // Remove the coins from the corpse after collecting them
+        if (item->getID() == ITEM_GOLD_COIN || item->getID() == ITEM_PLATINUM_COIN || item->getID() == ITEM_CRYSTAL_COIN) {
+            if (auto parent = item->getParent()) {
+                parent->removeThing(item, item->getItemCount());
+            } else {
+                g_logger().debug("Item has no parent");
+                return RETURNVALUE_NOTPOSSIBLE;
+            }
+        }
+          }
     } else {
       if (!lootAllCorpses) {
         playerQuickLootCorpse(player, corpse, corpse -> getPosition());
-      } else {
+
+        // Remove the coins from the corpse after collecting them
+        if (item->getID() == ITEM_GOLD_COIN || item->getID() == ITEM_PLATINUM_COIN || item->getID() == ITEM_CRYSTAL_COIN) {
+            if (auto parent = item->getParent()) {
+                parent->removeThing(item, item->getItemCount());
+            } else {
+                g_logger().debug("Item has no parent");
+                return RETURNVALUE_NOTPOSSIBLE;
+            }
+        }
+          } else {
         playerLootAllCorpses(player, pos, lootAllCorpses, autoLoot);
       }
     }
@@ -5865,7 +5930,17 @@ void Game::playerLootAllCorpses(std::shared_ptr < Player > player,
 
         corpses++;
         playerQuickLootCorpse(player, tileCorpse, tileCorpse -> getPosition());
-        if (corpses >= 30) {
+
+        // Remove the coins from the corpse after collecting them
+        if (item->getID() == ITEM_GOLD_COIN || item->getID() == ITEM_PLATINUM_COIN || item->getID() == ITEM_CRYSTAL_COIN) {
+            if (auto parent = item->getParent()) {
+                parent->removeThing(item, item->getItemCount());
+            } else {
+                g_logger().debug("Item has no parent");
+                return RETURNVALUE_NOTPOSSIBLE;
+            }
+        }
+            if (corpses >= 30) {
           break;
         }
       }
@@ -10925,7 +11000,12 @@ void Game::playerRewardChestCollect(uint32_t playerId,
 bool Game::tryRetrieveStashItems(std::shared_ptr < Player > player, std::shared_ptr < Item > item) {
   ObjectCategory_t category = getObjectCategory(item);
   return internalCollectManagedItems(std::move(player), item, category, false) == RETURNVALUE_NOERROR;
-}
+
+        // Allow all items to go into the Gold Pouch, including coins
+        if (lootContainer->getID() == ITEM_GOLD_POUCH) {
+            // No restrictions: all items are allowed to go into the Gold Pouch, including coins
+        }
+    }
 
 std::unique_ptr < IOWheel > & Game::getIOWheel() {
   return m_IOWheel;

@@ -64395,9 +64395,9 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="containersize" value="24"/>
 	</item>
 	<item id="34125" article="a" name="dead infernal phantom">
-		<attribute key="duration" value="10"/>
-		<attribute key="decayTo" value="34124"/>
-		<attribute key="containersize" value="24"/>
+		<attribute key="containerSize" value="30"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="duration" value="300"/>
 	</item>
 	<item id="34126" article="a" name="dead hazardous phantom">
 		<attribute key="duration" value="600"/>
@@ -82142,8 +82142,8 @@ Granted by TibiaGoals.com"/>
 <item id="46351" article="a" name="grand griish cudgel">
 		<attribute key="primarytype" value="club weapons"/>
 		<attribute key="weaponType" value="club"/>
-		<attribute key="attack" value="16"/>
-		<attribute key="elementdeath" value="70"/>
+		<attribute key="attack" value="90"/>
+		<attribute key="elementdeath" value="16"/>
 			<attribute key="criticalhitdamage" value="1500"/>
 		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="extradef" value="7"/>
@@ -82850,10 +82850,13 @@ Granted by TibiaGoals.com"/>
 			<attribute key="vocation" value="Druid;true, Elder Druid"/>
 		</attribute>
 	</item>
-	<item id="39235" article="a" name="eternal night root amulet">
+	<item id="46336" article="a" name="eternal night root amulet">
 		<attribute key="primarytype" value="amulets and necklaces"/>
 		<attribute key="weight" value="480"/>
 		<attribute key="script" value="moveevent">
+			<attribute key="absorbpercentearth" value="15"/>
+		<attribute key="absorbpercentice" value="15"/>
+				<attribute key="magiclevelpoints" value="6"/>
 			<attribute key="level" value="2300"/>
 			<attribute key="slot" value="necklace"/>
 			<attribute key="vocation" value="Druid;true, Elder Druid"/>

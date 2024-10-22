@@ -1,90 +1,162 @@
--- ALTER TABLE players ADD COLUMN bloodybalance BIGINT(20) UNSIGNED NOT NULL DEFAULT '0'; 
-
--- To use in NPC file -> creatureSayCallback after the IF clause "checkInteraction"
-
--- if Karin.BloodyBalance:npcHandler(player, message, npc, npcHandler) then
---     return true
--- end
-
 Karin.BloodyBalance = {
     Coins = {
-        ['Bloody Coins'] = { id = 46315, value = 1}, -- 'bloody coins',
-        ['Blood Coins'] = { id = 46316, value = 100}, -- 'blood coins',
+        ['Ancient Blood Coins'] = { id = 46315, value = 1 },    -- Pink: 1x 'Ancient Blood Coin' = 1x 'balance deduction'
+        ['Blood Coins'] = { id = 46316, value = 10 },           -- Red: 1x 'Blood Coin' = 10x 'balance deduction'
+        ['Bloody Coins'] = { id = 46314, value = 100 }          -- Green: 1x 'Bloody Coin' = 100x 'balance deduction'
     }
 }
 
 __SystemFunctions = {
-   getPhysicalBalance = function(self, player)
+    -- Function to get the total balance of all physical coins in player's inventory
+    getPhysicalBalance = function(self, player)
         local balance = 0
         for _, data in pairs(self.Coins) do
             balance = balance + (player:getItemCount(data.id) * data.value)
         end
         return balance
-   end,
-   depositAll = function(self, player)
-        local current = self:getPhysicalBalance(player)
+    end,
 
-        if current == 0 then
+    -- Function to deposit all physical coins into the player's bank
+    depositAll = function(self, player)
+        local currentBalance = self:getPhysicalBalance(player)
+
+        if currentBalance == 0 then
             return 0
         end
-        
+
+        -- Retrieve the number of each coin type in the player's inventory
+        local ancientBloodCoins = player:getItemCount(self.Coins['Ancient Blood Coins'].id)
         local bloodCoins = player:getItemCount(self.Coins['Blood Coins'].id)
         local bloodyCoins = player:getItemCount(self.Coins['Bloody Coins'].id)
 
+        -- Remove the coins from the player's inventory
+        player:removeItem(self.Coins['Ancient Blood Coins'].id, ancientBloodCoins)
         player:removeItem(self.Coins['Blood Coins'].id, bloodCoins)
         player:removeItem(self.Coins['Bloody Coins'].id, bloodyCoins)
 
-        local total = (bloodCoins * self.Coins['Blood Coins'].value) + bloodyCoins
+        -- Calculate the total value to deposit
+        local total = (ancientBloodCoins * self.Coins['Ancient Blood Coins'].value) +
+                      (bloodCoins * self.Coins['Blood Coins'].value) +
+                      (bloodyCoins * self.Coins['Bloody Coins'].value)
+
+        -- Deposit the total value into the player's bank balance
         player:setBloodyBankBalance(total + player:getBloodyBankBalance())
         return total
-   end,
-   transferBloodyCoins = function(self, player, targetName, amount)
+    end,
+
+    -- Function to transfer bloody coins from one player to another
+    transferBloodyCoins = function(self, player, targetName, amount)
         local balance = player:getBloodyBankBalance()
         if balance < amount then
-            return
+            return false, "You do not have enough balance to transfer."
         end
 
         if not player then
-            return 
+            return false, "Invalid player."
         end
 
         local target = Player(targetName)
-        local offline
+        local offline = false
         if not target then
             target = Game.getOfflinePlayer(targetName)
             if not target then
-                return 
+                return false, "Target player does not exist."
             end
             offline = true
         end
 
+        -- Transfer coins between players
         player:setBloodyBankBalance(balance - amount)
         target:setBloodyBankBalance(target:getBloodyBankBalance() + amount)
 
+        -- Save target if offline
         if offline then
             target:save()
         end
-        return true
-   end,
-   npcHandler = function (self, player, message, npc, npcHandler)
+
+        return true, "You have transferred " .. amount .. " bloody coins to " .. targetName .. "."
+    end,
+
+    -- Function to withdraw a specific amount of coins for the chosen currency
+    withdrawCoins = function(self, player, requestedAmount, currencyType)
+        local balance = player:getBloodyBankBalance()
+        local coinValue = self.Coins[currencyType].value
+
+        -- Calculate how much of the chosen currency the player can withdraw
+        local requiredBalance = requestedAmount * coinValue
+
+        -- Check if the player has enough balance in the bank to withdraw this amount
+        if balance < requiredBalance then
+            return false, "You do not have enough balance to withdraw " .. requestedAmount .. " " .. currencyType .. "."
+        end
+
+        -- Deduct the correct amount from the player's bank balance
+        player:setBloodyBankBalance(balance - requiredBalance)
+
+        -- Add the correct coins to the player's inventory
+        player:addItem(self.Coins[currencyType].id, requestedAmount)
+
+        return true, "You have withdrawn " .. requestedAmount .. " " .. currencyType .. "."
+    end,
+
+    -- NPC handler to process deposits, withdrawals, transfers, etc.
+    npcHandler = function(self, player, message, npc, npcHandler)
         if message == "deposit all" then
             local total = self:depositAll(player)
-            npcHandler:say('You have deposited ' .. total .. ' bloody coins.', npc, player)
+            if total > 0 then
+                npcHandler:say('You have deposited ' .. total .. ' bloody coins.', npc, player)
+            else
+                npcHandler:say('You do not have any coins to deposit.', npc, player)
+            end
             npcHandler:setTopic(player:getId(), 0)
             return true
         elseif message == "balance" then
             local balance = player:getBloodyBankBalance()
-            npcHandler:say('You have ' .. balance .. ' bloody coins.', npc, player)
+            npcHandler:say('You have ' .. balance .. ' bloody coins in your bank account.', npc, player)
             npcHandler:setTopic(player:getId(), 0)
             return true
-        elseif npcHandler:getTopic(player:getId()) <= 0 and MsgContains(message, 'transfer') then -- transfer bloody coins
+        elseif npcHandler:getTopic(player:getId()) <= 0 and MsgContains(message, "withdraw") then -- withdraw bloody coins
+            npcHandler:say('Which currency would you like to withdraw? Green (Bloody Coins), Red (Blood Coins), or Pink (Ancient Blood Coins)?', npc, player)
+            npcHandler:setTopic(player:getId(), 101)
+            return true
+        elseif npcHandler:getTopic(player:getId()) == 101 then
+            local currency
+            if message == "green" then
+                currency = "Bloody Coins"            -- Withdraws Bloody Coins (ID 46314) = 100 deducted per coin
+            elseif message == "red" then
+                currency = "Blood Coins"             -- Withdraws Blood Coins (ID 46316) = 10 deducted per coin
+            elseif message == "pink" then
+                currency = "Ancient Blood Coins"     -- Withdraws Ancient Blood Coins (ID 46315) = 1 deducted per coin
+            else
+                npcHandler:say("Please choose a valid option: Green, Red, or Pink.", npc, player)
+                npcHandler:setTopic(player:getId(), 0)
+                return true
+            end
+            player:kv():set('chosenCurrency', currency)
+            npcHandler:say('How many coins do you want to withdraw?', npc, player)
+            npcHandler:setTopic(player:getId(), 102)
+            return true
+        elseif npcHandler:getTopic(player:getId()) == 102 then
+            local amount = tonumber(message)
+            if not amount or amount <= 0 then
+                npcHandler:say('Please enter a valid number.', npc, player)
+                npcHandler:setTopic(player:getId(), 0)
+                return true
+            end
+
+            local chosenCurrency = player:kv():get('chosenCurrency')
+            local success, response = self:withdrawCoins(player, amount, chosenCurrency)
+            npcHandler:say(response, npc, player)
+            npcHandler:setTopic(player:getId(), 0)
+            return true
+        elseif npcHandler:getTopic(player:getId()) <= 0 and MsgContains(message, "transfer") then -- transfer bloody coins
             npcHandler:say('Please tell me the amount of bloody coins you would like to transfer.', npc, player)
             npcHandler:setTopic(player:getId(), 3)
             return true
         elseif npcHandler:getTopic(player:getId()) == 3 then -- transfer bloody coins
             local amount = tonumber(message)
             if not amount or amount <= 0 then
-                npcHandler:say('Please, tell me a number.', npc, player)
+                npcHandler:say('Please, tell me a valid number.', npc, player)
                 npcHandler:setTopic(player:getId(), 0)
                 return true
             end
@@ -96,7 +168,7 @@ __SystemFunctions = {
                 return true
             end
 
-            npcHandler:say('Who would you like transfer ' .. amount .. ' bloody coins to?', npc, player)
+            npcHandler:say('Who would you like to transfer ' .. amount .. ' bloody coins to?', npc, player)
             player:kv():set('bctransfer', amount)
             npcHandler:setTopic(player:getId(), 33)
             return true
@@ -119,122 +191,17 @@ __SystemFunctions = {
             local amount = player:kv():get('bctransfer')
             local targetName = player:kv():get('bctransfertarget')
             if not amount or amount <= 0 then
-                npcHandler:say('Please, tell me a number.', npc, player)
+                npcHandler:say('Please, tell me a valid number.', npc, player)
                 npcHandler:setTopic(player:getId(), 0)
                 return true
             end
 
-            local balance = player:getBloodyBankBalance()
-            if balance < amount then
-                npcHandler:say('You do not have enough bloody coins.', npc, player)
-                npcHandler:setTopic(player:getId(), 0)
-                return true
-            end
-
-            if self:transferBloodyCoins(player, targetName, amount) then
-                npcHandler:say('You have transferred ' .. amount .. ' bloody coins to ' .. targetName .. '.', npc, player)
-            else
-                npcHandler:say('You do not have enough bloody coins.', npc, player)
-            end
-
-            npcHandler:setTopic(player:getId(), 0)
-            return true
-        elseif npcHandler:getTopic(player:getId()) <= 0 and MsgContains(message, 'exchange') then -- exchange bloody coins
-            npcHandler:say('How many bloody coins do you want to exchange? Min: 50 Bloody coins = 1kk.', npc, player)
-            npcHandler:setTopic(player:getId(), 2)
-            return true
-        elseif npcHandler:getTopic(player:getId()) == 2 then -- exchange bloody coins
-            local amount = tonumber(message)
-            if not amount or amount < 50 then
-                npcHandler:say('Please, tell me a number starting from 50 bloody coins.', npc, player)
-                npcHandler:setTopic(player:getId(), 0)
-                return true
-            end
-
-            local bloodyToReceive = math.floor(amount / 50)
-            local goldCoins = bloodyToReceive * 1000000
-            bloodyToReceive = bloodyToReceive * 50
-
-  
-            if player:getMoney() + player:getBankBalance() < goldCoins then
-                npcHandler:say('You do not have enough gold coins.', npc, player)
-                npcHandler:setTopic(player:getId(), 0)
-                return true
-            end
-
-            npcHandler:say('Are you sure you want to exchange ' .. goldCoins .. ' gold coins to ' .. bloodyToReceive .. ' bloody coins?', npc, player)
-            npcHandler:setTopic(player:getId(), 22)
-            player:kv():set('bcexchangetoreceive', bloodyToReceive)
-            player:kv():set('bcexchangegold', goldCoins)
-            return true
-        elseif npcHandler:getTopic(player:getId()) == 22 and MsgContains(message, 'yes') then -- exchange bloody coins
-            local goldCoins = player:kv():get('bcexchangegold')
-            local bloodyToReceive = player:kv():get('bcexchangetoreceive')
-        
-            if player:getMoney() + player:getBankBalance() >= goldCoins then
-                if player:removeMoneyBank(goldCoins) then
-                    player:setBloodyBankBalance(player:getBloodyBankBalance() + bloodyToReceive)
-                    npcHandler:say('You have exchanged ' .. goldCoins .. ' gold coins to ' .. bloodyToReceive .. ' bloody coins.', npc, player)
-                else
-                    npcHandler:say('You do not have enough gold coins.', npc, player)
-                end
-            else
-                npcHandler:say('You do not have enough gold coins.', npc, player)
-            end
-            npcHandler:setTopic(player:getId(), 0)
-            return true
-        elseif npcHandler:getTopic(player:getId()) <= 0 and MsgContains(message, "withdraw") then -- withdraw bloody coins
-            npcHandler:say('How many bloody coins do you want to withdraw?', npc, player)
-            npcHandler:setTopic(player:getId(), 1)
-            return true
-        elseif npcHandler:getTopic(player:getId()) == 1 then -- withdraw bloody coins
-            local amount = tonumber(message)
-            if not amount or amount <= 0 then
-                npcHandler:say('Please, tell me a number.', npc, player)
-                npcHandler:setTopic(player:getId(), 0)
-                return true
-            end
-
-            local balance = player:getBloodyBankBalance()
-            if balance < amount then
-                npcHandler:say('You do not have enough bloody coins.', npc, player)
-                npcHandler:setTopic(player:getId(), 0)
-                return true
-            end
-
-            npcHandler:say('Are you sure you want to withdraw ' .. amount .. ' bloody coins?', npc, player)
-            player:kv():set('bcwithdraw', amount)
-            npcHandler:setTopic(player:getId(), 11)
-            return true
-        elseif npcHandler:getTopic(player:getId()) == 11 and MsgContains(message, 'yes') then -- withdraw bloody coins
-            local amount = player:kv():get('bcwithdraw')
-
-            if not amount or amount <= 0 then
-                npcHandler:say('Please, tell me a number.', npc, player)
-                npcHandler:setTopic(player:getId(), 0)
-                return true
-            end
-            
-            local balance = player:getBloodyBankBalance()
-            if balance < amount then
-                npcHandler:say('You do not have enough bloody coins.', npc, player)
-                npcHandler:setTopic(player:getId(), 0)
-                return true
-            end
-
-            player:setBloodyBankBalance(balance - amount)
-
-            local totalBloodCoins = math.floor(amount / self.Coins['Blood Coins'].value)
-            local totalBloodyCoins = amount % self.Coins['Blood Coins'].value
-
-            player:addItem(self.Coins['Blood Coins'].id, totalBloodCoins)
-            player:addItem(self.Coins['Bloody Coins'].id, totalBloodyCoins)
-
-            npcHandler:say('You have withdrawn ' .. amount .. ' bloody coins.', npc, player)
+            local success, response = self:transferBloodyCoins(player, targetName, amount)
+            npcHandler:say(response, npc, player)
             npcHandler:setTopic(player:getId(), 0)
             return true
         end
-   end
+    end
 }
 
 Karin.BloodyBalance = setmetatable(

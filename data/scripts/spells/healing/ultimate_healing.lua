@@ -4,10 +4,30 @@ combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_MAGIC_BLUE)
 combat:setParameter(COMBAT_PARAM_DISPEL, CONDITION_PARALYZE)
 combat:setParameter(COMBAT_PARAM_AGGRESSIVE, false)
 
+
 function onGetFormulaValues(player, level, magicLevel)
-	local min = (level / 5) + (magicLevel * 8.8) + 42
-	local max = (level / 5) + (magicLevel * 35) + 90
-	return min, max
+	if level >= 2000 then
+			local min = (level / 5) + (magicLevel * 40) +42
+			local max = (level / 5) + (magicLevel * 60) +90
+			return min, max
+else if  level >= 1500  and level <= 1999 then
+
+local min = (level / 5) + (magicLevel * 27)
+			local max = (level / 5) + (magicLevel * 40)
+			return min, max
+
+else if  level >= 700 and level <= 1499 then
+
+local min = (level / 5) + (magicLevel * 25)
+			local max = (level / 5) + (magicLevel * 40)
+			return min, max
+elseif level >= 2 and level <= 699 then
+local min = (level / 5) + (magicLevel* 15)
+			local max = (level / 5) + (magicLevel * 30)
+			return min, max
+end
+end
+end
 end
 
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")

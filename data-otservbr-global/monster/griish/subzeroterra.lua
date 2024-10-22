@@ -1,4 +1,4 @@
-local mType = Game.createMonsterType("Sub Icearth")
+local mType = Game.createMonsterType("Sub Iceearth")
 local monster = {}
 
 monster.description = "a sub iceearth"

@@ -3082,6 +3082,14 @@ void Game::playerQuickLootCorpse(std::shared_ptr < Player > player, std::shared_
     uint16_t baseCount = item -> getItemCount();
     ObjectCategory_t category = getObjectCategory(item);
 
+  if (item->getID() == ITEM_GOLD_COIN || item->getID() == ITEM_PLATINUM_COIN || item->getID() == ITEM_CRYSTAL_COIN) {
+        ReturnValue ret = internalAddItem(player, item, CONST_SLOT_WHEREEVER);
+        if (ret != RETURNVALUE_NOERROR) {
+            // handle error
+        }
+        continue;  // Skip the bank deposit for coins
+    }
+
     ReturnValue ret = internalCollectManagedItems(player, item, category);
     if (ret == RETURNVALUE_NOTENOUGHCAPACITY) {
       shouldNotifyCapacity = true;

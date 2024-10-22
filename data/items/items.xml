@@ -82139,34 +82139,7 @@ Granted by TibiaGoals.com"/>
 			<attribute key="slot" value="hand"/>
 		</attribute>
 	</item>
-<item id="46351" article="a" name="grand griish cudgel">
-		<attribute key="primarytype" value="club weapons"/>
-		<attribute key="weaponType" value="club"/>
-		<attribute key="attack" value="90"/>
-		<attribute key="elementdeath" value="16"/>
-			<attribute key="criticalhitdamage" value="1500"/>
-		<attribute key="criticalhitchance" value="1000"/>
-		<attribute key="extradef" value="7"/>
-		<attribute key="defense" value="50"/>
-		<attribute key="skillclub" value="9"/>
-		<attribute key="weight" value="6800"/>
-		<attribute key="imbuementslot" value="3">
-			<attribute key="life leech" value="3"/>
-			<attribute key="mana leech" value="3"/>
-			<attribute key="critical hit" value="3"/>
-			<attribute key="skillboost club" value="3"/>
-		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="fierce berserk" value="powerful impact" />
-		</attribute>
-		<attribute key="script" value="moveevent;weapon">
-			<attribute key="level" value="2500"/>
-			<attribute key="unproperly" value="true"/>
-			<attribute key="weaponType" value="club"/>
-			<attribute key="vocation" value="Knight;true, Elite Knight"/>
-			<attribute key="slot" value="hand"/>
-		</attribute>
-	</item>
+
 <item id="46357" article="a" name="grand griish razor">
 		<attribute key="primarytype" value="sword weapons"/>
 		<attribute key="weaponType" value="sword"/>
@@ -82401,8 +82374,7 @@ Granted by TibiaGoals.com"/>
 <item id="46351" article="a" name="grand griish cudgel">
 		<attribute key="primarytype" value="club weapons"/>
 		<attribute key="weaponType" value="club"/>
-		<attribute key="attack" value="16"/>
-		<attribute key="elementdeath" value="70"/>
+		<attribute key="attack" value="70"/>
 		<attribute key="criticalhitdamage" value="1500"/>
 		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="extradef" value="7"/>
@@ -82857,6 +82829,7 @@ Granted by TibiaGoals.com"/>
 			<attribute key="absorbpercentearth" value="15"/>
 		<attribute key="absorbpercentice" value="15"/>
 				<attribute key="magiclevelpoints" value="6"/>
+					<attribute key="script" value="moveevent">
 			<attribute key="level" value="2300"/>
 			<attribute key="slot" value="necklace"/>
 			<attribute key="vocation" value="Druid;true, Elder Druid"/>

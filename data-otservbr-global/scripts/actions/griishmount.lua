@@ -41,6 +41,7 @@ function griishmount.onUse(player, item, fromPosition, target, toPosition, isHot
 				item:remove(1)
 			else
 				player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "The attempt failed. Try again!")
+				item:remove(1)
 			end
 
 			return true

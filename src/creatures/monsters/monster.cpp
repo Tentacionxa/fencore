@@ -846,37 +846,52 @@ void Monster::doAttacking(uint32_t interval) {
         return;  // Don't attack if the monster is not in the player's visible area
     }
 
-    // Process the monster's available attacks and spells
+    // Prioritize melee attacks if the target is in melee range
+    bool hasMeleeAttacked = false;
     for (const spellBlock_t &spellBlock : mType->info.attackSpells) {
         bool inRange = false;
 
-        // Increase the chance for spells to be cast more frequently
-        if (spellBlock.chance < static_cast<uint32_t>(uniform_random(1, 80))) {  // Increase chance to cast spells more often
-            continue;  // Skip this spell if the chance check fails
-        }
+        // Prioritize melee attacks first if the monster is within melee range (distance <= 1)
+        if (spellBlock.isMelee && Position::getDistanceX(myPos, targetPos) <= 1 && Position::getDistanceY(myPos, targetPos) <= 1) {
+            // Ensure melee attack happens frequently
+            if (attackTicks >= 1000) {  // Adjust this to control the frequency of melee attacks
+                if (updateLook) {
+                    updateLookDirection();  // Ensure the monster is facing the player
+                    updateLook = false;
+                }
 
-        // Cooldown check: reduce spell cooldown times to make monsters more responsive
-        if (spellBlock.spell == nullptr || (spellBlock.isMelee && isFleeing())) {
-            continue;
-        }
+                // Perform the melee attack
+                minCombatValue = spellBlock.minCombatValue;
+                maxCombatValue = spellBlock.maxCombatValue;
 
-        // Check if the spell is in range and can be cast
-        if (canUseSpell(myPos, targetPos, spellBlock, interval, inRange, resetTicks)) {
-            if (updateLook) {
-                updateLookDirection();  // Ensure the monster is facing the player
-                updateLook = false;
+                if (spellBlock.spell) {
+                    spellBlock.spell->castSpell(getMonster(), attackedCreature);
+                }
+
+                hasMeleeAttacked = true;
+                attackTicks = 0;  // Reset the attack cooldown after melee attack
+                break;  // Break out of the loop after melee attack to avoid overlapping with spells
             }
+        }
 
-            // Set min/max damage based on the spell's combat values
-            minCombatValue = spellBlock.minCombatValue;
-            maxCombatValue = spellBlock.maxCombatValue;
+        // If it's not a melee attack or melee already occurred, handle spell casting
+        if (!hasMeleeAttacked && spellBlock.chance >= static_cast<uint32_t>(uniform_random(1, 100))) {
+            if (canUseSpell(myPos, targetPos, spellBlock, interval, inRange, resetTicks)) {
+                if (updateLook) {
+                    updateLookDirection();
+                    updateLook = false;
+                }
 
-            // Cast the spell if all conditions are met
-            spellBlock.spell->castSpell(getMonster(), attackedCreature);
+                minCombatValue = spellBlock.minCombatValue;
+                maxCombatValue = spellBlock.maxCombatValue;
 
-            // If it's a melee attack, reset the extra melee attack flag
-            if (spellBlock.isMelee) {
-                extraMeleeAttack = false;
+                if (spellBlock.spell) {
+                    spellBlock.spell->castSpell(getMonster(), attackedCreature);
+                }
+
+                if (spellBlock.isMelee) {
+                    extraMeleeAttack = false;
+                }
             }
         }
 
@@ -886,16 +901,17 @@ void Monster::doAttacking(uint32_t interval) {
         }
     }
 
-    // Ensure the monster is facing the correct direction
+    // Ensure the monster is facing the correct direction after attacks
     if (updateLook) {
         updateLookDirection();
     }
 
     // Ensure the attackTicks resets after each attack cycle to keep monsters responsive
-    if (resetTicks && attackTicks >= 500) {  // Reduce reset time to 500ms for quicker attacks
+    if (resetTicks && !hasMeleeAttacked) {
         attackTicks = 0;
     }
 }
+
 
 bool Monster::canUseAttack(const Position &pos, const std::shared_ptr<Creature> &target) const {
 	if (isHostile()) {

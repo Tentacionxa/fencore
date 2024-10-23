@@ -841,21 +841,21 @@ void Monster::doAttacking(uint32_t interval) {
     const Position &myPos = getPosition();
     const Position &targetPos = attackedCreature->getPosition();
 
-    // Check if the monster is within the player's visible screen area (or in range)
-    if (!g_game().isSightClear(myPos, targetPos, true)) {
-        return;  // Do not attack if the monster is not visible to the player
+    // Check if the monster is on the same floor and within visible range (e.g., 7 tiles away)
+    if (myPos.z != targetPos.z || Position::getDistanceX(myPos, targetPos) > 7 || Position::getDistanceY(myPos, targetPos) > 5) {
+        return;  // Don't attack if the monster is not in the player's visible area
     }
 
     // Process the monster's available attacks and spells
     for (const spellBlock_t &spellBlock : mType->info.attackSpells) {
         bool inRange = false;
 
-        // Check if the spell should be skipped based on chance
-        if (spellBlock.chance < static_cast<uint32_t>(uniform_random(1, 100))) {
+        // Increase the chance for spells to be cast more frequently
+        if (spellBlock.chance < static_cast<uint32_t>(uniform_random(1, 80))) {  // Increase chance to cast spells more often
             continue;  // Skip this spell if the chance check fails
         }
 
-        // Cooldown check: ensure the spell has had enough time to recharge before being used again
+        // Cooldown check: reduce spell cooldown times to make monsters more responsive
         if (spellBlock.spell == nullptr || (spellBlock.isMelee && isFleeing())) {
             continue;
         }
@@ -891,12 +891,11 @@ void Monster::doAttacking(uint32_t interval) {
         updateLookDirection();
     }
 
-    // Reset attack cooldown
-    if (resetTicks) {
+    // Ensure the attackTicks resets after each attack cycle to keep monsters responsive
+    if (resetTicks && attackTicks >= 500) {  // Reduce reset time to 500ms for quicker attacks
         attackTicks = 0;
     }
 }
-
 
 bool Monster::canUseAttack(const Position &pos, const std::shared_ptr<Creature> &target) const {
 	if (isHostile()) {

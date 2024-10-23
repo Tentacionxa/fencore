@@ -3306,18 +3306,20 @@ ReturnValue Game::internalCollectManagedItems(std::shared_ptr < Player > player,
     }
 
       // Add the coins to the player's container instead of the bank
-    ReturnValue ret = internalCollectManagedItems(player, item, OBJECTCATEGORY_DEFAULT, true);  // Force OBJECTCATEGORY_DEFAULT to treat as regular item
-       
-        if (ret == RETURNVALUE_NOERROR) {
-            // Successfully added coins to the player's container
-            return RETURNVALUE_NOERROR;
+    std::shared_ptr<Container> lootContainer = findManagedContainer(player, false, OBJECTCATEGORY_GOLD, true); // Get the loot container
+        if (lootContainer) {
+            ReturnValue ret = lootContainer->internalAddItem(player, item);
+            if (ret == RETURNVALUE_NOERROR) {
+                return RETURNVALUE_NOERROR;
+            } else {
+                return ret; // Handle errors if needed
+            }
         } else {
-            // Handle the error if the coins couldn't be added to the inventory
-            return ret;
+            g_logger().debug("Managed container not found for gold coins");
+            return RETURNVALUE_NOTPOSSIBLE;
         }
     }
-}
-
+  }
   bool fallbackConsumed = false;
   std::shared_ptr < Container > lootContainer = findManagedContainer(player, fallbackConsumed, category, isLootContainer);
   if (!lootContainer) {

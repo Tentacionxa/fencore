@@ -2053,7 +2053,7 @@ if (!corpse || !lootDrop) return;
 			auto maxSlivers = g_configManager().getNumber(FORGE_MAX_SLIVERS, __FUNCTION__);
 
 			auto sliverCount = static_cast<uint16_t>(uniform_random(minSlivers, maxSlivers));
-std::async(std::launch::async, [corpse, this]() {
+std::async(std::launch::async, [corpse, this, sliverCount]() {
 			std::shared_ptr<Item> sliver = Item::CreateItem(ITEM_FORGE_SLIVER, sliverCount);
 			if (g_game().internalAddItem(corpse, sliver) != RETURNVALUE_NOERROR) {
 				corpse->internalAddThing(sliver);

@@ -828,9 +828,26 @@ void Monster::onThink(uint32_t interval) {
 	const auto &attackedCreature = getAttackedCreature();
 	const auto &followCreature = getFollowCreature();
 	    // Ensure the monster tries to follow and attack the target
-	    if (attackedCreature) {
-        doAttacking(interval);
+	  // Ensure the monster tries to follow and attack the target
+const auto& attackedCreature = getAttackedCreature();
+if (attackedCreature) {
+    // If monster is not within melee range, make it move toward the player
+    const Position& monsterPos = getPosition();
+    const Position& targetPos = attackedCreature->getPosition();
+    int_fast32_t distanceX = Position::getDistanceX(monsterPos, targetPos);
+    int_fast32_t distanceY = Position::getDistanceY(monsterPos, targetPos);
+    uint32_t distance = std::max<uint32_t>(distanceX, distanceY);
+
+    // If the monster is a melee attacker and is far from the target, make it move toward the target
+    if (distance > 1 && !isRangedAttacker()) {  // Assuming `isRangedAttacker()` checks if the monster is ranged
+        setFollowCreature(attackedCreature);  // Make sure the monster is following the player to close the gap
     }
+
+    // If close enough to attack, do the attack
+    if (distance <= 1 || isRangedAttacker()) {
+        doAttacking(interval);  // Carry out the attack (melee or ranged depending on the monster type)
+    }
+}
 	if (isSummon()) {
 		if (attackedCreature.get() == this) {
 			setFollowCreature(nullptr);

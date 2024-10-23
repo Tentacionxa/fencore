@@ -834,26 +834,27 @@ void Monster::doAttacking(uint32_t interval) {
         return;
     }
 
+    bool updateLook = true;
+    bool resetTicks = interval != 0;
     attackTicks += interval;
 
     const Position &myPos = getPosition();
     const Position &targetPos = attackedCreature->getPosition();
 
-    bool updateLook = true;
-    bool resetTicks = interval != 0;
-
-    // Cache distance checks to avoid recalculating for every spell
-    uint32_t distance = std::max<uint32_t>(Position::getDistanceX(myPos, targetPos), Position::getDistanceY(myPos, targetPos));
+    // Check if the monster can actually use an attack
+    if (!canUseAttack(myPos, attackedCreature)) {
+        return; // Exit early if monster cannot attack (e.g., out of range or no line of sight)
+    }
 
     for (const spellBlock_t &spellBlock : mType->info.attackSpells) {
         bool inRange = false;
 
-        if (!spellBlock.isMelee && spellBlock.range != 0 && distance > spellBlock.range) {
-            inRange = false;
-            continue;  // Skip out-of-range spells
+        // Check if the spell should be skipped based on chance
+        if (spellBlock.chance < static_cast<uint32_t>(uniform_random(1, 100))) {
+            continue; // Skip this spell if the chance check fails
         }
 
-        if (spellBlock.chance >= static_cast<uint32_t>(uniform_random(1, 100))) {
+        if (canUseSpell(myPos, targetPos, spellBlock, interval, inRange, resetTicks)) {
             if (updateLook) {
                 updateLookDirection();
                 updateLook = false;
@@ -862,10 +863,20 @@ void Monster::doAttacking(uint32_t interval) {
             minCombatValue = spellBlock.minCombatValue;
             maxCombatValue = spellBlock.maxCombatValue;
 
+            if (spellBlock.spell == nullptr) {
+                continue;
+            }
+
             spellBlock.spell->castSpell(getMonster(), attackedCreature);
+
             if (spellBlock.isMelee) {
                 extraMeleeAttack = false;
             }
+        }
+
+        if (!inRange && spellBlock.isMelee) {
+            // melee swing out of reach
+            extraMeleeAttack = true;
         }
     }
 

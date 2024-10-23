@@ -96,6 +96,7 @@ public:
 		}
 		return mType->info.enemyFactions.empty() ? false : mType->info.enemyFactions.contains(faction);
 	}
+bool isRanged = false;
 
 	bool isPushable() override {
 		return mType->info.pushable && baseSpeed != 0;
@@ -139,8 +140,6 @@ public:
 
 	bool canWalkOnFieldType(CombatType_t combatType) const;
 	void onAttackedCreatureDisappear(bool isLogout) override;
-
-bool isRangedAttacker() const;
 
 	void onCreatureAppear(std::shared_ptr<Creature> creature, bool isLogin) override;
 	void onRemoveCreature(std::shared_ptr<Creature> creature, bool isLogout) override;
@@ -369,7 +368,6 @@ private:
  bool targetCacheIsValid = false;
     bool pathCacheIsValid = false;
     Direction cachedDirection; 
-
 	std::string name;
 	std::string nameDescription;
 

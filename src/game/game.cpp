@@ -3326,7 +3326,7 @@ ReturnValue Game::internalCollectManagedItems(std::shared_ptr < Player > player,
             }
      }
     
-
+  }
 
   bool fallbackConsumed = false;
   std::shared_ptr < Container > lootContainer = findManagedContainer(player, fallbackConsumed, category, isLootContainer);

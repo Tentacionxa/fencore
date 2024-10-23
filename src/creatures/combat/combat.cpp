@@ -24,13 +24,12 @@
 #include "lua/callbacks/event_callback.hpp"
 #include "lua/callbacks/events_callbacks.hpp"
 
-g_dispatcher().addTask(TaskGroup::ThreadPool, [this, player, wheelSpell, damage]() { 
-    return Combat::getLevelFormula(player, wheelSpell, damage); 
-});
-	if (!player) {
-		return 0;
-	}
+int32_t Combat::getLevelFormula(std::shared_ptr<Player> player, const std::shared_ptr<Spell> wheelSpell, const CombatDamage &damage) const {
+    if (!player) {
+        return 0;
+    }
 
+    g_dispatcher().addTask(TaskGroup::ThreadPool, [this, player, wheelSpell, damage]() {
 	uint32_t magicLevelSkill = player->getMagicLevel();
 	// Wheel of destiny - Runic Mastery
 	if (player->wheel()->getInstant("Runic Mastery") && wheelSpell && damage.instantSpellName.empty() && normal_random(0, 100) <= 25) {
@@ -43,6 +42,10 @@ g_dispatcher().addTask(TaskGroup::ThreadPool, [this, player, wheelSpell, damage]
 
 	int32_t levelFormula = player->getLevel() * 2 + (magicLevelSkill + player->getSpecializedMagicLevel(damage.primary.type, true)) * 3;
 	return levelFormula;
+  });
+
+    // Handle how to deal with asynchronous result. Return a placeholder or handle in the callback context.
+    return 0;  // Placeholder since the actual calculation happens asynchronously.
 }
 
 CombatDamage Combat::getCombatDamage(std::shared_ptr<Creature> creature, std::shared_ptr<Creature> target) const {

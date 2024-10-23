@@ -768,6 +768,7 @@ void Monster::onEndCondition(ConditionType_t type) {
 void Monster::onThink(uint32_t interval) {
 	Creature::onThink(interval);
 
+
 	if (mType->info.thinkEvent != -1) {
 		// onThink(self, interval)
 		LuaScriptInterface* scriptInterface = mType->info.scriptInterface;
@@ -820,6 +821,14 @@ void Monster::onThink(uint32_t interval) {
 	}
 
 	addEventWalk();
+
+
+    // Ensure the monster tries to follow and attack the target
+    const auto &attackedCreature = getAttackedCreature();
+    if (attackedCreature) {
+        doAttacking(interval);
+    }
+
 
 	const auto &attackedCreature = getAttackedCreature();
 	const auto &followCreature = getFollowCreature();
@@ -1199,42 +1208,45 @@ void Monster::pushCreatures(std::shared_ptr<Tile> tile) {
 }
 
 bool Monster::getNextStep(Direction &nextDirection, uint32_t &flags) {
-	  if (pathCacheIsValid) {
+	 if (pathCacheIsValid) {
         nextDirection = cachedDirection;
         return true;
     }
-	
-	if (isIdle || getHealth() <= 0) {
-		// we dont have anyone watching might aswell stop walking
-		eventWalk = 0;
-		return false;
-	}
 
-	bool result = false;
+    if (isIdle || getHealth() <= 0) {
+        // No movement when idle or dead
+        eventWalk = 0;
+        return false;
+    }
 
-	if (getFollowCreature() && hasFollowPath) {
-		doFollowCreature(flags, nextDirection, result);
-	} else if (isWalkingBack) {
-		doWalkBack(flags, nextDirection, result);
-	} else {
-		doRandomStep(nextDirection, result);
-	}
+    bool result = false;
 
-	if (result && (canPushItems() || canPushCreatures())) {
-		const Position &pos = getNextPosition(nextDirection, getPosition());
-		auto posTile = g_game().map.getTile(pos);
-		if (posTile) {
-			if (canPushItems()) {
-				Monster::pushItems(posTile, nextDirection);
-			}
+    // Different movement behaviors
+    if (getFollowCreature() && hasFollowPath) {
+        doFollowCreature(flags, nextDirection, result);
+    } else if (isWalkingBack) {
+        doWalkBack(flags, nextDirection, result);
+    } else {
+        doRandomStep(nextDirection, result);
+    }
 
-			if (canPushCreatures()) {
-				Monster::pushCreatures(posTile);
-			}
-		}
-	}
+    // Push items and creatures if needed
+    if (result && (canPushItems() || canPushCreatures())) {
+        const Position &pos = getNextPosition(nextDirection, getPosition());
+        auto posTile = g_game().map.getTile(pos);
+        if (posTile) {
+            if (canPushItems()) {
+                Monster::pushItems(posTile, nextDirection);
+            }
 
-	   pathCacheIsValid = true;
+            if (canPushCreatures()) {
+                Monster::pushCreatures(posTile);
+            }
+        }
+    }
+
+    // Cache the path direction for efficiency
+    pathCacheIsValid = true;
     cachedDirection = nextDirection;
     return result;
 }

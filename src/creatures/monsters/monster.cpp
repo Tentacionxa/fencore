@@ -823,15 +823,14 @@ void Monster::onThink(uint32_t interval) {
 	addEventWalk();
 
 
-    // Ensure the monster tries to follow and attack the target
-    const auto &attackedCreature = getAttackedCreature();
-    if (attackedCreature) {
-        doAttacking(interval);
-    }
 
 
 	const auto &attackedCreature = getAttackedCreature();
 	const auto &followCreature = getFollowCreature();
+	    // Ensure the monster tries to follow and attack the target
+	    if (attackedCreature) {
+        doAttacking(interval);
+    }
 	if (isSummon()) {
 		if (attackedCreature.get() == this) {
 			setFollowCreature(nullptr);
@@ -2065,7 +2064,7 @@ if (!corpse || !lootDrop) return;
 			auto maxSlivers = g_configManager().getNumber(FORGE_MAX_SLIVERS, __FUNCTION__);
 
 			auto sliverCount = static_cast<uint16_t>(uniform_random(minSlivers, maxSlivers));
-std::async(std::launch::async, [corpse, this, sliverCount]() {
+std::future<void> result = std::async(std::launch::async, [corpse, this, sliverCount]() {
 			std::shared_ptr<Item> sliver = Item::CreateItem(ITEM_FORGE_SLIVER, sliverCount);
 			if (g_game().internalAddItem(corpse, sliver) != RETURNVALUE_NOERROR) {
 				corpse->internalAddThing(sliver);

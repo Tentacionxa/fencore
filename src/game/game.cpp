@@ -3304,30 +3304,23 @@ ReturnValue Game::internalCollectManagedItems(std::shared_ptr < Player > player,
         g_logger().debug("Item has no parent");
         return RETURNVALUE_NOTPOSSIBLE;
     }
-
-   if (item->getContainer() && !item->isStoreItem()) {
+if (item->getContainer() && !item->isStoreItem()) {
     for (const std::shared_ptr<Item>& containerItem: item->getContainer()->getItems(true)) {
-        if ((containerItem->getID() == ITEM_GOLD_COIN || containerItem->getID() == ITEM_PLATINUM_COIN || containerItem->getID() == ITEM_CRYSTAL_COIN) &&
-            (containerID != ITEM_GOLD_POUCH && containerID != ITEM_DEPOT && containerID != ITEM_STORE_INBOX)) {
-            // Place the coins in the Gold Pouch
+        if ((containerItem->getID() == ITEM_GOLD_COIN || containerItem->getID() == ITEM_PLATINUM_COIN || containerItem->getID() == ITEM_CRYSTAL_COIN)) {
+            // Check if the Gold Pouch exists
             std::shared_ptr<Container> goldPouch = player->getManagedContainer(OBJECTCATEGORY_GOLD, true);
             if (goldPouch) {
-                ReturnValue ret = goldPouch->internalAddThing(INDEX_WHEREEVER, containerItem);
-                if (ret != RETURNVALUE_NOERROR) {
-                    return ret;
-                }
+                // Add the coins to the Gold Pouch
+                goldPouch->internalAddThing(INDEX_WHEREEVER, containerItem);
             } else {
                 g_logger().debug("Gold Pouch not found");
-                player->sendTextMessage(MESSAGE_STATUS_WARNING, "Gold Pouch not found. Coins were not collected.");
+                player->sendTextMessage(MESSAGE_STATUS, "Gold Pouch not found. Coins were not collected.");
                 return RETURNVALUE_NOTPOSSIBLE;
             }
-            }
+        }
     }
-            }
+}
      }
-    
-  }
-
   bool fallbackConsumed = false;
   std::shared_ptr < Container > lootContainer = findManagedContainer(player, fallbackConsumed, category, isLootContainer);
   if (!lootContainer) {

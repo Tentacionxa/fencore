@@ -3321,10 +3321,13 @@ ReturnValue Game::internalCollectManagedItems(std::shared_ptr < Player > player,
                 player->sendTextMessage(MESSAGE_STATUS_WARNING, "Gold Pouch not found. Coins were not collected.");
                 return RETURNVALUE_NOTPOSSIBLE;
             }
-        }
+            }
     }
+            }
+     }
+    
 
-}
+
   bool fallbackConsumed = false;
   std::shared_ptr < Container > lootContainer = findManagedContainer(player, fallbackConsumed, category, isLootContainer);
   if (!lootContainer) {

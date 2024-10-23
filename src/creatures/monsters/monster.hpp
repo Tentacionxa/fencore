@@ -96,7 +96,8 @@ public:
 		}
 		return mType->info.enemyFactions.empty() ? false : mType->info.enemyFactions.contains(faction);
 	}
-bool isRanged = false;
+   bool isRangedAttacker() const; // Add this line
+};
 
 	bool isPushable() override {
 		return mType->info.pushable && baseSpeed != 0;

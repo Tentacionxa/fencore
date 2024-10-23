@@ -132,9 +132,6 @@ void Monster::onAttackedCreatureDisappear(bool) {
 
 void Monster::onCreatureAppear(std::shared_ptr<Creature> creature, bool isLogin) {
 	Creature::onCreatureAppear(creature, isLogin);
- if (g_dispatcher().getEventCount() < MAX_EVENT_COUNT) {
-	   Creature::onCreatureAppear(creature, isLogin);
-	    }
 
 
 	if (mType->info.creatureAppearEvent != -1) {
@@ -2056,16 +2053,16 @@ if (!corpse || !lootDrop) return;
 			auto maxSlivers = g_configManager().getNumber(FORGE_MAX_SLIVERS, __FUNCTION__);
 
 			auto sliverCount = static_cast<uint16_t>(uniform_random(minSlivers, maxSlivers));
- g_dispatcher().addTask(createTask([corpse, this]() {
+std::async(std::launch::async, [corpse, this]() {
 			std::shared_ptr<Item> sliver = Item::CreateItem(ITEM_FORGE_SLIVER, sliverCount);
 			if (g_game().internalAddItem(corpse, sliver) != RETURNVALUE_NOERROR) {
 				corpse->internalAddThing(sliver);
 			}
-		}
+		});
 		if (!this->isRewardBoss() && g_configManager().getNumber(RATE_LOOT, __FUNCTION__) > 0) {
 			g_callbacks().executeCallback(EventCallback_t::monsterOnDropLoot, &EventCallback::monsterOnDropLoot, getMonster(), corpse);
 			g_callbacks().executeCallback(EventCallback_t::monsterPostDropLoot, &EventCallback::monsterPostDropLoot, getMonster(), corpse);
-		}));
+		}
 	  }
 }
  

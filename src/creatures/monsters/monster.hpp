@@ -364,6 +364,10 @@ private:
 	uint16_t forgeStack = 0;
 	ForgeClassifications_t monsterForgeClassification = ForgeClassifications_t::FORGE_NORMAL_MONSTER;
 
+ bool targetCacheIsValid = false;
+    bool pathCacheIsValid = false;
+    Direction cachedDirection; 
+	
 	std::string name;
 	std::string nameDescription;
 

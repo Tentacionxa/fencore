@@ -92,7 +92,7 @@ local roletasConfig = {
 		}
 	},
 	[17568] = {
-		itemNecessario = {id = 3043, quantidade = 5},
+		itemNecessario = {id = 3043, quantidade = 100},
 		pisosPorRoleta = 9,
 		posicaoDoCentro = Position(32117, 32202, 6),
 		items = {

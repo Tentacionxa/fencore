@@ -842,26 +842,17 @@ void Monster::doAttacking(uint32_t interval) {
     bool updateLook = true;
     bool resetTicks = interval != 0;
 
-    // Calculate the distance between the monster and the target
+    // Cache distance checks to avoid recalculating for every spell
     uint32_t distance = std::max<uint32_t>(Position::getDistanceX(myPos, targetPos), Position::getDistanceY(myPos, targetPos));
-
-    // Check if the target is within the general attack range
-    if (distance > mType->info.targetDistance) {
-        return;  // Do not attack if the target is out of range
-    }
-
-    bool spellUsed = false; // Track if any spell is used
 
     for (const spellBlock_t &spellBlock : mType->info.attackSpells) {
         bool inRange = false;
 
-        // For spells that aren't melee, check if they are within the spell's range
         if (!spellBlock.isMelee && spellBlock.range != 0 && distance > spellBlock.range) {
             inRange = false;
             continue;  // Skip out-of-range spells
         }
 
-        // Check if the spell should be cast based on its chance
         if (spellBlock.chance >= static_cast<uint32_t>(uniform_random(1, 100))) {
             if (updateLook) {
                 updateLookDirection();
@@ -872,23 +863,7 @@ void Monster::doAttacking(uint32_t interval) {
             maxCombatValue = spellBlock.maxCombatValue;
 
             spellBlock.spell->castSpell(getMonster(), attackedCreature);
-            spellUsed = true; // Mark that a spell was used
-        }
-    }
-
-    // If no spell was used and the monster is in melee range, try melee attack
-    if (!spellUsed && distance <= 1) {
-        for (const spellBlock_t &spellBlock : mType->info.attackSpells) {
-            if (spellBlock.isMelee && spellBlock.chance >= static_cast<uint32_t>(uniform_random(1, 100))) {
-                if (updateLook) {
-                    updateLookDirection();
-                    updateLook = false;
-                }
-
-                minCombatValue = spellBlock.minCombatValue;
-                maxCombatValue = spellBlock.maxCombatValue;
-
-                spellBlock.spell->castSpell(getMonster(), attackedCreature);
+            if (spellBlock.isMelee) {
                 extraMeleeAttack = false;
             }
         }
@@ -902,7 +877,6 @@ void Monster::doAttacking(uint32_t interval) {
         attackTicks = 0;
     }
 }
-
 
 bool Monster::canUseAttack(const Position &pos, const std::shared_ptr<Creature> &target) const {
 	if (isHostile()) {

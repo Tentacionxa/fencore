@@ -24,7 +24,9 @@
 #include "lua/callbacks/event_callback.hpp"
 #include "lua/callbacks/events_callbacks.hpp"
 
-g_dispatcher().addTask(TaskGroup::ThreadPool, [this, player, wheelSpell, damage]() { return Combat::getLevelFormula(player, wheelSpell, damage); });ptr<Spell> wheelSpell, const CombatDamage &damage) const {
+g_dispatcher().addTask(TaskGroup::ThreadPool, [this, player, wheelSpell, damage]() { 
+    return Combat::getLevelFormula(player, wheelSpell, damage); 
+});
 	if (!player) {
 		return 0;
 	}

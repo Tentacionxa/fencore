@@ -3323,7 +3323,6 @@ if (lootContainer) {
     g_logger().debug("Managed container not found for gold coins");
     return RETURNVALUE_NOTPOSSIBLE;
 }
-     }
   bool fallbackConsumed = false;
   std::shared_ptr < Container > lootContainer = findManagedContainer(player, fallbackConsumed, category, isLootContainer);
   if (!lootContainer) {

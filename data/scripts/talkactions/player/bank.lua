@@ -64,9 +64,9 @@ function deposit.onSay(player, words, param)
 	return true
 end
 
-deposit:separator(" ")
-deposit:groupType("normal")
-deposit:register()
+--deposit:separator(" ")
+--deposit:groupType("normal")
+--deposit:register()
 
 -- !withdraw Command
 local withdraw = TalkAction("!withdraw")

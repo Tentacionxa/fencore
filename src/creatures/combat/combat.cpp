@@ -29,7 +29,7 @@ int32_t Combat::getLevelFormula(std::shared_ptr<Player> player, const std::share
         return 0;
     }
 
-    g_dispatcher().addTask(TaskGroup::ThreadPool, [this, player, wheelSpell, damage]() {
+       g_dispatcher().addEvent([this, player, wheelSpell, damage]() {
 	uint32_t magicLevelSkill = player->getMagicLevel();
 	// Wheel of destiny - Runic Mastery
 	if (player->wheel()->getInstant("Runic Mastery") && wheelSpell && damage.instantSpellName.empty() && normal_random(0, 100) <= 25) {

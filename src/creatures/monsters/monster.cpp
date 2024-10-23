@@ -841,41 +841,38 @@ void Monster::doAttacking(uint32_t interval) {
     const Position &myPos = getPosition();
     const Position &targetPos = attackedCreature->getPosition();
 
-    // Check if the monster can actually use an attack
+    // Always check if monster can attack based on sight and range
     if (!canUseAttack(myPos, attackedCreature)) {
-        return; // Exit early if monster cannot attack (e.g., out of range or no line of sight)
+        return; // Exit if the attack cannot be performed
     }
 
+    // Process the monster's available attacks and spells
     for (const spellBlock_t &spellBlock : mType->info.attackSpells) {
         bool inRange = false;
 
-        // Check if the spell should be skipped based on chance
-        if (spellBlock.chance < static_cast<uint32_t>(uniform_random(1, 100))) {
-            continue; // Skip this spell if the chance check fails
-        }
+        // Check if the spell can be cast based on chance
+        if (spellBlock.chance >= static_cast<uint32_t>(uniform_random(1, 100))) {
+            if (canUseSpell(myPos, targetPos, spellBlock, interval, inRange, resetTicks)) {
+                if (updateLook) {
+                    updateLookDirection();
+                    updateLook = false;
+                }
 
-        if (canUseSpell(myPos, targetPos, spellBlock, interval, inRange, resetTicks)) {
-            if (updateLook) {
-                updateLookDirection();
-                updateLook = false;
-            }
+                minCombatValue = spellBlock.minCombatValue;
+                maxCombatValue = spellBlock.maxCombatValue;
 
-            minCombatValue = spellBlock.minCombatValue;
-            maxCombatValue = spellBlock.maxCombatValue;
+                if (spellBlock.spell != nullptr) {
+                    spellBlock.spell->castSpell(getMonster(), attackedCreature);
+                }
 
-            if (spellBlock.spell == nullptr) {
-                continue;
-            }
-
-            spellBlock.spell->castSpell(getMonster(), attackedCreature);
-
-            if (spellBlock.isMelee) {
-                extraMeleeAttack = false;
+                if (spellBlock.isMelee) {
+                    extraMeleeAttack = false;
+                }
             }
         }
 
+        // Handle melee attacks that are out of range
         if (!inRange && spellBlock.isMelee) {
-            // melee swing out of reach
             extraMeleeAttack = true;
         }
     }
@@ -888,7 +885,6 @@ void Monster::doAttacking(uint32_t interval) {
         attackTicks = 0;
     }
 }
-
 bool Monster::canUseAttack(const Position &pos, const std::shared_ptr<Creature> &target) const {
 	if (isHostile()) {
 		const Position &targetPos = target->getPosition();

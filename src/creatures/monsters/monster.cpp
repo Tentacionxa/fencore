@@ -23,6 +23,10 @@ int32_t Monster::despawnRadius;
 
 uint32_t Monster::monsterAutoID = 0x50000001;
 
+bool Monster::isRangedAttacker() const {
+    return mType && mType->info.isRanged;  // Adjust based on your system
+}
+
 std::shared_ptr<Monster> Monster::createMonster(const std::string &name) {
 	const auto mType = g_monsters().getMonsterType(name);
 	if (!mType) {

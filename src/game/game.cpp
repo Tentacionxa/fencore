@@ -3306,20 +3306,24 @@ ReturnValue Game::internalCollectManagedItems(std::shared_ptr < Player > player,
     }
 
       // Add the coins to the player's container instead of the bank
-    std::shared_ptr<Container> lootContainer = findManagedContainer(player, false, OBJECTCATEGORY_GOLD, true); // Get the loot container
-        if (lootContainer) {
-            ReturnValue ret = lootContainer->internalAddItem(player, item);
-            if (ret == RETURNVALUE_NOERROR) {
-                return RETURNVALUE_NOERROR;
-            } else {
-                return ret; // Handle errors if needed
-            }
-        } else {
-            g_logger().debug("Managed container not found for gold coins");
-            return RETURNVALUE_NOTPOSSIBLE;
-        }
+   // Declare a fallback variable for findManagedContainer
+bool fallbackConsumed = false;
+
+std::shared_ptr<Container> lootContainer = findManagedContainer(player, fallbackConsumed, OBJECTCATEGORY_GOLD, true); // Get the loot container
+
+if (lootContainer) {
+    // Use internalAddThing instead of internalAddItem
+    ReturnValue ret = lootContainer->internalAddThing(player, item);
+    if (ret == RETURNVALUE_NOERROR) {
+        return RETURNVALUE_NOERROR;
+    } else {
+        return ret; // Handle errors if needed
     }
-  }
+} else {
+    g_logger().debug("Managed container not found for gold coins");
+    return RETURNVALUE_NOTPOSSIBLE;
+}
+     }
   bool fallbackConsumed = false;
   std::shared_ptr < Container > lootContainer = findManagedContainer(player, fallbackConsumed, category, isLootContainer);
   if (!lootContainer) {

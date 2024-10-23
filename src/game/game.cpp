@@ -3306,7 +3306,7 @@ ReturnValue Game::internalCollectManagedItems(std::shared_ptr < Player > player,
     }
 
       // Add the coins to the player's container instead of the bank
-        ReturnValue ret = internalAddItem(player, item, CONST_SLOT_WHEREEVER);
+         ReturnValue ret = internalCollectManagedItems(player, item, OBJECTCATEGORY_GOLD, true);
         if (ret == RETURNVALUE_NOERROR) {
             // Successfully added coins to the player's container
             return RETURNVALUE_NOERROR;

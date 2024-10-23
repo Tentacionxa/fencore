@@ -53338,7 +53338,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="charges" value="500"/>
 		<attribute key="weight" value="1000"/>
 	</item>
-	<item id="28558" article="an" name="exercise bastion">
+	<item id="46067" article="an" name="exercise bastion">
 		<attribute key="primarytype" value="statues"/>
 		<attribute key="description" value="You can train your skills by using training weapons with this exercise dummy."/>
 		<attribute key="type" value="dummy">

@@ -834,80 +834,51 @@ void Monster::doAttacking(uint32_t interval) {
         return;
     }
 
-    bool updateLook = true;
-    bool resetTicks = interval != 0;
     attackTicks += interval;
 
     const Position &myPos = getPosition();
     const Position &targetPos = attackedCreature->getPosition();
 
-    // Check if the monster is on the same floor and within visible range (e.g., 7 tiles away)
-    if (myPos.z != targetPos.z || Position::getDistanceX(myPos, targetPos) > 7 || Position::getDistanceY(myPos, targetPos) > 5) {
-        return;  // Don't attack if the monster is not in the player's visible area
+    bool updateLook = true;
+    bool resetTicks = interval != 0;
+
+    // Calculate the distance between the monster and the target
+    uint32_t distance = std::max<uint32_t>(Position::getDistanceX(myPos, targetPos), Position::getDistanceY(myPos, targetPos));
+
+    // Ensure the creature attacks only when the target is within range
+    if (distance > mType->info.targetDistance) {
+        return;  // Do not attack if the target is out of range
     }
 
-    // Prioritize melee attacks if the target is in melee range
-    bool hasMeleeAttacked = false;
     for (const spellBlock_t &spellBlock : mType->info.attackSpells) {
         bool inRange = false;
 
-        // Prioritize melee attacks first if the monster is within melee range (distance <= 1)
-        if (spellBlock.isMelee && Position::getDistanceX(myPos, targetPos) <= 1 && Position::getDistanceY(myPos, targetPos) <= 1) {
-            // Ensure melee attack happens frequently
-            if (attackTicks >= 1000) {  // Adjust this to control the frequency of melee attacks
-                if (updateLook) {
-                    updateLookDirection();  // Ensure the monster is facing the player
-                    updateLook = false;
-                }
-
-                // Perform the melee attack
-                minCombatValue = spellBlock.minCombatValue;
-                maxCombatValue = spellBlock.maxCombatValue;
-
-                if (spellBlock.spell) {
-                    spellBlock.spell->castSpell(getMonster(), attackedCreature);
-                }
-
-                hasMeleeAttacked = true;
-                attackTicks = 0;  // Reset the attack cooldown after melee attack
-                break;  // Break out of the loop after melee attack to avoid overlapping with spells
-            }
+        if (!spellBlock.isMelee && spellBlock.range != 0 && distance > spellBlock.range) {
+            inRange = false;
+            continue;  // Skip out-of-range spells
         }
 
-        // If it's not a melee attack or melee already occurred, handle spell casting
-        if (!hasMeleeAttacked && spellBlock.chance >= static_cast<uint32_t>(uniform_random(1, 100))) {
-            if (canUseSpell(myPos, targetPos, spellBlock, interval, inRange, resetTicks)) {
-                if (updateLook) {
-                    updateLookDirection();
-                    updateLook = false;
-                }
-
-                minCombatValue = spellBlock.minCombatValue;
-                maxCombatValue = spellBlock.maxCombatValue;
-
-                if (spellBlock.spell) {
-                    spellBlock.spell->castSpell(getMonster(), attackedCreature);
-                }
-
-                if (spellBlock.isMelee) {
-                    extraMeleeAttack = false;
-                }
+        if (spellBlock.chance >= static_cast<uint32_t>(uniform_random(1, 100))) {
+            if (updateLook) {
+                updateLookDirection();
+                updateLook = false;
             }
-        }
 
-        // Handle melee attacks that are out of range
-        if (!inRange && spellBlock.isMelee) {
-            extraMeleeAttack = true;
+            minCombatValue = spellBlock.minCombatValue;
+            maxCombatValue = spellBlock.maxCombatValue;
+
+            spellBlock.spell->castSpell(getMonster(), attackedCreature);
+            if (spellBlock.isMelee) {
+                extraMeleeAttack = false;
+            }
         }
     }
 
-    // Ensure the monster is facing the correct direction after attacks
     if (updateLook) {
         updateLookDirection();
     }
 
-    // Ensure the attackTicks resets after each attack cycle to keep monsters responsive
-    if (resetTicks && !hasMeleeAttacked) {
+    if (resetTicks) {
         attackTicks = 0;
     }
 }

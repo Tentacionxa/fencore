@@ -132,6 +132,10 @@ void Monster::onAttackedCreatureDisappear(bool) {
 
 void Monster::onCreatureAppear(std::shared_ptr<Creature> creature, bool isLogin) {
 	Creature::onCreatureAppear(creature, isLogin);
+ if (g_dispatcher().getEventCount() < MAX_EVENT_COUNT) {
+	   Creature::onCreatureAppear(creature, isLogin);
+	    }
+
 
 	if (mType->info.creatureAppearEvent != -1) {
 		// onCreatureAppear(self, creature)
@@ -378,6 +382,7 @@ bool Monster::removeTarget(const std::shared_ptr<Creature> &creature) {
 }
 
 void Monster::updateTargetList() {
+	  if (targetCacheIsValid) return;  // Skip if already cached
 	std::erase_if(friendList, [this](const auto &it) {
 		const auto &target = it.second.lock();
 		return !target || target->getHealth() <= 0 || !canSee(target->getPosition());
@@ -392,7 +397,7 @@ void Monster::updateTargetList() {
 		if (spectator.get() != this && canSee(spectator->getPosition())) {
 			onCreatureFound(spectator);
 		}
-	}
+	} targetCacheIsValid = true;
 }
 
 void Monster::clearTargetList() {
@@ -1197,6 +1202,11 @@ void Monster::pushCreatures(std::shared_ptr<Tile> tile) {
 }
 
 bool Monster::getNextStep(Direction &nextDirection, uint32_t &flags) {
+	  if (pathCacheIsValid) {
+        nextDirection = cachedDirection;
+        return true;
+    }
+	
 	if (isIdle || getHealth() <= 0) {
 		// we dont have anyone watching might aswell stop walking
 		eventWalk = 0;
@@ -1227,7 +1237,9 @@ bool Monster::getNextStep(Direction &nextDirection, uint32_t &flags) {
 		}
 	}
 
-	return result;
+	   pathCacheIsValid = true;
+    cachedDirection = nextDirection;
+    return result;
 }
 
 void Monster::doRandomStep(Direction &nextDirection, bool &result) {
@@ -2034,7 +2046,8 @@ void Monster::updateLookDirection() {
 }
 
 void Monster::dropLoot(std::shared_ptr<Container> corpse, std::shared_ptr<Creature>) {
-	if (corpse && lootDrop) {
+if (!corpse || !lootDrop) return;
+
 		// Only fiendish drops sliver
 		if (ForgeClassifications_t classification = getMonsterForgeClassification();
 		    // Condition
@@ -2043,7 +2056,7 @@ void Monster::dropLoot(std::shared_ptr<Container> corpse, std::shared_ptr<Creatu
 			auto maxSlivers = g_configManager().getNumber(FORGE_MAX_SLIVERS, __FUNCTION__);
 
 			auto sliverCount = static_cast<uint16_t>(uniform_random(minSlivers, maxSlivers));
-
+ g_dispatcher().addTask(createTask([corpse, this]() {
 			std::shared_ptr<Item> sliver = Item::CreateItem(ITEM_FORGE_SLIVER, sliverCount);
 			if (g_game().internalAddItem(corpse, sliver) != RETURNVALUE_NOERROR) {
 				corpse->internalAddThing(sliver);
@@ -2052,9 +2065,10 @@ void Monster::dropLoot(std::shared_ptr<Container> corpse, std::shared_ptr<Creatu
 		if (!this->isRewardBoss() && g_configManager().getNumber(RATE_LOOT, __FUNCTION__) > 0) {
 			g_callbacks().executeCallback(EventCallback_t::monsterOnDropLoot, &EventCallback::monsterOnDropLoot, getMonster(), corpse);
 			g_callbacks().executeCallback(EventCallback_t::monsterPostDropLoot, &EventCallback::monsterPostDropLoot, getMonster(), corpse);
-		}
-	}
+		}));
+	  }
 }
+ 
 
 void Monster::setNormalCreatureLight() {
 	internalLight = mType->info.light;

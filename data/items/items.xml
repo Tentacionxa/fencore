@@ -53338,6 +53338,13 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="charges" value="500"/>
 		<attribute key="weight" value="1000"/>
 	</item>
+	<item id="28558" article="an" name="exercise bastion">
+		<attribute key="primarytype" value="statues"/>
+		<attribute key="description" value="You can train your skills by using training weapons with this exercise dummy."/>
+		<attribute key="type" value="dummy">
+			<attribute key="rate" value="135"/>
+		</attribute>
+	</item>
 	<item id="28558" article="an" name="exercise dummy">
 		<attribute key="primarytype" value="statues"/>
 		<attribute key="description" value="You can train your skills by using training weapons with this exercise dummy."/>
@@ -53464,6 +53471,23 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="duration" value="10"/>
 		<attribute key="decayTo" value="28577"/>
 		<attribute key="containersize" value="20"/>
+	</item>
+
+	<item id="43567" article="a" name="dead converter">
+		<attribute key="duration" value="60"/>
+		<attribute key="decayTo" value="0"/>
+	</item>
+<item id="43828" article="a" name="dead wandering pillar">
+		<attribute key="duration" value="60"/>
+		<attribute key="decayTo" value="0"/>
+	</item>
+<item id="43583" article="a" name="dead darklight emitter">
+		<attribute key="duration" value="60"/>
+		<attribute key="decayTo" value="0"/>
+	</item>
+<item id="43563" article="a" name="dead darklight construct">
+		<attribute key="duration" value="60"/>
+		<attribute key="decayTo" value="0"/>
 	</item>
 	<item id="28579" article="a" name="dead brain squid">
 		<attribute key="duration" value="60"/>

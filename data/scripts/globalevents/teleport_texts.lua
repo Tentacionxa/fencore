@@ -42,6 +42,10 @@ local effects = {
  {position = Position(33453, 32488, 10), text = 'Blessing', effect = CONST_ME_GROUNDSHAKER},
  {position = Position(33454, 32492, 11), text = 'Blessing', effect = CONST_ME_GROUNDSHAKER},
  {position = Position(33457, 32492, 11), text = 'Blessing', effect = CONST_ME_GROUNDSHAKER},
+
+ {position = Position(33439, 32486, 11), text = '35%', effect = CONST_ME_GROUNDSHAKER},
+ {position = Position(33441, 32486, 11), text = 'More Skill', effect = CONST_ME_GROUNDSHAKER},
+ 
  
  {position = Position(33450, 32481, 11), text = '25%', effect = CONST_ME_GROUNDSHAKER},
  {position = Position(33451, 32481, 11), text = 'More Skill', effect = CONST_ME_GROUNDSHAKER},

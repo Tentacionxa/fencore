@@ -29,7 +29,8 @@ int32_t Combat::getLevelFormula(std::shared_ptr<Player> player, const std::share
         return 0;
     }
 
-       g_dispatcher().addEvent([this, player, wheelSpell, damage]() {
+        // Add the event with context and expiration
+    g_dispatcher().addEvent([this, player, wheelSpell, damage]() {
 	uint32_t magicLevelSkill = player->getMagicLevel();
 	// Wheel of destiny - Runic Mastery
 	if (player->wheel()->getInstant("Runic Mastery") && wheelSpell && damage.instantSpellName.empty() && normal_random(0, 100) <= 25) {
@@ -42,12 +43,10 @@ int32_t Combat::getLevelFormula(std::shared_ptr<Player> player, const std::share
 
 	int32_t levelFormula = player->getLevel() * 2 + (magicLevelSkill + player->getSpecializedMagicLevel(damage.primary.type, true)) * 3;
 	return levelFormula;
-  });
+   }, "CombatLevelFormula", 0);  // Added context and expiration time
 
-    // Handle how to deal with asynchronous result. Return a placeholder or handle in the callback context.
-    return 0;  // Placeholder since the actual calculation happens asynchronously.
+    return 0;  // Placeholder since the calculation happens asynchronously
 }
-
 CombatDamage Combat::getCombatDamage(std::shared_ptr<Creature> creature, std::shared_ptr<Creature> target) const {
 	CombatDamage damage;
 	damage.origin = params.origin;

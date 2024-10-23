@@ -829,7 +829,6 @@ void Monster::onThink(uint32_t interval) {
 	const auto &followCreature = getFollowCreature();
 	    // Ensure the monster tries to follow and attack the target
 	  // Ensure the monster tries to follow and attack the target
-const auto& attackedCreature = getAttackedCreature();
 if (attackedCreature) {
     // If monster is not within melee range, make it move toward the player
     const Position& monsterPos = getPosition();

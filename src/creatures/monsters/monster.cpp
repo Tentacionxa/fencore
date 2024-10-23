@@ -841,33 +841,42 @@ void Monster::doAttacking(uint32_t interval) {
     const Position &myPos = getPosition();
     const Position &targetPos = attackedCreature->getPosition();
 
-    // Always check if monster can attack based on sight and range
-    if (!canUseAttack(myPos, attackedCreature)) {
-        return; // Exit if the attack cannot be performed
+    // Check if the monster is within the player's visible screen area (or in range)
+    if (!g_game().isSightClear(myPos, targetPos, true)) {
+        return;  // Do not attack if the monster is not visible to the player
     }
 
     // Process the monster's available attacks and spells
     for (const spellBlock_t &spellBlock : mType->info.attackSpells) {
         bool inRange = false;
 
-        // Check if the spell can be cast based on chance
-        if (spellBlock.chance >= static_cast<uint32_t>(uniform_random(1, 100))) {
-            if (canUseSpell(myPos, targetPos, spellBlock, interval, inRange, resetTicks)) {
-                if (updateLook) {
-                    updateLookDirection();
-                    updateLook = false;
-                }
+        // Check if the spell should be skipped based on chance
+        if (spellBlock.chance < static_cast<uint32_t>(uniform_random(1, 100))) {
+            continue;  // Skip this spell if the chance check fails
+        }
 
-                minCombatValue = spellBlock.minCombatValue;
-                maxCombatValue = spellBlock.maxCombatValue;
+        // Cooldown check: ensure the spell has had enough time to recharge before being used again
+        if (spellBlock.spell == nullptr || (spellBlock.isMelee && isFleeing())) {
+            continue;
+        }
 
-                if (spellBlock.spell != nullptr) {
-                    spellBlock.spell->castSpell(getMonster(), attackedCreature);
-                }
+        // Check if the spell is in range and can be cast
+        if (canUseSpell(myPos, targetPos, spellBlock, interval, inRange, resetTicks)) {
+            if (updateLook) {
+                updateLookDirection();  // Ensure the monster is facing the player
+                updateLook = false;
+            }
 
-                if (spellBlock.isMelee) {
-                    extraMeleeAttack = false;
-                }
+            // Set min/max damage based on the spell's combat values
+            minCombatValue = spellBlock.minCombatValue;
+            maxCombatValue = spellBlock.maxCombatValue;
+
+            // Cast the spell if all conditions are met
+            spellBlock.spell->castSpell(getMonster(), attackedCreature);
+
+            // If it's a melee attack, reset the extra melee attack flag
+            if (spellBlock.isMelee) {
+                extraMeleeAttack = false;
             }
         }
 
@@ -877,14 +886,18 @@ void Monster::doAttacking(uint32_t interval) {
         }
     }
 
+    // Ensure the monster is facing the correct direction
     if (updateLook) {
         updateLookDirection();
     }
 
+    // Reset attack cooldown
     if (resetTicks) {
         attackTicks = 0;
     }
 }
+
+
 bool Monster::canUseAttack(const Position &pos, const std::shared_ptr<Creature> &target) const {
 	if (isHostile()) {
 		const Position &targetPos = target->getPosition();

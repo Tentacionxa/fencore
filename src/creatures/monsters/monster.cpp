@@ -13,7 +13,7 @@
 #include "creatures/combat/spells.hpp"
 #include "creatures/players/wheel/player_wheel.hpp"
 #include "game/game.hpp"
-#include "lua/functions/creatures/player_functions.hpp"
+#include "lua/functions/creatures/player/player_functions.hpp"
 #include "game/scheduling/dispatcher.hpp"
 #include "lua/callbacks/event_callback.hpp"
 #include "lua/callbacks/events_callbacks.hpp"

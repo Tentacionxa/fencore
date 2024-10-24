@@ -2030,8 +2030,8 @@ void Monster::dropLoot(std::shared_ptr<Creature> killer) {
     bool shouldNotifyCapacity = false;
     std::string shouldNotifyNotEnoughRoom;
 
-    // Example: Retrieve ignoreListItems from player settings (set false for now)
-    bool ignoreListItems = player->shouldIgnoreListItems();  // Adjust based on your logic
+    // Example: Set ignoreListItems to false, adjust based on your logic
+    bool ignoreListItems = false;
 
     // Handle fiendish monster sliver drops
     if (ForgeClassifications_t classification = getMonsterForgeClassification();
@@ -2042,7 +2042,7 @@ void Monster::dropLoot(std::shared_ptr<Creature> killer) {
         auto sliverCount = static_cast<uint16_t>(uniform_random(minSlivers, maxSlivers));
 
         std::shared_ptr<Item> sliver = Item::CreateItem(ITEM_FORGE_SLIVER, sliverCount);
-        auto ret = player->addItemEx(sliver);  // Using addItemEx based on your file
+        auto ret = player->addItem(sliver);  // Use addItem instead of addItemEx
 
         if (ret == RETURNVALUE_NOTENOUGHCAPACITY) {
             shouldNotifyCapacity = true;
@@ -2069,7 +2069,7 @@ void Monster::dropLoot(std::shared_ptr<Creature> killer) {
                 }
 
                 // Add item to the player's inventory or container
-                auto ret = player->addItemEx(item);  // Use addItemEx for adding items
+                auto ret = player->addItem(item);  // Use addItem instead of addItemEx
 
                 if (ret == RETURNVALUE_NOTENOUGHCAPACITY) {
                     shouldNotifyCapacity = true;

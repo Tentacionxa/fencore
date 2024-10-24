@@ -1370,6 +1370,16 @@ bool Game::removeCreature(std::shared_ptr < Creature > creature, bool isLogout /
 
   return true;
 }
+void Game::processTaskQueue() {
+    std::lock_guard<std::mutex> lock(queueMutex);
+
+    // Execute all queued tasks
+    while (!taskQueue.empty()) {
+        auto task = taskQueue.front();
+        taskQueue.pop();
+        task();  // Execute the task
+    }
+}
 
 void Game::executeDeath(uint32_t creatureId) {
     metrics::method_latency measure(__METHOD_NAME__);
@@ -1379,25 +1389,25 @@ void Game::executeDeath(uint32_t creatureId) {
         return;
     }
 
-    // Batch the zone change and death handling
     afterCreatureZoneChange(creature, creature->getZones(), {});
-    
-    // Schedule death-related tasks in batches instead of processing them immediately
-    taskQueue.scheduleTask([creature]() {
-        creature->onDeath();
-    });
 
-    // Defer some non-critical operations to avoid immediate overhead
-    taskQueue.scheduleTask([creature]() {
-        if (creature->getMaster() && !creature->getMaster()->isRemoved()) {
-            creature->setMaster(nullptr);
-        }
-    });
+    // Schedule death-related tasks in the task queue
+    {
+        std::lock_guard<std::mutex> lock(queueMutex);
+        taskQueue.push([creature]() {
+            creature->onDeath();
+        });
 
-    // Batch remove creature check for performance improvement
-    taskQueue.scheduleTask([creature]() {
-        removeCreatureCheck(creature);
-    });
+        taskQueue.push([creature]() {
+            if (creature->getMaster() && !creature->getMaster()->isRemoved()) {
+                creature->setMaster(nullptr);
+            }
+        });
+
+        taskQueue.push([creature]() {
+            removeCreatureCheck(creature);
+        });
+    }
 }
 
 void Game::playerTeleport(uint32_t playerId,

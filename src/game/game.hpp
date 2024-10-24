@@ -64,6 +64,8 @@ static constexpr int32_t EVENT_LUA_GARBAGE_COLLECTION = 60000 * 10; // 10min
 static constexpr std::chrono::minutes CACHE_EXPIRATION_TIME { 10 }; // 10min
 static constexpr std::chrono::minutes HIGHSCORE_CACHE_EXPIRATION_TIME { 10 }; // 10min
 
+
+
 struct QueryHighscoreCacheEntry {
 	std::string query;
 	uint32_t page;
@@ -739,6 +741,11 @@ public:
 	const std::unordered_map<uint16_t, std::string> &getHirelingOutfits();
 
 private:
+
+ std::queue<std::function<void()>> taskQueue;  // Queue to hold the tasks
+    std::mutex queueMutex;  // Mutex for thread-safety while accessing the queue
+
+    void processTaskQueue();  // Function to process and execute tasks from the queue
 	std::map<uint16_t, Achievement> m_achievements;
 	std::map<std::string, uint16_t> m_achievementsNameToId;
 

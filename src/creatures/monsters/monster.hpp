@@ -18,7 +18,7 @@ class Game;
 
 class Monster final : public Creature {
 public:
-void dropLoot(std::shared_ptr<Creature> killer);
+
 	static std::shared_ptr<Monster> createMonster(const std::string &name);
 	static int32_t despawnRange;
 	static int32_t despawnRadius;
@@ -455,7 +455,7 @@ private:
 	uint16_t getLookCorpse() const override {
 		return mType->info.lookcorpse;
 	}
-	void dropLoot(std::shared_ptr<Container> corpse, std::shared_ptr<Creature> lastHitCreature) override;
+
 	void getPathSearchParams(const std::shared_ptr<Creature> &creature, FindPathParams &fpp) override;
 	bool useCacheMap() const override {
 		// return !randomStepping;
@@ -469,7 +469,7 @@ private:
 	friend class Map;
 
 	static std::vector<std::pair<int8_t, int8_t>> getPushItemLocationOptions(const Direction &direction);
-
+void dropLoot(std::shared_ptr<Creature> killer);
 	void doWalkBack(uint32_t &flags, Direction &nextDirection, bool &result);
 	void doFollowCreature(uint32_t &flags, Direction &nextDirection, bool &result);
 	void doRandomStep(Direction &nextDirection, bool &result);

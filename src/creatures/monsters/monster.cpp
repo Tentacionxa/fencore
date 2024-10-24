@@ -2042,7 +2042,7 @@ void Monster::dropLoot(std::shared_ptr<Creature> killer) {
         auto sliverCount = static_cast<uint16_t>(uniform_random(minSlivers, maxSlivers));
 
         std::shared_ptr<Item> sliver = Item::CreateItem(ITEM_FORGE_SLIVER, sliverCount);
-        auto ret = player->addItem(sliver);  // Use addItem instead of addItemEx
+        auto ret = player->addItemEx(sliver);  // Use addItem instead of addItemEx
 
         if (ret == RETURNVALUE_NOTENOUGHCAPACITY) {
             shouldNotifyCapacity = true;
@@ -2069,7 +2069,7 @@ void Monster::dropLoot(std::shared_ptr<Creature> killer) {
                 }
 
                 // Add item to the player's inventory or container
-                auto ret = player->addItem(item);  // Use addItem instead of addItemEx
+                auto ret = player->addItemEx(item);  // Use addItem instead of addItemEx
 
                 if (ret == RETURNVALUE_NOTENOUGHCAPACITY) {
                     shouldNotifyCapacity = true;

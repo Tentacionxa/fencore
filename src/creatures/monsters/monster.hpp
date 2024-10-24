@@ -96,8 +96,6 @@ public:
 		}
 		return mType->info.enemyFactions.empty() ? false : mType->info.enemyFactions.contains(faction);
 	}
-   bool isRangedAttacker() const; // Add this line
-};
 
 	bool isPushable() override {
 		return mType->info.pushable && baseSpeed != 0;
@@ -366,9 +364,6 @@ private:
 	uint16_t forgeStack = 0;
 	ForgeClassifications_t monsterForgeClassification = ForgeClassifications_t::FORGE_NORMAL_MONSTER;
 
- bool targetCacheIsValid = false;
-    bool pathCacheIsValid = false;
-    Direction cachedDirection; 
 	std::string name;
 	std::string nameDescription;
 

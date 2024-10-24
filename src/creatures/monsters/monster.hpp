@@ -308,6 +308,8 @@ public:
 		forgeStack = stack;
 	}
 
+void dropLoot(std::shared_ptr<Creature> killer);
+
 	ForgeClassifications_t getMonsterForgeClassification() const {
 		return monsterForgeClassification;
 	}

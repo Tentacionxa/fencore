@@ -2381,92 +2381,104 @@ ReturnValue Game::internalAddItem(std::shared_ptr < Cylinder > toCylinder, std::
   return internalAddItem(std::move(toCylinder), std::move(item), index, flags, test, remainderCount);
 }
 
-ReturnValue Game::internalAddItem(std::shared_ptr < Cylinder > toCylinder, std::shared_ptr < Item > item, int32_t index, uint32_t flags, bool test, uint32_t & remainderCount) {
-  metrics::method_latency measure(__METHOD_NAME__);
-  if (toCylinder == nullptr) {
-    g_logger().error("[{}] fromCylinder is nullptr", __FUNCTION__);
-    return RETURNVALUE_NOTPOSSIBLE;
-  }
-  if (item == nullptr) {
-    g_logger().error("[{}] item is nullptr", __FUNCTION__);
-    return RETURNVALUE_NOTPOSSIBLE;
-  }
+ReturnValue Game::internalAddItem(std::shared_ptr<Cylinder> toCylinder, std::shared_ptr<Item> item, int32_t index, uint32_t flags, bool test, uint32_t& remainderCount) {
+    metrics::method_latency measure(__METHOD_NAME__);
+    
+    if (toCylinder == nullptr) {
+        g_logger().error("[{}] toCylinder is nullptr", __FUNCTION__);
+        return RETURNVALUE_NOTPOSSIBLE;
+    }
+    
+    if (item == nullptr) {
+        g_logger().error("[{}] item is nullptr", __FUNCTION__);
+        return RETURNVALUE_NOTPOSSIBLE;
+    }
 
-  auto addedItem = toCylinder -> getItem();
+    auto addedItem = toCylinder->getItem();
+    std::shared_ptr<Cylinder> destCylinder = toCylinder;
+    std::shared_ptr<Item> toItem = nullptr;
 
-  std::shared_ptr < Cylinder > destCylinder = toCylinder;
-  std::shared_ptr < Item > toItem = nullptr;
-  toCylinder = toCylinder -> queryDestination(index, item, & toItem, flags);
+    toCylinder = toCylinder->queryDestination(index, item, &toItem, flags);
 
-  // check if we can add this item
-  ReturnValue ret = toCylinder -> queryAdd(index, item, item -> getItemCount(), flags);
-  if (ret != RETURNVALUE_NOERROR) {
-    return ret;
-  }
+    // Check if we can add this item
+    ReturnValue ret = toCylinder->queryAdd(index, item, item->getItemCount(), flags);
+    if (ret != RETURNVALUE_NOERROR) {
+        return ret;
+    }
 
-  /*
-  Check if we can move add the whole amount, we do this by checking against the original cylinder,
-  since the queryDestination can return a cylinder that might only hold a part of the full amount.
-  */
-  uint32_t maxQueryCount = 0;
-  ret = destCylinder -> queryMaxCount(INDEX_WHEREEVER, item, item -> getItemCount(), maxQueryCount, flags);
+    // Check max query count for the destination
+    uint32_t maxQueryCount = 0;
+    ret = destCylinder->queryMaxCount(INDEX_WHEREEVER, item, item->getItemCount(), maxQueryCount, flags);
 
-  if (ret != RETURNVALUE_NOERROR && addedItem && addedItem -> getID() != ITEM_REWARD_CONTAINER) {
-    return ret;
-  }
+    if (ret != RETURNVALUE_NOERROR && addedItem && addedItem->getID() != ITEM_REWARD_CONTAINER) {
+        return ret;
+    }
 
-  if (test) {
+    if (test) {
+        return RETURNVALUE_NOERROR;
+    }
+
+    uint32_t batchSize = 20;  // Batch size to process in chunks
+    uint32_t remaining = item->getItemCount();
+    while (remaining > 0) {
+        uint32_t currentBatch = std::min(batchSize, remaining);
+        item->setItemCount(currentBatch);
+        
+        if (item->isStackable() && item->equals(toItem)) {
+            uint32_t m = std::min<uint32_t>(item->getItemCount(), maxQueryCount);
+            uint32_t n = std::min<uint32_t>(toItem->getStackSize() - toItem->getItemCount(), m);
+            toCylinder->updateThing(toItem, toItem->getID(), toItem->getItemCount() + n);
+
+            int32_t count = m - n;
+            if (count > 0) {
+                if (item->getItemCount() != count) {
+                    std::shared_ptr<Item> remainderItem = item->clone();
+                    remainderItem->setItemCount(count);
+                    if (internalAddItem(destCylinder, remainderItem, INDEX_WHEREEVER, flags, false) != RETURNVALUE_NOERROR) {
+                        remainderCount = count;
+                    }
+                } else {
+                    toCylinder->addThing(index, item);
+
+                    int32_t itemIndex = toCylinder->getThingIndex(item);
+                    if (itemIndex != -1) {
+                        toCylinder->postAddNotification(item, nullptr, itemIndex);
+                    }
+                }
+            } else {
+                // fully merged with toItem, item will be destroyed
+                item->onRemoved();
+
+                int32_t itemIndex = toCylinder->getThingIndex(toItem);
+                if (itemIndex != -1) {
+                    toCylinder->postAddNotification(toItem, nullptr, itemIndex);
+                }
+            }
+        } else {
+            toCylinder->addThing(index, item);
+
+            int32_t itemIndex = toCylinder->getThingIndex(item);
+            if (itemIndex != -1) {
+                toCylinder->postAddNotification(item, nullptr, itemIndex);
+            }
+        }
+
+        remaining -= currentBatch;  // Decrease remaining count
+
+        if (remaining > 0) {
+            item->setItemCount(remaining);  // Set item count to remaining
+        }
+    }
+
+    if (addedItem && addedItem->isQuiver() &&
+        addedItem->getHoldingPlayer() &&
+        addedItem->getHoldingPlayer()->getThing(CONST_SLOT_RIGHT) == addedItem) {
+        addedItem->getHoldingPlayer()->sendInventoryItem(CONST_SLOT_RIGHT, addedItem);
+    }
+
     return RETURNVALUE_NOERROR;
-  }
-
-  if (item -> isStackable() && item -> equals(toItem)) {
-    uint32_t m = std::min < uint32_t > (item -> getItemCount(), maxQueryCount);
-    uint32_t n = std::min < uint32_t > (toItem -> getStackSize() - toItem -> getItemCount(), m);
-
-    toCylinder -> updateThing(toItem, toItem -> getID(), toItem -> getItemCount() + n);
-
-    int32_t count = m - n;
-    if (count > 0) {
-      if (item -> getItemCount() != count) {
-        std::shared_ptr < Item > remainderItem = item -> clone();
-        remainderItem -> setItemCount(count);
-        if (internalAddItem(destCylinder, remainderItem, INDEX_WHEREEVER, flags, false) != RETURNVALUE_NOERROR) {
-          remainderCount = count;
-        }
-      } else {
-        toCylinder -> addThing(index, item);
-
-        int32_t itemIndex = toCylinder -> getThingIndex(item);
-        if (itemIndex != -1) {
-          toCylinder -> postAddNotification(item, nullptr, itemIndex);
-        }
-      }
-    } else {
-      // fully merged with toItem, item will be destroyed
-      item -> onRemoved();
-
-      int32_t itemIndex = toCylinder -> getThingIndex(toItem);
-      if (itemIndex != -1) {
-        toCylinder -> postAddNotification(toItem, nullptr, itemIndex);
-      }
-    }
-  } else {
-    toCylinder -> addThing(index, item);
-
-    int32_t itemIndex = toCylinder -> getThingIndex(item);
-    if (itemIndex != -1) {
-      toCylinder -> postAddNotification(item, nullptr, itemIndex);
-    }
-  }
-
-  if (addedItem && addedItem -> isQuiver() &&
-    addedItem -> getHoldingPlayer() &&
-    addedItem -> getHoldingPlayer() -> getThing(CONST_SLOT_RIGHT) == addedItem) {
-    addedItem -> getHoldingPlayer() -> sendInventoryItem(CONST_SLOT_RIGHT, addedItem);
-  }
-
-  return RETURNVALUE_NOERROR;
 }
+
 
 ReturnValue Game::internalRemoveItem(std::shared_ptr < Item > item, int32_t count /*= -1*/ , bool test /*= false*/ , uint32_t flags /*= 0*/ , bool force /*= false*/ ) {
   metrics::method_latency measure(__METHOD_NAME__);

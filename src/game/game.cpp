@@ -3045,68 +3045,78 @@ ReturnValue Game::internalTeleport(const std::shared_ptr < Thing > & thing,
   return RETURNVALUE_NOTPOSSIBLE;
 }
 
-void Game::playerQuickLootCorpse(std::shared_ptr < Player > player, std::shared_ptr < Container > corpse,
-  const Position & position) {
-  if (!player || !corpse) {
-    return;
-  }
-
-  std::vector < std::shared_ptr < Item >> itemList;
-  bool ignoreListItems = (player -> quickLootFilter == QUICKLOOTFILTER_SKIPPEDLOOT);
-
-  bool missedAnyGold = false;
-  bool missedAnyItem = false;
-
-  for (ContainerIterator it = corpse -> iterator(); it.hasNext(); it.advance()) {
-    std::shared_ptr < Item > item = * it;
-    bool listed = player -> isQuickLootListedItem(item);
-    if ((listed && ignoreListItems) || (!listed && !ignoreListItems)) {
-      if (item -> getWorth() != 0) {
-        missedAnyGold = true;
-      } else {
-        missedAnyItem = true;
-      }
-      continue;
+void Game::playerQuickLootCorpse(std::shared_ptr<Player> player, std::shared_ptr<Container> corpse, const Position& position) {
+    if (!player || !corpse) {
+        return;
     }
 
-    itemList.push_back(item);
-  }
+    std::vector<std::shared_ptr<Item>> itemList;
+    bool ignoreListItems = (player->quickLootFilter == QUICKLOOTFILTER_SKIPPEDLOOT);
 
-  bool shouldNotifyCapacity = false;
-  ObjectCategory_t shouldNotifyNotEnoughRoom = OBJECTCATEGORY_NONE;
+    bool missedAnyGold = false;
+    bool missedAnyItem = false;
+    bool allItemsLooted = true;  // Track if all items were successfully looted
 
-  uint32_t totalLootedGold = 0;
-  uint32_t totalLootedItems = 0;
-  for (const std::shared_ptr < Item > & item: itemList) {
-    uint32_t worth = item -> getWorth();
-    uint16_t baseCount = item -> getItemCount();
-    ObjectCategory_t category = getObjectCategory(item);
+    for (ContainerIterator it = corpse->iterator(); it.hasNext(); it.advance()) {
+        std::shared_ptr<Item> item = *it;
+        bool listed = player->isQuickLootListedItem(item);
+        if ((listed && ignoreListItems) || (!listed && !ignoreListItems)) {
+            if (item->getWorth() != 0) {
+                missedAnyGold = true;
+            } else {
+                missedAnyItem = true;
+            }
+            allItemsLooted = false;  // Some items were missed
+            continue;
+        }
 
-    ReturnValue ret = internalCollectManagedItems(player, item, category);
-    if (ret == RETURNVALUE_NOTENOUGHCAPACITY) {
-      shouldNotifyCapacity = true;
-    } else if (ret == RETURNVALUE_CONTAINERNOTENOUGHROOM) {
-      shouldNotifyNotEnoughRoom = category;
+        itemList.push_back(item);
     }
 
-    bool success = ret == RETURNVALUE_NOERROR;
-    if (worth != 0) {
-      missedAnyGold = missedAnyGold || !success;
-      if (success) {
-        player -> sendLootStats(item, baseCount);
-        totalLootedGold += worth;
-      } else {
-        // item is not completely moved
-        totalLootedGold += worth - item -> getWorth();
-      }
-    } else {
-      missedAnyItem = missedAnyItem || !success;
-      if (success || item -> getItemCount() != baseCount) {
-        totalLootedItems++;
-        player -> sendLootStats(item, item -> getItemCount());
-      }
+    bool shouldNotifyCapacity = false;
+    ObjectCategory_t shouldNotifyNotEnoughRoom = OBJECTCATEGORY_NONE;
+
+    uint32_t totalLootedGold = 0;
+    uint32_t totalLootedItems = 0;
+    for (const std::shared_ptr<Item>& item : itemList) {
+        uint32_t worth = item->getWorth();
+        uint16_t baseCount = item->getItemCount();
+        ObjectCategory_t category = getObjectCategory(item);
+
+        ReturnValue ret = internalCollectManagedItems(player, item, category);
+        if (ret == RETURNVALUE_NOTENOUGHCAPACITY) {
+            shouldNotifyCapacity = true;
+            allItemsLooted = false;  // Some items could not be looted
+        } else if (ret == RETURNVALUE_CONTAINERNOTENOUGHROOM) {
+            shouldNotifyNotEnoughRoom = category;
+            allItemsLooted = false;  // Not enough room to loot some items
+        }
+
+        bool success = ret == RETURNVALUE_NOERROR;
+        if (worth != 0) {
+            missedAnyGold = missedAnyGold || !success;
+            if (success) {
+                player->sendLootStats(item, baseCount);
+                totalLootedGold += worth;
+            } else {
+                // item is not completely moved
+                totalLootedGold += worth - item->getWorth();
+            }
+        } else {
+            missedAnyItem = missedAnyItem || !success;
+            if (success || item->getItemCount() != baseCount) {
+                totalLootedItems++;
+                player->sendLootStats(item, item->getItemCount());
+            }
+        }
     }
-  }
+
+    // Remove the corpse if all items were looted
+    if (allItemsLooted) {
+        g_game().internalRemoveItem(corpse);
+    }
+
+
 
   std::stringstream ss;
   if (totalLootedGold != 0 || missedAnyGold || totalLootedItems != 0 || missedAnyItem) {

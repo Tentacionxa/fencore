@@ -2030,12 +2030,11 @@ void Monster::dropLoot(std::shared_ptr<Creature> killer) {
     bool shouldNotifyCapacity = false;
     std::string shouldNotifyNotEnoughRoom;
 
-    // Example: Retrieve ignoreListItems from player settings (set false for now)
-    bool ignoreListItems = false;
+    bool ignoreListItems = false; // Modify this based on your logic
 
     // Iterate through the loot items of the monster's loot table.
     for (const auto& lootItem : mType->info.lootItems) {
-        uint32_t chance = uniform_random(1, 10000); // Use the loot chance with precision 0.01%
+        uint32_t chance = uniform_random(1, 10000); // 0.01% precision for loot chance
         if (chance <= lootItem.chance) {
             std::shared_ptr<Item> item = Item::CreateItem(lootItem.id, lootItem.countmax);
 
@@ -2044,9 +2043,10 @@ void Monster::dropLoot(std::shared_ptr<Creature> killer) {
                 continue; // Skip items not listed or set to be ignored
             }
 
-            // Use the correct method to add items to the player's container
-            auto ret = player->addItem(item);  // Replace with the correct function if necessary
+            // Use the correct method to add items to the player's inventory or container
+            auto ret = player->addInventoryItem(item); // Replace with the correct method
 
+            // Handle capacity or room issues
             if (ret == RETURNVALUE_NOTENOUGHCAPACITY) {
                 shouldNotifyCapacity = true;
                 allItemsLooted = false;
@@ -2061,10 +2061,10 @@ void Monster::dropLoot(std::shared_ptr<Creature> killer) {
 
     // Notify the player about issues with capacity or room
     if (shouldNotifyCapacity) {
-        player->sendTextMessage(MESSAGE_INFO, "You do not have enough capacity to loot all items.");
+        player->sendTextMessage(MESSAGE_EVENT_ADVANCE, "You do not have enough capacity to loot all items.");
     }
     if (!shouldNotifyNotEnoughRoom.empty()) {
-        player->sendTextMessage(MESSAGE_INFO, "Your container does not have enough room for " + shouldNotifyNotEnoughRoom + ".");
+        player->sendTextMessage(MESSAGE_EVENT_ADVANCE, "Your container does not have enough room for " + shouldNotifyNotEnoughRoom + ".");
     }
 
     // Optionally execute any post-loot-drop callbacks or events

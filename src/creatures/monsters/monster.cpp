@@ -2021,7 +2021,6 @@ void Monster::updateLookDirection() {
 }
 
 void Monster::dropLoot(std::shared_ptr<Creature> killer) {
-    // Only execute if there's a killer and the killer is a player
     if (!killer || !killer->getPlayer()) {
         return;
     }
@@ -2031,34 +2030,30 @@ void Monster::dropLoot(std::shared_ptr<Creature> killer) {
     bool shouldNotifyCapacity = false;
     std::string shouldNotifyNotEnoughRoom;
 
-    // Example: Retrieve ignoreListItems from player settings
-    bool ignoreListItems = player->shouldIgnoreListItems();  // Modify according to your codebase
+    // Example: Retrieve ignoreListItems from player settings (set false for now)
+    bool ignoreListItems = false;
 
     // Iterate through the loot items of the monster's loot table.
     for (const auto& lootItem : mType->info.lootItems) {
         uint32_t chance = uniform_random(1, 10000); // Use the loot chance with precision 0.01%
         if (chance <= lootItem.chance) {
-            // Use the correct fields for loot item ID and count
             std::shared_ptr<Item> item = Item::CreateItem(lootItem.id, lootItem.countmax);
 
-            // Check if the item is in the player's quick loot list
             bool listed = player->isQuickLootListedItem(item);
             if ((listed && ignoreListItems) || (!listed && !ignoreListItems)) {
                 continue; // Skip items not listed or set to be ignored
             }
 
             // Use the correct method to add items to the player's container
-            auto ret = player->addContainer(item);  // Replace with the correct function if different
+            auto ret = player->addItem(item);  // Replace with the correct function if necessary
 
-            // Handle capacity or room issues
             if (ret == RETURNVALUE_NOTENOUGHCAPACITY) {
                 shouldNotifyCapacity = true;
-                allItemsLooted = false;  // Some items could not be looted
+                allItemsLooted = false;
             } else if (ret == RETURNVALUE_CONTAINERNOTENOUGHROOM) {
                 shouldNotifyNotEnoughRoom = item->getName();
-                allItemsLooted = false;  // Not enough room to loot some items
+                allItemsLooted = false;
             } else if (ret != RETURNVALUE_NOERROR) {
-                // If any other error occurs, drop the item on the ground
                 g_game().internalAddItem(player->getTile(), item);
             }
         }
@@ -2066,15 +2061,16 @@ void Monster::dropLoot(std::shared_ptr<Creature> killer) {
 
     // Notify the player about issues with capacity or room
     if (shouldNotifyCapacity) {
-        player->sendTextMessage(MESSAGE_INFO_DESCR, "You do not have enough capacity to loot all items.");
+        player->sendTextMessage(MESSAGE_INFO, "You do not have enough capacity to loot all items.");
     }
     if (!shouldNotifyNotEnoughRoom.empty()) {
-        player->sendTextMessage(MESSAGE_INFO_DESCR, "Your container does not have enough room for " + shouldNotifyNotEnoughRoom + ".");
+        player->sendTextMessage(MESSAGE_INFO, "Your container does not have enough room for " + shouldNotifyNotEnoughRoom + ".");
     }
 
     // Optionally execute any post-loot-drop callbacks or events
     g_callbacks().executeCallback(EventCallback_t::monsterPostDropLoot, &EventCallback::monsterPostDropLoot, getMonster(), nullptr);
 }
+
 
     // Notify the player about issues with capacity or room
     if (shouldNotifyCapacity) {

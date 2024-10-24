@@ -11,7 +11,7 @@ function onGetFormulaValues(player, skill, attack, factor)
 	local level = player:getLevel()
 
 	local min = (level / 5) + (skill + 2 * attack) * 1.80
-	local max = (level / 5) + (skill + 2 * attack) * 4.50
+	local max = (level / 5) + (skill + 2 * attack) * 3.20
 	return -min * 1.5, -max * 3.50 -- TODO : Use New Real Formula instead of an %
 end
 

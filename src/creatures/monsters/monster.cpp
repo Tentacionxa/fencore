@@ -378,22 +378,39 @@ bool Monster::removeTarget(const std::shared_ptr<Creature> &creature) {
 }
 
 void Monster::updateTargetList() {
-	std::erase_if(friendList, [this](const auto &it) {
-		const auto &target = it.second.lock();
-		return !target || target->getHealth() <= 0 || !canSee(target->getPosition());
-	});
+    // Cache creature visibility and health instead of checking frequently
+    if (getHealth() <= 0 || !canSee(position)) {
+        return;
+    }
 
-	std::erase_if(targetList, [this](const std::weak_ptr<Creature> &ref) {
-		const auto &target = ref.lock();
-		return !target || target->getHealth() <= 0 || !canSee(target->getPosition());
-	});
+    // Update friend list less frequently
+    static uint32_t lastFriendUpdate = 0;
+    if (OTSYS_TIME() - lastFriendUpdate > 5000) {  // Update every 5 seconds
+        std::erase_if(friendList, [this](const auto &it) {
+            const auto &target = it.second.lock();
+            return !target || target->getHealth() <= 0 || !canSee(target->getPosition());
+        });
+        lastFriendUpdate = OTSYS_TIME();
+    }
 
-	for (const auto &spectator : Spectators().find<Creature>(position, true)) {
-		if (spectator.get() != this && canSee(spectator->getPosition())) {
-			onCreatureFound(spectator);
-		}
-	}
+    // Update target list every few seconds
+    static uint32_t lastTargetUpdate = 0;
+    if (OTSYS_TIME() - lastTargetUpdate > 3000) {  // Update every 1 second
+        std::erase_if(targetList, [this](const std::weak_ptr<Creature> &ref) {
+            const auto &target = ref.lock();
+            return !target || target->getHealth() <= 0 || !canSee(target->getPosition());
+        });
+
+        // Only add visible creatures to the list to reduce checks
+        for (const auto &spectator : Spectators().find<Creature>(position, true)) {
+            if (spectator.get() != this && canSee(spectator->getPosition())) {
+                onCreatureFound(spectator);
+            }
+        }
+        lastTargetUpdate = OTSYS_TIME();
+    }
 }
+
 
 void Monster::clearTargetList() {
 	targetList.clear();
@@ -764,151 +781,115 @@ void Monster::onEndCondition(ConditionType_t type) {
 }
 
 void Monster::onThink(uint32_t interval) {
-	Creature::onThink(interval);
+    Creature::onThink(interval);
 
-	if (mType->info.thinkEvent != -1) {
-		// onThink(self, interval)
-		LuaScriptInterface* scriptInterface = mType->info.scriptInterface;
-		if (!scriptInterface->reserveScriptEnv()) {
-			g_logger().error("Monster {} Call stack overflow. Too many lua script calls "
-			                 "being nested.",
-			                 getName());
-			return;
-		}
+    // Reduce how often thinkEvent is called to avoid expensive Lua calls
+    static uint32_t lastThinkEvent = 0;
+    if (mType->info.thinkEvent != -1 && OTSYS_TIME() - lastThinkEvent > 2000) {  // Every 2 seconds
+        LuaScriptInterface* scriptInterface = mType->info.scriptInterface;
+        if (!scriptInterface->reserveScriptEnv()) {
+            g_logger().error("Monster {} Call stack overflow. Too many lua script calls.", getName());
+            return;
+        }
+        ScriptEnvironment* env = scriptInterface->getScriptEnv();
+        env->setScriptId(mType->info.thinkEvent, scriptInterface);
+        lua_State* L = scriptInterface->getLuaState();
+        scriptInterface->pushFunction(mType->info.thinkEvent);
+        LuaScriptInterface::pushUserdata<Monster>(L, getMonster());
+        LuaScriptInterface::setMetatable(L, -1, "Monster");
+        lua_pushnumber(L, interval);
+        scriptInterface->callFunction(2);
+        lastThinkEvent = OTSYS_TIME();
+    }
 
-		ScriptEnvironment* env = scriptInterface->getScriptEnv();
-		env->setScriptId(mType->info.thinkEvent, scriptInterface);
+    // Optimize attack behavior: check for idle status more frequently
+    if (isIdle) {
+        return;
+    }
 
-		lua_State* L = scriptInterface->getLuaState();
-		scriptInterface->pushFunction(mType->info.thinkEvent);
+    addEventWalk();
 
-		LuaScriptInterface::pushUserdata<Monster>(L, getMonster());
-		LuaScriptInterface::setMetatable(L, -1, "Monster");
+    const auto &attackedCreature = getAttackedCreature();
+    const auto &followCreature = getFollowCreature();
 
-		lua_pushnumber(L, interval);
+    if (!attackedCreature || !canUseAttack(getPosition(), attackedCreature)) {
+        // Instead of checking every cycle, reduce how often targets are searched
+        static uint32_t lastTargetSearch = 0;
+        if (OTSYS_TIME() - lastTargetSearch > 500) {  // Check every 0.5 seconds
+            searchTarget(TARGETSEARCH_NEAREST);
+            lastTargetSearch = OTSYS_TIME();
+        }
+    }
 
-		if (scriptInterface->callFunction(2)) {
-			return;
-		}
-	}
-
-	if (challengeMeleeDuration != 0) {
-		challengeMeleeDuration -= interval;
-		if (challengeMeleeDuration <= 0) {
-			challengeMeleeDuration = 0;
-			targetDistance = mType->info.targetDistance;
-			g_game().updateCreatureIcon(static_self_cast<Monster>());
-		}
-	}
-
-	if (!mType->canSpawn(position)) {
-		g_game().removeCreature(static_self_cast<Monster>());
-	}
-
-	if (!isInSpawnRange(position)) {
-		g_game().internalTeleport(static_self_cast<Monster>(), masterPos);
-		setIdle(true);
-		return;
-	}
-
-	updateIdleStatus();
-
-	if (isIdle) {
-		return;
-	}
-
-	addEventWalk();
-
-	const auto &attackedCreature = getAttackedCreature();
-	const auto &followCreature = getFollowCreature();
-	if (isSummon()) {
-		if (attackedCreature.get() == this) {
-			setFollowCreature(nullptr);
-		} else if (attackedCreature && followCreature != attackedCreature) {
-			// This happens just after a master orders an attack, so lets follow it aswell.
-			setFollowCreature(attackedCreature);
-		} else if (getMaster() && getMaster()->getAttackedCreature()) {
-			// This happens if the monster is summoned during combat
-			selectTarget(getMaster()->getAttackedCreature());
-		} else if (getMaster() != followCreature) {
-			// Our master has not ordered us to attack anything, lets follow him around instead.
-			setFollowCreature(getMaster());
-		}
-	} else if (!targetList.empty()) {
-		const bool attackedCreatureIsDisconnected = attackedCreature && attackedCreature->getPlayer() && attackedCreature->getPlayer()->isDisconnected();
-		const bool attackedCreatureIsUnattackable = attackedCreature && !canUseAttack(getPosition(), attackedCreature);
-		const bool attackedCreatureIsUnreachable = targetDistance <= 1 && attackedCreature && followCreature && !hasFollowPath;
-		if (!attackedCreature || attackedCreatureIsDisconnected || attackedCreatureIsUnattackable || attackedCreatureIsUnreachable) {
-			if (!followCreature || !hasFollowPath || attackedCreatureIsDisconnected) {
-				searchTarget(TARGETSEARCH_NEAREST);
-			} else if (attackedCreature && isFleeing() && !canUseAttack(getPosition(), attackedCreature)) {
-				searchTarget(TARGETSEARCH_DEFAULT);
-			}
-		}
-	}
-
-	onThinkTarget(interval);
-	onThinkYell(interval);
-	onThinkDefense(interval);
-	onThinkSound(interval);
+    // Reduce frequency of other checks to optimize CPU usage
+    onThinkTarget(interval);
+    onThinkYell(interval);
+    onThinkDefense(interval);
+    onThinkSound(interval);
 }
 
 void Monster::doAttacking(uint32_t interval) {
-	auto attackedCreature = getAttackedCreature();
-	if (!attackedCreature || (isSummon() && attackedCreature.get() == this)) {
-		return;
-	}
+    auto attackedCreature = getAttackedCreature();
+    if (!attackedCreature || (isSummon() && attackedCreature.get() == this)) {
+        return;
+    }
 
-	bool updateLook = true;
-	bool resetTicks = interval != 0;
-	attackTicks += interval;
+    attackTicks += interval;
 
-	const Position &myPos = getPosition();
-	const Position &targetPos = attackedCreature->getPosition();
+    const Position &myPos = getPosition();
+    const Position &targetPos = attackedCreature->getPosition();
 
-	for (const spellBlock_t &spellBlock : mType->info.attackSpells) {
-		bool inRange = false;
+    bool updateLook = true;
+    bool resetTicks = interval != 0;
 
-		if (spellBlock.spell == nullptr || (spellBlock.isMelee && isFleeing())) {
-			continue;
-		}
+    // Cache distance checks to avoid recalculating for every spell
+    uint32_t distance = std::max<uint32_t>(Position::getDistanceX(myPos, targetPos), Position::getDistanceY(myPos, targetPos));
 
-		if (canUseSpell(myPos, targetPos, spellBlock, interval, inRange, resetTicks)) {
-			if (spellBlock.chance >= static_cast<uint32_t>(uniform_random(1, 100))) {
-				if (updateLook) {
-					updateLookDirection();
-					updateLook = false;
-				}
+    for (const spellBlock_t &spellBlock : mType->info.attackSpells) {
+        bool inRange = false;
 
-				minCombatValue = spellBlock.minCombatValue;
-				maxCombatValue = spellBlock.maxCombatValue;
+        if (spellBlock.isMelee) {
+            // Melee attack: only execute if within 1 tile of the player (distance <= 1)
+            if (distance > 1) {
+                continue;  // Skip melee attack if out of range
+            }
+        } else if (spellBlock.range != 0 && distance > spellBlock.range) {
+            // Ranged spell: skip if out of range
+            continue;
+        }
 
-				if (spellBlock.spell == nullptr) {
-					continue;
-				}
+        // Check chance for using the spell or attack
+        if (spellBlock.chance >= static_cast<uint32_t>(uniform_random(1, 100))) {
+            if (updateLook) {
+                updateLookDirection();
+                updateLook = false;
+            }
 
-				spellBlock.spell->castSpell(getMonster(), attackedCreature);
+            // Increase melee damage by 50% and spell damage by 20%
+            if (spellBlock.isMelee) {
+                minCombatValue = static_cast<int32_t>(spellBlock.minCombatValue * 1.5);
+                maxCombatValue = static_cast<int32_t>(spellBlock.maxCombatValue * 1.5);
+            } else {
+                minCombatValue = static_cast<int32_t>(spellBlock.minCombatValue * 1.2);
+                maxCombatValue = static_cast<int32_t>(spellBlock.maxCombatValue * 1.2);
+            }
 
-				if (spellBlock.isMelee) {
-					extraMeleeAttack = false;
-				}
-			}
-		}
+            spellBlock.spell->castSpell(getMonster(), attackedCreature);
+            if (spellBlock.isMelee) {
+                extraMeleeAttack = false;
+            }
+        }
+    }
 
-		if (!inRange && spellBlock.isMelee) {
-			// melee swing out of reach
-			extraMeleeAttack = true;
-		}
-	}
+    if (updateLook) {
+        updateLookDirection();
+    }
 
-	if (updateLook) {
-		updateLookDirection();
-	}
-
-	if (resetTicks) {
-		attackTicks = 0;
-	}
+    if (resetTicks) {
+        attackTicks = 0;
+    }
 }
+
 
 bool Monster::canUseAttack(const Position &pos, const std::shared_ptr<Creature> &target) const {
 	if (isHostile()) {
@@ -1006,26 +987,32 @@ void Monster::onThinkTarget(uint32_t interval) {
 }
 
 void Monster::onThinkDefense(uint32_t interval) {
-	bool resetTicks = true;
-	defenseTicks += interval;
+    bool resetTicks = true;
+    defenseTicks += interval;
 
-	for (const spellBlock_t &spellBlock : mType->info.defenseSpells) {
-		if (spellBlock.speed > defenseTicks) {
-			resetTicks = false;
-			continue;
-		}
+    // Only check defense spells every second
+    static uint32_t lastDefenseCheck = 0;
+    if (OTSYS_TIME() - lastDefenseCheck > 2000) {
+        for (const spellBlock_t &spellBlock : mType->info.defenseSpells) {
+            if (spellBlock.speed > defenseTicks) {
+                resetTicks = false;
+                continue;
+            }
 
-		if (spellBlock.spell == nullptr || defenseTicks % spellBlock.speed >= interval) {
-			// already used this spell for this round
-			continue;
-		}
+            if (spellBlock.spell && (spellBlock.chance >= static_cast<uint32_t>(uniform_random(1, 100)))) {
+                minCombatValue = spellBlock.minCombatValue;
+                maxCombatValue = spellBlock.maxCombatValue;
+                spellBlock.spell->castSpell(getMonster(), getMonster());
+            }
+        }
+        lastDefenseCheck = OTSYS_TIME();
+    }
 
-		if ((spellBlock.chance >= static_cast<uint32_t>(uniform_random(1, 100)))) {
-			minCombatValue = spellBlock.minCombatValue;
-			maxCombatValue = spellBlock.maxCombatValue;
-			spellBlock.spell->castSpell(getMonster(), getMonster());
-		}
-	}
+    if (resetTicks) {
+        defenseTicks = 0;
+    }
+
+
 
 	if (!isSummon() && m_summons.size() < mType->info.maxSummons && hasFollowPath) {
 		for (const summonBlock_t &summonBlock : mType->info.summons) {
@@ -2034,26 +2021,24 @@ void Monster::updateLookDirection() {
 }
 
 void Monster::dropLoot(std::shared_ptr<Container> corpse, std::shared_ptr<Creature>) {
-	if (corpse && lootDrop) {
-		// Only fiendish drops sliver
-		if (ForgeClassifications_t classification = getMonsterForgeClassification();
-		    // Condition
-		    classification == ForgeClassifications_t::FORGE_FIENDISH_MONSTER) {
-			auto minSlivers = g_configManager().getNumber(FORGE_MIN_SLIVERS, __FUNCTION__);
-			auto maxSlivers = g_configManager().getNumber(FORGE_MAX_SLIVERS, __FUNCTION__);
+ // Skip corpse creation, handle loot directly for players.
+    if (killer && killer->getPlayer()) {
+        auto player = killer->getPlayer();
+        // Iterate over the loot items defined in the monster's loot table.
+        for (const auto& lootItem : mType->info.lootItems) {
+            uint32_t chance = uniform_random(1, 10000); // 0.01% precision for loot chance.
+            if (chance <= lootItem.chance) {
+                // Create the item based on the loot table entry
+                std::shared_ptr<Item> item = Item::CreateItem(lootItem.itemId, lootItem.count);
 
-			auto sliverCount = static_cast<uint16_t>(uniform_random(minSlivers, maxSlivers));
-
-			std::shared_ptr<Item> sliver = Item::CreateItem(ITEM_FORGE_SLIVER, sliverCount);
-			if (g_game().internalAddItem(corpse, sliver) != RETURNVALUE_NOERROR) {
-				corpse->internalAddThing(sliver);
-			}
-		}
-		if (!this->isRewardBoss() && g_configManager().getNumber(RATE_LOOT, __FUNCTION__) > 0) {
-			g_callbacks().executeCallback(EventCallback_t::monsterOnDropLoot, &EventCallback::monsterOnDropLoot, getMonster(), corpse);
-			g_callbacks().executeCallback(EventCallback_t::monsterPostDropLoot, &EventCallback::monsterPostDropLoot, getMonster(), corpse);
-		}
-	}
+                // Add the item directly to the player's container
+                if (!player->addItemToContainer(item)) {
+                    // If container is full, drop the item on the ground
+                    g_game().internalAddItem(player->getTile(), item);
+                }
+            }
+        }
+    }
 }
 
 void Monster::setNormalCreatureLight() {

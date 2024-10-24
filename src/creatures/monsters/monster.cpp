@@ -2063,10 +2063,10 @@ void Monster::dropLoot(std::shared_ptr<Creature> killer) {
 
     // Notify the player about issues with capacity or room
     if (shouldNotifyCapacity) {
-        player->sendTextMessage(MESSAGE_INFO_DESCR, "You do not have enough capacity to loot all items.");
+        player->sendTextMessage(MESSAGE_EVENT_ADVANCE, "You do not have enough capacity to loot all items.");
     }
     if (!shouldNotifyNotEnoughRoom.empty()) {
-        player->sendTextMessage(MESSAGE_INFO_DESCR, "Your container does not have enough room for " + shouldNotifyNotEnoughRoom + ".");
+        player->sendTextMessage(MESSAGE_EVENT_ADVANCE, "Your container does not have enough room for " + shouldNotifyNotEnoughRoom + ".");
     }
 
     // Optionally execute any post-loot-drop callbacks or events

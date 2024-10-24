@@ -2031,7 +2031,7 @@ void Monster::dropLoot(std::shared_ptr<Creature> killer) {
     bool shouldNotifyCapacity = false;
     std::string shouldNotifyNotEnoughRoom;
 
-    // Example: Set ignoreListItems to false, adjust based on your logic
+    // Set ignoreListItems to false for now, adjust based on your logic
     bool ignoreListItems = false;
 
     // Handle fiendish monster sliver drops
@@ -2043,7 +2043,7 @@ void Monster::dropLoot(std::shared_ptr<Creature> killer) {
         auto sliverCount = static_cast<uint16_t>(uniform_random(minSlivers, maxSlivers));
 
         std::shared_ptr<Item> sliver = Item::CreateItem(ITEM_FORGE_SLIVER, sliverCount);
-        auto ret = player->addItem(sliver);  // Use addItem instead of addItemEx
+        auto ret = g_game().internalPlayerAddItem(player, sliver);  // Correct function found
 
         if (ret == RETURNVALUE_NOTENOUGHCAPACITY) {
             shouldNotifyCapacity = true;
@@ -2070,7 +2070,7 @@ void Monster::dropLoot(std::shared_ptr<Creature> killer) {
                 }
 
                 // Add item to the player's inventory or container
-                auto ret = player->addItem(item);  // Use addItem instead of addItemEx
+                auto ret = g_game().internalPlayerAddItem(player, item);  // Correct method
 
                 if (ret == RETURNVALUE_NOTENOUGHCAPACITY) {
                     shouldNotifyCapacity = true;
@@ -2091,10 +2091,10 @@ void Monster::dropLoot(std::shared_ptr<Creature> killer) {
 
     // Notify the player about issues with capacity or room
     if (shouldNotifyCapacity) {
-        player->sendTextMessage(MESSAGE_EVENT_ADVANCE, "You do not have enough capacity to loot all items.");
+        player->sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "You do not have enough capacity to loot all items.");
     }
     if (!shouldNotifyNotEnoughRoom.empty()) {
-        player->sendTextMessage(MESSAGE_EVENT_ADVANCE, "Your container does not have enough room for " + shouldNotifyNotEnoughRoom + ".");
+        player->sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, "Your container does not have enough room for " + shouldNotifyNotEnoughRoom + ".");
     }
 }
 

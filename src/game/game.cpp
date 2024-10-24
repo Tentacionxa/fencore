@@ -2471,12 +2471,12 @@ ReturnValue Game::internalAddItem(std::shared_ptr<Cylinder> toCylinder, std::sha
             item->setItemCount(remaining);  // Set item count to remaining
         }
 
-        // Asynchronously add the items in a separate thread for large batches
-        if (remaining > 0) {
-            std::async(std::launch::async, [this, toCylinder, item, index, flags, &remainderCount] {
-                internalAddItem(toCylinder, item, index, flags, false, remainderCount);
-            });
-        }
+        // Capture the future to avoid warning
+        std::future<void> asyncFuture = std::async(std::launch::async, [this, toCylinder, item, index, flags, &remainderCount] {
+            internalAddItem(toCylinder, item, index, flags, false, remainderCount);
+        });
+        // Optionally, you can discard it if you don't want to handle the result:
+        asyncFuture.wait(); // Explicitly waiting for it or using `.get()` to ensure it's handled.
     }
 
     // Send delayed notification for items added

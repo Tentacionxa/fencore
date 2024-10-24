@@ -848,11 +848,17 @@ void Monster::doAttacking(uint32_t interval) {
     for (const spellBlock_t &spellBlock : mType->info.attackSpells) {
         bool inRange = false;
 
-        if (!spellBlock.isMelee && spellBlock.range != 0 && distance > spellBlock.range) {
-            inRange = false;
-            continue;  // Skip out-of-range spells
+        if (spellBlock.isMelee) {
+            // Melee attack: only execute if within 1 tile of the player (distance <= 1)
+            if (distance > 1) {
+                continue;  // Skip melee attack if out of range
+            }
+        } else if (spellBlock.range != 0 && distance > spellBlock.range) {
+            // Ranged spell: skip if out of range
+            continue;
         }
 
+        // Check chance for using the spell or attack
         if (spellBlock.chance >= static_cast<uint32_t>(uniform_random(1, 100))) {
             if (updateLook) {
                 updateLookDirection();
@@ -877,6 +883,7 @@ void Monster::doAttacking(uint32_t interval) {
         attackTicks = 0;
     }
 }
+
 
 bool Monster::canUseAttack(const Position &pos, const std::shared_ptr<Creature> &target) const {
 	if (isHostile()) {

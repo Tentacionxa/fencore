@@ -1372,12 +1372,32 @@ bool Game::removeCreature(std::shared_ptr < Creature > creature, bool isLogout /
 }
 
 void Game::executeDeath(uint32_t creatureId) {
-  metrics::method_latency measure(__METHOD_NAME__);
-  std::shared_ptr < Creature > creature = getCreatureByID(creatureId);
-  if (creature && !creature -> isRemoved()) {
-    afterCreatureZoneChange(creature, creature -> getZones(), {});
-    creature -> onDeath();
-  }
+    metrics::method_latency measure(__METHOD_NAME__);
+
+    std::shared_ptr<Creature> creature = getCreatureByID(creatureId);
+    if (!creature || creature->isRemoved()) {
+        return;
+    }
+
+    // Batch the zone change and death handling
+    afterCreatureZoneChange(creature, creature->getZones(), {});
+    
+    // Schedule death-related tasks in batches instead of processing them immediately
+    taskQueue.scheduleTask([creature]() {
+        creature->onDeath();
+    });
+
+    // Defer some non-critical operations to avoid immediate overhead
+    taskQueue.scheduleTask([creature]() {
+        if (creature->getMaster() && !creature->getMaster()->isRemoved()) {
+            creature->setMaster(nullptr);
+        }
+    });
+
+    // Batch remove creature check for performance improvement
+    taskQueue.scheduleTask([creature]() {
+        removeCreatureCheck(creature);
+    });
 }
 
 void Game::playerTeleport(uint32_t playerId,

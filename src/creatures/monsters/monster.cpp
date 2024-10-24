@@ -13,6 +13,7 @@
 #include "creatures/combat/spells.hpp"
 #include "creatures/players/wheel/player_wheel.hpp"
 #include "game/game.hpp"
+#include "src/lua/functions/creatures/player_functions.hpp"
 #include "game/scheduling/dispatcher.hpp"
 #include "lua/callbacks/event_callback.hpp"
 #include "lua/callbacks/events_callbacks.hpp"
@@ -2042,7 +2043,7 @@ void Monster::dropLoot(std::shared_ptr<Creature> killer) {
         auto sliverCount = static_cast<uint16_t>(uniform_random(minSlivers, maxSlivers));
 
         std::shared_ptr<Item> sliver = Item::CreateItem(ITEM_FORGE_SLIVER, sliverCount);
-        auto ret = player->addItemEx(sliver);  // Use addItem instead of addItemEx
+        auto ret = player->addItem(sliver);  // Use addItem instead of addItemEx
 
         if (ret == RETURNVALUE_NOTENOUGHCAPACITY) {
             shouldNotifyCapacity = true;
@@ -2069,7 +2070,7 @@ void Monster::dropLoot(std::shared_ptr<Creature> killer) {
                 }
 
                 // Add item to the player's inventory or container
-                auto ret = player->addItemEx(item);  // Use addItem instead of addItemEx
+                auto ret = player->addItem(item);  // Use addItem instead of addItemEx
 
                 if (ret == RETURNVALUE_NOTENOUGHCAPACITY) {
                     shouldNotifyCapacity = true;

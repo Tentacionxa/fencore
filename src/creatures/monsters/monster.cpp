@@ -13,7 +13,6 @@
 #include "creatures/combat/spells.hpp"
 #include "creatures/players/wheel/player_wheel.hpp"
 #include "game/game.hpp"
-#include "lua/functions/creatures/player/player_functions.hpp"
 #include "game/scheduling/dispatcher.hpp"
 #include "lua/callbacks/event_callback.hpp"
 #include "lua/callbacks/events_callbacks.hpp"
@@ -2021,83 +2020,28 @@ void Monster::updateLookDirection() {
 	g_game().internalCreatureTurn(getMonster(), newDir);
 }
 
-void Monster::dropLoot(std::shared_ptr<Creature> killer) {
-    if (!killer || !killer->getPlayer()) {
-        return;
-    }
+void Monster::dropLoot(std::shared_ptr<Container> corpse, std::shared_ptr<Creature>) {
+	if (corpse && lootDrop) {
+		// Only fiendish drops sliver
+		if (ForgeClassifications_t classification = getMonsterForgeClassification();
+		    // Condition
+		    classification == ForgeClassifications_t::FORGE_FIENDISH_MONSTER) {
+			auto minSlivers = g_configManager().getNumber(FORGE_MIN_SLIVERS, __FUNCTION__);
+			auto maxSlivers = g_configManager().getNumber(FORGE_MAX_SLIVERS, __FUNCTION__);
 
-    auto player = killer->getPlayer();
-    bool allItemsLooted = true;
-    bool shouldNotifyCapacity = false;
-    std::string shouldNotifyNotEnoughRoom;
+			auto sliverCount = static_cast<uint16_t>(uniform_random(minSlivers, maxSlivers));
 
-    // Set ignoreListItems to false for now, adjust based on your logic
-    bool ignoreListItems = false;
-
-    // Handle fiendish monster sliver drops
-    if (ForgeClassifications_t classification = getMonsterForgeClassification();
-        classification == ForgeClassifications_t::FORGE_FIENDISH_MONSTER) {
-        auto minSlivers = g_configManager().getNumber(FORGE_MIN_SLIVERS, __FUNCTION__);
-        auto maxSlivers = g_configManager().getNumber(FORGE_MAX_SLIVERS, __FUNCTION__);
-
-        auto sliverCount = static_cast<uint16_t>(uniform_random(minSlivers, maxSlivers));
-
-        std::shared_ptr<Item> sliver = Item::CreateItem(ITEM_FORGE_SLIVER, sliverCount);
-        auto ret = g_game().internalPlayerAddItem(player, sliver);  // Correct function found
-
-        if (ret == RETURNVALUE_NOTENOUGHCAPACITY) {
-            shouldNotifyCapacity = true;
-            allItemsLooted = false;
-        } else if (ret == RETURNVALUE_CONTAINERNOTENOUGHROOM) {
-            shouldNotifyNotEnoughRoom = sliver->getName();
-            allItemsLooted = false;
-        } else if (ret != RETURNVALUE_NOERROR) {
-            g_game().internalAddItem(player->getTile(), sliver);
-        }
-    }
-
-    // Handle regular loot drops based on loot table
-    if (!this->isRewardBoss() && g_configManager().getNumber(RATE_LOOT, __FUNCTION__) > 0) {
-        for (const auto& lootItem : mType->info.lootItems) {
-            uint32_t chance = uniform_random(1, 10000);  // 0.01% precision for loot chance
-            if (chance <= lootItem.chance) {
-                std::shared_ptr<Item> item = Item::CreateItem(lootItem.id, lootItem.countmax);
-
-                // Check if the item is listed for quick loot
-                bool listed = player->isQuickLootListedItem(item);
-                if ((listed && ignoreListItems) || (!listed && !ignoreListItems)) {
-                    continue;  // Skip items not listed or set to be ignored
-                }
-
-                // Add item to the player's inventory or container
-                auto ret = g_game().internalPlayerAddItem(player, item);  // Correct method
-
-                if (ret == RETURNVALUE_NOTENOUGHCAPACITY) {
-                    shouldNotifyCapacity = true;
-                    allItemsLooted = false;
-                } else if (ret == RETURNVALUE_CONTAINERNOTENOUGHROOM) {
-                    shouldNotifyNotEnoughRoom = item->getName();
-                    allItemsLooted = false;
-                } else if (ret != RETURNVALUE_NOERROR) {
-                    g_game().internalAddItem(player->getTile(), item);  // Drop on the ground if unable to add to container
-                }
-            }
-        }
-
-        // Execute callback events after loot drop
-        g_callbacks().executeCallback(EventCallback_t::monsterOnDropLoot, &EventCallback::monsterOnDropLoot, getMonster(), nullptr);
-        g_callbacks().executeCallback(EventCallback_t::monsterPostDropLoot, &EventCallback::monsterPostDropLoot, getMonster(), nullptr);
-    }
-
-    // Notify the player about issues with capacity or room
-    if (shouldNotifyCapacity) {
-        player->sendTextMessage(MESSAGE_EVENT_ADVANCE, "You do not have enough capacity to loot all items.");
-    }
-    if (!shouldNotifyNotEnoughRoom.empty()) {
-        player->sendTextMessage(MESSAGE_EVENT_ADVANCE, "Your container does not have enough room for " + shouldNotifyNotEnoughRoom + ".");
-    }
+			std::shared_ptr<Item> sliver = Item::CreateItem(ITEM_FORGE_SLIVER, sliverCount);
+			if (g_game().internalAddItem(corpse, sliver) != RETURNVALUE_NOERROR) {
+				corpse->internalAddThing(sliver);
+			}
+		}
+		if (!this->isRewardBoss() && g_configManager().getNumber(RATE_LOOT, __FUNCTION__) > 0) {
+			g_callbacks().executeCallback(EventCallback_t::monsterOnDropLoot, &EventCallback::monsterOnDropLoot, getMonster(), corpse);
+			g_callbacks().executeCallback(EventCallback_t::monsterPostDropLoot, &EventCallback::monsterPostDropLoot, getMonster(), corpse);
+		}
+	}
 }
-
 
 void Monster::setNormalCreatureLight() {
 	internalLight = mType->info.light;

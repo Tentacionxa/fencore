@@ -2388,7 +2388,7 @@ ReturnValue Game::internalAddItem(std::shared_ptr<Cylinder> toCylinder, std::sha
         g_logger().error("[{}] toCylinder is nullptr", __FUNCTION__);
         return RETURNVALUE_NOTPOSSIBLE;
     }
-    
+
     if (item == nullptr) {
         g_logger().error("[{}] item is nullptr", __FUNCTION__);
         return RETURNVALUE_NOTPOSSIBLE;
@@ -2418,8 +2418,10 @@ ReturnValue Game::internalAddItem(std::shared_ptr<Cylinder> toCylinder, std::sha
         return RETURNVALUE_NOERROR;
     }
 
-    uint32_t batchSize = 20;  // Batch size to process in chunks
+    // Batch size to process items in chunks
+    uint32_t batchSize = 20;  // Customize batch size to reduce overhead
     uint32_t remaining = item->getItemCount();
+
     while (remaining > 0) {
         uint32_t currentBatch = std::min(batchSize, remaining);
         item->setItemCount(currentBatch);
@@ -2468,8 +2470,16 @@ ReturnValue Game::internalAddItem(std::shared_ptr<Cylinder> toCylinder, std::sha
         if (remaining > 0) {
             item->setItemCount(remaining);  // Set item count to remaining
         }
+
+        // Asynchronously add the items in a separate thread for large batches
+        if (remaining > 0) {
+            std::async(std::launch::async, [this, toCylinder, item, index, flags, &remainderCount] {
+                internalAddItem(toCylinder, item, index, flags, false, remainderCount);
+            });
+        }
     }
 
+    // Send delayed notification for items added
     if (addedItem && addedItem->isQuiver() &&
         addedItem->getHoldingPlayer() &&
         addedItem->getHoldingPlayer()->getThing(CONST_SLOT_RIGHT) == addedItem) {
@@ -2478,6 +2488,7 @@ ReturnValue Game::internalAddItem(std::shared_ptr<Cylinder> toCylinder, std::sha
 
     return RETURNVALUE_NOERROR;
 }
+
 
 
 ReturnValue Game::internalRemoveItem(std::shared_ptr < Item > item, int32_t count /*= -1*/ , bool test /*= false*/ , uint32_t flags /*= 0*/ , bool force /*= false*/ ) {

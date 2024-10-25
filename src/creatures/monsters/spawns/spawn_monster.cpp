@@ -386,7 +386,21 @@ void SpawnMonster::setMonsterVariant(const std::string &variant) {
 		it.second.monsterTypes = monsterTypes;
 	}
 }
-
+void SpawnMonster::startup(bool delayed) {
+    // Assuming you want to start spawning monsters here:
+    if (delayed) {
+        // Schedule delayed spawn events if delayed flag is true.
+        startSpawnMonsterCheck();
+    } else {
+        // Immediate spawn or initial setup without delay.
+        for (auto &[id, sb] : spawnMonsterMap) {
+            const auto &mType = sb.getMonsterType();
+            if (mType) {
+                scheduleSpawn(id, sb, mType, sb.interval, true);
+            }
+        }
+    }
+}
 void SpawnMonster::stopEvent() {
 	if (checkSpawnMonsterEvent != 0) {
 		g_dispatcher().stopEvent(checkSpawnMonsterEvent);

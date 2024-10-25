@@ -241,9 +241,8 @@ void SpawnMonster::checkSpawnMonster() {
     cleanup();
 
     for (auto &[spawnMonsterId, sb] : spawnMonsterMap) {
-        // Check if the monster is already spawned
         if (spawnedMonsterMap.contains(spawnMonsterId)) {
-            continue;
+            continue; // Monster is already spawned
         }
 
         const auto &mType = sb.getMonsterType();
@@ -251,33 +250,34 @@ void SpawnMonster::checkSpawnMonster() {
             continue;
         }
 
-        // Check for players on screen within the spawn zone
-        bool playerOnScreen = false;
-        auto spectators = Spectators().find<Player>(sb.pos);
-        for (const auto &spectator : spectators) {
-            if (!spectator->hasFlag(PlayerFlags_t::IgnoredByMonsters)) {
-                playerOnScreen = true;
+        // Check for any players on the map (within spawn area)
+        bool playerOnMap = false;
+        for (const auto& player : g_game.getPlayers()) {
+            if (player->isVisible() && player->getPosition().isWithinMapArea(sb.pos)) {
+                playerOnMap = true;
                 break;
             }
-        }
-
-        // Only spawn if a player is on screen
-        if (!playerOnScreen) {
-            sb.lastSpawn = OTSYS_TIME(); // Reset spawn timer if no players are around
-            continue;
-        }
-
-        // Check other spawning conditions
-        if (!mType->canSpawn(sb.pos) || (mType->info.isBlockable && findPlayer(sb.pos))) {
-            sb.lastSpawn = OTSYS_TIME();
-            continue;
+        }bool playerOnScreen = false;
+auto spectators = Spectators().find<Player>(sb.pos);
+for (const auto& spectator : spectators) {
+    // Check if spectator is a Player and if they do not have the Ignore flag
+    auto player = std::dynamic_pointer_cast<Player>(spectator);
+    if (player && !player->hasFlag(PlayerFlags_t::IgnoredByMonsters)) {
+        playerOnScreen = true;
+        break;
+    }
+}
+        
+        if (playerOnMap) {
+            sb.lastSpawn = OTSYS_TIME(); // Reset spawn timer
+            continue; // Skip spawning if players are on the map
         }
 
         if (OTSYS_TIME() < sb.lastSpawn + sb.interval) {
-            continue;
+            continue; // Skip if the spawn interval has not passed
         }
 
-        // Spawn the monster if conditions are met
+        // Spawn the monster if no players are present
         if (mType->info.isBlockable) {
             spawnMonster(spawnMonsterId, sb, mType);
         } else {
@@ -291,7 +291,6 @@ void SpawnMonster::checkSpawnMonster() {
         );
     }
 }
-
 
 
 void SpawnMonster::scheduleSpawn(uint32_t spawnMonsterId, spawnBlock_t &sb, const std::shared_ptr<MonsterType> mType, uint16_t interval, bool startup /*= false*/) {

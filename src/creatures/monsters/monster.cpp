@@ -8,7 +8,7 @@
  */
 
 #include "pch.hpp"
-
+#include "lib/thread/thread_pool.hpp"
 #include "creatures/monsters/monster.hpp"
 #include "creatures/combat/spells.hpp"
 #include "creatures/players/wheel/player_wheel.hpp"
@@ -17,9 +17,7 @@
 #include "lua/callbacks/event_callback.hpp"
 #include "lua/callbacks/events_callbacks.hpp"
 #include "map/spectators.hpp"
-#include "threadpool.hpp"
-
-ThreadPool threadPool(std::thread::hardware_concurrency()); // Initializes the pool
+extern ThreadPool threadPool;
 int32_t Monster::despawnRange;
 int32_t Monster::despawnRadius;
 
@@ -1880,29 +1878,43 @@ bool Monster::canWalkTo(Position pos, Direction moveDirection) {
 	return false;
 }
 
-void Monster::death(std::shared_ptr<Creature>) {
-	if (monsterForgeClassification > ForgeClassifications_t::FORGE_NORMAL_MONSTER) {
-		g_game().removeForgeMonster(getID(), monsterForgeClassification, true);
-	}
-	setAttackedCreature(nullptr);
+#include "lib/thread/thread_pool.hpp"  // Ensure this is the correct path for ThreadPool in your project
 
-	for (const auto &summon : m_summons) {
-		if (!summon) {
-			continue;
-		}
-		summon->changeHealth(-summon->getHealth());
-		summon->removeMaster();
-	}
-	m_summons.clear();
+extern ThreadPool threadPool;  // Assuming a globally accessible ThreadPool instance
 
-	clearTargetList();
-	clearFriendList();
-	onIdleStatus();
+void Monster::death(std::shared_ptr<Creature> lastHitCreature) {
+    // Offload the death logic to the thread pool
+    threadPool.enqueue([this, lastHitCreature]() {
+        // Begin death sequence processing
+        if (monsterForgeClassification > ForgeClassifications_t::FORGE_NORMAL_MONSTER) {
+            g_game().removeForgeMonster(getID(), monsterForgeClassification, true);
+        }
+        
+        // Handle summons removal, if any
+        setAttackedCreature(nullptr);
+        for (const auto &summon : m_summons) {
+            if (summon) {
+                summon->changeHealth(-summon->getHealth());
+                summon->removeMaster();
+            }
+        }
+        m_summons.clear();
 
-	if (mType) {
-		g_game().sendSingleSoundEffect(static_self_cast<Monster>()->getPosition(), mType->info.deathSound, getMonster());
-	}
+        // Clear target and friend lists
+        clearTargetList();
+        clearFriendList();
+        onIdleStatus();
+
+        // Send death sound if defined
+        if (mType) {
+            g_game().sendSingleSoundEffect(static_self_cast<Monster>()->getPosition(), mType->info.deathSound, getMonster());
+        }
+
+        // Additional death handling logic can be included here
+        // Note: If any player notifications are required, consider adding them outside this thread
+    });
 }
+
 
 std::shared_ptr<Item> Monster::getCorpse(std::shared_ptr<Creature> lastHitCreature, std::shared_ptr<Creature> mostDamageCreature) {
 	std::shared_ptr<Item> corpse = Creature::getCorpse(lastHitCreature, mostDamageCreature);
@@ -2014,27 +2026,34 @@ void Monster::updateLookDirection() {
 	g_game().internalCreatureTurn(getMonster(), newDir);
 }
 
-void Monster::dropLoot(std::shared_ptr<Container> corpse, std::shared_ptr<Creature>) {
-	if (corpse && lootDrop) {
-		// Only fiendish drops sliver
-		if (ForgeClassifications_t classification = getMonsterForgeClassification();
-		    // Condition
-		    classification == ForgeClassifications_t::FORGE_FIENDISH_MONSTER) {
-			auto minSlivers = g_configManager().getNumber(FORGE_MIN_SLIVERS, __FUNCTION__);
-			auto maxSlivers = g_configManager().getNumber(FORGE_MAX_SLIVERS, __FUNCTION__);
+void Monster::dropLoot(std::shared_ptr<Container> corpse, std::shared_ptr<Creature> killer) {
+    if (!corpse || !lootDrop) {
+        return;
+    }
 
-			auto sliverCount = static_cast<uint16_t>(uniform_random(minSlivers, maxSlivers));
+    // Offload loot calculation to the thread pool
+    threadPool.enqueue([this, corpse, killer]() {
+        // The loot calculation logic
+        ForgeClassifications_t classification = getMonsterForgeClassification();
+        if (classification == ForgeClassifications_t::FORGE_FIENDISH_MONSTER) {
+            auto minSlivers = g_configManager().getNumber(FORGE_MIN_SLIVERS, __FUNCTION__);
+            auto maxSlivers = g_configManager().getNumber(FORGE_MAX_SLIVERS, __FUNCTION__);
+            auto sliverCount = static_cast<uint16_t>(uniform_random(minSlivers, maxSlivers));
 
-			std::shared_ptr<Item> sliver = Item::CreateItem(ITEM_FORGE_SLIVER, sliverCount);
-			if (g_game().internalAddItem(corpse, sliver) != RETURNVALUE_NOERROR) {
-				corpse->internalAddThing(sliver);
-			}
-		}
-		if (!this->isRewardBoss() && g_configManager().getNumber(RATE_LOOT, __FUNCTION__) > 0) {
-			g_callbacks().executeCallback(EventCallback_t::monsterOnDropLoot, &EventCallback::monsterOnDropLoot, getMonster(), corpse);
-			g_callbacks().executeCallback(EventCallback_t::monsterPostDropLoot, &EventCallback::monsterPostDropLoot, getMonster(), corpse);
-		}
-	}
+            std::shared_ptr<Item> sliver = Item::CreateItem(ITEM_FORGE_SLIVER, sliverCount);
+            if (g_game().internalAddItem(corpse, sliver) != RETURNVALUE_NOERROR) {
+                corpse->internalAddThing(sliver);
+            }
+        }
+
+        if (!this->isRewardBoss() && g_configManager().getNumber(RATE_LOOT, __FUNCTION__) > 0) {
+            // Execute loot drop callbacks
+            g_callbacks().executeCallback(EventCallback_t::monsterOnDropLoot, &EventCallback::monsterOnDropLoot, getMonster(), corpse);
+            g_callbacks().executeCallback(EventCallback_t::monsterPostDropLoot, &EventCallback::monsterPostDropLoot, getMonster(), corpse);
+        }
+
+        // Optional: If notifying the player is required, do it on the main thread after this task completes
+    });
 }
 
 void Monster::setNormalCreatureLight() {

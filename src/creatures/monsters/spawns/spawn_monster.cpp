@@ -302,15 +302,11 @@ void SpawnMonster::scheduleSpawn(uint32_t spawnMonsterId, spawnBlock_t &sb, cons
     if (interval <= 0) {
         spawnMonster(spawnMonsterId, sb, mType, startup);
     } else {
-        g_dispatcher().scheduleEvent(
-            NONBLOCKABLE_SPAWN_MONSTER_INTERVAL, 
-            [=, this] { 
-                if (mType) { // Ensure mType still valid
-                    scheduleSpawn(spawnMonsterId, sb, mType, interval - NONBLOCKABLE_SPAWN_MONSTER_INTERVAL, startup);
-                }
-            },
-            "SpawnMonster::scheduleSpawn"
-        );
+       g_dispatcher().scheduleEvent(
+    NONBLOCKABLE_SPAWN_MONSTER_INTERVAL, [=, this, &spawnMonsterId, &mType, &interval, &startup]() mutable {
+        scheduleSpawn(spawnMonsterId, sb, mType, interval - NONBLOCKABLE_SPAWN_MONSTER_INTERVAL, startup);
+    }, "SpawnMonster::scheduleSpawn"
+);
     }
 }
 

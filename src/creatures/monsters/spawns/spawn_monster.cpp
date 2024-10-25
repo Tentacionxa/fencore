@@ -263,7 +263,7 @@ void SpawnMonster::checkSpawnMonster() {
     }
 }
 
-void SpawnMonster::scheduleSpawn(uint32_t spawnMonsterId, spawnBlock_t &sb, std::shared_ptr<MonsterType> mType, uint16_t interval, bool startup = false);  {
+void SpawnMonster::scheduleSpawn(uint32_t spawnMonsterId, spawnBlock_t &sb, std::shared_ptr<MonsterType> mType, uint16_t interval, bool startup) {
     if (interval <= 0) {
         spawnMonster(spawnMonsterId, sb, mType, startup);
     } else {

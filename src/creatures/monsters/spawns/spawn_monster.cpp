@@ -250,17 +250,25 @@ void SpawnMonster::checkSpawnMonster() {
             continue;
         }
 
-        // Check for nearby players
-        if (findPlayer(sb.pos)) {
-            sb.lastSpawn = OTSYS_TIME();  // Update spawn timer
-            continue; // Skip spawning if players are near
+        // Check for any players on the map (within spawn area)
+        bool playerOnMap = false;
+        for (const auto& player : g_game.getPlayers()) {
+            if (player->isVisible() && player->getPosition().isWithinMapArea(sb.pos)) {
+                playerOnMap = true;
+                break;
+            }
+        }
+        
+        if (playerOnMap) {
+            sb.lastSpawn = OTSYS_TIME(); // Reset spawn timer
+            continue; // Skip spawning if players are on the map
         }
 
         if (OTSYS_TIME() < sb.lastSpawn + sb.interval) {
             continue; // Skip if the spawn interval has not passed
         }
 
-        // Spawn the monster
+        // Spawn the monster if no players are present
         if (mType->info.isBlockable) {
             spawnMonster(spawnMonsterId, sb, mType);
         } else {

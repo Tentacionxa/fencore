@@ -1963,44 +1963,30 @@ std::shared_ptr<Item> Monster::getCorpse(std::shared_ptr<Creature> lastHitCreatu
 	}
 	return corpse;
 }
+
 bool Monster::isInSpawnRange(const Position &pos) const {
-	// Check if this monster can spawn (or stay spawned) here
 	if (!spawnMonster) {
 		return true;
 	}
 
-	// If there is no defined despawn radius, allow spawning
 	if (Monster::despawnRadius == 0) {
 		return true;
 	}
 
-	// Check if the current position is within the allowed spawn radius
 	if (!SpawnsMonster::isInZone(masterPos, Monster::despawnRadius, pos)) {
 		return false;
 	}
 
-	// If there is no specific range restriction, allow spawning
 	if (Monster::despawnRange == 0) {
 		return true;
 	}
 
-	// Check if the vertical distance is within allowed spawn range
 	if (Position::getDistanceZ(pos, masterPos) > Monster::despawnRange) {
 		return false;
 	}
 
-	// New check: ensure no players are in sight within the current spawn area
-	for (const auto& spectator : Spectators().find<Player>(pos, true)) {
-		if (spectator->getPlayer()) {
-			// A player is nearby, so don't spawn
-			return false;
-		}
-	}
-
-	// All conditions met; allow spawning
 	return true;
 }
-
 
 bool Monster::getCombatValues(int32_t &min, int32_t &max) {
 	if (minCombatValue == 0 && maxCombatValue == 0) {

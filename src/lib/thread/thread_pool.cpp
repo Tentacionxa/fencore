@@ -1,42 +1,41 @@
+/**
+ * Canary - A free and open-source MMORPG server emulator
+ * Copyright (©) 2019-2024 OpenTibiaBR <opentibiabr@outlook.com>
+ * Repository: https://github.com/opentibiabr/canary
+ * License: https://github.com/opentibiabr/canary/blob/main/LICENSE
+ * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
+ * Website: https://docs.opentibiabr.com/
+ */
+
 #include "pch.hpp"
+
 #include "lib/thread/thread_pool.hpp"
-#include "lib/logging/logger.hpp"
 
-// Concrete implementation of Logger
-class ConcreteLogger : public Logger {
-public:
-    void setLevel(const std::string& name) override {
-        // Implementation
-    }
+#include "game/game.hpp"
+#include "utils/tools.hpp"
 
-    std::string getLevel() const override {
-        // Implementation
-        return "info";
-    }
+/**
+ * Regardless of how many cores your computer have, we want at least
+ * 4 threads because, even though they won't improve processing they
+ * will make processing non-blocking in some way and that would allow
+ * single core computers to process things concurrently, but not in parallel.
+ */
 
-    void log(const std::string& lvl, fmt::basic_string_view<char> msg) const override {
-        // Implementation
-        spdlog::info("[{}] {}", lvl, msg);
-    }
-};
-
-// Create a concrete instance of Logger
-ConcreteLogger globalLogger;
-
-// Define the global thread pool using the concrete logger
-ThreadPool threadPool(globalLogger);
+#ifndef DEFAULT_NUMBER_OF_THREADS
+	#define DEFAULT_NUMBER_OF_THREADS 4
+#endif
 
 ThreadPool::ThreadPool(Logger &logger) :
-    BS::thread_pool(std::max<int>(getNumberOfCores(), DEFAULT_NUMBER_OF_THREADS)), logger(logger) {
-    start();
+	BS::thread_pool(std::max<int>(getNumberOfCores(), DEFAULT_NUMBER_OF_THREADS)), logger(logger) {
+	start();
 }
 
 void ThreadPool::start() {
-    logger.info("Running with {} threads.", get_thread_count());
+	logger.info("Running with {} threads.", get_thread_count());
 }
 
 void ThreadPool::shutdown() {
-    logger.info("Shutting down thread pool...");
-    stopped = true;
-    wait();
+	logger.info("Shutting down thread pool...");
+	stopped = true;
+	wait();
 }

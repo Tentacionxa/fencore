@@ -252,7 +252,7 @@ void SpawnMonster::checkSpawnMonster() {
 
         // Check for any players on the map (within spawn area)
         bool playerOnMap = false;
-        for (const auto& player : g_game.getPlayers()) {
+      for (const auto& player : g_game().getPlayers()) {
             if (player->isVisible() && player->getPosition().isWithinMapArea(sb.pos)) {
                 playerOnMap = true;
                 break;

@@ -298,7 +298,7 @@ for (const auto& [id, player] : g_game().getPlayers()) {
 }
 
 
-void SpawnMonster::scheduleSpawn(uint32_t spawnMonsterId, spawnBlock_t &sb, const std::shared_ptr<MonsterType> mType, uint16_t interval, bool startup) {
+void SpawnMonster::scheduleSpawn(uint32_t spawnMonsterId, const spawnBlock_t &sb, const std::shared_ptr<MonsterType> mType, uint16_t interval, bool startup) {
     if (interval <= 0) {
         spawnMonster(spawnMonsterId, sb, mType, startup);
     } else {

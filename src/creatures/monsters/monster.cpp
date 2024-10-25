@@ -870,8 +870,8 @@ void Monster::doAttacking(uint32_t interval) {
                 minCombatValue = static_cast<int32_t>(spellBlock.minCombatValue * 1.5);
                 maxCombatValue = static_cast<int32_t>(spellBlock.maxCombatValue * 1.5);
             } else {
-                minCombatValue = static_cast<int32_t>(spellBlock.minCombatValue * 1.2);
-                maxCombatValue = static_cast<int32_t>(spellBlock.maxCombatValue * 1.2);
+                minCombatValue = static_cast<int32_t>(spellBlock.minCombatValue * 1.0);
+                maxCombatValue = static_cast<int32_t>(spellBlock.maxCombatValue * 1.0);
             }
 
             spellBlock.spell->castSpell(getMonster(), attackedCreature);

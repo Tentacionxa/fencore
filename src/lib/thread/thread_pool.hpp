@@ -6,39 +6,56 @@
  * Contributors: https://github.com/opentibiabr/canary/graphs/contributors
  * Website: https://docs.opentibiabr.com/
  */
+
 #pragma once
 
 #include "lib/logging/logger.hpp"
 #include "BS_thread_pool.hpp"
+#include <mutex>
+#include <condition_variable>
+#include <queue>
+#include <functional>
 
 class ThreadPool : public BS::thread_pool {
 public:
-	explicit ThreadPool(Logger &logger);
+    explicit ThreadPool(Logger &logger);
 
-	// Ensures that we don't accidentally copy it
-	ThreadPool(const ThreadPool &) = delete;
-	ThreadPool operator=(const ThreadPool &) = delete;
+    // Ensure we don't accidentally copy it
+    ThreadPool(const ThreadPool &) = delete;
+    ThreadPool operator=(const ThreadPool &) = delete;
 
-	void start();
-	void shutdown();
+    void start();
+    void shutdown();
 
-	static int16_t getThreadId() {
-		static std::atomic_int16_t lastId = -1;
-		thread_local static int16_t id = -1;
+    static int16_t getThreadId() {
+        static std::atomic_int16_t lastId = -1;
+        thread_local static int16_t id = -1;
 
-		if (id == -1) {
-			lastId.fetch_add(1);
-			id = lastId.load();
-		}
+        if (id == -1) {
+            lastId.fetch_add(1);
+            id = lastId.load();
+        }
 
-		return id;
-	};
+        return id;
+    }
 
-	bool isStopped() const {
-		return stopped;
-	}
+    template <class F>
+    void submit(F&& task) {
+        {
+            std::unique_lock<std::mutex> lock(queueMutex);
+            tasks.emplace(std::forward<F>(task));
+        }
+        condition.notify_one();
+    }
+
+    bool isStopped() const {
+        return stopped;
+    }
 
 private:
-	Logger &logger;
-	bool stopped = false;
+    Logger &logger;
+    bool stopped = false;
+    std::mutex queueMutex;
+    std::condition_variable condition;
+    std::queue<std::function<void()>> tasks;
 };

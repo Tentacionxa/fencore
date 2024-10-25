@@ -10,13 +10,17 @@
 #pragma once
 #ifndef THREAD_POOL_HPP
 #define THREAD_POOL_HPP
+
 #include "lib/logging/logger.hpp"
 #include "BS_thread_pool.hpp"
 #include <mutex>
 #include <condition_variable>
 #include <queue>
 #include <functional>
+#include <atomic>
+
 extern ThreadPool threadPool;
+
 class ThreadPool : public BS::thread_pool {
 public:
     explicit ThreadPool(Logger &logger);
@@ -60,3 +64,5 @@ private:
     std::condition_variable condition;
     std::queue<std::function<void()>> tasks;
 };
+
+#endif // THREAD_POOL_HPP

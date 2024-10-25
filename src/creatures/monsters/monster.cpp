@@ -807,18 +807,20 @@ void Monster::onThink(uint32_t interval) {
         return;
     }
 
- if (isSummon()) {
+ // Ensure summons only attack when their master attacks
+    if (isSummon()) {
         auto master = getMaster();
         if (master) {
             auto masterTarget = master->getAttackedCreature();
             
-            // If master has a target, follow the master's target
+            // If the master has a target, follow the master's target
             if (masterTarget && getAttackedCreature() != masterTarget) {
                 setAttackedCreature(masterTarget);
                 setFollowCreature(masterTarget);
             }
-            // If master has no target, follow the master
-            else if (!masterTarget && getFollowCreature() != master) {
+            // If the master has no target, clear the summon's target to avoid attacking on its own
+            else if (!masterTarget) {
+                setAttackedCreature(nullptr);
                 setFollowCreature(master);
             }
         }

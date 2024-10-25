@@ -18,11 +18,7 @@ class Game;
 
 class Monster final : public Creature {
 public:
- void clearTargetList();
-    void clearFriendList();
-    bool isFriend(const std::shared_ptr<Creature>& creature) const;
-    void onCreatureEnter(std::shared_ptr<Creature> creature);
-    void onCreatureFound(std::shared_ptr<Creature> creature, bool someFlag);
+
 	static std::shared_ptr<Monster> createMonster(const std::string &name);
 	static int32_t despawnRange;
 	static int32_t despawnRadius;

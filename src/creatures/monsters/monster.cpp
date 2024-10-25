@@ -782,7 +782,17 @@ void Monster::onEndCondition(ConditionType_t type) {
 
 void Monster::onThink(uint32_t interval) {
     Creature::onThink(interval);
-
+if (isSummon()) {
+    if (attackedCreature.get() == this) {
+        setFollowCreature(nullptr);
+    } else if (attackedCreature && followCreature != attackedCreature) {
+        setFollowCreature(attackedCreature);
+    } else if (getMaster() && getMaster()->getAttackedCreature()) {
+        selectTarget(getMaster()->getAttackedCreature());
+    } else if (getMaster() != followCreature) {
+        setFollowCreature(getMaster());
+    }
+}
     // Reduce how often thinkEvent is called to avoid expensive Lua calls
     static uint32_t lastThinkEvent = 0;
     if (mType->info.thinkEvent != -1 && OTSYS_TIME() - lastThinkEvent > 2000) {  // Every 2 seconds

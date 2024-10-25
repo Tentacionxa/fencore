@@ -1370,16 +1370,6 @@ bool Game::removeCreature(std::shared_ptr < Creature > creature, bool isLogout /
 
   return true;
 }
-void Game::processTaskQueue() {
-    std::lock_guard<std::mutex> lock(queueMutex);
-
-    // Execute all queued tasks
-    while (!taskQueue.empty()) {
-        auto task = taskQueue.front();
-        taskQueue.pop();
-        task();  // Execute the task
-    }
-}
 
 void Game::executeDeath(uint32_t creatureId) {
     // Fetch creature by ID
@@ -1391,7 +1381,7 @@ void Game::executeDeath(uint32_t creatureId) {
     // Add death execution to the task queue
     taskQueue.push([this, creature]() {
         if (!creature->isRemoved()) {
-            g_game().internalCreatureDeath(creature);
+            g_game().removeCreature(creature); // Use the correct method for handling death
         }
     });
 }

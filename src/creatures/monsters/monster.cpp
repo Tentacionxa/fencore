@@ -378,37 +378,82 @@ bool Monster::removeTarget(const std::shared_ptr<Creature> &creature) {
 }
 
 void Monster::updateTargetList() {
-    // Enqueue the target update logic in the background
-    threadPool.enqueue([this]() {
-        if (getHealth() <= 0 || !canSee(position)) {
-            return;
-        }
+    // Cache creature visibility and health instead of checking frequently
+    if (getHealth() <= 0 || !canSee(position)) {
+        return;
+    }
 
-        static uint32_t lastFriendUpdate = 0;
-        if (OTSYS_TIME() - lastFriendUpdate > 5000) { // Update every 5 seconds
-            std::erase_if(friendList, [this](const auto &it) {
-                const auto &target = it.second.lock();
-                return !target || target->getHealth() <= 0 || !canSee(target->getPosition());
-            });
-            lastFriendUpdate = OTSYS_TIME();
-        }
+    // Update friend list less frequently
+    static uint32_t lastFriendUpdate = 0;
+    if (OTSYS_TIME() - lastFriendUpdate > 5000) {  // Update every 5 seconds
+        std::erase_if(friendList, [this](const auto &it) {
+            const auto &target = it.second.lock();
+            return !target || target->getHealth() <= 0 || !canSee(target->getPosition());
+        });
+        lastFriendUpdate = OTSYS_TIME();
+    }
 
-        // Update target list logic in the background
-        static uint32_t lastTargetUpdate = 0;
-        if (OTSYS_TIME() - lastTargetUpdate > 3000) {
-            std::erase_if(targetList, [this](const std::weak_ptr<Creature> &ref) {
-                const auto &target = ref.lock();
-                return !target || target->getHealth() <= 0 || !canSee(target->getPosition());
-            });
+    // Update target list every few seconds
+    static uint32_t lastTargetUpdate = 0;
+    if (OTSYS_TIME() - lastTargetUpdate > 3000) {  // Update every 1 second
+        std::erase_if(targetList, [this](const std::weak_ptr<Creature> &ref) {
+            const auto &target = ref.lock();
+            return !target || target->getHealth() <= 0 || !canSee(target->getPosition());
+        });
 
-            for (const auto &spectator : Spectators().find<Creature>(position, true)) {
-                if (spectator.get() != this && canSee(spectator->getPosition())) {
-                    onCreatureFound(spectator);
-                }
+        // Only add visible creatures to the list to reduce checks
+        for (const auto &spectator : Spectators().find<Creature>(position, true)) {
+            if (spectator.get() != this && canSee(spectator->getPosition())) {
+                onCreatureFound(spectator);
             }
-            lastTargetUpdate = OTSYS_TIME();
         }
-    });
+        lastTargetUpdate = OTSYS_TIME();
+    }
+}
+
+
+void Monster::clearTargetList() {
+	targetList.clear();
+}
+
+void Monster::clearFriendList() {
+	friendList.clear();
+}
+
+void Monster::onCreatureFound(std::shared_ptr<Creature> creature, bool pushFront /* = false*/) {
+	if (isFriend(creature)) {
+		addFriend(creature);
+	}
+
+	if (isOpponent(creature)) {
+		addTarget(creature, pushFront);
+	}
+
+	updateIdleStatus();
+}
+
+void Monster::onCreatureEnter(std::shared_ptr<Creature> creature) {
+	onCreatureFound(std::move(creature), true);
+}
+
+bool Monster::isFriend(const std::shared_ptr<Creature> &creature) const {
+	if (isSummon() && getMaster()->getPlayer()) {
+		const auto &masterPlayer = getMaster()->getPlayer();
+		auto tmpPlayer = creature->getPlayer();
+
+		if (!tmpPlayer) {
+			const auto &creatureMaster = creature->getMaster();
+			if (creatureMaster && creatureMaster->getPlayer()) {
+				tmpPlayer = creatureMaster->getPlayer();
+			}
+		}
+
+		if (tmpPlayer && (tmpPlayer == getMaster() || masterPlayer->isPartner(tmpPlayer))) {
+			return true;
+		}
+	}
+
+	return creature->getMonster() && !creature->isSummon();
 }
 
 bool Monster::isOpponent(const std::shared_ptr<Creature> &creature) const {

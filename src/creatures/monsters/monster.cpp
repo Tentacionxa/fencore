@@ -379,7 +379,7 @@ bool Monster::removeTarget(const std::shared_ptr<Creature> &creature) {
 
 void Monster::updateTargetList() {
     // Enqueue the target update logic in the background
-    threadPool.push_task([this]() {
+    threadPool.submit([this]() {
         if (getHealth() <= 0 || !canSee(position)) {
             return;
         }
@@ -1884,7 +1884,7 @@ extern ThreadPool threadPool;  // Assuming a globally accessible ThreadPool inst
 
 void Monster::death(std::shared_ptr<Creature> lastHitCreature) {
     // Offload the death logic to the thread pool
-    threadPool.push_task([this, lastHitCreature]() {
+    threadPool.submit([this, lastHitCreature]() {
         // Begin death sequence processing
         if (monsterForgeClassification > ForgeClassifications_t::FORGE_NORMAL_MONSTER) {
             g_game().removeForgeMonster(getID(), monsterForgeClassification, true);
@@ -2032,7 +2032,7 @@ void Monster::dropLoot(std::shared_ptr<Container> corpse, std::shared_ptr<Creatu
     }
 
     // Offload loot calculation to the thread pool
-    threadPool.push_task([this, corpse, killer]() {
+    threadPool.submit([this, corpse, killer]() {
         // The loot calculation logic
         ForgeClassifications_t classification = getMonsterForgeClassification();
         if (classification == ForgeClassifications_t::FORGE_FIENDISH_MONSTER) {

@@ -704,22 +704,35 @@ bool Monster::isTarget(std::shared_ptr<Creature> creature) {
 }
 
 bool Monster::selectTarget(const std::shared_ptr<Creature> &creature) {
-	if (!isTarget(creature)) {
-		return false;
-	}
+    if (!isTarget(creature)) {
+        return false;
+    }
 
-	const auto &it = getTargetIterator(creature);
-	if (it == targetList.end()) {
-		// Target not found in our target list.
-		return false;
-	}
+    if (isSummon()) {
+        // Get the master (player) of the summon
+        auto master = getMaster();
+        if (master) {
+            auto masterTarget = master->getAttackedCreature();
 
-	if (isHostile() || isSummon()) {
-		if (setAttackedCreature(creature)) {
-			g_dispatcher().addEvent([creatureId = getID()] { g_game().checkCreatureAttack(creatureId); }, "Game::checkCreatureAttack");
-		}
-	}
-	return setFollowCreature(creature);
+            // Ensure the summon only attacks the master's target
+            if (masterTarget != creature) {
+                return false;  // Summon cannot target creatures unless the master is targeting them
+            }
+        }
+    }
+
+    const auto &it = getTargetIterator(creature);
+    if (it == targetList.end()) {
+        // Target not found in our target list.
+        return false;
+    }
+
+    if (isHostile() || isSummon()) {
+        if (setAttackedCreature(creature)) {
+            g_dispatcher().addEvent([creatureId = getID()] { g_game().checkCreatureAttack(creatureId); }, "Game::checkCreatureAttack");
+        }
+    }
+    return setFollowCreature(creature);
 }
 
 void Monster::setIdle(bool idle) {
@@ -807,18 +820,18 @@ void Monster::onThink(uint32_t interval) {
         return;
     }
 
- // Ensure summons only attack when their master attacks
+     // Ensure summons only attack the master's target
     if (isSummon()) {
         auto master = getMaster();
         if (master) {
             auto masterTarget = master->getAttackedCreature();
-            
-            // If the master has a target, follow the master's target
+
+            // If the master has a target, follow and attack the master's target
             if (masterTarget && getAttackedCreature() != masterTarget) {
                 setAttackedCreature(masterTarget);
                 setFollowCreature(masterTarget);
             }
-            // If the master has no target, clear the summon's target to avoid attacking on its own
+            // If the master has no target, clear the summon's target
             else if (!masterTarget) {
                 setAttackedCreature(nullptr);
                 setFollowCreature(master);

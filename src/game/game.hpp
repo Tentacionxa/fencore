@@ -742,10 +742,10 @@ public:
 
 private:
 
- std::queue<std::function<void()>> taskQueue;  // Queue to hold the tasks
-    std::mutex queueMutex;  // Mutex for thread-safety while accessing the queue
+std::queue<std::function<void()>> taskQueue;
+    std::mutex queueMutex;
 
-    void processTaskQueue();  // Function to process and execute tasks from the queue
+    void processTaskQueue();
 	std::map<uint16_t, Achievement> m_achievements;
 	std::map<std::string, uint16_t> m_achievementsNameToId;
 

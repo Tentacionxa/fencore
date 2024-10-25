@@ -1382,31 +1382,28 @@ void Game::processTaskQueue() {
 }
 
 void Game::executeDeath(uint32_t creatureId) {
-    metrics::method_latency measure(__METHOD_NAME__);
-
+    // Fetch creature by ID
     std::shared_ptr<Creature> creature = getCreatureByID(creatureId);
     if (!creature || creature->isRemoved()) {
         return;
     }
 
-    afterCreatureZoneChange(creature, creature->getZones(), {});
+    // Add death execution to the task queue
+    taskQueue.push([this, creature]() {
+        if (!creature->isRemoved()) {
+            g_game().internalCreatureDeath(creature);
+        }
+    });
+}
 
-    // Schedule death-related tasks in the task queue
-    {
-        std::lock_guard<std::mutex> lock(queueMutex);
-        taskQueue.push([creature]() {
-            creature->onDeath();
-        });
-
-        taskQueue.push([creature]() {
-            if (creature->getMaster() && !creature->getMaster()->isRemoved()) {
-                creature->setMaster(nullptr);
-            }
-        });
-
-        taskQueue.push([creature]() {
-            removeCreatureCheck(creature);
-        });
+void Game::processTaskQueue() {
+    std::unique_lock<std::mutex> lock(queueMutex);
+    while (!taskQueue.empty()) {
+        auto task = taskQueue.front();
+        taskQueue.pop();
+        lock.unlock(); // Unlock during task execution
+        task(); // Execute the task
+        lock.lock(); // Lock again for the next iteration
     }
 }
 

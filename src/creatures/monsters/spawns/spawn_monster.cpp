@@ -233,43 +233,48 @@ void SpawnMonster::startup(bool delayed) {
 }
 
 void SpawnMonster::checkSpawnMonster() {
-	if (checkSpawnMonsterEvent == 0) {
-		return;
-	}
+    if (checkSpawnMonsterEvent == 0) {
+        return;
+    }
 
-	checkSpawnMonsterEvent = 0;
-	cleanup();
+    checkSpawnMonsterEvent = 0;
+    cleanup();
 
-	for (auto &[spawnMonsterId, sb] : spawnMonsterMap) {
-		if (spawnedMonsterMap.contains(spawnMonsterId)) {
-			continue;
-		}
+    for (auto &[spawnMonsterId, sb] : spawnMonsterMap) {
+        if (spawnedMonsterMap.contains(spawnMonsterId)) {
+            continue; // Monster is already spawned
+        }
 
-		const auto &mType = sb.getMonsterType();
-		if (!mType) {
-			continue;
-		}
-		if (!mType->canSpawn(sb.pos) || (mType->info.isBlockable && findPlayer(sb.pos))) {
-			sb.lastSpawn = OTSYS_TIME();
-			continue;
-		}
-		if (OTSYS_TIME() < sb.lastSpawn + sb.interval) {
-			continue;
-		}
+        const auto &mType = sb.getMonsterType();
+        if (!mType) {
+            continue;
+        }
 
-		if (mType->info.isBlockable) {
-			spawnMonster(spawnMonsterId, sb, mType);
-		} else {
-			scheduleSpawn(spawnMonsterId, sb, mType, 3 * NONBLOCKABLE_SPAWN_MONSTER_INTERVAL);
-		}
-	}
+        // Check for nearby players
+        if (findPlayer(sb.pos)) {
+            sb.lastSpawn = OTSYS_TIME();  // Update spawn timer
+            continue; // Skip spawning if players are near
+        }
 
-	if (spawnedMonsterMap.size() < spawnMonsterMap.size()) {
-		checkSpawnMonsterEvent = g_dispatcher().scheduleEvent(
-			getInterval(), [this] { checkSpawnMonster(); }, "SpawnMonster::checkSpawnMonster"
-		);
-	}
+        if (OTSYS_TIME() < sb.lastSpawn + sb.interval) {
+            continue; // Skip if the spawn interval has not passed
+        }
+
+        // Spawn the monster
+        if (mType->info.isBlockable) {
+            spawnMonster(spawnMonsterId, sb, mType);
+        } else {
+            scheduleSpawn(spawnMonsterId, sb, mType, 3 * NONBLOCKABLE_SPAWN_MONSTER_INTERVAL);
+        }
+    }
+
+    if (spawnedMonsterMap.size() < spawnMonsterMap.size()) {
+        checkSpawnMonsterEvent = g_dispatcher().scheduleEvent(
+            getInterval(), [this] { checkSpawnMonster(); }, "SpawnMonster::checkSpawnMonster"
+        );
+    }
 }
+
 
 void SpawnMonster::scheduleSpawn(uint32_t spawnMonsterId, spawnBlock_t &sb, const std::shared_ptr<MonsterType> mType, uint16_t interval, bool startup /*= false*/) {
 	if (interval <= 0) {

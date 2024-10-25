@@ -796,24 +796,6 @@ void Monster::onEndCondition(ConditionType_t type) {
 void Monster::onThink(uint32_t interval) {
     Creature::onThink(interval);
 
-    // Check if a player is nearby to prevent respawning and other active behavior
-    if (!isIdle && spawnMonster) {
-        bool playerNearby = false;
-        
-        for (const auto& spectator : Spectators().find<Player>(position, true)) {
-            if (spectator->getPlayer()) {
-                playerNearby = true;
-                break;
-            }
-        }
-
-        // If a player is nearby, set the monster to idle to prevent respawn and aggressive actions
-        if (playerNearby) {
-            setIdle(true);  // Set idle to prevent respawn actions
-            return;  // Exit onThink early if player is nearby
-        }
-    }
-
     // Reduce how often thinkEvent is called to avoid expensive Lua calls
     static uint32_t lastThinkEvent = 0;
     if (mType->info.thinkEvent != -1 && OTSYS_TIME() - lastThinkEvent > 2000) {  // Every 2 seconds
@@ -838,7 +820,7 @@ void Monster::onThink(uint32_t interval) {
         return;
     }
 
-    // Ensure summons only attack the master's target
+     // Ensure summons only attack the master's target
     if (isSummon()) {
         auto master = getMaster();
         if (master) {
@@ -856,7 +838,6 @@ void Monster::onThink(uint32_t interval) {
             }
         }
     }
-
     addEventWalk();
 
     const auto &attackedCreature = getAttackedCreature();
@@ -877,7 +858,6 @@ void Monster::onThink(uint32_t interval) {
     onThinkDefense(interval);
     onThinkSound(interval);
 }
-
 
 void Monster::doAttacking(uint32_t interval) {
     auto attackedCreature = getAttackedCreature();

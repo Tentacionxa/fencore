@@ -898,11 +898,11 @@ void Monster::doAttacking(uint32_t interval) {
 
             // Increase melee damage by 50% and spell damage by 20%
             if (spellBlock.isMelee) {
-                minCombatValue = static_cast<int32_t>(spellBlock.minCombatValue * 0.5);
-                maxCombatValue = static_cast<int32_t>(spellBlock.maxCombatValue * 0.5);
+                minCombatValue = static_cast<int32_t>(spellBlock.minCombatValue);
+                maxCombatValue = static_cast<int32_t>(spellBlock.maxCombatValue);
             } else {
-                minCombatValue = static_cast<int32_t>(spellBlock.minCombatValue * 0.6);
-                maxCombatValue = static_cast<int32_t>(spellBlock.maxCombatValue * 0.6);
+                minCombatValue = static_cast<int32_t>(spellBlock.minCombatValue);
+                maxCombatValue = static_cast<int32_t>(spellBlock.maxCombatValue);
             }
 
             spellBlock.spell->castSpell(getMonster(), attackedCreature);

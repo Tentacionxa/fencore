@@ -251,13 +251,13 @@ void SpawnMonster::checkSpawnMonster() {
         }
 
         // Check for any players on the map (within spawn area)
-        bool playerOnMap = false;
-        for (const auto& player : g_game.getPlayers()) {
-            if (player->isVisible() && player->getPosition().isWithinMapArea(sb.pos)) {
-                playerOnMap = true;
-                break;
-            }
-        }
+     bool playerOnMap = false;
+for (const auto& player : g_game().getPlayers()) {  // Note the change: g_game() is called as a function
+    if (player->isVisible() && player->getPosition().isWithinMapArea(sb.pos)) {
+        playerOnMap = true;
+        break;
+    }
+}
         
         if (playerOnMap) {
             sb.lastSpawn = OTSYS_TIME(); // Reset spawn timer

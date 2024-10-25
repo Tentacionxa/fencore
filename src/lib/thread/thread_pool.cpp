@@ -15,6 +15,8 @@
 #include "utils/tools.hpp"
 ThreadPool threadPool(logger);
 extern Logger logger;
+Logger globalLogger;  // Create an instance of Logger (adjust this as per your Logger setup)
+ThreadPool threadPool(globalLogger);  // Initialize the global ThreadPool instance with Lo
 /**
  * Regardless of how many cores your computer have, we want at least
  * 4 threads because, even though they won't improve processing they

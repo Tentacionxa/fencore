@@ -166,32 +166,37 @@ bool SpawnMonster::isInSpawnMonsterZone(const Position &pos) {
 	return SpawnsMonster::isInZone(centerPos, radius, pos);
 }
 
-bool SpawnMonster::spawnMonster(uint32_t spawnMonsterId, spawnBlock_t &sb, const std::shared_ptr<MonsterType> monsterType, bool startup /*= false*/) {
-	if (spawnedMonsterMap.contains(spawnMonsterId)) {
-		return false;
-	}
-	auto monster = std::make_shared<Monster>(monsterType);
-	if (startup) {
-		// No need to send out events to the surrounding since there is no one out there to listen!
-		if (!g_game().internalPlaceCreature(monster, sb.pos, true)) {
-			return false;
-		}
-	} else {
-		g_logger().debug("[SpawnMonster] Spawning {} at {}", monsterType->name, sb.pos.toString());
-		if (!g_game().placeCreature(monster, sb.pos, false, true)) {
-			return false;
-		}
-	}
+bool SpawnMonster::spawnMonster(uint32_t spawnMonsterId, spawnBlock_t &sb, const std::shared_ptr<MonsterType> monsterType, bool startup) {
+    if (spawnedMonsterMap.contains(spawnMonsterId)) {
+        return false;
+    }
+    auto monster = std::make_shared<Monster>(monsterType);
+    if (startup) {
+        if (!g_game().internalPlaceCreature(monster, sb.pos, true)) {
+            monster.reset(); // Release the pointer
+            return false;
+        }
+    } else {
+        if (!g_game().placeCreature(monster, sb.pos, false, true)) {
+            monster.reset(); // Release the pointer
+            return false;
+        }
+    }
 
-	monster->setDirection(sb.direction);
-	monster->setSpawnMonster(this);
-	monster->setMasterPos(sb.pos);
+    // Ensure monster is valid before proceeding
+    if (!monster) {
+        return false;
+    }
 
-	spawnedMonsterMap[spawnMonsterId] = monster;
-	sb.lastSpawn = OTSYS_TIME();
-	g_events().eventMonsterOnSpawn(monster, sb.pos);
-	g_callbacks().executeCallback(EventCallback_t::monsterOnSpawn, &EventCallback::monsterOnSpawn, monster, sb.pos);
-	return true;
+    monster->setDirection(sb.direction);
+    monster->setSpawnMonster(this);
+    monster->setMasterPos(sb.pos);
+
+    spawnedMonsterMap[spawnMonsterId] = monster;
+    sb.lastSpawn = OTSYS_TIME();
+    g_events().eventMonsterOnSpawn(monster, sb.pos);
+    g_callbacks().executeCallback(EventCallback_t::monsterOnSpawn, &EventCallback::monsterOnSpawn, monster, sb.pos);
+    return true;
 }
 
 void SpawnMonster::startup(bool delayed) {
@@ -293,27 +298,35 @@ for (const auto& [id, player] : g_game().getPlayers()) {
 }
 
 
-void SpawnMonster::scheduleSpawn(uint32_t spawnMonsterId, spawnBlock_t &sb, const std::shared_ptr<MonsterType> mType, uint16_t interval, bool startup /*= false*/) {
-	if (interval <= 0) {
-		spawnMonster(spawnMonsterId, sb, mType, startup);
-	} else {
-		g_dispatcher().scheduleEvent(
-			NONBLOCKABLE_SPAWN_MONSTER_INTERVAL, [=, this, &sb] { scheduleSpawn(spawnMonsterId, sb, mType, interval - NONBLOCKABLE_SPAWN_MONSTER_INTERVAL, startup); }, "SpawnMonster::scheduleSpawn"
-		);
-	}
+void SpawnMonster::scheduleSpawn(uint32_t spawnMonsterId, spawnBlock_t &sb, const std::shared_ptr<MonsterType> mType, uint16_t interval, bool startup) {
+    if (interval <= 0) {
+        spawnMonster(spawnMonsterId, sb, mType, startup);
+    } else {
+        g_dispatcher().scheduleEvent(
+            NONBLOCKABLE_SPAWN_MONSTER_INTERVAL, 
+            [=, this] { 
+                if (mType) { // Ensure mType still valid
+                    scheduleSpawn(spawnMonsterId, sb, mType, interval - NONBLOCKABLE_SPAWN_MONSTER_INTERVAL, startup);
+                }
+            },
+            "SpawnMonster::scheduleSpawn"
+        );
+    }
 }
 
 void SpawnMonster::cleanup() {
-	std::vector<uint32_t> removeList;
-	for (const auto &[spawnMonsterId, monster] : spawnedMonsterMap) {
-		if (monster == nullptr || monster->isRemoved()) {
-			removeList.push_back(spawnMonsterId);
-		}
-	}
-	for (const auto &spawnMonsterId : removeList) {
-		spawnMonsterMap[spawnMonsterId].lastSpawn = OTSYS_TIME();
-		spawnedMonsterMap.erase(spawnMonsterId);
-	}
+    std::vector<uint32_t> removeList;
+    for (const auto &[spawnMonsterId, monster] : spawnedMonsterMap) {
+        if (!monster || monster->isRemoved()) {
+            removeList.push_back(spawnMonsterId);
+        }
+    }
+    for (const auto &spawnMonsterId : removeList) {
+        if (spawnedMonsterMap.find(spawnMonsterId) != spawnedMonsterMap.end()) {
+            spawnMonsterMap[spawnMonsterId].lastSpawn = OTSYS_TIME();
+            spawnedMonsterMap.erase(spawnMonsterId);
+        }
+    }
 }
 
 bool SpawnMonster::addMonster(const std::string &name, const Position &pos, Direction dir, uint32_t scheduleInterval, uint32_t weight /*= 1*/) {

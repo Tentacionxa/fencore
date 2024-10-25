@@ -90,9 +90,9 @@ private:
 	uint32_t checkSpawnMonsterEvent = 0;
 
 	static bool findPlayer(const Position &pos);
-	bool spawnMonster(uint32_t spawnMonsterId, spawnBlock_t &sb, std::shared_ptr<MonsterType> mType, bool startup = false);
+	bool spawnMonster(uint32_t spawnMonsterId, spawnBlock_t &sb, std::shared_ptr<MonsterType> monsterType, bool startup = false);
 	void checkSpawnMonster();
-	void scheduleSpawn(uint32_t spawnMonsterId, spawnBlock_t &sb, std::shared_ptr<MonsterType> mType, uint16_t interval, bool startup = false);
+	void scheduleSpawn(uint32_t spawnMonsterId, spawnBlock_t &sb, std::shared_ptr<MonsterType> monsterType, uint16_t interval, bool startup = false);
 };
 
 class SpawnsMonster {

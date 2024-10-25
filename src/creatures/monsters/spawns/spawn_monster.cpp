@@ -252,12 +252,21 @@ void SpawnMonster::checkSpawnMonster() {
 
 // Check for any players on the map (within spawn area)
 bool playerOnMap = false;
-for (const auto& [id, player] : g_game().getPlayers()) {  // Using structured binding to get the Player pointer
-    if (player->isVisible() && player->getPosition().isWithinMapArea(sb.pos)) {
-        playerOnMap = true;
-        break;
+for (const auto& [id, player] : g_game().getPlayers()) {
+    // Assuming `isInvisible` exists, so we invert it to check visibility
+    if (!player->isInvisible()) {
+        Position playerPos = player->getPosition();
+        int maxDistance = 10; // Example threshold distance for visibility on the map
+
+        // Check if the player is within a certain distance of the spawn position
+        if (Position::getDistanceX(playerPos, sb.pos) <= maxDistance &&
+            Position::getDistanceY(playerPos, sb.pos) <= maxDistance) {
+            playerOnMap = true;
+            break;
+        }
     }
 }
+
         
         if (playerOnMap) {
             sb.lastSpawn = OTSYS_TIME(); // Reset spawn timer

@@ -10,10 +10,11 @@
 #include "pch.hpp"
 
 #include "lib/thread/thread_pool.hpp"
-
+#include "lib/logging/logger.hpp"
 #include "game/game.hpp"
 #include "utils/tools.hpp"
 ThreadPool threadPool(logger);
+extern Logger logger;
 /**
  * Regardless of how many cores your computer have, we want at least
  * 4 threads because, even though they won't improve processing they

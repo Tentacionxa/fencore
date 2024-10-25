@@ -8,7 +8,8 @@
  */
 
 #pragma once
-
+#ifndef THREAD_POOL_HPP
+#define THREAD_POOL_HPP
 #include "lib/logging/logger.hpp"
 #include "BS_thread_pool.hpp"
 #include <mutex>

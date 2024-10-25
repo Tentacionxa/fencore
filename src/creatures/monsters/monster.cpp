@@ -782,17 +782,7 @@ void Monster::onEndCondition(ConditionType_t type) {
 
 void Monster::onThink(uint32_t interval) {
     Creature::onThink(interval);
-if (isSummon()) {
-    if (attackedCreature.get() == this) {
-        setFollowCreature(nullptr);
-    } else if (attackedCreature && followCreature != attackedCreature) {
-        setFollowCreature(attackedCreature);
-    } else if (getMaster() && getMaster()->getAttackedCreature()) {
-        selectTarget(getMaster()->getAttackedCreature());
-    } else if (getMaster() != followCreature) {
-        setFollowCreature(getMaster());
-    }
-}
+
     // Reduce how often thinkEvent is called to avoid expensive Lua calls
     static uint32_t lastThinkEvent = 0;
     if (mType->info.thinkEvent != -1 && OTSYS_TIME() - lastThinkEvent > 2000) {  // Every 2 seconds
@@ -817,6 +807,22 @@ if (isSummon()) {
         return;
     }
 
+ if (isSummon()) {
+        auto master = getMaster();
+        if (master) {
+            auto masterTarget = master->getAttackedCreature();
+            
+            // If master has a target, follow the master's target
+            if (masterTarget && getAttackedCreature() != masterTarget) {
+                setAttackedCreature(masterTarget);
+                setFollowCreature(masterTarget);
+            }
+            // If master has no target, follow the master
+            else if (!masterTarget && getFollowCreature() != master) {
+                setFollowCreature(master);
+            }
+        }
+    }
     addEventWalk();
 
     const auto &attackedCreature = getAttackedCreature();

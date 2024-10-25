@@ -7,18 +7,18 @@ combat:setParameter(COMBAT_PARAM_AGGRESSIVE, false)
 
 function onGetFormulaValues(player, level, magicLevel)
 	if level >= 2000 then
-			local min = (level / 5) + (magicLevel * 40) +42
-			local max = (level / 5) + (magicLevel * 60) +90
+			local min = (level / 5) + (magicLevel * 80) +42
+			local max = (level / 5) + (magicLevel * 120) +90
 			return min, max
 else if  level >= 1500  and level <= 1999 then
 
-local min = (level / 5) + (magicLevel * 27)
-			local max = (level / 5) + (magicLevel * 40)
+local min = (level / 5) + (magicLevel * 60)
+			local max = (level / 5) + (magicLevel * 100)
 			return min, max
 
 else if  level >= 700 and level <= 1499 then
 
-local min = (level / 5) + (magicLevel * 25)
+local min = (level / 5) + (magicLevel * 30)
 			local max = (level / 5) + (magicLevel * 40)
 			return min, max
 elseif level >= 2 and level <= 699 then

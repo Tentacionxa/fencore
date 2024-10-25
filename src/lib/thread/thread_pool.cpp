@@ -13,7 +13,7 @@
 
 #include "game/game.hpp"
 #include "utils/tools.hpp"
-
+ThreadPool threadPool(logger);
 /**
  * Regardless of how many cores your computer have, we want at least
  * 4 threads because, even though they won't improve processing they

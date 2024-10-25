@@ -15,7 +15,7 @@
 #include <condition_variable>
 #include <queue>
 #include <functional>
-
+extern ThreadPool threadPool;
 class ThreadPool : public BS::thread_pool {
 public:
     explicit ThreadPool(Logger &logger);

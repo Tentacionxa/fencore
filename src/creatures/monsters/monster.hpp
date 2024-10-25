@@ -18,7 +18,6 @@ class Game;
 
 class Monster final : public Creature {
 public:
-void dropLoot(std::shared_ptr<Creature> killer);
 	static std::shared_ptr<Monster> createMonster(const std::string &name);
 	static int32_t despawnRange;
 	static int32_t despawnRadius;
@@ -308,8 +307,6 @@ void dropLoot(std::shared_ptr<Creature> killer);
 	void setForgeStack(uint16_t stack) {
 		forgeStack = stack;
 	}
-
-
 
 	ForgeClassifications_t getMonsterForgeClassification() const {
 		return monsterForgeClassification;

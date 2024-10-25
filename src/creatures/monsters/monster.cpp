@@ -876,6 +876,9 @@ void Monster::doAttacking(uint32_t interval) {
     // Cache distance checks to avoid recalculating for every spell
     uint32_t distance = std::max<uint32_t>(Position::getDistanceX(myPos, targetPos), Position::getDistanceY(myPos, targetPos));
 
+    static uint32_t lastMeleeAttackTime = 0;  // Track the last melee attack time
+    uint32_t currentTime = OTSYS_TIME();
+
     for (const spellBlock_t &spellBlock : mType->info.attackSpells) {
         bool inRange = false;
 
@@ -883,6 +886,11 @@ void Monster::doAttacking(uint32_t interval) {
             // Melee attack: only execute if within 1 tile of the player (distance <= 1)
             if (distance > 1) {
                 continue;  // Skip melee attack if out of range
+            }
+
+            // Add 0.5-second delay between melee attacks
+            if (currentTime - lastMeleeAttackTime < 500) {
+                continue;  // Skip melee attack if not enough time has passed
             }
         } else if (spellBlock.range != 0 && distance > spellBlock.range) {
             // Ranged spell: skip if out of range
@@ -896,18 +904,15 @@ void Monster::doAttacking(uint32_t interval) {
                 updateLook = false;
             }
 
-            // Increase melee damage by 50% and spell damage by 20%
-            if (spellBlock.isMelee) {
-                minCombatValue = static_cast<int32_t>(spellBlock.minCombatValue);
-                maxCombatValue = static_cast<int32_t>(spellBlock.maxCombatValue);
-            } else {
-                minCombatValue = static_cast<int32_t>(spellBlock.minCombatValue);
-                maxCombatValue = static_cast<int32_t>(spellBlock.maxCombatValue);
-            }
+            // Apply damage as specified for melee and ranged spells
+            minCombatValue = static_cast<int32_t>(spellBlock.minCombatValue);
+            maxCombatValue = static_cast<int32_t>(spellBlock.maxCombatValue);
 
             spellBlock.spell->castSpell(getMonster(), attackedCreature);
+
             if (spellBlock.isMelee) {
                 extraMeleeAttack = false;
+                lastMeleeAttackTime = currentTime;  // Update last melee attack time after attack
             }
         }
     }
@@ -920,6 +925,7 @@ void Monster::doAttacking(uint32_t interval) {
         attackTicks = 0;
     }
 }
+
 
 
 bool Monster::canUseAttack(const Position &pos, const std::shared_ptr<Creature> &target) const {

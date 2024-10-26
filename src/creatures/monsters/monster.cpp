@@ -2033,28 +2033,51 @@ void Monster::updateLookDirection() {
 	g_game().internalCreatureTurn(getMonster(), newDir);
 }
 
-void Monster::dropLoot(std::shared_ptr<Container> corpse, std::shared_ptr<Creature>) {
-	if (corpse && lootDrop) {
-		// Only fiendish drops sliver
-		if (ForgeClassifications_t classification = getMonsterForgeClassification();
-		    // Condition
-		    classification == ForgeClassifications_t::FORGE_FIENDISH_MONSTER) {
-			auto minSlivers = g_configManager().getNumber(FORGE_MIN_SLIVERS, __FUNCTION__);
-			auto maxSlivers = g_configManager().getNumber(FORGE_MAX_SLIVERS, __FUNCTION__);
+void Monster::dropLoot(std::shared_ptr<Container> corpse, std::shared_ptr<Creature> mostDamageCreature) {
+    if (!corpse || !lootDrop) {
+        return;
+    }
 
-			auto sliverCount = static_cast<uint16_t>(uniform_random(minSlivers, maxSlivers));
+    int maxItems = 5;
+    int itemCount = 0;
 
-			std::shared_ptr<Item> sliver = Item::CreateItem(ITEM_FORGE_SLIVER, sliverCount);
-			if (g_game().internalAddItem(corpse, sliver) != RETURNVALUE_NOERROR) {
-				corpse->internalAddThing(sliver);
-			}
-		}
-		if (!this->isRewardBoss() && g_configManager().getNumber(RATE_LOOT, __FUNCTION__) > 0) {
-			g_callbacks().executeCallback(EventCallback_t::monsterOnDropLoot, &EventCallback::monsterOnDropLoot, getMonster(), corpse);
-			g_callbacks().executeCallback(EventCallback_t::monsterPostDropLoot, &EventCallback::monsterPostDropLoot, getMonster(), corpse);
-		}
-	}
+    // Check if the monster has a Forge classification and add slivers if conditions are met
+    if (ForgeClassifications_t classification = getMonsterForgeClassification();
+        classification == ForgeClassifications_t::FORGE_FIENDISH_MONSTER) {
+        
+        auto minSlivers = g_configManager().getNumber(FORGE_MIN_SLIVERS, __FUNCTION__);
+        auto maxSlivers = g_configManager().getNumber(FORGE_MAX_SLIVERS, __FUNCTION__);
+        auto sliverCount = static_cast<uint16_t>(uniform_random(minSlivers, maxSlivers));
+
+        std::shared_ptr<Item> sliver = Item::CreateItem(ITEM_FORGE_SLIVER, sliverCount);
+        if (sliver) {
+            if (g_game().internalAddItem(corpse, sliver) != RETURNVALUE_NOERROR) {
+                corpse->internalAddThing(sliver);
+            }
+            itemCount++;  // Count slivers as part of the loot limit
+        }
+    }
+
+    // Add normal loot items from lootTable, limiting to 5 items total
+    if (!this->isRewardBoss() && g_configManager().getNumber(RATE_LOOT, __FUNCTION__) > 0) {
+        for (const auto& lootItem : lootTable) {  // Replace lootTable with the correct loot source
+            if (itemCount >= maxItems) {
+                break;  // Stop adding items after reaching the limit
+            }
+
+            std::shared_ptr<Item> item = Item::CreateItem(lootItem.id, lootItem.count);
+            if (item) {
+                corpse->internalAddThing(item);
+                itemCount++;
+            }
+        }
+
+        // Trigger loot-related callbacks
+        g_callbacks().executeCallback(EventCallback_t::monsterOnDropLoot, &EventCallback::monsterOnDropLoot, getMonster(), corpse);
+        g_callbacks().executeCallback(EventCallback_t::monsterPostDropLoot, &EventCallback::monsterPostDropLoot, getMonster(), corpse);
+    }
 }
+
 
 void Monster::setNormalCreatureLight() {
 	internalLight = mType->info.light;

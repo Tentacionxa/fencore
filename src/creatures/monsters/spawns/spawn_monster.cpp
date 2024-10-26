@@ -242,7 +242,7 @@ void SpawnMonster::checkSpawnMonster() {
 
     for (auto &[spawnMonsterId, sb] : spawnMonsterMap) {
         if (spawnedMonsterMap.contains(spawnMonsterId)) {
-            continue; // Monster is already spawned
+            continue;
         }
 
         const auto &mType = sb.getMonsterType();
@@ -250,31 +250,29 @@ void SpawnMonster::checkSpawnMonster() {
             continue;
         }
 
-        // Check for any players on the map (within spawn area)
- for (const auto& [id, player] : g_game().getPlayers()) {
-    if (!player->isInvisible()) {  // Use isInvisible to determine visibility
-        Position playerPos = player->getPosition();
-        int maxDistance = 10;  // Example threshold distance for visibility on the map
+        bool playerOnMap = false;  // Declare `playerOnMap` here
+        for (const auto& [id, player] : g_game().getPlayers()) {
+            if (!player->isInvisible()) {
+                Position playerPos = player->getPosition();
+                int maxDistance = 10;  // Define a suitable max distance threshold for visibility
 
-        if (Position::getDistanceX(playerPos, sb.pos) <= maxDistance &&
-            Position::getDistanceY(playerPos, sb.pos) <= maxDistance) {
-            playerOnMap = true;
-            break;
+                if (Position::getDistanceX(playerPos, sb.pos) <= maxDistance &&
+                    Position::getDistanceY(playerPos, sb.pos) <= maxDistance) {
+                    playerOnMap = true;
+                    break;
+                }
+            }
         }
-    }
- 
- }
-        
+
         if (playerOnMap) {
-            sb.lastSpawn = OTSYS_TIME(); // Reset spawn timer
-            continue; // Skip spawning if players are on the map
+            sb.lastSpawn = OTSYS_TIME();  // Reset spawn timer
+            continue;  // Skip spawning if players are on the map
         }
 
         if (OTSYS_TIME() < sb.lastSpawn + sb.interval) {
-            continue; // Skip if the spawn interval has not passed
+            continue;
         }
 
-        // Spawn the monster if no players are present
         if (mType->info.isBlockable) {
             spawnMonster(spawnMonsterId, sb, mType);
         } else {
@@ -288,6 +286,7 @@ void SpawnMonster::checkSpawnMonster() {
         );
     }
 }
+
 
 
 void SpawnMonster::scheduleSpawn(uint32_t spawnMonsterId, spawnBlock_t &sb, const std::shared_ptr<MonsterType> mType, uint16_t interval, bool startup /*= false*/) {

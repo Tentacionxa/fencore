@@ -1370,16 +1370,7 @@ bool Game::removeCreature(std::shared_ptr < Creature > creature, bool isLogout /
 
   return true;
 }
-void Game::processTaskQueue() {
-    std::lock_guard<std::mutex> lock(queueMutex);
 
-    // Execute all queued tasks
-    while (!taskQueue.empty()) {
-        auto task = taskQueue.front();
-        taskQueue.pop();
-        task();  // Execute the task
-    }
-}
 
 void Game::executeDeath(uint32_t creatureId) {
     metrics::method_latency measure(__METHOD_NAME__);

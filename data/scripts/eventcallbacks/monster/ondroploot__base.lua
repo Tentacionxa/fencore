@@ -23,12 +23,21 @@ function callback.monsterOnDropLoot(monster, corpse)
 	local gut = charm and charm:raceId() == mType:raceId()
 
 	local lootTable = mType:generateLootRoll({ factor = factor, gut = gut }, {})
-	corpse:addLoot(lootTable)
+	local maxItems = 5
+	local itemsAdded = 0
+
 	for _, item in ipairs(lootTable) do
-		if item.gut then
-			msgSuffix = msgSuffix .. " (active charm bonus)"
+		if itemsAdded < maxItems then
+			corpse:addItem(item.id, item.count)
+			itemsAdded = itemsAdded + 1
+			if item.gut then
+				msgSuffix = msgSuffix .. " (active charm bonus)"
+			end
+		else
+			break
 		end
 	end
+	
 	local existingSuffix = corpse:getAttribute(ITEM_ATTRIBUTE_LOOTMESSAGE_SUFFIX) or ""
 	corpse:setAttribute(ITEM_ATTRIBUTE_LOOTMESSAGE_SUFFIX, existingSuffix .. msgSuffix)
 end

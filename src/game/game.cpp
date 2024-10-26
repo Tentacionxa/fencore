@@ -1372,12 +1372,29 @@ bool Game::removeCreature(std::shared_ptr < Creature > creature, bool isLogout /
 }
 
 void Game::executeDeath(uint32_t creatureId) {
-  metrics::method_latency measure(__METHOD_NAME__);
-  std::shared_ptr < Creature > creature = getCreatureByID(creatureId);
-  if (creature && !creature -> isRemoved()) {
-    afterCreatureZoneChange(creature, creature -> getZones(), {});
-    creature -> onDeath();
-  }
+    // Fetch creature by ID
+    std::shared_ptr<Creature> creature = getCreatureByID(creatureId);
+    if (!creature || creature->isRemoved()) {
+        return;
+    }
+
+    // Add death execution to the task queue
+    taskQueue.push([this, creature]() {
+        if (!creature->isRemoved()) {
+            g_game().removeCreature(creature); // Use the correct method for handling death
+        }
+    });
+}
+
+void Game::processTaskQueue() {
+    std::unique_lock<std::mutex> lock(queueMutex);
+    while (!taskQueue.empty()) {
+        auto task = taskQueue.front();
+        taskQueue.pop();
+        lock.unlock(); // Unlock during task execution
+        task(); // Execute the task
+        lock.lock(); // Lock again for the next iteration
+    }
 }
 
 void Game::playerTeleport(uint32_t playerId,
@@ -2383,12 +2400,12 @@ ReturnValue Game::internalAddItem(std::shared_ptr < Cylinder > toCylinder, std::
 
 ReturnValue Game::internalAddItem(std::shared_ptr<Cylinder> toCylinder, std::shared_ptr<Item> item, int32_t index, uint32_t flags, bool test, uint32_t& remainderCount) {
     metrics::method_latency measure(__METHOD_NAME__);
-    
+
     if (toCylinder == nullptr) {
         g_logger().error("[{}] toCylinder is nullptr", __FUNCTION__);
         return RETURNVALUE_NOTPOSSIBLE;
     }
-    
+
     if (item == nullptr) {
         g_logger().error("[{}] item is nullptr", __FUNCTION__);
         return RETURNVALUE_NOTPOSSIBLE;
@@ -2397,16 +2414,13 @@ ReturnValue Game::internalAddItem(std::shared_ptr<Cylinder> toCylinder, std::sha
     auto addedItem = toCylinder->getItem();
     std::shared_ptr<Cylinder> destCylinder = toCylinder;
     std::shared_ptr<Item> toItem = nullptr;
-
     toCylinder = toCylinder->queryDestination(index, item, &toItem, flags);
 
-    // Check if we can add this item
     ReturnValue ret = toCylinder->queryAdd(index, item, item->getItemCount(), flags);
     if (ret != RETURNVALUE_NOERROR) {
         return ret;
     }
 
-    // Check max query count for the destination
     uint32_t maxQueryCount = 0;
     ret = destCylinder->queryMaxCount(INDEX_WHEREEVER, item, item->getItemCount(), maxQueryCount, flags);
 
@@ -2418,12 +2432,14 @@ ReturnValue Game::internalAddItem(std::shared_ptr<Cylinder> toCylinder, std::sha
         return RETURNVALUE_NOERROR;
     }
 
-    uint32_t batchSize = 20;  // Batch size to process in chunks
+    // Process in batches, but synchronously
+    uint32_t batchSize = 20;  // Adjust batch size to fit server capacity
     uint32_t remaining = item->getItemCount();
+
     while (remaining > 0) {
         uint32_t currentBatch = std::min(batchSize, remaining);
         item->setItemCount(currentBatch);
-        
+
         if (item->isStackable() && item->equals(toItem)) {
             uint32_t m = std::min<uint32_t>(item->getItemCount(), maxQueryCount);
             uint32_t n = std::min<uint32_t>(toItem->getStackSize() - toItem->getItemCount(), m);
@@ -2446,7 +2462,6 @@ ReturnValue Game::internalAddItem(std::shared_ptr<Cylinder> toCylinder, std::sha
                     }
                 }
             } else {
-                // fully merged with toItem, item will be destroyed
                 item->onRemoved();
 
                 int32_t itemIndex = toCylinder->getThingIndex(toItem);
@@ -2463,10 +2478,9 @@ ReturnValue Game::internalAddItem(std::shared_ptr<Cylinder> toCylinder, std::sha
             }
         }
 
-        remaining -= currentBatch;  // Decrease remaining count
-
+        remaining -= currentBatch;
         if (remaining > 0) {
-            item->setItemCount(remaining);  // Set item count to remaining
+            item->setItemCount(remaining);  // Continue processing remaining items
         }
     }
 
@@ -2478,6 +2492,7 @@ ReturnValue Game::internalAddItem(std::shared_ptr<Cylinder> toCylinder, std::sha
 
     return RETURNVALUE_NOERROR;
 }
+
 
 
 ReturnValue Game::internalRemoveItem(std::shared_ptr < Item > item, int32_t count /*= -1*/ , bool test /*= false*/ , uint32_t flags /*= 0*/ , bool force /*= false*/ ) {

@@ -233,61 +233,43 @@ void SpawnMonster::startup(bool delayed) {
 }
 
 void SpawnMonster::checkSpawnMonster() {
-    if (checkSpawnMonsterEvent == 0) {
-        return;
-    }
+	if (checkSpawnMonsterEvent == 0) {
+		return;
+	}
 
-    checkSpawnMonsterEvent = 0;
-    cleanup();
+	checkSpawnMonsterEvent = 0;
+	cleanup();
 
-    for (auto &[spawnMonsterId, sb] : spawnMonsterMap) {
-        if (spawnedMonsterMap.contains(spawnMonsterId)) {
-            continue;
-        }
+	for (auto &[spawnMonsterId, sb] : spawnMonsterMap) {
+		if (spawnedMonsterMap.contains(spawnMonsterId)) {
+			continue;
+		}
 
-        const auto &mType = sb.getMonsterType();
-        if (!mType) {
-            continue;
-        }
+		const auto &mType = sb.getMonsterType();
+		if (!mType) {
+			continue;
+		}
+		if (!mType->canSpawn(sb.pos) || (mType->info.isBlockable && findPlayer(sb.pos))) {
+			sb.lastSpawn = OTSYS_TIME();
+			continue;
+		}
+		if (OTSYS_TIME() < sb.lastSpawn + sb.interval) {
+			continue;
+		}
 
-        bool playerOnMap = false;  // Declare `playerOnMap` here
-        for (const auto& [id, player] : g_game().getPlayers()) {
-            if (!player->isInvisible()) {
-                Position playerPos = player->getPosition();
-                int maxDistance = 10;  // Define a suitable max distance threshold for visibility
+		if (mType->info.isBlockable) {
+			spawnMonster(spawnMonsterId, sb, mType);
+		} else {
+			scheduleSpawn(spawnMonsterId, sb, mType, 3 * NONBLOCKABLE_SPAWN_MONSTER_INTERVAL);
+		}
+	}
 
-                if (Position::getDistanceX(playerPos, sb.pos) <= maxDistance &&
-                    Position::getDistanceY(playerPos, sb.pos) <= maxDistance) {
-                    playerOnMap = true;
-                    break;
-                }
-            }
-        }
-
-        if (playerOnMap) {
-            sb.lastSpawn = OTSYS_TIME();  // Reset spawn timer
-            continue;  // Skip spawning if players are on the map
-        }
-
-        if (OTSYS_TIME() < sb.lastSpawn + sb.interval) {
-            continue;
-        }
-
-        if (mType->info.isBlockable) {
-            spawnMonster(spawnMonsterId, sb, mType);
-        } else {
-            scheduleSpawn(spawnMonsterId, sb, mType, 3 * NONBLOCKABLE_SPAWN_MONSTER_INTERVAL);
-        }
-    }
-
-    if (spawnedMonsterMap.size() < spawnMonsterMap.size()) {
-        checkSpawnMonsterEvent = g_dispatcher().scheduleEvent(
-            getInterval(), [this] { checkSpawnMonster(); }, "SpawnMonster::checkSpawnMonster"
-        );
-    }
+	if (spawnedMonsterMap.size() < spawnMonsterMap.size()) {
+		checkSpawnMonsterEvent = g_dispatcher().scheduleEvent(
+			getInterval(), [this] { checkSpawnMonster(); }, "SpawnMonster::checkSpawnMonster"
+		);
+	}
 }
-
-
 
 void SpawnMonster::scheduleSpawn(uint32_t spawnMonsterId, spawnBlock_t &sb, const std::shared_ptr<MonsterType> mType, uint16_t interval, bool startup /*= false*/) {
 	if (interval <= 0) {

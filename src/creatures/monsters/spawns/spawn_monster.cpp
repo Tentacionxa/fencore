@@ -251,21 +251,19 @@ void SpawnMonster::checkSpawnMonster() {
         }
 
         // Check for any players on the map (within spawn area)
-   for (const auto& [id, player] : g_game().getPlayers()) {
-    if (player->isVisible() && player->getPosition().isWithinMapArea(sb.pos)) {
-                playerOnMap = true;
-                break;
-            }
-        }bool playerOnScreen = false;
-auto spectators = Spectators().find<Player>(sb.pos);
-for (const auto& spectator : spectators) {
-    // Check if spectator is a Player and if they do not have the Ignore flag
-    auto player = std::dynamic_pointer_cast<Player>(spectator);
-    if (player && !player->hasFlag(PlayerFlags_t::IgnoredByMonsters)) {
-        playerOnScreen = true;
-        break;
+ for (const auto& [id, player] : g_game().getPlayers()) {
+    if (!player->isInvisible()) {  // Use isInvisible to determine visibility
+        Position playerPos = player->getPosition();
+        int maxDistance = 10;  // Example threshold distance for visibility on the map
+
+        if (Position::getDistanceX(playerPos, sb.pos) <= maxDistance &&
+            Position::getDistanceY(playerPos, sb.pos) <= maxDistance) {
+            playerOnMap = true;
+            break;
+        }
     }
-}
+ 
+ }
         
         if (playerOnMap) {
             sb.lastSpawn = OTSYS_TIME(); // Reset spawn timer

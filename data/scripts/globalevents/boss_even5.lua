@@ -5,7 +5,7 @@ local config = {
     },
     bossPosition = Position(33540, 32383, 12),
     bossName     = 'Gaz\'haragoth',
-    spawnTime    = '17:00:00'
+    spawnTime    = '18:00:00'
 }
 
 local GazRespawn = GlobalEvent("GazRespawn")

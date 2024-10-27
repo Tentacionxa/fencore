@@ -5,7 +5,7 @@ local config = {
     },
     bossPosition = Position(32122, 32686, 4),
     bossName     = 'Ferumbras',
-    spawnTime    = '19:00:00'
+    spawnTime    = '20:00:00'
 }
 
 local FerumbrasRespawn = GlobalEvent("FerumbrasRespawn")

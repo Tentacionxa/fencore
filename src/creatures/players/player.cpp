@@ -1948,7 +1948,7 @@ void Player::onCreatureMove(const std::shared_ptr<Creature> &creature, const std
 	const auto &followCreature = getFollowCreature();
 	if (hasFollowPath && (creature == followCreature || (creature.get() == this && followCreature))) {
 		isUpdatingPath = false;
-		g_dispatcher().addEvent([creatureId = getID()] { g_game().updateCreatureWalk(creatureId); }, "Game::updateCreatureWalk");
+		g_game().updateCreatureWalk(getID()); // internally uses addEventWalk.
 	}
 
 	if (creature != getPlayer()) {
@@ -3048,8 +3048,13 @@ void Player::addInFightTicks(bool pzlock /*= false*/) {
 
 	updateImbuementTrackerStats();
 
-	std::shared_ptr<Condition> condition = Condition::createCondition(CONDITIONID_DEFAULT, CONDITION_INFIGHT, g_configManager().getNumber(PZ_LOCKED, __FUNCTION__), 0);
-	addCondition(condition);
+	// this method can be called asynchronously.
+	g_dispatcher().context().tryAddEvent([self = std::weak_ptr<Player>(getPlayer())] {
+		if (const auto &player = self.lock()) {
+			player->addCondition(Condition::createCondition(CONDITIONID_DEFAULT, CONDITION_INFIGHT, g_configManager().getNumber(PZ_LOCKED), 0));
+		}
+	},
+	                                     "Player::addInFightTicks");
 }
 
 void Player::removeList() {

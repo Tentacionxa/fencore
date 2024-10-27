@@ -11,7 +11,7 @@ local config = {
     },
     bossPosition = Position(32228, 31164, 15),
     bossName     = 'Ghazbaran',
-    spawnTime    = '16:30:00'
+    spawnTime    = '17:30:00'
 }
 
 local GhazbaranRespawn = GlobalEvent("GhazbaranRespawn")

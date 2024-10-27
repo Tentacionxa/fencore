@@ -277,7 +277,7 @@ g_dispatcher().context().tryAddEvent([ticks, self = getCreature()]() {
         [creatureId = self->getID()] { g_game().checkCreatureWalk(creatureId); },
         "Game::checkCreatureWalk"
     );
-}, "addEventWalk");
+}, "addEventWalk")};
 
 void Creature::stopEventWalk() {
 	if (eventWalk != 0) {

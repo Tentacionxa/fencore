@@ -28,6 +28,6 @@ function closeServer.onSay(player, words, param)
 	return true
 end
 
-closeServer:separator(" ")
-closeServer:groupType("god")
-closeServer:register()
+----closeServer:separator(" ")
+--closeServer:groupType("god")
+--closeServer:register()

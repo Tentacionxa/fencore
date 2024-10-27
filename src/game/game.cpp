@@ -1371,16 +1371,14 @@ bool Game::removeCreature(std::shared_ptr < Creature > creature, bool isLogout /
   return true;
 }
 
-
 void Game::executeDeath(uint32_t creatureId) {
-	metrics::method_latency measure(__METHOD_NAME__);
-	std::shared_ptr<Creature> creature = getCreatureByID(creatureId);
-	if (creature && !creature->isRemoved()) {
-		afterCreatureZoneChange(creature, creature->getZones(), {});
-		creature->onDeath();
-	}
+  metrics::method_latency measure(__METHOD_NAME__);
+  std::shared_ptr < Creature > creature = getCreatureByID(creatureId);
+  if (creature && !creature -> isRemoved()) {
+    afterCreatureZoneChange(creature, creature -> getZones(), {});
+    creature -> onDeath();
+  }
 }
-
 
 void Game::playerTeleport(uint32_t playerId,
   const Position & newPosition) {
@@ -2383,102 +2381,92 @@ ReturnValue Game::internalAddItem(std::shared_ptr < Cylinder > toCylinder, std::
   return internalAddItem(std::move(toCylinder), std::move(item), index, flags, test, remainderCount);
 }
 
-ReturnValue Game::internalAddItem(std::shared_ptr<Cylinder> toCylinder, std::shared_ptr<Item> item, int32_t index, uint32_t flags, bool test, uint32_t& remainderCount) {
-    metrics::method_latency measure(__METHOD_NAME__);
+ReturnValue Game::internalAddItem(std::shared_ptr < Cylinder > toCylinder, std::shared_ptr < Item > item, int32_t index, uint32_t flags, bool test, uint32_t & remainderCount) {
+  metrics::method_latency measure(__METHOD_NAME__);
+  if (toCylinder == nullptr) {
+    g_logger().error("[{}] fromCylinder is nullptr", __FUNCTION__);
+    return RETURNVALUE_NOTPOSSIBLE;
+  }
+  if (item == nullptr) {
+    g_logger().error("[{}] item is nullptr", __FUNCTION__);
+    return RETURNVALUE_NOTPOSSIBLE;
+  }
 
-    if (toCylinder == nullptr) {
-        g_logger().error("[{}] toCylinder is nullptr", __FUNCTION__);
-        return RETURNVALUE_NOTPOSSIBLE;
-    }
+  auto addedItem = toCylinder -> getItem();
 
-    if (item == nullptr) {
-        g_logger().error("[{}] item is nullptr", __FUNCTION__);
-        return RETURNVALUE_NOTPOSSIBLE;
-    }
+  std::shared_ptr < Cylinder > destCylinder = toCylinder;
+  std::shared_ptr < Item > toItem = nullptr;
+  toCylinder = toCylinder -> queryDestination(index, item, & toItem, flags);
 
-    auto addedItem = toCylinder->getItem();
-    std::shared_ptr<Cylinder> destCylinder = toCylinder;
-    std::shared_ptr<Item> toItem = nullptr;
-    toCylinder = toCylinder->queryDestination(index, item, &toItem, flags);
+  // check if we can add this item
+  ReturnValue ret = toCylinder -> queryAdd(index, item, item -> getItemCount(), flags);
+  if (ret != RETURNVALUE_NOERROR) {
+    return ret;
+  }
 
-    ReturnValue ret = toCylinder->queryAdd(index, item, item->getItemCount(), flags);
-    if (ret != RETURNVALUE_NOERROR) {
-        return ret;
-    }
+  /*
+  Check if we can move add the whole amount, we do this by checking against the original cylinder,
+  since the queryDestination can return a cylinder that might only hold a part of the full amount.
+  */
+  uint32_t maxQueryCount = 0;
+  ret = destCylinder -> queryMaxCount(INDEX_WHEREEVER, item, item -> getItemCount(), maxQueryCount, flags);
 
-    uint32_t maxQueryCount = 0;
-    ret = destCylinder->queryMaxCount(INDEX_WHEREEVER, item, item->getItemCount(), maxQueryCount, flags);
+  if (ret != RETURNVALUE_NOERROR && addedItem && addedItem -> getID() != ITEM_REWARD_CONTAINER) {
+    return ret;
+  }
 
-    if (ret != RETURNVALUE_NOERROR && addedItem && addedItem->getID() != ITEM_REWARD_CONTAINER) {
-        return ret;
-    }
-
-    if (test) {
-        return RETURNVALUE_NOERROR;
-    }
-
-    // Process in batches, but synchronously
-    uint32_t batchSize = 20;  // Adjust batch size to fit server capacity
-    uint32_t remaining = item->getItemCount();
-
-    while (remaining > 0) {
-        uint32_t currentBatch = std::min(batchSize, remaining);
-        item->setItemCount(currentBatch);
-
-        if (item->isStackable() && item->equals(toItem)) {
-            uint32_t m = std::min<uint32_t>(item->getItemCount(), maxQueryCount);
-            uint32_t n = std::min<uint32_t>(toItem->getStackSize() - toItem->getItemCount(), m);
-            toCylinder->updateThing(toItem, toItem->getID(), toItem->getItemCount() + n);
-
-            int32_t count = m - n;
-            if (count > 0) {
-                if (item->getItemCount() != count) {
-                    std::shared_ptr<Item> remainderItem = item->clone();
-                    remainderItem->setItemCount(count);
-                    if (internalAddItem(destCylinder, remainderItem, INDEX_WHEREEVER, flags, false) != RETURNVALUE_NOERROR) {
-                        remainderCount = count;
-                    }
-                } else {
-                    toCylinder->addThing(index, item);
-
-                    int32_t itemIndex = toCylinder->getThingIndex(item);
-                    if (itemIndex != -1) {
-                        toCylinder->postAddNotification(item, nullptr, itemIndex);
-                    }
-                }
-            } else {
-                item->onRemoved();
-
-                int32_t itemIndex = toCylinder->getThingIndex(toItem);
-                if (itemIndex != -1) {
-                    toCylinder->postAddNotification(toItem, nullptr, itemIndex);
-                }
-            }
-        } else {
-            toCylinder->addThing(index, item);
-
-            int32_t itemIndex = toCylinder->getThingIndex(item);
-            if (itemIndex != -1) {
-                toCylinder->postAddNotification(item, nullptr, itemIndex);
-            }
-        }
-
-        remaining -= currentBatch;
-        if (remaining > 0) {
-            item->setItemCount(remaining);  // Continue processing remaining items
-        }
-    }
-
-    if (addedItem && addedItem->isQuiver() &&
-        addedItem->getHoldingPlayer() &&
-        addedItem->getHoldingPlayer()->getThing(CONST_SLOT_RIGHT) == addedItem) {
-        addedItem->getHoldingPlayer()->sendInventoryItem(CONST_SLOT_RIGHT, addedItem);
-    }
-
+  if (test) {
     return RETURNVALUE_NOERROR;
+  }
+
+  if (item -> isStackable() && item -> equals(toItem)) {
+    uint32_t m = std::min < uint32_t > (item -> getItemCount(), maxQueryCount);
+    uint32_t n = std::min < uint32_t > (toItem -> getStackSize() - toItem -> getItemCount(), m);
+
+    toCylinder -> updateThing(toItem, toItem -> getID(), toItem -> getItemCount() + n);
+
+    int32_t count = m - n;
+    if (count > 0) {
+      if (item -> getItemCount() != count) {
+        std::shared_ptr < Item > remainderItem = item -> clone();
+        remainderItem -> setItemCount(count);
+        if (internalAddItem(destCylinder, remainderItem, INDEX_WHEREEVER, flags, false) != RETURNVALUE_NOERROR) {
+          remainderCount = count;
+        }
+      } else {
+        toCylinder -> addThing(index, item);
+
+        int32_t itemIndex = toCylinder -> getThingIndex(item);
+        if (itemIndex != -1) {
+          toCylinder -> postAddNotification(item, nullptr, itemIndex);
+        }
+      }
+    } else {
+      // fully merged with toItem, item will be destroyed
+      item -> onRemoved();
+
+      int32_t itemIndex = toCylinder -> getThingIndex(toItem);
+      if (itemIndex != -1) {
+        toCylinder -> postAddNotification(toItem, nullptr, itemIndex);
+      }
+    }
+  } else {
+    toCylinder -> addThing(index, item);
+
+    int32_t itemIndex = toCylinder -> getThingIndex(item);
+    if (itemIndex != -1) {
+      toCylinder -> postAddNotification(item, nullptr, itemIndex);
+    }
+  }
+
+  if (addedItem && addedItem -> isQuiver() &&
+    addedItem -> getHoldingPlayer() &&
+    addedItem -> getHoldingPlayer() -> getThing(CONST_SLOT_RIGHT) == addedItem) {
+    addedItem -> getHoldingPlayer() -> sendInventoryItem(CONST_SLOT_RIGHT, addedItem);
+  }
+
+  return RETURNVALUE_NOERROR;
 }
-
-
 
 ReturnValue Game::internalRemoveItem(std::shared_ptr < Item > item, int32_t count /*= -1*/ , bool test /*= false*/ , uint32_t flags /*= 0*/ , bool force /*= false*/ ) {
   metrics::method_latency measure(__METHOD_NAME__);
@@ -3057,78 +3045,68 @@ ReturnValue Game::internalTeleport(const std::shared_ptr < Thing > & thing,
   return RETURNVALUE_NOTPOSSIBLE;
 }
 
-void Game::playerQuickLootCorpse(std::shared_ptr<Player> player, std::shared_ptr<Container> corpse, const Position& position) {
-    if (!player || !corpse) {
-        return;
+void Game::playerQuickLootCorpse(std::shared_ptr < Player > player, std::shared_ptr < Container > corpse,
+  const Position & position) {
+  if (!player || !corpse) {
+    return;
+  }
+
+  std::vector < std::shared_ptr < Item >> itemList;
+  bool ignoreListItems = (player -> quickLootFilter == QUICKLOOTFILTER_SKIPPEDLOOT);
+
+  bool missedAnyGold = false;
+  bool missedAnyItem = false;
+
+  for (ContainerIterator it = corpse -> iterator(); it.hasNext(); it.advance()) {
+    std::shared_ptr < Item > item = * it;
+    bool listed = player -> isQuickLootListedItem(item);
+    if ((listed && ignoreListItems) || (!listed && !ignoreListItems)) {
+      if (item -> getWorth() != 0) {
+        missedAnyGold = true;
+      } else {
+        missedAnyItem = true;
+      }
+      continue;
     }
 
-    std::vector<std::shared_ptr<Item>> itemList;
-    bool ignoreListItems = (player->quickLootFilter == QUICKLOOTFILTER_SKIPPEDLOOT);
+    itemList.push_back(item);
+  }
 
-    bool missedAnyGold = false;
-    bool missedAnyItem = false;
-    bool allItemsLooted = true;  // Track if all items were successfully looted
+  bool shouldNotifyCapacity = false;
+  ObjectCategory_t shouldNotifyNotEnoughRoom = OBJECTCATEGORY_NONE;
 
-    for (ContainerIterator it = corpse->iterator(); it.hasNext(); it.advance()) {
-        std::shared_ptr<Item> item = *it;
-        bool listed = player->isQuickLootListedItem(item);
-        if ((listed && ignoreListItems) || (!listed && !ignoreListItems)) {
-            if (item->getWorth() != 0) {
-                missedAnyGold = true;
-            } else {
-                missedAnyItem = true;
-            }
-            allItemsLooted = false;  // Some items were missed
-            continue;
-        }
+  uint32_t totalLootedGold = 0;
+  uint32_t totalLootedItems = 0;
+  for (const std::shared_ptr < Item > & item: itemList) {
+    uint32_t worth = item -> getWorth();
+    uint16_t baseCount = item -> getItemCount();
+    ObjectCategory_t category = getObjectCategory(item);
 
-        itemList.push_back(item);
+    ReturnValue ret = internalCollectManagedItems(player, item, category);
+    if (ret == RETURNVALUE_NOTENOUGHCAPACITY) {
+      shouldNotifyCapacity = true;
+    } else if (ret == RETURNVALUE_CONTAINERNOTENOUGHROOM) {
+      shouldNotifyNotEnoughRoom = category;
     }
 
-    bool shouldNotifyCapacity = false;
-    ObjectCategory_t shouldNotifyNotEnoughRoom = OBJECTCATEGORY_NONE;
-
-    uint32_t totalLootedGold = 0;
-    uint32_t totalLootedItems = 0;
-    for (const std::shared_ptr<Item>& item : itemList) {
-        uint32_t worth = item->getWorth();
-        uint16_t baseCount = item->getItemCount();
-        ObjectCategory_t category = getObjectCategory(item);
-
-        ReturnValue ret = internalCollectManagedItems(player, item, category);
-        if (ret == RETURNVALUE_NOTENOUGHCAPACITY) {
-            shouldNotifyCapacity = true;
-            allItemsLooted = false;  // Some items could not be looted
-        } else if (ret == RETURNVALUE_CONTAINERNOTENOUGHROOM) {
-            shouldNotifyNotEnoughRoom = category;
-            allItemsLooted = false;  // Not enough room to loot some items
-        }
-
-        bool success = ret == RETURNVALUE_NOERROR;
-        if (worth != 0) {
-            missedAnyGold = missedAnyGold || !success;
-            if (success) {
-                player->sendLootStats(item, baseCount);
-                totalLootedGold += worth;
-            } else {
-                // item is not completely moved
-                totalLootedGold += worth - item->getWorth();
-            }
-        } else {
-            missedAnyItem = missedAnyItem || !success;
-            if (success || item->getItemCount() != baseCount) {
-                totalLootedItems++;
-                player->sendLootStats(item, item->getItemCount());
-            }
-        }
+    bool success = ret == RETURNVALUE_NOERROR;
+    if (worth != 0) {
+      missedAnyGold = missedAnyGold || !success;
+      if (success) {
+        player -> sendLootStats(item, baseCount);
+        totalLootedGold += worth;
+      } else {
+        // item is not completely moved
+        totalLootedGold += worth - item -> getWorth();
+      }
+    } else {
+      missedAnyItem = missedAnyItem || !success;
+      if (success || item -> getItemCount() != baseCount) {
+        totalLootedItems++;
+        player -> sendLootStats(item, item -> getItemCount());
+      }
     }
-
-    // Remove the corpse if all items were looted
-    if (allItemsLooted) {
-        g_game().internalRemoveItem(corpse);
-    }
-
-
+  }
 
   std::stringstream ss;
   if (totalLootedGold != 0 || missedAnyGold || totalLootedItems != 0 || missedAnyItem) {
@@ -3343,7 +3321,6 @@ if (item->getContainer() && !item->isStoreItem()) {
     }
 }
      }
-  }
 
   bool fallbackConsumed = false;
   std::shared_ptr < Container > lootContainer = findManagedContainer(player, fallbackConsumed, category, isLootContainer);

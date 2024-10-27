@@ -171,9 +171,7 @@ bool BedItem::sleep(std::shared_ptr<Player> player) {
 	g_game().setBedSleeper(static_self_cast<BedItem>(), player->getGUID());
 
 	// make the player walk onto the bed
-	g_dispatcher().addWalkEvent([this, player] { 
-		g_game().map.moveCreature(player, getTile());
-	});
+	g_game().map.moveCreature(player, getTile());
 
 	// display 'Zzzz'/sleep effect
 	g_game().addMagicEffect(player->getPosition(), CONST_ME_SLEEP);

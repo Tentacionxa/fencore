@@ -346,9 +346,6 @@ public:
 		float multiplier = mType->getDefenseMultiplier();
 		return multiplier * std::pow(1.02f, getForgeStack());
 	}
-	protected:
-	void onExecuteAsyncTasks() override;
-
 
 private:
 	auto getTargetIterator(const std::shared_ptr<Creature> &creature) {

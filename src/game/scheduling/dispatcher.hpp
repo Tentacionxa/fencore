@@ -17,8 +17,6 @@ static constexpr uint16_t SCHEDULER_MINTICKS = 50;
 
 enum class TaskGroup : int8_t {
 	ThreadPool = -1,
-	Walk,
-	WalkParallel,
 	Serial,
 	GenericParallel,
 	Last
@@ -36,13 +34,13 @@ struct DispatcherContext {
 	bool isOn() const {
 		return OTSYS_TIME() != 0;
 	}
- void tryAddEvent(std::function<void(void)> &&f) const;
+
 	bool isGroup(const TaskGroup _group) const {
 		return group == _group;
 	}
 
 	bool isAsync() const {
-		return type == DispatcherType::AsyncEvent;
+		return group != TaskGroup::Serial;
 	}
 
 	auto getGroup() const {
@@ -57,11 +55,11 @@ struct DispatcherContext {
 		return type;
 	}
 
-// Modify tryAddEvent to accept a second argument (context string)
-void tryAddEvent(std::function<void()> &&f, const std::string& context) const;
+	// postpone the event
+	void addEvent(std::function<void(void)> &&f) const;
 
-// Modify addEvent similarly
-void addEvent(std::function<void()> &&f, const std::string& context) const;
+	// if the context is async, the event will be postponed, if not, it will be executed immediately.
+	void tryAddEvent(std::function<void(void)> &&f) const;
 
 private:
 	void reset() {
@@ -99,7 +97,6 @@ public:
 	static Dispatcher &getInstance();
 
 	void addEvent(std::function<void(void)> &&f, std::string_view context, uint32_t expiresAfterMs = 0);
-	void addWalkEvent(std::function<void(void)> &&f, uint32_t expiresAfterMs = 0); // No need context name
 
 	uint64_t cycleEvent(uint32_t delay, std::function<void(void)> &&f, std::string_view context) {
 		return scheduleEvent(delay, std::move(f), context, true);
@@ -153,13 +150,11 @@ private:
 
 	inline void mergeAsyncEvents();
 	inline void mergeEvents();
-	inline void __mergeEvents(const std::array<uint8_t, 2> &groups, const bool mergeScheduledEvents);
-
-	inline void executeEvents(const TaskGroup startGroup = TaskGroup::Walk);
+	inline void executeEvents(const TaskGroup startGroup = TaskGroup::Serial);
 	inline void executeScheduledEvents();
 
-	inline void executeSerialEvents(const uint8_t groupId);
-	inline void executeParallelEvents(const uint8_t groupId);
+	inline void executeSerialEvents(std::vector<Task> &tasks);
+	inline void executeParallelEvents(std::vector<Task> &tasks, const uint8_t groupId);
 	inline std::chrono::milliseconds timeUntilNextScheduledTask() const;
 
 	inline void checkPendingTasks() {

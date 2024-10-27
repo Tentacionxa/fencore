@@ -360,19 +360,22 @@ bool SpawnMonster::addMonster(const std::string &name, const Position &pos, Dire
 }
 
 void SpawnMonster::removeMonster(std::shared_ptr<Monster> monster) {
-	uint32_t spawnMonsterId = 0;
-	for (const auto &[id, m] : spawnedMonsterMap) {
-		if (m == monster) {
-			spawnMonsterId = id;
-			break;
-		}
-	}
-	spawnedMonsterMap.erase(spawnMonsterId);
+    uint32_t spawnMonsterId = 0;
+    for (const auto &[id, m] : spawnedMonsterMap) {
+        if (m == monster) {
+            spawnMonsterId = id;
+            break;
+        }
+    }
+    // Check if monster exists in map before removing to avoid double-delete
+    if (spawnedMonsterMap.find(spawnMonsterId) != spawnedMonsterMap.end()) {
+        spawnedMonsterMap.erase(spawnMonsterId);
+    }
 }
 
 void SpawnMonster::removeMonsters() {
-	spawnMonsterMap.clear();
-	spawnedMonsterMap.clear();
+    spawnedMonsterMap.clear();  // Clear spawned monsters safely
+    spawnMonsterMap.clear();    // Clear monster spawn definitions
 }
 
 void SpawnMonster::setMonsterVariant(const std::string &variant) {
@@ -393,10 +396,10 @@ void SpawnMonster::setMonsterVariant(const std::string &variant) {
 }
 
 void SpawnMonster::stopEvent() {
-	if (checkSpawnMonsterEvent != 0) {
-		g_dispatcher().stopEvent(checkSpawnMonsterEvent);
-		checkSpawnMonsterEvent = 0;
-	}
+    if (checkSpawnMonsterEvent != 0) {
+        g_dispatcher().stopEvent(checkSpawnMonsterEvent);
+        checkSpawnMonsterEvent = 0;  // Ensure event ID is reset immediately
+    }
 }
 
 std::shared_ptr<MonsterType> spawnBlock_t::getMonsterType() const {

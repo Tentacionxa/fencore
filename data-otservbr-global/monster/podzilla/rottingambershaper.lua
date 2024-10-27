@@ -85,7 +85,6 @@ monster.loot = {
     { id = 48511, chance = 4460 }, --  resin parasite 32624
     { id = 32624, chance = 4460 }, --  
     { id = 45652, chance = 4460 }, --  
-    { id = 48505, chance = 4460 }, --  
     { id = 5741, chance = 4460 }, --  
     { id = 32625, chance = 4460 }, 
     { id = 45653, chance = 4460 }, 

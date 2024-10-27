@@ -84,8 +84,7 @@ monster.loot = {
     { id = 3364, chance = 4460 }, --  amber sickle
     { id = 3038, chance = 4460 }, --  resin parasite 32624
     { id = 32624, chance = 4460 }, --  
-    { id = 45652, chance = 4460 }, --  
-    { id = 48505, chance = 4460 }, --  
+    { id = 45652, chance = 4460 }, --    
     { id = 5741, chance = 4460 }, --  
     { id = 32625, chance = 4460 }, 
     { id = 8084, chance = 4460 }, 

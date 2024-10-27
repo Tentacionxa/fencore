@@ -57,11 +57,11 @@ struct DispatcherContext {
 		return type;
 	}
 
-	// postpone the event
-	void addEvent(std::function<void(void)> &&f) const;
+// Modify tryAddEvent to accept a second argument (context string)
+void tryAddEvent(std::function<void()> &&f, const std::string& context) const;
 
-	// if the context is async, the event will be postponed, if not, it will be executed immediately.
-	void tryAddEvent(std::function<void(void)> &&f) const;
+// Modify addEvent similarly
+void addEvent(std::function<void()> &&f, const std::string& context) const;
 
 private:
 	void reset() {

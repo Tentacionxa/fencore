@@ -267,19 +267,17 @@ void Creature::addEventWalk(bool firstStep) {
 		return;
 	}
 
-	g_dispatcher().context().tryAddEvent([ticks, self = getCreature()]() {
-		// Take first step right away, but still queue the next
-		if (ticks == 1) {
-			g_game().checkCreatureWalk(self->getID());
-		}
-
-		self->eventWalk = g_dispatcher().scheduleEvent(
-			static_cast<uint32_t>(ticks),
-			[creatureId = self->getID()] { g_game().checkCreatureWalk(creatureId); }, "Game::checkCreatureWalk"
-				);
-	},
-					"addEventWalk");
-}
+// addEventWalk function - Pass a context string as the second argument
+g_dispatcher().context().tryAddEvent([ticks, self = getCreature()]() {
+    if (ticks == 1) {
+        g_game().checkCreatureWalk(self->getID());
+    }
+    self->eventWalk = g_dispatcher().scheduleEvent(
+        static_cast<uint32_t>(ticks),
+        [creatureId = self->getID()] { g_game().checkCreatureWalk(creatureId); },
+        "Game::checkCreatureWalk"
+    );
+}, "addEventWalk");
 
 void Creature::stopEventWalk() {
 	if (eventWalk != 0) {

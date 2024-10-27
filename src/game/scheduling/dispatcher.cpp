@@ -254,11 +254,11 @@ void Dispatcher::stopEvent(uint64_t eventId) {
 	}
 }
 
-void DispatcherContext::addEvent(std::function<void(void)> &&f) const {
+void DispatcherContext::addEvent(std::function<void()> &&f, const std::string& context) const {
 	g_dispatcher().addEvent(std::move(f), taskName);
 }
 
-void DispatcherContext::tryAddEvent(std::function<void(void)> &&f) const {
+void DispatcherContext::tryAddEvent(std::function<void()> &&f, const std::string& context) const {
 	if (!f) {
 		return;
 	}

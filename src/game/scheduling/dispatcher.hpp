@@ -36,7 +36,7 @@ struct DispatcherContext {
 	bool isOn() const {
 		return OTSYS_TIME() != 0;
 	}
-
+ void tryAddEvent(std::function<void(void)> &&f) const;
 	bool isGroup(const TaskGroup _group) const {
 		return group == _group;
 	}

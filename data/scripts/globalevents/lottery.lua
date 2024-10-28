@@ -32,7 +32,7 @@ function lottery.onThink(interval)
     local it = ItemType(itemid)
     local name = (amount == 1) and (it:getArticle() .. " " .. it:getName()) or (amount .. " " .. it:getPluralName())
 
-    broadcastMessage("[LOTTERY SYSTEM] " .. winner:getName() .. " won " .. name .. "! Congratulations! (Next lottery in " .. config.interval .. " minute)")
+  
 
     return true
 end

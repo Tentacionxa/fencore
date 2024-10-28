@@ -7,7 +7,7 @@
  * Website: https://docs.opentibiabr.com/
  */
 
-
+#include "pch.hpp"
 
 #include "items/bed.hpp"
 #include "game/game.hpp"
@@ -171,9 +171,7 @@ bool BedItem::sleep(std::shared_ptr<Player> player) {
 	g_game().setBedSleeper(static_self_cast<BedItem>(), player->getGUID());
 
 	// make the player walk onto the bed
-	g_dispatcher().addWalkEvent([player, this] {
-		g_game().map.moveCreature(player, getTile());
-	});
+	g_game().map.moveCreature(player, getTile());
 
 	// display 'Zzzz'/sleep effect
 	g_game().addMagicEffect(player->getPosition(), CONST_ME_SLEEP);
@@ -252,8 +250,8 @@ void BedItem::regeneratePlayer(std::shared_ptr<Player> player) const {
 			regen = sleptTime / 30;
 		}
 
-		player->changeHealth(regen * g_configManager().getFloat(RATE_HEALTH_REGEN), false);
-		player->changeMana(regen * g_configManager().getFloat(RATE_MANA_REGEN));
+		player->changeHealth(regen * g_configManager().getFloat(RATE_HEALTH_REGEN, __FUNCTION__), false);
+		player->changeMana(regen * g_configManager().getFloat(RATE_MANA_REGEN, __FUNCTION__));
 	}
 
 	const int32_t soulRegen = sleptTime / (60 * 15); // RATE_SOUL_REGEN_SPEED?

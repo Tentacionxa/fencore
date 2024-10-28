@@ -555,12 +555,7 @@ local function girarSlotMachine(player, machine, item)
 			local playerName = player:getName()
 			local recompensaName = ItemType(recompensa1.id):getName()
 
-			Game.broadcastMessage(string.format("[Slot Machine]: Player %s hit same 3 figures!",
-				playerName,
-				recompensa1.quantidade,
-				recompensaName,
-				cargaMensagem
-			), MESSAGE_GAME_HIGHLIGHT)
+			
 		end
 	else
 		aoFinalizarJogada = function()

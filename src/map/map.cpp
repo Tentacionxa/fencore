@@ -7,12 +7,11 @@
  * Website: https://docs.opentibiabr.com/
  */
 
-
+#include "pch.hpp"
 
 #include "map.hpp"
 #include "utils/astarnodes.hpp"
-#include "lua/callbacks/event_callback.hpp"
-#include "lua/callbacks/events_callbacks.hpp"
+
 #include "creatures/monsters/monster.hpp"
 #include "game/game.hpp"
 #include "game/zones/zone.hpp"
@@ -26,20 +25,24 @@ void Map::load(const std::string &identifier, const Position &pos) {
 		path = identifier;
 		IOMap::loadMap(this, pos);
 	} catch (const std::exception &e) {
-		g_logger().warn("[Map::load] - The map in folder {} is missing or corrupted", identifier);
+		throw IOMapException(fmt::format(
+			"\n[Map::load] - The map in folder {} is missing or corrupted"
+			"\n            - {}",
+			identifier, e.what()
+		));
 	}
 }
 
 void Map::loadMap(const std::string &identifier, bool mainMap /*= false*/, bool loadHouses /*= false*/, bool loadMonsters /*= false*/, bool loadNpcs /*= false*/, bool loadZones /*= false*/, const Position &pos /*= Position()*/) {
 	// Only download map if is loading the main map and it is not already downloaded
-	if (mainMap && g_configManager().getBoolean(TOGGLE_DOWNLOAD_MAP) && !std::filesystem::exists(identifier)) {
-		const auto mapDownloadUrl = g_configManager().getString(MAP_DOWNLOAD_URL);
+	if (mainMap && g_configManager().getBoolean(TOGGLE_DOWNLOAD_MAP, __FUNCTION__) && !std::filesystem::exists(identifier)) {
+		const auto mapDownloadUrl = g_configManager().getString(MAP_DOWNLOAD_URL, __FUNCTION__);
 		if (mapDownloadUrl.empty()) {
 			g_logger().warn("Map download URL in config.lua is empty, download disabled");
 		}
 
 		if (CURL* curl = curl_easy_init(); curl && !mapDownloadUrl.empty()) {
-			g_logger().info("Downloading " + g_configManager().getString(MAP_NAME) + ".otbm to world folder");
+			g_logger().info("Downloading " + g_configManager().getString(MAP_NAME, __FUNCTION__) + ".otbm to world folder");
 			FILE* otbm = fopen(identifier.c_str(), "wb");
 			curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
 			curl_easy_setopt(curl, CURLOPT_URL, mapDownloadUrl.c_str());
@@ -74,7 +77,7 @@ void Map::loadMap(const std::string &identifier, bool mainMap /*= false*/, bool 
 		 * If map custom is enabled, then it is load in loadMapCustom function
 		 * NOTE: This will ensure that the information is not duplicated
 		 */
-		if (!g_configManager().getBoolean(TOGGLE_MAP_CUSTOM)) {
+		if (!g_configManager().getBoolean(TOGGLE_MAP_CUSTOM, __FUNCTION__)) {
 			IOMapSerialize::loadHouseInfo();
 			IOMapSerialize::loadHouseItems(this);
 		}
@@ -89,19 +92,16 @@ void Map::loadMap(const std::string &identifier, bool mainMap /*= false*/, bool 
 	}
 
 	// Files need to be cleaned up if custom map is enabled to open, or will try to load main map files
-	if (g_configManager().getBoolean(TOGGLE_MAP_CUSTOM)) {
+	if (g_configManager().getBoolean(TOGGLE_MAP_CUSTOM, __FUNCTION__)) {
 		monsterfile.clear();
 		housefile.clear();
 		npcfile.clear();
-		}
-        if (!mainMap) {
-                g_callbacks().executeCallback(EventCallback_t::mapOnLoad, &EventCallback::mapOnLoad, path.string());
 	}
 }
 
 void Map::loadMapCustom(const std::string &mapName, bool loadHouses, bool loadMonsters, bool loadNpcs, bool loadZones, int customMapIndex) {
 	// Load the map
-	load(g_configManager().getString(DATA_DIRECTORY) + "/world/custom/" + mapName + ".otbm");
+	load(g_configManager().getString(DATA_DIRECTORY, __FUNCTION__) + "/world/custom/" + mapName + ".otbm");
 
 	if (loadMonsters && !IOMap::loadMonstersCustom(this, mapName, customMapIndex)) {
 		g_logger().warn("Failed to load monster custom data");
@@ -192,7 +192,8 @@ std::shared_ptr<Tile> Map::getTile(uint16_t x, uint16_t y, uint8_t z) {
 		return nullptr;
 	}
 
-	return getOrCreateTileFromCache(floor, x, y);
+	const auto tile = floor->getTile(x, y);
+	return tile ? tile : getOrCreateTileFromCache(floor, x, y);
 }
 
 void Map::refreshZones(uint16_t x, uint16_t y, uint8_t z) {
@@ -319,7 +320,7 @@ bool Map::placeCreature(const Position &centerPos, std::shared_ptr<Creature> cre
 }
 
 void Map::moveCreature(const std::shared_ptr<Creature> &creature, const std::shared_ptr<Tile> &newTile, bool forceTeleport /* = false*/) {
-	if (!creature || creature->isRemoved() || !newTile) {
+	if (!creature || !newTile) {
 		return;
 	}
 
@@ -331,11 +332,6 @@ void Map::moveCreature(const std::shared_ptr<Creature> &creature, const std::sha
 
 	const auto &oldPos = oldTile->getPosition();
 	const auto &newPos = newTile->getPosition();
-
-	if (oldPos == newPos) {
-		return;
-	}
-
 
 	const auto &fromZones = oldTile->getZones();
 	const auto &toZones = newTile->getZones();
@@ -365,10 +361,10 @@ void Map::moveCreature(const std::shared_ptr<Creature> &creature, const std::sha
 			++minRangeX;
 		}
 
-		spectators.find<Creature>(oldPos, true, minRangeX, maxRangeX, minRangeY, maxRangeY, false);
+		spectators.find<Creature>(oldPos, true, minRangeX, maxRangeX, minRangeY, maxRangeY);
 	} else {
-		spectators.find<Creature>(oldPos, true, 0, 0, 0, 0, false);
-		spectators.find<Creature>(newPos, true, 0, 0, 0, 0, false);
+		spectators.find<Creature>(oldPos, true);
+		spectators.find<Creature>(newPos, true);
 	}
 
 	auto playersSpectators = spectators.filter<Player>();
@@ -428,18 +424,9 @@ void Map::moveCreature(const std::shared_ptr<Creature> &creature, const std::sha
 		spectator->onCreatureMove(creature, newTile, newPos, oldTile, oldPos, teleport);
 	}
 
-	auto events = [=] {
-		oldTile->postRemoveNotification(creature, newTile, 0);
-		newTile->postAddNotification(creature, oldTile, 0);
-		g_game().afterCreatureZoneChange(creature, fromZones, toZones);
-	};
-
-	if (g_dispatcher().context().getGroup() == TaskGroup::Walk) {
-		// onCreatureMove for monster is asynchronous, so we need to defer the actions.
-		g_dispatcher().addEvent(std::move(events), "Map::moveCreature");
-	} else {
-		events();
-	}
+	oldTile->postRemoveNotification(creature, newTile, 0);
+	newTile->postAddNotification(creature, oldTile, 0);
+	g_game().afterCreatureZoneChange(creature, fromZones, toZones);
 }
 
 bool Map::canThrowObjectTo(const Position &fromPos, const Position &toPos, const SightLines_t lineOfSight /*= SightLine_CheckSightLine*/, const int32_t rangex /*= Map::maxClientViewportX*/, const int32_t rangey /*= Map::maxClientViewportY*/) {

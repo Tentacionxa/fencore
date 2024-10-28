@@ -36,9 +36,7 @@ local function addItemToPlayer(player, item)
     player:addItem(item.id, item.count)
     player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Winner! You won " .. ItemType(item.id):getName() .. "!")
     player:getPosition():sendMagicEffect(CONST_ME_GIFT_WRAPS)
-    if item.raro then
-        Game.broadcastMessage(player:getName() .. " won a rare item: " .. ItemType(item.id):getName() .. " in roulette!", MESSAGE_EVENT_ADVANCE)
-    end
+    
 end
 
 local function getRandomItem()

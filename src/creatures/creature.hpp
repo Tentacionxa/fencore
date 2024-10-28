@@ -254,10 +254,7 @@ public:
 		}
 		return creatureIcons.at(key);
 	}
-	
-        bool hasIcon(const std::string &key) const {
-                return creatureIcons.contains(key);
-		}
+
 	void setIcon(const std::string &key, CreatureIcon icon) {
 		creatureIcons[key] = icon;
 		iconChanged();
@@ -612,7 +609,7 @@ public:
 	 * @param useCharges Indicates whether charges should be considered.
 	 * @return The reflection percentage for the specified combat type.
 	 */
-	virtual double_t getReflectPercent(CombatType_t combatType, bool useCharges = false) const;
+	virtual int32_t getReflectPercent(CombatType_t combatType, bool useCharges = false) const;
 
 	/**
 	 * @brief Retrieves the flat reflection value for a given combat type.
@@ -706,20 +703,9 @@ public:
 	}
 
 protected:
-	enum FlagAsyncClass_t : uint8_t {
-		AsyncTaskRunning = 1 << 0,
-		UpdateTargetList = 1 << 1,
-		UpdateIdleStatus = 1 << 2,
-		Pathfinder = 1 << 3
-	};
-
 	virtual bool useCacheMap() const {
 		return false;
 	}
-	virtual bool isDead() const {
-                return false;
-        }
-
 
 	static constexpr int32_t mapWalkWidth = MAP_MAX_VIEW_PORT_X * 2 + 1;
 	static constexpr int32_t mapWalkHeight = MAP_MAX_VIEW_PORT_Y * 2 + 1;
@@ -766,8 +752,8 @@ protected:
 	int32_t health = 1000;
 	int32_t healthMax = 1000;
 
-	uint32_t manaShield = 0;
-	uint32_t maxManaShield = 0;
+	uint16_t manaShield = 0;
+	uint16_t maxManaShield = 0;
 	int32_t varBuffs[BUFF_LAST + 1] = { 100, 100, 100 };
 
 	std::array<int32_t, COMBAT_COUNT> reflectPercent = { 0 };
@@ -786,13 +772,12 @@ protected:
 	Direction direction = DIRECTION_SOUTH;
 	Skulls_t skull = SKULL_NONE;
 
-	std::atomic_bool creatureCheck = false;
-	std::atomic_bool inCheckCreaturesVector = false;
-
 	bool localMapCache[mapWalkHeight][mapWalkWidth] = { { false } };
 	bool isInternalRemoved = false;
 	bool isMapLoaded = false;
 	bool isUpdatingPath = false;
+	bool creatureCheck = false;
+	bool inCheckCreaturesVector = false;
 	bool skillLoss = true;
 	bool lootDrop = true;
 	bool cancelNextWalk = false;
@@ -803,11 +788,11 @@ protected:
 	bool moveLocked = false;
 	bool directionLocked = false;
 	bool hasFollowPath = false;
-	bool checkingWalkCreature = false;
 	int8_t charmChanceModifier = 0;
 
 	uint8_t wheelOfDestinyDrainBodyDebuff = 0;
 
+	std::atomic_bool pathfinderRunning = false;
 
 	// use map here instead of phmap to keep the keys in a predictable order
 	std::map<std::string, CreatureIcon> creatureIcons = {};
@@ -843,34 +828,10 @@ protected:
 	friend class Map;
 	friend class CreatureFunctions;
 
-	void addAsyncTask(std::function<void()> &&fnc) {
-		asyncTasks.emplace_back(std::move(fnc));
-		sendAsyncTasks();
-	}
-
-	bool hasAsyncTaskFlag(FlagAsyncClass_t prop) const {
-		return (m_flagAsyncTask & prop);
-	}
-
-	void setAsyncTaskFlag(FlagAsyncClass_t taskFlag, bool v) {
-		if (v) {
-			m_flagAsyncTask |= taskFlag;
-			sendAsyncTasks();
-		} else {
-			m_flagAsyncTask &= ~taskFlag;
-		}
-	}
-
-	virtual void onExecuteAsyncTasks() {};
-
 private:
 	bool canFollowMaster();
 	bool isLostSummon();
-	void sendAsyncTasks();
 	void handleLostSummon(bool teleportSummons);
-		
-	std::vector<std::function<void()>> asyncTasks;
-
 
 	struct {
 		uint16_t groundSpeed { 0 };
@@ -895,6 +856,4 @@ private:
 
 		walk.recache();
 	}
-	
-	uint8_t m_flagAsyncTask = 0;
 };

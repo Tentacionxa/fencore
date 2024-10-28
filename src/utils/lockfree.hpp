@@ -52,13 +52,32 @@ public:
 
     ~LockfreePoolingAllocator() override = default;
 
+    T* allocate(std::size_t n) noexcept {
+        if (n == 1) {
+            T* p;
+            if (LockfreeFreeList<T, CAPACITY>::get().try_pop(p)) {
+                return p;
+            }
+        }
+        return static_cast<T*>(::operator new(n * sizeof(T), static_cast<std::align_val_t>(alignof(T))));
+    }
+
+    void deallocate(T* p, std::size_t n) noexcept {
+        if (n == 1) {
+            if (LockfreeFreeList<T, CAPACITY>::get().try_push(p)) {
+                return;
+            }
+        }
+        ::operator delete(p, static_cast<std::align_val_t>(alignof(T)));
+    }
+
 protected:
     void* do_allocate(std::size_t bytes, std::size_t alignment) noexcept override {
-        return ::operator new(bytes, static_cast<std::align_val_t>(alignment));
+        return static_cast<void*>(this->allocate(bytes / sizeof(T)));
     }
 
     void do_deallocate(void* p, std::size_t bytes, std::size_t alignment) noexcept override {
-        ::operator delete(p, static_cast<std::align_val_t>(alignment));
+        this->deallocate(static_cast<T*>(p), bytes / sizeof(T));
     }
 
     bool do_is_equal(const std::pmr::memory_resource& other) const noexcept override {

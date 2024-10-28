@@ -1,5 +1,10 @@
 
-#include <memory_resource>  // Ensure this is included for std::pmr
+#pragma once
+
+#include <memory_resource>  // Include for std::pmr
+#include <atomic_queue/atomic_queue.h>  // Include for atomic_queue
+
+constexpr size_t STATIC_PREALLOCATION_SIZE = 500;
 
 template <typename T, size_t CAPACITY>
 struct LockfreeFreeList {

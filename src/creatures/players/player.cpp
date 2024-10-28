@@ -98,16 +98,16 @@ bool Player::isPushable() {
 	return Creature::isPushable();
 }
 
-std::shared_ptr<Task> Player::createPlayerTask(uint32_t delay, std::function<void(void)> f, std::string context) {
+std::shared_ptr<Task> Player::createPlayerTask(udouble_t delay, std::function<void(void)> f, std::string context) {
 	return std::make_shared<Task>(std::move(f), std::move(context), delay);
 }
 
-uint32_t Player::playerFirstID = 0x10000000;
-uint32_t Player::playerLastID = 0x50000000;
-uint32_t Player::getFirstID() {
+udouble_t Player::playerFirstID = 0x10000000;
+udouble_t Player::playerLastID = 0x50000000;
+udouble_t Player::getFirstID() {
 	return playerFirstID;
 }
-uint32_t Player::getLastID() {
+udouble_t Player::getLastID() {
 	return playerLastID;
 }
 
@@ -115,13 +115,13 @@ void Player::setID() {
 	// guid = player id from database
 	if (id == 0 && guid != 0) {
 		id = getFirstID() + guid;
-		if (id == std::numeric_limits<uint32_t>::max()) {
-			g_logger().error("[{}] Player {} has max 'id' value of uint32_t", __FUNCTION__, getName());
+		if (id == std::numeric_limits<udouble_t>::max()) {
+			g_logger().error("[{}] Player {} has max 'id' value of udouble_t", __FUNCTION__, getName());
 		}
 	}
 }
 
-std::string Player::getDescription(int32_t lookDistance) {
+std::string Player::getDescription(double_t lookDistance) {
 	std::ostringstream s;
 	std::string subjectPronoun = getSubjectPronoun();
 	capitalizeWords(subjectPronoun);
@@ -318,12 +318,12 @@ WeaponType_t Player::getWeaponType() const {
 	return item->getWeaponType();
 }
 
-int32_t Player::getWeaponSkill(std::shared_ptr<Item> item) const {
+double_t Player::getWeaponSkill(std::shared_ptr<Item> item) const {
 	if (!item) {
 		return getSkillLevel(SKILL_FIST);
 	}
 
-	int32_t attackSkill;
+	double_t attackSkill;
 
 	WeaponType_t weaponType = item->getWeaponType();
 	switch (weaponType) {
@@ -356,8 +356,8 @@ int32_t Player::getWeaponSkill(std::shared_ptr<Item> item) const {
 	return attackSkill;
 }
 
-int32_t Player::getArmor() const {
-	int32_t armor = 0;
+double_t Player::getArmor() const {
+	double_t armor = 0;
 
 	static const Slots_t armorSlots[] = { CONST_SLOT_HEAD, CONST_SLOT_NECKLACE, CONST_SLOT_ARMOR, CONST_SLOT_LEGS, CONST_SLOT_FEET, CONST_SLOT_RING, CONST_SLOT_AMMO };
 	for (Slots_t slot : armorSlots) {
@@ -366,14 +366,14 @@ int32_t Player::getArmor() const {
 			armor += inventoryItem->getArmor();
 		}
 	}
-	return static_cast<int32_t>(armor * vocation->armorMultiplier);
+	return static_cast<double_t>(armor * vocation->armorMultiplier);
 }
 
 void Player::getShieldAndWeapon(std::shared_ptr<Item> &shield, std::shared_ptr<Item> &weapon) const {
 	shield = nullptr;
 	weapon = nullptr;
 
-	for (uint32_t slot = CONST_SLOT_RIGHT; slot <= CONST_SLOT_LEFT; slot++) {
+	for (udouble_t slot = CONST_SLOT_RIGHT; slot <= CONST_SLOT_LEFT; slot++) {
 		std::shared_ptr<Item> item = inventory[slot];
 		if (!item) {
 			continue;
@@ -402,9 +402,9 @@ float Player::getMitigation() const {
 	return wheel()->calculateMitigation();
 }
 
-int32_t Player::getDefense() const {
-	int32_t defenseSkill = getSkillLevel(SKILL_FIST);
-	int32_t defenseValue = 7;
+double_t Player::getDefense() const {
+	double_t defenseSkill = getSkillLevel(SKILL_FIST);
+	double_t defenseValue = 7;
 	std::shared_ptr<Item> weapon;
 	std::shared_ptr<Item> shield;
 	try {
@@ -604,7 +604,7 @@ void Player::updateInventoryImbuement() {
 
 			g_logger().trace("Decaying imbuement {} from item {} of player {}", imbuement->getName(), item->getName(), getName());
 			// Calculate the new duration of the imbuement, making sure it doesn't go below 0
-			uint32_t duration = std::max<uint32_t>(0, imbuementInfo.duration - EVENT_IMBUEMENT_INTERVAL / 1000);
+			udouble_t duration = std::max<udouble_t>(0, imbuementInfo.duration - EVENT_IMBUEMENT_INTERVAL / 1000);
 			// Update the imbuement's duration in the item
 			item->decayImbuementTime(slotid, imbuement->getID(), duration);
 
@@ -711,7 +711,7 @@ void Player::addSkillAdvance(skills_t skill, uint64_t count) {
 
 	skills[skill].tries += count;
 
-	uint32_t newPercent;
+	udouble_t newPercent;
 	if (nextReqTries > currReqTries) {
 		newPercent = Player::getPercentLevel(skills[skill].tries, nextReqTries);
 	} else {
@@ -729,7 +729,7 @@ void Player::addSkillAdvance(skills_t skill, uint64_t count) {
 	}
 }
 
-void Player::setVarStats(stats_t stat, int32_t modifier) {
+void Player::setVarStats(stats_t stat, double_t modifier) {
 	varStats[stat] += modifier;
 
 	switch (stat) {
@@ -757,7 +757,7 @@ void Player::setVarStats(stats_t stat, int32_t modifier) {
 	}
 }
 
-int32_t Player::getDefaultStats(stats_t stat) const {
+double_t Player::getDefaultStats(stats_t stat) const {
 	switch (stat) {
 		case STAT_MAXHITPOINTS:
 			return healthMax;
@@ -863,7 +863,7 @@ uint16_t Player::getContainerIndex(uint8_t cid) const {
 	return it->second.index;
 }
 
-bool Player::canOpenCorpse(uint32_t ownerId) const {
+bool Player::canOpenCorpse(udouble_t ownerId) const {
 	return getID() == ownerId || (m_party && m_party->canOpenCorpse(ownerId));
 }
 
@@ -875,7 +875,7 @@ uint16_t Player::getLookCorpse() const {
 	}
 }
 
-void Player::addStorageValue(const uint32_t key, const int32_t value, const bool isLogin /* = false*/) {
+void Player::addStorageValue(const udouble_t key, const double_t value, const bool isLogin /* = false*/) {
 	if (IS_IN_KEYRANGE(key, RESERVED_RANGE)) {
 		if (IS_IN_KEYRANGE(key, OUTFITS_RANGE)) {
 			outfits.emplace_back(
@@ -897,7 +897,7 @@ void Player::addStorageValue(const uint32_t key, const int32_t value, const bool
 	}
 
 	if (value != -1) {
-		int32_t oldValue = getStorageValue(key);
+		double_t oldValue = getStorageValue(key);
 		storageMap[key] = value;
 
 		if (!isLogin) {
@@ -910,8 +910,8 @@ void Player::addStorageValue(const uint32_t key, const int32_t value, const bool
 	}
 }
 
-int32_t Player::getStorageValue(const uint32_t key) const {
-	int32_t value = -1;
+double_t Player::getStorageValue(const udouble_t key) const {
+	double_t value = -1;
 	auto it = storageMap.find(key);
 	if (it == storageMap.end()) {
 		return value;
@@ -921,23 +921,23 @@ int32_t Player::getStorageValue(const uint32_t key) const {
 	return value;
 }
 
-int32_t Player::getStorageValueByName(const std::string &storageName) const {
+double_t Player::getStorageValueByName(const std::string &storageName) const {
 	auto it = g_storages().getStorageMap().find(storageName);
 	if (it == g_storages().getStorageMap().end()) {
 		return -1;
 	}
-	uint32_t key = it->second;
+	udouble_t key = it->second;
 
 	return getStorageValue(key);
 }
 
-void Player::addStorageValueByName(const std::string &storageName, const int32_t value, const bool isLogin /* = false*/) {
+void Player::addStorageValueByName(const std::string &storageName, const double_t value, const bool isLogin /* = false*/) {
 	auto it = g_storages().getStorageMap().find(storageName);
 	if (it == g_storages().getStorageMap().end()) {
 		g_logger().error("[{}] Storage name '{}' not found in storage map, register your storage in 'storages.xml' first for use", __func__, storageName);
 		return;
 	}
-	uint32_t key = it->second;
+	udouble_t key = it->second;
 	addStorageValue(key, value, isLogin);
 }
 
@@ -980,7 +980,7 @@ bool Player::canWalkthrough(std::shared_ptr<Creature> creature) {
 
 	if (player) {
 		std::shared_ptr<Tile> playerTile = player->getTile();
-		if (!playerTile || (!playerTile->hasFlag(TILESTATE_NOPVPZONE) && !playerTile->hasFlag(TILESTATE_PROTECTIONZONE) && player->getLevel() > static_cast<uint32_t>(g_configManager().getNumber(PROTECTION_LEVEL)) && g_game().getWorldType() != WORLD_TYPE_NO_PVP)) {
+		if (!playerTile || (!playerTile->hasFlag(TILESTATE_NOPVPZONE) && !playerTile->hasFlag(TILESTATE_PROTECTIONZONE) && player->getLevel() > static_cast<udouble_t>(g_configManager().getNumber(PROTECTION_LEVEL)) && g_game().getWorldType() != WORLD_TYPE_NO_PVP)) {
 			return false;
 		}
 
@@ -1028,7 +1028,7 @@ bool Player::canWalkthroughEx(std::shared_ptr<Creature> creature) {
 	std::shared_ptr<Npc> npc = creature->getNpc();
 	if (player) {
 		std::shared_ptr<Tile> playerTile = player->getTile();
-		return playerTile && (playerTile->hasFlag(TILESTATE_NOPVPZONE) || playerTile->hasFlag(TILESTATE_PROTECTIONZONE) || player->getLevel() <= static_cast<uint32_t>(g_configManager().getNumber(PROTECTION_LEVEL)) || g_game().getWorldType() == WORLD_TYPE_NO_PVP);
+		return playerTile && (playerTile->hasFlag(TILESTATE_NOPVPZONE) || playerTile->hasFlag(TILESTATE_PROTECTIONZONE) || player->getLevel() <= static_cast<udouble_t>(g_configManager().getNumber(PROTECTION_LEVEL)) || g_game().getWorldType() == WORLD_TYPE_NO_PVP);
 	} else if (npc) {
 		std::shared_ptr<Tile> tile = npc->getTile();
 		std::shared_ptr<HouseTile> houseTile = std::dynamic_pointer_cast<HouseTile>(tile);
@@ -1050,7 +1050,7 @@ std::shared_ptr<Container> Player::refreshManagedContainer(ObjectCategory_t cate
 	if (auto it = m_managedContainers.find(category); it != m_managedContainers.end() && !loading) {
 		previousContainer = isLootContainer ? it->second.first : it->second.second;
 		if (previousContainer) {
-			auto flags = previousContainer->getAttribute<uint32_t>(toSetAttribute);
+			auto flags = previousContainer->getAttribute<udouble_t>(toSetAttribute);
 			flags &= ~(1 << category);
 			if (flags == 0) {
 				previousContainer->removeAttribute(toSetAttribute);
@@ -1091,7 +1091,7 @@ std::shared_ptr<Container> Player::refreshManagedContainer(ObjectCategory_t cate
 		}
 
 		if (!loading) {
-			auto flags = container->getAttribute<uint32_t>(toSetAttribute);
+			auto flags = container->getAttribute<udouble_t>(toSetAttribute);
 			auto sendAttribute = flags | (1 << category);
 			container->setAttribute(toSetAttribute, sendAttribute);
 		}
@@ -1212,8 +1212,8 @@ void Player::sendLootStats(std::shared_ptr<Item> item, uint8_t count) {
 
 bool Player::isNearDepotBox() {
 	const Position &pos = getPosition();
-	for (int32_t cx = -1; cx <= 1; ++cx) {
-		for (int32_t cy = -1; cy <= 1; ++cy) {
+	for (double_t cx = -1; cx <= 1; ++cx) {
+		for (double_t cy = -1; cy <= 1; ++cy) {
 			std::shared_ptr<Tile> posTile = g_game().map.getTile(static_cast<uint16_t>(pos.x + cx), static_cast<uint16_t>(pos.y + cy), pos.z);
 			if (!posTile) {
 				continue;
@@ -1227,7 +1227,7 @@ bool Player::isNearDepotBox() {
 	return false;
 }
 
-std::shared_ptr<DepotChest> Player::getDepotChest(uint32_t depotId, bool autoCreate) {
+std::shared_ptr<DepotChest> Player::getDepotChest(udouble_t depotId, bool autoCreate) {
 	auto it = depotChests.find(depotId);
 	if (it != depotChests.end()) {
 		return it->second;
@@ -1252,11 +1252,11 @@ std::shared_ptr<DepotChest> Player::getDepotChest(uint32_t depotId, bool autoCre
 	return depotChest;
 }
 
-std::shared_ptr<DepotLocker> Player::getDepotLocker(uint32_t depotId) {
+std::shared_ptr<DepotLocker> Player::getDepotLocker(udouble_t depotId) {
 	auto it = depotLockerMap.find(depotId);
 	if (it != depotLockerMap.end()) {
 		inbox->setParent(it->second);
-		for (uint32_t i = g_configManager().getNumber(DEPOT_BOXES); i > 0; i--) {
+		for (udouble_t i = g_configManager().getNumber(DEPOT_BOXES); i > 0; i--) {
 			if (std::shared_ptr<DepotChest> depotBox = getDepotChest(i, false)) {
 				depotBox->setParent(it->second->getItemByIndex(0)->getContainer());
 			}
@@ -1275,7 +1275,7 @@ std::shared_ptr<DepotLocker> Player::getDepotLocker(uint32_t depotId) {
 		depotLocker->internalAddThing(Item::CreateItem(ITEM_SUPPLY_STASH));
 	}
 	std::shared_ptr<Container> depotChest = Item::CreateItemAsContainer(ITEM_DEPOT, static_cast<uint16_t>(g_configManager().getNumber(DEPOT_BOXES)));
-	for (uint32_t i = g_configManager().getNumber(DEPOT_BOXES); i > 0; i--) {
+	for (udouble_t i = g_configManager().getNumber(DEPOT_BOXES); i > 0; i--) {
 		std::shared_ptr<DepotChest> depotBox = getDepotChest(i, true);
 		depotChest->internalAddThing(depotBox);
 		depotBox->setParent(depotChest);
@@ -1363,7 +1363,7 @@ void Player::updateSupplyTracker(std::shared_ptr<Item> item) {
 	}
 }
 
-void Player::updateImpactTracker(CombatType_t type, int32_t amount) const {
+void Player::updateImpactTracker(CombatType_t type, double_t amount) const {
 	if (client) {
 		client->sendUpdateImpactTracker(type, amount);
 	}
@@ -1398,7 +1398,7 @@ void Player::sendPing() {
 	}
 }
 
-std::shared_ptr<Item> Player::getWriteItem(uint32_t &retWindowTextId, uint16_t &retMaxWriteLen) {
+std::shared_ptr<Item> Player::getWriteItem(udouble_t &retWindowTextId, uint16_t &retMaxWriteLen) {
 	retWindowTextId = this->windowTextId;
 	retMaxWriteLen = this->maxWriteLen;
 	return writeItem;
@@ -1420,19 +1420,19 @@ void Player::setWriteItem(std::shared_ptr<Item> item, uint16_t maxWriteLength /*
 	}
 }
 
-std::shared_ptr<House> Player::getEditHouse(uint32_t &retWindowTextId, uint32_t &retListId) {
+std::shared_ptr<House> Player::getEditHouse(udouble_t &retWindowTextId, udouble_t &retListId) {
 	retWindowTextId = this->windowTextId;
 	retListId = this->editListId;
 	return editHouse;
 }
 
-void Player::setEditHouse(std::shared_ptr<House> house, uint32_t listId /*= 0*/) {
+void Player::setEditHouse(std::shared_ptr<House> house, udouble_t listId /*= 0*/) {
 	windowTextId++;
 	editHouse = house;
 	editListId = listId;
 }
 
-void Player::sendHouseWindow(std::shared_ptr<House> house, uint32_t listId) const {
+void Player::sendHouseWindow(std::shared_ptr<House> house, udouble_t listId) const {
 	if (!client) {
 		return;
 	}
@@ -1469,7 +1469,7 @@ void Player::onApplyImbuement(Imbuement* imbuement, std::shared_ptr<Item> item, 
 		return;
 	}
 
-	uint32_t price = baseImbuement->price;
+	udouble_t price = baseImbuement->price;
 	price += protectionCharm ? baseImbuement->protectionPrice : 0;
 
 	if (!g_game().removeMoney(static_self_cast<Player>(), price, 0, true)) {
@@ -1485,13 +1485,13 @@ void Player::onApplyImbuement(Imbuement* imbuement, std::shared_ptr<Item> item, 
 	for (auto &[key, value] : items) {
 		std::stringstream withdrawItemMessage;
 
-		uint32_t inventoryItemCount = getItemTypeCount(key);
+		udouble_t inventoryItemCount = getItemTypeCount(key);
 		if (inventoryItemCount >= value) {
 			removeItemOfType(key, value, -1, true);
 			continue;
 		}
 
-		uint32_t mathItemCount = value;
+		udouble_t mathItemCount = value;
 		if (inventoryItemCount > 0 && removeItemOfType(key, inventoryItemCount, -1, false)) {
 			mathItemCount = mathItemCount - inventoryItemCount;
 		}
@@ -1579,7 +1579,7 @@ void Player::sendSaleItemList(const std::map<uint16_t, uint16_t> &inventoryMap) 
 	}
 }
 
-void Player::sendMarketEnter(uint32_t depotId) {
+void Player::sendMarketEnter(udouble_t depotId) {
 	if (!client || this->getLastDepotId() == -1 || !depotId) {
 		return;
 	}
@@ -1730,10 +1730,10 @@ void Player::onCreatureAppear(std::shared_ptr<Creature> creature, bool isLogin) 
 			guild->addMember(static_self_cast<Player>());
 		}
 
-		int32_t offlineTime;
+		double_t offlineTime;
 		if (getLastLogout() != 0) {
 			// Not counting more than 21 days to prevent overflow when multiplying with 1000 (for milliseconds).
-			offlineTime = std::min<int32_t>(time(nullptr) - getLastLogout(), 86400 * 21);
+			offlineTime = std::min<double_t>(time(nullptr) - getLastLogout(), 86400 * 21);
 		} else {
 			offlineTime = 0;
 		}
@@ -1793,7 +1793,7 @@ void Player::onChangeZone(ZoneType_t zone) {
 			wasMounted = true;
 		}
 	} else {
-		int32_t ticks = g_configManager().getNumber(STAIRHOP_DELAY);
+		double_t ticks = g_configManager().getNumber(STAIRHOP_DELAY);
 		if (ticks > 0) {
 			if (const auto &condition = Condition::createCondition(CONDITIONID_DEFAULT, CONDITION_PACIFIED, ticks, 0)) {
 				addCondition(condition);
@@ -1967,8 +1967,8 @@ void Player::onCreatureMove(const std::shared_ptr<Creature> &creature, const std
 	// close modal windows
 	if (!modalWindows.empty()) {
 		// TODO: This shouldn't be hardcoded
-		for (uint32_t modalWindowId : modalWindows) {
-			if (modalWindowId == std::numeric_limits<uint32_t>::max()) {
+		for (udouble_t modalWindowId : modalWindows) {
+			if (modalWindowId == std::numeric_limits<udouble_t>::max()) {
 				sendTextMessage(MESSAGE_EVENT_ADVANCE, "Offline training aborted.");
 				break;
 			}
@@ -1987,7 +1987,7 @@ void Player::onCreatureMove(const std::shared_ptr<Creature> &creature, const std
 	}
 
 	if (teleport || oldPos.z != newPos.z) {
-		int32_t ticks = g_configManager().getNumber(STAIRHOP_DELAY);
+		double_t ticks = g_configManager().getNumber(STAIRHOP_DELAY);
 		if (ticks > 0) {
 			if (const auto &condition = Condition::createCondition(CONDITIONID_DEFAULT, CONDITION_PACIFIED, ticks, 0)) {
 				addCondition(condition);
@@ -1997,7 +1997,7 @@ void Player::onCreatureMove(const std::shared_ptr<Creature> &creature, const std
 }
 
 void Player::onEquipInventory() {
-	for (int32_t slot = CONST_SLOT_FIRST; slot <= CONST_SLOT_LAST; ++slot) {
+	for (double_t slot = CONST_SLOT_FIRST; slot <= CONST_SLOT_LAST; ++slot) {
 		std::shared_ptr<Item> item = inventory[slot];
 		if (item) {
 			item->startDecaying();
@@ -2007,7 +2007,7 @@ void Player::onEquipInventory() {
 }
 
 void Player::onDeEquipInventory() {
-	for (int32_t slot = CONST_SLOT_FIRST; slot <= CONST_SLOT_LAST; ++slot) {
+	for (double_t slot = CONST_SLOT_FIRST; slot <= CONST_SLOT_LAST; ++slot) {
 		std::shared_ptr<Item> item = inventory[slot];
 		if (item) {
 			g_moveEvents().onPlayerDeEquip(getPlayer(), item, static_cast<Slots_t>(slot));
@@ -2180,11 +2180,11 @@ void Player::setNextPotionActionTask(std::shared_ptr<Task> task) {
 	}
 }
 
-uint32_t Player::getNextActionTime() const {
+udouble_t Player::getNextActionTime() const {
 	return std::max<int64_t>(SCHEDULER_MINTICKS, nextAction - OTSYS_TIME());
 }
 
-uint32_t Player::getNextPotionActionTime() const {
+udouble_t Player::getNextPotionActionTime() const {
 	return std::max<int64_t>(SCHEDULER_MINTICKS, nextPotionAction - OTSYS_TIME());
 }
 
@@ -2196,7 +2196,7 @@ void Player::cancelPush() {
 	}
 }
 
-void Player::onThink(uint32_t interval) {
+void Player::onThink(udouble_t interval) {
 	Creature::onThink(interval);
 
 	sendPing();
@@ -2215,7 +2215,7 @@ void Player::onThink(uint32_t interval) {
 	const bool vipStaysOnline = isVip() && g_configManager().getBoolean(VIP_STAY_ONLINE);
 	idleTime += interval;
 	if (playerTile && !playerTile->hasFlag(TILESTATE_NOLOGOUT) && !isAccessPlayer() && !isExerciseTraining() && !vipStaysOnline) {
-		const int32_t kickAfterMinutes = g_configManager().getNumber(KICK_AFTER_MINUTES);
+		const double_t kickAfterMinutes = g_configManager().getNumber(KICK_AFTER_MINUTES);
 		if (idleTime > (kickAfterMinutes * 60000) + 60000) {
 			removePlayer(true);
 		} else if (client && idleTime == 60000 * kickAfterMinutes) {
@@ -2239,18 +2239,18 @@ void Player::onThink(uint32_t interval) {
 	g_callbacks().executeCallback(EventCallback_t::playerOnThink, &EventCallback::playerOnThink, getPlayer(), interval);
 }
 
-uint32_t Player::isMuted() const {
+udouble_t Player::isMuted() const {
 	if (hasFlag(PlayerFlags_t::CannotBeMuted)) {
 		return 0;
 	}
 
-	int32_t muteTicks = 0;
+	double_t muteTicks = 0;
 	for (const std::shared_ptr<Condition> &condition : conditions) {
 		if (condition->getType() == CONDITION_MUTED && condition->getTicks() > muteTicks) {
 			muteTicks = condition->getTicks();
 		}
 	}
-	return static_cast<uint32_t>(muteTicks) / 1000;
+	return static_cast<udouble_t>(muteTicks) / 1000;
 }
 
 void Player::addMessageBuffer() {
@@ -2264,16 +2264,16 @@ void Player::removeMessageBuffer() {
 		return;
 	}
 
-	const int32_t maxMessageBuffer = g_configManager().getNumber(MAX_MESSAGEBUFFER);
+	const double_t maxMessageBuffer = g_configManager().getNumber(MAX_MESSAGEBUFFER);
 	if (maxMessageBuffer != 0 && MessageBufferCount <= maxMessageBuffer + 1) {
 		if (++MessageBufferCount > maxMessageBuffer) {
-			uint32_t muteCount = 1;
+			udouble_t muteCount = 1;
 			auto it = muteCountMap.find(guid);
 			if (it != muteCountMap.end()) {
 				muteCount = it->second;
 			}
 
-			uint32_t muteTime = 5 * muteCount * muteCount;
+			udouble_t muteTime = 5 * muteCount * muteCount;
 			muteCountMap[guid] = muteCount + 1;
 			std::shared_ptr<Condition> condition = Condition::createCondition(CONDITIONID_DEFAULT, CONDITION_MUTED, muteTime * 1000, 0);
 			addCondition(condition);
@@ -2285,8 +2285,8 @@ void Player::removeMessageBuffer() {
 	}
 }
 
-void Player::drainHealth(std::shared_ptr<Creature> attacker, int32_t damage) {
-	if (PLAYER_SOUND_HEALTH_CHANGE >= static_cast<uint32_t>(uniform_random(1, 100))) {
+void Player::drainHealth(std::shared_ptr<Creature> attacker, double_t damage) {
+	if (PLAYER_SOUND_HEALTH_CHANGE >= static_cast<udouble_t>(uniform_random(1, 100))) {
 		g_game().sendSingleSoundEffect(static_self_cast<Player>()->getPosition(), sex == PLAYERSEX_FEMALE ? SoundEffect_t::HUMAN_FEMALE_BARK : SoundEffect_t::HUMAN_MALE_BARK, getPlayer());
 	}
 
@@ -2294,7 +2294,7 @@ void Player::drainHealth(std::shared_ptr<Creature> attacker, int32_t damage) {
 	sendStats();
 }
 
-void Player::drainMana(std::shared_ptr<Creature> attacker, int32_t manaLoss) {
+void Player::drainMana(std::shared_ptr<Creature> attacker, double_t manaLoss) {
 	Creature::drainMana(attacker, manaLoss);
 	sendStats();
 }
@@ -2422,7 +2422,7 @@ void Player::addExperience(std::shared_ptr<Creature> target, uint64_t exp, bool 
 		}
 	}
 
-	uint32_t prevLevel = level;
+	udouble_t prevLevel = level;
 	while (experience >= nextLevelExp) {
 		++level;
 		// Player stats gain for vocations level <= 8
@@ -2516,7 +2516,7 @@ void Player::removeExperience(uint64_t exp, bool sendText /* = false*/) {
 		}
 	}
 
-	uint32_t oldLevel = level;
+	udouble_t oldLevel = level;
 	uint64_t currLevelExp = Player::getExpForLevel(level);
 
 	while (level > 1 && experience < currLevelExp) {
@@ -2524,13 +2524,13 @@ void Player::removeExperience(uint64_t exp, bool sendText /* = false*/) {
 		// Player stats loss for vocations level <= 8
 		if (vocation->getId() != VOCATION_NONE && level <= 8) {
 			const auto &noneVocation = g_vocations().getVocation(VOCATION_NONE);
-			healthMax = std::max<int32_t>(0, healthMax - noneVocation->getHPGain());
-			manaMax = std::max<int32_t>(0, manaMax - noneVocation->getManaGain());
-			capacity = std::max<int32_t>(0, capacity - noneVocation->getCapGain());
+			healthMax = std::max<double_t>(0, healthMax - noneVocation->getHPGain());
+			manaMax = std::max<double_t>(0, manaMax - noneVocation->getManaGain());
+			capacity = std::max<double_t>(0, capacity - noneVocation->getCapGain());
 		} else {
-			healthMax = std::max<int32_t>(0, healthMax - vocation->getHPGain());
-			manaMax = std::max<int32_t>(0, manaMax - vocation->getManaGain());
-			capacity = std::max<int32_t>(0, capacity - vocation->getCapGain());
+			healthMax = std::max<double_t>(0, healthMax - vocation->getHPGain());
+			manaMax = std::max<double_t>(0, manaMax - vocation->getManaGain());
+			capacity = std::max<double_t>(0, capacity - vocation->getCapGain());
 		}
 		currLevelExp = Player::getExpForLevel(level);
 	}
@@ -2587,7 +2587,7 @@ void Player::onBlockHit() {
 	}
 }
 
-void Player::onTakeDamage(std::shared_ptr<Creature> attacker, int32_t damage) {
+void Player::onTakeDamage(std::shared_ptr<Creature> attacker, double_t damage) {
 	// nothing here yet
 }
 
@@ -2634,7 +2634,7 @@ bool Player::hasShield() const {
 	return false;
 }
 
-BlockType_t Player::blockHit(std::shared_ptr<Creature> attacker, CombatType_t combatType, int32_t &damage, bool checkDefense /* = false*/, bool checkArmor /* = false*/, bool field /* = false*/) {
+BlockType_t Player::blockHit(std::shared_ptr<Creature> attacker, CombatType_t combatType, double_t &damage, bool checkDefense /* = false*/, bool checkArmor /* = false*/, bool field /* = false*/) {
 	BlockType_t blockType = Creature::blockHit(attacker, combatType, damage, checkDefense, checkArmor, field);
 	if (attacker) {
 		sendCreatureSquare(attacker, SQ_COLOR_BLACK);
@@ -2645,7 +2645,7 @@ BlockType_t Player::blockHit(std::shared_ptr<Creature> attacker, CombatType_t co
 	}
 
 	if (damage > 0) {
-		for (int32_t slot = CONST_SLOT_FIRST; slot <= CONST_SLOT_LAST; ++slot) {
+		for (double_t slot = CONST_SLOT_FIRST; slot <= CONST_SLOT_LAST; ++slot) {
 			if (!isItemAbilityEnabled(static_cast<Slots_t>(slot))) {
 				continue;
 			}
@@ -2716,8 +2716,8 @@ void Player::death(std::shared_ptr<Creature> lastHitCreature) {
 		uint8_t unfairFightReduction = 100;
 		int playerDmg = 0;
 		int othersDmg = 0;
-		uint32_t sumLevels = 0;
-		uint32_t inFightTicks = 5 * 60 * 1000;
+		udouble_t sumLevels = 0;
+		udouble_t inFightTicks = 5 * 60 * 1000;
 		for (const auto &it : damageMap) {
 			CountBlock_t cb = it.second;
 			if ((OTSYS_TIME() - cb.ticks) <= inFightTicks) {
@@ -2744,7 +2744,7 @@ void Player::death(std::shared_ptr<Creature> lastHitCreature) {
 		uint64_t lostMana = 0;
 
 		// sum up all the mana
-		for (uint32_t i = 1; i <= magLevel; ++i) {
+		for (udouble_t i = 1; i <= magLevel; ++i) {
 			sumMana += vocation->getReqMana(i);
 		}
 
@@ -2797,7 +2797,7 @@ void Player::death(std::shared_ptr<Creature> lastHitCreature) {
 
 			sumSkillTries += skills[i].tries;
 
-			uint32_t lostSkillTries = static_cast<uint32_t>(sumSkillTries * deathLossPercent);
+			udouble_t lostSkillTries = static_cast<udouble_t>(sumSkillTries * deathLossPercent);
 			while (lostSkillTries > skills[i].tries) {
 				lostSkillTries -= skills[i].tries;
 
@@ -2812,14 +2812,14 @@ void Player::death(std::shared_ptr<Creature> lastHitCreature) {
 				skills[i].level--;
 			}
 
-			skills[i].tries = std::max<int32_t>(0, skills[i].tries - lostSkillTries);
+			skills[i].tries = std::max<double_t>(0, skills[i].tries - lostSkillTries);
 			skills[i].percent = Player::getPercentLevel(skills[i].tries, vocation->getReqSkillTries(i, skills[i].level));
 		}
 
 		sendTextMessage(MESSAGE_EVENT_ADVANCE, lostExp.str());
 
 		if (expLoss != 0) {
-			uint32_t oldLevel = level;
+			udouble_t oldLevel = level;
 
 			if (vocation->getId() == VOCATION_NONE || level > 7) {
 				experience -= expLoss;
@@ -2827,9 +2827,9 @@ void Player::death(std::shared_ptr<Creature> lastHitCreature) {
 
 			while (level > 1 && experience < Player::getExpForLevel(level)) {
 				--level;
-				healthMax = std::max<int32_t>(0, healthMax - vocation->getHPGain());
-				manaMax = std::max<int32_t>(0, manaMax - vocation->getManaGain());
-				capacity = std::max<int32_t>(0, capacity - vocation->getCapGain());
+				healthMax = std::max<double_t>(0, healthMax - vocation->getHPGain());
+				manaMax = std::max<double_t>(0, manaMax - vocation->getManaGain());
+				capacity = std::max<double_t>(0, capacity - vocation->getCapGain());
 			}
 
 			if (oldLevel != level) {
@@ -2978,7 +2978,7 @@ void Player::despawn() {
 		return;
 	}
 
-	std::vector<int32_t> oldStackPosVector;
+	std::vector<double_t> oldStackPosVector;
 
 	auto spectators = Spectators().find<Creature>(tile->getPosition(), true);
 	size_t i = 0;
@@ -3083,7 +3083,7 @@ void Player::removePlayer(bool displayEffect, bool forced /*= true*/) {
 
 // close container and its child containers
 void Player::autoCloseContainers(std::shared_ptr<Container> container) {
-	std::vector<uint32_t> closeList;
+	std::vector<udouble_t> closeList;
 	for (const auto &it : openContainers) {
 		std::shared_ptr<Container> tmpContainer = it.second.container;
 		while (tmpContainer) {
@@ -3096,7 +3096,7 @@ void Player::autoCloseContainers(std::shared_ptr<Container> container) {
 		}
 	}
 
-	for (uint32_t containerId : closeList) {
+	for (udouble_t containerId : closeList) {
 		closeContainer(containerId);
 		if (client) {
 			client->sendCloseContainer(containerId);
@@ -3104,7 +3104,7 @@ void Player::autoCloseContainers(std::shared_ptr<Container> container) {
 	}
 }
 
-bool Player::hasCapacity(std::shared_ptr<Item> item, uint32_t count) const {
+bool Player::hasCapacity(std::shared_ptr<Item> item, udouble_t count) const {
 	if (hasFlag(PlayerFlags_t::CannotPickupItem)) {
 		return false;
 	}
@@ -3113,14 +3113,14 @@ bool Player::hasCapacity(std::shared_ptr<Item> item, uint32_t count) const {
 		return true;
 	}
 
-	uint32_t itemWeight = item->getContainer() != nullptr ? item->getWeight() : item->getBaseWeight();
+	udouble_t itemWeight = item->getContainer() != nullptr ? item->getWeight() : item->getBaseWeight();
 	if (item->isStackable()) {
 		itemWeight *= count;
 	}
 	return itemWeight <= getFreeCapacity();
 }
 
-ReturnValue Player::queryAdd(int32_t index, const std::shared_ptr<Thing> &thing, uint32_t count, uint32_t flags, std::shared_ptr<Creature>) {
+ReturnValue Player::queryAdd(double_t index, const std::shared_ptr<Thing> &thing, udouble_t count, udouble_t flags, std::shared_ptr<Creature>) {
 	std::shared_ptr<Item> item = thing->getItem();
 	if (item == nullptr) {
 		g_logger().error("[Player::queryAdd] - Item is nullptr");
@@ -3146,7 +3146,7 @@ ReturnValue Player::queryAdd(int32_t index, const std::shared_ptr<Thing> &thing,
 
 	ReturnValue ret = RETURNVALUE_NOERROR;
 
-	const int32_t &slotPosition = item->getSlotPosition();
+	const double_t &slotPosition = item->getSlotPosition();
 
 	bool allowPutItemsOnAmmoSlot = g_configManager().getBoolean(ENABLE_PLAYER_PUT_ITEM_IN_AMMO_SLOT);
 	if (allowPutItemsOnAmmoSlot && index == CONST_SLOT_AMMO) {
@@ -3338,7 +3338,7 @@ ReturnValue Player::queryAdd(int32_t index, const std::shared_ptr<Thing> &thing,
 	return ret;
 }
 
-ReturnValue Player::queryMaxCount(int32_t index, const std::shared_ptr<Thing> &thing, uint32_t count, uint32_t &maxQueryCount, uint32_t flags) {
+ReturnValue Player::queryMaxCount(double_t index, const std::shared_ptr<Thing> &thing, udouble_t count, udouble_t &maxQueryCount, udouble_t flags) {
 	auto item = thing->getItem();
 	if (item == nullptr) {
 		maxQueryCount = 0;
@@ -3346,12 +3346,12 @@ ReturnValue Player::queryMaxCount(int32_t index, const std::shared_ptr<Thing> &t
 	}
 
 	if (index == INDEX_WHEREEVER) {
-		uint32_t n = 0;
-		for (int32_t slotIndex = CONST_SLOT_FIRST; slotIndex <= CONST_SLOT_LAST; ++slotIndex) {
+		udouble_t n = 0;
+		for (double_t slotIndex = CONST_SLOT_FIRST; slotIndex <= CONST_SLOT_LAST; ++slotIndex) {
 			std::shared_ptr<Item> inventoryItem = inventory[slotIndex];
 			if (inventoryItem) {
 				if (std::shared_ptr<Container> subContainer = inventoryItem->getContainer()) {
-					uint32_t queryCount = 0;
+					udouble_t queryCount = 0;
 					subContainer->queryMaxCount(INDEX_WHEREEVER, item, item->getItemCount(), queryCount, flags);
 					n += queryCount;
 
@@ -3364,7 +3364,7 @@ ReturnValue Player::queryMaxCount(int32_t index, const std::shared_ptr<Thing> &t
 						}
 					}
 				} else if (inventoryItem->isStackable() && item->equals(inventoryItem) && inventoryItem->getItemCount() < inventoryItem->getStackSize()) {
-					uint32_t remainder = (inventoryItem->getStackSize() - inventoryItem->getItemCount());
+					udouble_t remainder = (inventoryItem->getStackSize() - inventoryItem->getItemCount());
 
 					if (queryAdd(slotIndex, item, remainder, flags) == RETURNVALUE_NOERROR) {
 						n += remainder;
@@ -3412,8 +3412,8 @@ ReturnValue Player::queryMaxCount(int32_t index, const std::shared_ptr<Thing> &t
 	}
 }
 
-ReturnValue Player::queryRemove(const std::shared_ptr<Thing> &thing, uint32_t count, uint32_t flags, std::shared_ptr<Creature> /*= nullptr*/) {
-	int32_t index = getThingIndex(thing);
+ReturnValue Player::queryRemove(const std::shared_ptr<Thing> &thing, udouble_t count, udouble_t flags, std::shared_ptr<Creature> /*= nullptr*/) {
+	double_t index = getThingIndex(thing);
 	if (index == -1) {
 		return RETURNVALUE_NOTPOSSIBLE;
 	}
@@ -3434,7 +3434,7 @@ ReturnValue Player::queryRemove(const std::shared_ptr<Thing> &thing, uint32_t co
 	return RETURNVALUE_NOERROR;
 }
 
-std::shared_ptr<Cylinder> Player::queryDestination(int32_t &index, const std::shared_ptr<Thing> &thing, std::shared_ptr<Item>* destItem, uint32_t &flags) {
+std::shared_ptr<Cylinder> Player::queryDestination(double_t &index, const std::shared_ptr<Thing> &thing, std::shared_ptr<Item>* destItem, udouble_t &flags) {
 	if (index == 0 /*drop to capacity window*/ || index == INDEX_WHEREEVER) {
 		*destItem = nullptr;
 
@@ -3448,7 +3448,7 @@ std::shared_ptr<Cylinder> Player::queryDestination(int32_t &index, const std::sh
 
 		std::vector<std::shared_ptr<Container>> containers;
 
-		for (uint32_t slotIndex = CONST_SLOT_FIRST; slotIndex <= CONST_SLOT_AMMO; ++slotIndex) {
+		for (udouble_t slotIndex = CONST_SLOT_FIRST; slotIndex <= CONST_SLOT_AMMO; ++slotIndex) {
 			std::shared_ptr<Item> inventoryItem = inventory[slotIndex];
 			if (inventoryItem) {
 				if (inventoryItem == tradeItem) {
@@ -3487,7 +3487,7 @@ std::shared_ptr<Cylinder> Player::queryDestination(int32_t &index, const std::sh
 			std::shared_ptr<Container> tmpContainer = containers[i++];
 			if (!autoStack || !isStackable) {
 				// we need to find first empty container as fast as we can for non-stackable items
-				uint32_t n = tmpContainer->capacity() - tmpContainer->size();
+				udouble_t n = tmpContainer->capacity() - tmpContainer->size();
 				while (n) {
 					if (tmpContainer->queryAdd(tmpContainer->capacity() - n, item, item->getItemCount(), flags) == RETURNVALUE_NOERROR) {
 						index = tmpContainer->capacity() - n;
@@ -3507,7 +3507,7 @@ std::shared_ptr<Cylinder> Player::queryDestination(int32_t &index, const std::sh
 				continue;
 			}
 
-			uint32_t n = 0;
+			udouble_t n = 0;
 
 			for (const std::shared_ptr<Item> &tmpItem : tmpContainer->getItemList()) {
 				if (tmpItem == tradeItem) {
@@ -3564,7 +3564,7 @@ std::shared_ptr<Cylinder> Player::queryDestination(int32_t &index, const std::sh
 	}
 }
 
-void Player::addThing(int32_t index, std::shared_ptr<Thing> thing) {
+void Player::addThing(double_t index, std::shared_ptr<Thing> thing) {
 	if (!thing) {
 		return /*RETURNVALUE_NOTPOSSIBLE*/;
 	}
@@ -3585,8 +3585,8 @@ void Player::addThing(int32_t index, std::shared_ptr<Thing> thing) {
 	sendInventoryItem(static_cast<Slots_t>(index), item);
 }
 
-void Player::updateThing(std::shared_ptr<Thing> thing, uint16_t itemId, uint32_t count) {
-	int32_t index = getThingIndex(thing);
+void Player::updateThing(std::shared_ptr<Thing> thing, uint16_t itemId, udouble_t count) {
+	double_t index = getThingIndex(thing);
 	if (index == -1) {
 		return /*RETURNVALUE_NOTPOSSIBLE*/;
 	}
@@ -3606,7 +3606,7 @@ void Player::updateThing(std::shared_ptr<Thing> thing, uint16_t itemId, uint32_t
 	onUpdateInventoryItem(item, item);
 }
 
-void Player::replaceThing(uint32_t index, std::shared_ptr<Thing> thing) {
+void Player::replaceThing(udouble_t index, std::shared_ptr<Thing> thing) {
 	if (index > CONST_SLOT_LAST) {
 		return /*RETURNVALUE_NOTPOSSIBLE*/;
 	}
@@ -3632,13 +3632,13 @@ void Player::replaceThing(uint32_t index, std::shared_ptr<Thing> thing) {
 	inventory[index] = item;
 }
 
-void Player::removeThing(std::shared_ptr<Thing> thing, uint32_t count) {
+void Player::removeThing(std::shared_ptr<Thing> thing, udouble_t count) {
 	std::shared_ptr<Item> item = thing->getItem();
 	if (!item) {
 		return /*RETURNVALUE_NOTPOSSIBLE*/;
 	}
 
-	int32_t index = getThingIndex(thing);
+	double_t index = getThingIndex(thing);
 	if (index == -1) {
 		return /*RETURNVALUE_NOTPOSSIBLE*/;
 	}
@@ -3654,7 +3654,7 @@ void Player::removeThing(std::shared_ptr<Thing> thing, uint32_t count) {
 			item->resetParent();
 			inventory[index] = nullptr;
 		} else {
-			uint8_t newCount = static_cast<uint8_t>(std::max<int32_t>(0, item->getItemCount() - count));
+			uint8_t newCount = static_cast<uint8_t>(std::max<double_t>(0, item->getItemCount() - count));
 			item->setItemCount(newCount);
 
 			// send change to client
@@ -3675,7 +3675,7 @@ void Player::removeThing(std::shared_ptr<Thing> thing, uint32_t count) {
 	}
 }
 
-int32_t Player::getThingIndex(std::shared_ptr<Thing> thing) const {
+double_t Player::getThingIndex(std::shared_ptr<Thing> thing) const {
 	for (uint8_t i = CONST_SLOT_FIRST; i <= CONST_SLOT_LAST; ++i) {
 		if (inventory[i] == thing) {
 			return i;
@@ -3692,9 +3692,9 @@ size_t Player::getLastIndex() const {
 	return CONST_SLOT_LAST + 1;
 }
 
-uint32_t Player::getItemTypeCount(uint16_t itemId, int32_t subType /*= -1*/) const {
-	uint32_t count = 0;
-	for (int32_t i = CONST_SLOT_FIRST; i <= CONST_SLOT_LAST; i++) {
+udouble_t Player::getItemTypeCount(uint16_t itemId, double_t subType /*= -1*/) const {
+	udouble_t count = 0;
+	for (double_t i = CONST_SLOT_FIRST; i <= CONST_SLOT_LAST; i++) {
 		std::shared_ptr<Item> item = inventory[i];
 		if (!item) {
 			continue;
@@ -3734,7 +3734,7 @@ void Player::stashContainer(StashContainerList itemDict) {
 		return;
 	}
 
-	uint32_t totalStowed = 0;
+	udouble_t totalStowed = 0;
 	std::ostringstream retString;
 	uint16_t refreshDepotSearchOnItem = 0;
 	for (const auto &stashIterator : itemDict) {
@@ -3766,22 +3766,22 @@ void Player::stashContainer(StashContainerList itemDict) {
 	}
 }
 
-bool Player::removeItemOfType(uint16_t itemId, uint32_t amount, int32_t subType, bool ignoreEquipped /* = false*/) {
+bool Player::removeItemOfType(uint16_t itemId, udouble_t amount, double_t subType, bool ignoreEquipped /* = false*/) {
 	if (amount == 0) {
 		return true;
 	}
 
 	std::vector<std::shared_ptr<Item>> itemList;
 
-	uint32_t count = 0;
-	for (int32_t i = CONST_SLOT_FIRST; i <= CONST_SLOT_LAST; i++) {
+	udouble_t count = 0;
+	for (double_t i = CONST_SLOT_FIRST; i <= CONST_SLOT_LAST; i++) {
 		std::shared_ptr<Item> item = inventory[i];
 		if (!item) {
 			continue;
 		}
 
 		if (!ignoreEquipped && item->getID() == itemId) {
-			uint32_t itemCount = Item::countByType(item, subType);
+			udouble_t itemCount = Item::countByType(item, subType);
 			if (itemCount == 0) {
 				continue;
 			}
@@ -3797,7 +3797,7 @@ bool Player::removeItemOfType(uint16_t itemId, uint32_t amount, int32_t subType,
 			for (ContainerIterator it = container->iterator(); it.hasNext(); it.advance()) {
 				std::shared_ptr<Item> containerItem = *it;
 				if (containerItem->getID() == itemId) {
-					uint32_t itemCount = Item::countByType(containerItem, subType);
+					udouble_t itemCount = Item::countByType(containerItem, subType);
 					if (itemCount == 0) {
 						continue;
 					}
@@ -3820,8 +3820,8 @@ bool Player::removeItemOfType(uint16_t itemId, uint32_t amount, int32_t subType,
 	return false;
 }
 
-bool Player::hasItemCountById(uint16_t itemId, uint32_t itemAmount, bool checkStash) const {
-	uint32_t newCount = 0;
+bool Player::hasItemCountById(uint16_t itemId, udouble_t itemAmount, bool checkStash) const {
+	udouble_t newCount = 0;
 	// Check items from inventory
 	for (const auto &item : getAllInventoryItems()) {
 		if (!item || item->getID() != itemId) {
@@ -3846,13 +3846,13 @@ bool Player::hasItemCountById(uint16_t itemId, uint32_t itemAmount, bool checkSt
 	return newCount >= itemAmount;
 }
 
-bool Player::removeItemCountById(uint16_t itemId, uint32_t itemAmount, bool removeFromStash /* = true*/) {
+bool Player::removeItemCountById(uint16_t itemId, udouble_t itemAmount, bool removeFromStash /* = true*/) {
 	// Here we guarantee that the player has at least the necessary amount of items he needs, if not, we return
 	if (!hasItemCountById(itemId, itemAmount, removeFromStash)) {
 		return false;
 	}
 
-	uint32_t amountToRemove = itemAmount;
+	udouble_t amountToRemove = itemAmount;
 	// Check items from inventory
 	for (const auto &item : getAllInventoryItems()) {
 		if (!item || item->getID() != itemId) {
@@ -3880,7 +3880,7 @@ bool Player::removeItemCountById(uint16_t itemId, uint32_t itemAmount, bool remo
 
 ItemsTierCountList Player::getInventoryItemsId(bool ignoreStoreInbox /* false */) const {
 	ItemsTierCountList itemMap;
-	for (int32_t i = CONST_SLOT_FIRST; i <= CONST_SLOT_LAST; i++) {
+	for (double_t i = CONST_SLOT_FIRST; i <= CONST_SLOT_LAST; i++) {
 		std::shared_ptr<Item> item = inventory[i];
 		if (!item) {
 			continue;
@@ -4115,9 +4115,9 @@ std::vector<std::shared_ptr<Item>> Player::getEquippedItems() const {
 	return valid_items;
 }
 
-std::map<uint32_t, uint32_t> &Player::getAllItemTypeCount(std::map<uint32_t, uint32_t> &countMap) const {
+std::map<udouble_t, udouble_t> &Player::getAllItemTypeCount(std::map<udouble_t, udouble_t> &countMap) const {
 	for (const auto &item : getAllInventoryItems()) {
-		countMap[static_cast<uint32_t>(item->getID())] += Item::countByType(item, -1);
+		countMap[static_cast<udouble_t>(item->getID())] += Item::countByType(item, -1);
 	}
 	return countMap;
 }
@@ -4141,13 +4141,13 @@ std::map<uint16_t, uint16_t> &Player::getAllSaleItemIdAndCount(std::map<uint16_t
 	return countMap;
 }
 
-void Player::getAllItemTypeCountAndSubtype(std::map<uint32_t, uint32_t> &countMap) const {
+void Player::getAllItemTypeCountAndSubtype(std::map<udouble_t, udouble_t> &countMap) const {
 	for (const auto &item : getAllInventoryItems()) {
 		uint16_t itemId = item->getID();
 		if (Item::items[itemId].isFluidContainer()) {
-			countMap[static_cast<uint32_t>(itemId) | (item->getAttribute<uint32_t>(ItemAttribute_t::FLUIDTYPE)) << 16] += item->getItemCount();
+			countMap[static_cast<udouble_t>(itemId) | (item->getAttribute<udouble_t>(ItemAttribute_t::FLUIDTYPE)) << 16] += item->getItemCount();
 		} else {
-			countMap[static_cast<uint32_t>(itemId)] += item->getItemCount();
+			countMap[static_cast<udouble_t>(itemId)] += item->getItemCount();
 		}
 	}
 }
@@ -4173,7 +4173,7 @@ std::shared_ptr<Thing> Player::getThing(size_t index) const {
 	return nullptr;
 }
 
-void Player::postAddNotification(std::shared_ptr<Thing> thing, std::shared_ptr<Cylinder> oldParent, int32_t index, CylinderLink_t link /*= LINK_OWNER*/) {
+void Player::postAddNotification(std::shared_ptr<Thing> thing, std::shared_ptr<Cylinder> oldParent, double_t index, CylinderLink_t link /*= LINK_OWNER*/) {
 	if (link == LINK_OWNER) {
 		// calling movement scripts
 		g_moveEvents().onPlayerEquip(getPlayer(), thing->getItem(), static_cast<Slots_t>(index), false);
@@ -4226,7 +4226,7 @@ void Player::postAddNotification(std::shared_ptr<Thing> thing, std::shared_ptr<C
 	}
 }
 
-void Player::postRemoveNotification(std::shared_ptr<Thing> thing, std::shared_ptr<Cylinder> newParent, int32_t index, CylinderLink_t link /*= LINK_OWNER*/) {
+void Player::postRemoveNotification(std::shared_ptr<Thing> thing, std::shared_ptr<Cylinder> newParent, double_t index, CylinderLink_t link /*= LINK_OWNER*/) {
 	if (link == LINK_OWNER) {
 		// calling movement scripts
 		g_moveEvents().onPlayerDeEquip(getPlayer(), thing->getItem(), static_cast<Slots_t>(index));
@@ -4319,7 +4319,7 @@ void Player::internalAddThing(std::shared_ptr<Thing> thing) {
 	internalAddThing(0, thing);
 }
 
-void Player::internalAddThing(uint32_t index, std::shared_ptr<Thing> thing) {
+void Player::internalAddThing(udouble_t index, std::shared_ptr<Thing> thing) {
 	if (!thing) {
 		return;
 	}
@@ -4393,7 +4393,7 @@ void Player::getPathSearchParams(const std::shared_ptr<Creature> &creature, Find
 	fpp.fullPathSearch = true;
 }
 
-void Player::doAttacking(uint32_t) {
+void Player::doAttacking(udouble_t) {
 	if (lastAttack == 0) {
 		lastAttack = OTSYS_TIME() - getAttackSpeed() - 1;
 	}
@@ -4412,7 +4412,7 @@ void Player::doAttacking(uint32_t) {
 
 		std::shared_ptr<Item> tool = getWeapon();
 		const WeaponShared_ptr weapon = g_weapons().getWeapon(tool);
-		uint32_t delay = getAttackSpeed();
+		udouble_t delay = getAttackSpeed();
 		bool classicSpeed = g_configManager().getBoolean(CLASSIC_ATTACK_SPEED);
 
 		if (weapon) {
@@ -4430,7 +4430,7 @@ void Player::doAttacking(uint32_t) {
 		}
 
 		const auto &task = createPlayerTask(
-			std::max<uint32_t>(SCHEDULER_MINTICKS, delay),
+			std::max<udouble_t>(SCHEDULER_MINTICKS, delay),
 			[playerId = getID()] { g_game().checkCreatureAttack(playerId); },
 			__FUNCTION__
 		);
@@ -4451,7 +4451,7 @@ void Player::doAttacking(uint32_t) {
 uint64_t Player::getGainedExperience(std::shared_ptr<Creature> attacker) const {
 	if (g_configManager().getBoolean(EXPERIENCE_FROM_PLAYERS)) {
 		auto attackerPlayer = attacker->getPlayer();
-		if (attackerPlayer && attackerPlayer.get() != this && skillLoss && std::abs(static_cast<int32_t>(attackerPlayer->getLevel() - level)) <= g_configManager().getNumber(EXP_FROM_PLAYERS_LEVEL_RANGE)) {
+		if (attackerPlayer && attackerPlayer.get() != this && skillLoss && std::abs(static_cast<double_t>(attackerPlayer->getLevel() - level)) <= g_configManager().getNumber(EXP_FROM_PLAYERS_LEVEL_RANGE)) {
 			return std::max<uint64_t>(0, std::floor(getLostExperience() * getDamageRatio(attacker) * 0.75));
 		}
 	}
@@ -4521,7 +4521,7 @@ LightInfo Player::getCreatureLight() const {
 void Player::updateItemsLight(bool internal /*=false*/) {
 	LightInfo maxLight;
 
-	for (int32_t i = CONST_SLOT_FIRST; i <= CONST_SLOT_LAST; ++i) {
+	for (double_t i = CONST_SLOT_FIRST; i <= CONST_SLOT_LAST; ++i) {
 		std::shared_ptr<Item> item = inventory[i];
 		if (item) {
 			LightInfo curLight = item->getLightInfo();
@@ -4645,8 +4645,8 @@ void Player::onCombatRemoveCondition(std::shared_ptr<Condition> condition) {
 		}
 	} else {
 		if (!canDoAction()) {
-			const uint32_t delay = getNextActionTime();
-			const int32_t ticks = delay - (delay % EVENT_CREATURE_THINK_INTERVAL);
+			const udouble_t delay = getNextActionTime();
+			const double_t ticks = delay - (delay % EVENT_CREATURE_THINK_INTERVAL);
 			if (ticks < 0 || condition->getType() == CONDITION_PARALYZE) {
 				removeCondition(condition);
 			} else {
@@ -4732,7 +4732,7 @@ void Player::onPlacedCreature() {
 	sendUnjustifiedPoints();
 }
 
-void Player::onAttackedCreatureDrainHealth(std::shared_ptr<Creature> target, int32_t points) {
+void Player::onAttackedCreatureDrainHealth(std::shared_ptr<Creature> target, double_t points) {
 	Creature::onAttackedCreatureDrainHealth(target, points);
 
 	if (target) {
@@ -4746,7 +4746,7 @@ void Player::onAttackedCreatureDrainHealth(std::shared_ptr<Creature> target, int
 	}
 }
 
-void Player::onTargetCreatureGainHealth(std::shared_ptr<Creature> target, int32_t points) {
+void Player::onTargetCreatureGainHealth(std::shared_ptr<Creature> target, double_t points) {
 	if (target && m_party) {
 		std::shared_ptr<Player> tmpPlayer = nullptr;
 
@@ -4815,7 +4815,7 @@ void Player::addBestiaryKill(const std::shared_ptr<MonsterType> &mType) {
 	if (mType->isBoss()) {
 		return;
 	}
-	uint32_t kills = g_configManager().getNumber(BESTIARY_KILL_MULTIPLIER);
+	udouble_t kills = g_configManager().getNumber(BESTIARY_KILL_MULTIPLIER);
 	if (isConcoctionActive(Concoction_t::BestiaryBetterment)) {
 		kills *= 2;
 	}
@@ -4826,7 +4826,7 @@ void Player::addBosstiaryKill(const std::shared_ptr<MonsterType> &mType) {
 	if (!mType->isBoss()) {
 		return;
 	}
-	uint32_t kills = g_configManager().getNumber(BOSSTIARY_KILL_MULTIPLIER);
+	udouble_t kills = g_configManager().getNumber(BOSSTIARY_KILL_MULTIPLIER);
 	if (g_ioBosstiary().getBoostedBossId() == mType->info.raceid) {
 		kills *= g_configManager().getNumber(BOOSTED_BOSS_KILL_BONUS);
 	}
@@ -4906,12 +4906,12 @@ bool Player::lastHitIsPlayer(std::shared_ptr<Creature> lastHitCreature) {
 	return lastHitMaster && lastHitMaster->getPlayer();
 }
 
-void Player::changeHealth(int32_t healthChange, bool sendHealthChange /* = true*/) {
+void Player::changeHealth(double_t healthChange, bool sendHealthChange /* = true*/) {
 	Creature::changeHealth(healthChange, sendHealthChange);
 	sendStats();
 }
 
-void Player::changeMana(int32_t manaChange) {
+void Player::changeMana(double_t manaChange) {
 	if (!hasFlag(PlayerFlags_t::HasInfiniteMana)) {
 		Creature::changeMana(manaChange);
 	}
@@ -4919,11 +4919,11 @@ void Player::changeMana(int32_t manaChange) {
 	sendStats();
 }
 
-void Player::changeSoul(int32_t soulChange) {
+void Player::changeSoul(double_t soulChange) {
 	if (soulChange > 0) {
-		soul += std::min<int32_t>(soulChange * g_configManager().getFloat(RATE_SOUL_REGEN), vocation->getSoulMax() - soul);
+		soul += std::min<double_t>(soulChange * g_configManager().getFloat(RATE_SOUL_REGEN), vocation->getSoulMax() - soul);
 	} else {
-		soul = std::max<int32_t>(0, soul + soulChange);
+		soul = std::max<double_t>(0, soul + soulChange);
 	}
 
 	sendStats();
@@ -4984,12 +4984,12 @@ bool Player::canLogout() {
 
 void Player::genReservedStorageRange() {
 	// generate outfits range
-	uint32_t outfits_key = PSTRG_OUTFITS_RANGE_START;
+	udouble_t outfits_key = PSTRG_OUTFITS_RANGE_START;
 	for (const OutfitEntry &entry : outfits) {
 		storageMap[++outfits_key] = (entry.lookType << 16) | entry.addons;
 	}
 	// generate familiars range
-	uint32_t familiar_key = PSTRG_FAMILIARS_RANGE_START;
+	udouble_t familiar_key = PSTRG_FAMILIARS_RANGE_START;
 	for (const FamiliarEntry &entry : familiars) {
 		storageMap[++familiar_key] = (entry.lookType << 16);
 	}
@@ -5266,7 +5266,7 @@ bool Player::isPromoted() const {
 }
 
 double Player::getLostPercent() const {
-	int32_t blessingCount = 0;
+	double_t blessingCount = 0;
 	uint8_t maxBlessing = (operatingSystem == CLIENTOS_NEW_WINDOWS || operatingSystem == CLIENTOS_NEW_MAC) ? 8 : 6;
 	for (int i = 2; i <= maxBlessing; i++) {
 		if (hasBlessing(i)) {
@@ -5274,14 +5274,14 @@ double Player::getLostPercent() const {
 		}
 	}
 
-	int32_t deathLosePercent = g_configManager().getNumber(DEATH_LOSE_PERCENT);
+	double_t deathLosePercent = g_configManager().getNumber(DEATH_LOSE_PERCENT);
 	if (deathLosePercent != -1) {
 		if (isPromoted()) {
 			deathLosePercent -= 3;
 		}
 
 		deathLosePercent -= blessingCount;
-		return std::max<int32_t>(0, deathLosePercent) / 100.;
+		return std::max<double_t>(0, deathLosePercent) / 100.;
 	}
 
 	double lossPercent;
@@ -5341,20 +5341,20 @@ bool Player::isInWar(std::shared_ptr<Player> player) const {
 	return isInWarList(playerGuild->getId()) && player->isInWarList(guild->getId());
 }
 
-bool Player::isInWarList(uint32_t guildId) const {
+bool Player::isInWarList(udouble_t guildId) const {
 	return std::find(guildWarVector.begin(), guildWarVector.end(), guildId) != guildWarVector.end();
 }
 
-uint32_t Player::getMagicLevel() const {
-	uint32_t magic = std::max<int32_t>(0, getLoyaltyMagicLevel() + varStats[STAT_MAGICPOINTS]);
+udouble_t Player::getMagicLevel() const {
+	udouble_t magic = std::max<double_t>(0, getLoyaltyMagicLevel() + varStats[STAT_MAGICPOINTS]);
 	// Wheel of destiny magic bonus
 	magic += m_wheelPlayer->getStat(WheelStat_t::MAGIC); // Regular bonus
 	magic += m_wheelPlayer->getMajorStatConditional("Positional Tatics", WheelMajor_t::MAGIC); // Revelation bonus
 	return magic;
 }
 
-uint32_t Player::getLoyaltyMagicLevel() const {
-	uint32_t level = getBaseMagicLevel();
+udouble_t Player::getLoyaltyMagicLevel() const {
+	udouble_t level = getBaseMagicLevel();
 	absl::uint128 currReqMana = vocation->getReqMana(level);
 	absl::uint128 nextReqMana = vocation->getReqMana(level + 1);
 	if (currReqMana >= nextReqMana) {
@@ -5380,30 +5380,30 @@ uint32_t Player::getLoyaltyMagicLevel() const {
 	return level;
 }
 
-uint32_t Player::getCapacity() const {
+udouble_t Player::getCapacity() const {
 	if (hasFlag(PlayerFlags_t::CannotPickupItem)) {
 		return 0;
 	} else if (hasFlag(PlayerFlags_t::HasInfiniteCapacity)) {
-		return std::numeric_limits<uint32_t>::max();
+		return std::numeric_limits<udouble_t>::max();
 	}
 	return capacity + bonusCapacity + varStats[STAT_CAPACITY] + m_wheelPlayer->getStat(WheelStat_t::CAPACITY) ;
 }
 
-int32_t Player::getMaxHealth() const {
-	return std::max<int32_t>(1, healthMax + varStats[STAT_MAXHITPOINTS] + m_wheelPlayer->getStat(WheelStat_t::HEALTH));
+double_t Player::getMaxHealth() const {
+	return std::max<double_t>(1, healthMax + varStats[STAT_MAXHITPOINTS] + m_wheelPlayer->getStat(WheelStat_t::HEALTH));
 }
 
-uint32_t Player::getMaxMana() const {
-	return std::max<int32_t>(0, manaMax + varStats[STAT_MAXMANAPOINTS] + m_wheelPlayer->getStat(WheelStat_t::MANA));
+udouble_t Player::getMaxMana() const {
+	return std::max<double_t>(0, manaMax + varStats[STAT_MAXMANAPOINTS] + m_wheelPlayer->getStat(WheelStat_t::MANA));
 }
 
 uint16_t Player::getSkillLevel(skills_t skill) const {
 	auto skillLevel = getLoyaltySkill(skill);
-	skillLevel = std::max<int32_t>(0, skillLevel + varSkills[skill]);
+	skillLevel = std::max<double_t>(0, skillLevel + varSkills[skill]);
 
 	if (auto it = maxValuePerSkill.find(skill);
 	    it != maxValuePerSkill.end()) {
-		skillLevel = std::min<int32_t>(it->second, skillLevel);
+		skillLevel = std::min<double_t>(it->second, skillLevel);
 	}
 
 	// Wheel of destiny
@@ -5429,7 +5429,7 @@ uint16_t Player::getSkillLevel(skills_t skill) const {
 		skillLevel += m_wheelPlayer->checkAvatarSkill(WheelAvatarSkill_t::CRITICAL_DAMAGE);
 	}
 
-	int32_t avatarCritChance = m_wheelPlayer->checkAvatarSkill(WheelAvatarSkill_t::CRITICAL_CHANCE);
+	double_t avatarCritChance = m_wheelPlayer->checkAvatarSkill(WheelAvatarSkill_t::CRITICAL_CHANCE);
 	if (skill == SKILL_CRITICAL_HIT_CHANCE && avatarCritChance > 0) {
 		skillLevel = avatarCritChance; // 100%
 	}
@@ -5457,7 +5457,7 @@ bool Player::isPremium() const {
 	return account->getPremiumRemainingDays() > 0 || account->getPremiumLastDay() > getTimeNow();
 }
 
-uint32_t Player::getPremiumDays() const {
+udouble_t Player::getPremiumDays() const {
 	return account->getPremiumRemainingDays();
 }
 
@@ -5465,19 +5465,19 @@ time_t Player::getPremiumLastDay() const {
 	return account->getPremiumLastDay();
 }
 
-void Player::setTibiaCoins(int32_t v) {
+void Player::setTibiaCoins(double_t v) {
 	coinBalance = v;
 }
 
-int32_t Player::getCleavePercent(bool useCharges) const {
-	int32_t result = cleavePercent;
+double_t Player::getCleavePercent(bool useCharges) const {
+	double_t result = cleavePercent;
 	for (const auto &item : getEquippedItems()) {
 		const ItemType &it = Item::items[item->getID()];
 		if (!it.abilities) {
 			continue;
 		}
 
-		const int32_t &cleave_percent = it.abilities->cleavePercent;
+		const double_t &cleave_percent = it.abilities->cleavePercent;
 		if (cleave_percent != 0) {
 			result += cleave_percent;
 			uint16_t charges = item->getCharges();
@@ -5490,8 +5490,8 @@ int32_t Player::getCleavePercent(bool useCharges) const {
 	return result;
 }
 
-int32_t Player::getPerfectShotDamage(uint8_t range, bool useCharges) const {
-	int32_t result = 0;
+double_t Player::getPerfectShotDamage(uint8_t range, bool useCharges) const {
+	double_t result = 0;
 	auto it = perfectShot.find(range);
 	if (it != perfectShot.end()) {
 		result = it->second;
@@ -5519,15 +5519,15 @@ int32_t Player::getPerfectShotDamage(uint8_t range, bool useCharges) const {
 	return result;
 }
 
-int32_t Player::getSpecializedMagicLevel(CombatType_t combat, bool useCharges) const {
-	int32_t result = specializedMagicLevel[combatTypeToIndex(combat)];
+double_t Player::getSpecializedMagicLevel(CombatType_t combat, bool useCharges) const {
+	double_t result = specializedMagicLevel[combatTypeToIndex(combat)];
 	for (const auto &item : getEquippedItems()) {
 		const ItemType &itemType = Item::items[item->getID()];
 		if (!itemType.abilities) {
 			continue;
 		}
 
-		int32_t specialized_magic_level = itemType.abilities->specializedMagicLevel[combatTypeToIndex(combat)];
+		double_t specialized_magic_level = itemType.abilities->specializedMagicLevel[combatTypeToIndex(combat)];
 		if (specialized_magic_level > 0) {
 			result += specialized_magic_level;
 			uint16_t charges = item->getCharges();
@@ -5540,15 +5540,15 @@ int32_t Player::getSpecializedMagicLevel(CombatType_t combat, bool useCharges) c
 	return result;
 }
 
-int32_t Player::getMagicShieldCapacityFlat(bool useCharges) const {
-	int32_t result = magicShieldCapacityFlat;
+double_t Player::getMagicShieldCapacityFlat(bool useCharges) const {
+	double_t result = magicShieldCapacityFlat;
 	for (const auto &item : getEquippedItems()) {
 		const ItemType &itemType = Item::items[item->getID()];
 		if (!itemType.abilities) {
 			continue;
 		}
 
-		int32_t magicCapacity = itemType.abilities->magicShieldCapacityFlat;
+		double_t magicCapacity = itemType.abilities->magicShieldCapacityFlat;
 		if (magicCapacity != 0) {
 			result += magicCapacity;
 			uint16_t charges = item->getCharges();
@@ -5561,15 +5561,15 @@ int32_t Player::getMagicShieldCapacityFlat(bool useCharges) const {
 	return result;
 }
 
-int32_t Player::getMagicShieldCapacityPercent(bool useCharges) const {
-	int32_t result = magicShieldCapacityPercent;
+double_t Player::getMagicShieldCapacityPercent(bool useCharges) const {
+	double_t result = magicShieldCapacityPercent;
 	for (const auto &item : getEquippedItems()) {
 		const ItemType &itemType = Item::items[item->getID()];
 		if (!itemType.abilities) {
 			continue;
 		}
 
-		int32_t magicPercent = itemType.abilities->magicShieldCapacityPercent;
+		double_t magicPercent = itemType.abilities->magicShieldCapacityPercent;
 		if (magicPercent != 0) {
 			result += magicPercent;
 			uint16_t charges = item->getCharges();
@@ -5603,15 +5603,15 @@ double_t Player::getReflectPercent(CombatType_t combat, bool useCharges) const {
 	return result;
 }
 
-int32_t Player::getReflectFlat(CombatType_t combat, bool useCharges) const {
-	int32_t result = reflectFlat[combatTypeToIndex(combat)];
+double_t Player::getReflectFlat(CombatType_t combat, bool useCharges) const {
+	double_t result = reflectFlat[combatTypeToIndex(combat)];
 	for (const auto &item : getEquippedItems()) {
 		const ItemType &itemType = Item::items[item->getID()];
 		if (!itemType.abilities) {
 			continue;
 		}
 
-		int32_t reflectFlat = itemType.abilities->reflectFlat[combatTypeToIndex(combat)];
+		double_t reflectFlat = itemType.abilities->reflectFlat[combatTypeToIndex(combat)];
 		if (reflectFlat != 0) {
 			result += reflectFlat;
 			uint16_t charges = item->getCharges();
@@ -5624,7 +5624,7 @@ int32_t Player::getReflectFlat(CombatType_t combat, bool useCharges) const {
 	return result;
 }
 
-void Player::setTransferableTibiaCoins(int32_t v) {
+void Player::setTransferableTibiaCoins(double_t v) {
 	coinTransferableBalance = v;
 }
 
@@ -5791,7 +5791,7 @@ void Player::sendUnjustifiedPoints() {
 }
 
 uint8_t Player::getLastMount() const {
-	int32_t value = getStorageValue(PSTRG_MOUNTS_CURRENTMOUNT);
+	double_t value = getStorageValue(PSTRG_MOUNTS_CURRENTMOUNT);
 	if (value > 0) {
 		return value;
 	}
@@ -5799,7 +5799,7 @@ uint8_t Player::getLastMount() const {
 }
 
 uint8_t Player::getCurrentMount() const {
-	int32_t value = getStorageValue(PSTRG_MOUNTS_CURRENTMOUNT);
+	double_t value = getStorageValue(PSTRG_MOUNTS_CURRENTMOUNT);
 	if (value > 0) {
 		return value;
 	}
@@ -5829,8 +5829,8 @@ uint8_t Player::getRandomMountId() const {
 		}
 	}
 
-	auto playerMountsSize = static_cast<int32_t>(playerMounts.size() - 1);
-	auto randomIndex = uniform_random(0, std::max<int32_t>(0, playerMountsSize));
+	auto playerMountsSize = static_cast<double_t>(playerMounts.size() - 1);
+	auto randomIndex = uniform_random(0, std::max<double_t>(0, playerMountsSize));
 	return playerMounts.at(randomIndex);
 }
 
@@ -5918,9 +5918,9 @@ bool Player::tameMount(uint8_t mountId) {
 	}
 
 	const uint8_t tmpMountId = mountId - 1;
-	const uint32_t key = PSTRG_MOUNTS_RANGE_START + (tmpMountId / 31);
+	const udouble_t key = PSTRG_MOUNTS_RANGE_START + (tmpMountId / 31);
 
-	int32_t value = getStorageValue(key);
+	double_t value = getStorageValue(key);
 	if (value != -1) {
 		value |= (1 << (tmpMountId % 31));
 	} else {
@@ -5937,9 +5937,9 @@ bool Player::untameMount(uint8_t mountId) {
 	}
 
 	const uint8_t tmpMountId = mountId - 1;
-	const uint32_t key = PSTRG_MOUNTS_RANGE_START + (tmpMountId / 31);
+	const udouble_t key = PSTRG_MOUNTS_RANGE_START + (tmpMountId / 31);
 
-	int32_t value = getStorageValue(key);
+	double_t value = getStorageValue(key);
 	if (value == -1) {
 		return true;
 	}
@@ -5971,7 +5971,7 @@ bool Player::hasMount(const std::shared_ptr<Mount> mount) const {
 
 	const uint8_t tmpMountId = mount->id - 1;
 
-	int32_t value = getStorageValue(PSTRG_MOUNTS_RANGE_START + (tmpMountId / 31));
+	double_t value = getStorageValue(PSTRG_MOUNTS_RANGE_START + (tmpMountId / 31));
 	if (value == -1) {
 		return false;
 	}
@@ -5994,7 +5994,7 @@ bool Player::addOfflineTrainingTries(skills_t skill, uint64_t tries) {
 	}
 
 	bool sendUpdate = false;
-	uint32_t oldSkillValue, newSkillValue;
+	udouble_t oldSkillValue, newSkillValue;
 	long double oldPercentToNextLevel, newPercentToNextLevel;
 
 	if (skill == SKILL_MAGLEVEL) {
@@ -6011,7 +6011,7 @@ bool Player::addOfflineTrainingTries(skills_t skill, uint64_t tries) {
 		g_events().eventPlayerOnGainSkillTries(static_self_cast<Player>(), SKILL_MAGLEVEL, tries);
 		g_callbacks().executeCallback(EventCallback_t::playerOnGainSkillTries, &EventCallback::playerOnGainSkillTries, getPlayer(), SKILL_MAGLEVEL, std::ref(tries));
 
-		uint32_t currMagLevel = magLevel;
+		udouble_t currMagLevel = magLevel;
 		while ((manaSpent + tries) >= nextReqMana) {
 			tries -= nextReqMana - manaSpent;
 
@@ -6066,7 +6066,7 @@ bool Player::addOfflineTrainingTries(skills_t skill, uint64_t tries) {
 
 		g_events().eventPlayerOnGainSkillTries(static_self_cast<Player>(), skill, tries);
 		g_callbacks().executeCallback(EventCallback_t::playerOnGainSkillTries, &EventCallback::playerOnGainSkillTries, getPlayer(), skill, tries);
-		uint32_t currSkillLevel = skills[skill].level;
+		udouble_t currSkillLevel = skills[skill].level;
 
 		while ((skills[skill].tries + tries) >= nextReqTries) {
 			tries -= nextReqTries - skills[skill].tries;
@@ -6137,11 +6137,11 @@ bool Player::addOfflineTrainingTries(skills_t skill, uint64_t tries) {
 	return sendUpdate;
 }
 
-bool Player::hasModalWindowOpen(uint32_t modalWindowId) const {
+bool Player::hasModalWindowOpen(udouble_t modalWindowId) const {
 	return find(modalWindows.begin(), modalWindows.end(), modalWindowId) != modalWindows.end();
 }
 
-void Player::onModalWindowHandled(uint32_t modalWindowId) {
+void Player::onModalWindowHandled(udouble_t modalWindowId) {
 	std::erase(modalWindows, modalWindowId);
 }
 
@@ -6242,7 +6242,7 @@ void Player::removeBakragoreIcon(const IconBakragore icon) {
 	}
 }
 
-void Player::sendCyclopediaCharacterAchievements(uint16_t secretsUnlocked, std::vector<std::pair<Achievement, uint32_t>> achievementsUnlocked) {
+void Player::sendCyclopediaCharacterAchievements(uint16_t secretsUnlocked, std::vector<std::pair<Achievement, udouble_t>> achievementsUnlocked) {
 	if (client) {
 		client->sendCyclopediaCharacterAchievements(secretsUnlocked, achievementsUnlocked);
 	}
@@ -6252,7 +6252,7 @@ uint64_t Player::getMoney() const {
 	std::vector<std::shared_ptr<Container>> containers;
 	uint64_t moneyCount = 0;
 
-	for (int32_t i = CONST_SLOT_FIRST; i <= CONST_SLOT_LAST; ++i) {
+	for (double_t i = CONST_SLOT_FIRST; i <= CONST_SLOT_LAST; ++i) {
 		std::shared_ptr<Item> item = inventory[i];
 		if (!item) {
 			continue;
@@ -6377,7 +6377,7 @@ void Player::updateRegeneration() {
 }
 
 // User Interface action exhaustion
-bool Player::isUIExhausted(uint32_t exhaustionTime /*= 250*/) const {
+bool Player::isUIExhausted(udouble_t exhaustionTime /*= 250*/) const {
 	return (OTSYS_TIME() - lastUIInteraction < exhaustionTime);
 }
 
@@ -6424,7 +6424,7 @@ uint16_t Player::getFreeBackpackSlots() const {
 void Player::addItemImbuementStats(const Imbuement* imbuement) {
 	bool requestUpdate = false;
 	// Check imbuement skills
-	for (int32_t skill = SKILL_FIRST; skill <= SKILL_LAST; ++skill) {
+	for (double_t skill = SKILL_FIRST; skill <= SKILL_LAST; ++skill) {
 		if (imbuement->skills[skill]) {
 			requestUpdate = true;
 			setVarSkill(static_cast<skills_t>(skill), imbuement->skills[skill]);
@@ -6432,7 +6432,7 @@ void Player::addItemImbuementStats(const Imbuement* imbuement) {
 	}
 
 	// Check imbuement magic level
-	for (int32_t stat = STAT_FIRST; stat <= STAT_LAST; ++stat) {
+	for (double_t stat = STAT_FIRST; stat <= STAT_LAST; ++stat) {
 		if (imbuement->stats[stat]) {
 			requestUpdate = true;
 			setVarStats(static_cast<stats_t>(stat), imbuement->stats[stat]);
@@ -6463,7 +6463,7 @@ void Player::removeItemImbuementStats(const Imbuement* imbuement) {
 
 	bool requestUpdate = false;
 
-	for (int32_t skill = SKILL_FIRST; skill <= SKILL_LAST; ++skill) {
+	for (double_t skill = SKILL_FIRST; skill <= SKILL_LAST; ++skill) {
 		if (imbuement->skills[skill]) {
 			requestUpdate = true;
 			setVarSkill(static_cast<skills_t>(skill), -imbuement->skills[skill]);
@@ -6471,7 +6471,7 @@ void Player::removeItemImbuementStats(const Imbuement* imbuement) {
 	}
 
 	// Check imbuement magic level
-	for (int32_t stat = STAT_FIRST; stat <= STAT_LAST; ++stat) {
+	for (double_t stat = STAT_FIRST; stat <= STAT_LAST; ++stat) {
 		if (imbuement->stats[stat]) {
 			requestUpdate = true;
 			setVarStats(static_cast<stats_t>(stat), -imbuement->stats[stat]);
@@ -6501,8 +6501,8 @@ void Player::updateImbuementTrackerStats() const {
 	}
 }
 
-bool Player::addItemFromStash(uint16_t itemId, uint32_t itemCount) {
-	uint32_t stackCount = 100u;
+bool Player::addItemFromStash(uint16_t itemId, udouble_t itemCount) {
+	udouble_t stackCount = 100u;
 
 	while (itemCount > 0) {
 		auto addValue = itemCount > stackCount ? stackCount : itemCount;
@@ -6524,7 +6524,7 @@ bool Player::addItemFromStash(uint16_t itemId, uint32_t itemCount) {
 
 void sendStowItems(const std::shared_ptr<Item> &item, const std::shared_ptr<Item> &stowItem, StashContainerList &itemDict) {
 	if (stowItem->getID() == item->getID()) {
-		itemDict.push_back(std::pair<std::shared_ptr<Item>, uint32_t>(stowItem, stowItem->getItemCount()));
+		itemDict.push_back(std::pair<std::shared_ptr<Item>, udouble_t>(stowItem, stowItem->getItemCount()));
 	}
 
 	if (auto container = stowItem->getContainer()) {
@@ -6536,7 +6536,7 @@ void sendStowItems(const std::shared_ptr<Item> &item, const std::shared_ptr<Item
 	}
 }
 
-void Player::stowItem(std::shared_ptr<Item> item, uint32_t count, bool allItems) {
+void Player::stowItem(std::shared_ptr<Item> item, udouble_t count, bool allItems) {
 	if (!item || !item->isItemStorable()) {
 		sendCancelMessage("This item cannot be stowed here.");
 		return;
@@ -6573,7 +6573,7 @@ void Player::stowItem(std::shared_ptr<Item> item, uint32_t count, bool allItems)
 	} else if (item->getContainer()) {
 		itemDict = item->getContainer()->getStowableItems();
 		for (const std::shared_ptr<Item> &containerItem : item->getContainer()->getItems(true)) {
-			uint32_t depotChest = g_configManager().getNumber(DEPOTCHEST);
+			udouble_t depotChest = g_configManager().getNumber(DEPOTCHEST);
 			bool validDepot = depotChest > 0 && depotChest < 21;
 			if (g_configManager().getBoolean(STASH_MOVING) && containerItem && !containerItem->isStackable() && validDepot) {
 				g_game().internalMoveItem(containerItem->getParent(), getDepotChest(depotChest, true), INDEX_WHEREEVER, containerItem, containerItem->getItemCount(), nullptr);
@@ -6596,7 +6596,7 @@ void Player::stowItem(std::shared_ptr<Item> item, uint32_t count, bool allItems)
 void Player::openPlayerContainers() {
 	std::vector<std::pair<uint8_t, std::shared_ptr<Container>>> openContainersList;
 
-	for (int32_t i = CONST_SLOT_FIRST; i <= CONST_SLOT_LAST; i++) {
+	for (double_t i = CONST_SLOT_FIRST; i <= CONST_SLOT_LAST; i++) {
 		std::shared_ptr<Item> item = inventory[i];
 		if (!item) {
 			continue;
@@ -6732,8 +6732,8 @@ void Player::triggerMomentum() {
 			auto maxu16 = std::numeric_limits<uint16_t>::max();
 			auto checkSpellId = condItem->getSubId();
 			auto spellId = checkSpellId > maxu16 ? 0u : static_cast<uint16_t>(checkSpellId);
-			int32_t ticks = condItem->getTicks();
-			int32_t newTicks = (ticks <= 2000) ? 0 : ticks - 2000;
+			double_t ticks = condItem->getTicks();
+			double_t newTicks = (ticks <= 2000) ? 0 : ticks - 2000;
 			triggered = true;
 			if (type == CONDITION_SPELLCOOLDOWN || (type == CONDITION_SPELLGROUPCOOLDOWN && spellId > SPELLGROUP_SUPPORT)) {
 				condItem->setTicks(newTicks);
@@ -6794,7 +6794,7 @@ void Player::triggerTranscendance() {
 
 		// Send player data after transcendance timer expire
 		const auto &task = createPlayerTask(
-			std::max<uint32_t>(SCHEDULER_MINTICKS, duration),
+			std::max<udouble_t>(SCHEDULER_MINTICKS, duration),
 			[playerId = getID()] {
 				auto player = g_game().getPlayerByID(playerId);
 				if (player) {
@@ -6834,7 +6834,7 @@ void Player::requestDepotItems() {
 
 			uint8_t itemTier = Item::items[(*it)->getID()].upgradeClassification > 0 ? (*it)->getTier() + 1 : 0;
 			if (itemMap_it == itemMap.end()) {
-				std::map<uint8_t, uint32_t> itemTierMap;
+				std::map<uint8_t, udouble_t> itemTierMap;
 				itemTierMap[itemTier] = Item::countByType((*it), -1);
 				itemMap[(*it)->getID()] = itemTierMap;
 				count++;
@@ -6856,7 +6856,7 @@ void Player::requestDepotItems() {
 		}
 
 		if (itemMap_it == itemMap.end()) {
-			std::map<uint8_t, uint32_t> itemTierMap;
+			std::map<uint8_t, udouble_t> itemTierMap;
 			itemTierMap[0] = itemCount;
 			itemMap[itemId] = itemTierMap;
 			count++;
@@ -6875,9 +6875,9 @@ void Player::requestDepotItems() {
 void Player::requestDepotSearchItem(uint16_t itemId, uint8_t tier) {
 	ItemVector depotItems;
 	ItemVector inboxItems;
-	uint32_t depotCount = 0;
-	uint32_t inboxCount = 0;
-	uint32_t stashCount = 0;
+	udouble_t depotCount = 0;
+	udouble_t inboxCount = 0;
+	udouble_t stashCount = 0;
 
 	if (const ItemType &iType = Item::items[itemId];
 	    iType.stackable && iType.wareId > 0) {
@@ -7018,14 +7018,14 @@ std::shared_ptr<Item> Player::getItemFromDepotSearch(uint16_t itemId, const Posi
 	return nullptr;
 }
 
-std::pair<std::vector<std::shared_ptr<Item>>, std::map<uint16_t, std::map<uint8_t, uint32_t>>>
+std::pair<std::vector<std::shared_ptr<Item>>, std::map<uint16_t, std::map<uint8_t, udouble_t>>>
 Player::requestLockerItems(std::shared_ptr<DepotLocker> depotLocker, bool sendToClient /*= false*/, uint8_t tier /*= 0*/) const {
 	if (!depotLocker) {
 		g_logger().error("{} - Depot locker is nullptr", __FUNCTION__);
 		return {};
 	}
 
-	std::map<uint16_t, std::map<uint8_t, uint32_t>> lockerItems;
+	std::map<uint16_t, std::map<uint8_t, udouble_t>> lockerItems;
 	std::vector<std::shared_ptr<Item>> itemVector;
 	std::vector<std::shared_ptr<Container>> containers { depotLocker };
 
@@ -7116,7 +7116,7 @@ bool Player::saySpell(
 		spectators = (*spectatorsPtr);
 	}
 
-	int32_t valueEmote = 0;
+	double_t valueEmote = 0;
 	// Send to client
 	for (const std::shared_ptr<Creature> &spectator : spectators) {
 		if (std::shared_ptr<Player> tmpPlayer = spectator->getPlayer()) {
@@ -7159,7 +7159,7 @@ void Player::forgeFuseItems(ForgeAction_t actionType, uint16_t firstItemId, uint
 		sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
 		return;
 	}
-uint32_t maxContainer = static_cast<uint32_t>(g_configManager().getNumber(MAX_CONTAINER, __FUNCTION__));
+udouble_t maxContainer = static_cast<udouble_t>(g_configManager().getNumber(MAX_CONTAINER, __FUNCTION__));
 auto backpack = getInventoryItem(CONST_SLOT_BACKPACK);
 auto mainBackpack = backpack ? backpack->getContainer() : nullptr;
 if (mainBackpack && mainBackpack->getContainerHoldingCount() >= maxContainer) {
@@ -7412,7 +7412,7 @@ std::shared_ptr<Item> donorItem = getForgeItemFromId(donorItemId, tier);
 if (parentContainer) {
     std::shared_ptr<Container> topParentContainer = parentContainer->getTopParentContainer();
     if (topParentContainer) {
-        uint32_t itemCount = donorItem->getItemCount() + 1;
+        udouble_t itemCount = donorItem->getItemCount() + 1;
         if (itemCount + topParentContainer->getItemHoldingCount() > topParentContainer->getMaxCapacity()) {
             sendCancelMessage(RETURNVALUE_CONTAINERISFULL);
             return;  // Abort the transfer if the container is full
@@ -7428,7 +7428,7 @@ if (getCapacity() < 150) {
 		sendCancelMessage(RETURNVALUE_NOTENOUGHROOM);
 		 return;
 	}
-uint32_t maxContainer = static_cast<uint32_t>(g_configManager().getNumber(MAX_CONTAINER, __FUNCTION__));
+udouble_t maxContainer = static_cast<udouble_t>(g_configManager().getNumber(MAX_CONTAINER, __FUNCTION__));
 auto backpack = getInventoryItem(CONST_SLOT_BACKPACK);
 auto mainBackpack = backpack ? backpack->getContainer() : nullptr;
 if (mainBackpack && mainBackpack->getContainerHoldingCount() >= maxContainer) {
@@ -7907,7 +7907,7 @@ SoundEffect_t Player::getAttackSoundEffect() const {
 	return SoundEffect_t::SILENCE;
 }
 
-bool Player::canAutoWalk(const Position &toPosition, const std::function<void()> &function, uint32_t delay /* = 500*/) {
+bool Player::canAutoWalk(const Position &toPosition, const std::function<void()> &function, udouble_t delay /* = 500*/) {
 	if (!Position::areInRange<1, 1>(getPosition(), toPosition)) {
 		// Check if can walk to the toPosition and send event to use function
 		std::vector<Direction> listDir;
@@ -7925,7 +7925,7 @@ bool Player::canAutoWalk(const Position &toPosition, const std::function<void()>
 }
 
 // Account
-bool Player::setAccount(uint32_t accountId) {
+bool Player::setAccount(udouble_t accountId) {
 	if (account) {
 		g_logger().warn("Account was already set!");
 		return true;
@@ -7939,7 +7939,7 @@ uint8_t Player::getAccountType() const {
 	return static_cast<uint8_t>(account ? account->getAccountType() : static_cast<uint8_t>(AccountType::ACCOUNT_TYPE_NORMAL));
 }
 
-uint32_t Player::getAccountId() const {
+udouble_t Player::getAccountId() const {
 	return account ? account->getID() : 0;
 }
 
@@ -7951,11 +7951,11 @@ std::shared_ptr<Account> Player::getAccount() const {
  * Hazard system
  ******************************************************************************/
 
-void Player::setHazardSystemPoints(int32_t count) {
+void Player::setHazardSystemPoints(double_t count) {
 	if (!g_configManager().getBoolean(TOGGLE_HAZARDSYSTEM)) {
 		return;
 	}
-	addStorageValue(STORAGEVALUE_HAZARDCOUNT, std::max<int32_t>(0, std::min<int32_t>(0xFFFF, count)), true);
+	addStorageValue(STORAGEVALUE_HAZARDCOUNT, std::max<double_t>(0, std::min<double_t>(0xFFFF, count)), true);
 	reloadHazardSystemPointsCounter = true;
 	if (count > 0) {
 		setIcon("hazard", CreatureIcon(CreatureIconQuests_t::Hazard, count));
@@ -8004,8 +8004,8 @@ void Player::parseAttackRecvHazardSystem(CombatDamage &damage, std::shared_ptr<M
 		damage.exString = "(Hazard)";
 
 		stage = (points - 1) * static_cast<uint16_t>(g_configManager().getNumber(HAZARD_CRITICAL_MULTIPLIER));
-		damage.primary.value += static_cast<int32_t>(std::ceil((static_cast<double>(damage.primary.value) * (5000 + stage)) / 10000));
-		damage.secondary.value += static_cast<int32_t>(std::ceil((static_cast<double>(damage.secondary.value) * (5000 + stage)) / 10000));
+		damage.primary.value += static_cast<double_t>(std::ceil((static_cast<double>(damage.primary.value) * (5000 + stage)) / 10000));
+		damage.secondary.value += static_cast<double_t>(std::ceil((static_cast<double>(damage.secondary.value) * (5000 + stage)) / 10000));
 		lastHazardSystemCriticalHit = OTSYS_TIME();
 	}
 
@@ -8015,9 +8015,9 @@ void Player::parseAttackRecvHazardSystem(CombatDamage &damage, std::shared_ptr<M
 		if (stage != 0) {
 			damage.extension = true;
 			damage.exString = "(Hazard)";
-			damage.primary.value += static_cast<int32_t>(std::ceil((static_cast<double>(damage.primary.value) * stage) / 10000));
+			damage.primary.value += static_cast<double_t>(std::ceil((static_cast<double>(damage.primary.value) * stage) / 10000));
 			if (damage.secondary.value != 0) {
-				damage.secondary.value += static_cast<int32_t>(std::ceil((static_cast<double>(damage.secondary.value) * stage) / 10000));
+				damage.secondary.value += static_cast<double_t>(std::ceil((static_cast<double>(damage.secondary.value) * stage) / 10000));
 			}
 		}
 	}
@@ -8068,9 +8068,9 @@ void Player::parseAttackDealtHazardSystem(CombatDamage &damage, std::shared_ptr<
 		stage = points * static_cast<uint16_t>(g_configManager().getNumber(HAZARD_DEFENSE_MULTIPLIER));
 		if (stage != 0) {
 			damage.exString = fmt::format("(hazard -{}%)", stage / 100.);
-			damage.primary.value -= static_cast<int32_t>(std::ceil((static_cast<double>(damage.primary.value) * stage) / 10000));
+			damage.primary.value -= static_cast<double_t>(std::ceil((static_cast<double>(damage.primary.value) * stage) / 10000));
 			if (damage.secondary.value != 0) {
-				damage.secondary.value -= static_cast<int32_t>(std::ceil((static_cast<double>(damage.secondary.value) * stage) / 10000));
+				damage.secondary.value -= static_cast<double_t>(std::ceil((static_cast<double>(damage.secondary.value) * stage) / 10000));
 			}
 			return;
 		}

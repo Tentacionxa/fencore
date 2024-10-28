@@ -7,7 +7,6 @@
  * Website: https://docs.opentibiabr.com/
  */
 
-#include "pch.hpp"
 
 #include "creatures/monsters/monster.hpp"
 #include "creatures/combat/spells.hpp"
@@ -108,13 +107,48 @@ bool Monster::canWalkOnFieldType(CombatType_t combatType) const {
 	}
 }
 
-int32_t Monster::getReflectPercent(CombatType_t reflectType, bool useCharges) const {
-	int32_t result = Creature::getReflectPercent(reflectType, useCharges);
+double_t Monster::getReflectPercent(CombatType_t reflectType, bool useCharges) const {
+	// Monster type reflect
+	auto result = Creature::getReflectPercent(reflectType, useCharges);
+	if (result != 0) {
+                g_logger().debug("[{}] before mtype reflect element {}, percent {}", __FUNCTION__, fmt::underlying(reflectType), result);
+        }
 	auto it = mType->info.reflectMap.find(reflectType);
 	if (it != mType->info.reflectMap.end()) {
 		result += it->second;
 	}
+	if (result != 0) {
+                g_logger().debug("[{}] after mtype reflect element {}, percent {}", __FUNCTION__, fmt::underlying(reflectType), result);
+        }
+		// Monster reflect
+        auto monsterReflectIt = m_reflectElementMap.find(reflectType);
+        if (monsterReflectIt != m_reflectElementMap.end()) {
+                result += monsterReflectIt->second;
+        }
+        if (result != 0) {
+                g_logger().debug("[{}] (final) after monster reflect element {}, percent {}", __FUNCTION__, fmt::underlying(reflectType), result);
+        }
 	return result;
+	}
+void Monster::addReflectElement(CombatType_t combatType, int32_t percent) {
+        g_logger().debug("[{}] added reflect element {}, percent {}", __FUNCTION__, fmt::underlying(combatType), percent);
+        m_reflectElementMap[combatType] += percent;
+}
+int32_t Monster::getDefense() const {
+        auto mtypeDefense = mType->info.defense;
+        if (mtypeDefense != 0) {
+                g_logger().trace("[{}] old defense {}", __FUNCTION__, mtypeDefense);
+        }
+        mtypeDefense += m_defense;
+        if (mtypeDefense != 0) {
+                g_logger().trace("[{}] new defense {}", __FUNCTION__, mtypeDefense);
+        }
+        return mtypeDefense * getDefenseMultiplier();
+}
+void Monster::addDefense(int32_t defense) {
+        g_logger().trace("[{}] adding defense {}", __FUNCTION__, defense);
+        m_defense += defense;
+        g_logger().trace("[{}] new defense {}", __FUNCTION__, m_defense);
 }
 
 uint32_t Monster::getHealingCombatValue(CombatType_t healingType) const {
@@ -164,7 +198,10 @@ void Monster::onCreatureAppear(std::shared_ptr<Creature> creature, bool isLogin)
 		updateTargetList();
 		updateIdleStatus();
 	} else {
-		onCreatureEnter(creature);
+		addAsyncTask([this, creature] {
+                        onCreatureEnter(creature);
+                onCreatureEnter(creature);
+                });
 	}
 }
 
@@ -246,39 +283,62 @@ void Monster::onCreatureMove(const std::shared_ptr<Creature> &creature, const st
 		updateTargetList();
 		updateIdleStatus();
 	} else {
-		bool canSeeNewPos = canSee(newPos);
-		bool canSeeOldPos = canSee(oldPos);
+		auto action = [this, newPos, oldPos, creature] {
+			bool canSeeNewPos = canSee(newPos);
+			bool canSeeOldPos = canSee(oldPos);
 
-		if (canSeeNewPos && !canSeeOldPos) {
-			onCreatureEnter(creature);
-		} else if (!canSeeNewPos && canSeeOldPos) {
-			onCreatureLeave(creature);
-		}
+					if (canSeeNewPos && !canSeeOldPos) {
+				onCreatureEnter(creature);
+			} else if (!canSeeNewPos && canSeeOldPos) {
+				onCreatureLeave(creature);
+			}
 
 		updateIdleStatus();
 
-		if (!isSummon()) {
-			if (const auto &followCreature = getFollowCreature()) {
-				const Position &followPosition = followCreature->getPosition();
-				const Position &pos = getPosition();
+if (!isSummon()) {
+				if (const auto &followCreature = getFollowCreature()) {
+					const Position &followPosition = followCreature->getPosition();
+					const Position &pos = getPosition();
 
-				int32_t offset_x = Position::getDistanceX(followPosition, pos);
-				int32_t offset_y = Position::getDistanceY(followPosition, pos);
-				if ((offset_x > 1 || offset_y > 1) && mType->info.changeTargetChance > 0) {
-					Direction dir = getDirectionTo(pos, followPosition);
-					const auto &checkPosition = getNextPosition(dir, pos);
+					int32_t offset_x = Position::getDistanceX(followPosition, pos);
+					int32_t offset_y = Position::getDistanceY(followPosition, pos);
+					if ((offset_x > 1 || offset_y > 1) && mType->info.changeTargetChance > 0) {
+						Direction dir = getDirectionTo(pos, followPosition);
+						const auto &checkPosition = getNextPosition(dir, pos);
 
-					if (const auto &nextTile = g_game().map.getTile(checkPosition)) {
-						const auto &topCreature = nextTile->getTopCreature();
-						if (followCreature != topCreature && isOpponent(topCreature)) {
-							selectTarget(topCreature);
+						if (const auto &nextTile = g_game().map.getTile(checkPosition)) {
+							const auto &topCreature = nextTile->getTopCreature();
+							if (followCreature != topCreature && isOpponent(topCreature)) {
+								g_dispatcher().addEvent([selfWeak = std::weak_ptr(getMonster()), topCreatureWeak = std::weak_ptr(topCreature)] {
+									const auto &self = selfWeak.lock();
+									const auto &topCreature = topCreatureWeak.lock();
+									if (self && topCreature) {
+										self->selectTarget(topCreature);
+									}
+								},
+								                        "Monster::onCreatureMove");
+							}
 						}
 					}
+					} else if (isOpponent(creature)) {
+					// we have no target lets try pick this one
+					g_dispatcher().addEvent([selfWeak = std::weak_ptr(getMonster()), creatureWeak = std::weak_ptr(creature)] {
+						const auto &self = selfWeak.lock();
+						const auto &creaturePtr = creatureWeak.lock();
+						if (self && creaturePtr) {
+							self->selectTarget(creaturePtr);
+						}
+					},
+					                        "Monster::onCreatureMove");
 				}
-			} else if (isOpponent(creature)) {
-				// we have no target lets try pick this one
-				selectTarget(creature);
+		
 			}
+			};
+
+		if (g_dispatcher().context().getGroup() == TaskGroup::Walk) {
+			addAsyncTask(std::move(action));
+		} else {
+			action();
 		}
 	}
 }
@@ -312,6 +372,46 @@ void Monster::onCreatureSay(std::shared_ptr<Creature> creature, SpeakClasses typ
 		LuaScriptInterface::pushString(L, text);
 
 		scriptInterface->callVoidFunction(4);
+		     }
+}
+void Monster::onAttackedByPlayer(std::shared_ptr<Player> attackerPlayer) {
+        if (mType->info.monsterAttackedByPlayerEvent != -1) {
+                // onPlayerAttack(self, attackerPlayer)
+                LuaScriptInterface* scriptInterface = mType->info.scriptInterface;
+                if (!scriptInterface->reserveScriptEnv()) {
+                        g_logger().error("Monster {} creature {}] Call stack overflow. Too many lua "
+                                         "script calls being nested.",
+                                         getName(), this->getName());
+                        return;
+                }
+                ScriptEnvironment* env = scriptInterface->getScriptEnv();
+                env->setScriptId(mType->info.monsterAttackedByPlayerEvent, scriptInterface);
+                lua_State* L = scriptInterface->getLuaState();
+                scriptInterface->pushFunction(mType->info.monsterAttackedByPlayerEvent);
+                LuaScriptInterface::pushUserdata<Monster>(L, getMonster());
+                LuaScriptInterface::setMetatable(L, -1, "Monster");
+                LuaScriptInterface::pushUserdata<Player>(L, attackerPlayer);
+                LuaScriptInterface::setMetatable(L, -1, "Player");
+                scriptInterface->callVoidFunction(2);
+        }
+}
+void Monster::onSpawn() {
+        if (mType->info.spawnEvent != -1) {
+                // onSpawn(self)
+                LuaScriptInterface* scriptInterface = mType->info.scriptInterface;
+                if (!scriptInterface->reserveScriptEnv()) {
+                        g_logger().error("Monster {} creature {}] Call stack overflow. Too many lua "
+                                         "script calls being nested.",
+                                         getName(), this->getName());
+                        return;
+                }
+                ScriptEnvironment* env = scriptInterface->getScriptEnv();
+                env->setScriptId(mType->info.spawnEvent, scriptInterface);
+                lua_State* L = scriptInterface->getLuaState();
+                scriptInterface->pushFunction(mType->info.spawnEvent);
+                LuaScriptInterface::pushUserdata<Monster>(L, getMonster());
+                LuaScriptInterface::setMetatable(L, -1, "Monster");
+                scriptInterface->callVoidFunction(1);
 	}
 }
 
@@ -378,6 +478,12 @@ bool Monster::removeTarget(const std::shared_ptr<Creature> &creature) {
 }
 
 void Monster::updateTargetList() {
+
+	if (g_dispatcher().context().getGroup() == TaskGroup::Walk) {
+		setAsyncTaskFlag(UpdateTargetList, true);
+		return;
+	}
+
 	std::erase_if(friendList, [this](const auto &it) {
 		const auto &target = it.second.lock();
 		return !target || target->getHealth() <= 0 || !canSee(target->getPosition());
@@ -388,7 +494,7 @@ void Monster::updateTargetList() {
 		return !target || target->getHealth() <= 0 || !canSee(target->getPosition());
 	});
 
-	for (const auto &spectator : Spectators().find<Creature>(position, true)) {
+	for (const auto &spectator : Spectators().find<Creature>(position, true, 0, 0, 0, 0, false)) {
 		if (spectator.get() != this && canSee(spectator->getPosition())) {
 			onCreatureFound(spectator);
 		}
@@ -630,7 +736,7 @@ void Monster::onFollowCreatureComplete(const std::shared_ptr<Creature> &creature
 
 float Monster::getMitigation() const {
 	float mitigation = mType->info.mitigation * getDefenseMultiplier();
-	if (g_configManager().getBoolean(DISABLE_MONSTER_ARMOR, __FUNCTION__)) {
+	if (g_configManager().getBoolean(DISABLE_MONSTER_ARMOR)) {
 		mitigation += std::ceil(static_cast<float>(getDefense() + getArmor()) / 100.f) * getDefenseMultiplier() * 2.f;
 	}
 	return std::min<float>(mitigation, 30.f);
@@ -699,7 +805,7 @@ bool Monster::selectTarget(const std::shared_ptr<Creature> &creature) {
 
 	if (isHostile() || isSummon()) {
 		if (setAttackedCreature(creature)) {
-			g_dispatcher().addEvent([creatureId = getID()] { g_game().checkCreatureAttack(creatureId); }, "Game::checkCreatureAttack");
+			g_dispatcher().addEvent([creatureId = getID()] { g_game().checkCreatureAttack(creatureId); }, __FUNCTION__ );
 		}
 	}
 	return setFollowCreature(creature);
@@ -713,7 +819,8 @@ void Monster::setIdle(bool idle) {
 	isIdle = idle;
 
 	if (!isIdle) {
-		g_game().addCreatureCheck(static_self_cast<Monster>());
+		g_game().addCreatureCheck(getMonster());
+
 	} else {
 		onIdleStatus();
 		clearTargetList();
@@ -723,6 +830,11 @@ void Monster::setIdle(bool idle) {
 }
 
 void Monster::updateIdleStatus() {
+	if (g_dispatcher().context().getGroup() == TaskGroup::Walk) {
+		setAsyncTaskFlag(UpdateIdleStatus, true);
+		return;
+	}
+
 	bool idle = false;
 	if (conditions.empty()) {
 		if (!isSummon() && targetList.empty()) {
@@ -1222,7 +1334,13 @@ bool Monster::getNextStep(Direction &nextDirection, uint32_t &flags) {
 			}
 
 			if (canPushCreatures()) {
-				Monster::pushCreatures(posTile);
+if (g_dispatcher().context().getGroup() == TaskGroup::Walk) {
+					Monster::pushCreatures(posTile);
+				} else {
+					g_dispatcher().addWalkEvent([=] {
+						Monster::pushCreatures(posTile);
+					});
+				}
 			}
 		}
 	}
@@ -1921,6 +2039,7 @@ void Monster::death(std::shared_ptr<Creature>) {
 	if (mType) {
 		g_game().sendSingleSoundEffect(static_self_cast<Monster>()->getPosition(), mType->info.deathSound, getMonster());
 	}
+	       setDead(true);
 }
 
 std::shared_ptr<Item> Monster::getCorpse(std::shared_ptr<Creature> lastHitCreature, std::shared_ptr<Creature> mostDamageCreature) {
@@ -2039,8 +2158,8 @@ void Monster::dropLoot(std::shared_ptr<Container> corpse, std::shared_ptr<Creatu
 		if (ForgeClassifications_t classification = getMonsterForgeClassification();
 		    // Condition
 		    classification == ForgeClassifications_t::FORGE_FIENDISH_MONSTER) {
-			auto minSlivers = g_configManager().getNumber(FORGE_MIN_SLIVERS, __FUNCTION__);
-			auto maxSlivers = g_configManager().getNumber(FORGE_MAX_SLIVERS, __FUNCTION__);
+			auto minSlivers = g_configManager().getNumber(FORGE_MIN_SLIVERS);
+			auto maxSlivers = g_configManager().getNumber(FORGE_MAX_SLIVERS);
 
 			auto sliverCount = static_cast<uint16_t>(uniform_random(minSlivers, maxSlivers));
 
@@ -2049,7 +2168,7 @@ void Monster::dropLoot(std::shared_ptr<Container> corpse, std::shared_ptr<Creatu
 				corpse->internalAddThing(sliver);
 			}
 		}
-		if (!this->isRewardBoss() && g_configManager().getNumber(RATE_LOOT, __FUNCTION__) > 0) {
+		if (!this->isRewardBoss() && g_configManager().getNumber(RATE_LOOT) > 0) {
 			g_callbacks().executeCallback(EventCallback_t::monsterOnDropLoot, &EventCallback::monsterOnDropLoot, getMonster(), corpse);
 			g_callbacks().executeCallback(EventCallback_t::monsterPostDropLoot, &EventCallback::monsterPostDropLoot, getMonster(), corpse);
 		}
@@ -2122,11 +2241,11 @@ bool Monster::changeTargetDistance(int32_t distance, uint32_t duration /* = 1200
 }
 
 bool Monster::isImmune(ConditionType_t conditionType) const {
-	return mType->info.m_conditionImmunities[static_cast<size_t>(conditionType)];
+	return m_isImmune || mType->info.m_conditionImmunities[static_cast<size_t>(conditionType)];
 }
 
 bool Monster::isImmune(CombatType_t combatType) const {
-	return mType->info.m_damageImmunities[combatTypeToIndex(combatType)];
+	 return m_isImmune || mType->info.m_damageImmunities[combatTypeToIndex(combatType)];
 }
 
 void Monster::getPathSearchParams(const std::shared_ptr<Creature> &creature, FindPathParams &fpp) {
@@ -2225,4 +2344,13 @@ std::vector<std::pair<int8_t, int8_t>> Monster::getPushItemLocationOptions(const
 	}
 
 	return {};
+}
+void Monster::onExecuteAsyncTasks() {
+	if (hasAsyncTaskFlag(UpdateTargetList)) {
+		updateTargetList();
+	}
+
+	if (hasAsyncTaskFlag(UpdateIdleStatus)) {
+		updateIdleStatus();
+	}
 }

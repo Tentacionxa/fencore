@@ -37,7 +37,7 @@ for (const auto &protocol : bufferedProtocols) {
 	}
 }
 
-void OutputMessagePool::addProtocolToAutosend(Protocol_ptr protocol) {
+void OutputMessagePool::addProtocolToAutosend(const Protocol_ptr& protocol) {
 	// dispatcher thread
 	if (bufferedProtocols.empty()) {
 		scheduleSendAll();

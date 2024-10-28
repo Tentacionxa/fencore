@@ -87,7 +87,7 @@ public:
 
 	static OutputMessage_ptr getOutputMessage();
 
-void addProtocolToAutosend(const Protocol_ptr &protocol);
+void addProtocolToAutosend(const Protocol_ptr& protocol);
 	void removeProtocolFromAutosend(const Protocol_ptr &protocol);
 
 private:

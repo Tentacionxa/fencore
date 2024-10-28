@@ -9,6 +9,7 @@
     "bext-ut",
     "curl",
     "eventpp",
+    "atomic-queue",
     "luajit",
     "magic-enum",
     "mio",
@@ -21,7 +22,7 @@
     {
       "name": "opentelemetry-cpp",
       "default-features": true,
-      "features": ["otlp-http", "prometheus"]
+   "features": [ "otlp-http", "prometheus" ]
     },
     {
       "name": "libmariadb",

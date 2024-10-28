@@ -12,8 +12,10 @@
 #include "outputmessage.hpp"
 #include "server/network/protocol/protocol.hpp"
 #include "game/scheduling/dispatcher.hpp"
+#include "utils/lockfree.hpp"
 
-const std::chrono::milliseconds OUTPUTMESSAGE_AUTOSEND_DELAY { 10 };
+constexpr uint16_t OUTPUTMESSAGE_FREE_LIST_CAPACITY = 2048;
+constexpr std::chrono::milliseconds OUTPUTMESSAGE_AUTOSEND_DELAY { 10 };
 
 void OutputMessagePool::scheduleSendAll() {
 	g_dispatcher().scheduleEvent(
@@ -23,7 +25,7 @@ void OutputMessagePool::scheduleSendAll() {
 
 void OutputMessagePool::sendAll() {
 	// dispatcher thread
-	for (auto &protocol : bufferedProtocols) {
+for (const auto &protocol : bufferedProtocols) {
 		auto &msg = protocol->getCurrentBuffer();
 		if (msg) {
 			protocol->send(std::move(msg));
@@ -53,5 +55,7 @@ void OutputMessagePool::removeProtocolFromAutosend(const Protocol_ptr &protocol)
 }
 
 OutputMessage_ptr OutputMessagePool::getOutputMessage() {
-	return std::make_shared<OutputMessage>();
+return std::allocate_shared<OutputMessage>(
+		LockfreePoolingAllocator<OutputMessage, OUTPUTMESSAGE_FREE_LIST_CAPACITY>()
+	);
 }

@@ -33,11 +33,10 @@ local config = {
 											[14] = {item = 39151, count = 1}, -- arcanomancer regalia
 									[15] = {item = 39152, count = 1}, -- arcanomancer folio
 									[16] = {item = 34095, count = 1},-- soulmantle
-											[17] = {item = 43779, count = 1},-- unstable darklight matter.
-													[18] = {item = 43849, count = 20},-- rotten roots.
-														[19] = {item = 43850, count = 50},-- dark obsidian splinter.
-												[20] = {item = 10315, count = 50},-- sulphurous stone
-											[21] = {item = 16124, count = 50},-- blue crystal splinter
+													[17] = {item = 43849, count = 20},-- rotten roots.
+														[18] = {item = 43850, count = 50},-- dark obsidian splinter.
+												[19] = {item = 10315, count = 50},-- sulphurous stone
+											[20] = {item = 16124, count = 50},-- blue crystal splinter
 								},
 							},
 	 
@@ -115,11 +114,10 @@ local config = {
 									[15] = {item = 39152, count = 1}, -- arcanomancer folio
 									[16] = {item = 48413, count = 1},--  amber sickle
 										[17] = {item = 43885, count = 1},-- sanguine rod
-											[18] = {item = 43779, count = 1},-- unstable darklight matter.
-													[19] = {item = 43849, count = 20},-- rotten roots.
-														[20] = {item = 43850, count = 50},-- dark obsidian splinter.
-												[21] = {item = 10315, count = 50},-- sulphurous stone
-											[22] = {item = 16124, count = 50},-- blue crystal splinter
+													[18] = {item = 43849, count = 20},-- rotten roots.
+														[19] = {item = 43850, count = 50},-- dark obsidian splinter.
+												[20] = {item = 10315, count = 50},-- sulphurous stone
+											[21] = {item = 16124, count = 50},-- blue crystal splinter
 							},
 						},
 	 
@@ -148,11 +146,10 @@ local config = {
 									[15] = {item = 39152, count = 1}, -- arcanomancer folio
 									[16] = {item = 48413, count = 1},--  amber sickle
 										[17] = {item = 43885, count = 1},-- sanguine rod
-											[18] = {item = 43779, count = 1},-- unstable darklight matter.
-													[19] = {item = 43849, count = 20},-- rotten roots.
-														[20] = {item = 43850, count = 50},-- dark obsidian splinter.
-												[21] = {item = 10315, count = 50},-- sulphurous stone
-											[22] = {item = 16124, count = 50},-- blue crystal splinter
+													[18] = {item = 43849, count = 20},-- rotten roots.
+														[19] = {item = 43850, count = 50},-- dark obsidian splinter.
+												[20] = {item = 10315, count = 50},-- sulphurous stone
+											[21] = {item = 16124, count = 50},-- blue crystal splinter
 								},
 							},
 	 
@@ -176,11 +173,10 @@ local config = {
 									[15] = {item = 44624, count = 1}, -- mystical dragon robe
 									[16] = {item = 22866, count = 1},--  rift bow
 										[17] = {item = 8027, count = 1},-- composite hornbow
-											[18] = {item = 43779, count = 1},-- unstable darklight matter.
-													[19] = {item = 43849, count = 20},-- rotten roots.
-														[20] = {item = 5479, count = 100},-- cat's paw.
-												[21] = {item = 5944, count = 100},-- soul orbs
-											[22] = {item = 5954, count = 100},-- demon horns
+													[18] = {item = 43849, count = 20},-- rotten roots.
+														[19] = {item = 5479, count = 100},-- cat's paw.
+												[20] = {item = 5944, count = 100},-- soul orbs
+											[21] = {item = 5954, count = 100},-- demon horns
 								},
 							},
 	 

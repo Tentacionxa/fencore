@@ -424,7 +424,7 @@ maxMessageBuffer = 4
 emoteSpells = true
 allowWalkthrough = false
 coinPacketSize = 25
-coinImagesURL = "https://fencore.blu24.pl/store/"
+coinImagesURL = "https://tmicekj.cluster029.hosting.ovh.net/store/"
 classicAttackSpeed = false
 showScriptsLogInConsole = false
 -- time to suppress negative conditions after being affected by them (ms)

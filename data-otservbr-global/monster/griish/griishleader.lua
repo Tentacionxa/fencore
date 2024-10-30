@@ -77,17 +77,7 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "crystal coin", chance = 5489, maxCount = 1 },
-	{ name = "ultimate health potion", chance = 6910, maxCount = 1 },
-	{ name = "epee", chance = 11948, maxCount = 1 },
-	{ name = "green gem", chance = 12934, maxCount = 1 },
-	{ name = "violet gem", chance = 7273, maxCount = 1 },
-	{ name = "crystal mace", chance = 12437, maxCount = 1 },
-	{ name = "glacier amulet", chance = 8960, maxCount = 1 },
-	{ name = "jade hammer", chance = 6508, maxCount = 1 },
-	{ name = "giant sword", chance = 9714, maxCount = 1 },
-	{ name = "crown shield", chance = 8795, maxCount = 1 },
-	{ name = "stone skin amulet", chance = 7203, maxCount = 1 },
+	{ name = "crystal coin", chance = 5489, maxCount = 2 },
 	{ name = "tenebris bag", chance = 50, maxCount = 3  },
 	{ name = "lion bag", chance = 50, maxCount = 3  },
 	{ name = "alicorn quiver", chance = 10, maxCount = 1  },

@@ -78,21 +78,11 @@ monster.voices = {
 
 monster.loot = {
 	{ name = "crystal coin", chance = 9846, maxCount = 5 },
-	{ name = "terra rod", chance = 6003, maxCount = 1 },
-	{ name = "great mana potion", chance = 11376, maxCount = 3 },
-	{ name = "blue gem", chance = 10582, maxCount = 1 },
 	{ name = "green gem", chance = 7730, maxCount = 1 },
-	{ name = "stone skin amulet", chance = 7394, maxCount = 1 },
-	{ name = "sacred tree amulet", chance = 11777, maxCount = 1 },
-	{ name = "glacier amulet", chance = 10210, maxCount = 1 },
-	{ name = "underworld rod", chance = 6477, maxCount = 1 },
-	{ name = "springsprout rod", chance = 12363, maxCount = 1 },
-	{ name = "platinum amulet", chance = 8615, maxCount = 1 },
-	{ name = "glacier robe", chance = 7211, maxCount = 1 },
 	{ name = "alba bag", chance = 50, maxCount = 3  },
 	{ name = "brainstealer bag", chance = 50, maxCount = 3  },
 	{ name = "green crystal coin", chance = 1130, maxCount = 2 },
-	{ name = "red crystal coin", chance = 100000, maxCount = 1 },
+	{ name = "red crystal coin", chance = 100000, maxCount = 3 },
 }
 
 monster.attacks = {

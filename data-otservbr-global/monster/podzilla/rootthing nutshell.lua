@@ -79,18 +79,11 @@ monster.voices = {
 }
 
 monster.loot = {
-    { name = "crystal coin", chance = 12380, maxCount = 8 },
+    { name = "crystal coin", chance = 12380, maxCount = 13 },
     { name = "platinum coin", chance = 12380, maxCount = 44 },
     { id = 3364, chance = 4460 }, --  amber sickle
-    { id = 3038, chance = 4460 }, --  resin parasite 32624
     { id = 32624, chance = 4460 }, --  
-    { id = 45652, chance = 4460 }, --    
-    { id = 5741, chance = 4460 }, --  
     { id = 32625, chance = 4460 }, 
-    { id = 8084, chance = 4460 }, 
-    { id = 8052, chance = 4460 }, 
-    { id = 3326, chance = 4460 },
-    { id = 8027, chance = 4460 },
 }
 
 monster.attacks = {

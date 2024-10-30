@@ -34,7 +34,7 @@ function teleport.onStepIn(player, item, position, fromPosition)
 	end
 	for i = 1, #config do
 		local table = config[i]
-		if item.uid == 35022 then
+		if item.uid == 35621 then
 			player:teleportTo(Position(32615, 32482, 9))
 			position:sendMagicEffect(CONST_ME_TELEPORT)
 			return true

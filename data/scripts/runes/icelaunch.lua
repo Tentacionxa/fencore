@@ -29,7 +29,10 @@ rune:allowFarUse(true)
 rune:charges(4)
 rune:level(2000)
 rune:magicLevel(45)
-rune:cooldown(5 * 1000)
+rune:cooldown(1 * 1000)
 rune:groupCooldown(2 * 1000)
 rune:vocation("druid;true", "elder druid;true","sorcerer;true","master sorcerer;true")
 rune:register()
+
+
+

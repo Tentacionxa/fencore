@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <events>
-	<event name="Fencore Week Boosts" startdate="03/09/2024" enddate="05/09/2024" script="example.lua" >
+	<event name="Fencore Week Boosts" startdate="31/10/2024" enddate="10/11/2024" >
 		<ingame exprate="150" lootrate="140" bosslootrate="120" spawnrate="140" skillrate="180" />
-		<description description="Every Tuesday to Thursday Event. 50% Exp - 40 % Loot - 20 % Boss Loot - 40 % Spawn - 80 % Skill" />
+		<description description="Testing New Calendar System" />
 		<colors colordark="#235c00" colorlight="#2d7400" />
 		<details displaypriority="6" isseasonal="0" specialevent="0" />
 	</event>
-	<event name="Otservbr example 2" startdate="2/2/2022" enddate="12/31/2023" script="" >
+	<event name="Fencore Week Exp" startdate="11/11/2024" enddate="28/11/2024" script="" >
 		<ingame exprate="100" lootrate="100" bosslootrate="100" spawnrate="100" skillrate="100" />
-		<description description="Otserver br example 2 description 50% less exp, triple loot !chance!, 50% faster spawn and regular skill" />
+		<description description="Fencore TESTING 50% less exp, triple loot !chance!, 50% faster spawn and regular skill" />
 		<colors colordark="#735D10" colorlight="#8B6D05" />
 		<details displaypriority="6" isseasonal="0" specialevent="0" />
 	</event>

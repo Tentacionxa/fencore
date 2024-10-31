@@ -71,29 +71,30 @@ void Connection::close(bool force) {
 }
 
 void Connection::closeSocket() {
-	if (!socket.is_open()) {
-		return;
-	}
+    if (!socket.is_open()) {
+        return;
+    }
 
-	try {
-		readTimer.cancel();
-		writeTimer.cancel();
-		socket.cancel();
+    try {
+        readTimer.cancel();
+        writeTimer.cancel();
+        socket.cancel();
 
-		std::error_code error;
-		socket.shutdown(asio::ip::tcp::socket::shutdown_both, error);
-		if (error && error != asio::error::not_connected) {
-			g_logger().error("[Connection::closeSocket] - Failed to shutdown socket: {}", error.message());
-		}
+        std::error_code error;
+        socket.shutdown(asio::ip::tcp::socket::shutdown_both, error);
+        if (error && error != asio::error::not_connected) {
+            g_logger().error("[Connection::closeSocket] - Failed to shutdown socket: {}", error.message());
+        }
 
-		socket.close(error);
-		if (error && error != asio::error::not_connected) {
-			g_logger().error("[Connection::closeSocket] - Failed to close socket: {}", error.message());
-		}
-	} catch (const std::system_error &e) {
-		g_logger().error("[Connection::closeSocket] - error closeSocket: {}", e.what());
-	}
+        socket.close(error);
+        if (error && error != asio::error::not_connected) {
+            g_logger().error("[Connection::closeSocket] - Failed to close socket: {}", error.message());
+        }
+    } catch (const std::system_error &e) {
+        g_logger().error("[Connection::closeSocket] - error closeSocket: {}", e.what());
+    }
 }
+
 
 void Connection::accept(Protocol_ptr protocolPtr) {
 	connectionState = CONNECTION_STATE_IDENTIFYING;
@@ -104,22 +105,25 @@ void Connection::accept(Protocol_ptr protocolPtr) {
 }
 
 void Connection::acceptInternal(bool toggleParseHeader) {
-	readTimer.expires_from_now(std::chrono::seconds(CONNECTION_READ_TIMEOUT));
-	readTimer.async_wait([self = std::weak_ptr<Connection>(shared_from_this())](const std::error_code &error) { Connection::handleTimeout(self, error); });
+    readTimer.expires_from_now(std::chrono::seconds(CONNECTION_READ_TIMEOUT));
+    readTimer.async_wait([self = std::weak_ptr<Connection>(shared_from_this())](const std::error_code &error) {
+        Connection::handleTimeout(self, error);
+    });
 
-	try {
-		asio::async_read(socket, asio::buffer(msg.getBuffer(), HEADER_LENGTH), [self = shared_from_this(), toggleParseHeader](const std::error_code &error, std::size_t N) {
-			if (toggleParseHeader) {
-				self->parseHeader(error);
-			} else {
-				self->parseProxyIdentification(error);
-			}
-		});
-	} catch (const std::system_error &e) {
-		g_logger().error("[Connection::acceptInternal] - Exception in async_read: {}", e.what());
-		close(FORCE_CLOSE);
-	}
+    try {
+        asio::async_read(socket, asio::buffer(msg.getBuffer(), HEADER_LENGTH), [self = shared_from_this(), toggleParseHeader](const std::error_code &error, std::size_t N) {
+            if (toggleParseHeader) {
+                self->parseHeader(error);
+            } else {
+                self->parseProxyIdentification(error);
+            }
+        });
+    } catch (const std::system_error &e) {
+        g_logger().error("[Connection::acceptInternal] - Exception in async_read: {}", e.what());
+        close(FORCE_CLOSE);
+    }
 }
+
 void Connection::parseProxyIdentification(const std::error_code &error) {
 	std::scoped_lock lock(connectionLock);
 	readTimer.cancel();

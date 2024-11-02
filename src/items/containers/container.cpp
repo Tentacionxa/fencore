@@ -127,16 +127,15 @@ bool Container::hasParent() {
 }
 
 void Container::addItem(std::shared_ptr<Item> item, std::shared_ptr<Cylinder> parentContainer) {
-    std::unique_lock lock(itemlistMutex);  // Exclusive lock for modification
+    std::unique_lock lock(itemlistMutex);
     if (!item) {
         std::cerr << "Error: Tried to add a null item to container." << std::endl;
         return;
     }
     itemlist.push_back(item);
-
-    // Set the item's parent to the specified container
-    item->setParent(parentContainer);
+    item->setParent(parentContainer);  // Explicitly set the parent
 }
+
 
 std::shared_ptr<Item> Container::getItemByIndex(size_t index) const {
     std::shared_lock lock(itemlistMutex);  // Shared lock for reading
@@ -205,7 +204,7 @@ bool Container::unserializeItemNode(OTB::Loader &loader, const OTB::Node &node, 
 			continue;
 		}
 
-		addItem(item);
+		addItem(item, std::static_pointer_cast<Cylinder>(this->shared_from_this()));
 		updateItemWeight(item->getWeight());
 	}
 	return true;
@@ -728,7 +727,7 @@ void Container::addThing(int32_t index, std::shared_ptr<Thing> thing) {
 }
 
 void Container::addItemBack(std::shared_ptr<Item> item) {
-	addItem(item);
+	addItem(item, std::static_pointer_cast<Cylinder>(this->shared_from_this()));
 	updateItemWeight(item->getWeight());
 
 	// send change to client

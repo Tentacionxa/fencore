@@ -164,7 +164,7 @@ uint32_t getItemHoldingCount() const;
 	void addThing(std::shared_ptr<Thing> thing) override final;
 	void addThing(int32_t index, std::shared_ptr<Thing> thing) override final;
 void addItem(std::shared_ptr<Item> item, std::shared_ptr<Cylinder> parentContainer);
-
+void addItemBack(std::shared_ptr<Item> item);
 	void updateThing(std::shared_ptr<Thing> thing, uint16_t itemId, uint32_t count) override final;
 	void replaceThing(uint32_t index, std::shared_ptr<Thing> thing) override final;
 

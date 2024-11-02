@@ -204,7 +204,7 @@ bool Container::unserializeItemNode(OTB::Loader &loader, const OTB::Node &node, 
 			continue;
 		}
 
-		addItem(item, std::static_pointer_cast<Cylinder>(this->shared_from_this()));
+		addItem(item, std::static_pointer_cast<Cylinder>(std::enable_shared_from_this<Container>::shared_from_this()));
 		updateItemWeight(item->getWeight());
 	}
 	return true;
@@ -727,7 +727,7 @@ void Container::addThing(int32_t index, std::shared_ptr<Thing> thing) {
 }
 
 void Container::addItemBack(std::shared_ptr<Item> item) {
-	addItem(item, std::static_pointer_cast<Cylinder>(this->shared_from_this()));
+	addItem(item, std::static_pointer_cast<Cylinder>(std::enable_shared_from_this<Container>::shared_from_this()));
 	updateItemWeight(item->getWeight());
 
 	// send change to client

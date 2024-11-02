@@ -3261,27 +3261,26 @@ ReturnValue Game::processMoveOrAddItemToLootContainer(std::shared_ptr < Item > i
   return ret;
 }
 
-ReturnValue Game::processLootItems(std::shared_ptr < Player > player, std::shared_ptr < Container > lootContainer, std::shared_ptr < Item > item, bool & fallbackConsumed) {
-  std::shared_ptr < Container > lastSubContainer = nullptr;
-  uint32_t remainderCount = item -> getItemCount();
-ContainerIterator newIterator = lootContainer->iterator();
-containerIterator = std::move(newIterator); // if you wish to reassign
+ReturnValue Game::processLootItems(std::shared_ptr<Player> player, std::shared_ptr<Container> lootContainer, std::shared_ptr<Item> item, bool& fallbackConsumed) {
+    std::shared_ptr<Container> lastSubContainer = nullptr;
+    uint32_t remainderCount = item->getItemCount();
+    ContainerIterator containerIterator = lootContainer->iterator(); // Direct initialization
 
-  ReturnValue ret;
-  do {
-    ret = processMoveOrAddItemToLootContainer(item, lootContainer, remainderCount, player);
-    if (ret != RETURNVALUE_CONTAINERNOTENOUGHROOM) {
-      return ret;
-    }
+    ReturnValue ret;
+    do {
+        ret = processMoveOrAddItemToLootContainer(item, lootContainer, remainderCount, player);
+        if (ret != RETURNVALUE_CONTAINERNOTENOUGHROOM) {
+            return ret;
+        }
 
-    std::shared_ptr < Container > nextContainer = findNextAvailableContainer(containerIterator, lootContainer, lastSubContainer);
-    if (!nextContainer && !handleFallbackLogic(player, lootContainer, containerIterator, fallbackConsumed)) {
-      break;
-    }
-    fallbackConsumed = fallbackConsumed || (nextContainer == nullptr);
-  } while (remainderCount != 0);
+        std::shared_ptr<Container> nextContainer = findNextAvailableContainer(containerIterator, lootContainer, lastSubContainer);
+        if (!nextContainer && !handleFallbackLogic(player, lootContainer, containerIterator, fallbackConsumed)) {
+            break;
+        }
+        fallbackConsumed = fallbackConsumed || (nextContainer == nullptr);
+    } while (remainderCount != 0);
 
-  return ret;
+    return ret;
 }
 
 ReturnValue Game::internalCollectManagedItems(std::shared_ptr < Player > player, std::shared_ptr < Item > item, ObjectCategory_t category /* = OBJECTCATEGORY_DEFAULT*/ , bool isLootContainer /* = true*/ ) {

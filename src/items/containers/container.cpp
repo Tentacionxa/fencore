@@ -134,7 +134,7 @@ void Container::addItem(std::shared_ptr<Item> item) {
     }
     itemlist.push_back(item);
     // Set the item's parent to this container, cast to Cylinder
-   item->setParent(std::static_pointer_cast<Cylinder>(Container::shared_from_this()));
+item->setParent(std::static_pointer_cast<Cylinder>(std::enable_shared_from_this<Container>::shared_from_this()));
 }
 
 std::shared_ptr<Item> Container::getItemByIndex(size_t index) const {
@@ -943,7 +943,7 @@ uint16_t Container::getFreeSlots() {
 }
 
 ContainerIterator Container::iterator() const {
-	return { getContainer() };
+return ContainerIterator(getContainer());
 }
 
 void Container::removeItem(std::shared_ptr<Thing> thing, bool sendUpdateToClient /* = false*/) {

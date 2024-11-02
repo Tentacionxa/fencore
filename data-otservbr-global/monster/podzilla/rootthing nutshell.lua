@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Rootthing Nutshell")
 local monster = {}
 
 monster.description = "a rootthing nutshell"
-monster.experience = 28740
+monster.experience = 78740
 monster.outfit = {
 	lookType = 1760,
 	lookHead = 0,
@@ -79,8 +79,8 @@ monster.voices = {
 }
 
 monster.loot = {
-    { name = "crystal coin", chance = 12380, maxCount = 13 },
-    { name = "platinum coin", chance = 12380, maxCount = 44 },
+    { name = "crystal coin", chance = 12380, maxCount = 23 },
+    { name = "platinum coin", chance = 12380, maxCount = 84 },
     { id = 3364, chance = 4460 }, --  amber sickle
     { id = 32624, chance = 4460 }, --  
     { id = 32625, chance = 4460 }, 

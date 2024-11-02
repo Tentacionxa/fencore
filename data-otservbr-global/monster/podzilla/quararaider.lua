@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Quara Raider")
 local monster = {}
 
 monster.description = "a quara raider"
-monster.experience = 40000
+monster.experience = 80000
 monster.outfit = {
 	lookType = 1759,
 	lookHead = 0,
@@ -76,7 +76,7 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "crystal coin", chance = 12380, maxCount = 8 }, 
+	{ name = "crystal coin", chance = 12380, maxCount = 18 }, 
     { id = 45654, chance = 4600, maxCount = 1 }, 
     { id = 13990, chance = 4600, maxCount = 1 },
 	{ id = 32623, chance = 4600, maxCount = 1 },

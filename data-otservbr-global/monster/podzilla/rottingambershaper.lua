@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Rootthing Amber Shaper")
 local monster = {}
 
 monster.description = "a rootthing amber shaper"
-monster.experience = 31740
+monster.experience = 71740
 monster.outfit = {
 	lookType = 1762,
 	lookHead = 0,
@@ -79,10 +79,10 @@ monster.voices = {
 }
 
 monster.loot = {
-    { name = "crystal coin", chance = 12380, maxCount = 13 },
+    { name = "crystal coin", chance = 12380, maxCount = 21 },
     { name = "platinum coin", chance = 12380, maxCount = 44 },
-    { id = 3364, chance = 4460 }, --  amber sickle
-    { id = 32624, chance = 4460 }, --  
+    { id = 3364, chance = 4460, maxCount = 4 }, --  amber sickle
+    { id = 32624, chance = 4460, maxCount = 4 }, --  
     { id = 32625, chance = 4460 }, 
 }
 

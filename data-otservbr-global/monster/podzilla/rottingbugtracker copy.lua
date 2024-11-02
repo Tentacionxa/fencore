@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Rootthing Bug Tracker")
 local monster = {}
 
 monster.description = "a rootthing bug tracker"
-monster.experience = 29740
+monster.experience = 69740
 monster.outfit = {
 	lookType = 1763,
 	lookHead = 0,
@@ -80,11 +80,11 @@ monster.voices = {
 
 monster.loot = {
 	{ name = "platinum coin", chance = 14127, maxCount = 85 },
-	{ name = "resin parasite", chance = 13975, maxCount = 1 },
-	{ name = "demon root", chance = 7321, maxCount = 1 },
+	{ name = "resin parasite", chance = 13975, maxCount = 5 },
+	{ name = "demon root", chance = 7321, maxCount = 5 },
 	{ name = "green gem", chance = 5572, maxCount = 1 },
-	{ name = "wood cape", chance = 6096, maxCount = 1 },
-	{ name = "soul prism", chance = 138, maxCount = 1 },
+	{ name = "wood cape", chance = 6096, maxCount = 5 },
+	{ name = "soul prism", chance = 138, maxCount = 5 },
 }
 
 monster.attacks = {

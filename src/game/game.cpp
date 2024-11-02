@@ -3230,22 +3230,23 @@ std::shared_ptr < Container > Game::findNextAvailableContainer(ContainerIterator
   return nullptr;
 }
 
-bool Game::handleFallbackLogic(std::shared_ptr<Player> player, std::shared_ptr<Container>& lootContainer, ContainerIterator& containerIterator, const bool& fallbackConsumed)
- {
-  if (fallbackConsumed || !player -> quickLootFallbackToMainContainer) {
-    return false;
-  }
+bool Game::handleFallbackLogic(std::shared_ptr<Player> player, std::shared_ptr<Container>& lootContainer, const bool& fallbackConsumed)
+{
+    if (fallbackConsumed || !player->quickLootFallbackToMainContainer) {
+        return false;
+    }
 
-  std::shared_ptr < Item > fallbackItem = player -> getInventoryItem(CONST_SLOT_BACKPACK);
-  if (!fallbackItem || !fallbackItem -> getContainer()) {
-    return false;
-  }
+    std::shared_ptr<Item> fallbackItem = player->getInventoryItem(CONST_SLOT_BACKPACK);
+    if (!fallbackItem || !fallbackItem->getContainer()) {
+        return false;
+    }
 
-  lootContainer = fallbackItem -> getContainer();
-  containerIterator = lootContainer -> iterator();
+    lootContainer = fallbackItem->getContainer();
+    ContainerIterator newIterator(lootContainer); // Create a new iterator instance
 
-  return true;
+    return true;
 }
+
 
 ReturnValue Game::processMoveOrAddItemToLootContainer(std::shared_ptr < Item > item, std::shared_ptr < Container > lootContainer, uint32_t & remainderCount, std::shared_ptr < Player > player) {
   std::shared_ptr < Item > moveItem = nullptr;

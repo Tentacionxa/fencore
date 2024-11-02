@@ -3230,8 +3230,8 @@ std::shared_ptr < Container > Game::findNextAvailableContainer(ContainerIterator
   return nullptr;
 }
 
-bool Game::handleFallbackLogic(std::shared_ptr < Player > player, std::shared_ptr < Container > & lootContainer, ContainerIterator & containerIterator,
-  const bool & fallbackConsumed) {
+bool Game::handleFallbackLogic(std::shared_ptr<Player> player, std::shared_ptr<Container>& lootContainer, ContainerIterator& containerIterator, const bool& fallbackConsumed)
+ {
   if (fallbackConsumed || !player -> quickLootFallbackToMainContainer) {
     return false;
   }
@@ -3276,10 +3276,10 @@ ReturnValue Game::processLootItems(std::shared_ptr<Player> player, std::shared_p
         std::shared_ptr<Container> nextContainer = findNextAvailableContainer(containerIterator, lootContainer, lastSubContainer);
 
         // Create a copy of containerIterator to use in handleFallbackLogic
-        ContainerIterator anotherIterator = containerIterator;
-        if (!nextContainer && !handleFallbackLogic(player, lootContainer, anotherIterator, fallbackConsumed)) {
-            break;
-        }
+      ContainerIterator& anotherIterator = containerIterator;
+      if (!nextContainer && !handleFallbackLogic(player, lootContainer, containerIterator, fallbackConsumed)) {
+    break;
+}
 
         fallbackConsumed = fallbackConsumed || (nextContainer == nullptr);
     } while (remainderCount != 0);

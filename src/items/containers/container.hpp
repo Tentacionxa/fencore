@@ -25,18 +25,9 @@ public:
    // Constructor
     ContainerIterator(const std::shared_ptr<Container>& container, size_t maxDepth = 1000);
 
-   // Existing constructor
-    ContainerIterator(const std::shared_ptr<Container>& container, size_t maxDepth = 1000);
-
-    // Define a copy constructor if copy semantics are needed
-    ContainerIterator(const ContainerIterator& other) = default;
-
-    // Optionally, define a copy assignment operator if necessary
-    ContainerIterator& operator=(const ContainerIterator& other) = default;
-
-    // Prevent move assignment if needed
+    // Disable copy and move assignment operators
+    ContainerIterator& operator=(const ContainerIterator&) = delete;
     ContainerIterator& operator=(ContainerIterator&&) = delete;
-    // Other members
 
     // Other members
     bool hasNext() const;

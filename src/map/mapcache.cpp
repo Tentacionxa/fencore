@@ -85,7 +85,7 @@ std::shared_ptr<Item> MapCache::createItem(const std::shared_ptr<BasicItem> &Bas
 	if (item->getContainer() && !BasicItem->items.empty()) {
 		for (const auto &BasicItemInside : BasicItem->items) {
 			if (auto itemInsede = createItem(BasicItemInside, position)) {
-				item->getContainer()->addItem(itemInsede);
+				item->getContainer()->addItem(itemInsede, item->getContainer());
 				item->getContainer()->updateItemWeight(itemInsede->getWeight());
 			}
 		}

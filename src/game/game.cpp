@@ -3230,7 +3230,7 @@ std::shared_ptr < Container > Game::findNextAvailableContainer(ContainerIterator
   return nullptr;
 }
 
-bool Game::handleFallbackLogic(std::shared_ptr<Player> player, std::shared_ptr<Container>& lootContainer, const bool& fallbackConsumed)
+bool Game::handleFallbackLogic(std::shared_ptr<Player> player, std::shared_ptr<Container>& lootContainer, ContainerIterator& containerIterator, const bool& fallbackConsumed)
 {
     if (fallbackConsumed || !player->quickLootFallbackToMainContainer) {
         return false;

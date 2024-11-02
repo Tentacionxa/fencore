@@ -471,7 +471,7 @@ if (item) {
 		return RETURNVALUE_NOTPOSSIBLE;
 	}
 
-	std::shared_ptr<Item> item = addThing->getItem();
+
 	if (item == nullptr) {
 		return RETURNVALUE_NOTPOSSIBLE;
 	}

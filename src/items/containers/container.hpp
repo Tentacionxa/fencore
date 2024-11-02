@@ -137,7 +137,7 @@ public:
 	bool isHoldingItem(std::shared_ptr<Item> item);
 	bool isHoldingItemWithId(const uint16_t id);
 
-	uint32_t getItemHoldingCount();
+uint32_t getItemHoldingCount() const;
 	uint32_t getContainerHoldingCount();
 	uint16_t getFreeSlots();
 	uint32_t getWeight() const override final;

@@ -2124,264 +2124,258 @@ ReturnValue Game::checkMoveItemToCylinder(std::shared_ptr < Player > player, std
   return RETURNVALUE_NOERROR;
 }
 
-ReturnValue Game::internalMoveItem(std::shared_ptr < Cylinder > fromCylinder, std::shared_ptr < Cylinder > toCylinder, int32_t index, std::shared_ptr < Item > item, uint32_t count, std::shared_ptr < Item > * movedItem, uint32_t flags /*= 0*/ , std::shared_ptr < Creature > actor /*=nullptr*/ , std::shared_ptr < Item > tradeItem /* = nullptr*/ , bool checkTile /* = true*/ ) {
-  metrics::method_latency measure(__METHOD_NAME__);
-  if (fromCylinder == nullptr) {
-    g_logger().error("[{}] fromCylinder is nullptr", __FUNCTION__);
-    return RETURNVALUE_NOTPOSSIBLE;
-  }
-  if (toCylinder == nullptr) {
-    g_logger().error("[{}] toCylinder is nullptr", __FUNCTION__);
-    return RETURNVALUE_NOTPOSSIBLE;
-  }
-
-  if (checkTile) {
-    if (std::shared_ptr < Tile > fromTile = fromCylinder -> getTile()) {
-      if (fromTile && browseFields.contains(fromTile) && browseFields[fromTile].lock() == fromCylinder) {
-        fromCylinder = fromTile;
-      }
+ReturnValue Game::internalMoveItem(std::shared_ptr<Cylinder> fromCylinder, std::shared_ptr<Cylinder> toCylinder, int32_t index, std::shared_ptr<Item> item, uint32_t count, std::shared_ptr<Item>* movedItem, uint32_t flags, std::shared_ptr<Creature> actor, std::shared_ptr<Item> tradeItem, bool checkTile) {
+    metrics::method_latency measure(__METHOD_NAME__);
+    
+    // Check for nullptr cylinders
+    if (!fromCylinder) {
+        g_logger().error("[{}] fromCylinder is nullptr", __FUNCTION__);
+        return RETURNVALUE_NOTPOSSIBLE;
     }
-  }
-
-  std::shared_ptr < Item > toItem = nullptr;
-
-  std::shared_ptr < Cylinder > subCylinder;
-  int floorN = 0;
-
-  const int MAX_RETRIES = 5;
-int retryCount = 0;
-
-while ((subCylinder = toCylinder->queryDestination(index, item, &toItem, flags)) != toCylinder) {
-    if (retryCount++ >= MAX_RETRIES) {
-        g_logger().warn("internalMoveItem: Max retries reached for item move.");
-        return RETURNVALUE_NOTPOSSIBLE; // or a suitable error code
+    if (!toCylinder) {
+        g_logger().error("[{}] toCylinder is nullptr", __FUNCTION__);
+        return RETURNVALUE_NOTPOSSIBLE;
     }
-    toCylinder = subCylinder;
-    flags = 0;
-}
 
-    // to prevent infinite loop
+    // Check tile and set fromCylinder if applicable
+    if (checkTile) {
+        if (auto fromTile = fromCylinder->getTile()) {
+            if (fromTile && browseFields.contains(fromTile) && browseFields[fromTile].lock() == fromCylinder) {
+                fromCylinder = fromTile;
+            }
+        }
+    }
+
+    std::shared_ptr<Item> toItem = nullptr;
+    std::shared_ptr<Cylinder> subCylinder;
+    int floorN = 0;
+    
+    const int MAX_RETRIES = 5;
+    int retryCount = 0;
+
+    // Retry mechanism with a max retries limit
+    while ((subCylinder = toCylinder->queryDestination(index, item, &toItem, flags)) != toCylinder) {
+        if (retryCount++ >= MAX_RETRIES) {
+            g_logger().warn("internalMoveItem: Max retries reached for item move.");
+            return RETURNVALUE_NOTPOSSIBLE; // or a suitable error code
+        }
+        toCylinder = subCylinder;
+        flags = 0;
+    }
+
+    // Prevent infinite loop by setting a floor limit
     if (++floorN >= MAP_MAX_LAYERS) {
-      return RETURNVALUE_NOTPOSSIBLE;
-    }
-  }
-
-  // destination is the same as the source?
-  if (item == toItem) {
-    return RETURNVALUE_NOERROR; // silently ignore move
-  }
-
-  // 'Move up' stackable items fix
-  //  Cip's client never sends the count of stackables when using "Move up" menu option
-  if (item -> isStackable() && count == 255 && fromCylinder -> getParent() == toCylinder) {
-    count = item -> getItemCount();
-  }
-
-  // check if we can remove this item (using count of 1 since we don't know how
-  // much we can move yet)
-  ReturnValue ret = fromCylinder -> queryRemove(item, 1, flags, actor);
-  if (ret != RETURNVALUE_NOERROR) {
-    return ret;
-  }
-
-  // check if we can add this item
-  ret = toCylinder -> queryAdd(index, item, count, flags, actor);
-  if (ret == RETURNVALUE_NEEDEXCHANGE) {
-    // check if we can add it to source cylinder
-    ret = fromCylinder -> queryAdd(fromCylinder -> getThingIndex(item), toItem, toItem -> getItemCount(), 0);
-    if (ret == RETURNVALUE_NOERROR) {
-      // check how much we can move
-      uint32_t maxExchangeQueryCount = 0;
-      ReturnValue retExchangeMaxCount = fromCylinder -> queryMaxCount(INDEX_WHEREEVER, toItem, toItem -> getItemCount(), maxExchangeQueryCount, 0);
-
-      if (retExchangeMaxCount != RETURNVALUE_NOERROR && maxExchangeQueryCount == 0) {
-        return retExchangeMaxCount;
-      }
-
-      if (toCylinder -> queryRemove(toItem, toItem -> getItemCount(), flags, actor) == RETURNVALUE_NOERROR) {
-        int32_t oldToItemIndex = toCylinder -> getThingIndex(toItem);
-        toCylinder -> removeThing(toItem, toItem -> getItemCount());
-        fromCylinder -> addThing(toItem);
-
-        if (oldToItemIndex != -1) {
-          toCylinder -> postRemoveNotification(toItem, fromCylinder, oldToItemIndex);
-        }
-
-        int32_t newToItemIndex = fromCylinder -> getThingIndex(toItem);
-        if (newToItemIndex != -1) {
-          fromCylinder -> postAddNotification(toItem, toCylinder, newToItemIndex);
-        }
-
-        ret = toCylinder -> queryAdd(index, item, count, flags);
-        toItem = nullptr;
-      }
-    }
-  }
-
-  if (ret != RETURNVALUE_NOERROR) {
-    return ret;
-  }
-
-  // check how much we can move
-  uint32_t maxQueryCount = 0;
-  ReturnValue retMaxCount = toCylinder -> queryMaxCount(index, item, count, maxQueryCount, flags);
-  if (retMaxCount != RETURNVALUE_NOERROR && maxQueryCount == 0) {
-    return retMaxCount;
-  }
-
-  uint32_t m;
-  if (item -> isStackable()) {
-    m = std::min < uint32_t > (count, maxQueryCount);
-  } else {
-    m = maxQueryCount;
-  }
-
-  std::shared_ptr < Item > moveItem = item;
-  // check if we can remove this item
-  ret = fromCylinder -> queryRemove(item, m, flags, actor);
-  if (ret != RETURNVALUE_NOERROR) {
-    return ret;
-  }
-
-  if (tradeItem) {
-    if (toCylinder -> getItem() == tradeItem) {
-      return RETURNVALUE_NOTENOUGHROOM;
+        return RETURNVALUE_NOTPOSSIBLE;
     }
 
-    std::shared_ptr < Cylinder > tmpCylinder = toCylinder -> getParent();
-    while (tmpCylinder) {
-      if (tmpCylinder -> getItem() == tradeItem) {
-        return RETURNVALUE_NOTENOUGHROOM;
-      }
-
-      tmpCylinder = tmpCylinder -> getParent();
-    }
-  }
-
-  // remove the item
-  int32_t itemIndex = fromCylinder -> getThingIndex(item);
-  std::shared_ptr < Item > updateItem = nullptr;
-  fromCylinder -> removeThing(item, m);
-
-  // update item(s)
-  if (item -> isStackable()) {
-    uint32_t n;
-
-    if (toItem && item -> equals(toItem)) {
-      n = std::min < uint32_t > (toItem -> getStackSize() - toItem -> getItemCount(), m);
-      toCylinder -> updateThing(toItem, toItem -> getID(), toItem -> getItemCount() + n);
-      updateItem = toItem;
-    } else {
-      n = 0;
+    // Check if destination is the same as the source
+    if (item == toItem) {
+        return RETURNVALUE_NOERROR; // Silently ignore move
     }
 
-    int32_t newCount = m - n;
-    if (newCount > 0) {
-      moveItem = item -> clone();
-      moveItem -> setItemCount(newCount);
-    } else {
-      moveItem = nullptr;
+    // Handle stackable item count adjustment
+    if (item->isStackable() && count == 255 && fromCylinder->getParent() == toCylinder) {
+        count = item->getItemCount();
     }
 
-    if (item -> isRemoved()) {
-      item -> stopDecaying();
-    }
-  }
-
-  // add item
-  if (moveItem /*m - n > 0*/ ) {
-    toCylinder -> addThing(index, moveItem);
-  }
-
-  if (itemIndex != -1) {
-    fromCylinder -> postRemoveNotification(item, toCylinder, itemIndex);
-  }
-
-  if (moveItem) {
-    int32_t moveItemIndex = toCylinder -> getThingIndex(moveItem);
-    if (moveItemIndex != -1) {
-      toCylinder -> postAddNotification(moveItem, fromCylinder, moveItemIndex);
-    }
-    moveItem -> startDecaying();
-  }
-
-  if (updateItem) {
-    int32_t updateItemIndex = toCylinder -> getThingIndex(updateItem);
-    if (updateItemIndex != -1) {
-      toCylinder -> postAddNotification(updateItem, fromCylinder, updateItemIndex);
-    }
-    updateItem -> startDecaying();
-  }
-
-  if (movedItem) {
-    if (moveItem) {
-      * movedItem = moveItem;
-    } else {
-      * movedItem = item;
-    }
-  }
-
-  std::shared_ptr < Item > quiver = toCylinder -> getItem();
-  if (quiver && quiver -> isQuiver() &&
-    quiver -> getHoldingPlayer() &&
-    quiver -> getHoldingPlayer() -> getThing(CONST_SLOT_RIGHT) == quiver) {
-    quiver -> getHoldingPlayer() -> sendInventoryItem(CONST_SLOT_RIGHT, quiver);
-  } else {
-    quiver = fromCylinder -> getItem();
-    if (quiver && quiver -> isQuiver() &&
-      quiver -> getHoldingPlayer() &&
-      quiver -> getHoldingPlayer() -> getThing(CONST_SLOT_RIGHT) == quiver) {
-      quiver -> getHoldingPlayer() -> sendInventoryItem(CONST_SLOT_RIGHT, quiver);
-    }
-  }
-
-  if (SoundEffect_t soundEffect = item -> getMovementSound(toCylinder); toCylinder && soundEffect != SoundEffect_t::SILENCE) {
-    if (toCylinder -> getContainer() && actor && actor -> getPlayer() && (toCylinder -> getContainer() -> isInsideDepot(true) || toCylinder -> getContainer() -> getHoldingPlayer())) {
-      actor -> getPlayer() -> sendSingleSoundEffect(toCylinder -> getPosition(), soundEffect, SourceEffect_t::OWN);
-    } else {
-      sendSingleSoundEffect(toCylinder -> getPosition(), soundEffect, actor);
-    }
-  }
-
-  // we could not move all, inform the player
-  if (item -> isStackable() && maxQueryCount < count) {
-    return retMaxCount;
-  }
-
-  auto fromContainer = fromCylinder ? fromCylinder -> getContainer() : nullptr;
-  auto toContainer = toCylinder ? toCylinder -> getContainer() : nullptr;
-  auto player = actor ? actor -> getPlayer() : nullptr;
-  if (player) {
-    // Update containers
-    player -> onSendContainer(toContainer);
-    player -> onSendContainer(fromContainer);
-  }
-
-  // Actor related actions
-  if (fromCylinder && actor && toCylinder) {
-    if (!fromContainer || !toContainer || !player) {
-      return ret;
-    }
-
-    if (std::shared_ptr < Player > player = actor -> getPlayer()) {
-      // Refresh depot search window if necessary
-      if (player -> isDepotSearchOpenOnItem(item -> getID()) && ((fromCylinder -> getItem() && fromCylinder -> getItem() -> isInsideDepot(true)) || (toCylinder -> getItem() && toCylinder -> getItem() -> isInsideDepot(true)))) {
-        player -> requestDepotSearchItem(item -> getID(), item -> getTier());
-      }
-
-      const ItemType & it = Item::items[fromCylinder -> getItem() -> getID()];
-      if (it.id <= 0) {
+    // Check if we can remove the item
+    ReturnValue ret = fromCylinder->queryRemove(item, 1, flags, actor);
+    if (ret != RETURNVALUE_NOERROR) {
         return ret;
-      }
-
-      // Looting analyser
-      if (it.isCorpse && toContainer -> getTopParent() == player && item -> getIsLootTrackeable()) {
-        player -> sendLootStats(item, static_cast < uint8_t > (item -> getItemCount()));
-      }
     }
-  }
 
-  return ret;
+    // Check if we can add the item
+    ret = toCylinder->queryAdd(index, item, count, flags, actor);
+    if (ret == RETURNVALUE_NEEDEXCHANGE) {
+        // Check if we can add to the source cylinder
+        ret = fromCylinder->queryAdd(fromCylinder->getThingIndex(item), toItem, toItem->getItemCount(), 0);
+        if (ret == RETURNVALUE_NOERROR) {
+            uint32_t maxExchangeQueryCount = 0;
+            ReturnValue retExchangeMaxCount = fromCylinder->queryMaxCount(INDEX_WHEREEVER, toItem, toItem->getItemCount(), maxExchangeQueryCount, 0);
+
+            if (retExchangeMaxCount != RETURNVALUE_NOERROR && maxExchangeQueryCount == 0) {
+                return retExchangeMaxCount;
+            }
+
+            if (toCylinder->queryRemove(toItem, toItem->getItemCount(), flags, actor) == RETURNVALUE_NOERROR) {
+                int32_t oldToItemIndex = toCylinder->getThingIndex(toItem);
+                toCylinder->removeThing(toItem, toItem->getItemCount());
+                fromCylinder->addThing(toItem);
+
+                if (oldToItemIndex != -1) {
+                    toCylinder->postRemoveNotification(toItem, fromCylinder, oldToItemIndex);
+                }
+
+                int32_t newToItemIndex = fromCylinder->getThingIndex(toItem);
+                if (newToItemIndex != -1) {
+                    fromCylinder->postAddNotification(toItem, toCylinder, newToItemIndex);
+                }
+
+                ret = toCylinder->queryAdd(index, item, count, flags);
+                toItem = nullptr;
+            }
+        }
+    }
+
+    if (ret != RETURNVALUE_NOERROR) {
+        return ret;
+    }
+
+    // Determine the max moveable count
+    uint32_t maxQueryCount = 0;
+    ReturnValue retMaxCount = toCylinder->queryMaxCount(index, item, count, maxQueryCount, flags);
+    if (retMaxCount != RETURNVALUE_NOERROR && maxQueryCount == 0) {
+        return retMaxCount;
+    }
+
+    uint32_t m;
+    if (item->isStackable()) {
+        m = std::min<uint32_t>(count, maxQueryCount);
+    } else {
+        m = maxQueryCount;
+    }
+
+    std::shared_ptr<Item> moveItem = item;
+
+    // Attempt to remove the item
+    ret = fromCylinder->queryRemove(item, m, flags, actor);
+    if (ret != RETURNVALUE_NOERROR) {
+        return ret;
+    }
+
+    if (tradeItem) {
+        if (toCylinder->getItem() == tradeItem) {
+            return RETURNVALUE_NOTENOUGHROOM;
+        }
+
+        std::shared_ptr<Cylinder> tmpCylinder = toCylinder->getParent();
+        while (tmpCylinder) {
+            if (tmpCylinder->getItem() == tradeItem) {
+                return RETURNVALUE_NOTENOUGHROOM;
+            }
+            tmpCylinder = tmpCylinder->getParent();
+        }
+    }
+
+    // Remove the item and update accordingly
+    int32_t itemIndex = fromCylinder->getThingIndex(item);
+    std::shared_ptr<Item> updateItem = nullptr;
+    fromCylinder->removeThing(item, m);
+
+    // Stackable item update logic
+    if (item->isStackable()) {
+        uint32_t n;
+
+        if (toItem && item->equals(toItem)) {
+            n = std::min<uint32_t>(toItem->getStackSize() - toItem->getItemCount(), m);
+            toCylinder->updateThing(toItem, toItem->getID(), toItem->getItemCount() + n);
+            updateItem = toItem;
+        } else {
+            n = 0;
+        }
+
+        int32_t newCount = m - n;
+        if (newCount > 0) {
+            moveItem = item->clone();
+            moveItem->setItemCount(newCount);
+        } else {
+            moveItem = nullptr;
+        }
+
+        if (item->isRemoved()) {
+            item->stopDecaying();
+        }
+    }
+
+    // Add the item
+    if (moveItem) {
+        toCylinder->addThing(index, moveItem);
+    }
+
+    if (itemIndex != -1) {
+        fromCylinder->postRemoveNotification(item, toCylinder, itemIndex);
+    }
+
+    if (moveItem) {
+        int32_t moveItemIndex = toCylinder->getThingIndex(moveItem);
+        if (moveItemIndex != -1) {
+            toCylinder->postAddNotification(moveItem, fromCylinder, moveItemIndex);
+        }
+        moveItem->startDecaying();
+    }
+
+    if (updateItem) {
+        int32_t updateItemIndex = toCylinder->getThingIndex(updateItem);
+        if (updateItemIndex != -1) {
+            toCylinder->postAddNotification(updateItem, fromCylinder, updateItemIndex);
+        }
+        updateItem->startDecaying();
+    }
+
+    if (movedItem) {
+        *movedItem = moveItem ? moveItem : item;
+    }
+
+    // Handle quiver updates
+    std::shared_ptr<Item> quiver = toCylinder->getItem();
+    if (quiver && quiver->isQuiver() &&
+        quiver->getHoldingPlayer() &&
+        quiver->getHoldingPlayer()->getThing(CONST_SLOT_RIGHT) == quiver) {
+        quiver->getHoldingPlayer()->sendInventoryItem(CONST_SLOT_RIGHT, quiver);
+    } else {
+        quiver = fromCylinder->getItem();
+        if (quiver && quiver->isQuiver() &&
+            quiver->getHoldingPlayer() &&
+            quiver->getHoldingPlayer()->getThing(CONST_SLOT_RIGHT) == quiver) {
+            quiver->getHoldingPlayer()->sendInventoryItem(CONST_SLOT_RIGHT, quiver);
+        }
+    }
+
+    // Sound effect handling
+    if (SoundEffect_t soundEffect = item->getMovementSound(toCylinder); toCylinder && soundEffect != SoundEffect_t::SILENCE) {
+        if (toCylinder->getContainer() && actor && actor->getPlayer() &&
+            (toCylinder->getContainer()->isInsideDepot(true) || toCylinder->getContainer()->getHoldingPlayer())) {
+            actor->getPlayer()->sendSingleSoundEffect(toCylinder->getPosition(), soundEffect, SourceEffect_t::OWN);
+        } else {
+            sendSingleSoundEffect(toCylinder->getPosition(), soundEffect, actor);
+        }
+    }
+
+    // Final check for incomplete moves with stackable items
+    if (item->isStackable() && maxQueryCount < count) {
+        return retMaxCount;
+    }
+
+    // Container updates for player
+    auto fromContainer = fromCylinder ? fromCylinder->getContainer() : nullptr;
+    auto toContainer = toCylinder ? toCylinder->getContainer() : nullptr;
+    auto player = actor ? actor->getPlayer() : nullptr;
+    if (player) {
+        player->onSendContainer(toContainer);
+        player->onSendContainer(fromContainer);
+    }
+
+    // Final actor-related actions
+    if (fromCylinder && actor && toCylinder) {
+        if (player && std::shared_ptr<Player> player = actor->getPlayer()) {
+            if (player->isDepotSearchOpenOnItem(item->getID()) && 
+                ((fromCylinder->getItem() && fromCylinder->getItem()->isInsideDepot(true)) || 
+                (toCylinder->getItem() && toCylinder->getItem()->isInsideDepot(true)))) {
+                player->requestDepotSearchItem(item->getID(), item->getTier());
+            }
+
+            const ItemType& it = Item::items[fromCylinder->getItem()->getID()];
+            if (it.id <= 0) {
+                return ret;
+            }
+
+            if (it.isCorpse && toContainer->getTopParent() == player && item->getIsLootTrackeable()) {
+                player->sendLootStats(item, static_cast<uint8_t>(item->getItemCount()));
+            }
+        }
+    }
+
+    return ret;
 }
 
 ReturnValue Game::internalAddItem(std::shared_ptr < Cylinder > toCylinder, std::shared_ptr < Item > item, int32_t index /*= INDEX_WHEREEVER*/ , uint32_t flags /* = 0*/ , bool test /* = false*/ ) {

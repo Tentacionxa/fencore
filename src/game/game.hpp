@@ -229,7 +229,7 @@ public:
 	ReturnValue internalMoveCreature(const std::shared_ptr<Creature> &creature, const std::shared_ptr<Tile> &toTile, uint32_t flags = 0);
 
 	ReturnValue checkMoveItemToCylinder(std::shared_ptr<Player> player, std::shared_ptr<Cylinder> fromCylinder, std::shared_ptr<Cylinder> toCylinder, std::shared_ptr<Item> item, Position toPos);
-	ReturnValue internalMoveItem(std::shared_ptr<Cylinder> fromCylinder, std::shared_ptr<Cylinder> toCylinder, int32_t index, std::shared_ptr<Item> item, uint32_t count, std::shared_ptr<Item>* movedItem, uint32_t flags = 0, std::shared_ptr<Creature> actor = nullptr, std::shared_ptr<Item> tradeItem = nullptr, bool checkTile = true);
+ReturnValue internalMoveItem(std::shared_ptr<Cylinder> fromCylinder, std::shared_ptr<Cylinder> toCylinder, int32_t index, std::shared_ptr<Item> item, uint32_t count, std::shared_ptr<Item>* movedItem, uint32_t flags = 0, std::shared_ptr<Creature> actor = nullptr, std::shared_ptr<Item> tradeItem = nullptr, bool checkTile = true);
 
 	std::tuple<ReturnValue, uint32_t, uint32_t> addItemBatch(const std::shared_ptr<Cylinder> &toCylinder, const std::vector<std::shared_ptr<Item>> &items, uint32_t flags = 0, bool dropOnMap = true, uint32_t autoContainerId = 0);
 	std::tuple<ReturnValue, uint32_t, uint32_t> createItemBatch(const std::shared_ptr<Cylinder> &toCylinder, const std::vector<std::tuple<uint16_t, uint32_t, uint16_t>> &itemCounts, uint32_t flags = 0, bool dropOnMap = true, uint32_t autoContainerId = 0);

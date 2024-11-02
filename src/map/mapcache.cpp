@@ -75,47 +75,35 @@ void MapCache::parseItemAttr(const std::shared_ptr<BasicItem> &BasicItem, std::s
 }
 
 std::shared_ptr<Item> MapCache::createItem(const std::shared_ptr<BasicItem>& BasicItem, Position position) {
-    // Create the item using a shared_ptr, ensuring shared ownership
     auto item = Item::CreateItem(BasicItem->id, position);
     if (!item) {
         return nullptr;
     }
 
-    parseItemAttr(BasicItem, item);  // Parse attributes as usual
+    parseItemAttr(BasicItem, item);
 
-    // Check if the item is a container and contains nested items
-    if (item->getContainer() && !BasicItem->items.empty()) {
-        auto container = item->getContainer();
+    if (auto container = item->getContainer(); container && !BasicItem->items.empty()) {
+        auto containerPtr = std::static_pointer_cast<Container>(container);
 
-        // Use logging to confirm container setup
-        g_logger().debug("Adding nested items to container ID: {}", container->getID());
-
-        for (const auto &BasicItemInside : BasicItem->items) {
+        for (const auto& BasicItemInside : BasicItem->items) {
             if (auto itemInside = createItem(BasicItemInside, position)) {
-                // Set parent container reference explicitly and check for weak pointer issues
                 try {
-                    container->addItem(itemInside, container);
-                    container->updateItemWeight(itemInside->getWeight());
+                    containerPtr->addItem(itemInside, containerPtr);
+                    containerPtr->updateItemWeight(itemInside->getWeight());
                 } catch (const std::bad_weak_ptr& e) {
-                    g_logger().error("bad_weak_ptr encountered: {}", e.what());
-                    return nullptr;  // Handle the weak pointer error
+                    g_logger().error("bad_weak_ptr in createItem: {}", e.what());
+                    return nullptr;
                 }
             }
         }
     }
 
-    if (item->getItemCount() == 0) {
-        item->setItemCount(1);  // Ensure item count is non-zero
-    }
-
-    // Begin item decay process if applicable
     item->startDecaying();
     item->loadedFromMap = true;
     item->decayDisabled = Item::items[item->getID()].decayTo != -1;
 
     return item;
 }
-
 
 std::shared_ptr<Tile> MapCache::getOrCreateTileFromCache(const std::unique_ptr<Floor> &floor, uint16_t x, uint16_t y) {
 	const auto cachedTile = floor->getTileCache(x, y);

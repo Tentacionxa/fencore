@@ -132,8 +132,15 @@ void Container::addItem(std::shared_ptr<Item> item, std::shared_ptr<Cylinder> pa
         std::cerr << "Error: Tried to add a null item to container." << std::endl;
         return;
     }
+
     itemlist.push_back(item);
-    item->setParent(parentContainer);  // Explicitly set the parent
+
+    // Use a try-catch to detect any weak pointer issues early
+    try {
+        item->setParent(parentContainer);
+    } catch (const std::bad_weak_ptr& e) {
+        g_logger().error("bad_weak_ptr in Container::addItem: {}", e.what());
+    }
 }
 
 

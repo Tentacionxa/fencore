@@ -788,38 +788,51 @@ void Container::replaceThing(uint32_t index, std::shared_ptr<Thing> thing) {
 }
 
 void Container::removeThing(std::shared_ptr<Thing> thing, uint32_t count) {
-	std::shared_ptr<Item> item = thing->getItem();
-	if (item == nullptr) {
-		return /*RETURNVALUE_NOTPOSSIBLE*/;
-	}
+    if (!thing) {
+        return;
+    }
 
-	int32_t index = getThingIndex(thing);
-	if (index == -1) {
-		return /*RETURNVALUE_NOTPOSSIBLE*/;
-	}
+    auto item = thing->getItem();
+    if (!item) {
+        return;
+    }
 
-	if (item->isStackable() && count != item->getItemCount()) {
-		uint8_t newCount = static_cast<uint8_t>(std::max<int32_t>(0, item->getItemCount() - count));
-		const int32_t oldWeight = item->getWeight();
-		item->setItemCount(newCount);
-		updateItemWeight(-oldWeight + item->getWeight());
+    int32_t index = getThingIndex(thing);
+    if (index == -1) {
+        return;
+    }
 
-		// send change to client
-		if (getParent()) {
-			onUpdateContainerItem(index, item, item);
-		}
-	} else {
-		updateItemWeight(-static_cast<int32_t>(item->getWeight()));
+    if (item->isStackable() && count != item->getItemCount()) {
+        // Adjust stackable item count
+        uint8_t newCount = static_cast<uint8_t>(std::max<int32_t>(0, item->getItemCount() - count));
+        int32_t oldWeight = item->getWeight();
+        item->setItemCount(newCount);
+        updateItemWeight(-oldWeight + item->getWeight());
 
-		// send change to client
-		if (getParent()) {
-			onRemoveContainerItem(index, item);
-		}
+        // Notify client of updated item count
+        if (getParent()) {
+            onUpdateContainerItem(index, item, item);
+        }
+    } else {
+        // Update total weight before item removal
+        updateItemWeight(-static_cast<int32_t>(item->getWeight()));
 
-		item->resetParent();
-		itemlist.erase(itemlist.begin() + index);
-	}
+        // Notify client of item removal
+        if (getParent()) {
+            onRemoveContainerItem(index, item);
+        }
+
+        // Detach item from parent and erase from list
+        item->resetParent();
+        itemlist.erase(itemlist.begin() + index);
+    }
+
+    // Additional step: Handle cases where the container itself is removed or dropped
+    if (item == shared_from_this()) {
+        resetContainerReferences();
+    }
 }
+
 
 int32_t Container::getThingIndex(std::shared_ptr<Thing> thing) const {
 	int32_t index = 0;

@@ -21,16 +21,10 @@ class Reward;
 
 class ContainerIterator {
 public:
-   // Constructor
-    ContainerIterator(const std::shared_ptr<Container>& container, size_t maxDepth = 1000);
+	ContainerIterator(const std::shared_ptr<Container> &container, size_t maxDepth = 1000);
+	bool hasNext() const;
 
-    // Disable copy and move assignment operators
-    ContainerIterator& operator=(const ContainerIterator&) = delete;
-    ContainerIterator& operator=(ContainerIterator&&) = delete;
-
-    // Other members
-    bool hasNext() const;
-    void advance();
+	void advance();
 	std::shared_ptr<Item> operator*() const;
 
 private:
@@ -43,7 +37,6 @@ private:
 			container(c), index(i), depth(d) { }
 	};
 
-mutable std::atomic<uint32_t> itemHoldingCount{0};
 	mutable std::stack<IteratorState> states;
 	mutable std::unordered_set<std::shared_ptr<Container>> visitedContainers;
 
@@ -116,7 +109,7 @@ public:
 		return maxSize;
 	}
 
-	ContainerIterator iterator() const;
+	ContainerIterator iterator();
 
 	const ItemDeque &getItemList() const {
 		return itemlist;
@@ -142,7 +135,7 @@ public:
 	bool isHoldingItem(std::shared_ptr<Item> item);
 	bool isHoldingItemWithId(const uint16_t id);
 
-uint32_t getItemHoldingCount() const;
+	uint32_t getItemHoldingCount();
 	uint32_t getContainerHoldingCount();
 	uint16_t getFreeSlots();
 	uint32_t getWeight() const override final;
@@ -162,8 +155,8 @@ uint32_t getItemHoldingCount() const;
 
 	void addThing(std::shared_ptr<Thing> thing) override final;
 	void addThing(int32_t index, std::shared_ptr<Thing> thing) override final;
-void addItem(std::shared_ptr<Item> item, std::shared_ptr<Cylinder> parentContainer);
-void addItemBack(std::shared_ptr<Item> item);
+	void addItemBack(std::shared_ptr<Item> item);
+
 	void updateThing(std::shared_ptr<Thing> thing, uint16_t itemId, uint32_t count) override final;
 	void replaceThing(uint32_t index, std::shared_ptr<Thing> thing) override final;
 
@@ -212,8 +205,6 @@ protected:
 public:
 	std::shared_ptr<Container> getTopParentContainer();
 private:
-    mutable std::shared_mutex itemlistMutex;  // Ensure this is added in the private section
-	 mutable uint32_t itemHoldingCount = 0;
 	void onAddContainerItem(std::shared_ptr<Item> item);
 	void onUpdateContainerItem(uint32_t index, std::shared_ptr<Item> oldItem, std::shared_ptr<Item> newItem);
 	void onRemoveContainerItem(uint32_t index, std::shared_ptr<Item> item);

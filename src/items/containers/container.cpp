@@ -126,15 +126,16 @@ bool Container::hasParent() {
 	return getID() != ITEM_BROWSEFIELD && !isPlayer;
 }
 
-void Container::addItem(std::shared_ptr<Item> item) {
+void Container::addItem(std::shared_ptr<Item> item, std::shared_ptr<Cylinder> parentContainer) {
     std::unique_lock lock(itemlistMutex);  // Exclusive lock for modification
     if (!item) {
         std::cerr << "Error: Tried to add a null item to container." << std::endl;
         return;
     }
     itemlist.push_back(item);
-    // Set the item's parent to this container, cast to Cylinder
-item->setParent(std::static_pointer_cast<Cylinder>(containerPointer));
+
+    // Set the item's parent to the specified container
+    item->setParent(parentContainer);
 }
 
 std::shared_ptr<Item> Container::getItemByIndex(size_t index) const {

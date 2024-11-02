@@ -22,6 +22,8 @@ local effects = {
 
  {position = Position (32744, 33199, 4), text = 'Exchange', effect = CONST_ME_MAGIC_RED},
 
+ {position = Position (33461, 32482, 9), text = 'NO BOT ZONE', effect = CONST_ME_MAGIC_RED},
+
 
  {position = Position(32347, 32231, 7), text = 'Casino', effect = CONST_ME_CRAPS},
  {position = Position(32348, 32231, 7), text = 'Casino', effect = CONST_ME_CRAPS},

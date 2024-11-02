@@ -3274,14 +3274,19 @@ ReturnValue Game::processLootItems(std::shared_ptr<Player> player, std::shared_p
         }
 
         std::shared_ptr<Container> nextContainer = findNextAvailableContainer(containerIterator, lootContainer, lastSubContainer);
-        if (!nextContainer && !handleFallbackLogic(player, lootContainer, containerIterator, fallbackConsumed)) {
+
+        // Create a copy of containerIterator to use in handleFallbackLogic
+        ContainerIterator anotherIterator = containerIterator;
+        if (!nextContainer && !handleFallbackLogic(player, lootContainer, anotherIterator, fallbackConsumed)) {
             break;
         }
+
         fallbackConsumed = fallbackConsumed || (nextContainer == nullptr);
     } while (remainderCount != 0);
 
     return ret;
 }
+
 
 ReturnValue Game::internalCollectManagedItems(std::shared_ptr < Player > player, std::shared_ptr < Item > item, ObjectCategory_t category /* = OBJECTCATEGORY_DEFAULT*/ , bool isLootContainer /* = true*/ ) {
   if (!player || !item) {

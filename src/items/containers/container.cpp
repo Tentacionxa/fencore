@@ -943,7 +943,8 @@ uint16_t Container::getFreeSlots() {
 }
 
 ContainerIterator Container::iterator() const {
-return ContainerIterator(getContainer());
+return ContainerIterator(std::const_pointer_cast<Container>(getContainer()));
+
 }
 
 void Container::removeItem(std::shared_ptr<Thing> thing, bool sendUpdateToClient /* = false*/) {

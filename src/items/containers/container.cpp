@@ -77,12 +77,12 @@ Container::~Container() {
 }
 
 std::shared_ptr<Item> Container::clone() const {
-	std::shared_ptr<Container> clone = std::static_pointer_cast<Container>(Item::clone());
-	for (std::shared_ptr<Item> item : itemlist) {
-		clone->addItem(item->clone());
-	}
-	clone->totalWeight = totalWeight;
-	return clone;
+    std::shared_ptr<Container> clone = std::static_pointer_cast<Container>(Item::clone());
+    for (std::shared_ptr<Item> item : itemlist) {
+        clone->addItem(item->clone(), clone);
+    }
+    clone->totalWeight = totalWeight;
+    return clone;
 }
 
 std::shared_ptr<Container> Container::getParentContainer() {
@@ -137,6 +137,7 @@ void Container::addItem(std::shared_ptr<Item> item, std::shared_ptr<Cylinder> pa
 }
 
 
+
 std::shared_ptr<Item> Container::getItemByIndex(size_t index) const {
     std::shared_lock lock(itemlistMutex);  // Shared lock for reading
     if (index >= itemlist.size()) {
@@ -173,42 +174,41 @@ Attr_ReadValue Container::readAttr(AttrTypes_t attr, PropStream &propStream) {
 }
 
 bool Container::unserializeItemNode(OTB::Loader &loader, const OTB::Node &node, PropStream &propStream, Position &itemPosition) {
-	bool ret = Item::unserializeItemNode(loader, node, propStream, itemPosition);
-	if (!ret) {
-		return false;
-	}
+    bool ret = Item::unserializeItemNode(loader, node, propStream, itemPosition);
+    if (!ret) {
+        return false;
+    }
 
-	for (auto &itemNode : node.children) {
-		// load container items
-		if (itemNode.type != OTBM_ITEM) {
-			// unknown type
-			return false;
-		}
+    for (auto &itemNode : node.children) {
+        if (itemNode.type != OTBM_ITEM) {
+            return false;
+        }
 
-		PropStream itemPropStream;
-		if (!loader.getProps(itemNode, itemPropStream)) {
-			return false;
-		}
+        PropStream itemPropStream;
+        if (!loader.getProps(itemNode, itemPropStream)) {
+            return false;
+        }
 
-		uint16_t id;
-		if (!itemPropStream.read<uint16_t>(id)) {
-			return false;
-		}
+        uint16_t id;
+        if (!itemPropStream.read<uint16_t>(id)) {
+            return false;
+        }
 
-		std::shared_ptr<Item> item = Item::CreateItem(id, itemPosition);
-		if (!item) {
-			continue;
-		}
+        std::shared_ptr<Item> item = Item::CreateItem(id, itemPosition);
+        if (!item) {
+            continue;
+        }
 
-		if (!item->unserializeItemNode(loader, itemNode, itemPropStream, itemPosition)) {
-			continue;
-		}
+        if (!item->unserializeItemNode(loader, itemNode, itemPropStream, itemPosition)) {
+            continue;
+        }
 
-		addItem(item, std::static_pointer_cast<Cylinder>(std::enable_shared_from_this<Container>::shared_from_this()));
-		updateItemWeight(item->getWeight());
-	}
-	return true;
+        addItem(item, shared_from_this());  // Pass shared_from_this() as the parent container
+        updateItemWeight(item->getWeight());
+    }
+    return true;
 }
+
 
 bool Container::countsToLootAnalyzerBalance() {
 	if (isCorpse()) {
@@ -727,14 +727,15 @@ void Container::addThing(int32_t index, std::shared_ptr<Thing> thing) {
 }
 
 void Container::addItemBack(std::shared_ptr<Item> item) {
-	addItem(item, std::static_pointer_cast<Cylinder>(std::enable_shared_from_this<Container>::shared_from_this()));
-	updateItemWeight(item->getWeight());
+    addItem(item, shared_from_this());
+    updateItemWeight(item->getWeight());
 
-	// send change to client
-	if (getParent() && (getParent() != VirtualCylinder::virtualCylinder)) {
-		onAddContainerItem(item);
-	}
+    // send change to client
+    if (getParent() && (getParent() != VirtualCylinder::virtualCylinder)) {
+        onAddContainerItem(item);
+    }
 }
+
 
 void Container::updateThing(std::shared_ptr<Thing> thing, uint16_t itemId, uint32_t count) {
 	int32_t index = getThingIndex(thing);

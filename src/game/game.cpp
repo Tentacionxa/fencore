@@ -2148,9 +2148,17 @@ ReturnValue Game::internalMoveItem(std::shared_ptr < Cylinder > fromCylinder, st
   std::shared_ptr < Cylinder > subCylinder;
   int floorN = 0;
 
-  while ((subCylinder = toCylinder -> queryDestination(index, item, & toItem, flags)) != toCylinder) {
+  const int MAX_RETRIES = 5;
+int retryCount = 0;
+
+while ((subCylinder = toCylinder->queryDestination(index, item, &toItem, flags)) != toCylinder) {
+    if (retryCount++ >= MAX_RETRIES) {
+        g_logger().warn("internalMoveItem: Max retries reached for item move.");
+        return RETURNVALUE_NOTPOSSIBLE; // or a suitable error code
+    }
     toCylinder = subCylinder;
     flags = 0;
+}
 
     // to prevent infinite loop
     if (++floorN >= MAP_MAX_LAYERS) {

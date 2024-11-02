@@ -36,7 +36,8 @@ private:
 		IteratorState(std::shared_ptr<Container> c, size_t i, size_t d) :
 			container(c), index(i), depth(d) { }
 	};
-
+std::shared_mutex itemlistMutex; // add this mutex to the Container class
+mutable std::atomic<uint32_t> itemHoldingCount{0};
 	mutable std::stack<IteratorState> states;
 	mutable std::unordered_set<std::shared_ptr<Container>> visitedContainers;
 

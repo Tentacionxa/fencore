@@ -14,6 +14,9 @@
 #include "io/iomap.hpp"
 #include "game/game.hpp"
 #include "map/spectators.hpp"
+#include <shared_mutex>
+
+
 
 Container::Container(uint16_t type) :
 	Container(type, items[type].maxItems) {
@@ -124,19 +127,21 @@ bool Container::hasParent() {
 }
 
 void Container::addItem(std::shared_ptr<Item> item) {
-	 if (!item) {
+    std::unique_lock lock(itemlistMutex);  // Exclusive lock for modification
+    if (!item) {
         std::cerr << "Error: Tried to add a null item to container." << std::endl;
         return;
     }
+    itemlist.push_back(item);
+    item->setParent(shared_from_this());
+}
 
-    // Check if the parent container is null
-  std::shared_ptr<Container> parentContainer = getContainer();
-    if (!parentContainer) {
-        std::cerr << "Error: Parent container is null." << std::endl;
-        return;
+std::shared_ptr<Item> Container::getItemByIndex(size_t index) const {
+    std::shared_lock lock(itemlistMutex);  // Shared lock for reading
+    if (index >= itemlist.size()) {
+        return nullptr;
     }
-	itemlist.push_back(item);
-	item->setParent(getContainer());
+    return itemlist[index];
 }
 
 StashContainerList Container::getStowableItems() const {
@@ -349,12 +354,16 @@ std::shared_ptr<Item> Container::getItemByIndex(size_t index) const {
 	return itemlist[index];
 }
 
-uint32_t Container::getItemHoldingCount() {
-	uint32_t counter = 0;
-	for (ContainerIterator it = iterator(); it.hasNext(); it.advance()) {
-		++counter;
-	}
-	return counter;
+uint32_t Container::getItemHoldingCount() const {
+    // Use cached count if available
+    if (itemHoldingCount == 0) {
+        uint32_t counter = 0;
+        for (ContainerIterator it = iterator(); it.hasNext(); it.advance()) {
+            ++counter;
+        }
+        itemHoldingCount = counter;  // Cache the computed count
+    }
+    return itemHoldingCount;  // Return the cached count
 }
 
 uint32_t Container::getContainerHoldingCount() {
@@ -453,6 +462,9 @@ void Container::onRemoveContainerItem(uint32_t index, std::shared_ptr<Item> item
 
 ReturnValue Container::queryAdd(int32_t addIndex, const std::shared_ptr<Thing> &addThing, uint32_t addCount, uint32_t flags, std::shared_ptr<Creature> actor /* = nullptr*/) {
 	bool childIsOwner = hasBitSet(FLAG_CHILDISOWNER, flags);
+    g_logger().debug("queryAdd called on Container ID {} for item ID {}", this->getID(), addThing->getID());
+    // Existing code here...
+}
 	if (childIsOwner) {
 		// a child container is querying, since we are the top container (not carried by a player)
 		// just return with no error.
@@ -1016,18 +1028,20 @@ void ContainerIterator::advance() {
 			size_t newDepth = top.depth + 1;
 			if (newDepth <= maxTraversalDepth) {
 				// Check if we have already visited this container to avoid cycles
-				if (visitedContainers.find(subContainer) == visitedContainers.end()) {
-					(void)states.emplace(subContainer, 0, newDepth);
-					(void)visitedContainers.insert(subContainer);
-				} else {
-					// Cycle detection
-					g_logger().error("[{}] Cycle detected in container: {}", __FUNCTION__, subContainer->getName());
-				}
-			} else {
-				g_logger().error("[{}] Maximum iteration depth reached", __FUNCTION__);
-			}
-		}
-	}
+				   if (visitedContainers.find(subContainer) != visitedContainers.end()) {
+                    g_logger().error("Cycle detected in container: {}", subContainer->getName());
+                    states.pop();  // Exit the cycle by removing the problematic container
+                    return;
+                } else {
+                    states.emplace(subContainer, 0, newDepth);
+                    visitedContainers.insert(subContainer);
+                }
+            } else {
+                g_logger().error("[ContainerIterator::advance] Maximum iteration depth reached");
+            }
+        }
+    }
+
 
 	++top.index;
 }

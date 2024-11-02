@@ -360,7 +360,6 @@ uint32_t Container::getItemHoldingCount() const {
     }
     return itemHoldingCount;  // Return the cached count
 }
-
 uint32_t Container::getContainerHoldingCount() {
 	uint32_t counter = 0;
 	for (ContainerIterator it = iterator(); it.hasNext(); it.advance()) {
@@ -461,8 +460,7 @@ ReturnValue Container::queryAdd(int32_t addIndex, const std::shared_ptr<Thing> &
 if (item) {
     g_logger().debug("queryAdd called on Container ID {} for item ID {}", this->getID(), item->getID());
 }
-    // Existing code here...
-}
+  
 	if (childIsOwner) {
 		// a child container is querying, since we are the top container (not carried by a player)
 		// just return with no error.

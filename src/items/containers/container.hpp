@@ -12,6 +12,7 @@
 #include "items/cylinder.hpp"
 #include "items/item.hpp"
 #include "items/tile.hpp"
+#include <memory>  // Ensure this is included for std::enable_shared_from_this
 
 class Container;
 class DepotChest;
@@ -36,7 +37,7 @@ private:
 		IteratorState(std::shared_ptr<Container> c, size_t i, size_t d) :
 			container(c), index(i), depth(d) { }
 	};
-mutable std::shared_mutex itemlistMutex; // add this mutex to the Container class
+
 mutable std::atomic<uint32_t> itemHoldingCount{0};
 	mutable std::stack<IteratorState> states;
 	mutable std::unordered_set<std::shared_ptr<Container>> visitedContainers;
@@ -206,6 +207,7 @@ protected:
 public:
 	std::shared_ptr<Container> getTopParentContainer();
 private:
+    mutable std::shared_mutex itemlistMutex;  // Ensure this is added in the private section
 	void onAddContainerItem(std::shared_ptr<Item> item);
 	void onUpdateContainerItem(uint32_t index, std::shared_ptr<Item> oldItem, std::shared_ptr<Item> newItem);
 	void onRemoveContainerItem(uint32_t index, std::shared_ptr<Item> item);

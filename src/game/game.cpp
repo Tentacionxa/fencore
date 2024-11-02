@@ -3264,7 +3264,8 @@ ReturnValue Game::processMoveOrAddItemToLootContainer(std::shared_ptr < Item > i
 ReturnValue Game::processLootItems(std::shared_ptr < Player > player, std::shared_ptr < Container > lootContainer, std::shared_ptr < Item > item, bool & fallbackConsumed) {
   std::shared_ptr < Container > lastSubContainer = nullptr;
   uint32_t remainderCount = item -> getItemCount();
-  ContainerIterator containerIterator = lootContainer -> iterator();
+ContainerIterator newIterator = lootContainer->iterator();
+containerIterator = std::move(newIterator); // if you wish to reassign
 
   ReturnValue ret;
   do {

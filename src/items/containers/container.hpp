@@ -132,7 +132,7 @@ public:
 
 	bool countsToLootAnalyzerBalance();
 	bool hasParent();
-	void addItem(std::shared_ptr<Item> item, std::shared_ptr<Cylinder> parentContainer);
+	void addItem(std::shared_ptr<Item> item);
 	StashContainerList getStowableItems() const;
 	bool isStoreInbox() const;
 	bool isStoreInboxFiltered() const;

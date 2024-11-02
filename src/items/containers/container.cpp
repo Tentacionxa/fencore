@@ -134,7 +134,7 @@ void Container::addItem(std::shared_ptr<Item> item) {
     }
     itemlist.push_back(item);
     // Set the item's parent to this container, cast to Cylinder
-item->setParent(std::static_pointer_cast<Cylinder>(std::enable_shared_from_this<Container>::shared_from_this()));
+item->setParent(std::static_pointer_cast<Cylinder>(containerPointer));
 }
 
 std::shared_ptr<Item> Container::getItemByIndex(size_t index) const {

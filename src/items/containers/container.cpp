@@ -79,7 +79,7 @@ Container::~Container() {
 std::shared_ptr<Item> Container::clone() const {
 	std::shared_ptr<Container> clone = std::static_pointer_cast<Container>(Item::clone());
 	for (std::shared_ptr<Item> item : itemlist) {
-		clone->addItem(item->clone(), clone);
+		clone->addItem(item->clone(), clone);  // Pass the clone itself as parent
 	}
 	clone->totalWeight = totalWeight;
 	return clone;
@@ -179,10 +179,8 @@ bool Container::unserializeItemNode(OTB::Loader &loader, const OTB::Node &node, 
 	}
 
 	for (auto &itemNode : node.children) {
-		// load container items
 		if (itemNode.type != OTBM_ITEM) {
-			// unknown type
-			return false;
+			return false;  // Unknown item type
 		}
 
 		PropStream itemPropStream;
@@ -204,11 +202,12 @@ bool Container::unserializeItemNode(OTB::Loader &loader, const OTB::Node &node, 
 			continue;
 		}
 
-		addItem(item, this->getParentContainer());
+		addItem(item, getParentContainer());  // Use getParentContainer directly
 		updateItemWeight(item->getWeight());
 	}
 	return true;
 }
+
 
 bool Container::countsToLootAnalyzerBalance() {
 	if (isCorpse()) {
@@ -727,10 +726,10 @@ void Container::addThing(int32_t index, std::shared_ptr<Thing> thing) {
 }
 
 void Container::addItemBack(std::shared_ptr<Item> item) {
-	addItem(item, this->getParentContainer());
+	addItem(item, getParentContainer());  // Pass the parent container explicitly
 	updateItemWeight(item->getWeight());
 
-	// send change to client
+	// Notify client if necessary
 	if (getParent() && (getParent() != VirtualCylinder::virtualCylinder)) {
 		onAddContainerItem(item);
 	}

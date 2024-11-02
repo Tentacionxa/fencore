@@ -2356,12 +2356,14 @@ ReturnValue Game::internalMoveItem(std::shared_ptr<Cylinder> fromCylinder, std::
     }
 
     // Final actor-related actions
-    if (fromCylinder && actor && toCylinder) {
-        if (player && std::shared_ptr<Player> player = actor->getPlayer()) {
-            if (player->isDepotSearchOpenOnItem(item->getID()) && 
+// Final actor-related actions
+if (fromCylinder && actor && toCylinder) {
+    if (player) { // Check if player is valid
+        if (std::shared_ptr<Player> playerInstance = actor->getPlayer()) {
+            if (playerInstance->isDepotSearchOpenOnItem(item->getID()) && 
                 ((fromCylinder->getItem() && fromCylinder->getItem()->isInsideDepot(true)) || 
                 (toCylinder->getItem() && toCylinder->getItem()->isInsideDepot(true)))) {
-                player->requestDepotSearchItem(item->getID(), item->getTier());
+                playerInstance->requestDepotSearchItem(item->getID(), item->getTier());
             }
 
             const ItemType& it = Item::items[fromCylinder->getItem()->getID()];
@@ -2369,15 +2371,15 @@ ReturnValue Game::internalMoveItem(std::shared_ptr<Cylinder> fromCylinder, std::
                 return ret;
             }
 
-            if (it.isCorpse && toContainer->getTopParent() == player && item->getIsLootTrackeable()) {
-                player->sendLootStats(item, static_cast<uint8_t>(item->getItemCount()));
+            if (it.isCorpse && toContainer->getTopParent() == playerInstance && item->getIsLootTrackeable()) {
+                playerInstance->sendLootStats(item, static_cast<uint8_t>(item->getItemCount()));
             }
         }
     }
-
-    return ret;
 }
 
+return ret;
+}
 ReturnValue Game::internalAddItem(std::shared_ptr < Cylinder > toCylinder, std::shared_ptr < Item > item, int32_t index /*= INDEX_WHEREEVER*/ , uint32_t flags /* = 0*/ , bool test /* = false*/ ) {
   uint32_t remainderCount = 0;
   return internalAddItem(std::move(toCylinder), std::move(item), index, flags, test, remainderCount);

@@ -22,10 +22,16 @@ class Reward;
 
 class ContainerIterator {
 public:
-	ContainerIterator(const std::shared_ptr<Container> &container, size_t maxDepth = 1000);
-	bool hasNext() const;
+   // Constructor
+    ContainerIterator(const std::shared_ptr<Container>& container, size_t maxDepth = 1000);
 
-	void advance();
+    // Disable copy and move assignment operators
+    ContainerIterator& operator=(const ContainerIterator&) = delete;
+    ContainerIterator& operator=(ContainerIterator&&) = delete;
+
+    // Other members
+    bool hasNext() const;
+    void advance();
 	std::shared_ptr<Item> operator*() const;
 
 private:
@@ -47,7 +53,7 @@ mutable std::atomic<uint32_t> itemHoldingCount{0};
 	friend class Container;
 };
 
-class Container : public Item, public Cylinder {
+class Container : public Item, public Cylinder, public std::enable_shared_from_this<Container> {
 public:
 	explicit Container(uint16_t type);
 	Container(uint16_t type, uint16_t size, bool unlocked = true, bool pagination = false);
@@ -111,7 +117,7 @@ public:
 		return maxSize;
 	}
 
-	ContainerIterator iterator();
+	ContainerIterator iterator() const;
 
 	const ItemDeque &getItemList() const {
 		return itemlist;
@@ -208,6 +214,7 @@ public:
 	std::shared_ptr<Container> getTopParentContainer();
 private:
     mutable std::shared_mutex itemlistMutex;  // Ensure this is added in the private section
+	 mutable uint32_t itemHoldingCount = 0;
 	void onAddContainerItem(std::shared_ptr<Item> item);
 	void onUpdateContainerItem(uint32_t index, std::shared_ptr<Item> oldItem, std::shared_ptr<Item> newItem);
 	void onRemoveContainerItem(uint32_t index, std::shared_ptr<Item> item);

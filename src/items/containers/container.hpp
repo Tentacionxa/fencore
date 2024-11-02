@@ -12,7 +12,6 @@
 #include "items/cylinder.hpp"
 #include "items/item.hpp"
 #include "items/tile.hpp"
-#include <memory>  // Ensure this is included for std::enable_shared_from_this
 
 class Container;
 class DepotChest;
@@ -53,7 +52,7 @@ mutable std::atomic<uint32_t> itemHoldingCount{0};
 	friend class Container;
 };
 
-class Container : public Item, public Cylinder, public std::enable_shared_from_this<Container> {
+class Container : public Item, public Cylinder {
 public:
 	explicit Container(uint16_t type);
 	Container(uint16_t type, uint16_t size, bool unlocked = true, bool pagination = false);

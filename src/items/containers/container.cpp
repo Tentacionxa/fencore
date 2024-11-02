@@ -986,12 +986,11 @@ uint32_t Container::getOwnerId() const {
  * ContainerIterator
  * @brief Iterator for iterating over the items in a container
  */
-ContainerIterator::ContainerIterator(const std::shared_ptr<Container> &container, size_t maxDepth) :
-	maxTraversalDepth(maxDepth) {
-	if (container) {
-		(void)states.emplace(container, 0, 1);
-		(void)visitedContainers.insert(container);
-	}
+ContainerIterator::ContainerIterator(const std::shared_ptr<Container>& container, size_t maxDepth) : maxTraversalDepth(maxDepth) {
+    if (container) {
+        states.emplace(container, 0, 1);
+        visitedContainers.insert(container);
+    }
 }
 
 bool ContainerIterator::hasNext() const {

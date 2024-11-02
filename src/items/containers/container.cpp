@@ -133,7 +133,8 @@ void Container::addItem(std::shared_ptr<Item> item) {
         return;
     }
     itemlist.push_back(item);
-    item->setParent(shared_from_this());
+    // Set the item's parent to this container, cast to Cylinder
+    item->setParent(std::static_pointer_cast<Cylinder>(shared_from_this()));
 }
 
 std::shared_ptr<Item> Container::getItemByIndex(size_t index) const {
@@ -346,13 +347,7 @@ std::shared_ptr<Item> Container::getFilteredItemByIndex(size_t index) const {
 	return *it;
 }
 
-std::shared_ptr<Item> Container::getItemByIndex(size_t index) const {
-	if (index >= size()) {
-		return nullptr;
-	}
 
-	return itemlist[index];
-}
 
 uint32_t Container::getItemHoldingCount() const {
     // Use cached count if available
@@ -462,7 +457,10 @@ void Container::onRemoveContainerItem(uint32_t index, std::shared_ptr<Item> item
 
 ReturnValue Container::queryAdd(int32_t addIndex, const std::shared_ptr<Thing> &addThing, uint32_t addCount, uint32_t flags, std::shared_ptr<Creature> actor /* = nullptr*/) {
 	bool childIsOwner = hasBitSet(FLAG_CHILDISOWNER, flags);
-    g_logger().debug("queryAdd called on Container ID {} for item ID {}", this->getID(), addThing->getID());
+   auto item = std::dynamic_pointer_cast<Item>(addThing);
+if (item) {
+    g_logger().debug("queryAdd called on Container ID {} for item ID {}", this->getID(), item->getID());
+}
     // Existing code here...
 }
 	if (childIsOwner) {

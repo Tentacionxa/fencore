@@ -2162,7 +2162,7 @@ while ((subCylinder = toCylinder->queryDestination(index, item, &toItem, flags))
 
     // to prevent infinite loop
     if (++floorN >= MAP_MAX_LAYERS) {
-      break;
+      return RETURNVALUE_NOTPOSSIBLE;
     }
   }
 

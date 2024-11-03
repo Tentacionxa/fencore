@@ -536,12 +536,7 @@ local function girarRoleta(player, roleta, item)
 			local playerName = player:getName()
 			local recompensaName = ItemType(recompensa.id):getName()
 
-			Game.broadcastMessage(string.format("[Roulette]: Player %s found %i %s%s, amazing.",
-				playerName,
-				recompensa.quantidade,
-				recompensaName,
-				cargaMensagem
-			), MESSAGE_GAME_HIGHLIGHT)
+			
 		end
 	end
 

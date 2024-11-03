@@ -122,32 +122,23 @@ bool Container::hasParent() {
 	bool isPlayer = creature && creature->getPlayer() != nullptr;
 	return getID() != ITEM_BROWSEFIELD && !isPlayer;
 }
+
 void Container::addItem(std::shared_ptr<Item> item) {
-    std::unique_lock lock(itemlistMutex);
-    if (!item) {
+	 if (!item) {
         std::cerr << "Error: Tried to add a null item to container." << std::endl;
         return;
     }
 
-    if (!this) {  // Ensure `this` container is valid
-        std::cerr << "Error: Container is null, cannot add item." << std::endl;
+    // Check if the parent container is null
+  std::shared_ptr<Container> parentContainer = getContainer();
+    if (!parentContainer) {
+        std::cerr << "Error: Parent container is null." << std::endl;
         return;
     }
-
-    // Add item to the container's item list
-    itemlist.push_back(item);
-
-    // Set the item's parent to this container
-   item->setParent(getContainer());
+	itemlist.push_back(item);
+	item->setParent(getContainer());
 }
 
-void Container::clearItems() {
-    std::unique_lock lock(itemlistMutex);
-    for (auto& item : itemlist) {
-        item->resetParent();
-    }
-    itemlist.clear();
-}
 StashContainerList Container::getStowableItems() const {
 	StashContainerList toReturnList;
 	for (auto item : itemlist) {
@@ -996,51 +987,49 @@ ContainerIterator::ContainerIterator(const std::shared_ptr<Container> &container
 }
 
 bool ContainerIterator::hasNext() const {
-    while (!states.empty()) {
-        auto& top = states.top();
-        if (top.index < top.container->itemlist.size()) {
-            return true;
-        } else {
-            states.pop();
-        }
-    }
-    return false;
+	while (!states.empty()) {
+		auto &top = states.top();
+		if (top.index < top.container->itemlist.size()) {
+			return true;
+		} else {
+			states.pop();
+		}
+	}
+	return false;
 }
 
 void ContainerIterator::advance() {
-    if (states.empty()) {
-        return;
-    }
+	if (states.empty()) {
+		return;
+	}
 
-    auto& top = states.top();
-    if (top.index >= top.container->itemlist.size()) {
-        states.pop();
-        return;
-    }
+	auto &top = states.top();
+	if (top.index >= top.container->itemlist.size()) {
+		states.pop();
+		return;
+	}
 
-    auto currentItem = top.container->itemlist[top.index];
-    ++top.index;
+	auto currentItem = top.container->itemlist[top.index];
+	if (currentItem) {
+		auto subContainer = currentItem->getContainer();
+		if (subContainer && !subContainer->itemlist.empty()) {
+			size_t newDepth = top.depth + 1;
+			if (newDepth <= maxTraversalDepth) {
+				// Check if we have already visited this container to avoid cycles
+				if (visitedContainers.find(subContainer) == visitedContainers.end()) {
+					(void)states.emplace(subContainer, 0, newDepth);
+					(void)visitedContainers.insert(subContainer);
+				} else {
+					// Cycle detection
+					g_logger().error("[{}] Cycle detected in container: {}", __FUNCTION__, subContainer->getName());
+				}
+			} else {
+				g_logger().error("[{}] Maximum iteration depth reached", __FUNCTION__);
+			}
+		}
+	}
 
-    if (currentItem) {
-        auto subContainer = currentItem->getContainer();
-        if (subContainer && !subContainer->itemlist.empty()) {
-            size_t newDepth = top.depth + 1;
-
-            // Check traversal depth
-            if (newDepth > maxTraversalDepth) {
-                g_logger().error("[ContainerIterator::advance] Maximum traversal depth {} reached in container: {}", maxTraversalDepth, subContainer->getName());
-                return;
-            }
-
-            // Detect and log cycles
-            if (visitedContainers.find(subContainer.get()) == visitedContainers.end()) {
-                states.emplace(subContainer, 0, newDepth);
-                visitedContainers.insert(subContainer.get());
-            } else {
-                g_logger().warn("[ContainerIterator::advance] Cycle detected in container: {}. Skipping to avoid infinite loop.", subContainer->getName());
-            }
-        }
-    }
+	++top.index;
 }
 
 std::shared_ptr<Item> ContainerIterator::operator*() const {

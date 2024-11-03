@@ -21,13 +21,7 @@ class Reward;
 
 class ContainerIterator {
 public:
-  ContainerIterator(const std::shared_ptr<Container>& container, size_t maxDepth = 200)
-        : maxTraversalDepth(maxDepth) {
-        if (container) {
-            visitedContainers.insert(container.get());
-            states.emplace(container, 0, 1);
-        }
-    }
+ mutable std::mutex itemlistMutex;
 	bool hasNext() const;
 
 	void advance();
@@ -46,9 +40,15 @@ private:
 	};
 
 	mutable std::stack<IteratorState> states;
-	mutable std::unordered_set<std::shared_ptr<Container>> visitedContainers;
 
-	size_t maxTraversalDepth = 0;
+
+  ContainerIterator(const std::shared_ptr<Container>& container, size_t maxDepth = 200)
+        : maxTraversalDepth(maxDepth) {
+        if (container) {
+            visitedContainers.insert(container.get());
+            states.emplace(container, 0, 1);
+        }
+    }
 
 	friend class Container;
 };

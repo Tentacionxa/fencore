@@ -138,7 +138,7 @@ void Container::addItem(std::shared_ptr<Item> item) {
     itemlist.push_back(item);
 
     // Set the item's parent to this container
-    item->setParent(this);
+   item->setParent(getContainer());
 }
 
 void Container::clearItems() {

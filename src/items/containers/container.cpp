@@ -935,7 +935,7 @@ uint16_t Container::getFreeSlots() {
 }
 
 ContainerIterator Container::iterator() {
-	return { getContainer(), static_cast<size_t>(g_configManager().getNumber(MAX_CONTAINER_DEPTH)) };
+	return { getContainer(), static_cast<size_t>(g_configManager().getNumber(MAX_CONTAINER_DEPTH, __FUNCTION__)) };
 }
 
 void Container::removeItem(std::shared_ptr<Thing> thing, bool sendUpdateToClient /* = false*/) {
@@ -1074,7 +1074,7 @@ std::shared_ptr<Container> ContainerIterator::getCurrentContainer() const {
 
 
 const auto &top = states.back();
-	return top.container.lock();
+	return top.container;
 }
 
 size_t ContainerIterator::getCurrentIndex() const {

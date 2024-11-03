@@ -1876,6 +1876,7 @@ int PlayerFunctions::luaPlayerAddItem(lua_State* L) {
 			if (!hasTable) {
 				lua_pushnil(L);
 			}
+			ReturnValue ret = RETURNVALUE_NOERROR; // Or any other relevant initialization
 			player->sendCancelMessage(ret);
 			return 1;
 		}

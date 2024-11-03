@@ -40,7 +40,7 @@ private:
 			container(c), index(i), depth(d) { }
 	};
 mutable std::vector<IteratorState> states;
-	mutable std::stack<IteratorState> states;
+
 	mutable std::unordered_set<std::shared_ptr<Container>> visitedContainers;
 
 	size_t maxTraversalDepth = 0;

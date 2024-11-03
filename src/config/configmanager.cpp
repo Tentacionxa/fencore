@@ -445,7 +445,7 @@ const std::string &ConfigManager::getString(const ConfigKey_t &key, std::string_
 	return dummyStr;
 }
 
-int32_t ConfigManager::getNumber(const ConfigKey_t &key, std::string_view context) const {
+int32_t ConfigManager::getNumber(const ConfigKey_t &key, std::string_view context = "default") const {
 	if (configs.contains(key) && std::holds_alternative<int32_t>(configs.at(key))) {
 		return std::get<int32_t>(configs.at(key));
 	}

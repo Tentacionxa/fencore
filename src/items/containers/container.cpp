@@ -991,8 +991,8 @@ ContainerIterator::ContainerIterator(const std::shared_ptr<Container> &container
 bool ContainerIterator::hasNext() const {
 	while (!states.empty()) {
 		const auto &top = states.back();
-		const auto &container = top.container.lock();
-		if (!container) {
+		const auto& container = top.container;
+if (!container) {
 			// Container has been deleted
 			states.pop_back();
 		} else if (top.index < container->itemlist.size()) {
@@ -1010,8 +1010,8 @@ void ContainerIterator::advance() {
 	}
 
 	auto &top = states.back();
-	const auto &container = top.container.lock();
-	if (!container) {
+	const auto& container = top.container;
+if (!container) {
 		// Container has been deleted
 		states.pop_back();
 		return;
@@ -1054,8 +1054,8 @@ std::shared_ptr<Item> ContainerIterator::operator*() const {
 		return nullptr;
 	}
 
-		const auto &top = states.back();
-	if (const auto &container = top.container.lock()) {
+		const auto& top = states.back();
+if (const auto& container = top.container) {
 		if (top.index < container->itemlist.size()) {
 			return container->itemlist[top.index];
 		}

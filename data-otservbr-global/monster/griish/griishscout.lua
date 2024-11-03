@@ -77,7 +77,7 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "crystal coin", chance = 12880, maxCount = 1 },
+	{ name = "crystal coin", chance = 12880, maxCount = 5 },
 	{ name = "warrior helmet", chance = 8701, maxCount = 1 },
 	{ name = "great spirit potion", chance = 7870, maxCount = 1 },
 	{ name = "green gem", chance = 8590, maxCount = 1 },
@@ -89,8 +89,8 @@ monster.loot = {
 	{ name = "wood cape", chance = 9153, maxCount = 1 },
 	{ name = "stone skin amulet", chance = 11779, maxCount = 1 },
 	{ name = "composite hornbow", chance = 5682, maxCount = 1 },
-	{ name = "tenebris bag", chance = 50 , maxCount = 1 },
-	{ name = "lion bag", chance = 50 , maxCount = 1 },
+	{ name = "tenebris bag", chance = 50 , maxCount = 3 },
+	{ name = "lion bag", chance = 50 , maxCount = 3 },
 	{ name = "candy-coated quiver", chance = 10 , maxCount = 1 },
 	{ name = "jungle quiver", chance = 10 , maxCount = 1 },
 	{ name = "red crystal coin", chance = 100000, maxCount = 1 },

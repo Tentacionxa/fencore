@@ -79,10 +79,10 @@ monster.voices = {
 monster.loot = {
 	{ name = "crystal coin", chance = 5489, maxCount = 1 },
 	{ name = "ultimate health potion", chance = 6910, maxCount = 1 },
-	{ name = "supreme mistery bag", chance = 50 , maxCount = 1 },
-	{ name = "falcon bag", chance = 50, maxCount = 1  },
-	{ name = "red crystal coin", chance = 100000, maxCount = 1 },
-	{ name = "green crystal coin", chance = 1130, maxCount = 2 },
+	{ name = "green crystal coin", chance = 1130, maxCount = 5 },
+	{ name = "supreme mistery bag", chance = 50, maxCount = 4  },
+	{ name = "falcon bag", chance = 50, maxCount = 4 },
+	{ name = "red crystal coin", chance = 100000, maxCount = 3 },
 }
 
 monster.attacks = {

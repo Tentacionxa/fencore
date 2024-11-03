@@ -912,6 +912,10 @@
 	<item id="469" name="stairs">
 		<attribute key="floorchange" value="down"/>
 	</item>
+	<item id="44271" name="stairs">
+		<attribute key="floorchange" value="down"/>
+	</item>
+
 	<item fromid="470" toid="474" name="RESERVED SPRITE"/>
 	<item id="475" article="a" name="closed trapdoor">
 		<attribute key="primarytype" value="dropdowns"/>
@@ -73815,6 +73819,9 @@ Granted by TibiaGoals.com"/>
 	<item id="40263" name="stairs">
 		<attribute key="floorchange" value="east"/>
 	</item>
+	<item id="44275" name="stairs">
+		<attribute key="floorchange" value="east"/>
+	</item>
 	<item id="40279" name="stairs">
 		<attribute key="floorchange" value="east"/>
 	</item>
@@ -73828,6 +73835,9 @@ Granted by TibiaGoals.com"/>
 		<attribute key="floorchange" value="west"/>
 	</item>
 	<item id="40302" name="stairs">
+		<attribute key="floorchange" value="west"/>
+	</item>
+	<item id="44273" name="stairs">
 		<attribute key="floorchange" value="west"/>
 	</item>
 	<item id="40428" name="stairs">

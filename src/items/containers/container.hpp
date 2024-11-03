@@ -21,12 +21,15 @@ class Reward;
 
 class ContainerIterator {
 public:
-	ContainerIterator(const std::shared_ptr<Container> &container, size_t maxDepth = 1000);
+	ContainerIterator(const std::shared_ptr<Container> &container, size_t maxDepth);
 	bool hasNext() const;
 
 	void advance();
-	std::shared_ptr<Item> operator*() const;
+std::shared_ptr<Item> operator*() const;
+bool hasReachedMaxDepth() const;
 
+	std::shared_ptr<Container> getCurrentContainer() const;
+	size_t getCurrentIndex() const;
 private:
 	struct IteratorState {
 		std::shared_ptr<Container> container;
@@ -36,12 +39,13 @@ private:
 		IteratorState(std::shared_ptr<Container> c, size_t i, size_t d) :
 			container(c), index(i), depth(d) { }
 	};
-
+mutable std::vector<IteratorState> states;
 	mutable std::stack<IteratorState> states;
 	mutable std::unordered_set<std::shared_ptr<Container>> visitedContainers;
 
 	size_t maxTraversalDepth = 0;
-
+bool m_maxDepthReached = false;
+bool m_cycleDetected = false;
 	friend class Container;
 };
 

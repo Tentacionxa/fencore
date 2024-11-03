@@ -23,6 +23,7 @@ public:
 
 		registerMethod(L, "Item", "isItem", ItemFunctions::luaItemIsItem);
 
+
 		registerMethod(L, "Item", "getContainer", ItemFunctions::luaItemGetContainer);
 		registerMethod(L, "Item", "getParent", ItemFunctions::luaItemGetParent);
 		registerMethod(L, "Item", "getTopParent", ItemFunctions::luaItemGetTopParent);

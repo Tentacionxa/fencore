@@ -913,7 +913,7 @@
 		<attribute key="floorchange" value="down"/>
 	</item>
 	<item id="44271" name="stairs">
-		<attribute key="floorchange" value="down"/>
+	<attribute key="floorchange" value="north"/>
 	</item>
 
 	<item fromid="470" toid="474" name="RESERVED SPRITE"/>
@@ -73850,6 +73850,9 @@ Granted by TibiaGoals.com"/>
 		<attribute key="floorchange" value="east"/>
 	</item>
 	<item id="40434" name="stairs">
+		<attribute key="floorchange" value="south"/>
+	</item>
+	<item id="44277" name="stairs">
 		<attribute key="floorchange" value="south"/>
 	</item>
 	<item id="40530" name="broken macuahuitl">

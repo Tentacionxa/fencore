@@ -19,7 +19,7 @@ function pinkTeleport.onStepIn(creature, item, toPosition, fromPosition)
     return true
 end
 
-pinkTeleport:position(Position(32359, 32219, 7))
+pinkTeleport:position(Position(32358, 32219, 7))
 pinkTeleport:register()
 
 -- Battle Teleport
@@ -61,7 +61,7 @@ function cityTeleport.onStepIn(creature, item, toPosition, fromPosition)
 
     player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Back to the main world...")
     player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
-    player:teleportTo(Position(32359, 32220, 7))
+    player:teleportTo(Position(32358, 32220, 7))
 
     return true
 end

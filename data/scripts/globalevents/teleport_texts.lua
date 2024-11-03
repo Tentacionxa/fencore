@@ -2,8 +2,8 @@ local effects = {
 	{position = Position (32374, 32212, 7), text = 'VIP', effect = CONST_ME_TUTORIALARROW},
 	{position = Position (32377, 32212, 7), text = 'VIP', effect = CONST_ME_TUTORIALARROW},
  
-	{position = Position(32358, 32218, 7), text = '', effect = CONST_ME_STEPSHORIZONTAL},
-{position = Position(32359, 32218, 7), text = '', effect = CONST_ME_STEPSHORIZONTAL},
+
+
 
 	  {position = Position(32351, 32219, 7), text = 'Other', effect = CONST_ME_PURPLESMOKE},
  {position = Position(33466, 32494, 11), text = 'Mount', effect = CONST_ME_GROUNDSHAKER},
@@ -32,7 +32,7 @@ local effects = {
  
  {position = Position(31469, 31765, 7), text = 'Task', effect = CONST_ME_GROUNDSHAKER},
  {position = Position(32342, 32229, 7), text = 'Task', effect = CONST_ME_GROUNDSHAKER},
- {position = Position(32362, 32219, 7), text = 'Hunt', effect = CONST_ME_GREENSMOKE},
+ {position = Position(32365, 32219, 7), text = 'Hunt', effect = CONST_ME_GREENSMOKE},
  {position = Position(32364, 32219, 7), text = 'Bosses', effect = CONST_ME_YELLOWSMOKE},
  {position = Position(32354, 32219, 7), text = 'Raids', effect = CONST_ME_BLACKSMOKE},
  {position = Position(32353, 32222, 7), text = 'VIP Blessing', effect = CONST_ME_GROUNDSHAKER},
@@ -72,7 +72,7 @@ local effects = {
  
  {position = Position(33457, 32502, 11), text = 'Nemesis Boss', effect = CONST_ME_GROUNDSHAKER},
  
-			{position = Position(32356, 32219, 7), text = 'Daily Quest', effect = CONST_ME_BLACKSMOKE}, 
+			{position = Position(32355, 32219, 7), text = 'Daily Quest', effect = CONST_ME_BLACKSMOKE}, 
 		 
  }
  

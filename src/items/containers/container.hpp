@@ -21,15 +21,13 @@ class Reward;
 
 class ContainerIterator {
 public:
-
+	ContainerIterator(const std::shared_ptr<Container> &container, size_t maxDepth = 1000);
 	bool hasNext() const;
 
 	void advance();
 	std::shared_ptr<Item> operator*() const;
 
 private:
- size_t maxTraversalDepth;
-    std::unordered_set<const Container*> visitedContainers;
 	struct IteratorState {
 		std::shared_ptr<Container> container;
 		size_t index;
@@ -40,15 +38,15 @@ private:
 	};
 
 	mutable std::stack<IteratorState> states;
-void clearItems();
-  ContainerIterator(const std::shared_ptr<Container>& container, size_t maxDepth = 200);
+	mutable std::unordered_set<std::shared_ptr<Container>> visitedContainers;
+
+	size_t maxTraversalDepth = 0;
 
 	friend class Container;
 };
 
 class Container : public Item, public Cylinder {
 public:
- mutable std::mutex itemlistMutex;
 	explicit Container(uint16_t type);
 	Container(uint16_t type, uint16_t size, bool unlocked = true, bool pagination = false);
 	~Container();

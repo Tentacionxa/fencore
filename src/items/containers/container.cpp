@@ -122,24 +122,32 @@ bool Container::hasParent() {
 	bool isPlayer = creature && creature->getPlayer() != nullptr;
 	return getID() != ITEM_BROWSEFIELD && !isPlayer;
 }
-
-void Container::addItem(std::shared_ptr<Item> item, std::shared_ptr<Cylinder> parentContainer) {
+void Container::addItem(std::shared_ptr<Item> item) {
     std::unique_lock lock(itemlistMutex);
     if (!item) {
-        g_logger().error("Tried to add a null item to container.");
+        std::cerr << "Error: Tried to add a null item to container." << std::endl;
         return;
     }
 
-    try {
-        itemlist.push_back(item);
-        item->setParent(parentContainer);
-        g_logger().debug("Item added to container {}: item ID {}", this->getID(), item->getID());
-    } catch (const std::exception& e) {
-        g_logger().error("Exception in Container::addItem: {}", e.what());
+    if (!this) {  // Ensure `this` container is valid
+        std::cerr << "Error: Container is null, cannot add item." << std::endl;
+        return;
     }
+
+    // Add item to the container's item list
+    itemlist.push_back(item);
+
+    // Set the item's parent to this container
+    item->setParent(this);
 }
 
-
+void Container::clearItems() {
+    std::unique_lock lock(itemlistMutex);
+    for (auto& item : itemlist) {
+        item->resetParent();
+    }
+    itemlist.clear();
+}
 StashContainerList Container::getStowableItems() const {
 	StashContainerList toReturnList;
 	for (auto item : itemlist) {
@@ -775,40 +783,37 @@ void Container::replaceThing(uint32_t index, std::shared_ptr<Thing> thing) {
 }
 
 void Container::removeThing(std::shared_ptr<Thing> thing, uint32_t count) {
-    if (!thing) {
-        return;
-    }
+	std::shared_ptr<Item> item = thing->getItem();
+	if (item == nullptr) {
+		return /*RETURNVALUE_NOTPOSSIBLE*/;
+	}
 
-    auto item = thing->getItem();
-    if (!item) {
-        return;
-    }
+	int32_t index = getThingIndex(thing);
+	if (index == -1) {
+		return /*RETURNVALUE_NOTPOSSIBLE*/;
+	}
 
-    int32_t index = getThingIndex(thing);
-    if (index == -1) {
-        return;
-    }
+	if (item->isStackable() && count != item->getItemCount()) {
+		uint8_t newCount = static_cast<uint8_t>(std::max<int32_t>(0, item->getItemCount() - count));
+		const int32_t oldWeight = item->getWeight();
+		item->setItemCount(newCount);
+		updateItemWeight(-oldWeight + item->getWeight());
 
-    if (item->isStackable() && count < item->getItemCount()) {
-        uint8_t newCount = static_cast<uint8_t>(std::max<int32_t>(0, item->getItemCount() - count));
-        updateItemWeight(-(item->getWeight()));
-        item->setItemCount(newCount);
-        updateItemWeight(item->getWeight());
+		// send change to client
+		if (getParent()) {
+			onUpdateContainerItem(index, item, item);
+		}
+	} else {
+		updateItemWeight(-static_cast<int32_t>(item->getWeight()));
 
-        if (getParent()) {
-            onUpdateContainerItem(index, item, item);
-        }
-    } else {
-        updateItemWeight(-(item->getWeight()));
+		// send change to client
+		if (getParent()) {
+			onRemoveContainerItem(index, item);
+		}
 
-        // Notify observers and reset references before deletion
-        if (getParent()) {
-            onRemoveContainerItem(index, item);
-        }
-
-        item->resetParent();
-        itemlist.erase(itemlist.begin() + index); // Remove without erasing other items
-    }
+		item->resetParent();
+		itemlist.erase(itemlist.begin() + index);
+	}
 }
 
 int32_t Container::getThingIndex(std::shared_ptr<Thing> thing) const {
@@ -943,34 +948,26 @@ ContainerIterator Container::iterator() {
 }
 
 void Container::removeItem(std::shared_ptr<Thing> thing, bool sendUpdateToClient /* = false*/) {
-    if (!thing) {
-        return;
-    }
+	if (thing == nullptr) {
+		return;
+	}
 
-    std::shared_ptr<Item> itemToRemove = thing->getItem();
-    if (!itemToRemove) {
-        return;
-    }
+	auto itemToRemove = thing->getItem();
+	if (itemToRemove == nullptr) {
+		return;
+	}
 
-    // Lock itemlist to prevent concurrent modification
-    std::unique_lock lock(itemlistMutex);
+	auto it = std::ranges::find(itemlist.begin(), itemlist.end(), itemToRemove);
+	if (it != itemlist.end()) {
+		// Send change to client
+		if (auto thingIndex = getThingIndex(thing); sendUpdateToClient && thingIndex != -1 && getParent()) {
+			onRemoveContainerItem(thingIndex, itemToRemove);
+		}
 
-    auto it = std::ranges::find(itemlist.begin(), itemlist.end(), itemToRemove);
-    if (it != itemlist.end()) {
-        // Notify client if required
-        if (sendUpdateToClient && getParent()) {
-            int32_t thingIndex = getThingIndex(thing);
-            if (thingIndex != -1) {
-                onRemoveContainerItem(thingIndex, itemToRemove);
-            }
-        }
-
-        // Remove item from the list and reset parent to prevent dangling references
-        itemToRemove->resetParent();
-        itemlist.erase(it);
-    }
+		itemlist.erase(it);
+		itemToRemove->resetParent();
+	}
 }
-
 
 uint32_t Container::getOwnerId() const {
 	uint32_t ownerId = Item::getOwnerId();
@@ -990,25 +987,24 @@ uint32_t Container::getOwnerId() const {
  * ContainerIterator
  * @brief Iterator for iterating over the items in a container
  */
-// In the ContainerIterator constructor, add a reasonable depth limit
-ContainerIterator::ContainerIterator(const std::shared_ptr<Container>& container, size_t maxDepth) 
-    : maxTraversalDepth(std::min(maxDepth, size_t(200))) { // Limit depth to prevent overflow
-    if (container) {
-        states.emplace(container, 0, 1);
-        visitedContainers.insert(container);
-    }
+ContainerIterator::ContainerIterator(const std::shared_ptr<Container> &container, size_t maxDepth) :
+	maxTraversalDepth(maxDepth) {
+	if (container) {
+		(void)states.emplace(container, 0, 1);
+		(void)visitedContainers.insert(container);
+	}
 }
 
 bool ContainerIterator::hasNext() const {
-	while (!states.empty()) {
-		auto &top = states.top();
-		if (top.index < top.container->itemlist.size()) {
-			return true;
-		} else {
-			states.pop();
-		}
-	}
-	return false;
+    while (!states.empty()) {
+        auto& top = states.top();
+        if (top.index < top.container->itemlist.size()) {
+            return true;
+        } else {
+            states.pop();
+        }
+    }
+    return false;
 }
 
 void ContainerIterator::advance() {
@@ -1016,28 +1012,37 @@ void ContainerIterator::advance() {
         return;
     }
 
-    auto &top = states.top();
+    auto& top = states.top();
     if (top.index >= top.container->itemlist.size()) {
         states.pop();
         return;
     }
 
     auto currentItem = top.container->itemlist[top.index];
+    ++top.index;
+
     if (currentItem) {
         auto subContainer = currentItem->getContainer();
         if (subContainer && !subContainer->itemlist.empty()) {
             size_t newDepth = top.depth + 1;
-            if (newDepth <= maxTraversalDepth && visitedContainers.find(subContainer) == visitedContainers.end()) {
+
+            // Check traversal depth
+            if (newDepth > maxTraversalDepth) {
+                g_logger().error("[ContainerIterator::advance] Maximum traversal depth {} reached in container: {}", maxTraversalDepth, subContainer->getName());
+                return;
+            }
+
+            // Detect and log cycles
+            if (visitedContainers.find(subContainer.get()) == visitedContainers.end()) {
                 states.emplace(subContainer, 0, newDepth);
-                visitedContainers.insert(subContainer);
+                visitedContainers.insert(subContainer.get());
             } else {
-                g_logger().error("[ContainerIterator::advance] Cycle detected or depth limit exceeded.");
+                g_logger().warn("[ContainerIterator::advance] Cycle detected in container: {}. Skipping to avoid infinite loop.", subContainer->getName());
             }
         }
     }
-
-    ++top.index;
 }
+
 std::shared_ptr<Item> ContainerIterator::operator*() const {
 	if (states.empty()) {
 		return nullptr;

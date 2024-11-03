@@ -21,13 +21,21 @@ class Reward;
 
 class ContainerIterator {
 public:
-	ContainerIterator(const std::shared_ptr<Container> &container, size_t maxDepth = 1000);
+  ContainerIterator(const std::shared_ptr<Container>& container, size_t maxDepth = 200)
+        : maxTraversalDepth(maxDepth) {
+        if (container) {
+            visitedContainers.insert(container.get());
+            states.emplace(container, 0, 1);
+        }
+    }
 	bool hasNext() const;
 
 	void advance();
 	std::shared_ptr<Item> operator*() const;
 
 private:
+ size_t maxTraversalDepth;
+    std::unordered_set<const Container*> visitedContainers;
 	struct IteratorState {
 		std::shared_ptr<Container> container;
 		size_t index;

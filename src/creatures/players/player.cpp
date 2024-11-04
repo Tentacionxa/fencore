@@ -13,7 +13,6 @@
 #include "creatures/interactions/chat.hpp"
 #include "creatures/monsters/monster.hpp"
 #include "creatures/monsters/monsters.hpp"
-#include "config/configmanager.hpp"
 #include "creatures/players/player.hpp"
 #include "creatures/players/wheel/player_wheel.hpp"
 #include "creatures/players/achievement/player_achievement.hpp"
@@ -7390,17 +7389,7 @@ if (parentContainer) {
         }
     }
 }
- // Retrieve the max items allowed in a container
-    uint32_t maxItems = static_cast<uint32_t>(g_configManager().getNumber(MAX_CONTAINER_ITEM, __FUNCTION__));
-
-    // Get the container holding the item to check its capacity
-    if (Container* container = dynamic_cast<Container*>(item->getParent())) {
-        // Check if the container has reached its maximum item capacity
-        if (container->getItemHoldingCount() >= maxItems) {
-            sendCancelMessage(RETURNVALUE_CONTAINERISFULL);
-            return; // Stop further item processing
-        }
-    }	
+	
 if (getCapacity() < 150) {
      sendCancelMessage(RETURNVALUE_NOTENOUGHCAPACITY);
        return;
@@ -7483,7 +7472,7 @@ sendCancelMessage(RETURNVALUE_CONTAINERISFULL);
 	} else {
 		newReceiveItem->setTier(tier - 1);
 	}
-	returnValue = g_game().internalAddItem(exaltationContainer, newReceiveItem, INDEX_WHEREEVER);
+	returnValue = g_game().internalAddItem(exaltationContainer, newReceiveItem, ITEM_STORE_INBOX);
 	if (returnValue != RETURNVALUE_NOERROR) {
 		g_logger().error("[Log 7] Failed to add forge item {} from player with name {}", receiveItemId, getName());
 		sendCancelMessage(getReturnMessage(returnValue));

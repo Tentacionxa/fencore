@@ -63,6 +63,24 @@
 		<attribute key="duration" value="10"/>
 		<attribute key="fluidsource" value="blood"/>
 	</item>
+		<item id="43844" article="a" name="dead darklight striker">
+		<attribute key="containerSize" value="10"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="duration" value="30"/>
+		<attribute key="fluidsource" value="blood"/>
+	</item>
+		<item id="43840" article="a" name="dead darklight source">
+		<attribute key="containerSize" value="10"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="duration" value="30"/>
+		<attribute key="fluidsource" value="blood"/>
+	</item>
+		<item id="43571" article="a" name="dead darklight matter">
+		<attribute key="containerSize" value="10"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="duration" value="30"/>
+		<attribute key="fluidsource" value="blood"/>
+	</item>
 	<item id="112" article="a" name="magical watch">
 		<attribute key="primarytype" value="quest items"/>
 		<attribute key="weight" value="50"/>

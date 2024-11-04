@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Capricious Phantom")
 local monster = {}
 
 monster.description = "a capricious phantom"
-monster.experience = 160360
+monster.experience = 360360
 monster.outfit = {
 	lookType = 1298,
 	lookHead = 81,
@@ -26,8 +26,8 @@ monster.Bestiary = {
 	Locations = "Ebb and Flow.",
 }
 
-monster.health = 110000
-monster.maxHealth = 110000
+monster.health = 150000
+monster.maxHealth = 150000
 monster.race = "undead"
 monster.corpse = 5993
 monster.speed = 240
@@ -85,24 +85,17 @@ monster.loot = {
 	{ name = "blue gem", chance = 9410 },
 	{ name = "gold ingot", chance = 9410 },
 	{ name = "capricious heart", chance = 7530 },
-	{ name = "violet gem", chance = 4710 },
-	{ name = "capricious robe", chance = 2350 },
-	{ id = 23529, chance = 1880 }, -- ring of blue plasma
-	{ name = "fur armor", chance = 1650 },
-	{ name = "wood cape", chance = 1410 },
-	{ id = 23542, chance = 1180 }, -- collar of blue plasma
-	{ name = "glacial rod", chance = 940 },
 	{ name = "ornate crossbow", chance = 940 },
 	{ id = 34109, chance = 50 }, -- bag you desire
 }
 
 monster.attacks = {
-	{ name = "melee", interval = 2000, chance = 100, minDamage = -4000, maxDamage = -5000 },
-	{ name = "combat", interval = 3000, chance = 20, type = COMBAT_EARTHDAMAGE, minDamage = -4050, maxDamage = -5200, range = 7, radius = 3, shootEffect = CONST_ANI_POISONARROW, effect = CONST_ME_GREEN_RINGS, target = true },
-	{ name = "combat", interval = 2000, chance = 10, type = COMBAT_EARTHDAMAGE, minDamage = -4100, maxDamage = -5050, length = 6, spread = 4, effect = CONST_ME_GREEN_RINGS, target = false },
-	{ name = "combat", interval = 3000, chance = 20, type = COMBAT_ICEDAMAGE, minDamage = -4450, maxDamage = -5000, radius = 3, effect = CONST_ME_ICETORNADO, target = false },
-	{ name = "combat", interval = 3000, chance = 20, type = COMBAT_ICEDAMAGE, minDamage = -4150, maxDamage = -5100, range = 7, radius = 4, effect = CONST_ME_ICEATTACK, target = true },
-	{ name = "ice chain", interval = 2000, chance = 15, minDamage = -4100, maxDamage = -5300, range = 7 },
+	{ name = "melee", interval = 2000, chance = 100, minDamage = -4000, maxDamage = -5500 },
+	{ name = "combat", interval = 3000, chance = 20, type = COMBAT_EARTHDAMAGE, minDamage = -4050, maxDamage = -5500, range = 7, radius = 3, shootEffect = CONST_ANI_POISONARROW, effect = CONST_ME_GREEN_RINGS, target = true },
+	{ name = "combat", interval = 2000, chance = 10, type = COMBAT_EARTHDAMAGE, minDamage = -4100, maxDamage = -5550, length = 6, spread = 4, effect = CONST_ME_GREEN_RINGS, target = false },
+	{ name = "combat", interval = 3000, chance = 20, type = COMBAT_ICEDAMAGE, minDamage = -4450, maxDamage = -5500, radius = 3, effect = CONST_ME_ICETORNADO, target = false },
+	{ name = "combat", interval = 3000, chance = 20, type = COMBAT_ICEDAMAGE, minDamage = -4150, maxDamage = -5500, range = 7, radius = 4, effect = CONST_ME_ICEATTACK, target = true },
+	{ name = "ice chain", interval = 2000, chance = 15, minDamage = -4100, maxDamage = -5500, range = 7 },
 }
 
 monster.defenses = {

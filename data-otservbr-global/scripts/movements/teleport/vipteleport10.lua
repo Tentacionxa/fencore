@@ -1,5 +1,6 @@
 local config = {
 	{ name="Infernal 4000+", position = Position(33482, 33059, 15) },
+	{ name="Bony Sea 4000+", position = Position (34150, 30994, 8) },
     { name="Roten 4000+", position = Position (33600, 33063, 15) },
 	{ name="Roothing 1500+", position = Position(33762, 33069, 15) },
 	{ name="Library 1000+", position = Position(33861, 33070, 15) }

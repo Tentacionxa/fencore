@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Bony Sea Devil")
 local monster = {}
 
 monster.description = "a bony sea devil"
-monster.experience = 179470
+monster.experience = 379470
 monster.outfit = {
 	lookType = 1294,
 	lookHead = 0,
@@ -26,8 +26,8 @@ monster.Bestiary = {
 	Locations = "Ebb and Flow.",
 }
 
-monster.health = 124000
-monster.maxHealth = 124000
+monster.health = 164000
+monster.maxHealth = 164000
 monster.race = "undead"
 monster.corpse = 33797
 monster.speed = 220
@@ -79,33 +79,22 @@ monster.voices = {
 
 monster.loot = {
 	{ name = "crystal coin", chance = 59290 },
-	{ name = "ultimate health potion", chance = 19470, maxCount = 6 },
 	{ name = "gold ingot", chance = 15040 },
-	{ id = 282, chance = 9730 }, -- giant shimmering pearl
-	{ name = "hailstorm rod", chance = 7960 },
 	{ name = "onyx chip", chance = 6190 },
 	{ name = "green crystal fragment", chance = 5310 },
-	{ name = "wand of voodoo", chance = 4420 },
-	{ name = "violet gem", chance = 4420 },
-	{ name = "jaws", chance = 3540 },
 	{ name = "rainbow quartz", chance = 2650, maxCount = 3 },
-	{ name = "northwind rod", chance = 1770 },
-	{ name = "underworld rod", chance = 1770 },
 	{ name = "skullcracker armor", chance = 1770 },
-	{ id = 33929, chance = 880 }, -- rod
 	{ name = "goblet of gloom", chance = 880 },
-	{ name = "glacier kilt", chance = 880 },
-	{ name = "glacial rod", chance = 1210 },
 	{ id = 34109, chance = 50 }, -- bag you desire
 }
 
 monster.attacks = {
-	{ name = "melee", interval = 2000, chance = 100, minDamage = -4000, maxDamage = -5000 },
-	{ name = "combat", interval = 2000, chance = 15, type = COMBAT_EARTHDAMAGE, minDamage = -4100, maxDamage = -5350, length = 5, spread = 3, effect = CONST_ME_GROUNDSHAKER, target = false },
-	{ name = "combat", interval = 2000, chance = 10, type = COMBAT_ENERGYDAMAGE, minDamage = -4100, maxDamage = -5000, radius = 7, effect = CONST_ME_BIGCLOUDS, target = false },
-	{ name = "combat", interval = 2000, chance = 20, type = COMBAT_ICEDAMAGE, minDamage = -4150, maxDamage = -5260, range = 7, shootEffect = CONST_ANI_SNOWBALL, effect = CONST_ME_ICEATTACK, target = true },
-	{ name = "combat", interval = 2000, chance = 25, type = COMBAT_ICEDAMAGE, minDamage = -4150, maxDamage = -5100, range = 7, radius = 5, shootEffect = CONST_ANI_ICE, effect = CONST_ME_ICEAREA, target = true },
-	{ name = "ice chain", interval = 2000, chance = 15, minDamage = -4100, maxDamage = -5000, range = 7 },
+	{ name = "melee", interval = 2000, chance = 100, minDamage = -4000, maxDamage = -5500 },
+	{ name = "combat", interval = 2000, chance = 15, type = COMBAT_EARTHDAMAGE, minDamage = -4100, maxDamage = -5550, length = 5, spread = 3, effect = CONST_ME_GROUNDSHAKER, target = false },
+	{ name = "combat", interval = 2000, chance = 10, type = COMBAT_ENERGYDAMAGE, minDamage = -4100, maxDamage = -5500, radius = 7, effect = CONST_ME_BIGCLOUDS, target = false },
+	{ name = "combat", interval = 2000, chance = 20, type = COMBAT_ICEDAMAGE, minDamage = -4150, maxDamage = -5560, range = 7, shootEffect = CONST_ANI_SNOWBALL, effect = CONST_ME_ICEATTACK, target = true },
+	{ name = "combat", interval = 2000, chance = 25, type = COMBAT_ICEDAMAGE, minDamage = -4150, maxDamage = -5500, range = 7, radius = 5, shootEffect = CONST_ANI_ICE, effect = CONST_ME_ICEAREA, target = true },
+	{ name = "ice chain", interval = 2000, chance = 15, minDamage = -4100, maxDamage = -5500, range = 7 },
 	{ name = "destroy magic walls", interval = 1000, chance = 30 },
 }
 

@@ -156,7 +156,7 @@ void House::updateDoorDescription() const {
 	const int32_t housePrice = getPrice();
 	if (housePrice != -1) {
 		if (g_configManager().getBoolean(HOUSE_PURSHASED_SHOW_PRICE, __FUNCTION__) || owner == 0) {
-			ss << " It costs " << formatNumber(getPrice()) << " gold coins.";
+			ss << " House is on auction";
 		}
 		std::string strRentPeriod = asLowerCaseString(g_configManager().getString(HOUSE_RENT_PERIOD, __FUNCTION__));
 		if (strRentPeriod != "never") {

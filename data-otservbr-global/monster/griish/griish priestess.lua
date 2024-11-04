@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Griish Priestess")
 local monster = {}
 
 monster.description = "a griish priestess"
-monster.experience = 105000
+monster.experience = 205000
 monster.outfit = {
 	lookType = 162,
 	lookHead = 0,
@@ -77,23 +77,12 @@ monster.voices = {
 }
 
 monster.loot = {
-	{ name = "crystal coin", chance = 79040 },
-	{ name = "great mana potion", chance = 62450, maxCount = 3 },
-	-- {name = "giant shimmering pearl", chance = 10040}, -- unknown item: giant shimmering pearl
+	{ name = "crystal coin", chance = 79040, maxCount = 4 },
 	{ name = "blue gem", chance = 5240 },
-	{ id = 23533, chance = 4370 }, -- ring of red plasma
-	{ name = "wand of voodoo", chance = 4370 },
-	{ id = 23531, chance = 3490 }, -- ring of green plasma
-	{ id = 23529, chance = 3060 }, -- ring of blue plasma
-	{ name = "violet gem", chance = 2620 },
-	{ name = "glacier amulet", chance = 2620 },
-	{ name = "wand of everblazing", chance = 2180 },
-	{ name = "wand of defiance", chance = 1750 },
-	{ name = "wand of starstorm", chance = 1310 },
 	{ name = "stone skin amulet", chance = 1310 },
 	{ name = "alloy legs", chance = 440 },
-	{ name = "brainstealer bag", chance = 50 , maxCount = 1 },
-	{ name = "alba bag", chance = 50 , maxCount = 1 },
+	{ name = "brainstealer bag", chance = 50 , maxCount = 3 },
+	{ name = "alba bag", chance = 50 , maxCount = 3 },
 	{ name = "green crystal coin", chance = 1130, maxCount = 2 },
 	{ name = "red crystal coin", chance = 100000, maxCount = 1 },
 }

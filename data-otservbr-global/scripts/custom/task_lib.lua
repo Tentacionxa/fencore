@@ -318,11 +318,11 @@ taskConfiguration = {
 	},
 },
 
-{name = "Soul War - Bony Sea Devil, Turbulent elemental, Brachiodemon, Capricious Phantom, Cloak of Terror, Distorted Phantom, Courage Leech, Infernal Phantom, Infernal Demon, Hazardous Phantom, Many Faces, Mean Maw, Mould Phantom, Rotten Golem, Spiteful Spitter, Vibrant Phantom, Branchy Crawler", color = 40, total = 6000, type = "repeatable", storage = 190042, storagecount = 190043, 
+{name = "Soul War - Bony Sea Devil, Turbulent elemental, Brachiodemon, Capricious Phantom, Cloak of Terror, Distorted Phantom, Courage Leech, Infernal Phantom, Infernal Demon, Hazardous Phantom, Many Faces, Mean Maw, Mould Phantom, Rotten Golem, Spiteful Spitter, Vibrant Phantom, Branchy Crawler", color = 40, total = 4000, type = "repeatable", storage = 190042, storagecount = 190043, 
 	rewards = {  
-		{37317, 15},
-		{36727, 10},
-		{36725, 10},
+		{37317, 30},
+		{36727, 20},
+		{36725, 20},
 	{"exp", 100000000},
 	},
 	races = {
@@ -720,10 +720,10 @@ taskConfiguration = {
         },
 },
 
-{name = "Rootthing Podzilla - Rootthing Nutshell, Rootthing Amber Shaper, Rootthing Bug Tracker", color = 40, total = 2000, type = "repeatable", storage = 190950, storagecount = 190951,
+{name = "Rootthing Podzilla - Rootthing Nutshell, Rootthing Amber Shaper, Rootthing Bug Tracker", color = 40, total = 4000, type = "repeatable", storage = 190950, storagecount = 190951,
         rewards = {
-                {3043, 200},
-                {37317, 3},
+                {3043, 400},
+                {37317, 6},
         {"exp", 9000000},
         },
         races = {
@@ -734,10 +734,10 @@ taskConfiguration = {
         },
 },
 
-{name = "Quara Podzilla - Quara Raider, Quara Looter, Quara Plunderer", color = 40, total = 2500, type = "repeatable", storage = 190940, storagecount = 190941,
+{name = "Quara Podzilla - Quara Raider, Quara Looter, Quara Plunderer", color = 40, total = 3450, type = "repeatable", storage = 190940, storagecount = 190941,
         rewards = {
-			{3043, 200},
-			{37317, 4},
+			{3043, 400},
+			{37317, 8},
 	{"exp", 9000000},
         },
         races = {
@@ -748,11 +748,11 @@ taskConfiguration = {
         },
 },
 
-{name = "Griish - Griish Knight, Griish Lord, Griish Scout, Griish Leader, Griish Sorcereress, Griish Mage, Griish Druid, Griish Priestess, Griish Warior, Griish Wizard, Griish Adventurer, Griish Hunter", color = 40, total = 3000, type = "repeatable", storage = 190945, storagecount = 190946,
+{name = "Griish - Griish Knight, Griish Lord, Griish Scout, Griish Leader, Griish Sorcereress, Griish Mage, Griish Druid, Griish Priestess, Griish Warior, Griish Wizard, Griish Adventurer, Griish Hunter", color = 40, total = 4000, type = "repeatable", storage = 190945, storagecount = 190946,
         rewards = {
-			{46316, 200},
-			{46314, 200},
-			{37317, 5},
+			{46316, 400},
+			{46314, 400},
+			{37317, 10},
 	{"exp", 20000000},
         },
         races = {

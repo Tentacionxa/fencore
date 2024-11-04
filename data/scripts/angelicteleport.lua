@@ -8,11 +8,11 @@ function pinkTeleport.onStepIn(creature, item, toPosition, fromPosition)
     end
 
     if player:getStorageValue(51857) <= 0 then
-        player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You are close to entering the brighter side.")
-        player:teleportTo(Position(32361, 32220, 7))
+        player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "The Portal has moved You to the cities' entrance.")
+        player:teleportTo(Position(32945, 33511, 4))
         player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
     else
-        player:teleportTo(Position(32945, 33511, 4))
+        player:teleportTo(Position(32920, 33480, 4))
         player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
     end
 

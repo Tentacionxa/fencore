@@ -26,8 +26,8 @@ monster.Bestiary = {
 	Locations = "Claustrophobic Inferno.",
 }
 
-monster.health = 95000
-monster.maxHealth = 95000
+monster.health = 164000
+monster.maxHealth = 164000
 monster.race = "blood"
 monster.corpse = 33817
 monster.speed = 220

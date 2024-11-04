@@ -30,7 +30,6 @@ local effects = {
  {position = Position(32348, 32229, 5), text = 'Casino', effect = CONST_ME_CRAPS},
  {position = Position(32348, 32230, 5), text = 'Casino', effect = CONST_ME_CRAPS},
  
- {position = Position(31469, 31765, 7), text = 'Task', effect = CONST_ME_GROUNDSHAKER},
  {position = Position(32342, 32229, 7), text = 'Task', effect = CONST_ME_GROUNDSHAKER},
  {position = Position(32365, 32219, 7), text = 'Hunt', effect = CONST_ME_GREENSMOKE},
  {position = Position(32364, 32219, 7), text = 'Bosses', effect = CONST_ME_YELLOWSMOKE},

@@ -13,6 +13,7 @@
 #include "creatures/interactions/chat.hpp"
 #include "creatures/monsters/monster.hpp"
 #include "creatures/monsters/monsters.hpp"
+#include "config/configmanager.h"
 #include "creatures/players/player.hpp"
 #include "creatures/players/wheel/player_wheel.hpp"
 #include "creatures/players/achievement/player_achievement.hpp"
@@ -7389,7 +7390,17 @@ if (parentContainer) {
         }
     }
 }
-	
+ // Retrieve the max items allowed in a container
+    uint32_t maxItems = static_cast<uint32_t>(g_configManager().getNumber(MAX_CONTAINER_ITEM, __FUNCTION__));
+
+    // Get the container holding the item to check its capacity
+    if (Container* container = dynamic_cast<Container*>(item->getParent())) {
+        // Check if the container has reached its maximum item capacity
+        if (container->getItemHoldingCount() >= maxItems) {
+            sendCancelMessage(RETURNVALUE_CONTAINERISFULL);
+            return; // Stop further item processing
+        }
+    }	
 if (getCapacity() < 150) {
      sendCancelMessage(RETURNVALUE_NOTENOUGHCAPACITY);
        return;

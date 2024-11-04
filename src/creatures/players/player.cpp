@@ -7389,7 +7389,7 @@ if (parentContainer) {
         }
     }
 }
-	Container* inbox = getInbox();
+	Container* inbox = getInbox().get();
     if (!inbox) {
         sendCancelMessage(RETURNVALUE_CONTAINERISFULL);
         return;

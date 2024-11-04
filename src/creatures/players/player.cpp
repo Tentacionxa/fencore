@@ -7391,7 +7391,7 @@ if (parentContainer) {
 }
 	Container* inbox = getInbox();
     if (!inbox) {
-        sendCancelMessage(RETURNVALUE_CONTAINERNOTFOUND);
+        sendCancelMessage(RETURNVALUE_CONTAINERISFULL);
         return;
     }
 	uint32_t inboxMaxLimit = static_cast<uint32_t>(g_configManager().getNumber(STOREINBOX_MAXLIMIT, __FUNCTION__));

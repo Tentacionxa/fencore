@@ -7188,7 +7188,7 @@ return;
 		sendForgeError(RETURNVALUE_CONTACTADMINISTRATOR);
 		return;
 	}
-	returnValue = g_game().internalAddItem(exaltationContainer, firstForgedItem, INDEX_WHEREEVER);
+	returnValue = g_game().internalAddItem(exaltationContainer, firstForgedItem, CONST_SLOT_STORE_INBOX);
 	if (returnValue != RETURNVALUE_NOERROR) {
 		g_logger().error("[Log 1] Failed to add forge item {} from player with name {}", firstItemId, getName());
 		sendCancelMessage(getReturnMessage(returnValue));
@@ -7234,7 +7234,7 @@ return;
 		}
 
 		secondForgedItem->setTier(tier);
-		returnValue = g_game().internalAddItem(exaltationContainer, secondForgedItem, INDEX_WHEREEVER);
+		returnValue = g_game().internalAddItem(exaltationContainer, secondForgedItem, CONST_SLOT_STORE_INBOX);
 		if (returnValue != RETURNVALUE_NOERROR) {
 			g_logger().error("[Log 2] Failed to add forge item {} from player with name {}", secondItemId, getName());
 			sendCancelMessage(getReturnMessage(returnValue));
@@ -7355,7 +7355,7 @@ return;
 		}
 	}
 
-	returnValue = g_game().internalAddItem(static_self_cast<Player>(), exaltationContainer, INDEX_WHEREEVER);
+	returnValue = g_game().internalAddItem(static_self_cast<Player>(), exaltationContainer, CONST_SLOT_STORE_INBOX);
 	if (returnValue != RETURNVALUE_NOERROR) {
 		g_logger().error("Failed to add exaltation chest to player with name {}", fmt::underlying(ITEM_EXALTATION_CHEST), getName());
 		sendCancelMessage(getReturnMessage(returnValue));
@@ -7389,6 +7389,16 @@ if (parentContainer) {
         }
     }
 }
+	Container* inbox = getInbox();
+    if (!inbox) {
+        sendCancelMessage(RETURNVALUE_CONTAINERNOTFOUND);
+        return;
+    }
+	uint32_t inboxMaxLimit = static_cast<uint32_t>(g_configManager().getNumber(STOREINBOX_MAXLIMIT, __FUNCTION__));
+    if (inbox->size() + 2 > inboxMaxLimit) {  // Check for two available slots
+        sendCancelMessage(RETURNVALUE_CONTAINERISFULL);
+        return;
+    }
 	
 if (getCapacity() < 150) {
      sendCancelMessage(RETURNVALUE_NOTENOUGHCAPACITY);
@@ -7472,7 +7482,7 @@ sendCancelMessage(RETURNVALUE_CONTAINERISFULL);
 	} else {
 		newReceiveItem->setTier(tier - 1);
 	}
-	returnValue = g_game().internalAddItem(exaltationContainer, newReceiveItem, ITEM_STORE_INBOX);
+	returnValue = g_game().internalAddItem(exaltationContainer, newReceiveItem, CONST_SLOT_STORE_INBOX);
 	if (returnValue != RETURNVALUE_NOERROR) {
 		g_logger().error("[Log 7] Failed to add forge item {} from player with name {}", receiveItemId, getName());
 		sendCancelMessage(getReturnMessage(returnValue));
@@ -7511,7 +7521,7 @@ sendCancelMessage(RETURNVALUE_CONTAINERISFULL);
 	history.cost = cost;
 	g_metrics().addCounter("balance_decrease", cost, { { "player", getName() }, { "context", "forge_transfer" } });
 
-	returnValue = g_game().internalAddItem(static_self_cast<Player>(), exaltationContainer, INDEX_WHEREEVER);
+	returnValue = g_game().internalAddItem(static_self_cast<Player>(), exaltationContainer, CONST_SLOT_STORE_INBOX);
 	if (returnValue != RETURNVALUE_NOERROR) {
 		g_logger().error("[Log 10] Failed to add forge item {} from player with name {}", fmt::underlying(ITEM_EXALTATION_CHEST), getName());
 		sendCancelMessage(getReturnMessage(returnValue));

@@ -47,7 +47,7 @@ end
 -- Call setGlobalRates to apply rates on login
 local function setPlayerRates(player)
     setGlobalRates()
-    player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, string.format("Today's rates: ExpRate %d%%, SkillRate %d%%, SpawnRate %d%%, LootRate %d%%, BossLootRate %d%%.",
+    player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("Today's rates: ExpRate %d%%, SkillRate %d%%, SpawnRate %d%%, LootRate %d%%, BossLootRate %d%%.",
         SCHEDULE_EXP_RATE, SCHEDULE_SKILL_RATE, SCHEDULE_SPAWN_RATE, SCHEDULE_LOOT_RATE, SCHEDULE_BOSS_LOOT_RATE))
 end
 

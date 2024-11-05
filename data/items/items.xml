@@ -82622,7 +82622,7 @@ Granted by TibiaGoals.com"/>
 			<attribute key="ice wave" value="powerful impact" />
 		</attribute>
 		<attribute key="script" value="moveevent;weapon">
-			<attribute key="level" value="2000"/>
+			<attribute key="level" value="2300"/>
 			<attribute key="mana" value="20"/>
 			<attribute key="unproperly" value="true"/>
 			<attribute key="fromDamage" value="200"/>

@@ -19,8 +19,43 @@ end
 
 local playerLoginGlobal = CreatureEvent("PlayerLoginGlobal")
 
+-- Define rates for each day
+local dailyRates = {
+    ["Monday"] = { expRate = 150, skillRate = 300, spawnRate = 100, lootRate = 150, bossLootRate = 130 },
+    ["Tuesday"] = { expRate = 150, skillRate = 300, spawnRate = 100, lootRate = 150, bossLootRate = 130 },
+    ["Wednesday"] = { expRate = 150, skillRate = 300, spawnRate = 150, lootRate = 150, bossLootRate = 130 },
+    ["Thursday"] = { expRate = 150, skillRate = 300, spawnRate = 100, lootRate = 150, bossLootRate = 130 },
+    ["Friday"] = { expRate = 250, skillRate = 150, spawnRate = 100, lootRate = 250, bossLootRate = 100 },
+    ["Saturday"] = { expRate = 250, skillRate = 150, spawnRate = 100, lootRate = 250, bossLootRate = 100 },
+    ["Sunday"] = { expRate = 250, skillRate = 150, spawnRate = 100, lootRate = 250, bossLootRate = 100 }
+}
+
+-- Function to set global rates
+local function setGlobalRates()
+    local currentDay = os.date("%A")
+    local rates = dailyRates[currentDay]
+    
+    if rates then
+        SCHEDULE_EXP_RATE = rates.expRate
+        SCHEDULE_SKILL_RATE = rates.skillRate
+        SCHEDULE_SPAWN_RATE = rates.spawnRate
+        SCHEDULE_LOOT_RATE = rates.lootRate
+        SCHEDULE_BOSS_LOOT_RATE = rates.bossLootRate
+    end
+end
+
+-- Call setGlobalRates to apply rates on login
+local function setPlayerRates(player)
+    setGlobalRates()
+    player:sendTextMessage(MESSAGE_STATUS_CONSOLE_BLUE, string.format("Today's rates: ExpRate %d%%, SkillRate %d%%, SpawnRate %d%%, LootRate %d%%, BossLootRate %d%%.",
+        SCHEDULE_EXP_RATE, SCHEDULE_SKILL_RATE, SCHEDULE_SPAWN_RATE, SCHEDULE_LOOT_RATE, SCHEDULE_BOSS_LOOT_RATE))
+end
+
 function playerLoginGlobal.onLogin(player)
-	-- Welcome
+    -- Set rates for the player on login
+    setPlayerRates(player)
+    
+	-- Welcome message
 	local loginStr
 	if player:getLastLoginSaved() == 0 then
 		loginStr = "Please choose your outfit."
@@ -48,7 +83,7 @@ function playerLoginGlobal.onLogin(player)
 		player:setVocation(vocation:getDemotion())
 	end
 
-	-- Boosted
+	-- Boosted creatures and bosses
 	player:sendTextMessage(MESSAGE_BOOSTED_CREATURE, string.format("Today's boosted creature: %s.\nBoosted creatures yield more experience points, carry more loot than usual, and respawn at a faster rate.", Game.getBoostedCreature()))
 	player:sendTextMessage(MESSAGE_BOOSTED_CREATURE, string.format("Today's boosted boss: %s.\nBoosted bosses contain more loot and count more kills for your Bosstiary.", Game.getBoostedBoss()))
 
@@ -79,7 +114,7 @@ function playerLoginGlobal.onLogin(player)
 		sendBoostMessage(player, "Skill Rate", SCHEDULE_SKILL_RATE > 100)
 	end
 
-	-- Send Recruiter Outfit
+	-- Recruiter Outfit
 	local resultId = db.storeQuery("SELECT `recruiter` FROM `accounts` WHERE `id`= " .. getAccountNumberByPlayerName(getPlayerName(player)))
 	if resultId then
 		local recruiterStatus = Result.getNumber(resultId, "recruiter")

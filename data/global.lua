@@ -1,5 +1,37 @@
 math.randomseed(os.time())
 
+-- Define rates for each day in global.lua
+local dailyRates = {
+	["Monday"] = { expRate = 150, skillRate = 300, spawnRate = 100, lootRate = 150, bossLootRate = 130 },
+    ["Tuesday"] = { expRate = 150, skillRate = 300, spawnRate = 100, lootRate = 150, bossLootRate = 130 },
+    ["Wednesday"] = { expRate = 150, skillRate = 300, spawnRate = 150, lootRate = 150, bossLootRate = 130 },
+    ["Thursday"] = { expRate = 150, skillRate = 300, spawnRate = 100, lootRate = 150, bossLootRate = 130 },
+    ["Friday"] = { expRate = 250, skillRate = 150, spawnRate = 100, lootRate = 250, bossLootRate = 100 },
+    ["Saturday"] = { expRate = 250, skillRate = 150, spawnRate = 100, lootRate = 250, bossLootRate = 100 },
+    ["Sunday"] = { expRate = 250, skillRate = 150, spawnRate = 100, lootRate = 250, bossLootRate = 100 }
+}
+
+-- Function to set SCHEDULE_* rates based on the day of the week
+local function setDailyRates()
+    local currentDay = os.date("%A")
+    local rates = dailyRates[currentDay]
+
+    if rates then
+        SCHEDULE_EXP_RATE = rates.expRate
+        SCHEDULE_SKILL_RATE = rates.skillRate
+        SCHEDULE_SPAWN_RATE = rates.spawnRate
+        SCHEDULE_LOOT_RATE = rates.lootRate
+        SCHEDULE_BOSS_LOOT_RATE = rates.bossLootRate
+        print(string.format("Daily rates set for %s: ExpRate=%d%%, SkillRate=%d%%, SpawnRate=%d%%, LootRate=%d%%, BossLootRate=%d%%",
+            currentDay, SCHEDULE_EXP_RATE, SCHEDULE_SKILL_RATE, SCHEDULE_SPAWN_RATE, SCHEDULE_LOOT_RATE, SCHEDULE_BOSS_LOOT_RATE))
+    else
+        print("No daily rates found for today. Using default rates.")
+    end
+end
+
+-- Apply daily rates when server starts
+setDailyRates()
+
 dofile(DATA_DIRECTORY .. "/lib/lib.lua")
 local startupFile = io.open(DATA_DIRECTORY .. "/startup/startup.lua", "r")
 if startupFile ~= nil then
@@ -70,10 +102,10 @@ GLOBAL_CHARM_GUT = 120 -- 20% more chance to get creature products from looting
 GLOBAL_CHARM_SCAVENGE = 125 -- 25% more chance to get creature products from skinning
 
 -- Event Schedule
-SCHEDULE_LOOT_RATE = 150
-SCHEDULE_EXP_RATE = 150
-SCHEDULE_BOSS_LOOT_RATE = 130
-SCHEDULE_SKILL_RATE = 300
+SCHEDULE_LOOT_RATE = 100
+SCHEDULE_EXP_RATE = 100
+SCHEDULE_BOSS_LOOT_RATE = 100
+SCHEDULE_SKILL_RATE = 100
 SCHEDULE_SPAWN_RATE = 100
 
 -- MARRY
@@ -209,3 +241,4 @@ function addStamina(playerId, ...)
 	end
 	return false
 end
+

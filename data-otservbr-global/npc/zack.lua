@@ -1581,6 +1581,7 @@ npcConfig.shop = {
 	{ itemName = "darklight obsidian axe", clientId = 43781, sell = 10000 },
 	{ itemName = "darklight matter", clientId = 43851, sell = 12000 },
 	{ itemName = "obisidan knife", clientId = 5908, buy = 60000 },
+	{ itemName = "flask of rust remover", clientId = 9016, buy = 100 },
 	{ itemName = "blessed wooden stake", clientId = 5942, buy = 60000 },
 	{ itemName = "soulful legs", clientId = 32618, sell = 500000 },
 	{ itemName = "tagralt blade", clientId = 31614, sell = 750000 },

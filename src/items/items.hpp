@@ -210,9 +210,6 @@ public:
 	bool isLegs() const {
 		return slotPosition & SLOTP_LEGS;
 	}
-	bool isFeet() const {
-    return slotPosition & SLOTP_FEET;
-}
 	bool isRanged() const {
 		return weaponType == WEAPON_DISTANCE && weaponType != WEAPON_NONE;
 	}

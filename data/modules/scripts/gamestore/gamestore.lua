@@ -776,7 +776,7 @@ GameStore.Categories = {
 						addon = 3,
 						description = "{character}\n{info} colours can be changed using the Outfit dialog\n{info} includes basic outfit and 2 addons which can be selected individually\n\n<i>Let the power of nature take care of Your body.</i>",
 						type = GameStore.OfferTypes.OFFER_TYPE_OUTFIT,
-						home = true,
+						
 						
 					},
 						{
@@ -898,6 +898,7 @@ GameStore.Categories = {
 									id = 252,
 									description = "{character}\n{speedboost}\n\n<i>Surived all of the 7 Varo Apocalypses</i>",
 									type = GameStore.OfferTypes.OFFER_TYPE_MOUNT,
+									home = true,
 								},
 								{
 									icons = { "Death Strike.png" },
@@ -906,6 +907,7 @@ GameStore.Categories = {
 									id = 251,
 									description = "{character}\n{speedboost}\n\n<i>Emerged from beneath the biggest ocean of Vara.</i>",
 									type = GameStore.OfferTypes.OFFER_TYPE_MOUNT,
+									home = true,
 								},
 								{
 									icons = { "Death Strike.png" },
@@ -914,6 +916,7 @@ GameStore.Categories = {
 									id = 250,
 									description = "{character}\n{speedboost}\n\n<i>Emerged from beneath the biggest volcano of Vara.</i>",
 									type = GameStore.OfferTypes.OFFER_TYPE_MOUNT,
+									home = true,
 								},
 								{
 									icons = { "Death Strike.png" },
@@ -922,6 +925,7 @@ GameStore.Categories = {
 									id = 249,
 									description = "{character}\n{speedboost}\n\n<i>Emerged from beneath the biggest jungle of Vara. </i>",
 									type = GameStore.OfferTypes.OFFER_TYPE_MOUNT,
+									home = true,
 								},
 								{
 									icons = { "Death Strike.png" },
@@ -930,6 +934,7 @@ GameStore.Categories = {
 									id = 248,
 									description = "{character}\n{speedboost}\n\n<i>Emerged from beneath the storm of Vara.</i>",
 									type = GameStore.OfferTypes.OFFER_TYPE_MOUNT,
+									home = true,
 								},
 
 								{
@@ -1053,7 +1058,7 @@ GameStore.Categories = {
 									id = 246,
 									description = "{character}\n{speedboost}\n\n<i>One of the ships, caught by a well known Pirate.</i>",
 									type = GameStore.OfferTypes.OFFER_TYPE_MOUNT,
-									home = true,
+								
 								},
 								{
 									icons = { "Yellow Ship.png" },

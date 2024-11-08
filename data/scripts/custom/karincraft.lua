@@ -1,4 +1,159 @@
 Karin.CraftSystem = {
+    ['Angelic Equipment'] = {
+        crafts = {  
+            ['Enchanted Icy Grimoire'] = {
+                id = 49253,
+                minLevel = 5000,
+                vocation = 'Druid',
+                requireToCraft = {
+                    [46338] = 1,
+                    [3043] = 5000000000,
+                    [34095] = 10,
+                    ['level'] = 2000, 
+                },
+                storageId = 921024, -- Unique storage ID
+            },
+            ['Enchanted Flamy Grimoire'] = {
+                id = 49250, 
+                minLevel = 5000,
+                vocation = 'Sorcerer',
+                requireToCraft = {
+                    [46372] = 1,
+                    [3043] = 5000000000,
+                    [34096] = 10,
+                    ['level'] = 2000,
+                },
+                storageId = 921023, -- Unique storage ID
+            },
+            ['Sentinel\'s Counter'] = {
+                id = 49255,
+                minLevel = 5000,
+                vocation = 'Paladin',
+                requireToCraft = {
+                    [46367] = 1,
+                    [3043] = 5000000000,
+                    [34098] = 10,
+                    ['level'] = 1000, 
+                },
+                storageId = 921022, -- Unique storage ID
+            },
+        },
+    },
+    ['Angelic Weapons'] = {
+        crafts = {  
+            ['Royal Slasher'] = {
+				id = 49256,
+				minLevel = 5000,
+				vocation = 'Knight',
+				requireToCraft = {
+					[46348] = 1,
+                    [3043] = 5000000000,
+                    [34084] = 10,
+                    [34085] = 10,
+					['level'] = 1000,
+					['skill'] = {  
+				},
+		    },
+		    storageId = 921021, -- Unique storage ID
+		  },
+          ['Royal Mudger'] = {
+            id = 49258,
+            minLevel = 5000,
+            vocation = 'Knight',
+            requireToCraft = {
+                [43867] = 1,
+                [3043] = 5000000000,
+                [34087] = 10,
+                [34086] = 10,
+                ['level'] = 1000,
+                ['skill'] = { 
+            },
+        },
+        storageId = 921020, -- Unique storage ID
+      },
+           
+          ['Von Duzzel Sword'] = {
+				id = 49242,
+				minLevel = 5000,
+				vocation = 'Knight',
+				requireToCraft = {
+					[46358] = 1,
+                    [3043] = 5000000000,
+                    [34083] = 10,
+                    [34082] = 10,
+					['level'] = 1000,
+					['skill'] = {
+				},
+		    },
+		    storageId = 921019, -- Unique storage ID
+		  }, 
+          ['Royal Cross'] = {
+            id = 49260,
+            minLevel = 5000,
+            vocation = 'Knight',
+            requireToCraft = {
+                [46357] = 1,
+                [3043] = 5000000000,
+                [34083] = 10,
+                [34082] = 10,
+                ['level'] = 1000,
+                ['skill'] = {
+            },
+        },
+        storageId = 921018, -- Unique storage ID
+      }, 
+          ['Royal Entile'] = {
+                id = 49261,
+                minLevel = 5000,
+                vocation = 'Druid',
+                requireToCraft = {
+                    [46344] = 1,
+                    [3043] = 5000000000,
+                    [34091] = 10,
+                    ['level'] = 2000,
+                },
+                storageId = 921017, -- Unique storage ID
+            },
+            ['Royal Kush'] = {
+                id = 49262, 
+                minLevel = 5000,
+                vocation = 'Sorcerer',
+                requireToCraft = {
+                    [46377] = 1,
+                    [3043] = 5000000000,
+                    [34090] = 10,
+                    ['level'] = 2000,
+                },
+                storageId = 921016, -- Unique storage ID
+            },
+            ['Royal Bolt'] = {
+                id = 49259,
+                minLevel = 5000,
+                vocation = 'Paladin',
+                requireToCraft = {
+                    [46366] = 1,
+                    [34089] = 10,
+                    [3043] = 5000000000,
+                    [34089] = 10,
+                    ['level'] = 1000, 
+                },
+                storageId = 921015, -- Unique storage ID
+            },
+            ['Royal Whisper'] = {
+                id = 49257,
+                minLevel = 5000,
+                vocation = 'Paladin',
+                requireToCraft = {
+                    [46363] = 1,
+                    [34088] = 10,
+                    [3043] = 5000000000,
+                    [34088] = 10,
+                    ['level'] = 1000, 
+                },
+                storageId = 921014, -- Unique storage ID
+            },
+        },
+    },
     ['Equipments'] = {
         crafts = {  
             ['Eternal Night Root Spellbook'] = {
@@ -220,34 +375,43 @@ __CraftFunctions = {
         }
         local canCraft = true
         for id, qtd in pairs(craft.requireToCraft) do
-            local it = ItemType(id)
-            if it and type(id) == "number" then
-                local qtdPlayer = player:getItemCount(id)
-                window:addChoice('['.. qtdPlayer .. '/' .. qtd .. '] ' .. it:getName())
-                if qtdPlayer < qtd then
+            local displayAmount = 0
+            if id == 3043 then  -- Special handling for crystal coins
+                displayAmount = player:getBankBalance()  -- Get bank balance instead of inventory count
+                window:addChoice('['.. displayAmount .. '/' .. qtd .. '] GP (5 kkk)')
+                if displayAmount < qtd then
                     canCraft = false
                 end
-            elseif id == 'level' then
-                window:addChoice('Level: ' .. qtd * -1)
-                if player:getLevel() < qtd then
-                    canCraft = false
-                end
-            elseif id == 'skill' then
-                for skill, level in pairs(qtd) do
-                    window:addChoice('Skill ' .. self:getSkillNameById(skill) .. ': ' .. level * -1)
-                    local playerSkill = player:getSkillLevel(skill)
-                    if playerSkill < level or playerSkill-level < 10  then
+            else
+                local it = ItemType(id)
+                if it and type(id) == "number" then
+                    local qtdPlayer = player:getItemCount(id)
+                    window:addChoice('['.. qtdPlayer .. '/' .. qtd .. '] ' .. it:getName())
+                    if qtdPlayer < qtd then
+                        canCraft = false
+                    end
+                elseif id == 'level' then
+                    window:addChoice('Level: ' .. qtd * -1)
+                    if player:getLevel() < qtd then
+                        canCraft = false
+                    end
+                elseif id == 'skill' then
+                    for skill, level in pairs(qtd) do
+                        window:addChoice('Skill ' .. self:getSkillNameById(skill) .. ': ' .. level * -1)
+                        local playerSkill = player:getSkillLevel(skill)
+                        if playerSkill < level or playerSkill - level < 10 then
+                            canCraft = false
+                        end
+                    end
+                elseif id == 'vocation' then
+                    window:addChoice('Vocation: ' .. qtd)
+                    if qtd ~= 'None' and qtd ~= self:getVocation(player) then
                         canCraft = false
                     end
                 end
-            elseif id == 'vocation' then
-                window:addChoice('Vocation: ' .. qtd)
-                if qtd ~= 'None' and qtd ~= self:getVocation(player) then
-                    canCraft = false
-                end
             end
         end
-        
+    
         if canCraft then
             window:addButton("Craft", function()
                 if self:checkCraft(craft, player) then
@@ -257,7 +421,7 @@ __CraftFunctions = {
         end
         window:addButton("Cancel", function() end)
         window:sendToPlayer(player)
-    end,
+    end ,
     openConfirmWindow = function (self, name, itemName, craft, player)
         local window = ModalWindow {
             title = name,
@@ -273,62 +437,78 @@ __CraftFunctions = {
         window:sendToPlayer(player)
     end,
     doCraft = function (self, name, itemName, craft, player)
-        if self:checkCraft(craft, player) then
-            for id, qtd in pairs(craft.requireToCraft) do
-                if type(id) == "number" then
-                    player:removeItem(id, qtd)
-                elseif id == 'level' then
-                    player:setLevel(player:getLevel() - qtd)
-                elseif id == 'skill' then
-                    for skill, level in pairs(qtd) do
-                        player:setSkillLevel(skill, player:getSkillLevel(skill) - level)
-                    end
+    if self:checkCraft(craft, player) then
+        for id, qtd in pairs(craft.requireToCraft) do
+            if id == 3043 then  -- Special handling for crystal coins
+                local bankBalance = player:getBankBalance()
+                if bankBalance >= qtd then
+                    player:setBankBalance(bankBalance - qtd)  -- Deduct the required amount from the bank
+                else
+                    player:sendTextMessage(MESSAGE_STATUS_WARNING, "You do not have enough crystal coins in your bank.")
+                    return -- Exit if not enough currency
                 end
-            end
-    
-            -- Add the item to the player's inventory
-            local item = player:addItem(craft.id, 1)
-            
-            if item then
-                -- Update the player's storage with the unique storage ID of the crafted item
-                if craft.storageId then
-                    player:setStorageValue(craft.storageId, 1)
+            elseif type(id) == "number" then
+                player:removeItem(id, qtd)  -- For other items, remove from inventory as before
+            elseif id == 'level' then
+                player:setLevel(player:getLevel() - qtd)
+            elseif id == 'skill' then
+                for skill, level in pairs(qtd) do
+                    player:setSkillLevel(skill, player:getSkillLevel(skill) - level)
                 end
-                
-                player:sendTextMessage(MESSAGE_LOOT, 'You crafted ' .. item:getName() .. '.')
             end
         end
-    end,
+
+        -- Add the crafted item to the player's inventory
+        local item = player:addItem(craft.id, 1)
+        if item then
+            -- Update the player's storage with the unique storage ID of the crafted item
+            if craft.storageId then
+                player:setStorageValue(craft.storageId, 1)
+            end
+            player:sendTextMessage(MESSAGE_LOOT, 'You crafted ' .. item:getName() .. '.')
+        end
+    end
+end
+,
     checkCraft = function (self, craft, player)
         local canCraft = true
-
         if craft.vocation then
             if craft.vocation ~= 'None' and craft.vocation ~= self:getVocation(player) then
                 canCraft = false
             end
         end
-
+    
         for id, qtd in pairs(craft.requireToCraft) do
-            if type(id) == "number" then
+            if id == 3043 then
+                local bankBalance = player:getBankBalance()
+                if bankBalance < qtd then
+                    print("Not enough crystal coins in bank.")  -- Debug message
+                    canCraft = false
+                end
+            elseif type(id) == "number" then
                 local qtdPlayer = player:getItemCount(id)
                 if qtdPlayer < qtd then
+                    print("Not enough of item with ID:", id)  -- Debug message
                     canCraft = false
                 end
             elseif id == 'level' then
-                if player:getLevel() < qtd and player:getLevel() - qtd < 8 then
+                if player:getLevel() < qtd then
+                    print("Player level too low.")  -- Debug message
                     canCraft = false
                 end
             elseif id == 'skill' then
                 for skill, level in pairs(qtd) do
                     local playerSkill = player:getSkillLevel(skill)
-                    if playerSkill < level or playerSkill-level < 10 then
+                    if playerSkill < level then
+                        print("Skill level too low.")  -- Debug message
                         canCraft = false
                     end
                 end
             end
         end
         return canCraft
-    end,
+    end
+    ,
     getVocation = function (self, player)
         local playerVocation = player:getVocation():getName()
         if playerVocation == 'Elite Knight' or playerVocation == 'Knight' then

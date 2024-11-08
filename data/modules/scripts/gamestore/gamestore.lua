@@ -797,7 +797,7 @@ GameStore.Categories = {
 							addon = 3,
 							description = "{character}\n{info} colours can be changed using the Outfit dialog\n{info} includes basic outfit and 2 addons which can be selected individually\n\n<i>Let the power of nature take care of Your body.</i>",
 							type = GameStore.OfferTypes.OFFER_TYPE_OUTFIT,
-							home = true,
+							
 						},
 						{
 							icons = { "Outfit_Rootwalker_Male_Addon_3.png", "Outfit_Rootwalker_Female_Addon_3.png" },
@@ -807,7 +807,7 @@ GameStore.Categories = {
 							addon = 3,
 							description = "{character}\n{info} colours can be changed using the Outfit dialog\n{info} includes basic outfit and 2 addons which can be selected individually\n\n<i>Let the power of nature take care of Your body.</i>",
 							type = GameStore.OfferTypes.OFFER_TYPE_OUTFIT,
-							home = true,
+							
 						},
 						{
 							icons = { "Outfit_Rootwalker_Male_Addon_3.png", "Outfit_Rootwalker_Female_Addon_3.png" },
@@ -817,7 +817,7 @@ GameStore.Categories = {
 							addon = 3,
 							description = "{character}\n{info} colours can be changed using the Outfit dialog\n{info} includes basic outfit and 2 addons which can be selected individually\n\n<i>Let the power of nature take care of Your body.</i>",
 							type = GameStore.OfferTypes.OFFER_TYPE_OUTFIT,
-							home = true,
+							
 						},
 						{
 							icons = { "Outfit_Rootwalker_Male_Addon_3.png", "Outfit_Rootwalker_Female_Addon_3.png" },
@@ -827,9 +827,60 @@ GameStore.Categories = {
 							addon = 3,
 							description = "{character}\n{info} colours can be changed using the Outfit dialog\n{info} includes basic outfit and 2 addons which can be selected individually\n\n<i>Let the power of nature take care of Your body.</i>",
 							type = GameStore.OfferTypes.OFFER_TYPE_OUTFIT,
+							
+						},
+						{
+							icons = { "Outfit_Rootwalker_Male_Addon_3.png", "Outfit_Rootwalker_Female_Addon_3.png" },
+							name = "Full Heavenly Physical Outfit",
+							price = 5000,
+							sexId = { female = 1790, male = 1792 },
+							addon = 3,
+							description = "{character}\n{info} colours can be changed using the Outfit dialog\n{info} includes basic outfit and 2 addons which can be selected individually\n\n<i>Let the power of nature take care of Your body.</i>",
+							type = GameStore.OfferTypes.OFFER_TYPE_OUTFIT,
+							home = true,
+						},
+	{
+							icons = { "Outfit_Rootwalker_Male_Addon_3.png", "Outfit_Rootwalker_Female_Addon_3.png" },
+							name = "Full Heavenly Energy Outfit",
+							price = 5000,
+							sexId = { female = 1794, male = 1793 },
+							addon = 3,
+							description = "{character}\n{info} colours can be changed using the Outfit dialog\n{info} includes basic outfit and 2 addons which can be selected individually\n\n<i>Let the power of nature take care of Your body.</i>",
+							type = GameStore.OfferTypes.OFFER_TYPE_OUTFIT,
+							home = true,
+						},
+	{
+							icons = { "Outfit_Rootwalker_Male_Addon_3.png", "Outfit_Rootwalker_Female_Addon_3.png" },
+							name = "Full Heavenly Earth Outfit",
+							price = 5000,
+							sexId = { female = 1796, male = 1795 },
+							addon = 3,
+							description = "{character}\n{info} colours can be changed using the Outfit dialog\n{info} includes basic outfit and 2 addons which can be selected individually\n\n<i>Let the power of nature take care of Your body.</i>",
+							type = GameStore.OfferTypes.OFFER_TYPE_OUTFIT,
+							home = true,
+						},
+	{
+							icons = { "Outfit_Rootwalker_Male_Addon_3.png", "Outfit_Rootwalker_Female_Addon_3.png" },
+							name = "Full Heavenly Fire Outfit",
+							price = 5000,
+							sexId = { female = 1798, male = 1797 },
+							addon = 3,
+							description = "{character}\n{info} colours can be changed using the Outfit dialog\n{info} includes basic outfit and 2 addons which can be selected individually\n\n<i>Let the power of nature take care of Your body.</i>",
+							type = GameStore.OfferTypes.OFFER_TYPE_OUTFIT,
+							home = true,
+						},
+{
+							icons = { "Outfit_Rootwalker_Male_Addon_3.png", "Outfit_Rootwalker_Female_Addon_3.png" },
+							name = "Full Heavenly Ice Outfit",
+							price = 5000,
+							sexId = { female = 1800, male = 1799 },
+							addon = 3,
+							description = "{character}\n{info} colours can be changed using the Outfit dialog\n{info} includes basic outfit and 2 addons which can be selected individually\n\n<i>Let the power of nature take care of Your body.</i>",
+							type = GameStore.OfferTypes.OFFER_TYPE_OUTFIT,
 							home = true,
 						},
 					},
+					
 						
 							},
 

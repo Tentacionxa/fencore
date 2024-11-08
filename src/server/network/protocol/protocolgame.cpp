@@ -8733,18 +8733,23 @@ void ProtocolGame::sendForgeSkillStats(NetworkMessage &msg) const {
 		double_t skill = 0;
 		if (std::shared_ptr<Item> item = player->getInventoryItem(slot); item) {
 			const ItemType &it = Item::items[item->getID()];
-			if (it.isWeapon()) {
-				skill = item->getFatalChance() * 100;
-			}
-			if (it.isArmor()) {
-				skill = item->getDodgeChance() * 100;
-			}
-			if (it.isHelmet()) {
-				skill = item->getMomentumChance() * 100;
-			}
-			if (it.isLegs()) {
-				skill = item->getTranscendenceChance() * 100;
-			}
+		if (it.isWeapon()) {
+    skill = item->getFatalChance() * 100;
+}
+if (it.isArmor()) {
+    skill = item->getDodgeChance() * 100;
+}
+if (it.isHelmet()) {
+    skill = item->getMomentumChance() * 100;
+}
+if (it.isLegs()) {
+    skill = item->getTranscendenceChance() * 100;
+}
+if (it.isFeet()) {
+    // Apply tier-based multiplier (0.2%) for each tier level on shoes
+    int tier = item->getTier(); // Assuming `getTier()` fetches the item’s tier
+    skill *= 1.0 + (tier * 0.002); // Increases skill by 0.2% per tier
+}
 		}
 
 		auto skillCast = static_cast<uint16_t>(skill);

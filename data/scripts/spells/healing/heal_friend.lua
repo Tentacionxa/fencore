@@ -7,8 +7,8 @@ combat:setParameter(COMBAT_PARAM_AGGRESSIVE, false)
 
 function onGetFormulaValues(player, level, maglevel)
 	if level >= 2000 then
-	local min = (level) + (maglevel * 14)
-									local max = (level) + (maglevel * 24)
+	local min = (level) + (maglevel * 24)
+									local max = (level) + (maglevel * 60)
 									return -min, -max
 	else if  level >= 1500  and level <= 1999 then
 

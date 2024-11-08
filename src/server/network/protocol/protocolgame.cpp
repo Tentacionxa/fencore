@@ -8746,9 +8746,9 @@ if (it.isLegs()) {
     skill = item->getTranscendenceChance() * 100;
 }
 if (it.isFeet()) {
-    // Apply tier-based multiplier (0.2%) for each tier level on shoes
-    int tier = item->getTier(); // Assuming `getTier()` fetches the item’s tier
-    skill *= 1.0 + (tier * 0.002); // Increases skill by 0.2% per tier
+    // Ensure item tier affects the skill as intended (0.2% per tier)
+    skill *= 1.0 + (itemTier * 2);
+    std::cout << "Applying tier multiplier for shoes. Tier: " << itemTier << ", Skill: " << skill << std::endl;
 }
 		}
 

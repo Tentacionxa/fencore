@@ -247,4 +247,9 @@
 	<mount id="245" clientid="1697" name="Blue Ship" speed="20" premium="no" type="store" />
 	<mount id="246" clientid="1698" name="Pirate Ship" speed="20" premium="no" type="store" />
 <mount id="247" clientid="1562" name="Cloudy Spirit" speed="20" premium="no" type="store" />
+	<mount id="248" clientid="1997" name="Ava Fame" speed="20" premium="no" type="store" />
+	<mount id="249" clientid="1998" name="Ava Earth" speed="20" premium="no" type="store" />
+	<mount id="250" clientid="1999" name="Ava Flame" speed="20" premium="no" type="store" />
+<mount id="251" clientid="2000" name="Ava Light" speed="20" premium="no" type="store" />
+<mount id="252" clientid="1801" name="Blood Strike" speed="20" premium="no" type="store" />
 </mounts>

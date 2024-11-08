@@ -1167,6 +1167,7 @@
 		<attribute key="description" value="It might have some strange effects"/>
 		<attribute key="weight" value="200"/>
 	</item>
+	
 	<item id="652" article="a" name="rotten heart of a tree">
 		<attribute key="weight" value="4500"/>
 	</item>
@@ -6756,21 +6757,6 @@
 		<attribute key="weight" value="680"/>
 		<attribute key="script" value="moveevent">
 			<attribute key="slot" value="necklace"/>
-		</attribute>
-	</item>
-	<item id="3022" article="an" name="ancient tiara">
-		<attribute key="primarytype" value="helmets"/>
-		<attribute key="weight" value="820"/>
-		<attribute key="imbuementslot" value="2">
-			<attribute key="mana leech" value="3"/>
-			<attribute key="skillboost axe" value="3"/>
-			<attribute key="skillboost sword" value="3"/>
-			<attribute key="skillboost club" value="3"/>
-			<attribute key="skillboost shielding" value="3"/>
-			<attribute key="skillboost distance" value="3"/>
-		</attribute>
-		<attribute key="script" value="moveevent">
-			<attribute key="slot" value="head"/>
 		</attribute>
 	</item>
 	<item id="3023" article="a" name="holy scarab">
@@ -57207,6 +57193,21 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 			<attribute key="vocation" value="Paladin;true, Royal Paladin"/>
 		</attribute>
 	</item>
+
+		<item id="46359" article="an" name="eternal night shadow necklace">
+		<attribute key="primarytype" value="amulets and necklaces"/>
+		<attribute key="showAttributes" value="1"/>
+		<attribute key="absorbpercentphysical" value="10"/>
+		<attribute key="absorbpercentenergy" value="18"/>
+		<attribute key="skilldist" value="5"/>
+		<attribute key="armor" value="5"/>
+		<attribute key="weight" value="650"/>
+		<attribute key="script" value="moveevent">
+			<attribute key="level" value="4000"/>
+			<attribute key="slot" value="necklace"/>
+			<attribute key="vocation" value="Paladin;true, Royal Paladin"/>
+		</attribute>
+	</item>
 	<item fromid="30346" toid="30351" name="RESERVED SPRITE"/>
 	<item id="30352" article="a" name="dead lost gnome">
 		<attribute key="duration" value="60"/>
@@ -57486,6 +57487,33 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="weight" value="500"/>
 		<attribute key="script" value="moveevent">
 			<attribute key="level" value="220"/>
+			<attribute key="slot" value="necklace"/>
+			<attribute key="vocation" value="Sorcerer;true, Druid;true, Master Sorcerer, Elder Druid"/>
+		</attribute>
+	</item>
+
+		<item id="46369" name="eternal night moon amulet">
+		<attribute key="primarytype" value="amulets and necklaces"/>
+		<attribute key="absorbpercentphysical" value="9"/>
+		<attribute key="absorbpercentfire" value="18"/>
+		<attribute key="magiclevelpoints" value="6"/>
+		<attribute key="armor" value="5"/>
+		<attribute key="weight" value="500"/>
+		<attribute key="script" value="moveevent">
+			<attribute key="level" value="4000"/>
+			<attribute key="slot" value="necklace"/>
+			<attribute key="vocation" value="Sorcerer;true, Druid;true, Master Sorcerer, Elder Druid"/>
+		</attribute>
+	</item>
+		<item id="46336" name="eternal night root amulet">
+		<attribute key="primarytype" value="amulets and necklaces"/>
+		<attribute key="absorbpercentphysical" value="9"/>
+		<attribute key="absorbpercentpoison" value="18"/>
+		<attribute key="magiclevelpoints" value="6"/>
+		<attribute key="armor" value="5"/>
+		<attribute key="weight" value="500"/>
+		<attribute key="script" value="moveevent">
+			<attribute key="level" value="4000"/>
 			<attribute key="slot" value="necklace"/>
 			<attribute key="vocation" value="Sorcerer;true, Druid;true, Master Sorcerer, Elder Druid"/>
 		</attribute>
@@ -58751,6 +58779,9 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	<item id="31482" article="a" name="galthen's chestplate"/>
 	<item id="31483" article="a" name="throne of scarlett etzel">
 		<attribute key="description" value="The Top os this throne bears the likeness of a giant cobra."/>
+	</item>
+		<item id="46095" article="a" name="forge chest">
+		<attribute key="description" value="This little treasure will treat you with sliver or exalted core"/>
 	</item>
 	<item id="31484" name="unknown item"/>
 	<item id="31485" article="a" name="scorpion">
@@ -71822,6 +71853,25 @@ Granted by TibiaGoals.com"/>
 			<attribute key="vocation" value="Knight;true, Elite Knight"/>
 		</attribute>
 	</item>
+	<item id="46355" article="a" name="eternal night demon ring">
+		<attribute key="primarytype" value="rings"/>
+		<attribute key="absorbpercentphysical" value="15"/>
+		<attribute key="absorbpercentfire" value="9"/>
+		<attribute key="absorbpercentearth" value="9"/>
+		<attribute key="absorbpercentenergy" value="9"/>
+		<attribute key="absorbpercentice" value="9"/>
+		<attribute key="skillclub" value="8"/>
+		<attribute key="skillaxe" value="8"/>
+		<attribute key="skillsword" value="8"/>
+		<attribute key="armor" value="5"/>
+		<attribute key="showattributes" value="1"/>
+		<attribute key="weight" value="95"/>
+		<attribute key="script" value="moveevent">
+			<attribute key="level" value="400"/>
+			<attribute key="slot" value="ring"/>
+			<attribute key="vocation" value="Knight;true, Elite Knight"/>
+		</attribute>
+	</item>
 	<item id="39179" article="a" name="spiritthorn ring">
 		<attribute key="primarytype" value="rings"/>
 		<attribute key="absorbpercentphysical" value="2"/>
@@ -71869,6 +71919,26 @@ Granted by TibiaGoals.com"/>
 		<attribute key="weight" value="85"/>
 		<attribute key="script" value="moveevent">
 			<attribute key="level" value="400"/>
+			<attribute key="slot" value="ring"/>
+			<attribute key="vocation" value="Paladin;true, Royal Paladin"/>
+		</attribute>
+	</item>
+
+	<item id="46368" article="a" name="eternal night shadow ring">
+		<attribute key="primarytype" value="rings"/>
+		<attribute key="absorbpercentfire" value="9"/>
+		<attribute key="absorbpercentearth" value="9"/>
+		<attribute key="absorbpercentenergy" value="9"/>
+		<attribute key="absorbpercentice" value="9"/>
+		<attribute key="absorbpercentholy" value="9"/>
+		<attribute key="absorbpercentdeath" value="9"/>
+		<attribute key="holymagiclevelpoints" value="3"/>
+		<attribute key="magiclevelpoints" value="3"/>
+		<attribute key="skilldist" value="6"/>
+		<attribute key="showattributes" value="1"/>
+		<attribute key="weight" value="85"/>
+		<attribute key="script" value="moveevent">
+			<attribute key="level" value="4000"/>
 			<attribute key="slot" value="ring"/>
 			<attribute key="vocation" value="Paladin;true, Royal Paladin"/>
 		</attribute>
@@ -71972,6 +72042,40 @@ Granted by TibiaGoals.com"/>
 			<attribute key="level" value="400"/>
 			<attribute key="slot" value="ring"/>
 			<attribute key="vocation" value="Druid;true, Elder Druid"/>
+		</attribute>
+	</item>
+		<item id="46342" article="a" name="eternal night root ring">
+		<attribute key="primarytype" value="rings"/>
+		<attribute key="absorbpercentfire" value="9"/>
+		<attribute key="absorbpercentearth" value="9"/>
+		<attribute key="absorbpercentice" value="9"/>
+		<attribute key="absorbpercentice" value="9"/>
+		<attribute key="healingmagiclevelpoints" value="5"/>
+		<attribute key="magiclevelpoints" value="5"/>
+		<attribute key="manaleechamount" value="600"/>
+		<attribute key="manaleechchance" value="100"/>
+		<attribute key="showattributes" value="1"/>
+		<attribute key="script" value="moveevent">
+			<attribute key="level" value="4000"/>
+			<attribute key="slot" value="ring"/>
+			<attribute key="vocation" value="Druid;true, Elder Druid"/>
+		</attribute>
+	</item>
+			<item id="46376" article="a" name="eternal night moon ring">
+		<attribute key="primarytype" value="rings"/>
+		<attribute key="absorbpercentfire" value="9"/>
+		<attribute key="absorbpercentearth" value="9"/>
+		<attribute key="absorbpercentenergy" value="9"/>
+		<attribute key="absorbpercentice" value="9"/>
+		<attribute key="healingmagiclevelpoints" value="5"/>
+		<attribute key="magiclevelpoints" value="5"/>
+		<attribute key="manaleechamount" value="600"/>
+		<attribute key="manaleechchance" value="100"/>
+		<attribute key="showattributes" value="1"/>
+		<attribute key="script" value="moveevent">
+			<attribute key="level" value="4000"/>
+			<attribute key="slot" value="ring"/>
+			<attribute key="vocation" value="Sorcerer;true, Master Sorcerer"/>
 		</attribute>
 	</item>
 	<item id="39188" article="an" name="arboreal ring">
@@ -72178,6 +72282,21 @@ Granted by TibiaGoals.com"/>
 		<attribute key="weight" value="480"/>
 		<attribute key="script" value="moveevent">
 			<attribute key="level" value="200"/>
+			<attribute key="slot" value="necklace"/>
+			<attribute key="vocation" value="Knight;true, Elite Knight"/>
+		</attribute>
+	</item>
+		<item id="46346" article="an" name="eternal night demon amulet">
+		<attribute key="primarytype" value="amulets and necklaces"/>
+		<attribute key="absorbpercentphysical" value="15"/>
+		<attribute key="absorbpercentice" value="18"/>
+		<attribute key="skillclub" value="6"/>
+		<attribute key="skillaxe" value="6"/>
+		<attribute key="skillsword" value="6"/>
+		<attribute key="showattributes" value="1"/>
+		<attribute key="weight" value="480"/>
+		<attribute key="script" value="moveevent">
+			<attribute key="level" value="4000"/>
 			<attribute key="slot" value="necklace"/>
 			<attribute key="vocation" value="Knight;true, Elite Knight"/>
 		</attribute>
@@ -81562,6 +81681,31 @@ Granted by TibiaGoals.com"/>
 			<attribute key="vocation" value="Knight;true, Elite Knight"/>
 		</attribute>
 	</item>
+
+	<item id="49277" article="a" name="enchanted undead greaves">
+		<attribute key="primarytype" value="legs"/>
+		<attribute key="absorbpercentphysical" value="20"/>
+		<attribute key="absorbpercentdeath" value="13"/>
+		<attribute key="skillaxe" value="10"/>
+		<attribute key="skillclub" value="10"/>
+		<attribute key="skillsword" value="10"/>
+		<attribute key="armor" value="23"/>
+		<attribute key="weight" value="3800"/>
+		<attribute key="augments" value="1">
+			<attribute key="avatar of steel" value="cooldown">
+				<attribute key="value" value="900000" />
+			</attribute>
+			<attribute key="fierce beserk" value="critical extra damage">
+				<attribute key="value" value="18" />
+			</attribute>
+		</attribute>
+		<attribute key="script" value="moveevent">
+			<attribute key="level" value="4000"/>
+			<attribute key="slot" value="legs"/>
+			<attribute key="vocation" value="Knight;true, Elite Knight"/>
+		</attribute>
+	</item>
+
 <item id="46350" name="eternal night demon boots">
 		<attribute key="absorbpercentphysical" value="14"/>
 		<attribute key="absorbpercentfire" value="14"/>
@@ -81577,6 +81721,25 @@ Granted by TibiaGoals.com"/>
 		<attribute key="script" value="moveevent">
 			<attribute key="slot" value="feet"/>
 			<attribute key="level" value="2500"/>
+			<attribute key="vocation" value="Knight;true, Elite Knight"/>
+		</attribute>
+	</item>
+
+	<item id="49278" name="enchanted undead boots">
+		<attribute key="absorbpercentphysical" value="20"/>
+		<attribute key="absorbpercentfire" value="20"/>
+		<attribute key="skillclub" value="7"/>
+		<attribute key="skillaxe" value="7"/>
+		<attribute key="skillsword" value="7"/>
+		<attribute key="speed" value="30"/>
+		<attribute key="armor" value="12"/>
+		<attribute key="weight" value="1300"/>
+		<attribute key="imbuementslot" value="1">
+			<attribute key="increase speed" value="3"/>
+		</attribute>
+		<attribute key="script" value="moveevent">
+			<attribute key="slot" value="feet"/>
+			<attribute key="level" value="4000"/>
 			<attribute key="vocation" value="Knight;true, Elite Knight"/>
 		</attribute>
 	</item>
@@ -81651,6 +81814,35 @@ Granted by TibiaGoals.com"/>
 			<attribute key="vocation" value="Paladin;true, Royal Paladin"/>
 		</attribute>
 	</item>
+
+	<item id="49251" article="an" name="sentinel's visage">
+		<attribute key="primarytype" value="helmets"/>
+		<attribute key="absorbpercentphysical" value="16"/>
+		<attribute key="absorbpercentfire" value="16"/>
+		<attribute key="absorbpercentice" value="16"/>
+		<attribute key="absorbpercentpoison" value="16"/>
+		<attribute key="absorbpercentenergy" value="16"/>
+		<attribute key="absorbpercentdeath" value="16"/>
+		<attribute key="absorbpercentholy" value="16"/>
+		<attribute key="skilldist" value="12"/>
+		<attribute key="armor" value="29"/>
+		<attribute key="weight" value="3900"/>
+		<attribute key="imbuementslot" value="2">
+			<attribute key="mana leech" value="3"/>
+			<attribute key="skillboost axe" value="3"/>
+			<attribute key="skillboost sword" value="3"/>
+			<attribute key="skillboost club" value="3"/>
+			<attribute key="skillboost shielding" value="3"/>
+			<attribute key="skillboost distance" value="3"/>
+			<attribute key="skillboost magic level" value="2"/>
+		</attribute>
+		<attribute key="script" value="moveevent">
+			<attribute key="level" value="4000"/>
+			<attribute key="slot" value="head"/>
+			<attribute key="vocation" value="Paladin;true, Royal Paladin"/>
+		</attribute>
+	</item>
+
 <item id="46341" article="an" name="eternal night root mask">
 		<attribute key="primarytype" value="helmets"/>
 		<attribute key="absorbpercentice" value="15"/>
@@ -81808,7 +82000,7 @@ Granted by TibiaGoals.com"/>
                 <attribute key="primarytype" value="statues"/>
                 <attribute key="description" value="You can train your skills by using training weapons with this exercise tower."/>
                 <attribute key="type" value="dummy">
-                        <attribute key="rate" value="130"/>
+                        <attribute key="rate" value="135"/>
                 </attribute>
         </item>
 
@@ -81851,8 +82043,8 @@ Granted by TibiaGoals.com"/>
 	</item>
 <item id="46412" article="a" name="explorer backpack">
 		<attribute key="primarytype" value="containers"/>
-		<attribute key="containersize" value="26"/>
-		<attribute key="weight" value="1500"/>
+		<attribute key="containersize" value="50"/>
+		<attribute key="weight" value="15"/>
 		<attribute key="imbuementslot" value="1">
 			<attribute key="increase capacity" value="3"/>
 		</attribute>
@@ -82703,6 +82895,31 @@ Granted by TibiaGoals.com"/>
 			<attribute key="vocation" value="Sorcerer;true, Master Sorcerer"/>
 		</attribute>
 	</item>
+
+	<item id="49250" article="an" name="enchanted flamy grimoire">
+		<attribute key="primarytype" value="spellbooks"/>
+		<attribute key="weaponType" value="spellbook"/>
+		<attribute key="absorbpercentfire" value="28"/>
+		<attribute key="absorbpercentenergy" value="28"/>
+		<attribute key="magiclevelpoints" value="28" />
+		<attribute key="firemagiclevelpoints" value="28"/>
+		<attribute key="energymagiclevelpoints" value="28"/>
+		<attribute key="defense" value="40"/>
+		<attribute key="weight" value="2600"/>
+		<attribute key="imbuementslot" value="1">
+			<attribute key="elemental protection death" value="3"/>
+			<attribute key="elemental protection earth" value="3"/>
+			<attribute key="elemental protection ice" value="3"/>
+			<attribute key="elemental protection energy" value="3"/>
+			<attribute key="elemental protection holy" value="3"/>
+			<attribute key="skillboost shielding" value="3"/>
+		</attribute>
+		<attribute key="script" value="moveevent">
+			<attribute key="level" value="4000"/>
+			<attribute key="slot" value="shield"/>
+			<attribute key="vocation" value="Sorcerer;true, Master Sorcerer"/>
+		</attribute>
+	</item>
     <item id="46370" article="a" name="eternal night moon mantle">
 		<attribute key="primarytype" value="armors"/>
 		<attribute key="absorbpercentphysical" value="6"/>
@@ -82741,6 +82958,27 @@ Granted by TibiaGoals.com"/>
 			<attribute key="level" value="2300"/>
 			<attribute key="slot" value="head"/>
 			<attribute key="vocation" value="Sorcerer;true, Master Sorcerer"/>
+		</attribute>
+	</item>
+
+	<item id="3022" article="an" name="ancient tiara">
+		<attribute key="primarytype" value="helmets"/>
+		<attribute key="absorbpercentphysical" value="15"/>
+		<attribute key="absorbpercentpoison" value="18"/>
+		<attribute key="magiclevelpoints" value="12"/>
+		<attribute key="firemagiclevelpoints" value="8"/>
+		<attribute key="icemagiclevelpoints" value="8"/>
+		<attribute key="armor" value="18"/>
+		<attribute key="weight" value="1500"/>
+		<attribute key="imbuementslot" value="2">
+			<attribute key="mana leech" value="3"/>
+			<attribute key="skillboost shielding" value="3"/>
+			<attribute key="skillboost magic level" value="3"/>
+		</attribute>
+		<attribute key="script" value="moveevent">
+			<attribute key="level" value="4000"/>
+			<attribute key="slot" value="head"/>
+			<attribute key="vocation" value="Sorcerer;true,Druid;true,Elder Druid, Master Sorcerer"/>
 		</attribute>
 	</item>
     <item id="46373" name="eternal night moon galoshes">
@@ -82784,142 +83022,6 @@ Granted by TibiaGoals.com"/>
 			<attribute key="vocation" value="Sorcerer;true, Master Sorcerer"/>
 		</attribute>
 	</item>
-    <item id="46369" name="eternal night moon amulet">
-		<attribute key="weight" value="500"/>
-		<attribute key="script" value="moveevent">
-			<attribute key="level" value="2300"/>
-			<attribute key="slot" value="necklace"/>
-			<attribute key="vocation" value="Sorcerer;true, Druid;true, Master Sorcerer, Elder Druid"/>
-		</attribute>
-	</item>
-	<item id="49182" name="enchanted eternal night moon amulet">
-		<attribute key="primarytype" value="amulets and necklaces"/>
-		<attribute key="absorbpercentphysical" value="6"/>
-		<attribute key="absorbpercentpoison" value="17"/>
-		<attribute key="transformDeEquipTo" value="49183"/>
-		<attribute key="magiclevelpoints" value="5"/>
-		<attribute key="showduration" value="1"/>
-		<attribute key="duration" value="7200"/>
-		<attribute key="decayTo" value="49369"/>
-		<attribute key="armor" value="3"/>
-		<attribute key="weight" value="500"/>
-		<attribute key="script" value="moveevent">
-			<attribute key="level" value="2300"/>
-			<attribute key="slot" value="necklace"/>
-			<attribute key="vocation" value="Sorcerer;true, Druid;true, Master Sorcerer, Elder Druid"/>
-		</attribute>
-	</item>
-	<item id="49183" name="enchanted eternal night moon amulet">
-		<attribute key="primarytype" value="amulets and necklaces"/>
-		<attribute key="weight" value="500"/>
-		<attribute key="transformEquipTo" value="49182"/>
-		<attribute key="stopduration" value="1"/>
-		<attribute key="showduration" value="1"/>
-		<attribute key="script" value="moveevent">
-			<attribute key="level" value="2300"/>
-			<attribute key="slot" value="necklace"/>
-			<attribute key="vocation" value="Sorcerer;true, Druid;true, Master Sorcerer, Elder Druid"/>
-		</attribute>
-	</item>
-
-
-
-    <item id="46368" article="a" name="charged eternal night shadow ring">
-		<attribute key="primarytype" value="rings"/>
-		<attribute key="transformEquipTo" value="49184"/>
-		<attribute key="stopduration" value="1"/>
-		<attribute key="showduration" value="1"/>
-		<attribute key="showattributes" value="1"/>
-		<attribute key="weight" value="90"/>
-		<attribute key="script" value="moveevent">
-			<attribute key="level" value="2300"/>
-			<attribute key="slot" value="ring"/>
-			<attribute key="vocation" value="Sorcerer;true, Master Sorcerer"/>
-		</attribute>
-	</item>
-	<item id="49184" article="a" name="charged eternal night shadow ring">
-		<attribute key="primarytype" value="rings"/>
-		<attribute key="absorbpercentfire" value="8"/>
-		<attribute key="absorbpercentearth" value="8"/>
-		<attribute key="absorbpercentenergy" value="8"/>
-		<attribute key="absorbpercentice" value="8"/>
-		<attribute key="firemagiclevelpoints" value="4"/>
-		<attribute key="energymagiclevelpoints" value="4"/>
-		<attribute key="magiclevelpoints" value="4"/>
-		<attribute key="manaleechamount" value="1000"/>
-		<attribute key="manaleechchance" value="100"/>
-		<attribute key="transformDeEquipTo" value="46368"/>
-		<attribute key="showduration" value="1"/>
-		<attribute key="showattributes" value="1"/>
-		<attribute key="duration" value="10800"/>
-		<attribute key="decayTo" value="49185"/>
-		<attribute key="weight" value="90"/>
-		<attribute key="script" value="moveevent">
-			<attribute key="level" value="2300"/>
-			<attribute key="slot" value="ring"/>
-			<attribute key="vocation" value="Sorcerer;true, Master Sorcerer"/>
-		</attribute>
-	</item>
-	<item id="49185" article="an" name="eternal night shadow ring">
-		<attribute key="primarytype" value="rings"/>
-		<attribute key="absorbpercentfire" value="6"/>
-		<attribute key="absorbpercentearth" value="6"/>
-		<attribute key="absorbpercentenergy" value="6"/>
-		<attribute key="absorbpercentice" value="6"/>
-		<attribute key="firemagiclevelpoints" value="4"/>
-		<attribute key="energymagiclevelpoints" value="4"/>
-		<attribute key="showattributes" value="1"/>
-		<attribute key="weight" value="90"/>
-		<attribute key="script" value="moveevent">
-			<attribute key="level" value="2300"/>
-			<attribute key="slot" value="ring"/>
-			<attribute key="vocation" value="Sorcerer;true, Master Sorcerer"/>
-		</attribute>
-	</item>
-
-    <item id="49186" article="an" name="enchanted eternal night root amulet">
-		<attribute key="primarytype" value="amulets and necklaces"/>
-		<attribute key="weight" value="480"/>
-		<attribute key="transformEquipTo" value="49186"/>
-		<attribute key="stopduration" value="1"/>
-		<attribute key="showduration" value="1"/>
-		<attribute key="script" value="moveevent">
-			<attribute key="level" value="2300"/>
-			<attribute key="slot" value="necklace"/>
-			<attribute key="vocation" value="Druid;true, Elder Druid"/>
-		</attribute>
-	</item>
-	<item id="49187" article="an" name="enchanted eternal night root amulet">
-		<attribute key="primarytype" value="amulets and necklaces"/>
-		<attribute key="absorbpercentphysical" value="11"/>
-        		<attribute key="absorbpercentearth" value="9"/>
-		<attribute key="absorbpercentice" value="9"/>
-		<attribute key="absorbpercentice" value="16"/>
-		<attribute key="transformDeEquipTo" value="49186"/>
-		<attribute key="showduration" value="1"/>
-		<attribute key="showattributes" value="1"/>
-		<attribute key="duration" value="7200"/>
-		<attribute key="decayTo" value="39235"/>
-		<attribute key="weight" value="480"/>
-		<attribute key="script" value="moveevent">
-			<attribute key="level" value="200"/>
-			<attribute key="slot" value="necklace"/>
-			<attribute key="vocation" value="Druid;true, Elder Druid"/>
-		</attribute>
-	</item>
-	<item id="46336" article="a" name="eternal night root amulet">
-		<attribute key="primarytype" value="amulets and necklaces"/>
-		<attribute key="weight" value="480"/>
-		<attribute key="script" value="moveevent">
-			<attribute key="absorbpercentearth" value="15"/>
-		<attribute key="absorbpercentice" value="15"/>
-				<attribute key="magiclevelpoints" value="6"/>
-			<attribute key="level" value="2300"/>
-			<attribute key="slot" value="necklace"/>
-			<attribute key="vocation" value="Druid;true, Elder Druid"/>
-		</attribute>
-	</item>
-
 <item id="46345" article="a" name="eternal night demon plate">
 		<attribute key="primarytype" value="armors"/>
 		<attribute key="absorbpercentphysical" value="18"/>
@@ -83540,6 +83642,31 @@ Granted by TibiaGoals.com"/>
 			<attribute key="vocation" value="Paladin;true, Royal Paladin"/>
 		</attribute>
 	</item>
+
+	<item id="49276" article="an" name="enchanted boots">
+		<attribute key="primarytype" value="boots"/>
+		<attribute key="absorbpercentphysical" value="17"/>
+		<attribute key="skilldist" value="14"/>
+		<attribute key="speed" value="20"/>
+		<attribute key="armor" value="21"/>
+		<attribute key="weight" value="3900"/>
+		<attribute key="imbuementslot" value="2">
+			<attribute key="mana leech" value="5"/>
+			<attribute key="skillboost axe" value="3"/>
+			<attribute key="skillboost sword" value="3"/>
+			<attribute key="skillboost club" value="3"/>
+			<attribute key="skillboost shielding" value="3"/>
+			<attribute key="skillboost distance" value="3"/>
+			<attribute key="skillboost magic level" value="2"/>
+		</attribute>
+		<attribute key="script" value="moveevent">
+			<attribute key="level" value="4000"/>
+			<attribute key="slot" value="feet"/>
+			<attribute key="vocation" value="Paladin;true, Royal Paladin"/>
+		</attribute>
+	</item>
+
+
 	<item id="46399" article="a" name="ring of ice">
 		<attribute key="primarytype" value="rings"/>
 			<attribute key="showCharges" value="1"/>
@@ -84060,45 +84187,15 @@ Granted by TibiaGoals.com"/>
 	</item>
 
 
-
-<item id="49250" article="an" name="enchanted flamy grimoire">
-		<attribute key="primarytype" value="spellbooks"/>
-		<attribute key="weaponType" value="spellbook"/>
-		<attribute key="absorbpercentfire" value="18"/>
-		<attribute key="absorbpercentenergy" value="18"/>
-		<attribute key="magiclevelpoints" value="16" />
-		<attribute key="firemagiclevelpoints" value="6"/>
-		<attribute key="energymagiclevelpoints" value="6"/>
-		<attribute key="defense" value="36"/>
-		<attribute key="weight" value="2600"/>
-		<attribute key="imbuementslot" value="2">
-			<attribute key="elemental protection death" value="3"/>
-			<attribute key="elemental protection earth" value="3"/>
-			<attribute key="elemental protection ice" value="3"/>
-			<attribute key="elemental protection energy" value="3"/>
-			<attribute key="elemental protection holy" value="3"/>
-			<attribute key="skillboost shielding" value="3"/>
-		</attribute>
-		<attribute key="script" value="moveevent">
-			<attribute key="level" value="4000"/>
-			<attribute key="slot" value="shield"/>
-			<attribute key="vocation" value="Sorcerer;true, Master Sorcerer"/>
-		</attribute>
-	</item>
-
-
-
-
-
 	<item id="49253" article="a" name="enchanted icy grimoire">
 		<attribute key="description" value="It shows your spells and can also shield against attacks when worn"/>
 		<attribute key="weaponType" value="spellbook"/>
-		<attribute key="absorbpercentearth" value="18"/>
-		<attribute key="absorbpercentice" value="18"/>
-		<attribute key="magiclevelpoints" value="15"/>
-		<attribute key="healingmagiclevelpoints" value="7"/>
-		<attribute key="icemagiclevelpoints" value="6"/>
-		<attribute key="defense" value="32"/>
+		<attribute key="absorbpercentearth" value="28"/>
+		<attribute key="absorbpercentice" value="28"/>
+		<attribute key="magiclevelpoints" value="28"/>
+		<attribute key="healingmagiclevelpoints" value="28"/>
+		<attribute key="icemagiclevelpoints" value="28"/>
+		<attribute key="defense" value="40"/>
 		<attribute key="weight" value="2850"/>
 <attribute key="imbuementslot" value="1">
 			<attribute key="elemental protection death" value="3"/>

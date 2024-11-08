@@ -137,7 +137,7 @@ local function creatureSayCallback(npc, creature, type, message)
 
                 -- Set storage to indicate ritual completion and teleport the player
                 player:setStorageValue(51857, 1)
-                player:teleportTo(Position(32945, 33511, 4))
+                player:teleportTo(Position(32945, 33497, 4))
                 player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
                 npcHandler:say("You did the right thing...", npc, creature)
             end

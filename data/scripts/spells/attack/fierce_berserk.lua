@@ -10,8 +10,8 @@ combat:setArea(createCombatArea(AREA_SQUARE1X1))
 function onGetFormulaValues(player, skill, attack, factor)
 	local level = player:getLevel()
 
-	local min = (level / 5) + (skill + 2 * attack) * 1.80
-	local max = (level / 5) + (skill + 2 * attack) * 3.20
+	local min = (level / 5) + (skill + 2 * attack) * 2.10
+	local max = (level / 5) + (skill + 2 * attack) * 3.40
 	return -min * 1.5, -max * 3.50 -- TODO : Use New Real Formula instead of an %
 end
 

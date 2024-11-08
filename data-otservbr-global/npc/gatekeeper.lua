@@ -80,6 +80,7 @@ local function creatureSayCallback(npc, creature, type, message)
 				return true
 			elseif player:getStorageValue(51857) <= 0 then
 				local vocationId = player:getVocation():getId()
+				local currentLevel = player:getLevel()
 				local requiredStorages = {921004, 921005, 921006, 921007, 921008, 921013}
 				local allStoragesSet = true
 				for _, storageId in ipairs(requiredStorages) do
@@ -92,16 +93,14 @@ local function creatureSayCallback(npc, creature, type, message)
 				if allStoragesSet then
 					if vocationId == 4 or vocationId == 8 then
 						-- Knight or Elite Knight settings
-						player:setLevel(5000)
-						player:setMaxHealth(75065)
-						player:setMaxMana(25050)
+						player:setMaxHealth(currentLevel * 15 + 30000)
+						player:setMaxMana(currentLevel * 5 + 10000)
 
 					elseif vocationId == 2 or vocationId == 6 then
 						-- Druid or Elder Druid settings
 						if player:getStorageValue(921001) == 1 and player:getStorageValue(921012) == 1 then
-							player:setLevel(5000)
-							player:setMaxHealth(25145)
-							player:setMaxMana(149850)
+							player:setMaxHealth(currentLevel * 5 + 10000)
+							player:setMaxMana(currentLevel * 30 + 60000)
 						else
 							npcHandler:say("You haven't met all the requirements yet.", npc, creature)
 							return true
@@ -110,9 +109,8 @@ local function creatureSayCallback(npc, creature, type, message)
 					elseif vocationId == 1 or vocationId == 5 then
 						-- Sorcerer or Master Sorcerer settings
 						if player:getStorageValue(921011) == 1 and player:getStorageValue(921002) == 1 then
-							player:setLevel(5000)
-							player:setMaxHealth(25145)
-							player:setMaxMana(149850)
+							player:setMaxHealth(currentLevel * 5 + 10000)
+							player:setMaxMana(currentLevel * 30 + 60000)
 						else
 							npcHandler:say("You haven't met all the requirements yet.", npc, creature)
 							return true
@@ -121,9 +119,8 @@ local function creatureSayCallback(npc, creature, type, message)
 					elseif vocationId == 3 or vocationId == 7 then
 						-- Paladin or Royal Paladin settings
 						if player:getStorageValue(921003) == 1 and player:getStorageValue(921009) == 1 and player:getStorageValue(921010) == 1 then
-							player:setLevel(5000)
-							player:setMaxHealth(50105)
-							player:setMaxMana(74970)
+							player:setMaxHealth(currentLevel * 10 + 20000)
+							player:setMaxMana(currentLevel * 15 + 30000)
 						else
 							npcHandler:say("You haven't met all the requirements yet.", npc, creature)
 							return true
@@ -136,7 +133,7 @@ local function creatureSayCallback(npc, creature, type, message)
 
 					-- Set storage to indicate ritual completion and teleport the player
 					player:setStorageValue(51857, 1)
-					player:teleportTo(Position(32945, 33511, 4))
+					player:teleportTo(Position(32945, 33497, 4))
 					player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 
 					npcHandler:say("You did the right thing...", npc, creature)

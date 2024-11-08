@@ -16,7 +16,7 @@ monster.outfit = {
 monster.health = 6000000
 monster.maxHealth = 6000000
 monster.race = "undead"
-monster.corpse = 46264
+monster.corpse = 49318
 monster.speed = 250
 monster.manaCost = 0
 
@@ -81,34 +81,49 @@ monster.voices = {
 }
 
 monster.loot = {
-	{id = 46315, chance = 20000, maxCount = 60}, 
-{id = 46314, chance = 20000, maxCount = 5},
- {id = 46334, chance = 500},
-  {id = 46072, chance = 200}, 
-	{id = 46255, chance = 30},
-{id = 46323, chance = 50},
-{id = 46316, chance = 100000, maxCount = 1 },
-{id = 43871, chance = 60},
-{id = 43870, chance = 100},
-{id = 43869, chance = 60},
-{id = 43868, chance = 100},
+	{id = 47418, chance = 150, maxCount = 1}, 
+	{id = 47419, chance = 50, maxCount = 1},
+	{id = 47425, chance = 150, maxCount = 1},
+	{id = 47426, chance = 50, maxCount = 1},
+	{id = 47429, chance = 20, maxCount = 1},
+	{id = 47435, chance = 25, maxCount = 1},
+	{id = 47446, chance = 500, maxCount = 1},
+	{id = 47458, chance = 175, maxCount = 1},
+	{id = 47472, chance = 125, maxCount = 1},
+	{id = 47485, chance = 200, maxCount = 1},
+	{id = 47492, chance = 250, maxCount = 1},
+	{id = 47499, chance = 450, maxCount = 1},
+	{id = 47505, chance = 250, maxCount = 1},
+	{id = 47510, chance = 500, maxCount = 1},
+	{id = 47888, chance = 400, maxCount = 1},
+	{id = 47514, chance = 100, maxCount = 1},
+	{id = 47529, chance = 150, maxCount = 1},
+	{id = 47537, chance = 400, maxCount = 1},
+	{id = 47542, chance = 300, maxCount = 1},
+	{id = 47769, chance = 200, maxCount = 1},
+	{id = 49242, chance = 5, maxCount = 1},
+	{id = 46095, chance = 1000, maxCount = 3},
+	{id = 3043, chance = 1000000, maxCount = 2000},
+	{id = 5879, chance = 1000000, maxCount = 250},
+	{id = 5879, chance = 1000000, maxCount = 250},
+	{id = 24390, chance = 1000000, maxCount = 250},
 }
 
 
 monster.attacks = {
 	{name ="melee", interval = 2000, chance = 100, minDamage = -10000, maxDamage = -20750},
-	{name ="combat", interval = 2000, chance = 20, type = COMBAT_ICEDAMAGE, minDamage = -9000, maxDamage = -22000, radius = 4, effect = 2, target = false},
-	{name ="combat", interval = 2000, chance = 30, type = COMBAT_ICEDAMAGE, minDamage = -9000, maxDamage = -23000, range = 4, radius = 4, effect = 12, target = true},
+	{name ="combat", interval = 2000, chance = 50, type = COMBAT_ICEDAMAGE, minDamage = -9000, maxDamage = -22000, radius = 4, effect = 2, target = false},
+	{name ="combat", interval = 2000, chance = 40, type = COMBAT_ICEDAMAGE, minDamage = -9000, maxDamage = -23000, range = 4, radius = 4, effect = 12, target = true},
 	{name ="combat", interval = 2000, chance = 40, type = COMBAT_ICEDAMAGE, minDamage = -9000, maxDamage = -24000, length = 10, spread = 3, effect = CONST_ME_POFF, target = false},
-	{name ="combat", interval = 2000, chance = 30, type = COMBAT_LIFEDRAIN, minDamage = -9000, maxDamage = -21000, length = 10, spread = 3, effect = 34, target = false},
-	{name ="speed", interval = 2000, chance = 20, speedChange = -600, radius = 7, effect = 24, target = false, duration = 20000},
+	{name ="combat", interval = 2000, chance = 40, type = COMBAT_LIFEDRAIN, minDamage = -9000, maxDamage = -21000, length = 10, spread = 3, effect = 34, target = false},
+	{name ="speed", interval = 2000, chance = 50, speedChange = -600, radius = 7, effect = 24, target = false, duration = 20000},
 }
 
 
 monster.defenses = {
 	defense = 105,
 	armor = 105,
-	{name ="combat", interval = 3000, chance = 10, type = COMBAT_HEALING, minDamage = 700, maxDamage = 1500, effect = 236, target = false},
+	{name ="combat", interval = 3000, chance = 30, type = COMBAT_HEALING, minDamage = 5000, maxDamage = 10000, effect = 236, target = false},
 }
 
 monster.elements = {

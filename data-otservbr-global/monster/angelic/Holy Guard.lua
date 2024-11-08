@@ -26,8 +26,8 @@ monster.Bestiary = {
     Occurrence = 0,
     Locations = "Heaven",
 }
-monster.health = 200000
-monster.maxHealth = 200000
+monster.health = 240000
+monster.maxHealth = 240000
 monster.race = "venom"
 monster.corpse = 49318
 monster.speed = 110
@@ -74,6 +74,10 @@ monster.voices = {
 }
 
 monster.loot = {
+	{ id = 3043, chance = 60000, maxCount = 7 }, -- crystal coin
+	{ id = 47375, chance = 500},
+	{ id = 46095, chance = 100},
+	{ id = 47374, chance = 500},
 	{ id = 49282, chance = 10},
 	{ id = 49283, chance = 10},
 	{ id = 49284, chance = 10},
@@ -97,15 +101,15 @@ monster.defenses = {
 }
 
 monster.elements = {
-	{ type = COMBAT_PHYSICALDAMAGE, percent = -20 },
+	{ type = COMBAT_PHYSICALDAMAGE, percent = -40 },
 	{ type = COMBAT_ENERGYDAMAGE, percent = -20 },
-	{ type = COMBAT_EARTHDAMAGE, percent = -20 },
-	{ type = COMBAT_FIREDAMAGE, percent = -20 },
-	{ type = COMBAT_LIFEDRAIN, percent = -20 },
-	{ type = COMBAT_MANADRAIN, percent = -20 },
-	{ type = COMBAT_DROWNDAMAGE, percent = -20 },
+	{ type = COMBAT_EARTHDAMAGE, percent = -10 },
+	{ type = COMBAT_FIREDAMAGE, percent = -30 },
+	{ type = COMBAT_LIFEDRAIN, percent = 0 },
+	{ type = COMBAT_MANADRAIN, percent = 0 },
+	{ type = COMBAT_DROWNDAMAGE, percent = 0 },
 	{ type = COMBAT_ICEDAMAGE, percent = -20 },
-	{ type = COMBAT_HOLYDAMAGE, percent = -20 },
+	{ type = COMBAT_HOLYDAMAGE, percent = -25 },
 	{ type = COMBAT_DEATHDAMAGE, percent = -20 },
 }
 
@@ -117,11 +121,10 @@ monster.immunities = {
 }
 
 mType.onAppear = function(monster, creature)
-	monster:setIcon("griishknight", CreatureIconCategory_Quests, CreatureIconQuests_WhiteCross, 80)
-		if monster:getType():isRewardBoss() then
-			monster:setReward(true)
-		end
+	if monster:getType():isRewardBoss() then
+		monster:setReward(true)
 	end
+end
 
 mType:register(monster)
 

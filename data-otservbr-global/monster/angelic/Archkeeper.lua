@@ -111,11 +111,10 @@ monster.immunities = {
 }
 
 mType.onAppear = function(monster, creature)
-	monster:setIcon("griishknight", CreatureIconCategory_Quests, CreatureIconQuests_WhiteCross, 80)
-		if monster:getType():isRewardBoss() then
-			monster:setReward(true)
-		end
+	if monster:getType():isRewardBoss() then
+		monster:setReward(true)
 	end
+end
 
 mType:register(monster)
 

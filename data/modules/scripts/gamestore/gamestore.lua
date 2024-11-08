@@ -2242,6 +2242,14 @@ GameStore.Categories = {
 		state = GameStore.States.STATE_NONE,
 		offers = {
 			{
+				icons = { "Cow.png" },
+				name = "Cow",
+				price = 500,
+				id = 253,
+				description = "{character}\n{speedboost}\n\n<i>This poor creature lost its owner. Take good care of it! </i>",
+				type = GameStore.OfferTypes.OFFER_TYPE_MOUNT,
+			},
+			{
 				icons = { "Gloothomotive.png" },
 				name = "Gloothomotive",
 				price = 430,

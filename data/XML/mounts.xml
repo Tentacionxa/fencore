@@ -252,4 +252,5 @@
 	<mount id="250" clientid="1999" name="Ava Flame" speed="20" premium="no" type="store" />
 <mount id="251" clientid="2000" name="Ava Light" speed="20" premium="no" type="store" />
 <mount id="252" clientid="1801" name="Blood Strike" speed="20" premium="no" type="store" />
+<mount id="253" clientid="1253" name="Cow" speed="20" premium="no" type="store" />
 </mounts>

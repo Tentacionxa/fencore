@@ -1,7 +1,7 @@
 local config = {
 	boss = {
 		name = "externity",
-		position = Position(32823, 33482, 4),
+		position = Position(32809, 33431, 4),
 	},
 	requiredLevel = 4000,
 	playerPositions = {
@@ -20,15 +20,15 @@ local config = {
 
 	},
 	monsters = {
-		{ name = "rift invader", pos = Position(32804, 33427, 4) },
-		{ name = "rift invader", pos = Position(32801, 33430, 4) },
-		{ name = "rift invader", pos = Position(32801, 33432, 4)},
-		{ name = "rift invader", pos = Position(32803, 33427, 4) },
-		{ name = "rift invader", pos = Position(32799, 33432, 4) },
-		{ name = "rift invader", pos = Position(32806, 33430, 4) },
-		{ name = "rift invader", pos = Position(32799, 33432, 4) },
-		{ name = "rift invader", pos = Position(32807, 33431, 4) },
-		{ name = "rift invader", pos = Position(32803, 33434, 4) },
+		{ name = "Broken Soul", pos = Position(32804, 33427, 4) },
+		{ name = "Broken Soul", pos = Position(32801, 33430, 4) },
+		{ name = "Broken Soul", pos = Position(32801, 33432, 4)},
+		{ name = "Broken Soul", pos = Position(32803, 33427, 4) },
+		{ name = "Broken Soul", pos = Position(32799, 33432, 4) },
+		{ name = "Broken Soul", pos = Position(32806, 33430, 4) },
+		{ name = "Broken Soul", pos = Position(32799, 33432, 4) },
+		{ name = "Broken Soul", pos = Position(32807, 33431, 4) },
+		{ name = "Broken Soul", pos = Position(32803, 33434, 4) },
 	},
 	specPos = {
 		from = Position(32789, 33414, 4),

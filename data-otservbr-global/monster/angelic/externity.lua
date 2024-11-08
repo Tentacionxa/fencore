@@ -65,25 +65,39 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{ text = "Join me in hell!!!!!!", yell = false },
+	{ text = "ODYN... PLEASE FORGIVE ME", yell = false },
 	{ text = "HWAHAHAHAHAHAHA!", yell = false },
-	{ text = "Let me take Your spirit!", yell = false },
+	{ text = "Angelic charm, energy, passion yes...", yell = false },
 }
 
 monster.summons = {}
 
 monster.loot = {
-	{ id = 3043, chance = 60000, maxCount = 1000 }, -- crystal coin
-{ id = 46359, chance = 500}, -- eternal night shadow necklace
-	{ id = 46368, chance = 500 }, -- eternal night shadow ring
-{ id = 46369, chance = 500 }, -- eternal night moon amulet
-{ id = 46376, chance = 500 }, -- eternal night moon ring
-{ id = 46355, chance = 500 }, -- eternal night demon ring
-{ id = 46346, chance = 500 }, -- eternal night demon amulet
-{ id = 46342, chance = 500 },-- eternal night root ring
-{ id = 46336, chance = 500 }, -- eternal night root amulet
-
-
+	{id = 47388, chance = 150, maxCount = 1}, 
+	{id = 47419, chance = 50, maxCount = 1},
+	{id = 47389, chance = 150, maxCount = 1},
+	{id = 47426, chance = 50, maxCount = 1},
+	{id = 47429, chance = 20, maxCount = 1},
+	{id = 47435, chance = 25, maxCount = 1},
+	{id = 47446, chance = 500, maxCount = 1},
+	{id = 46042, chance = 10, maxCount = 1},
+	{id = 47472, chance = 125, maxCount = 1},
+	{id = 47485, chance = 200, maxCount = 1},
+	{id = 46040, chance = 10, maxCount = 1},
+	{id = 47499, chance = 450, maxCount = 1},
+	{id = 47505, chance = 250, maxCount = 1},
+	{id = 47510, chance = 500, maxCount = 1},
+	{id = 47888, chance = 400, maxCount = 1},
+	{id = 46041, chance = 10, maxCount = 1},
+	{id = 47529, chance = 10, maxCount = 1},
+	{id = 47537, chance = 400, maxCount = 1},
+	{id = 47397, chance = 300, maxCount = 1},
+	{id = 47392, chance = 200, maxCount = 1},
+	{id = 49242, chance = 5, maxCount = 1},
+	{id = 46095, chance = 1000, maxCount = 3},
+	{id = 3043, chance = 1000000, maxCount = 2000},
+	{id = 5879, chance = 1000000, maxCount = 500},
+	{id = 46008, chance = 10},
 }
 
 monster.attacks = {

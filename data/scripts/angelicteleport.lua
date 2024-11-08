@@ -40,3 +40,21 @@ end
 
 cityTeleport:position(Position(32951, 33506, 4))
 cityTeleport:register()
+
+local thaisTeleport = MoveEvent()
+
+function thaisTeleport.onStepIn(creature, item, toPosition, fromPosition)
+    local player = creature:getPlayer()
+    if not player then
+        return true
+    end
+
+    player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Back to the main world...")
+    player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+    player:teleportTo(Position(32361, 32220, 7))
+
+    return true
+end
+
+thaisTeleport:position(Position(32934, 33484, 5))
+thaisTeleport:register()

@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Archwarrior")
 local monster = {}
 
 monster.description = "a archwarrior"
-monster.experience = 500000
+monster.experience = 480000
 monster.outfit = {
 	lookType = 1983,
 	lookHead = 0,
@@ -73,7 +73,11 @@ monster.voices = {
 }
 
 monster.loot = {
+	{ id = 3043, chance = 60000, maxCount = 6 }, -- crystal coin
+	{ id = 49164, chance = 500},
 { id = 46412, chance = 100000},
+{ id = 47368, chance = 50},
+{ id = 47370, chance = 50},
 	{ id = 49282, chance = 10},
 	{ id = 49283, chance = 10},
 	{ id = 49284, chance = 10},
@@ -117,11 +121,10 @@ monster.immunities = {
 }
 
 mType.onAppear = function(monster, creature)
-	monster:setIcon("griishknight", CreatureIconCategory_Quests, CreatureIconQuests_WhiteCross, 80)
-		if monster:getType():isRewardBoss() then
-			monster:setReward(true)
-		end
+	if monster:getType():isRewardBoss() then
+		monster:setReward(true)
 	end
+end
 
 mType:register(monster)
 

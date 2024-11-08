@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Venus")
 local monster = {}
 
 monster.description = "a venus"
-monster.experience = 460000
+monster.experience = 600000
 monster.outfit = {
 	lookType = 1817,
 	lookHead = 0,
@@ -25,8 +25,8 @@ monster.Bestiary = {
     Occurrence = 0,
     Locations = "Heaven",
 }
-monster.health = 200000
-monster.maxHealth = 200000
+monster.health = 300000
+monster.maxHealth = 300000
 monster.race = "venom"
 monster.corpse = 49318
 monster.speed = 110
@@ -74,6 +74,8 @@ monster.voices = {
 }
 
 monster.loot = {
+	{ id = 3043, chance = 60000, maxCount = 7 }, -- crystal coin
+	{ id = 46095, chance = 150},
 	{ id = 49282, chance = 10},
 	{ id = 49283, chance = 10},
 	{ id = 49284, chance = 10},
@@ -81,6 +83,10 @@ monster.loot = {
 	{ id = 49286, chance = 10},
 	{ id = 49287, chance = 10},
 	{ id = 49288, chance = 10},
+	{ id = 46359, chance = 1, unique = true },
+	{ id = 46368, chance = 1, unique = true },
+	{ id = 46369, chance = 1, unique = true },
+	{ id = 46376, chance = 1, unique = true },
 }
 
 monster.attacks = {
@@ -97,15 +103,15 @@ monster.defenses = {
 }
 
 monster.elements = {
-	{ type = COMBAT_PHYSICALDAMAGE, percent = -20 },
-	{ type = COMBAT_ENERGYDAMAGE, percent = -30 },
-	{ type = COMBAT_EARTHDAMAGE, percent = -20 },
-	{ type = COMBAT_FIREDAMAGE, percent = -30 },
-	{ type = COMBAT_LIFEDRAIN, percent = -20 },
-	{ type = COMBAT_MANADRAIN, percent = -20 },
-	{ type = COMBAT_DROWNDAMAGE, percent = -20 },
+	{ type = COMBAT_PHYSICALDAMAGE, percent = -30 },
+	{ type = COMBAT_ENERGYDAMAGE, percent = -10 },
+	{ type = COMBAT_EARTHDAMAGE, percent = -40 },
+	{ type = COMBAT_FIREDAMAGE, percent = -40 },
+	{ type = COMBAT_LIFEDRAIN, percent = 0 },
+	{ type = COMBAT_MANADRAIN, percent = 0 },
+	{ type = COMBAT_DROWNDAMAGE, percent = 0 },
 	{ type = COMBAT_ICEDAMAGE, percent = -20 },
-	{ type = COMBAT_HOLYDAMAGE, percent = 100 },
+	{ type = COMBAT_HOLYDAMAGE, percent = -40 },
 	{ type = COMBAT_DEATHDAMAGE, percent = -80 },
 }
 

@@ -881,7 +881,6 @@ GameStore.Categories = {
 						},
 					},
 					
-						
 							},
 
 							{
@@ -7414,8 +7413,8 @@ GameStore.Categories = {
 				icons = { "Reward_Shrine.png" },
 				name = "Flamy Ferumbras Exercise Dummy",
 				price = 2500,
-				itemtype = ,
-				count = 1,49313
+				itemtype = 49313,
+				count = 1,
 				description = "<i>Extra 40% Skill. Pick up your daily reward comfortably in your own four walls!</i>\n\n{house}\n{box}\n{storeinbox}\n{usablebyall}\n{useicon} use it to open the reward wall\n{backtoinbox}",
 				type = GameStore.OfferTypes.OFFER_TYPE_HOUSE,
 				home = true,

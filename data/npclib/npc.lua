@@ -11,6 +11,8 @@ local sayFunction = function(npcId, text, type, eventDelay, playerId)
 end
 
 function MsgContains(message, ...)
+    if type(message) ~= "string" then return false end  -- Ensure message is a valid string
+
     local keywords = {...}
     for _, keyword in ipairs(keywords) do
         local lowerMessage, lowerKeyword = message:lower(), keyword:lower()

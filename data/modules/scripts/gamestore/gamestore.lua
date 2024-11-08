@@ -631,7 +631,7 @@ GameStore.Categories = {
 			type = GameStore.OfferTypes.OFFER_TYPE_STACKABLE,
 			state = GameStore.States.STATE_NEW,
 			movable = true,
-			home = true,
+	
 		},
 		{
 			icons = { "" },
@@ -955,7 +955,7 @@ GameStore.Categories = {
 									id = 234,
 									description = "{character}\n{speedboost}\n\n<i>Flame Rush, known for its beauty and energy.</i>",
 									type = GameStore.OfferTypes.OFFER_TYPE_MOUNT,
-									home = true,
+							
 								},
 								{
 									icons = { "Haze Rush.png" },
@@ -972,7 +972,7 @@ GameStore.Categories = {
 									id = 236,
 									description = "{character}\n{speedboost}\n\n<i>One of the ancient, enchanted scarabs.</i>",
 									type = GameStore.OfferTypes.OFFER_TYPE_MOUNT,
-									home = true,
+								
 								},
 								{
 									icons = { "Haze Nexus.png" },

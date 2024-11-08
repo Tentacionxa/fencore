@@ -132,7 +132,7 @@ rift<outfits>
 	<outfit type="0" looktype="1794" name="Heavenly Energy" premium="no" unlocked="no" enabled="yes" from="store" />
 	<outfit type="0" looktype="1796" name="Heavenly Earth" premium="no" unlocked="no" enabled="yes" from="store" />
 	<outfit type="0" looktype="1798" name="Heavenly Fire" premium="no" unlocked="no" enabled="yes" from="store" />
-
+	<outfit type="0" looktype="1800" name="Heavenly Ice" premium="no" unlocked="no" enabled="yes" from="store" />
 	<!-- Male -->
 	<outfit type="1" looktype="128" name="Citizen" premium="no" unlocked="yes" enabled="yes" />
 	<outfit type="1" looktype="129" name="Hunter" premium="no" unlocked="yes" enabled="yes" />
@@ -265,4 +265,5 @@ rift<outfits>
 	<outfit type="1" looktype="1793" name="Heavenly Energy" premium="no" unlocked="no" enabled="yes" from="store" />
 		<outfit type="1" looktype="1795" name="Heavenly Earth" premium="no" unlocked="no" enabled="yes" from="store" />
 		<outfit type="1" looktype="1797" name="Heavenly Fire" premium="no" unlocked="no" enabled="yes" from="store" />
+			<outfit type="1" looktype="1799" name="Heavenly Ice" premium="no" unlocked="no" enabled="yes" from="store" />
 </outfits>

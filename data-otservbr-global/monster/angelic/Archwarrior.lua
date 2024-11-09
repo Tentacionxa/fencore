@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Archwarrior")
 local monster = {}
 
 monster.description = "a archwarrior"
-monster.experience = 480000
+monster.experience = 600000
 monster.outfit = {
 	lookType = 1983,
 	lookHead = 0,

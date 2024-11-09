@@ -47,17 +47,22 @@ local effects = {
  {position = Position(33439, 32486, 11), text = '35%', effect = CONST_ME_GROUNDSHAKER},
  {position = Position(33441, 32486, 11), text = 'More Skill', effect = CONST_ME_GROUNDSHAKER},
  
- 
- {position = Position(33450, 32481, 11), text = '25%', effect = CONST_ME_GROUNDSHAKER},
+ {position = Position(33439, 32481, 11), text = '35%', effect = CONST_ME_GROUNDSHAKER},
+ {position = Position(33442, 32481, 11), text = 'More Skill', effect = CONST_ME_GROUNDSHAKER},
+
+ {position = Position(33450, 32481, 11), text = '35%', effect = CONST_ME_GROUNDSHAKER},
  {position = Position(33451, 32481, 11), text = 'More Skill', effect = CONST_ME_GROUNDSHAKER},
  
- {position = Position(33454, 32481, 11), text = '25%', effect = CONST_ME_GROUNDSHAKER},
+ {position = Position(33454, 32481, 11), text = '35%', effect = CONST_ME_GROUNDSHAKER},
  {position = Position(33455, 32481, 11), text = 'More Skill', effect = CONST_ME_GROUNDSHAKER},
  
  {position = Position(33451, 32484, 11), text = 'Stamina', effect = CONST_ME_GROUNDSHAKER},
- {position = Position(33452, 32484, 11), text = 'Recharge Zone', effect = CONST_ME_GROUNDSHAKER},
+ {position = Position(33441, 32484, 11), text = 'Recharge Zone', effect = CONST_ME_GROUNDSHAKER},
  {position = Position(33461, 32484, 11), text = 'Private Hunt Room', effect = CONST_ME_GROUNDSHAKER},
- 
+
+ {position = Position (33440, 32484, 11), text = 'Stamina', effect = CONST_ME_GROUNDSHAKER},
+ {position = Position(33452, 32484, 11), text = 'Recharge Zone', effect = CONST_ME_GROUNDSHAKER},
+
  {position = Position(33455, 32482, 9), text = 'RL Hunt', effect = CONST_ME_GROUNDSHAKER},
  {position = Position(33461, 32488, 9), text = 'Town', effect = CONST_ME_GROUNDSHAKER},
  {position = Position(33455, 32494, 9), text = 'Custom Hunt', effect = CONST_ME_GROUNDSHAKER},

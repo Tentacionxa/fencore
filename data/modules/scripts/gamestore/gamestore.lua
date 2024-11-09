@@ -890,15 +890,7 @@ GameStore.Categories = {
 								rookgaard = true,
 								state = GameStore.States.STATE_NONE,
 							offers = {
-								{
-									icons = { "Death Strike.png" },
-									name = "Blood Strike",
-									price = 4000,
-									id = 252,
-									description = "{character}\n{speedboost}\n\n<i>Surived all of the 7 Varo Apocalypses</i>",
-									type = GameStore.OfferTypes.OFFER_TYPE_MOUNT,
-									home = true,
-								},
+
 								{
 									icons = { "Death Strike.png" },
 									name = "Ava Light",

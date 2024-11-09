@@ -34,5 +34,5 @@ function FerumbrasRespawn.onTime(interval)
     return true
 end
 
-FerumbrasRespawn:time(config.spawnTime)
-FerumbrasRespawn:register()
+--FerumbrasRespawn:time(config.spawnTime)
+--FerumbrasRespawn:register()

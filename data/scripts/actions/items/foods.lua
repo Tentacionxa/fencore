@@ -80,7 +80,6 @@ local foods = {
 	[9537] = { 0, "Your head begins to feel better." }, -- headache pill
 	[10329] = { 15, "Yum." }, -- rice ball
 	[10453] = { 3, "Urgh." }, -- terramite eggs
-	[10219] = { 10, "Mmmm." }, -- crocodile steak
 	[11459] = { 20, "Yum." }, -- pineapple
 	[11460] = { 10, "Munch." }, -- aubergine
 	[11461] = { 8, "Crunch." }, -- broccoli

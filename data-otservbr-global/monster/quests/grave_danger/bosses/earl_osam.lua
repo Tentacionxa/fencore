@@ -99,7 +99,6 @@ monster.loot = {
 	{ name = "young lich worm", chance = 5800 },
 	{ name = "embrace of nature", chance = 1600 },
 	{ name = "token of love", chance = 1200 },
-	{ name = "rotten heart", chance = 1700 },
 	{ name = "terra helmet", chance = 730 },
 	{ name = "final judgement", chance = 440 },
 }

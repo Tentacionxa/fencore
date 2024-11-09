@@ -29,7 +29,7 @@ SoulPit.config = {
     timeInMinutes = 10,
     checkMonstersInterval = 5 * 1000,
     soulPitItemId = 47367,
-    firstSoulCoreItemId = 47381,
+    firstSoulCoreItemId = 11470,
     lastSoulCoreItemId = 49163,
 }
 

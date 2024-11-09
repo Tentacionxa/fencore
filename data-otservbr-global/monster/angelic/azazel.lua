@@ -87,29 +87,28 @@ monster.loot = {
 }
 
 monster.attacks = {
-	{ name = "combat", interval = 2000, chance = 40, type = COMBAT_PHYSICALDAMAGE, minDamage = -10000, maxDamage = -23500, length = 8, spread = 0, effect = CONST_ME_WHITE_ENERGY_SPARK },
-	{ name = "combat", interval = 2000, chance = 25, type = COMBAT_ICEDAMAGE, minDamage = -10000, maxDamage = -30000, effect = CONST_ME_ICEATTACK },
+	{ name = "combat", interval = 2000, chance = 100, type = COMBAT_PHYSICALDAMAGE, minDamage = -10000, maxDamage = -23500, length = 8, spread = 0, effect = CONST_ME_WHITE_ENERGY_SPARK },
+	{ name = "combat", interval = 2000, chance = 100, type = COMBAT_ICEDAMAGE, minDamage = -10000, maxDamage = -30000, effect = CONST_ME_ICEATTACK },
 	{ name = "melee", interval = 2000, chance = 100, skill = 200, attack = 250 },
-	{ name = "combat", interval = 1000, chance = 7, type = COMBAT_MANADRAIN, minDamage = -100, maxDamage = -6000, range = 7, shootEffect = CONST_ANI_ENERGY, effect = CONST_ME_POFF, target = false },
-	{ name = "drunk", interval = 1000, chance = 7, range = 7, shootEffect = CONST_ANI_ENERGY, effect = CONST_ME_ENERGYAREA, target = false },
-	{ name = "strength", interval = 1000, chance = 9, range = 7, shootEffect = CONST_ANI_LARGEROCK, effect = CONST_ME_ENERGYAREA, target = false },
-	{ name = "combat", interval = 1000, chance = 25, type = COMBAT_LIFEDRAIN, minDamage = -9400, maxDamage = -22000, radius = 8, effect = CONST_ME_LOSEENERGY, target = false },
-	{ name = "combat", interval = 1000, chance = 20, type = COMBAT_MANADRAIN, minDamage = -9400, maxDamage = -23000, radius = 8, effect = CONST_ME_MAGIC_GREEN, target = false },
-	{ name = "speed", interval = 1000, chance = 12, speedChange = -1900, radius = 6, effect = CONST_ME_POISONAREA, target = false, duration = 60000 },
-	{ name = "strength", interval = 1000, chance = 8, radius = 5, effect = CONST_ME_HITAREA, target = false },
-	{ name = "combat", interval = 1000, chance = 34, type = COMBAT_FIREDAMAGE, minDamage = -5000, maxDamage = -15000, range = 7, radius = 7, shootEffect = CONST_ANI_FIRE, effect = CONST_ME_FIREAREA, target = true },
+	{ name = "combat", interval = 1000, chance = 100, type = COMBAT_MANADRAIN, minDamage = -5000, maxDamage = -12000, range = 7, shootEffect = CONST_ANI_ENERGY, effect = CONST_ME_POFF, target = false },
+	{ name = "drunk", interval = 1000, chance = 100, range = 7, shootEffect = CONST_ANI_ENERGY, effect = CONST_ME_ENERGYAREA, target = false },
+	{ name = "strength", interval = 1000, chance = 50, range = 7, shootEffect = CONST_ANI_LARGEROCK, effect = CONST_ME_ENERGYAREA, target = false },
+	{ name = "combat", interval = 1000, chance = 50, type = COMBAT_LIFEDRAIN, minDamage = -9400, maxDamage = -22000, radius = 8, effect = CONST_ME_LOSEENERGY, target = false },
+	{ name = "combat", interval = 1000, chance = 100, type = COMBAT_MANADRAIN, minDamage = -9400, maxDamage = -23000, radius = 8, effect = CONST_ME_MAGIC_GREEN, target = false },
+	{ name = "speed", interval = 1000, chance = 100, speedChange = -1900, radius = 6, effect = CONST_ME_POISONAREA, target = false, duration = 60000 },
+	{ name = "strength", interval = 1000, chance = 100, radius = 5, effect = CONST_ME_HITAREA, target = false },
+	{ name = "combat", interval = 1000, chance = 100, type = COMBAT_FIREDAMAGE, minDamage = -5000, maxDamage = -15000, range = 7, radius = 7, shootEffect = CONST_ANI_FIRE, effect = CONST_ME_FIREAREA, target = true },
 	{ name = "combat", interval = 1000, chance = 30, type = COMBAT_LIFEDRAIN, minDamage = -5000, maxDamage = -15050, length = 8, spread = 0, effect = CONST_ME_MAGIC_RED, target = false },
 }
 
 monster.defenses = {
 	defense = 160,
 	armor = 160,
-	{ name = "combat", interval = 1000, chance = 15, type = COMBAT_HEALING, minDamage = 5000, maxDamage = 17000, effect = CONST_ME_MAGIC_BLUE, target = false },
+	{ name = "combat", interval = 1000, chance = 100, type = COMBAT_HEALING, minDamage = 5000, maxDamage = 17000, effect = CONST_ME_MAGIC_BLUE, target = false },
 	{ name = "combat", interval = 1000, chance = 25, type = COMBAT_HEALING, minDamage = 2000, maxDamage = 9000, effect = CONST_ME_MAGIC_BLUE, target = false },
-	{ name = "speed", interval = 1000, chance = 8, speedChange = 1901, effect = CONST_ME_MAGIC_RED, target = false, duration = 5000 },
+	{ name = "speed", interval = 1000, chance = 100, speedChange = 1901, effect = CONST_ME_MAGIC_RED, target = false, duration = 5000 },
 	{ name = "invisible", interval = 1000, chance = 4, effect = CONST_ME_MAGIC_BLUE },
 	{ name = "invisible", interval = 1000, chance = 17, effect = CONST_ME_MAGIC_BLUE },
-	{ name = "outfit", interval = 1000, chance = 2, effect = CONST_ME_MAGIC_BLUE, target = false, duration = 12000, outfitItem = 2916 },
 }
 
 monster.elements = {

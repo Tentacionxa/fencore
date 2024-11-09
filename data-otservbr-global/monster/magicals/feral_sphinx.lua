@@ -84,7 +84,6 @@ monster.loot = {
 	{ name = "dragon necklace", chance = 5590 },
 	{ name = "blue gem", chance = 5480 },
 	{ name = "sphinx feather", chance = 5480 },
-	{ name = "sphinx tiara", chance = 5240 },
 	{ name = "fire axe", chance = 4200 },
 	{ name = "wand of draconia", chance = 2910 },
 	{ name = "green gem", chance = 2680 },

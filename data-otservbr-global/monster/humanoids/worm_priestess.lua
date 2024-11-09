@@ -81,7 +81,6 @@ monster.loot = {
 	{ id = 3035, chance = 41130, maxCount = 3 }, -- platinum coin
 	{ id = 11473, chance = 15850 }, -- purple robe
 	{ id = 237, chance = 12380, maxCount = 3 }, -- strong mana potion
-	{ id = 3066, chance = 11470 }, -- snakebite rod
 	{ id = 7425, chance = 5210 }, -- taurus mace
 	{ id = 2920, chance = 4760 }, -- torch
 	{ id = 5878, chance = 4640 }, -- minotaur leather

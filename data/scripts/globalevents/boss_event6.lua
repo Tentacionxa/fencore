@@ -20,7 +20,7 @@ local config = {
 local GodOdynRespawn = GlobalEvent("GodOdynRespawn")
 function GodOdynRespawn.onTime(interval)
     local currentDay = os.date("%A")
-    if currentDay == "Thursday" then
+    if currentDay == "Friday" then
         -- Spawn the boss
         Game.createMonster(config.bossName, config.bossPosition, false, true)
 

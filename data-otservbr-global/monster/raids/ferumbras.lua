@@ -18,8 +18,8 @@ monster.bosstiary = {
 	bossRace = RARITY_NEMESIS,
 }
 
-monster.health = 1000000
-monster.maxHealth = 1000000
+monster.health = 9000000
+monster.maxHealth = 9000000
 monster.race = "venom"
 monster.corpse = 6078
 monster.speed = 160
@@ -65,7 +65,7 @@ monster.light = {
 monster.summon = {
 	maxSummons = 4,
 	summons = {
-		{ name = "Demon", chance = 12, interval = 3000, count = 4 },
+		{ name = "Demon", chance = 100, interval = 3000, count = 4 },
 	},
 }
 

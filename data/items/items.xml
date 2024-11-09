@@ -26640,8 +26640,8 @@
 		<attribute key="description" value="This fish has been salted and already prepared as provision for soldiers"/>
 		<attribute key="weight" value="509"/>
 	</item>
-	<item id="10219" article="a" name="crocodile steak">
-		<attribute key="primarytype" value="food"/>
+	<item id="10219" article="a" name="venus soul core">
+		<attribute key="primarytype" value="quest items"/>
 		<attribute key="weight" value="440"/>
 	</item>
 	<item id="10221" article="a" name="dead killer caiman">
@@ -28326,7 +28326,7 @@
 	<item id="11469" article="a" name="hunter's quiver" plural="hunter quivers">
 		<attribute key="weight" value="132"/>
 	</item>
-	<item id="11470" article="a" name="jewelled belt">
+	<item id="11470" article="a" name="archwarrior soul core">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="124"/>
 	</item>
@@ -58291,7 +58291,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="description" value="Some honey palm blossoms are still floating in it, intensifying the sweet flavour"/>
 		<attribute key="weight" value="250"/>
 	</item>
-	<item id="31333" article="a" name="tagralt nugget">
+	<item id="31333" article="a" name="archkeeper soul core">
 		<attribute key="primarytype" value="quest items"/>
 		<attribute key="weight" value="750"/>
 	</item>
@@ -58299,7 +58299,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="primarytype" value="tools"/>
 		<attribute key="weight" value="1000"/>
 	</item>
-	<item id="31335" article="a" name="vial of cactus milk">
+	<item id="31335" article="a" name="holy guard soul core">
 		<attribute key="weight" value="240"/>
 	</item>
 	<item id="31336" article="a" name="snake maw">
@@ -58644,12 +58644,9 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="10"/>
 	</item>
-	<item id="31438" article="a" name="sphinx tiara">
+	<item id="31438" article="a" name="archangel soul core">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="350"/>
-		<attribute key="script" value="moveevent">
-			<attribute key="slot" value="head"/>
-		</attribute>
 	</item>
 	<item id="31439" article="a" name="manticore tail">
 		<attribute key="primarytype" value="creature products"/>
@@ -59241,7 +59238,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="80"/>
 	</item>
-	<item id="31589" article="a" name="rotten heart">
+	<item id="31589" article="a" name="hell taker soul core">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="weight" value="110"/>
 	</item>
@@ -75148,7 +75145,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="showCount" value="0"/>
 		<attribute key="weight" value="280"/>
 	</item>
-	<item id="43737" name="sun brooch">
+	<item id="43737" name="archlord soul core">
 		<attribute key="primarytype" value="creature products"/>
 		<attribute key="showCount" value="0"/>
 		<attribute key="weight" value="280"/>
@@ -76892,6 +76889,12 @@ Granted by TibiaGoals.com"/>
 		<attribute key="containersize" value="10"/>
 	</item>
 	<item id="44653" article="a" name="dead dragolisk">
+		<attribute key="fluidsource" value="blood"/>
+		<attribute key="duration" value="300"/>
+		<attribute key="decayTo" value="0"/>
+		<attribute key="containersize" value="10"/>
+	</item>
+	<item id="49318" article="a" name="angelic body">
 		<attribute key="fluidsource" value="blood"/>
 		<attribute key="duration" value="300"/>
 		<attribute key="decayTo" value="0"/>

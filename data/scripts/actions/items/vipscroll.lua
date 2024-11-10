@@ -2,7 +2,8 @@ local vipscroll = Action()
 
 function vipscroll.onUse(player, item, fromPosition, target, toPosition, isHotkey)
                 fromPosition:sendMagicEffect(CONST_ME_POFF)
-                player:onAddVip(3)
+                player:addPremiumDays(3)
+                player:onAddVip(3)                
                 item:remove(1)
                 fromPosition:sendMagicEffect(CONST_ME_SOUND_YELLOW)
 end

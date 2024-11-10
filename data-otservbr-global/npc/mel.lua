@@ -44,6 +44,9 @@ npcConfig.shop = {
 	{ name = "charged Necroshade rune", clientId = 46246, buy = 1 },
 	{ name = "charged Infernatus rune", clientId = 46247, buy = 1 },
 	{ name = "charged Voltagor rune", clientId = 46248, buy = 1 },
+	{ name = "Magic Shard", clientId = 31354, buy = 10 },
+	{ name = "Life Shard", clientId = 31355, buy = 10 },
+	{ name = "Holy Shard", clientId = 31356, buy = 10 },
 }
 -- On buy npc shop message
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

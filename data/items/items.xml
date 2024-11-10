@@ -44008,8 +44008,8 @@ Awarded by TibiaMagazine.com.ve"/>
 		<attribute key="type" value="teleport"/>
 		<attribute key="description" value="It draws you nearer."/>
 	</item>
-	<item id="22107" article="an" name="adventurer's map">
-		<attribute key="description" value="This map shows various locations of Tibia above and below sea level"/>
+	<item id="22107" article="an" name="prey parchment">
+		<attribute key="description" value="This parchment will provide you with 45 Prey Wildcards"/>
 		<attribute key="weight" value="240"/>
 	</item>
 	<item id="22108" name="remains tzumrah the dazzler">
@@ -56552,9 +56552,9 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="decayTo" value="30183"/>
 		<attribute key="weight" value="700"/>
 	</item>
-	<item id="30185" article="a" name="broken bell">
-		<attribute key="primarytype" value="tools"/>
-		<attribute key="weight" value="420"/>
+	<item id="30185" article="a" name="broken soul soul core">
+		<attribute key="primarytype" value="quest items"/>
+		<attribute key="weight" value="10"/>
 	</item>
 	<item id="30186" article="a" name="percht horns">
 		<attribute key="primarytype" value="creature products"/>
@@ -58332,15 +58332,15 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 	<item id="31353" article="a" name="white raven">
 		<attribute key="primarytype" value="furniture"/>
 	</item>
-	<item id="31354" article="a" name="blue memory shard">
+	<item id="31354" article="a" name="magic shard">
 		<attribute key="primarytype" value="quest items"/>
 		<attribute key="weight" value="13"/>
 	</item>
-	<item id="31355" article="a" name="violet memory shard">
+	<item id="31355" article="a" name="life shard">
 		<attribute key="primarytype" value="quest items"/>
 		<attribute key="weight" value="13"/>
 	</item>
-	<item id="31356" article="a" name="green memory shard">
+	<item id="31356" article="a" name="holy shard">
 		<attribute key="primarytype" value="quest items"/>
 		<attribute key="weight" value="13"/>
 	</item>
@@ -82909,11 +82909,12 @@ Granted by TibiaGoals.com"/>
 		<attribute key="energymagiclevelpoints" value="28"/>
 		<attribute key="defense" value="40"/>
 		<attribute key="weight" value="2600"/>
-		<attribute key="imbuementslot" value="1">
+<attribute key="imbuementslot" value="2">
 			<attribute key="elemental protection death" value="3"/>
 			<attribute key="elemental protection earth" value="3"/>
-			<attribute key="elemental protection ice" value="3"/>
 			<attribute key="elemental protection energy" value="3"/>
+			<attribute key="elemental protection fire" value="3"/>
+			<attribute key="elemental protection ice" value="3"/>
 			<attribute key="elemental protection holy" value="3"/>
 			<attribute key="skillboost shielding" value="3"/>
 		</attribute>
@@ -83971,7 +83972,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="primarytype" value="sword weapons"/>
 		<attribute key="weaponType" value="sword"/>
 		<attribute key="attack" value="20"/>
-		<attribute key="elementfire" value="90"/>
+		<attribute key="elementfire" value="100"/>
 		<attribute key="extradef" value="10"/>
 		<attribute key="defense" value="50"/>
 		<attribute key="skillsword" value="14"/>
@@ -84200,9 +84201,10 @@ Granted by TibiaGoals.com"/>
 		<attribute key="icemagiclevelpoints" value="28"/>
 		<attribute key="defense" value="40"/>
 		<attribute key="weight" value="2850"/>
-<attribute key="imbuementslot" value="1">
+<attribute key="imbuementslot" value="2">
 			<attribute key="elemental protection death" value="3"/>
 			<attribute key="elemental protection earth" value="3"/>
+			<attribute key="elemental protection energy" value="3"/>
 			<attribute key="elemental protection fire" value="3"/>
 			<attribute key="elemental protection ice" value="3"/>
 			<attribute key="elemental protection holy" value="3"/>

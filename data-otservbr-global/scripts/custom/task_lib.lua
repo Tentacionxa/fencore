@@ -771,6 +771,25 @@ taskConfiguration = {
         
         },
 },
+
+{name = "Angelic - Archangel,Archlord,Archkeeper,Archwarrior,Venus,Hell Taker,Holy Guard,Broken Soul", color = 40, total = 4000, type = "repeatable", storage = 190948, storagecount = 190949,
+        rewards = {
+			{46316, 400},
+			{46314, 400},
+			{37317, 10},
+	{"exp", 20000000},
+        },
+        races = {
+                "Archangel",
+				"Archlord",
+				"Archkeeper",
+				"Venus",
+				"Archwarrior",
+				"Hell Taker",
+				"Holy Guard",
+				"Broken Soul",
+        },
+},
 }
 
 squareWaitTime = 5000

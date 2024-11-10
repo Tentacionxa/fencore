@@ -57203,7 +57203,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="armor" value="5"/>
 		<attribute key="weight" value="650"/>
 		<attribute key="script" value="moveevent">
-			<attribute key="level" value="4000"/>
+			<attribute key="level" value="2300"/>
 			<attribute key="slot" value="necklace"/>
 			<attribute key="vocation" value="Paladin;true, Royal Paladin"/>
 		</attribute>
@@ -57500,7 +57500,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="armor" value="5"/>
 		<attribute key="weight" value="500"/>
 		<attribute key="script" value="moveevent">
-			<attribute key="level" value="4000"/>
+			<attribute key="level" value="2300"/>
 			<attribute key="slot" value="necklace"/>
 			<attribute key="vocation" value="Sorcerer;true, Druid;true, Master Sorcerer, Elder Druid"/>
 		</attribute>
@@ -57513,7 +57513,7 @@ hands of its owner. Granted by TibiaRoyal.com"/>
 		<attribute key="armor" value="5"/>
 		<attribute key="weight" value="500"/>
 		<attribute key="script" value="moveevent">
-			<attribute key="level" value="4000"/>
+			<attribute key="level" value="2300"/>
 			<attribute key="slot" value="necklace"/>
 			<attribute key="vocation" value="Sorcerer;true, Druid;true, Master Sorcerer, Elder Druid"/>
 		</attribute>
@@ -71864,7 +71864,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="showattributes" value="1"/>
 		<attribute key="weight" value="95"/>
 		<attribute key="script" value="moveevent">
-			<attribute key="level" value="400"/>
+			<attribute key="level" value="2300"/>
 			<attribute key="slot" value="ring"/>
 			<attribute key="vocation" value="Knight;true, Elite Knight"/>
 		</attribute>
@@ -71935,7 +71935,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="showattributes" value="1"/>
 		<attribute key="weight" value="85"/>
 		<attribute key="script" value="moveevent">
-			<attribute key="level" value="4000"/>
+			<attribute key="level" value="2300"/>
 			<attribute key="slot" value="ring"/>
 			<attribute key="vocation" value="Paladin;true, Royal Paladin"/>
 		</attribute>
@@ -72053,7 +72053,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="manaleechchance" value="100"/>
 		<attribute key="showattributes" value="1"/>
 		<attribute key="script" value="moveevent">
-			<attribute key="level" value="4000"/>
+			<attribute key="level" value="2300"/>
 			<attribute key="slot" value="ring"/>
 			<attribute key="vocation" value="Druid;true, Elder Druid"/>
 		</attribute>
@@ -72070,7 +72070,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="manaleechchance" value="100"/>
 		<attribute key="showattributes" value="1"/>
 		<attribute key="script" value="moveevent">
-			<attribute key="level" value="4000"/>
+			<attribute key="level" value="2300"/>
 			<attribute key="slot" value="ring"/>
 			<attribute key="vocation" value="Sorcerer;true, Master Sorcerer"/>
 		</attribute>
@@ -72293,7 +72293,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="showattributes" value="1"/>
 		<attribute key="weight" value="480"/>
 		<attribute key="script" value="moveevent">
-			<attribute key="level" value="4000"/>
+			<attribute key="level" value="2300"/>
 			<attribute key="slot" value="necklace"/>
 			<attribute key="vocation" value="Knight;true, Elite Knight"/>
 		</attribute>
@@ -83715,6 +83715,28 @@ Granted by TibiaGoals.com"/>
 			<attribute key="slot" value="ring"/>
 		</attribute>
 	</item>
+	<item id="49240" article="a" name="charged crown shield">
+        <attribute key="primarytype" value="shields"/>
+        <attribute key="weaponType" value="shield"/>
+        <attribute key="absorbpercentphysical" value="25"/>
+        <attribute key="absorbpercentdeath" value="25"/>
+        <attribute key="defense" value="65"/>
+        <attribute key="weight" value="5800"/>
+        <attribute key="imbuementslot" value="2">
+            <attribute key="elemental protection death" value="7"/>
+            <attribute key="elemental protection earth" value="7"/>
+            <attribute key="elemental protection fire" value="7"/>
+            <attribute key="elemental protection ice" value="7"/>
+            <attribute key="elemental protection energy" value="7"/>
+            <attribute key="elemental protection holy" value="7"/>
+            <attribute key="skillboost shielding" value="7"/>
+        </attribute>
+        <attribute key="script" value="moveevent">
+            <attribute key="slot" value="shield"/>
+            <attribute key="level" value="4000"/>
+            <attribute key="vocation" value="Knight;true, Elite Knight"/>
+        </attribute>
+    </item>
 	<item id="46396" article="a" name="ring of death">
 		<attribute key="primarytype" value="rings"/>
 			<attribute key="showCharges" value="1"/>

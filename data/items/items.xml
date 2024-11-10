@@ -83524,31 +83524,35 @@ Granted by TibiaGoals.com"/>
             <attribute key="vocation" value="Knight;true, Elite Knight"/>
         </attribute>
     </item>
-	<item id="49292" article="a" name="Pixelcutter">
+	<item id="49242" article="a" name="von duzzel sword">
 		<attribute key="primarytype" value="sword weapons"/>
 		<attribute key="weaponType" value="sword"/>
-		<attribute key="slotType" value="two-handed"/>
-		<attribute key="elementenergy" value="90"/>
-		<attribute key="criticalhitdamage" value="2500"/>
-		<attribute key="criticalhitchance" value="2000"/>
-		<attribute key="attack" value="25"/>
-		<attribute key="defense" value="60"/>
-		<attribute key="skillsword" value="15"/>
-		<attribute key="weight" value="7900"/>
+		<attribute key="attack" value="20"/>
+		<attribute key="elementfire" value="100"/>
+		<attribute key="criticalhitdamage" value="2400"/>
+		<attribute key="criticalhitchance" value="1000"/>
+		<attribute key="extradef" value="10"/>
+		<attribute key="defense" value="50"/>
+		<attribute key="skillsword" value="14"/>
+		<attribute key="weight" value="6000"/>
 		<attribute key="imbuementslot" value="3">
-			<attribute key="life leech" value="10"/>
-			<attribute key="mana leech" value="10"/>
-			<attribute key="critical hit" value="10"/>
-			<attribute key="skillboost sword" value="10"/>
+			<attribute key="life leech" value="3"/>
+			<attribute key="mana leech" value="3"/>
+			<attribute key="critical hit" value="3"/>
+			<attribute key="skillboost sword" value="3"/>
 		</attribute>
 		<attribute key="augments" value="1">
 			<attribute key="fierce berserk" value="powerful impact" />
+			<attribute key="intense wound cleansing" value="cooldown">
+				<attribute key="value" value="120000" />
+			</attribute>
 		</attribute>
 		<attribute key="script" value="moveevent;weapon">
-			<attribute key="level" value="5000"/>
+			<attribute key="level" value="4000"/>
 			<attribute key="unproperly" value="true"/>
 			<attribute key="weaponType" value="sword"/>
 			<attribute key="vocation" value="Knight;true, Elite Knight"/>
+			<attribute key="slot" value="hand"/>
 		</attribute>
 	</item>
 	<item id="49293" article="a" name="Pixelshredder">
@@ -83990,42 +83994,14 @@ Granted by TibiaGoals.com"/>
 		</attribute>
 	</item>
 
-	<item id="49242" article="a" name="von duzzel sword">
-		<attribute key="primarytype" value="sword weapons"/>
-		<attribute key="weaponType" value="sword"/>
-		<attribute key="attack" value="20"/>
-		<attribute key="elementfire" value="100"/>
-		<attribute key="extradef" value="10"/>
-		<attribute key="defense" value="50"/>
-		<attribute key="skillsword" value="14"/>
-		<attribute key="weight" value="6000"/>
-		<attribute key="imbuementslot" value="3">
-			<attribute key="life leech" value="3"/>
-			<attribute key="mana leech" value="3"/>
-			<attribute key="critical hit" value="3"/>
-			<attribute key="skillboost sword" value="3"/>
-		</attribute>
-		<attribute key="augments" value="1">
-			<attribute key="fierce berserk" value="powerful impact" />
-			<attribute key="intense wound cleansing" value="cooldown">
-				<attribute key="value" value="120000" />
-			</attribute>
-		</attribute>
-		<attribute key="script" value="moveevent;weapon">
-			<attribute key="level" value="4000"/>
-			<attribute key="unproperly" value="true"/>
-			<attribute key="weaponType" value="sword"/>
-			<attribute key="vocation" value="Knight;true, Elite Knight"/>
-			<attribute key="slot" value="hand"/>
-		</attribute>
-	</item>
+	
 
 	<item id="49260" article="a" name="royal cross">
 		<attribute key="primarytype" value="sword weapons"/>
 		<attribute key="weaponType" value="sword"/>
 		<attribute key="slotType" value="two-handed"/>
 		<attribute key="elementenergy" value="120"/>
-		<attribute key="criticalhitdamage" value="2500"/>
+		<attribute key="criticalhitdamage" value="3200"/>
 		<attribute key="criticalhitchance" value="1500"/>
 		<attribute key="attack" value="20"/>
 		<attribute key="defense" value="65"/>
@@ -84054,7 +84030,7 @@ Granted by TibiaGoals.com"/>
         <attribute key="slotType" value="two-handed"/>
         <attribute key="attack" value="20"/>
         <attribute key="elementdeath" value="120"/>
-        <attribute key="criticalhitdamage" value="2800"/>
+        <attribute key="criticalhitdamage" value="3200"/>
         <attribute key="criticalhitchance" value="1500"/>
         <attribute key="extradef" value="10"/>
         <attribute key="defense" value="65"/>
@@ -84082,7 +84058,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="weaponType" value="club"/>
 		<attribute key="slotType" value="two-handed"/>
 		<attribute key="elementearth" value="120"/>
-		<attribute key="criticalhitdamage" value="2500"/>
+		<attribute key="criticalhitdamage" value="3200"/>
 		<attribute key="criticalhitchance" value="1500"/>
 		<attribute key="attack" value="20"/>
 		<attribute key="defense" value="65"/>
@@ -84110,7 +84086,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="primarytype" value="distance weapons"/>
 		<attribute key="weaponType" value="distance"/>
 		<attribute key="slotType" value="two-handed"/>
-		<attribute key="criticalhitdamage" value="2500"/>
+		<attribute key="criticalhitdamage" value="3200"/>
 		<attribute key="criticalhitchance" value="1500"/>
 		<attribute key="ammotype" value="arrow"/>
 		<attribute key="absorbpercentearth" value="15"/>
@@ -84146,7 +84122,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="firemagiclevelpoints" value="6"/>
 		<attribute key="energymagiclevelpoints" value="6"/>
 		<attribute key="range" value="7"/>
-		<attribute key="criticalhitdamage" value="2500"/>
+		<attribute key="criticalhitdamage" value="3200"/>
 		<attribute key="criticalhitchance" value="2000"/>
 		<attribute key="weight" value="2100"/>
 		<attribute key="imbuementslot" value="2">
@@ -84187,7 +84163,7 @@ Granted by TibiaGoals.com"/>
 		<attribute key="earthmagiclevelpoints" value="6"/>
 		<attribute key="range" value="6"/>
 		<attribute key="icemagiclevelpoints" value="6"/>
-		<attribute key="criticalhitdamage" value="2500"/>
+		<attribute key="criticalhitdamage" value="3200"/>
 		<attribute key="criticalhitchance" value="1500"/>
 		<attribute key="weight" value="2400"/>
 		<attribute key="imbuementslot" value="2">

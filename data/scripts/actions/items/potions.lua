@@ -63,7 +63,7 @@ local potions = {
 	[46395] = { health = { 2500, 2800 }, mana = { 2600, 3000 }, vocations = { VOCATION.BASE_ID.PALADIN }, level = 4000, flask = 284, description = "Only paladins of level 4000 or above may drink this fluid." },
 	[46393] = { health = { 3800, 4400 }, vocations = { VOCATION.BASE_ID.KNIGHT }, level = 4000, flask = 284, description = "Only knights of level 4000 or above may drink this fluid." },
 	[31354] = { mana = { 4600, 6500 }, vocations = { VOCATION.BASE_ID.SORCERER, VOCATION.BASE_ID.DRUID }, level = 5500, flask = 0, description = "Only druids and sorcerers of level 5500 or above may use this crystal." },
-	[31356] = { health = { 3500, 3800 }, mana = { 3400, 4400 }, vocations = { VOCATION.BASE_ID.PALADIN }, level = 5500, flask = 0, description = "Only paladins of level 55000 or above may use this crystal." },
+	[31356] = { health = { 3500, 3800 }, mana = { 3400, 4400 }, vocations = { VOCATION.BASE_ID.PALADIN }, level = 5500, flask = 0, description = "Only paladins of level 5500 or above may use this crystal." },
 	[31355] = { health = { 5000, 6500 }, vocations = { VOCATION.BASE_ID.KNIGHT }, level = 5500, flask = 0, description = "Only knights of level 5500 or above may use this crystal." },
 }
 

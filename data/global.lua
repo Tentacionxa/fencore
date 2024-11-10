@@ -8,7 +8,7 @@ local dailyRates = {
     ["Thursday"] = { expRate = 150, skillRate = 300, spawnRate = 100, lootRate = 150, bossLootRate = 130 },
     ["Friday"] = { expRate = 250, skillRate = 150, spawnRate = 100, lootRate = 250, bossLootRate = 100 },
     ["Saturday"] = { expRate = 250, skillRate = 150, spawnRate = 100, lootRate = 250, bossLootRate = 100 },
-    ["Sunday"] = { expRate = 250, skillRate = 150, spawnRate = 100, lootRate = 250, bossLootRate = 100 }
+    ["Sunday"] = { expRate = 250, skillRate = 150, spawnRate = 150, lootRate = 250, bossLootRate = 100 }
 }
 
 -- Function to set SCHEDULE_* rates based on the day of the week

@@ -27,7 +27,6 @@
 	<item id="100" name="void"/>
 	<item id="101" name="earth"/>
 	<item id="102" article="a" name="white flower">
-		<attribute key="primarytype" value="quest items"/>
 		<attribute key="weight" value="10"/>
 	</item>
 	<item id="39582" article="a" name="griish knight soul core">

@@ -728,16 +728,6 @@ GameStore.Categories = {
 					},
 					{
 						icons = { "" },
-						name = "Boss Cooldown Remover",
-						price = 400,
-						itemtype = 19371,
-						count = 1,
-						description = "<i>Remove all the cooldown for every boss</i>",
-						type = GameStore.OfferTypes.OFFER_TYPE_STACKABLE,
-							state = GameStore.States.STATE_NEW,
-					},
-					{
-						icons = { "" },
 						name = "Temple Teleport Scroll",
 						price = 0,
 						itemtype = 25718,

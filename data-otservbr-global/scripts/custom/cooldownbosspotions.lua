@@ -8,5 +8,5 @@ function bosspotion.onUse(player, item, fromPosition, target, toPosition, isHotk
 		item:remove()
 	end
 end
-bosspotion:id(19371)
-bosspotion:register()
+--bosspotion:id(19371)
+--bosspotion:register()

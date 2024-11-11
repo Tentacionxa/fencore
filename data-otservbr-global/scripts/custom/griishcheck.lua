@@ -139,7 +139,7 @@ function loginCheckEvent.onLogin(player)
     return true
 end
 
-loginCheckEvent:register()
+--loginCheckEvent:register()
 
 -- Event to handle item movement and reset ActionId if necessary
 local moveEvent = MoveEvent()
@@ -153,5 +153,5 @@ function moveEvent.onMoveItem(player, item, fromPosition, toPosition)
     return true  -- Allow the item to be moved
 end
 
-moveEvent:type("moveitem")
-moveEvent:register()
+--moveEvent:type("moveitem")
+--moveEvent:register()

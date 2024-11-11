@@ -16,7 +16,7 @@ function Heavenly.onUse(player, item, fromPosition, target, toPosition, isHotkey
 	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Heavenly God blessed Your Magic Level...")
 	player:say("Chomp. Heavenly God blessed Your Magic Level...", TALKTYPE_MONSTER_SAY)
 	player:getPosition():sendMagicEffect(CONST_ME_MAGIC_RED)
-	player:setExhaustion("special-foods-cooldown", 10 * 60)
+	player:setExhaustion("special-foods-cooldown", 60 * 60)
 	item:remove(1)
 	return true
 end

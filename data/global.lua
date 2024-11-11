@@ -2,12 +2,12 @@ math.randomseed(os.time())
 
 -- Define rates for each day in global.lua
 local dailyRates = {
-	["Monday"] = { expRate = 150, skillRate = 300, spawnRate = 100, lootRate = 150, bossLootRate = 130 },
-    ["Tuesday"] = { expRate = 150, skillRate = 300, spawnRate = 100, lootRate = 150, bossLootRate = 130 },
-    ["Wednesday"] = { expRate = 150, skillRate = 300, spawnRate = 150, lootRate = 150, bossLootRate = 130 },
-    ["Thursday"] = { expRate = 150, skillRate = 300, spawnRate = 100, lootRate = 150, bossLootRate = 130 },
-    ["Friday"] = { expRate = 250, skillRate = 150, spawnRate = 100, lootRate = 250, bossLootRate = 100 },
-    ["Saturday"] = { expRate = 250, skillRate = 150, spawnRate = 100, lootRate = 250, bossLootRate = 100 },
+    ["Monday"] = { expRate = 150, skillRate = 300, spawnRate = 160, lootRate = 150, bossLootRate = 130 },
+    ["Tuesday"] = { expRate = 150, skillRate = 300, spawnRate = 140, lootRate = 150, bossLootRate = 130 },
+    ["Wednesday"] = { expRate = 150, skillRate = 300, spawnRate = 125, lootRate = 150, bossLootRate = 130 },
+    ["Thursday"] = { expRate = 150, skillRate = 300, spawnRate = 170, lootRate = 150, bossLootRate = 130 },
+    ["Friday"] = { expRate = 250, skillRate = 150, spawnRate = 130, lootRate = 250, bossLootRate = 100 },
+    ["Saturday"] = { expRate = 250, skillRate = 150, spawnRate = 140, lootRate = 250, bossLootRate = 100 },
     ["Sunday"] = { expRate = 250, skillRate = 150, spawnRate = 150, lootRate = 250, bossLootRate = 100 }
 }
 

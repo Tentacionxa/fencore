@@ -30,6 +30,38 @@
 		<attribute key="primarytype" value="quest items"/>
 		<attribute key="weight" value="10"/>
 	</item>
+	<item id="35292" article="a" name="griish knight soul core">
+		<attribute key="primarytype" value="quest items"/>
+		<attribute key="weight" value="10"/>
+	</item>
+	<item id="35293" article="a" name="griish lord soul core">
+		<attribute key="primarytype" value="quest items"/>
+		<attribute key="weight" value="10"/>
+	</item>
+	<item id="35294" article="a" name="griish scout soul core">
+		<attribute key="primarytype" value="quest items"/>
+		<attribute key="weight" value="10"/>
+	</item>
+	<item id="35295" article="a" name="griish leader soul core">
+		<attribute key="primarytype" value="quest items"/>
+		<attribute key="weight" value="10"/>
+	</item>
+<item id="36706" article="a" name="griish mage soul core">
+		<attribute key="primarytype" value="quest items"/>
+		<attribute key="weight" value="10"/>
+	</item>
+<item id="29989" article="a" name="griish sorcereress soul core">
+		<attribute key="primarytype" value="quest items"/>
+		<attribute key="weight" value="10"/>
+	</item>
+<item id="27867" article="a" name="griish druid soul core">
+		<attribute key="primarytype" value="quest items"/>
+		<attribute key="weight" value="10"/>
+	</item>
+	<item id="27869" article="a" name="griish priestess soul core">
+		<attribute key="primarytype" value="quest items"/>
+		<attribute key="weight" value="10"/>
+	</item>
 	<item id="103" name="dirt"/>
 	<item id="104" name="sand">
 		<attribute key="primarytype" value="natural tiles"/>

@@ -84425,8 +84425,10 @@ Granted by TibiaGoals.com"/>
 <item id="49273" article="a" name="holy legguards">
 		<attribute key="primarytype" value="legs"/>
 		<attribute key="absorbpercentdeath" value="26"/>
+		<attribute key="absorbpercentfire" value="14"/>
+		<attribute key="absorbpercentearth" value="14"/>
 		<attribute key="magiclevelpoints" value="12"/>
-		<attribute key="armor" value="3"/>
+		<attribute key="armor" value="26"/>
 		<attribute key="weight" value="3800"/>
 		<attribute key="script" value="moveevent">
 			<attribute key="level" value="4000"/>

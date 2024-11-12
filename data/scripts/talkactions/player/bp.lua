@@ -7,7 +7,7 @@ function bp.onSay(player, words, param)
     -- Check if the player is exhausted for this command
     if player:getExhaustion(exhaustGroup) > 0 then
         player:sendCancelMessage("You are exhausted. Please wait before using this command again.")
-        return false
+        return true  -- Change this from false to true
     end
 
     -- Perform the action if not exhausted
@@ -22,7 +22,9 @@ function bp.onSay(player, words, param)
         player:getPosition():sendMagicEffect(CONST_ME_POFF)
         player:sendCancelMessage("You do not have enough money.")
     end
+    return true  -- Ensure that you return true here as well
 end
+
 
 bp:groupType("normal")
 bp:register()

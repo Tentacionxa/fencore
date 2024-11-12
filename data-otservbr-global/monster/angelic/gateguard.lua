@@ -102,19 +102,19 @@ monster.loot = {
 	{id = 47542, chance = 300, maxCount = 1},
 	{id = 47769, chance = 200, maxCount = 1},
 	{id = 49242, chance = 5, maxCount = 1},
-	{id = 49287, chance = 10000000, maxCount = 8},
-	{id = 49283, chance = 100000000, maxCount = 8},
-	{id = 49286, chance = 100000000, maxCount = 8},
-	{id = 49285, chance = 1000000000, maxCount = 8},
-	{id = 49284, chance = 10000000, maxCount = 8},
-	{id = 49283, chance = 1000000000, maxCount = 8},
+	{id = 49287, chance = 100000, maxCount = 8},
+	{id = 49283, chance = 100000, maxCount = 8},
+	{id = 49286, chance = 100000, maxCount = 8},
+	{id = 49285, chance = 100000, maxCount = 8},
+	{id = 49284, chance = 100000, maxCount = 8},
+	{id = 49283, chance = 100000, maxCount = 8},
 	{id = 46095, chance = 1000, maxCount = 3},
-	{id = 3043, chance = 100000, maxCount = 2000},
-	{id = 5879, chance = 100000, maxCount = 250},
-	{id = 5879, chance = 100000, maxCount = 250},
-	{id = 24390, chance = 100000, maxCount = 250},
+	{id = 3043, chance = 10000, maxCount = 400},
+	{id = 5879, chance = 10000, maxCount = 250},
+	{id = 5879, chance = 10000, maxCount = 250},
+	{id = 24390, chance = 10000, maxCount = 250},
 
-
+}
 
 monster.attacks = {
 	{name ="melee", interval = 2000, chance = 100, minDamage = -10000, maxDamage = -20750},

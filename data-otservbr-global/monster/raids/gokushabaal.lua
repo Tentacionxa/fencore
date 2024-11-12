@@ -79,12 +79,20 @@ monster.loot = {
     { id = 46255, chance = 100000, maxCount = 1 }, -- Always drops 1 of this item
     { id = 49176, chance = 30000, maxCount = 2 }, -- 30% chance to drop up to 2
     { id = 3043, chance = 100000, maxCount = 3000 }, -- Always drops up to 3000
-    { id = 49287, chance = 1000000, maxCount = 1 }, -- Drops 1 of this item with a chance of 100%
-    { id = 49283, chance = 10000000, maxCount = 1 }, -- Drops 1 of this item with a chance of 100%
-    { id = 49286, chance = 10000000, maxCount = 1 }, -- Drops 1 of this item with a chance of 100%
-    { id = 49285, chance = 10000000, maxCount = 1 }, -- Drops 1 of this item with a chance of 100%
-    { id = 49284, chance = 10000000, maxCount = 1 }, -- Drops 1 of this item with a chance of 100%
-    { id = 49283, chance = 10000000, maxCount = 1 }, -- Drops 1 of this item with a chance of 100%
+    { id = 49287, chance = 1000000, maxCount = 10 }, -- Drops 1 of this item with a chance of 100%
+    { id = 49283, chance = 10000000, maxCount = 10 }, -- Drops 1 of this item with a chance of 100%
+    { id = 49286, chance = 10000000, maxCount = 10 }, -- Drops 1 of this item with a chance of 100%
+    { id = 49285, chance = 10000000, maxCount = 10 }, -- Drops 1 of this item with a chance of 100%
+    { id = 49284, chance = 10000000, maxCount = 10 }, -- Drops 1 of this item with a chance of 100%
+    { id = 49283, chance = 10000000, maxCount = 10 }, -- Drops 1 of this item with a chance of 100%
+	{ id = 46042, chance = 100000, maxCount = 1 }, -- Legendary Castle Box
+    { id = 46083, chance = 100000, maxCount = 1 }, -- Sorcerer's Chest
+    { id = 46041, chance = 100000, maxCount = 1 }, -- Bronze Castle Box
+    { id = 46084, chance = 100000, maxCount = 1 }, -- Druid's Chest
+	{ id = 46040, chance = 100000, maxCount = 1 }, -- Silver Castle Box
+    { id = 46086, chance = 100000, maxCount = 1 }, -- Paladin's Chest
+    { id = 46039, chance = 100000, maxCount = 1 }, -- Golden Castle Box
+	{ id = 46085, chance = 100000, maxCount = 1 }, -- Knight's Chest
 }
 
 

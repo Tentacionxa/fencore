@@ -96,9 +96,9 @@ npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 npcConfig.currency = 46316
 
 npcConfig.shop = {
-	{ itemName = "Heavenly Tort", clientId = 49390, buy = 100 },
-    { itemName = "Lucrative Tort", clientId = 49391, buy = 100 },
-    { itemName = "Velvet Tort", clientId = 49392, buy = 100 },
+	{ itemName = "Heavenly Tort", clientId = 49390, buy = 50 },
+    { itemName = "Lucrative Tort", clientId = 49391, buy = 50 },
+    { itemName = "Velvet Tort", clientId = 49392, buy = 50 },
 }
 
 local maxItemLimits = {

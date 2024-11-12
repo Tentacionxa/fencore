@@ -93,16 +93,18 @@ npcHandler:setCallback(CALLBACK_MESSAGE_DEFAULT, creatureSayCallback)
 
 npcHandler:addModule(FocusModule:new(), npcConfig.name, true, true, true)
 
+npcConfig.currency = 46316
+
 npcConfig.shop = {
-	{ itemName = "Heavenly Tort", clientId = 49390, buy = 10000000 },
-    { itemName = "Lucrative Tort", clientId = 49391, buy = 10000000 },
-    { itemName = "Velvet Tort", clientId = 49392, buy = 10000000 },
+	{ itemName = "Heavenly Tort", clientId = 49390, buy = 100 },
+    { itemName = "Lucrative Tort", clientId = 49391, buy = 100 },
+    { itemName = "Velvet Tort", clientId = 49392, buy = 100 },
 }
 
 local maxItemLimits = {
-    [49390] = 10,  -- Max 10 Crystal Coins (itemId 2160) per transaction
-    [49391] = 10,   -- Max 5 Health Potions (itemId 7618) per transaction
-	[49392] = 10,  -- Max 10 Crystal Coins (itemId 2160) per transaction
+    [49390] = 100,  -- Max 10 Crystal Coins (itemId 2160) per transaction
+    [49391] = 100,   -- Max 5 Health Potions (itemId 7618) per transaction
+	[49392] = 100,  -- Max 10 Crystal Coins (itemId 2160) per transaction
 }
 
 npcType.onBuyItem = function(npc, player, itemId, subType, amount, ignore, inBackpacks, totalCost)

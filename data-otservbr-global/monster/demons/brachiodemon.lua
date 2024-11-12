@@ -100,6 +100,7 @@ monster.loot = {
 	{ name = "assassin dagger", chance = 340 },
 	{ name = "alloy legs", chance = 170 },
 	{ id = 34109, chance = 50 }, -- bag you desire
+	{ id = 46095, chance = 50 }, -- bag you desire
 }
 
 monster.attacks = {

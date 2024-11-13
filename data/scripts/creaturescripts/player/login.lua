@@ -1,6 +1,3 @@
-local function sendBoostMessage(player, category, isIncreased)
-	return player:sendTextMessage(MESSAGE_BOOSTED_CREATURE, string.format("Event! %s is %screased. Happy Hunting!", category, isIncreased and "in" or "de"))
-end
 
 local function onMovementRemoveProtection(playerId, oldPos, time)
 	local player = Player(playerId)
@@ -93,26 +90,7 @@ function playerLoginGlobal.onLogin(player)
 		player:sendTextMessage(MESSAGE_LOGIN, string.format("You have %d reward%s in your reward chest.", rewards, rewards > 1 and "s" or ""))
 	end
 
-	-- Rate events:
-	if SCHEDULE_EXP_RATE ~= 100 then
-		sendBoostMessage(player, "Exp Rate", SCHEDULE_EXP_RATE > 100)
-	end
-
-	if SCHEDULE_SPAWN_RATE ~= 100 then
-		sendBoostMessage(player, "Spawn Rate", SCHEDULE_SPAWN_RATE > 100)
-	end
-
-	if SCHEDULE_LOOT_RATE ~= 100 then
-		sendBoostMessage(player, "Loot Rate", SCHEDULE_LOOT_RATE > 100)
-	end
-
-	if SCHEDULE_BOSS_LOOT_RATE ~= 100 then
-		sendBoostMessage(player, "Boss Loot Rate", SCHEDULE_BOSS_LOOT_RATE > 100)
-	end
-
-	if SCHEDULE_SKILL_RATE ~= 100 then
-		sendBoostMessage(player, "Skill Rate", SCHEDULE_SKILL_RATE > 100)
-	end
+	
 
 	-- Recruiter Outfit
 	local resultId = db.storeQuery("SELECT `recruiter` FROM `accounts` WHERE `id`= " .. getAccountNumberByPlayerName(getPlayerName(player)))

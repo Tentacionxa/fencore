@@ -514,6 +514,93 @@ GameStore.Categories = {
 		rookgaard = true,
 		state = GameStore.States.STATE_NONE,
 	offers = {
+		{
+			icons = { "" },
+			name = "Sorcerer's Box",
+			price = 5000,
+			itemtype = 46111,
+			count = 1,
+			description = "<i>This chest has 10 % chance of dropping holy legguards or holy plate </i>",
+			type = GameStore.OfferTypes.OFFER_TYPE_STACKABLE,
+				state = GameStore.States.STATE_NEW,
+		},
+
+		{
+			icons = { "" },
+			name = "Master Box",
+			price = 5000,
+			itemtype = 46113,
+			count = 1,
+			description = "<i>This chest has 10 % chance of dropping holy legguards or ancient tiara </i>",
+			type = GameStore.OfferTypes.OFFER_TYPE_STACKABLE,
+				state = GameStore.States.STATE_NEW,
+		},
+
+		{
+			icons = { "" },
+			name = "Druid's Box",
+			price = 5000,
+			itemtype = 46114,
+			count = 1,
+			description = "<i>This chest has 10 % chance of dropping holy legguards or ancient tiara </i>",
+			type = GameStore.OfferTypes.OFFER_TYPE_STACKABLE,
+				state = GameStore.States.STATE_NEW,
+		},
+
+		{
+			icons = { "" },
+			name = "Elder Box",
+			price = 5000,
+			itemtype = 49393,
+			count = 1,
+			description = "<i>This chest has 10 % chance of dropping holy legguards or holy plate </i>",
+			type = GameStore.OfferTypes.OFFER_TYPE_STACKABLE,
+				state = GameStore.States.STATE_NEW,
+		},
+
+		{
+			icons = { "" },
+			name = "Paladin's Box",
+			price = 5000,
+			itemtype = 46110,
+			count = 1,
+			description = "<i>This chest has 10 % chance of dropping enchanted plate or enchanted greaves </i>",
+			type = GameStore.OfferTypes.OFFER_TYPE_STACKABLE,
+				state = GameStore.States.STATE_NEW,
+		},
+
+		{
+			icons = { "" },
+			name = "Royal Box",
+			price = 5000,
+			itemtype = 46112,
+			count = 1,
+			description = "<i>This chest has 10 % chance of dropping sentinel's visage or enchanted boots </i>",
+			type = GameStore.OfferTypes.OFFER_TYPE_STACKABLE,
+				state = GameStore.States.STATE_NEW,
+		},
+
+		{
+			icons = { "" },
+			name = "Knight's Box",
+			price = 5000,
+			itemtype = 46108,
+			count = 1,
+			description = "<i>This chest has 10 % chance of dropping undead helmet or undead scale </i>",
+			type = GameStore.OfferTypes.OFFER_TYPE_STACKABLE,
+				state = GameStore.States.STATE_NEW,
+		},
+
+		{
+			icons = { "" },
+			name = "Elite Box",
+			price = 5000,
+			itemtype = 46109,
+			count = 1,
+			description = "<i>This chest has 10 % chance of dropping enchanted undead greaves or undead boots </i>",
+			type = GameStore.OfferTypes.OFFER_TYPE_STACKABLE,
+				state = GameStore.States.STATE_NEW,
+		},
 			{
 				icons = { "" },
 				name = "Legendary Chest",

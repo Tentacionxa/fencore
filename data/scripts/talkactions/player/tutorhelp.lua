@@ -28,8 +28,7 @@ function tutorRequest.onSay(player, words, param)
 
     -- List of specific players to receive the broadcast
     local targetPlayers = {
-        "Kakina", 
-        "Genbaku", 
+        "Kakina",  
         "Nowe Porzadki", 
         "Royal Araysuke", 
         "GM Michal", 

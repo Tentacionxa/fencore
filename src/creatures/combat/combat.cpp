@@ -442,10 +442,14 @@ bool Combat::setParam(CombatParam_t param, uint32_t value) {
 		}
 
 	  // Assuming you have an 'attacker' variable instead of 'caster'
-    if (param == COMBAT_PARAM_EFFECT || param == COMBAT_PARAM_DISTANCEEFFECT) {
-        if (attacker && attacker->getPlayer() && attacker->getPlayer()->getStorageValue(STORAGEVALUE_EMOTE) == 0) {
-            // Skip setting the effect if emote is disabled
-            return true;
+ if (param == COMBAT_PARAM_EFFECT || param == COMBAT_PARAM_DISTANCEEFFECT) {
+        // Here, replace `player` with your actual way to access the player
+        Player* player = dynamic_cast<Player*>(creature); // Assume 'creature' or similar is available contextually
+
+        // Check if the player exists and has STORAGEVALUE_EMOTE set to disable effects
+        if (player && player->getStorageValue(STORAGEVALUE_EMOTE) == 0) {
+            // Disable the effect if STORAGEVALUE_EMOTE is off
+            return true; // Skip setting the effect
         }
     }
 

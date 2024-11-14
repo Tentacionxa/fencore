@@ -1277,26 +1277,22 @@ void Combat::doCombatHealth(std::shared_ptr<Creature> caster, std::shared_ptr<Cr
 
 	applyExtensions(caster, target, damage, params);
 
-if (canCombat) {
-    if (target && caster && params.distanceEffect != CONST_ANI_NONE) {
-        std::shared_ptr<Player> playerCaster = caster->getPlayer();
-        if (!playerCaster || playerCaster->getStorageValue(30008) != 0) {
-            // Only add the distance effect if the player's storage value condition is NOT met
-            addDistanceEffect(caster, caster->getPosition(), target->getPosition(), params.distanceEffect);
-        }
-    }
+	if (canCombat) {
+		if (target && caster && params.distanceEffect != CONST_ANI_NONE) {
+			addDistanceEffect(caster, origin, target->getPosition(), params.distanceEffect);
+		}
 
 		CombatHealthFunc(caster, target, params, &damage);
 		if (params.targetCallback) {
 			params.targetCallback->onTargetCombat(caster, target);
 		}
 
-	 if (target && params.soundImpactEffect != SoundEffect_t::SILENCE) {
-        g_game().sendDoubleSoundEffect(target->getPosition(), params.soundCastEffect, params.soundImpactEffect, caster);
-    } else if (target && params.soundCastEffect != SoundEffect_t::SILENCE) {
-        g_game().sendSingleSoundEffect(target->getPosition(), params.soundCastEffect, caster);
-    }
-}
+		if (target && params.soundImpactEffect != SoundEffect_t::SILENCE) {
+			g_game().sendDoubleSoundEffect(target->getPosition(), params.soundCastEffect, params.soundImpactEffect, caster);
+		} else if (target && params.soundCastEffect != SoundEffect_t::SILENCE) {
+			g_game().sendSingleSoundEffect(target->getPosition(), params.soundCastEffect, caster);
+		}
+	}
 }
 
 void Combat::doCombatHealth(std::shared_ptr<Creature> caster, const Position &position, const std::unique_ptr<AreaCombat> &area, CombatDamage &damage, const CombatParams &params) {

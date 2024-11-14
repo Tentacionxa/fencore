@@ -8226,9 +8226,15 @@ void Game::addPlayerVocation(std::shared_ptr < Player > target) {
   }
 }
 
-void Game::addMagicEffect(const Position & pos, uint16_t effect) {
-  auto spectators = Spectators().find < Player > (pos, true);
-  addMagicEffect(spectators.data(), pos, effect);
+void Game::addMagicEffect(const CreatureVector &spectators, const Position &pos, uint16_t effect) {
+    for (const auto &spectator : spectators) {
+        if (const auto &tmpPlayer = spectator->getPlayer()) {
+            // Check the condition before sending the magic effect
+            if (tmpPlayer->getStorageValue(30008) != 0) {
+                tmpPlayer->sendMagicEffect(pos, effect);
+            }
+        }
+    }
 }
 
 void Game::addMagicEffect(const CreatureVector & spectators,
@@ -8254,10 +8260,15 @@ void Game::removeMagicEffect(const CreatureVector & spectators,
   }
 }
 
-void Game::addDistanceEffect(const Position & fromPos,
-  const Position & toPos, uint16_t effect) {
-  auto spectators = Spectators().find < Player > (fromPos).find < Player > (toPos);
-  addDistanceEffect(spectators.data(), fromPos, toPos, effect);
+void Game::addDistanceEffect(const CreatureVector &spectators, const Position &fromPos, const Position &toPos, uint16_t effect) {
+    for (const auto &spectator : spectators) {
+        if (const auto &tmpPlayer = spectator->getPlayer()) {
+            // Check the condition before sending the distance effect
+            if (tmpPlayer->getStorageValue(30008) != 0) {
+                tmpPlayer->sendDistanceShoot(fromPos, toPos, effect);
+            }
+        }
+    }
 }
 
 void Game::addDistanceEffect(const CreatureVector & spectators,

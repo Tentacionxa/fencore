@@ -8227,6 +8227,7 @@ void Game::addPlayerVocation(std::shared_ptr < Player > target) {
 }
 
 void Game::addMagicEffect(const Position& pos, uint16_t effect) {
+  auto spectators = Spectators().find < Player > (pos, true);
     for (const auto &spectator : spectators) {
         if (const auto &tmpPlayer = spectator->getPlayer()) {
             // Check the condition before sending the magic effect
@@ -8252,6 +8253,7 @@ void Game::removeMagicEffect(const CreatureVector & spectators,
 }
 
 void Game::addDistanceEffect(const Position& fromPos, const Position& toPos, uint16_t effect) {
+  auto spectators = Spectators().find < Player > (pos, true);
     for (const auto &spectator : spectators) {
         if (const auto &tmpPlayer = spectator->getPlayer()) {
             // Check the condition before sending the distance effect

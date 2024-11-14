@@ -8226,7 +8226,7 @@ void Game::addPlayerVocation(std::shared_ptr < Player > target) {
   }
 }
 
-void Game::addMagicEffect(const Position& pos, uint16_t effect) {
+void Game::addMagicEffect(const std::vector<std::shared_ptr<Creature>> &spectators, const Position &pos, uint16_t effect) {
   auto spectators = Spectators().find < Player > (pos, true);
     for (const auto &spectator : spectators) {
         if (const auto &tmpPlayer = spectator->getPlayer()) {
@@ -8252,7 +8252,7 @@ void Game::removeMagicEffect(const CreatureVector & spectators,
   }
 }
 
-void Game::addDistanceEffect(const Position &fromPos, const Position &toPos, uint16_t effect) {
+void Game::addDistanceEffect(const std::vector<std::shared_ptr<Creature>> &spectators, const Position &fromPos, const Position &toPos, uint16_t effect) {
   auto spectators = Spectators().find<Player>(fromPos, true);
     for (const auto &spectator : spectators) {
         if (const auto &tmpPlayer = spectator->getPlayer()) {

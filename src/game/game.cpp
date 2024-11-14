@@ -8237,15 +8237,6 @@ void Game::addMagicEffect(const CreatureVector &spectators, const Position &pos,
     }
 }
 
-void Game::addMagicEffect(const CreatureVector & spectators,
-  const Position & pos, uint16_t effect) {
-  for (const auto & spectator: spectators) {
-    if (const auto & tmpPlayer = spectator -> getPlayer()) {
-      tmpPlayer -> sendMagicEffect(pos, effect);
-    }
-  }
-}
-
 void Game::removeMagicEffect(const Position & pos, uint16_t effect) {
   auto spectators = Spectators().find < Player > (pos, true);
   removeMagicEffect(spectators.data(), pos, effect);
@@ -8271,15 +8262,6 @@ void Game::addDistanceEffect(const CreatureVector &spectators, const Position &f
     }
 }
 
-void Game::addDistanceEffect(const CreatureVector & spectators,
-  const Position & fromPos,
-    const Position & toPos, uint16_t effect) {
-  for (const auto & spectator: spectators) {
-    if (const auto & tmpPlayer = spectator -> getPlayer()) {
-      tmpPlayer -> sendDistanceShoot(fromPos, toPos, effect);
-    }
-  }
-}
 
 void Game::checkImbuements() {
   for (const auto & [mapPlayerId, mapPlayer]: getPlayers()) {

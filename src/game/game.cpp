@@ -8234,6 +8234,10 @@ void Game::addMagicEffect(const Position & pos, uint16_t effect) {
 void Game::addMagicEffect(const CreatureVector& spectators, const Position& pos, uint16_t effect) {
     for (const auto& spectator : spectators) {
         if (const auto& tmpPlayer = spectator->getPlayer()) {
+            // Check if the storage value 30008 is set to 1 for the player
+            if (tmpPlayer->getStorageValue(30008) == 1) {
+                continue; // Skip sending the magic effect
+            }
             tmpPlayer->sendMagicEffect(pos, effect);
         }
     }
@@ -8262,6 +8266,10 @@ void Game::addDistanceEffect(const Position & fromPos,
 void Game::addDistanceEffect(const CreatureVector& spectators, const Position& fromPos, const Position& toPos, uint16_t effect) {
     for (const auto& spectator : spectators) {
         if (const auto& tmpPlayer = spectator->getPlayer()) {
+            // Check if the storage value 30008 is set to 1 for the player
+            if (tmpPlayer->getStorageValue(30008) == 1) {
+                continue; // Skip sending the distance effect
+            }
             tmpPlayer->sendDistanceShoot(fromPos, toPos, effect);
         }
     }

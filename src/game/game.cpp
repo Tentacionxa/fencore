@@ -8252,7 +8252,7 @@ void Game::removeMagicEffect(const CreatureVector & spectators,
   }
 }
 
-void Game::addDistanceEffect(const Position& fromPos, const Position& toPos, uint16_t effect) {
+void Game::addDistanceEffect(const Position &fromPos, const Position &toPos, uint16_t effect) {
   auto spectators = Spectators().find<Player>(fromPos, true);
     for (const auto &spectator : spectators) {
         if (const auto &tmpPlayer = spectator->getPlayer()) {

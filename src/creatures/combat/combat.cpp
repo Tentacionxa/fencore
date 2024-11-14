@@ -900,43 +900,47 @@ void Combat::postCombatEffects(std::shared_ptr<Creature> caster, const Position 
 }
 
 void Combat::addDistanceEffect(std::shared_ptr<Creature> caster, const Position &fromPos, const Position &toPos, uint16_t effect) {
-	if (effect == CONST_ANI_WEAPONTYPE) {
-		if (!caster) {
-			return;
-		}
+    if (caster) {
+        // Check if caster is a Player and has the specific storage value set
+        std::shared_ptr<Player> player = caster->getPlayer();
+        if (player && player->getStorageValue(STORAGEVALUE_EMOTE) == 0) {
+            // Skip adding the distance effect if the storage condition is met
+            return;
+        }
+    }
 
-		std::shared_ptr<Player> player = caster->getPlayer();
-		if (!player) {
-			return;
-		}
+    if (effect == CONST_ANI_WEAPONTYPE) {
+        std::shared_ptr<Player> player = caster->getPlayer();
+        if (player) {
+            switch (player->getWeaponType()) {
+                case WEAPON_AXE:
+                    effect = CONST_ANI_WHIRLWINDAXE;
+                    break;
+                case WEAPON_SWORD:
+                    effect = CONST_ANI_WHIRLWINDSWORD;
+                    break;
+                case WEAPON_CLUB:
+                    effect = CONST_ANI_WHIRLWINDCLUB;
+                    break;
+                case WEAPON_MISSILE:
+                    {
+                        auto weapon = player->getWeapon();
+                        if (weapon) {
+                            const auto &iType = Item::items[weapon->getID()];
+                            effect = iType.shootType;
+                        }
+                    }
+                    break;
+                default:
+                    effect = CONST_ANI_NONE;
+                    break;
+            }
+        }
+    }
 
-		switch (player->getWeaponType()) {
-			case WEAPON_AXE:
-				effect = CONST_ANI_WHIRLWINDAXE;
-				break;
-			case WEAPON_SWORD:
-				effect = CONST_ANI_WHIRLWINDSWORD;
-				break;
-			case WEAPON_CLUB:
-				effect = CONST_ANI_WHIRLWINDCLUB;
-				break;
-			case WEAPON_MISSILE: {
-				auto weapon = player->getWeapon();
-				if (weapon) {
-					const auto &iType = Item::items[weapon->getID()];
-					effect = iType.shootType;
-				}
-				break;
-			}
-			default:
-				effect = CONST_ANI_NONE;
-				break;
-		}
-	}
-
-	if (effect != CONST_ANI_NONE) {
-		g_game().addDistanceEffect(fromPos, toPos, effect);
-	}
+    if (effect != CONST_ANI_NONE) {
+        g_game().addDistanceEffect(fromPos, toPos, effect);
+    }
 }
 
 void Combat::doChainEffect(const Position &origin, const Position &dest, uint8_t effect) {
@@ -1372,37 +1376,32 @@ void Combat::doCombatDispel(std::shared_ptr<Creature> caster, const Position &po
 	const auto origin = caster ? caster->getPosition() : Position();
 	CombatFunc(caster, origin, position, area, params, CombatDispelFunc, nullptr);
 }
+
 void Combat::doCombatDispel(std::shared_ptr<Creature> caster, std::shared_ptr<Creature> target, const CombatParams &params) {
-    bool canCombat = !params.aggressive || (caster != target && Combat::canDoCombat(caster, target, params.aggressive) == RETURNVALUE_NOERROR);
-    if ((caster && target)
-        && (caster == target || canCombat)
-        && (params.impactEffect != CONST_ME_NONE)) {
-        g_game().addMagicEffect(target->getPosition(), params.impactEffect);
-    }
+	bool canCombat = !params.aggressive || (caster != target && Combat::canDoCombat(caster, target, params.aggressive) == RETURNVALUE_NOERROR);
+	if ((caster && target)
+	    && (caster == target || canCombat)
+	    && (params.impactEffect != CONST_ME_NONE)) {
+		g_game().addMagicEffect(target->getPosition(), params.impactEffect);
+	}
 
-    if (canCombat) {
-        CombatDispelFunc(caster, target, params, nullptr);
-        if (params.targetCallback) {
-            params.targetCallback->onTargetCombat(caster, target);
-        }
+	if (canCombat) {
+		CombatDispelFunc(caster, target, params, nullptr);
+		if (params.targetCallback) {
+			params.targetCallback->onTargetCombat(caster, target);
+		}
 
-        // Check before adding distance effect
-        if (target && caster && params.distanceEffect != CONST_ANI_NONE) {
-            Player* playerCaster = dynamic_cast<Player*>(caster.get());
-            if (!playerCaster || playerCaster->getStorageValue(STORAGEVALUE_EMOTE) != 0) {
-                // Only add the distance effect if it's not a player with emote disabled
-                addDistanceEffect(caster, caster->getPosition(), target->getPosition(), params.distanceEffect);
-            }
-        }
+		if (target && caster && params.distanceEffect != CONST_ANI_NONE) {
+			addDistanceEffect(caster, caster->getPosition(), target->getPosition(), params.distanceEffect);
+		}
 
-        if (target && params.soundImpactEffect != SoundEffect_t::SILENCE) {
-            g_game().sendDoubleSoundEffect(target->getPosition(), params.soundCastEffect, params.soundImpactEffect, caster);
-        } else if (target && params.soundCastEffect != SoundEffect_t::SILENCE) {
-            g_game().sendSingleSoundEffect(target->getPosition(), params.soundCastEffect, caster);
-        }
-    }
+		if (target && params.soundImpactEffect != SoundEffect_t::SILENCE) {
+			g_game().sendDoubleSoundEffect(target->getPosition(), params.soundCastEffect, params.soundImpactEffect, caster);
+		} else if (target && params.soundCastEffect != SoundEffect_t::SILENCE) {
+			g_game().sendSingleSoundEffect(target->getPosition(), params.soundCastEffect, caster);
+		}
+	}
 }
-
 
 [[maybe_unused]] void Combat::doCombatDefault(std::shared_ptr<Creature> caster, std::shared_ptr<Creature> target, const CombatParams &params) {
 	doCombatDefault(caster, target, caster ? caster->getPosition() : Position(), params);

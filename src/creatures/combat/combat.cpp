@@ -440,16 +440,12 @@ bool Combat::setParam(CombatParam_t param, uint32_t value) {
 			return true;
 		}
 
-	   if (param == COMBAT_PARAM_EFFECT || param == COMBAT_PARAM_DISTANCEEFFECT) {
-        // Assuming you can access 'caster' from a broader context in this Combat instance
-        std::shared_ptr<Player> playerCaster = nullptr;
-        if (auto creatureCaster = this->getCaster()) { // Replace 'getCaster()' with your contextually appropriate method to access the caster
-            playerCaster = creatureCaster->getPlayer();
-        }
-
+   if (param == COMBAT_PARAM_EFFECT || param == COMBAT_PARAM_DISTANCEEFFECT) {
+        // Check if the provided creature is a player and has the correct storage value
+        Player* playerCaster = dynamic_cast<Player*>(creatureCaster);
         if (playerCaster && playerCaster->getStorageValue(STORAGEVALUE_EMOTE) == 0) {
-            // Disable the effect for all creatures if the player has emote storage set to 0
-            return true; // Skip setting the effect
+            // Disable the effect
+            return true;
         }
     }
 

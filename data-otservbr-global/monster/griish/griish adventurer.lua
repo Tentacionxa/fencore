@@ -89,7 +89,7 @@ monster.loot = {
 	{ name = "wood cape", chance = 9153, maxCount = 1 },
 	{ name = "stone skin amulet", chance = 11779, maxCount = 1 },
 	{ name = "composite hornbow", chance = 5682, maxCount = 1 },
-	{ name = "scarlett bag", chance = 50 , maxCount = 1 },
+	{ name = "scarlett bag", chance = 100 , maxCount = 3 },
 	{ name = "red crystal coin", chance = 100000, maxCount = 1 },
 	{ name = "green crystal coin", chance = 100000, maxCount = 1 },
 	{ name = "crystal arcane nectar", chance = 15, maxCount = 1  },

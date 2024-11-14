@@ -434,21 +434,20 @@ void Combat::setPlayerCombatValues(formulaType_t newFormulaType, double newMina,
 }
 
 bool Combat::setParam(CombatParam_t param, uint32_t value) {
+	const int32_t STORAGEVALUE_EMOTE = 52145; // Example definition
 	switch (param) {
 		case COMBAT_PARAM_TYPE: {
 			params.combatType = static_cast<CombatType_t>(value);
 			return true;
 		}
 
-		case COMBAT_PARAM_EFFECT: {
-			params.impactEffect = static_cast<uint16_t>(value);
-			return true;
-		}
-
-		case COMBAT_PARAM_DISTANCEEFFECT: {
-			params.distanceEffect = static_cast<uint16_t>(value);
-			return true;
-		}
+		 if (param == COMBAT_PARAM_EFFECT || param == COMBAT_PARAM_DISTANCEEFFECT) {
+        // Check if the caster is a player and if STORAGEVALUE_EMOTE is 0 (disabled)
+        if (caster && caster->getPlayer() && caster->getPlayer()->getStorageValue(STORAGEVALUE_EMOTE) == 0) {
+            // Do not set the effect if emote is disabled
+            return true;
+        }
+    }
 
 		case COMBAT_PARAM_BLOCKARMOR: {
 			params.blockedByArmor = (value != 0);

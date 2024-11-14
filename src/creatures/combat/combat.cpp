@@ -441,10 +441,10 @@ bool Combat::setParam(CombatParam_t param, uint32_t value) {
 			return true;
 		}
 
-		 if (param == COMBAT_PARAM_EFFECT || param == COMBAT_PARAM_DISTANCEEFFECT) {
-        // Check if the caster is a player and if STORAGEVALUE_EMOTE is 0 (disabled)
-        if (caster && caster->getPlayer() && caster->getPlayer()->getStorageValue(STORAGEVALUE_EMOTE) == 0) {
-            // Do not set the effect if emote is disabled
+	  // Assuming you have an 'attacker' variable instead of 'caster'
+    if (param == COMBAT_PARAM_EFFECT || param == COMBAT_PARAM_DISTANCEEFFECT) {
+        if (attacker && attacker->getPlayer() && attacker->getPlayer()->getStorageValue(STORAGEVALUE_EMOTE) == 0) {
+            // Skip setting the effect if emote is disabled
             return true;
         }
     }

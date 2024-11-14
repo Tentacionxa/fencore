@@ -900,47 +900,43 @@ void Combat::postCombatEffects(std::shared_ptr<Creature> caster, const Position 
 }
 
 void Combat::addDistanceEffect(std::shared_ptr<Creature> caster, const Position &fromPos, const Position &toPos, uint16_t effect) {
-    if (caster) {
-        // Check if caster is a Player and has the specific storage value set
-        std::shared_ptr<Player> player = caster->getPlayer();
-        if (player && player->getStorageValue(STORAGEVALUE_EMOTE) == 0) {
-            // Skip adding the distance effect if the storage condition is met
-            return;
-        }
-    }
+	if (effect == CONST_ANI_WEAPONTYPE) {
+		if (!caster) {
+			return;
+		}
 
-    if (effect == CONST_ANI_WEAPONTYPE) {
-        std::shared_ptr<Player> player = caster->getPlayer();
-        if (player) {
-            switch (player->getWeaponType()) {
-                case WEAPON_AXE:
-                    effect = CONST_ANI_WHIRLWINDAXE;
-                    break;
-                case WEAPON_SWORD:
-                    effect = CONST_ANI_WHIRLWINDSWORD;
-                    break;
-                case WEAPON_CLUB:
-                    effect = CONST_ANI_WHIRLWINDCLUB;
-                    break;
-                case WEAPON_MISSILE:
-                    {
-                        auto weapon = player->getWeapon();
-                        if (weapon) {
-                            const auto &iType = Item::items[weapon->getID()];
-                            effect = iType.shootType;
-                        }
-                    }
-                    break;
-                default:
-                    effect = CONST_ANI_NONE;
-                    break;
-            }
-        }
-    }
+		std::shared_ptr<Player> player = caster->getPlayer();
+		if (!player) {
+			return;
+		}
 
-    if (effect != CONST_ANI_NONE) {
-        g_game().addDistanceEffect(fromPos, toPos, effect);
-    }
+		switch (player->getWeaponType()) {
+			case WEAPON_AXE:
+				effect = CONST_ANI_WHIRLWINDAXE;
+				break;
+			case WEAPON_SWORD:
+				effect = CONST_ANI_WHIRLWINDSWORD;
+				break;
+			case WEAPON_CLUB:
+				effect = CONST_ANI_WHIRLWINDCLUB;
+				break;
+			case WEAPON_MISSILE: {
+				auto weapon = player->getWeapon();
+				if (weapon) {
+					const auto &iType = Item::items[weapon->getID()];
+					effect = iType.shootType;
+				}
+				break;
+			}
+			default:
+				effect = CONST_ANI_NONE;
+				break;
+		}
+	}
+
+	if (effect != CONST_ANI_NONE) {
+		g_game().addDistanceEffect(fromPos, toPos, effect);
+	}
 }
 
 void Combat::doChainEffect(const Position &origin, const Position &dest, uint8_t effect) {
@@ -1281,22 +1277,26 @@ void Combat::doCombatHealth(std::shared_ptr<Creature> caster, std::shared_ptr<Cr
 
 	applyExtensions(caster, target, damage, params);
 
-	if (canCombat) {
-		if (target && caster && params.distanceEffect != CONST_ANI_NONE) {
-			addDistanceEffect(caster, origin, target->getPosition(), params.distanceEffect);
-		}
+if (canCombat) {
+    if (target && caster && params.distanceEffect != CONST_ANI_NONE) {
+        std::shared_ptr<Player> playerCaster = caster->getPlayer();
+        if (!playerCaster || playerCaster->getStorageValue(30008) != 0) {
+            // Only add the distance effect if the player's storage value condition is NOT met
+            addDistanceEffect(caster, caster->getPosition(), target->getPosition(), params.distanceEffect);
+        }
+    }
 
 		CombatHealthFunc(caster, target, params, &damage);
 		if (params.targetCallback) {
 			params.targetCallback->onTargetCombat(caster, target);
 		}
 
-		if (target && params.soundImpactEffect != SoundEffect_t::SILENCE) {
-			g_game().sendDoubleSoundEffect(target->getPosition(), params.soundCastEffect, params.soundImpactEffect, caster);
-		} else if (target && params.soundCastEffect != SoundEffect_t::SILENCE) {
-			g_game().sendSingleSoundEffect(target->getPosition(), params.soundCastEffect, caster);
-		}
-	}
+	 if (target && params.soundImpactEffect != SoundEffect_t::SILENCE) {
+        g_game().sendDoubleSoundEffect(target->getPosition(), params.soundCastEffect, params.soundImpactEffect, caster);
+    } else if (target && params.soundCastEffect != SoundEffect_t::SILENCE) {
+        g_game().sendSingleSoundEffect(target->getPosition(), params.soundCastEffect, caster);
+    }
+}
 }
 
 void Combat::doCombatHealth(std::shared_ptr<Creature> caster, const Position &position, const std::unique_ptr<AreaCombat> &area, CombatDamage &damage, const CombatParams &params) {

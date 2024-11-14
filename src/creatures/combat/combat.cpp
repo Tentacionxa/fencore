@@ -441,14 +441,13 @@ bool Combat::setParam(CombatParam_t param, uint32_t value) {
 			return true;
 		}
 
-  // Check if we need to handle effect parameters
+   // Handle disabling effects based on STORAGEVALUE_EMOTE for player casters
     if (param == COMBAT_PARAM_EFFECT || param == COMBAT_PARAM_DISTANCEEFFECT) {
-        // Assume 'caster' is a member variable or accessible reference to the creature initiating the combat
-        if (caster) {
-            Player* playerCaster = dynamic_cast<Player*>(caster);
-            if (playerCaster && playerCaster->getStorageValue(STORAGEVALUE_EMOTE) == 0) {
-                // Disable the effect for all creatures if the player's emote storage value is 0
-                return true; // Skip setting the effect
+        // Assuming 'creatureCaster' is accessible and represents the initiating creature
+        if (auto playerCaster = dynamic_cast<Player*>(creatureCaster)) { // Replace 'creatureCaster' with your actual reference
+            if (playerCaster->getStorageValue(STORAGEVALUE_EMOTE) == 0) {
+                // Disable the effect by skipping the setting process
+                return true;
             }
         }
     }

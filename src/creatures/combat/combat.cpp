@@ -434,19 +434,16 @@ void Combat::setPlayerCombatValues(formulaType_t newFormulaType, double newMina,
 }
 
 bool Combat::setParam(CombatParam_t param, uint32_t value) {
-	const int32_t STORAGEVALUE_EMOTE = 52145; // Example definition
 	switch (param) {
 		case COMBAT_PARAM_TYPE: {
 			params.combatType = static_cast<CombatType_t>(value);
 			return true;
 		}
 
-	  // Assuming you have an 'attacker' variable instead of 'caster'
- if (param == COMBAT_PARAM_EFFECT || param == COMBAT_PARAM_DISTANCEEFFECT) {
-        Player* player = dynamic_cast<Player*>(creature); // Use the passed creature parameter
+		 if (param == COMBAT_PARAM_EFFECT || param == COMBAT_PARAM_DISTANCEEFFECT) {
         if (player && player->getStorageValue(STORAGEVALUE_EMOTE) == 0) {
-            // Skip setting the effect if emote is disabled
-            return true;
+            // Disable the effect for all creatures if the player has emote storage set to 0
+            return true; // Skip setting the effect
         }
     }
 

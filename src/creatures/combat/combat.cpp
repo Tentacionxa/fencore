@@ -16,6 +16,7 @@
 #include "game/game.hpp"
 #include "game/scheduling/dispatcher.hpp"
 #include "io/iobestiary.hpp"
+#include "creatures/players/player.hpp"
 #include "creatures/monsters/monster.hpp"
 #include "creatures/monsters/monsters.hpp"
 #include "items/weapons/weapons.hpp"
@@ -440,12 +441,15 @@ bool Combat::setParam(CombatParam_t param, uint32_t value) {
 			return true;
 		}
 
-   if (param == COMBAT_PARAM_EFFECT || param == COMBAT_PARAM_DISTANCEEFFECT) {
-        // Check if the provided creature is a player and has the correct storage value
-        Player* playerCaster = dynamic_cast<Player*>(creatureCaster);
-        if (playerCaster && playerCaster->getStorageValue(STORAGEVALUE_EMOTE) == 0) {
-            // Disable the effect
-            return true;
+  // Check if we need to handle effect parameters
+    if (param == COMBAT_PARAM_EFFECT || param == COMBAT_PARAM_DISTANCEEFFECT) {
+        // Assume 'caster' is a member variable or accessible reference to the creature initiating the combat
+        if (caster) {
+            Player* playerCaster = dynamic_cast<Player*>(caster);
+            if (playerCaster && playerCaster->getStorageValue(STORAGEVALUE_EMOTE) == 0) {
+                // Disable the effect for all creatures if the player's emote storage value is 0
+                return true; // Skip setting the effect
+            }
         }
     }
 

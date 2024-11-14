@@ -16,7 +16,6 @@
 #include "game/game.hpp"
 #include "game/scheduling/dispatcher.hpp"
 #include "io/iobestiary.hpp"
-#include "creatures/players/player.hpp"
 #include "creatures/monsters/monster.hpp"
 #include "creatures/monsters/monsters.hpp"
 #include "items/weapons/weapons.hpp"
@@ -441,17 +440,15 @@ bool Combat::setParam(CombatParam_t param, uint32_t value) {
 			return true;
 		}
 
-   // Handle disabling effects based on STORAGEVALUE_EMOTE for player casters
-    if (param == COMBAT_PARAM_EFFECT || param == COMBAT_PARAM_DISTANCEEFFECT) {
-        // Assuming 'creatureCaster' is accessible and represents the initiating creature
-        if (auto playerCaster = dynamic_cast<Player*>(creatureCaster)) { // Replace 'creatureCaster' with your actual reference
-            if (playerCaster->getStorageValue(STORAGEVALUE_EMOTE) == 0) {
-                // Disable the effect by skipping the setting process
-                return true;
-            }
-        }
-    }
+		case COMBAT_PARAM_EFFECT: {
+			params.impactEffect = static_cast<uint16_t>(value);
+			return true;
+		}
 
+		case COMBAT_PARAM_DISTANCEEFFECT: {
+			params.distanceEffect = static_cast<uint16_t>(value);
+			return true;
+		}
 
 		case COMBAT_PARAM_BLOCKARMOR: {
 			params.blockedByArmor = (value != 0);
@@ -1375,32 +1372,37 @@ void Combat::doCombatDispel(std::shared_ptr<Creature> caster, const Position &po
 	const auto origin = caster ? caster->getPosition() : Position();
 	CombatFunc(caster, origin, position, area, params, CombatDispelFunc, nullptr);
 }
-
 void Combat::doCombatDispel(std::shared_ptr<Creature> caster, std::shared_ptr<Creature> target, const CombatParams &params) {
-	bool canCombat = !params.aggressive || (caster != target && Combat::canDoCombat(caster, target, params.aggressive) == RETURNVALUE_NOERROR);
-	if ((caster && target)
-	    && (caster == target || canCombat)
-	    && (params.impactEffect != CONST_ME_NONE)) {
-		g_game().addMagicEffect(target->getPosition(), params.impactEffect);
-	}
+    bool canCombat = !params.aggressive || (caster != target && Combat::canDoCombat(caster, target, params.aggressive) == RETURNVALUE_NOERROR);
+    if ((caster && target)
+        && (caster == target || canCombat)
+        && (params.impactEffect != CONST_ME_NONE)) {
+        g_game().addMagicEffect(target->getPosition(), params.impactEffect);
+    }
 
-	if (canCombat) {
-		CombatDispelFunc(caster, target, params, nullptr);
-		if (params.targetCallback) {
-			params.targetCallback->onTargetCombat(caster, target);
-		}
+    if (canCombat) {
+        CombatDispelFunc(caster, target, params, nullptr);
+        if (params.targetCallback) {
+            params.targetCallback->onTargetCombat(caster, target);
+        }
 
-		if (target && caster && params.distanceEffect != CONST_ANI_NONE) {
-			addDistanceEffect(caster, caster->getPosition(), target->getPosition(), params.distanceEffect);
-		}
+        // Check before adding distance effect
+        if (target && caster && params.distanceEffect != CONST_ANI_NONE) {
+            Player* playerCaster = dynamic_cast<Player*>(caster.get());
+            if (!playerCaster || playerCaster->getStorageValue(STORAGEVALUE_EMOTE) != 0) {
+                // Only add the distance effect if it's not a player with emote disabled
+                addDistanceEffect(caster, caster->getPosition(), target->getPosition(), params.distanceEffect);
+            }
+        }
 
-		if (target && params.soundImpactEffect != SoundEffect_t::SILENCE) {
-			g_game().sendDoubleSoundEffect(target->getPosition(), params.soundCastEffect, params.soundImpactEffect, caster);
-		} else if (target && params.soundCastEffect != SoundEffect_t::SILENCE) {
-			g_game().sendSingleSoundEffect(target->getPosition(), params.soundCastEffect, caster);
-		}
-	}
+        if (target && params.soundImpactEffect != SoundEffect_t::SILENCE) {
+            g_game().sendDoubleSoundEffect(target->getPosition(), params.soundCastEffect, params.soundImpactEffect, caster);
+        } else if (target && params.soundCastEffect != SoundEffect_t::SILENCE) {
+            g_game().sendSingleSoundEffect(target->getPosition(), params.soundCastEffect, caster);
+        }
+    }
 }
+
 
 [[maybe_unused]] void Combat::doCombatDefault(std::shared_ptr<Creature> caster, std::shared_ptr<Creature> target, const CombatParams &params) {
 	doCombatDefault(caster, target, caster ? caster->getPosition() : Position(), params);

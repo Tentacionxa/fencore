@@ -8,12 +8,29 @@ combat:setArea(createCombatArea(AREA_SQUARE1X1))
 
 
 function onGetFormulaValues(player, skill, attack, factor)
-	local level = player:getLevel()
+    local level = player:getLevel()
 
-	local min = (level / 5) + (skill + 2 * attack) * 2.10
-	local max = (level / 5) + (skill + 2 * attack) * 3.40
-	return -min * 1.5, -max * 3.50 -- TODO : Use New Real Formula instead of an %
+    -- Base min and max damage calculations with slightly reduced multipliers
+    local min = (level / 5) + (skill + 2 * attack) * 2.75 -- Moderate increase over base spell
+    local max = (level / 5) + (skill + 2 * attack) * 4.25 -- Moderate increase over base spell
+
+    -- Conservative scaling using square root
+    local levelScalingFactor = 1 + math.sqrt(level / 1200) -- More conservative growth
+
+    min = min * levelScalingFactor
+    max = max * levelScalingFactor
+
+    -- Optional cap on scaling for high levels
+    local maxScalingCap = 2.0 -- Lower cap to limit high-level scaling
+    if levelScalingFactor > maxScalingCap then
+        min = min * (maxScalingCap / levelScalingFactor)
+        max = max * (maxScalingCap / levelScalingFactor)
+    end
+
+    return -min * 1.2, -max * 1.8 -- Further reduced final multipliers
 end
+
+
 
 
 

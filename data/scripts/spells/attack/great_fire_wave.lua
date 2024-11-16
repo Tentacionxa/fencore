@@ -5,13 +5,22 @@ combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_HITBYFIRE)
 local area = createCombatArea(AREA_WAVE7, AREADIAGONAL_WAVE7)
 combat:setArea(area)
 
-function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 17)+20
-	local max = (level / 5) + (maglevel * 24)
+local function onGetFormulaValues(player, level, maglevel)
+    -- Calculate base maximum damage and reduce it by 20%
+    local max = ((level / 5) + (maglevel * 20)) * 0.8
 
-return -min * 1.0, -max * 1.9 -- TODO : Use New Real Formula instead of an %
+    -- Apply scaling factor similar to "exori"
+    local levelScalingFactor = 1 + math.sqrt(level / 1200)
+    max = max * levelScalingFactor
+
+    -- Optional cap on scaling for high levels
+    local maxScalingCap = 2.2
+    if levelScalingFactor > maxScalingCap then
+        max = max * (maxScalingCap / levelScalingFactor)
+    end
+
+    return 0, -max -- No minimum damage, only maximum damage applied
 end
-
 
 
 

@@ -1,24 +1,35 @@
 local function formulaFunction(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 6) + 11
-	local max = (level / 5) + (maglevel * 14) + 19
-	return -min, -max
+    -- Calculate base maximum damage and reduce it by an additional 10% from the previous scaling
+    local max = ((level / 5) + (maglevel * 14) + 19) * 0.765 -- 0.85 (previous reduction) * 0.9 (10% additional reduction)
+
+    -- Apply scaling factor similar to "exori"
+    local levelScalingFactor = 1 + math.sqrt(level / 1200)
+    max = max * levelScalingFactor
+
+    -- Optional cap on scaling for high levels
+    local maxScalingCap = 2.2
+    if levelScalingFactor > maxScalingCap then
+        max = max * (maxScalingCap / levelScalingFactor)
+    end
+
+    return 0, -max -- No minimum damage, only maximum damage applied
 end
 
 function onGetFormulaValues(player, level, maglevel)
-	return formulaFunction(player, level, maglevel)
+    return formulaFunction(player, level, maglevel)
 end
 
 function onGetFormulaValuesWOD(player, level, maglevel)
-	return formulaFunction(player, level, maglevel)
+    return formulaFunction(player, level, maglevel)
 end
 
 local function createCombat(area, areaDiagonal, combatFunc)
-	local initCombat = Combat()
-	initCombat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, combatFunc)
-	initCombat:setParameter(COMBAT_PARAM_TYPE, COMBAT_ENERGYDAMAGE)
-	initCombat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_ENERGYHIT)
-	initCombat:setArea(createCombatArea(area, areaDiagonal))
-	return initCombat
+    local initCombat = Combat()
+    initCombat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, combatFunc)
+    initCombat:setParameter(COMBAT_PARAM_TYPE, COMBAT_ENERGYDAMAGE)
+    initCombat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_ENERGYHIT)
+    initCombat:setArea(createCombatArea(area, areaDiagonal))
+    return initCombat
 end
 
 local combat = createCombat(AREA_BEAM5, AREADIAGONAL_BEAM5, "onGetFormulaValues")
@@ -27,12 +38,12 @@ local combatWOD = createCombat(AREA_BEAM7, AREADIAGONAL_BEAM7, "onGetFormulaValu
 local spell = Spell("instant")
 
 function spell.onCastSpell(creature, var)
-	local player = creature:getPlayer()
-	if creature and player and player:instantSkillWOD("Beam Mastery") then
-		var.runeName = "Beam Mastery"
-		return combatWOD:execute(creature, var)
-	end
-	return combat:execute(creature, var)
+    local player = creature:getPlayer()
+    if creature and player and player:instantSkillWOD("Beam Mastery") then
+        var.runeName = "Beam Mastery"
+        return combatWOD:execute(creature, var)
+    end
+    return combat:execute(creature, var)
 end
 
 spell:group("attack")

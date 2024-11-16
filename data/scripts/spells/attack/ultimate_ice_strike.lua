@@ -5,10 +5,25 @@ combat:setParameter(COMBAT_PARAM_DISTANCEEFFECT, CONST_ANI_SMALLICE)
 
 
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 12)+30
-	local max = (level / 5) + (maglevel * 19)
+    -- Calculate maximum damage with a 20% reduction
+    local max = ((level / 5) + (maglevel * 20)) * 0.8 -- Reduced by 20%
 
-return -min * 1.0, -max * 1.9 -- TODO : Use New Real Formula instead of an %
+    -- Calculate minimum damage as 60% of maximum
+    local min = max * 0.6
+
+    -- Apply scaling factor similar to the previous spell
+    local levelScalingFactor = 1 + math.sqrt(level / 1200)
+    min = min * levelScalingFactor
+    max = max * levelScalingFactor
+
+    -- Optional cap on scaling for high levels
+    local maxScalingCap = 2.2
+    if levelScalingFactor > maxScalingCap then
+        min = min * (maxScalingCap / levelScalingFactor)
+        max = max * (maxScalingCap / levelScalingFactor)
+    end
+
+    return -min * 1.0, -max * 1.9 -- Adjust multipliers for final output
 end
 
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")

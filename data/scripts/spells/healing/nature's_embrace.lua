@@ -5,9 +5,19 @@ combat:setParameter(COMBAT_PARAM_AGGRESSIVE, 0)
 combat:setParameter(COMBAT_PARAM_DISPEL, CONDITION_PARALYZE)
 
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 2.5) + (maglevel * 60)
-	local max = (level / 2.5) + (maglevel * 90) -- TODO: Formulas (TibiaWiki says x2 but need more acurracy)
-	return min, max
+    -- Base max healing
+    local max = (level) + (maglevel * 60)
+    -- Scaling factor based on player level
+    local levelScalingFactor = 1 + math.sqrt(level / 1200)
+    local maxScalingCap = 3.5
+    if levelScalingFactor > maxScalingCap then
+        levelScalingFactor = maxScalingCap
+    end
+    
+    -- Apply scaling to max healing
+    max = max * levelScalingFactor
+
+    return 0, -max -- Removed minimum value (set to 0), only using the max value
 end
 
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
@@ -24,21 +34,21 @@ function spell.onCastSpell(creature, var)
 	end
 end
 
-spell:group("healing")
-spell:id(242)
-spell:name("Nature's Embrace")
-spell:words("exura gran sio")
-spell:castSound(SOUND_EFFECT_TYPE_SPELL_NATURES_EMBRACE)
-spell:level(300)
-spell:mana(400)
-spell:isPremium(true)
-spell:needTarget(true)
-spell:cooldown(60 * 1000)
-spell:groupCooldown(1 * 1000)
-spell:isAggressive(false)
-spell:isBlockingWalls(true)
-spell:hasParams(true)
-spell:hasPlayerNameParam(true)
-spell:vocation("druid;true", "elder druid;true")
-spell:needLearn(false)
-spell:register()
+--spell:group("healing")
+--spell:id(242)
+--spell:name("Nature's Embrace")
+--spell:words("exura gran sio")
+--spell:castSound(SOUND_EFFECT_TYPE_SPELL_NATURES_EMBRACE)
+--spell:level(300)
+--spell:mana(400)
+--spell:isPremium(true)
+--spell:needTarget(true)
+---spell:cooldown(60 * 1000)
+--spell:groupCooldown(1 * 1000)
+--spell:isAggressive(false)
+--spell:isBlockingWalls(true)
+--spell:hasParams(true)
+--spell:hasPlayerNameParam(true)
+--spell:vocation("druid;true", "elder druid;true")
+--spell:needLearn(false)
+--spell:register()

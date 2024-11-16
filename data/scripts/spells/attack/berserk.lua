@@ -8,13 +8,29 @@ combat:setArea(createCombatArea(AREA_SQUARE1X1))
 
 
 function onGetFormulaValues(player, skill, attack, factor)
-	local level = player:getLevel()
+    local level = player:getLevel()
 
-	local min = (level / 5) + (skill + attack) * 4.0
-	local max = (level / 5) + (skill + attack) * 4.65
+    -- Base min and max damage calculations
+    local min = (level / 5) + (skill + attack) * 2.5 -- Reduced multiplier for less base impact
+    local max = (level / 5) + (skill + attack) * 3.0 -- Reduced multiplier for less base impact
 
-	return -min * 1.1, -max * 1.5 -- TODO : Use New Real Formula instead of an %
+    -- Smoother scaling using square root
+    local levelScalingFactor = (1 + math.sqrt(level / 1000)) -- Smoother growth curve
+
+    min = min * levelScalingFactor
+    max = max * levelScalingFactor
+
+    -- Optional: add an upper limit on scaling for high levels
+    local maxScalingCap = 1.8 -- Lower cap to limit scaling further
+    if levelScalingFactor > maxScalingCap then
+        levelScalingFactor = maxScalingCap
+        min = min * (maxScalingCap / levelScalingFactor)
+        max = max * (maxScalingCap / levelScalingFactor)
+    end
+
+    return -min * 1.05, -max * 1.3 -- Reduced final multipliers to further limit damage
 end
+
 
 
 combat:setCallback(CALLBACK_PARAM_SKILLVALUE, "onGetFormulaValues")

@@ -5,10 +5,20 @@ combat:setArea(createCombatArea(AREA_WAVE4, AREADIAGONAL_WAVE4))
 
 
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 10)+30
-	local max = (level / 5) + (maglevel * 20)
+    -- Calculate base maximum damage and increase it by 50%
+    local max = (((level / 5) + (maglevel * 2.003) + 13) * 0.7275) * 1.5 -- Increased by 50%
 
-return -min * 1.0, -max * 1.9 -- TODO : Use New Real Formula instead of an %
+    -- Apply scaling factor similar to "exori"
+    local levelScalingFactor = 1 + math.sqrt(level / 1200)
+    max = max * levelScalingFactor
+
+    -- Optional cap on scaling for high levels
+    local maxScalingCap = 2.2
+    if levelScalingFactor > maxScalingCap then
+        max = max * (maxScalingCap / levelScalingFactor)
+    end
+
+    return 0, -max -- No minimum damage, only maximum damage applied
 end
 
 

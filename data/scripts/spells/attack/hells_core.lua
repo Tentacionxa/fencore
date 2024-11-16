@@ -3,27 +3,34 @@ combat:setParameter(COMBAT_PARAM_TYPE, COMBAT_FIREDAMAGE)
 combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_FIREAREA)
 combat:setArea(createCombatArea(AREA_CIRCLE5X5))
 
-
-
-
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 19)+25
-	local max = (level / 5) + (maglevel * 48)
-	return -min, -max
+    -- Calculate maximum damage
+    local max = (level / 5) + (maglevel * 57) -- Adjusted max multiplier for fire damage
+
+    -- Calculate minimum damage as 60% of maximum
+    local min = max * 0.6
+
+    -- Apply scaling factor similar to "exori"
+    local levelScalingFactor = 1 + math.sqrt(level / 1200)
+    min = min * levelScalingFactor
+    max = max * levelScalingFactor
+
+    -- Optional cap on scaling for high levels
+    local maxScalingCap = 2.2
+    if levelScalingFactor > maxScalingCap then
+        min = min * (maxScalingCap / levelScalingFactor)
+        max = max * (maxScalingCap / levelScalingFactor)
+    end
+
+    return -min * 1.2, -max * 1.4 -- Adjusted multipliers for fire damage output
 end
-
-
-
-
-
-	
 
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
 
 local spell = Spell("instant")
 
 function spell.onCastSpell(creature, variant)
-	return combat:execute(creature, variant)
+    return combat:execute(creature, variant)
 end
 
 spell:group("attack", "focus")

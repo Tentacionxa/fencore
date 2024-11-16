@@ -3,23 +3,36 @@ combat:setParameter(COMBAT_PARAM_TYPE, COMBAT_ENERGYDAMAGE)
 combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_BIGCLOUDS)
 combat:setArea(createCombatArea(AREA_CIRCLE6X6))
 
-
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 19)+25
-	local max = (level / 5) + (maglevel * 48)
-	return -min, -max
+    -- Calculate base damage values
+    local max = (level / 5) + (maglevel * 48)
+    local min = (level / 5) + (maglevel * 19) + 25
+
+    -- Apply scaling factor similar to "exori"
+    local levelScalingFactor = 1 + math.sqrt(level / 1200)
+    min = min * levelScalingFactor
+    max = max * levelScalingFactor
+
+    -- Optional cap on scaling for high levels
+    local maxScalingCap = 2.2
+    if levelScalingFactor > maxScalingCap then
+        min = min * (maxScalingCap / levelScalingFactor)
+        max = max * (maxScalingCap / levelScalingFactor)
+    end
+
+    -- Apply 20% reduction to the final values
+    min = min * 0.8
+    max = max * 0.8
+
+    return -min, -max
 end
-
-
-
-	
 
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
 
 local spell = Spell("instant")
 
 function spell.onCastSpell(creature, var)
-	return combat:execute(creature, var)
+    return combat:execute(creature, var)
 end
 
 spell:group("attack", "focus")

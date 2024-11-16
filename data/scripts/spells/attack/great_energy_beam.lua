@@ -1,29 +1,35 @@
-
 local function formulaFunction(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 14)+20
-	local max = (level / 5) + (maglevel * 20)
+    -- Calculate base maximum damage and reduce it by 20%
+    local max = ((level / 5) + (maglevel * 20)) * 0.8
 
-return -min * 1.0, -max * 1.9 -- TODO : Use New Real Formula instead of an %
+    -- Apply scaling factor similar to "exori"
+    local levelScalingFactor = 1 + math.sqrt(level / 1200)
+    max = max * levelScalingFactor
+
+    -- Optional cap on scaling for high levels
+    local maxScalingCap = 2.2
+    if levelScalingFactor > maxScalingCap then
+        max = max * (maxScalingCap / levelScalingFactor)
+    end
+
+    return 0, -max -- No minimum damage, only maximum damage applied
 end
 
-
-
-
 function onGetFormulaValues(player, level, maglevel)
-	return formulaFunction(player, level, maglevel)
+    return formulaFunction(player, level, maglevel)
 end
 
 function onGetFormulaValuesWOD(player, level, maglevel)
-	return formulaFunction(player, level, maglevel)
+    return formulaFunction(player, level, maglevel)
 end
 
 local function createCombat(area, combatFunc)
-	local initCombat = Combat()
-	initCombat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, combatFunc)
-	initCombat:setParameter(COMBAT_PARAM_TYPE, COMBAT_ENERGYDAMAGE)
-	initCombat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_ENERGYAREA)
-	initCombat:setArea(createCombatArea(area))
-	return initCombat
+    local initCombat = Combat()
+    initCombat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, combatFunc)
+    initCombat:setParameter(COMBAT_PARAM_TYPE, COMBAT_ENERGYDAMAGE)
+    initCombat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_ENERGYAREA)
+    initCombat:setArea(createCombatArea(area))
+    return initCombat
 end
 
 local combat = createCombat(AREA_BEAM8, "onGetFormulaValues")
@@ -32,16 +38,14 @@ local combatWOD = createCombat(AREA_BEAM10, "onGetFormulaValuesWOD")
 local spell = Spell("instant")
 
 function spell.onCastSpell(creature, var)
-	local player = creature:getPlayer()
-	if creature and player and player:instantSkillWOD("Beam Mastery") then
-		var.runeName = "Beam Mastery"
-		return combatWOD:execute(creature, var)
-	end
-
-	return combat:execute(creature, var)
+    local player = creature:getPlayer()
+    if not creature or not player then
+        return false
+    end
+    return player:instantSkillWOD("Beam Mastery") and combatWOD:execute(creature, var) or combat:execute(creature, var)
 end
 
-spell:group("attack")
+spell:group("attack", "greatbeams")
 spell:id(23)
 spell:name("Great Energy Beam")
 spell:words("exevo gran vis lux")

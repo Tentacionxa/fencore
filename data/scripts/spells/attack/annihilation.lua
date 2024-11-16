@@ -6,10 +6,29 @@ combat:setParameter(COMBAT_PARAM_BLOCKARMOR, 1)
 combat:setParameter(COMBAT_PARAM_USECHARGES, 1)
 
 function onGetFormulaValues(player, skill, attack, factor)
-	local skillTotal = skill * attack
-	local levelTotal = player:getLevel() / 5
-	return -(((skillTotal * 0.17) + 13) + levelTotal) * 1.70, -(((skillTotal * 0.20) + 34) + levelTotal) * 2.40 -- TODO : Use New Real F>
+    local skillTotal = skill * attack
+    local levelTotal = player:getLevel() / 5
+
+    -- Apply a 40% increase over the "Fierce Berserk" multipliers
+    local baseMin = ((skillTotal * 0.17) + 13) + levelTotal
+    local baseMax = ((skillTotal * 0.20) + 34) + levelTotal
+
+    -- Conservative scaling with slight increase
+    local levelScalingFactor = 1 + math.sqrt(player:getLevel() / 1200) * 1.4 -- Increased scaling factor
+
+    local min = baseMin * levelScalingFactor
+    local max = baseMax * levelScalingFactor
+
+    -- Optional cap to avoid overpowered damage
+    local maxScalingCap = 2.5 -- Cap on scaling
+    if levelScalingFactor > maxScalingCap then
+        min = min * (maxScalingCap / levelScalingFactor)
+        max = max * (maxScalingCap / levelScalingFactor)
+    end
+
+    return -min * 1.4, -max * 2.5 -- Adjusted multipliers for a 40% increase
 end
+
 
 
 combat:setCallback(CALLBACK_PARAM_SKILLVALUE, "onGetFormulaValues")

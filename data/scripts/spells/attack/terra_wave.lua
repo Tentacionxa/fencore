@@ -4,10 +4,20 @@ combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_SMALLPLANTS)
 combat:setArea(createCombatArea(AREA_SQUAREWAVE5, AREADIAGONAL_SQUAREWAVE5))
 
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 10)+20
-	local max = (level / 5) + (maglevel * 17)
+    -- Calculate base maximum damage and increase it by 50%
+    local max = (((level / 5) + (maglevel * 2.003) + 13) * 0.7275) * 1.4 -- Increased by 50%
 
-return -min * 1.0, -max * 1.9 -- TODO : Use New Real Formula instead of an %
+    -- Apply scaling factor similar to "exori"
+    local levelScalingFactor = 1 + math.sqrt(level / 1200)
+    max = max * levelScalingFactor
+
+    -- Optional cap on scaling for high levels
+    local maxScalingCap = 2.2
+    if levelScalingFactor > maxScalingCap then
+        max = max * (maxScalingCap / levelScalingFactor)
+    end
+
+    return 0, -max -- No minimum damage, only maximum damage applied
 end
 
 

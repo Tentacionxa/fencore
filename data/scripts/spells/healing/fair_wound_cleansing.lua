@@ -4,41 +4,32 @@ combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_MAGIC_BLUE)
 combat:setParameter(COMBAT_PARAM_AGGRESSIVE, false)
 combat:setParameter(COMBAT_PARAM_DISPEL, CONDITION_PARALYZE)
 
-
-
 function onGetFormulaValues(player, level, maglevel)
-	if level >= 2000 then
-			local min = (level) + (maglevel * 45)
-			local max = (level) + (maglevel * 55)
-			return -min, -max
-else if  level >= 1500  and level <= 1999 then
+    -- Base healing calculations using "exori" style scaling, increased by 20%
+    local min = (level / 5) + (maglevel * 54) -- Increased base multiplier for minimum healing
+    local max = (level / 5) + (maglevel * 66) -- Increased base multiplier for maximum healing
 
-local min = (level) + (maglevel * 40)
-			local max = (level) + (maglevel * 50)
-			return -min, -max
+    -- Conservative scaling using square root for balanced progression
+    local levelScalingFactor = 1 + math.sqrt(level / 1500)
+    min = min * levelScalingFactor
+    max = max * levelScalingFactor
 
-else if  level >= 700 and level <= 1499 then
+    -- Optional cap on scaling for high levels
+    local maxScalingCap = 1.8
+    if levelScalingFactor > maxScalingCap then
+        min = min * (maxScalingCap / levelScalingFactor)
+        max = max * (maxScalingCap / levelScalingFactor)
+    end
 
-local min = (level) + (maglevel * 35)
-			local max = (level) + (maglevel * 45)
-			return -min, -max
-elseif level >= 2 and level <= 699 then
-local min = (level) + (maglevel * 25)
-			local max = (level) + (maglevel * 35)
-			return -min, -max
+    return min * 1.2, max * 1.3 -- Final multipliers for healing output
 end
-end
-end
-end
-
-
 
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
 
 local spell = Spell("instant")
 
 function spell.onCastSpell(creature, variant)
-	return combat:execute(creature, variant)
+    return combat:execute(creature, variant)
 end
 
 spell:group("healing")

@@ -89,8 +89,8 @@ monster.attacks = {
 	{ name = "melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -850 },
 	{ name = "combat", interval = 3000, chance = 31, type = COMBAT_ENERGYDAMAGE, minDamage = -1080, maxDamage = -1300, range = 7, radius = 6, shootEffect = CONST_ANI_ENERGYBALL, effect = CONST_ME_BIGCLOUDS, target = true },
 	{ name = "ice chain", interval = 9500, chance = 37, minDamage = -1100, maxDamage = -1300, range = 7 },
-	{ name = "combat", interval = 4000, chance = 55, type = COMBAT_EARTHDAMAGE, minDamage = -1100, maxDamage = -1250, range = 7, shootEffect = CONST_ANI_EARTH, effect = CONST_ME_SMALLPLANTS, target = true },
-	{ name = "combat", interval = 3000, chance = 23, type = COMBAT_ICEDAMAGE, minDamage = -1250, maxDamage = -1400, radius = 6, effect = CONST_ME_ICETORNADO, target = false },
+	{ name = "combat", interval = 4000, chance = 55, type = COMBAT_EARTHDAMAGE, minDamage = -300, maxDamage = -750, range = 7, shootEffect = CONST_ANI_EARTH, effect = CONST_ME_SMALLPLANTS, target = true },
+	{ name = "combat", interval = 3000, chance = 23, type = COMBAT_ICEDAMAGE, minDamage = -250, maxDamage = -500, radius = 6, effect = CONST_ME_ICETORNADO, target = false },
 }
 monster.defenses = {
 	defense = 60,

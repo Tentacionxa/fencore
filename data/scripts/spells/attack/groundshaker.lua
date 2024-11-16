@@ -5,13 +5,29 @@ combat:setParameter(COMBAT_PARAM_BLOCKARMOR, 1)
 combat:setParameter(COMBAT_PARAM_USECHARGES, 1)
 combat:setArea(createCombatArea(AREA_CIRCLE3X3))
 
-
 function onGetFormulaValues(player, skill, attack, factor)
-	local level = player:getLevel()
-	local min = (level / 5) + (skill + attack) * 1.8
-	local max = (level / 5) + (skill + attack) * 2.6
-	return -min * 1.3, -max * 1.7 -- TODO : Use New Real Formula instead of an %
+    local level = player:getLevel()
+
+    -- Apply base multipliers increased by 30% compared to "Brutal Strike"
+    local min = (level / 5) + (skill + attack) * 1.56 -- Increased by 30%
+    local max = (level / 5) + (skill + attack) * 2.08 -- Increased by 30%
+
+    -- Conservative scaling for fair progression
+    local levelScalingFactor = 1 + math.sqrt(level / 1800) -- Slightly higher scaling than "Brutal Strike"
+
+    min = min * levelScalingFactor
+    max = max * levelScalingFactor
+
+    -- Optional cap on scaling for high levels
+    local maxScalingCap = 1.4 -- Slightly higher cap than "Brutal Strike"
+    if levelScalingFactor > maxScalingCap then
+        min = min * (maxScalingCap / levelScalingFactor)
+        max = max * (maxScalingCap / levelScalingFactor)
+    end
+
+    return -min * 1.15, -max * 1.4 -- Adjusted multipliers for balanced output
 end
+
 
 
 combat:setCallback(CALLBACK_PARAM_SKILLVALUE, "onGetFormulaValues")

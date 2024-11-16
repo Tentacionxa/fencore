@@ -6,9 +6,25 @@ combat:setArea(createCombatArea(AREA_CIRCLE5X5))
 
 
 function onGetFormulaValues(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 33)+25
-	local max = (level / 5) + (maglevel * 60)
-	return -min, -max
+    -- Calculate maximum damage
+    local max = (level / 5) + (maglevel * 51) -- Adjusted max multiplier for fire damage
+
+    -- Calculate minimum damage as 60% of maximum
+    local min = max * 0.6
+
+    -- Apply scaling factor similar to "exori"
+    local levelScalingFactor = 1 + math.sqrt(level / 1200)
+    min = min * levelScalingFactor
+    max = max * levelScalingFactor
+
+    -- Optional cap on scaling for high levels
+    local maxScalingCap = 2.2
+    if levelScalingFactor > maxScalingCap then
+        min = min * (maxScalingCap / levelScalingFactor)
+        max = max * (maxScalingCap / levelScalingFactor)
+    end
+
+    return -min * 1.2, -max * 1.4 -- Adjusted multipliers for fire damage output
 end
 
 

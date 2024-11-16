@@ -98,7 +98,7 @@ monster.loot = {
 	{id = 43884, chance = 60},
 	{id = 43883, chance = 60},
 	{id = 43882, chance = 100},
-	{id = 46378, chance = 10}, 
+	{id = 46378, chance = 100}, 
 }
 
 monster.summon = {

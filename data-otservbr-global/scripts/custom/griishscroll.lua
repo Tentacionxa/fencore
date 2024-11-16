@@ -81,7 +81,6 @@ function modalWeaponCreate.onModalWindow(player, modalWindowId, buttonId, choice
 
         local requiredItem = player:getStorageValue(1000)  -- Get the stored required item ID
         if requiredItem ~= -1 and player:removeItem(requiredItem, 1) and player:removeItem(46378, 1) then  -- Remove one of the required items
-            player:setLevel(player:getLevel() - 500)  -- Remove 500 levels 
             player:addItem(selectedWeapon.id, config.itemCount)
             player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You have crafted 8 " .. selectedWeapon.name .. "s.")
         else

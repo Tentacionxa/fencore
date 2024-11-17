@@ -204,7 +204,9 @@ npcConfig.shop = {
 	{ itemName = "heat core", clientId = 21167, sell = 10000 },
 	{ itemName = "alloy legs", clientId = 21168, sell = 11000 },
 	{ itemName = "execowtioner axe", clientId = 21176, sell = 12000 },
-	
+	{ itemName = "minotaur trophy", clientId = 7401, sell = 5000 },
+	{ itemName = "spooky hood", clientId =  32630, sell = 9000 },
+	{ itemName = "fabulous legs", clientId = 32617, sell = 100000 },
 	--nah'bob--
 	{ itemName = "angelic axe", clientId = 7436, sell = 5000 },
 	{ itemName = "blue robe", clientId = 3567, sell = 10000 },

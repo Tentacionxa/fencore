@@ -5,7 +5,7 @@ combat:setArea(createCombatArea(AREA_SQUAREWAVE5, AREADIAGONAL_SQUAREWAVE5))
 
 function onGetFormulaValues(player, level, maglevel)
     -- Calculate base maximum damage and increase it by 50%
-    local max = (((level / 5) + (maglevel * 2.003) + 13) * 0.7275) * 1.4 -- Increased by 50%
+    local max = (((level / 5) + (maglevel * 2.003) + 13) * 0.7275) * 2.0 -- Increased by 50%
 
     -- Apply scaling factor similar to "exori"
     local levelScalingFactor = 1 + math.sqrt(level / 1200)

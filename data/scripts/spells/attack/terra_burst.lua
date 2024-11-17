@@ -5,7 +5,7 @@ combat:setArea(createCombatArea(AREA_RING1_BURST3))
 
 function onGetFormulaValues(player, level, maglevel)
     -- Calculate base maximum damage and increase it by 50%
-    local max = (((level / 5) + (maglevel * 2.053) + 12) * 0.7275) * 1.4 -- Increased by 50%
+    local max = (((level / 5) + (maglevel * 2.053) + 12) * 0.7275) * 2.1 -- Increased by 50%
 
     -- Apply scaling factor similar to "exori"
     local levelScalingFactor = 1 + math.sqrt(level / 1200)

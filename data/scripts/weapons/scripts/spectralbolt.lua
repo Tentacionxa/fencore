@@ -1,9 +1,9 @@
 local area = createCombatArea({
-    { 0, 1, 1, 1, 0 },
-    { 1, 1, 1, 1, 1 },
-    { 1, 1, 3, 1, 1 },
-    { 1, 1, 1, 1, 1 },
-    { 0, 1, 1, 1, 0 },
+    { 0, 0, 0, 0, 0 },
+    { 0, 0, 0, 0, 0 },
+    { 0, 0, 3, 0, 0 },
+    { 0, 0, 0, 0, 0 },
+    { 0, 0, 0, 0, 0 },
 })
 
 local combat = Combat()
@@ -19,8 +19,8 @@ function onGetFormulaValues(player, skill, attack, factor)
     local level = player:getLevel()
     
     -- Base min and max damage
-    local min = (level / 5) + (distanceSkill * 2.5)
-    local max = (level / 5) + (0.09 * factor) * distanceSkill * 192
+    local min = (level / 5) + 50
+    local max = (0.15 * factor) * distanceSkill * 242 + (level / 5)
 
     -- Apply scaling factor based on player level
     local levelScalingFactor = 1 + math.sqrt(level / 1200)
@@ -38,19 +38,19 @@ end
 combat:setCallback(CALLBACK_PARAM_SKILLVALUE, "onGetFormulaValues")
 combat:setArea(area)
 
-local diamondArrow = Weapon(WEAPON_AMMO)
+local boltArrow = Weapon(WEAPON_AMMO)
 
-function diamondArrow.onUseWeapon(player, variant)
+function boltArrow.onUseWeapon(player, variant)
     return combat:execute(player, variant)
 end
 
-diamondArrow:id(25757)
-diamondArrow:id(35901)
-diamondArrow:level(150)
-diamondArrow:attack(37)
-diamondArrow:action("removecount")
-diamondArrow:ammoType("arrow")
-diamondArrow:shootType(CONST_ANI_DIAMONDARROW)
-diamondArrow:maxHitChance(100)
-diamondArrow:wieldUnproperly(true)
-diamondArrow:register()
+boltArrow:id(35902)
+boltArrow:id(35902)
+boltArrow:level(110)
+boltArrow:attack(37)
+boltArrow:action("removecount")
+boltArrow:ammoType("bolt")
+boltArrow:shootType(CONST_ANI_DIAMONDARROW)
+boltArrow:maxHitChance(100)
+boltArrow:wieldUnproperly(true)
+boltArrow:register()

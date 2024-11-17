@@ -115,7 +115,7 @@ local stoneKeyword = keywordHandler:addKeyword({'featherweight'}, StdModule.say,
 local stoneKeyword = keywordHandler:addKeyword({'strike'}, StdModule.say, {npcHandler = npcHandler, text = 'Do you want to buy items for critical imbuement for 1000000 gold?'})
 	stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Here you are. Take care.', reset = true},
 		function(player) return player:getMoney() + player:getBankBalance() >= 1000000 end,
-		function(player) if player:removeMoneyBank(1000000) then player:addItem(11444, 25) player:addItem(10311, 25) player:addItem(22728, 5)  end end
+		function(player) if player:removeMoneyBank(1000000) then player:addItem(11444, 20) player:addItem(10311, 25) player:addItem(22728, 5)  end end
 	)
 		stoneKeyword:addChildKeyword({'yes'}, StdModule.say, {npcHandler = npcHandler, text = 'Sorry, you don\'t have enough money.', reset = true})
 	

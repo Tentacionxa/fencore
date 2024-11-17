@@ -4,11 +4,25 @@ combat:setParameter(COMBAT_PARAM_EFFECT, CONST_ME_MORTAREA)
 combat:setParameter(COMBAT_PARAM_DISTANCEEFFECT, CONST_ANI_DEATH)
 
 local function formulaFunction(player, level, maglevel)
-	local min = (level / 5) + (maglevel * 6) + 11
-	local max = (level / 5) + (maglevel * 14) + 19
-	return -min, -max
+    -- Calculate base maximum damage and increase it by 50%
+    local max = (((level / 5) + (maglevel * 2.203) + 13) * 0.7275) * 1.5 -- Increased by 50%
+
+    -- Apply scaling factor similar to "exori"
+    local levelScalingFactor = 1 + math.sqrt(level / 1200)
+    max = max * levelScalingFactor
+
+    -- Optional cap on scaling for high levels
+    local maxScalingCap = 2.2
+    if levelScalingFactor > maxScalingCap then
+        max = max * (maxScalingCap / levelScalingFactor)
+    end
+
+    return 0, -max -- No minimum damage, only maximum damage applied
 end
 
+function onGetFormulaValues(player, level, maglevel)
+    return formulaFunction(player, level, maglevel)
+end
 combat:setCallback(CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
 
 local spell = Spell("instant")

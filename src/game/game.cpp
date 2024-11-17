@@ -8235,7 +8235,7 @@ void Game::addMagicEffect(const CreatureVector& spectators, const Position& pos,
     for (const auto& spectator : spectators) {
         if (const auto& tmpPlayer = spectator->getPlayer()) {
             // Check if the storage value 30008 is set to 1 for the player
-            if (tmpPlayer->getStorageValue(30008) == 1) {
+            if (tmpPlayer->getStorageValue(50008) == 1) {
                 continue; // Skip sending the magic effect
             }
             tmpPlayer->sendMagicEffect(pos, effect);
@@ -8267,7 +8267,7 @@ void Game::addDistanceEffect(const CreatureVector& spectators, const Position& f
     for (const auto& spectator : spectators) {
         if (const auto& tmpPlayer = spectator->getPlayer()) {
             // Check if the storage value 30008 is set to 1 for the player
-            if (tmpPlayer->getStorageValue(30008) == 1) {
+            if (tmpPlayer->getStorageValue(50008) == 1) {
                 continue; // Skip sending the distance effect
             }
             tmpPlayer->sendDistanceShoot(fromPos, toPos, effect);

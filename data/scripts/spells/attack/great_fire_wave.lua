@@ -7,8 +7,8 @@ combat:setArea(area)
 
 function onGetFormulaValues(player, level, maglevel)
     -- Calculate maximum damage using a new formula
-    local max = ((level / 4) + (maglevel * 5)) + 50 -- Adjust coefficients as needed for desired scaling
-    max = max * 1.1 -- Apply a slight multiplier to boost the damage output
+    local max = ((level / 4) + (maglevel * 9)) + 50 -- Adjust coefficients as needed for desired scaling
+    max = max * 1.3 -- Apply a slight multiplier to boost the damage output
 
     return 0, -max -- No minimum damage, only maximum damage applied
 end

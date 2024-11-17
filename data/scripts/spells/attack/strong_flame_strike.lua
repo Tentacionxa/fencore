@@ -5,7 +5,7 @@ combat:setParameter(COMBAT_PARAM_DISTANCEEFFECT, CONST_ANI_FIRE)
 
 function onGetFormulaValues(player, level, maglevel)
     -- Calculate base maximum damage and increase by 50%
-    local max = ((level / 5) + (maglevel * 4.4) + 28) * 1.5
+    local max = ((level / 5) + (maglevel * 5.4) + 28) * 1.5
 
     -- Apply scaling factor similar to "exori"
     local levelScalingFactor = 1 + math.sqrt(level / 1200)

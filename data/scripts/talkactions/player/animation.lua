@@ -8,10 +8,10 @@ function animationSpell.onSay(player, words, param)
 	end
 	if param == "on" then
 		player:setStorageValue(50008, 1)
-		player:sendTextMessage(MESSAGE_LOOK, "You desactivated spells animation")
+		player:sendTextMessage(MESSAGE_LOOK, "You activated spells animation")
 	elseif param == "off" then
 		player:setStorageValue(50008, 0)
-		player:sendTextMessage(MESSAGE_LOOK, "You activated spells animation")
+		player:sendTextMessage(MESSAGE_LOOK, "You desactivated spells animation")
 	end
 	return true
 end

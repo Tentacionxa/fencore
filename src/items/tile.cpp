@@ -20,6 +20,7 @@
 #include "game/movement/teleport.hpp"
 #include "items/trashholder.hpp"
 #include "io/iomap.hpp"
+#include "items/item.hpp"
 #include "map/spectators.hpp"
 #include "enums/account_type.hpp"
 

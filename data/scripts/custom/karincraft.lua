@@ -205,9 +205,8 @@ Karin.CraftSystem = {
                 requireToCraft = {
                     [43869] = 8,
                     [46316] = 500,
-                    ['level'] = 1000,
+                    ['level'] = 0,
                     ['skill'] = {
-                        [SKILL_AXE] = 20, 
                     },
                 },
                 storageId = 921004, -- Unique storage ID
@@ -219,9 +218,8 @@ Karin.CraftSystem = {
                 requireToCraft = {
                     [43867] = 8,
                     [46316] = 500,
-                    ['level'] = 1000,
+                    ['level'] = 0,
                     ['skill'] = {
-                        [SKILL_CLUB] = 20, 
                     },
                 },
                 storageId = 921005, -- Unique storage ID
@@ -261,9 +259,8 @@ Karin.CraftSystem = {
 				requireToCraft = {
 					[43865] = 8,
                     [46316] = 500,
-					['level'] = 1000,
+					['level'] = 0,
 					['skill'] = {
-					[SKILL_SWORD] = 20, 
 			    },
 		    },
 		    storageId = 921008, -- Unique storage ID

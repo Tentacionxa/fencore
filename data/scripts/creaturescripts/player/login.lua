@@ -18,7 +18,7 @@ local playerLoginGlobal = CreatureEvent("PlayerLoginGlobal")
 
 -- Define rates for each day
 local dailyRates = {
-    ["Monday"] = { expRate = 160, skillRate = 300, spawnRate = 160, lootRate = 150, bossLootRate = 130 },
+    ["Monday"] = { expRate = 190, skillRate = 300, spawnRate = 160, lootRate = 150, bossLootRate = 130 },
     ["Tuesday"] = { expRate = 170, skillRate = 300, spawnRate = 140, lootRate = 150, bossLootRate = 130 },
     ["Wednesday"] = { expRate = 180, skillRate = 300, spawnRate = 125, lootRate = 150, bossLootRate = 130 },
     ["Thursday"] = { expRate = 160, skillRate = 300, spawnRate = 170, lootRate = 150, bossLootRate = 130 },

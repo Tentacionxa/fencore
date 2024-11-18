@@ -85,12 +85,12 @@ function expRateCommand.onSay(player, words, param)
 
     -- Display result
     player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("Your current experience rate is: %.2f%%", finalRate))
-    player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("Debug: Player Level = %d", level))
-    player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("Debug: Retrieved Stage Multiplier = %.2f%%", stageMultiplier * 100))
-    player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("Debug: Base Rate = %.2f%%", baseRate))
-    player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("Debug: Stamina Multiplier = %.2f", staminaMultiplier))
-    player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("Debug: XP Scroll Bonus = %.2f%%", scrollBonusMultiplier * 100))
-    player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("Debug: World Boost Multiplier = %.2f", getGlobalStorageValue(480664) > os.time() and 2 or 1))
+    player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("Player Level = %d", level))
+    player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("Retrieved Stage Multiplier = %.2f%%", stageMultiplier * 100))
+    player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("Base Rate = %.2f%%", baseRate))
+    player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("Stamina Multiplier = %.2f", staminaMultiplier))
+    player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("XP Scroll Bonus = %.2f%%", scrollBonusMultiplier * 100))
+    player:sendTextMessage(MESSAGE_EVENT_ADVANCE, string.format("World Boost Multiplier = %.2f", getGlobalStorageValue(480664) > os.time() and 2 or 1))
 
     return true
 end

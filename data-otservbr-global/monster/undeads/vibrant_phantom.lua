@@ -2,7 +2,7 @@ local mType = Game.createMonsterType("Vibrant Phantom")
 local monster = {}
 
 monster.description = "a vibrant phantom"
-monster.experience = 19700
+monster.experience = 380000
 monster.outfit = {
 	lookType = 1298,
 	lookHead = 85,
@@ -26,8 +26,8 @@ monster.Bestiary = {
 	Locations = "Furious Crater.",
 }
 
-monster.health = 27000
-monster.maxHealth = 27000
+monster.health = 183000
+monster.maxHealth = 183000
 monster.race = "undead"
 monster.corpse = 33813
 monster.speed = 230
@@ -98,12 +98,12 @@ monster.loot = {
 }
 
 monster.attacks = {
-	{ name = "melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -800 },
-	{ name = "extended energy chain", interval = 2000, chance = 15, minDamage = -500, maxDamage = -600, range = 7 },
-	{ name = "combat", interval = 3000, chance = 20, type = COMBAT_ENERGYDAMAGE, minDamage = -800, maxDamage = -1200, range = 7, radius = 4, effect = CONST_ME_ENERGYAREA, target = false },
-	{ name = "combat", interval = 3000, chance = 20, type = COMBAT_ENERGYDAMAGE, minDamage = -1000, maxDamage = -1200, range = 7, radius = 4, shootEffect = CONST_ANI_ENERGY, effect = CONST_ME_ENERGYAREA, target = true },
-	{ name = "combat", interval = 2000, chance = 25, type = COMBAT_HOLYDAMAGE, minDamage = -1050, maxDamage = -1300, range = 7, shootEffect = CONST_ANI_SMALLHOLY, effect = CONST_ME_HOLYDAMAGE, target = true },
-	{ name = "extended holy chain", interval = 2000, chance = 15, minDamage = -1030, maxDamage = -1250, range = 7 },
+	{ name = "melee", interval = 2000, chance = 100, minDamage = -5500, maxDamage = -6000 },
+	{ name = "extended energy chain", interval = 2000, chance = 15, minDamage = -5500, maxDamage = -6000, range = 7 },
+	{ name = "combat", interval = 3000, chance = 20, type = COMBAT_ENERGYDAMAGE, minDamage = -5500, maxDamage = -6200, range = 7, radius = 4, effect = CONST_ME_ENERGYAREA, target = false },
+	{ name = "combat", interval = 3000, chance = 20, type = COMBAT_ENERGYDAMAGE, minDamage = -5500, maxDamage = -6200, range = 7, radius = 4, shootEffect = CONST_ANI_ENERGY, effect = CONST_ME_ENERGYAREA, target = true },
+	{ name = "combat", interval = 2000, chance = 25, type = COMBAT_HOLYDAMAGE, minDamage = -5550, maxDamage = -6300, range = 7, shootEffect = CONST_ANI_SMALLHOLY, effect = CONST_ME_HOLYDAMAGE, target = true },
+	{ name = "extended holy chain", interval = 2000, chance = 15, minDamage = -5530, maxDamage = -6250, range = 7 },
 }
 
 monster.defenses = {

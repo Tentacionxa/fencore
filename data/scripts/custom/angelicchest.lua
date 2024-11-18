@@ -5,7 +5,7 @@ local chests = {
               { id = 43884, name = "sanguine boots", chance = 50 }, -- 50% chance
               { id = 46370, name = "eternal night moon mantle", chance = 10 }, -- 10% chance
               { id = 46375, name = "eternal night moon legs", chance = 10 }, -- 10% chance
-              { id = 49273, name = "holy legguards", chance = 8 }, -- 5% chance
+              { id = 49247, name = "holy boots", chance = 8 }, -- 5% chance
               { id = 49272, name = "holy plate", chance = 8 }, -- 5% chance
               
           }
@@ -38,7 +38,7 @@ local chests = {
               { id = 43884, name = "sanguine galoshes", chance = 50 }, -- 50% chance
               { id = 46343, name = "eternal night root robe", chance = 10 }, -- 10% chance
               { id = 46340, name = "eternal night root pants", chance = 10 }, -- 10% chance
-              { id = 49273, name = "holy legguards", chance = 8 }, -- 5% chance
+              { id = 49247, name = "holy boots", chance = 8 }, -- 5% chance
               { id = 49272, name = "holy plate", chance = 8 }, -- 5% chance
               
           }

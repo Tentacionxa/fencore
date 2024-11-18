@@ -23,6 +23,7 @@ local config = {
 	{ name="Quara City", position = Position(31195, 31824, 6) },
 	{ name="Soul War 2", position = Position(34279, 30979, 9) },
 	{ name="Soul War 3", position = Position(34243, 31016, 11) },
+	{ name="Soul War 4", position = Position(34229, 31751, 3) },
 	{ name="Baloon Land", position = Position(31581, 32761, 8) }
 	
 }

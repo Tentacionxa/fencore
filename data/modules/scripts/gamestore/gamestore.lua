@@ -520,7 +520,7 @@ GameStore.Categories = {
 			price = 5000,
 			itemtype = 46111,
 			count = 1,
-			description = "<i>This chest has 10 % chance of dropping holy legguards or holy plate </i>",
+			description = "<i>This chest has 10 % chance of dropping holy boots or holy plate </i>",
 			type = GameStore.OfferTypes.OFFER_TYPE_STACKABLE,
 				state = GameStore.States.STATE_NEW,
 		},

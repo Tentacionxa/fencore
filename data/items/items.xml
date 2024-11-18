@@ -75901,6 +75901,36 @@ Granted by TibiaGoals.com"/>
 			<attribute key="vocation" value="Sorcerer;true, Master Sorcerer"/>
 		</attribute>
 	</item>
+
+	<item id="49247" name="holy boots">
+		<attribute key="primarytype" value="boots"/>
+		<attribute key="absorbpercentphysical" value="20"/>
+		<attribute key="magiclevelpoints" value="9"/>
+		<attribute key="deathmagiclevelpoints" value="5"/>
+		<attribute key="speed" value="50"/>
+		<attribute key="armor" value="13"/>
+		<attribute key="weight" value="1900"/>
+		<attribute key="imbuementslot" value="1">
+			<attribute key="increase speed" value="10"/>
+		</attribute>
+		<attribute key="augments" value="1">
+			<attribute key="avatar of storm" value="cooldown">
+				<attribute key="value" value="900000" />
+			</attribute>
+			<attribute key="hell's core" value="critical extra damage">
+				<attribute key="value" value="8" />
+			</attribute>
+			<attribute key="energy wave" value="critical extra damage">
+				<attribute key="value" value="8" />
+			</attribute>
+		</attribute>
+		<attribute key="script" value="moveevent">
+			<attribute key="level" value="4000"/>
+			<attribute key="slot" value="feet"/>
+			<attribute key="vocation" value="Druid;true, Sorcerer;true, Elder Druid, Master Sorcerer"/>
+		</attribute>
+	</item>
+
 	<item id="43885" article="a" name="sanguine rod">
 		<attribute key="primarytype" value="rods"/>
 		<attribute key="weaponType" value="wand"/>
@@ -76183,8 +76213,6 @@ Granted by TibiaGoals.com"/>
 		<attribute key="primarytype" value="axe weapons"/>
 		<attribute key="weaponType" value="axe"/>
 		<attribute key="elementice" value="46"/>
-		<attribute key="criticalhitdamage" value="700"/>
-		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="attack" value="8"/>
 		<attribute key="defense" value="32"/>
 		<attribute key="skillaxe" value="4"/>
@@ -76236,6 +76264,8 @@ Granted by TibiaGoals.com"/>
 		<attribute key="primarytype" value="sword weapons"/>
 		<attribute key="weaponType" value="sword"/>
 		<attribute key="slotType" value="two-handed"/>
+				<attribute key="criticalhitdamage" value="700"/>
+		<attribute key="criticalhitchance" value="1000"/>
 		<attribute key="attack" value="8"/>
 		<attribute key="elementdeath" value="50"/>
 		<attribute key="extradef" value="0"/>
@@ -84359,7 +84389,7 @@ Granted by TibiaGoals.com"/>
 
 	<item id="49274" article="a" name="enchanted plate">
 		<attribute key="primarytype" value="armors"/>
-		<attribute key="absorbpercentphysical" value="20"/>
+		<attribute key="absorbpercentice" value="25"/>
 		<attribute key="absorbpercentfire" value="25"/>
 		<attribute key="skilldist" value="15"/>
 		<attribute key="armor" value="40"/>
@@ -84468,7 +84498,6 @@ Granted by TibiaGoals.com"/>
 		<attribute key="primarytype" value="boots"/>
 		<attribute key="absorbpercentphysical" value="10"/>
 		<attribute key="absorbpercentfire" value="12"/>
-		<attribute key="magiclevelpoints" value="4"/>
 		<attribute key="healingmagiclevelpoints" value="4"/>
 		<attribute key="speed" value="30"/>
 		<attribute key="armor" value="6"/>

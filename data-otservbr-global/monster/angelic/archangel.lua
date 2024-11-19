@@ -82,14 +82,14 @@ monster.loot = {
 	{ id = 3043, chance = 60000, maxCount = 9 }, -- crystal coin
 	{ id = 46316, chance = 60000, maxCount = 2 }, -- crystal coin
 	{ id = 46314, chance = 60000, maxCount = 2 }, -- crystal coin46314
-    { id = 49282, chance = 10},
+    { id = 49282, chance = 40},
 	{ id = 46095, chance = 30},
-        { id = 49283, chance = 10},
-        { id = 49284, chance = 10},
-        { id = 49285, chance = 10},
-        { id = 49286, chance = 10},
-        { id = 49287, chance = 10},
-        { id = 49288, chance = 10},
+        { id = 49283, chance = 40},
+        { id = 49284, chance = 40},
+        { id = 49285, chance = 40},
+        { id = 49286, chance = 40},
+        { id = 49287, chance = 40},
+        { id = 49288, chance = 40},
 }
 
 monster.attacks = {

@@ -118,6 +118,8 @@ labyrinthTeleport:type("stepin")
 labyrinthTeleport:aid(25057) -- Assuming action ID for the teleport is used here
 labyrinthTeleport:register()
 
+
+
 -- Exit Teleport Handler for Winning Logic
 local exitTeleport = MoveEvent()
 
@@ -168,3 +170,31 @@ end
 exitTeleport:type("stepin")
 exitTeleport:aid(1949) -- Assuming action ID for the exit teleport is used here
 exitTeleport:register()
+
+local labyrinthOnPrepareDeath = CreatureEvent("LabyrinthOnPrepareDeath")
+
+function labyrinthOnPrepareDeath.onPrepareDeath(player, killer)
+    -- Check if the player is registered in the Labyrinth Event
+    if player:getStorageValue(570707) == 1 then
+        -- Send a message to the player
+        player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You were defeated in the Labyrinth Event and have been teleported back.")
+
+        -- Teleport the player to the temple position
+        local templePosition = Position(32354, 32220, 7)
+        player:teleportTo(templePosition)
+        player:addHealth(player:getMaxHealth())
+        player:addMana(player:getMaxMana())
+        player:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
+
+        -- Reset the player's storage value
+        player:setStorageValue(570707, -1)
+
+        -- Prevent the actual death
+        return false
+    end
+
+    -- Allow normal death handling for other scenarios
+    return true
+end
+
+labyrinthOnPrepareDeath:register()

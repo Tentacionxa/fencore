@@ -1,6 +1,7 @@
 local tutorRequest = TalkAction("!tutor")
 local cooldowns = {}
 local pendingTeleportRequests = {} -- Table to store unique storage keys for each player
+local previousPositions = {} -- Table to store the previous positions of players
 
 -- Function for the initial !tutor request
 function tutorRequest.onSay(player, words, param)
@@ -58,18 +59,30 @@ local helpAccept = TalkAction("!help")
 
 -- Function to handle teleportation
 function helpAccept.onSay(player, words, param)
-    -- Check if the player has one of the required group IDs
-    local groupId = player:getGroup():getId()
-    if groupId < 2 or groupId > 6 then
-        player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You do not have permission to use this command.")
+    -- If the param is "back", teleport the player back to their previous position
+    if param == "back" then
+        -- Check if the player has one of the required group IDs (2-6)
+        local groupId = player:getGroup():getId()
+        if groupId < 2 or groupId > 6 then
+            player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You do not have permission to use this command.")
+            return true
+        end
+
+        if previousPositions[player:getId()] then
+            local previousPosition = previousPositions[player:getId()]
+            player:teleportTo(previousPosition)
+            player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You have been teleported back to your original position.")
+            previousPositions[player:getId()] = nil -- Clear the saved position
+        else
+            player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "No saved position to return to.")
+        end
         return true
     end
 
-    -- Check if the player is in a protection zone or in a fight
-    local inPz = player:getTile():hasFlag(TILESTATE_PROTECTIONZONE)
-    local inFight = player:isPzLocked() or player:getCondition(CONDITION_INFIGHT, CONDITIONID_DEFAULT)
-    if inFight then
-        player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You cannot use this command while in a fight.")
+    -- Check if the player has one of the required group IDs (2-6) for the standard !help command
+    local groupId = player:getGroup():getId()
+    if groupId < 2 or groupId > 6 then
+        player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You do not have permission to use this command.")
         return true
     end
 
@@ -79,6 +92,9 @@ function helpAccept.onSay(player, words, param)
         if storedRequesterId == requesterId then
             local requesterPlayer = Player(requesterId)
             if requesterPlayer then
+                -- Save the current position of the helper before teleporting
+                previousPositions[player:getId()] = player:getPosition()
+
                 -- Teleport the player to the requester
                 player:teleportTo(requesterPlayer:getPosition())
                 player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You have been teleported to the player requesting assistance.")

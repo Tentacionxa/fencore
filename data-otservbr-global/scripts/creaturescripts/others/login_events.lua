@@ -6,6 +6,7 @@ function loginEvents.onLogin(player)
 		--Cults Of Tibia Quest
 "IncreaseManaDamageEvent",
 		"YalahariHealth",
+		"LabyrinthOnPrepareDeath",
 	}
 
 	for i = 1, #events do

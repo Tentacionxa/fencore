@@ -201,7 +201,7 @@ function Encounter:spawnMonsters(config)
 		if self.timeToSpawnMonsters >= 1000 then
 			for i = 1, self.timeToSpawnMonsters / 1000 do
 				self:addEvent(function(position)
-					position:sendMagicEffect(CONST_ME_TELEPORT)
+					
 				end, i * 1000, position)
 			end
 		end

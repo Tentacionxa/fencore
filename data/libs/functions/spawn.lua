@@ -135,7 +135,7 @@ function Spawn.spawnMonsterTimer(self, config, func)
 	addEvent(function()
 		for i = 1, time_tp do
 			addEvent(function()
-				config.pos:sendMagicEffect(CONST_ME_TELEPORT)
+			
 			end, i * 1000)
 		end
 		addEvent(function()

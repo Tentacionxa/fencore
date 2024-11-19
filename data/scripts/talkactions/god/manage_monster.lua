@@ -21,7 +21,6 @@ local function createCreaturesAround(player, maxRadius, creatureName, creatureCo
 						local monster = Game.createMonster(creatureName, checkPosition, false, boolForceCreate)
 						if monster then
 							createdCount = createdCount + 1
-							monster:getPosition():sendMagicEffect(CONST_ME_TELEPORT)
 							position:sendMagicEffect(CONST_ME_MAGIC_RED)
 							if creatureForge ~= nil and monster:isForgeable() then
 								local monsterType = monster:getType()

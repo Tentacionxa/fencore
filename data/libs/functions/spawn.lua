@@ -130,8 +130,8 @@ function Spawn.spawnMonsterTimer(self, config, func)
 	-- 		monster = string,
 	-- 		pos = Position()
 	-- 	}
-	local time_tp = 3
-	config.spawntime = config.spawntime <= time_tp and (time_tp + 1) or (config.spawntime - time_tp)
+	local time_tp = 0
+	config.spawntime = config.spawntime
 	addEvent(function()
 		for i = 1, time_tp do
 			addEvent(function()
@@ -149,7 +149,7 @@ function Spawn.spawnMonsterTimer(self, config, func)
 				func(monster)
 			end
 			self:executeFunctionMonster("onSpawn", monster)
-		end, time_tp * 1000)
+		end, )
 	end, config.spawntime * 1000)
 end
 

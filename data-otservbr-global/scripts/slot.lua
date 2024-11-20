@@ -72,9 +72,10 @@ local machinesConfig = {
 		posicaoDoCentro2 = Position(33462, 32491, 14),
 		posicaoDoCentro3 = Position(33463, 32491, 14),
 		items = {
+			{ id = 24390, quantidade = 800 }, -- stamina extension
 			{ id = 6529, quantidade = 1 }, -- stamina extension
 			{ id = 39702, quantidade = 1 }, -- charm upgrade
-{ id = 22118, quantidade = 1 }, -- charm upgrade
+{ id = 22118, quantidade = 100 }, -- charm upgrade
 { id = 23683, quantidade = 1 }, -- charm upgrade
 { id = 19371, quantidade = 1 }, -- charm upgrade
 		}

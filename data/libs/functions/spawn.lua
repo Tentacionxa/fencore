@@ -132,12 +132,7 @@ function Spawn.spawnMonsterTimer(self, config, func)
 	-- 	}
 	local time_tp = 0
 	config.spawntime = config.spawntime
-	addEvent(function()
-		for i = 1, time_tp do
-			addEvent(function()
-			
-			end, i * 1000)
-		end
+	
 		addEvent(function()
 			local monster = Game.createMonster(config.monster, config.pos, false, false)
 			if not monster then
@@ -149,7 +144,7 @@ function Spawn.spawnMonsterTimer(self, config, func)
 				func(monster)
 			end
 			self:executeFunctionMonster("onSpawn", monster)
-		end, )
+		
 	end, config.spawntime * 1000)
 end
 

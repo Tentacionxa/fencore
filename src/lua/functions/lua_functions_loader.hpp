@@ -71,7 +71,7 @@ public:
 		if constexpr (std::is_integral_v<T> && std::is_unsigned_v<T>) {
 			if (number < 0) {
 				g_logger().debug("[{}] overflow, setting to default unsigned value (0), called line: {}:{}, in {}", __FUNCTION__, location.line(), location.column(), location.function_name());
-				return T(0);
+				number = T(0);
 			}
 		}
 

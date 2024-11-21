@@ -79,7 +79,7 @@ local chests = {
       [46109] = { -- elite box
           items = {
               { id = 43876, name = "sanguine legs", chance = 50 }, -- 50% chance
-              { id = 43878, name = "grand sanguine razor", chance = 50 }, -- 50% chance
+              { id = 43871, name = "grand sanguine razor", chance = 50 }, -- 50% chance
               { id = 46353, name = "eternal night demon helmet", chance = 10 }, -- 10% chance
               { id = 46345, name = "eternal night demon plate", chance = 10 }, -- 10% chance
               { id = 49277, name = "enchanted undead greaves", chance = 8 }, -- 5% chance

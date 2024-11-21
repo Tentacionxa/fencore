@@ -60,7 +60,7 @@ public:
 	static void setCreatureMetatable(lua_State* L, int32_t index, std::shared_ptr<Creature> creature);
 
 	template <typename T>
-	static typename std::enable_if<std::is_enum<T>::value, T>::type
+	static T getNumber(lua_State* L, int32_t arg, std::source_location location = std::source_location::current()) {
 	getNumber(lua_State* L, int32_t arg) {
 		return static_cast<T>(static_cast<int64_t>(lua_tonumber(L, arg)));
 	}
@@ -70,8 +70,8 @@ public:
 		// If there is overflow, we return the value 0
 		if constexpr (std::is_integral_v<T> && std::is_unsigned_v<T>) {
 			if (number < 0) {
-				g_logger().debug("[{}] overflow, setting to default signed value (0)", __FUNCTION__);
-				number = T(0);
+				g_logger().debug("[{}] overflow, setting to default unsigned value (0), called line: {}:{}, in {}", __FUNCTION__, location.line(), location.column(), location.function_name());
+				return T(0);
 			}
 		}
 

@@ -82062,6 +82062,13 @@ Granted by TibiaGoals.com"/>
                         <attribute key="rate" value="140"/>
                 </attribute>
         </item>
+		  <item id="49314" article="an" name="exercise king tibianus statue">
+                <attribute key="primarytype" value="statues"/>
+                <attribute key="description" value="You can train your skills by using training weapons with this exercise tower."/>
+                <attribute key="type" value="dummy">
+                        <attribute key="rate" value="140"/>
+                </attribute>
+        </item>
 		  <item id="49313" article="an" name="exercise flamy ferumbras statue">
                 <attribute key="primarytype" value="statues"/>
                 <attribute key="description" value="You can train your skills by using training weapons with this exercise tower."/>
@@ -82069,7 +82076,21 @@ Granted by TibiaGoals.com"/>
                         <attribute key="rate" value="140"/>
                 </attribute>
         </item>
+			  <item id="49311" article="an" name="exercise flamy ferumbras statue">
+                <attribute key="primarytype" value="statues"/>
+                <attribute key="description" value="You can train your skills by using training weapons with this exercise tower."/>
+                <attribute key="type" value="dummy">
+                        <attribute key="rate" value="140"/>
+                </attribute>
+        </item>
 		  <item id="49310" article="an" name="exercise dark ferumbras statue">
+                <attribute key="primarytype" value="statues"/>
+                <attribute key="description" value="You can train your skills by using training weapons with this exercise tower."/>
+                <attribute key="type" value="dummy">
+                        <attribute key="rate" value="140"/>
+                </attribute>
+        </item>
+		  <item id="49309" article="an" name="exercise dark ferumbras statue">
                 <attribute key="primarytype" value="statues"/>
                 <attribute key="description" value="You can train your skills by using training weapons with this exercise tower."/>
                 <attribute key="type" value="dummy">

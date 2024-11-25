@@ -63,5 +63,6 @@ function chest.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 	return true
 end
 
-chest:uid(24275)
+chest:uid(4018)
 chest:register()
+

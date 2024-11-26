@@ -1,5 +1,6 @@
 local config = {
 	{ name="Adventurers' Guild", position = Position(32209, 32298, 6) },
+	{ name="Bomberman ", position = Position(31947, 32432, 7) },
     { name="Soulpit", position = Position (32347, 31030, 3) }
 	
 }

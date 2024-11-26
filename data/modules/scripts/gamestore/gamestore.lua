@@ -7906,13 +7906,6 @@ GameStore.Categories = {
 				description = "<i>Use Prey Wildcards to reroll the bonus of an active prey, to lock your active prey or to select a prey of your choice.</i>\n\n{character}\n{info} added directly to Prey dialog\n{info} maximum amount that can be owned by character: 50",
 				type = GameStore.OfferTypes.OFFER_TYPE_PREYBONUS,
 			},
-			{
-				icons = { "Temple_Teleport.png" },
-				name = "Temple Teleport",
-				price = 0,
-				description = "<i>Teleports you instantly to your home temple.</i>\n\n{character}\n{useicon} use it to teleport you to your home temple</i>\n{battlesign}\n{info} does not work in no-logout zones or close to a character's home temple",
-				type = GameStore.OfferTypes.OFFER_TYPE_TEMPLE,
-			},
 		},
 	},
 	-- Tournament

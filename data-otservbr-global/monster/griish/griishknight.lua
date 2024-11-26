@@ -79,8 +79,8 @@ monster.voices = {
 monster.loot = {
 	{ name = "crystal coin", chance = 5489, maxCount = 4 },
 	{ name = "green crystal coin", chance = 1130, maxCount = 4 },
-	{ name = "supreme mistery bag", chance = 50, maxCount = 3  },
-	{ name = "falcon bag", chance = 50, maxCount = 3 },
+	{ name = "supreme mistery bag", chance = 400, maxCount = 3  },
+	{ name = "falcon bag", chance = 400, maxCount = 3 },
 	{ name = "red crystal coin", chance = 100000, maxCount = 3 },
 }
 

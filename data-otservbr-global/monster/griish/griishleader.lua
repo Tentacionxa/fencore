@@ -78,8 +78,8 @@ monster.voices = {
 
 monster.loot = {
 	{ name = "crystal coin", chance = 5489, maxCount = 4 },
-	{ name = "tenebris bag", chance = 50 , maxCount = 3 },
-	{ name = "lion bag", chance = 50 , maxCount = 3 },
+	{ name = "tenebris bag", chance = 400 , maxCount = 3 },
+	{ name = "lion bag", chance = 400 , maxCount = 3 },
 	{ name = "alicorn quiver", chance = 10, maxCount = 1  },
 	{ name = "naga quiver", chance = 10, maxCount = 1  },
 	{ name = "red crystal coin", chance = 100000, maxCount = 1 },
